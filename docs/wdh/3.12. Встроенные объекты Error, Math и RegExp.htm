@@ -1,0 +1,1173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: JavaScript - Встроенные объекты Error, Math и RegExp</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/js11.htm" title="Дата и время: встроенный объект Date">
+<link rel="Next" href="http://wdh.suncloud.ru/js13.htm" title="Дополнительные возможности JScript">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/load.js"></script>
+<script type="text/javascript" src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/link.js"></script><link rel="stylesheet" type="text/css" href="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js11.htm"><img name="imglefta" src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/nnleft.gif" alt="" title="Дата и время: встроенный объект Date" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/js13.htm"><img name="imgrighta" src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/nnright.gif" alt="" title="Дополнительные возможности JScript" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=6573" target="_blank"><img src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref312">Глава 3.12. Встроенные объекты Error, Math и RegExp</a></h2>
+
+      <p>В этой главе приведены описания встроенных объектов <a href="#ref3121"><strong>Error</strong></a>,
+        <a href="#ref3122"><strong>Math</strong></a> и <a href="#ref3123"><strong>RegExp</strong></a>.</p>
+
+      <h3><a name="ref3121">3.12.1. Исключения: объект Error</a></h3>
+
+      <p>Объекты <strong>Error</strong> создаются при возникновении ошибок в процессе выполнения сценария
+        и содержат информацию об ошибке, которая используется <a href="http://wdh.suncloud.ru/js06.htm#ref367">операторами
+        обработки исключений</a>. К сожалению, реализации этого класса объектов не вполне соответствуют
+        стандарту, поэтому мы сначала описываем объект <strong>Error</strong> согласно ECMAScript, а
+        затем его реализацию в JScript (JavaScript, реализованный в обозревателях Netscape, вообще не
+        поддерживает объекты <strong>Error</strong>).</p>
+
+      <h4><a name="ref31211">3.12.1.1. Объект Error в ECMAScript</a></h4>
+
+      <p>Все исключения подразделяются на <em>системные</em> и <em>пользовательские</em>. Системные
+        исключения генерируются исполняющей системой в процессе выполнения сценария, пользовательские&nbsp;—
+        самим сценарием с помощью оператора <a href="http://wdh.suncloud.ru/js06.htm#ref3673"><strong>throw</strong></a>. Стандарт
+        ECMAScript предусматривает следующие виды системных исключений:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption><a name="table39">Таблица 3.9. Исключения ECMAScript</a></caption>
+          <tbody><tr>
+            <th>Название</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><strong>EvalError</strong></td>
+            <td>Недопустимое обращение к функции <strong>eval</strong>.</td>
+          </tr>
+          <tr>
+            <td><strong>RangeError</strong></td>
+            <td>Числовое значение вне допустимого диапазона.</td>
+          </tr>
+          <tr>
+            <td><strong>ReferenceError</strong></td>
+            <td>Недопустимое значение ссылки.</td>
+          </tr>
+          <tr>
+            <td><strong>SyntaxError</strong></td>
+            <td>Синтаксическая ошибка.</td>
+          </tr>
+          <tr>
+            <td><strong>TypeError</strong></td>
+            <td>Несовместимые типы операндов.</td>
+          </tr>
+          <tr>
+            <td><strong>URIError</strong></td>
+            <td>Недопустимое обращение к функции работы с URI.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p class="vindent">Объекты <strong>Error</strong> соответственно также могут быть созданы
+        исполняющей системой или сценарием. Конструктор пользовательского объекта <strong>Error</strong>
+        имеет вид <code>new Error(message)</code>, где <tt>message</tt>&nbsp;— текст сообщения
+        об ошибке.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства объекта Error</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+            <th>Член прототипа</th>
+          </tr>
+          <tr>
+            <td><a href="http://wdh.suncloud.ru/js08.htm#pconstructor"><tt>constructor</tt></a></td>
+            <td>Конструктор, который создал объект.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#pmessage"><tt>message</tt></a></td>
+            <td>Текст сообщения об ошибке.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#pname"><tt>name</tt></a></td>
+            <td>Название исключения.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="http://wdh.suncloud.ru/js08.htm#pprototype"><tt>prototype</tt></a></td>
+            <td>Ссылка на прототип класса объектов.</td>
+            <td align="center">Да</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы объекта Error</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+            <th>Член прототипа</th>
+          </tr>
+          <tr>
+            <td><a href="http://wdh.suncloud.ru/js08.htm#mtostring"><tt>toString</tt></a></td>
+            <td>Возвращает строку "[object Error]".</td>
+            <td align="center">Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hmessage">Свойство message</a></h4>
+
+<pre class="syntax"><strong><a name="pmessage">Синтаксис</a></strong>: <em>объект</em>.message
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>message</strong> является сообщение об ошибке данного <em>объекта</em>.
+        Это свойство является свойством <em>объекта</em> по умолчанию.</p>
+
+      <h4><a name="hname">Свойство name</a></h4>
+
+<pre class="syntax"><strong><a name="pname">Синтаксис</a></strong>: <em>объект</em>.name
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>name</strong> является название данного <em>объекта</em>. В пользовательских
+        объектах оно содержит строку "Error", а в системных объектах&nbsp;— строку, содержащую
+        тип исключения согласно <a href="#table39">Таблицы 3.9</a>.</p>
+
+      <h4><a name="ref31212">3.12.1.2. Объект Error в JScript</a></h4>
+
+      <p>В JScript, реализованном в обозревателях Internet Explorer 5.x, объект <strong>Error</strong>
+        имеет нестандартный конструктор <code>new Error(number [, description]?)</code>. Здесь <tt>number</tt>&nbsp;—
+        номер ошибки, <tt>description</tt>&nbsp;— текст сообщения о ней. При этом <tt>number</tt>
+        является свойством по умолчанию и содержит в в старшем слове код источника ошибки (facility
+        code), а в младшем слове&nbsp;— ее номер. Перечень всех системных ошибок JScript приведен
+        в <a href="http://wdh.suncloud.ru/jserrors.htm">Приложении 14</a>.</p>
+
+      <p>Для совместимости с ECMAScript объект <strong>Error</strong> в Internet Explorer 5.5 получил
+        свойства <tt>message</tt> и <tt>name</tt>. При этом свойство <tt>message</tt> является синонимом
+        свойства <tt>description</tt>, а <tt>name</tt> соответствует приведенному выше описанию.</p>
+
+      <p>Пример генерации исключения в JScript и вывода информации о нем:</p>
+
+      <div class="code">
+<pre class="code">function showErrorInfo(e) {
+  document.write(e, ":&lt;BR&gt;");
+  document.write("Источник ошибки: ", (e.number &gt;&gt; 16) &amp; 0x1FFF, "&lt;BR&gt;");
+  document.write("Номер ошибки: ", e.number &amp; 0xFFFF, "&lt;BR&gt;");
+  document.write("Описание ошибки: ", e.description);
+}
+
+var x;
+try {
+  x = y;                // Ошибка: переменная y не определена
+}
+catch (e) {             // Создает локальный объект e класса Error
+  showErrorInfo(e);
+}</pre>
+      </div>
+
+      <p>Этот сценарий выведет на экран:</p>
+
+      <p class="noindent"><samp>[object Error]:<br>
+        Источник ошибки: 10<br>
+        Номер ошибки: 5009<br>
+        Описание ошибки: 'y' - определение отсутствует</samp></p>
+
+      <h3><a name="ref3122">3.12.2. Математические функции и константы: объект Math</a></h3>
+
+      <p>Объект <strong>Math</strong> обеспечивает доступ к различным математическим константам и функциям.
+        Он существует в единственном экземпляре и потому не имеет конструктора. Соответственно все его
+        свойства и методы являются статическими и должны вызываться обращением к объекту <strong>Math</strong>,
+        а не его реализациям. Прототипа объект <strong>Math</strong> не имеет.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства объекта Math</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><a href="#pe"><tt>E</tt></a></td>
+            <td>Основание натуральных логарифмов e.</td>
+          </tr>
+          <tr>
+            <td><a href="#pln10"><tt>LN10</tt></a></td>
+            <td>Число ln 10.</td>
+          </tr>
+          <tr>
+            <td><a href="#pln2"><tt>LN2</tt></a></td>
+            <td>Число ln 2.</td>
+          </tr>
+          <tr>
+            <td><a href="#plog10e"><tt>LOG10E</tt></a></td>
+            <td>Число lg e.</td>
+          </tr>
+          <tr>
+            <td><a href="#plog2e"><tt>LOG2E</tt></a></td>
+            <td>Число log<sub>2</sub>e.</td>
+          </tr>
+          <tr>
+            <td><a href="#ppi"><tt>PI</tt></a></td>
+            <td>Число &#960;.</td>
+          </tr>
+          <tr>
+            <td><a href="#psqrt1-2"><tt>SQRT1_2</tt></a></td>
+            <td>Квадратный корень из 1/2.</td>
+          </tr>
+          <tr>
+            <td><a href="#psqrt2"><tt>SQRT2</tt></a></td>
+            <td>Квадратный корень из 2.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы объекта Math</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><a href="#mabs"><tt>abs</tt></a></td>
+            <td>Возвращает абсолютную величину аргумента.</td>
+          </tr>
+          <tr>
+            <td><a href="#macos"><tt>acos</tt></a></td>
+            <td>Возвращает арккосинус аргумента.</td>
+          </tr>
+          <tr>
+            <td><a href="#masin"><tt>asin</tt></a></td>
+            <td>Возвращает арксинус аргумента.</td>
+          </tr>
+          <tr>
+            <td><a href="#matan"><tt>atan</tt></a></td>
+            <td>Возвращает арктангенс аргумента.</td>
+          </tr>
+          <tr>
+            <td><a href="#matan2"><tt>atan2</tt></a></td>
+            <td>Возвращает арктангенс частного от деления аргументов.</td>
+          </tr>
+          <tr>
+            <td><a href="#mceil"><tt>ceil</tt></a></td>
+            <td>Возвращает наименьшее целое число, большее или равное аргументу.</td>
+          </tr>
+          <tr>
+            <td><a href="#mcos"><tt>cos</tt></a></td>
+            <td>Возвращает косинус аргумента.</td>
+          </tr>
+          <tr>
+            <td><a href="#mexp"><tt>exp</tt></a></td>
+            <td>Возвращает экспоненту аргумента.</td>
+          </tr>
+          <tr>
+            <td><a href="#mfloor"><tt>floor</tt></a></td>
+            <td>Возвращает наибольшее целое число, меньшее или равное аргументу.</td>
+          </tr>
+          <tr>
+            <td><a href="#mlog"><tt>log</tt></a></td>
+            <td>Возвращает натуральный логарифм аргумента.</td>
+          </tr>
+          <tr>
+            <td><a href="#mmax"><tt>max</tt></a></td>
+            <td>Возвращает наибольший из аргументов.</td>
+          </tr>
+          <tr>
+            <td><a href="#mmin"><tt>min</tt></a></td>
+            <td>Возвращает наименьший из аргументов.</td>
+          </tr>
+          <tr>
+            <td><a href="#mpow"><tt>pow</tt></a></td>
+            <td>Возводит первый аргумент в степень, заданную вторым.</td>
+          </tr>
+          <tr>
+            <td><a href="#mrandom"><tt>random</tt></a></td>
+            <td>Генерирует случайное число в диапазоне от 0 до 1.</td>
+          </tr>
+          <tr>
+            <td><a href="#mround"><tt>round</tt></a></td>
+            <td>Округляет аргумент до ближайшего целого числа.</td>
+          </tr>
+          <tr>
+            <td><a href="#msin"><tt>sin</tt></a></td>
+            <td>Возвращает синус аргумента.</td>
+          </tr>
+          <tr>
+            <td><a href="#msqrt"><tt>sqrt</tt></a></td>
+            <td>Возвращает квадратный корень из аргумента.</td>
+          </tr>
+          <tr>
+            <td><a href="#mtan"><tt>tan</tt></a></td>
+            <td>Возвращает тангенс аргумента.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="he">Свойство E</a></h4>
+
+<pre class="syntax"><strong><a name="pe">Синтаксис</a></strong>: Math.E
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>E</strong> является основание натуральных логарифмов e, которое
+        приблизительно равно 2.718281828459045. Пример: <code>var x = Math.E</code>.</p>
+
+      <h4><a name="hln10">Свойство LN10</a></h4>
+
+<pre class="syntax"><strong><a name="pln10">Синтаксис</a></strong>: Math.LN10
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>LN10</strong> является натуральный логарифм числа 10 (ln 10), который
+        приблизительно равен 2.302585092994046. Пример: <code>var x = Math.LN10</code>.</p>
+
+      <h4><a name="hln2">Свойство LN2</a></h4>
+
+<pre class="syntax"><strong><a name="pln2">Синтаксис</a></strong>: Math.LN2
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>LN2</strong> является натуральный логарифм числа 2 (ln 2), который
+        приблизительно равен 0.6931471805599453. Пример: <code>var x = Math.LN2</code>.</p>
+
+      <h4><a name="hlog10e">Свойство LOG10E</a></h4>
+
+<pre class="syntax"><strong><a name="plog10e">Синтаксис</a></strong>: Math.LOG10E
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>LOG10E</strong> является десятичный логарифм числа e (lg e), который
+        приблизительно равен 0.4342944819032518. Пример: <code>var x = Math.LOG10E</code>.</p>
+
+      <h4><a name="hlog2e">Свойство LOG2E</a></h4>
+
+<pre class="syntax"><strong><a name="plog2e">Синтаксис</a></strong>: Math.LOG2E
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>LOG2E</strong> является двоичный логарифм числа e (log<sub>2</sub>e),
+        который приблизительно равен 1.4426950408889634. Пример: <code>var x = Math.LOG2E</code>.</p>
+
+      <h4><a name="hpi">Свойство PI</a></h4>
+
+<pre class="syntax"><strong><a name="ppi">Синтаксис</a></strong>: Math.PI
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>PI</strong> является число &#960; (отношение длины окружности к диаметру
+        круга), которое приблизительно равно 3.1415926535897932. Пример: <code>var x = Math.PI</code>.</p>
+
+      <h4><a name="hsqrt1-2">Свойство SQRT1_2</a></h4>
+
+<pre class="syntax"><strong><a name="psqrt1-2">Синтаксис</a></strong>: Math.SQRT1_2
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>SQRT1_2</strong> является квадратный корень из 1/2, который приблизительно
+        равен 0.7071067811865476. Пример: <code>var x = Math.SQRT1_2</code>.</p>
+
+      <h4><a name="hsqrt2">Свойство SQRT2</a></h4>
+
+<pre class="syntax"><strong><a name="psqrt2">Синтаксис</a></strong>: Math.SQRT2
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>SQRT2</strong> является квадратный корень из 2, который приблизительно
+        равен 1.4142135623730951. Пример: <code>var x = Math.SQRT2</code>.</p>
+
+      <h4><a name="habs">Метод abs</a></h4>
+
+<pre class="syntax"><strong><a name="mabs">Синтаксис</a></strong>: Math.abs(<em>число</em>)
+<strong>Аргументы</strong>: <em>число</em>&nbsp;— числовое выражение
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>abs</strong> возвращает абсолютную величину <em>числа</em>. Примеры:</p>
+
+      <div class="code">
+<pre class="code">var x = Math.abs(2);	// x равно 2
+var x = Math.abs(-2);	// x равно 2</pre>
+      </div>
+
+      <h4><a name="hacos">Метод acos</a></h4>
+
+<pre class="syntax"><strong><a name="macos">Синтаксис</a></strong>: Math.acos(<em>число</em>)
+<strong>Аргументы</strong>: <em>число</em>&nbsp;— числовое выражение
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>acos</strong> возвращает арккосинус <em>числа</em>. Если <em>число</em> находится
+        в диапазоне от -1 до 1 включительно, то результат находится в диапазоне от 0 до &#960;. В
+        противном случае результат равен <a href="http://wdh.suncloud.ru/js08.htm#pnan"><strong>NaN</strong></a>. Примеры:</p>
+
+      <div class="code">
+<pre class="code">var x;
+with (Math) {
+  x = acos(-1);	// x равно 3.141592653589793
+  x = acos(0);	// x равно 1.5707963267948965
+  x = acos(1);	// x равно 0
+  x = acos(2);	// x равно NaN
+}</pre>
+      </div>
+
+      <h4><a name="hasin">Метод asin</a></h4>
+
+<pre class="syntax"><strong><a name="masin">Синтаксис</a></strong>: Math.asin(<em>число</em>)
+<strong>Аргументы</strong>: <em>число</em>&nbsp;— числовое выражение
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>asin</strong> возвращает арксинус <em>числа</em>. Если <em>число</em> находится
+        в диапазоне от -1 до 1 включительно, то результат находится в диапазоне от -&#960;/2 до +&#960;/2.
+        В противном случае результат равен <a href="http://wdh.suncloud.ru/js08.htm#pnan"><strong>NaN</strong></a>. Примеры:</p>
+
+      <div class="code">
+<pre class="code">var x;
+with (Math) {
+  x = asin(-1);	// x равно -1.5707963267948965
+  x = asin(0);	// x равно 0
+  x = asin(1);	// x равно 1.5707963267948965
+  x = asin(2);	// x равно NaN
+}</pre>
+      </div>
+
+      <h4><a name="hatan">Метод atan</a></h4>
+
+<pre class="syntax"><strong><a name="matan">Синтаксис</a></strong>: Math.atan(<em>число</em>)
+<strong>Аргументы</strong>: <em>число</em>&nbsp;— числовое выражение
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>atan</strong> возвращает арктангенс <em>числа</em>. Результат находится в диапазоне
+        от -&#960;/2 до +&#960;/2. Примеры:</p>
+
+      <div class="code">
+<pre class="code">var x;
+with (Math) {
+  x = atan(-Infinity);	// x равно -1.5707963267948965
+  x = atan(0);		// x равно 0
+  x = atan(Infinity);	// x равно 1.5707963267948965
+}</pre>
+      </div>
+
+      <h4><a name="hatan2">Метод atan2</a></h4>
+
+<pre class="syntax"><strong><a name="matan2">Синтаксис</a></strong>: Math.atan2(<em>число1</em>, <em>число2</em>)
+<strong>Аргументы</strong>: <em>число1</em>, <em>число2</em>&nbsp;— числовые выражения
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>atan2</strong> возвращает арктангенс частного от деления <em>числа1</em> на <em>число2</em>.
+        Результат находится в диапазоне от -&#960; до +&#960; и соответствует величине угла в радианах
+        между осью абсцисс и вектором до точки с координатами (<em>число2</em>, <em>число1</em>). Примеры:</p>
+
+      <div class="code">
+<pre class="code">var x;
+with (Math) {
+  x = atan2(-0, -1);	// x равно -3.141592653589793
+  x = atan2(-1, 0);	// x равно -1.5707963267948965
+  x = atan2(0, 1);	// x равно 0
+  x = atan2(1, 1);	// x равно 0.7853981633974483
+  x = atan2(1, 0);	// x равно 1.5707963267948965
+  x = atan2(0, -1);	// x равно 3.141592653589793
+}</pre>
+      </div>
+
+      <h4><a name="hceil">Метод ceil</a></h4>
+
+<pre class="syntax"><strong><a name="mceil">Синтаксис</a></strong>: Math.ceil(<em>число</em>)
+<strong>Аргументы</strong>: <em>число</em>&nbsp;— числовое выражение
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>ceil</strong> возвращает наименьшее целое число, большее или равное <em>числа</em>.
+        Примеры:</p>
+
+      <div class="code">
+<pre class="code">var x = Math.ceil(-2.95);	// x равно -2
+var x = Math.ceil(2.95);	// x равно 3</pre>
+      </div>
+
+      <h4><a name="hcos">Метод cos</a></h4>
+
+<pre class="syntax"><strong><a name="mcos">Синтаксис</a></strong>: Math.cos(<em>число</em>)
+<strong>Аргументы</strong>: <em>число</em>&nbsp;— числовое выражение
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>cos</strong> возвращает косинус <em>числа</em>. Результат находится в диапазоне
+        от -1 до +1. Примеры:</p>
+
+      <div class="code">
+<pre class="code">var x;
+with (Math) {
+  x = cos(0);		// x равно 1
+  x = cos(PI/2);	// x равно 6e-17 (почти 0)
+  x = cos(PI);		// x равно -1
+}</pre>
+      </div>
+
+      <h4><a name="hexp">Метод exp</a></h4>
+
+<pre class="syntax"><strong><a name="mexp">Синтаксис</a></strong>: Math.exp(<em>число</em>)
+<strong>Аргументы</strong>: <em>число</em>&nbsp;— числовое выражение
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>exp</strong> возвращает экспоненту <em>числа</em> (e<sup><em>число</em></sup>,
+        где е&nbsp;— основание натуральных логарифмов). Если число больше 709.78, то возвращается
+        <a href="http://wdh.suncloud.ru/js08.htm#pinfinity"><strong>Inifinity</strong></a>. Пример:</p>
+
+      <div class="code">
+<pre class="code">var x = Math.exp(1);	// x равно 2.718281828459045</pre>
+      </div>
+
+      <h4><a name="hfloor">Метод floor</a></h4>
+
+<pre class="syntax"><strong><a name="mfloor">Синтаксис</a></strong>: Math.floor(<em>число</em>)
+<strong>Аргументы</strong>: <em>число</em>&nbsp;— числовое выражение
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>floor</strong> возвращает наибольшее целое число, меньшее или равное <em>числа</em>.
+        Примеры:</p>
+
+      <div class="code">
+<pre class="code">var x = Math.floor(-2.95);	// x равно -3
+var x = Math.floor(2.95);	// x равно 2</pre>
+      </div>
+
+      <h4><a name="hlog">Метод log</a></h4>
+
+<pre class="syntax"><strong><a name="mlog">Синтаксис</a></strong>: Math.log(<em>число</em>)
+<strong>Аргументы</strong>: <em>число</em>&nbsp;— числовое выражение
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>log</strong> возвращает натуральный логарифм <em>числа</em>. Если <em>число</em>
+        отрицательно, то возвращается <a href="http://wdh.suncloud.ru/js08.htm#pnan"><strong>NaN</strong></a>. Примеры:</p>
+
+      <div class="code">
+<pre class="code">var x = Math.log(Math.E);	// x равно 1
+var x = Math.log(0);		// x равно -Infinity
+var x = Math.log(-1);		// x равно NaN</pre>
+      </div>
+
+      <h4><a name="hmax">Метод max</a></h4>
+
+<pre class="syntax"><strong><a name="mmax">Синтаксис</a></strong>: Math.max(<em>число1</em>, …, <em>числоN</em>)
+<strong>Аргументы</strong>: <em>число1</em>, …, <em>числоN</em>&nbsp;— числовые выражения
+<strong>Результат</strong>: числовое значение</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/nn.gif" alt="Netscape Navigator"> Возвращает большее из значений первых двух аргументов, остальные
+              аргументы игнорируются. Если аргументов меньше двух, возвращает NaN.</pre>
+
+      <p>Метод <strong>max</strong> возвращает наибольшее из значений своих аргументов. Если аргументы
+        не заданы, то он возвращает -<strong><a href="http://wdh.suncloud.ru/js08.htm#pinfinity">Inifinity</a></strong>. Например,
+        следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">document.write(Math.max(1, 2, 3));</pre>
+      </div>
+
+      <p class="noindent">выведет на экран Internet Explorer число <samp>3</samp>, а на экран Netscape
+        Navigator число <samp>2</samp>.</p>
+
+      <h4><a name="hmin">Метод min</a></h4>
+
+<pre class="syntax"><strong><a name="mmin">Синтаксис</a></strong>: Math.min(<em>число1</em>, …, <em>числоN</em>)
+<strong>Аргументы</strong>: <em>число1</em>, …, <em>числоN</em>&nbsp;— числовые выражения
+<strong>Результат</strong>: числовое значение</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/nn.gif" alt="Netscape Navigator"> Возвращает меньшее из значений первых двух аргументов, остальные
+              аргументы игнорируются. Если аргументов меньше двух, возвращает NaN.</pre>
+
+      <p>Метод <strong>min</strong> возвращает наименьшее из значений своих аргументов. Если аргументы
+        не заданы, то он возвращает <a href="http://wdh.suncloud.ru/js08.htm#pinfinity"><strong>Inifinity</strong></a>. Например,
+        следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">document.write(Math.min(3, 2, 1));</pre>
+      </div>
+
+      <p class="noindent">выведет на экран Internet Explorer число <samp>1</samp>, а на экран Netscape
+        Navigator число <samp>2</samp>.</p>
+
+      <h4><a name="hpow">Метод pow</a></h4>
+
+<pre class="syntax"><strong><a name="mpow">Синтаксис</a></strong>: Math.pow(<em>число1</em>, <em>число2</em>)
+<strong>Аргументы</strong>: <em>число1</em>, <em>число2</em>&nbsp;— числовые выражения
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>pow</strong> возвращает <em>число1</em>, возведенное в степень <em>число2</em>
+        (<em>число1<sup>число2</sup></em>). Примеры:</p>
+
+      <div class="code">
+<pre class="code">var x;
+with (Math) {
+  x = pow(2, 3);	// x равно 8
+  x = pow(100, 0);	// x равно 1
+  x = pow(10, 0.5);	// x равно 3.162277660168379
+}</pre>
+      </div>
+
+      <h4><a name="hrandom">Метод random</a></h4>
+
+<pre class="syntax"><strong><a name="mrandom">Синтаксис</a></strong>: Math.random()
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>random</strong> генерирует случайное число в диапазоне от 0 включительно до 1
+        исключительно. Пример: <code>var x = Math.random()</code>.</p>
+
+      <h4><a name="hround">Метод round</a></h4>
+
+<pre class="syntax"><strong><a name="mround">Синтаксис</a></strong>: Math.round(<em>число</em>)
+<strong>Аргументы</strong>: <em>число</em>&nbsp;— числовое выражение
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>round</strong> округляет <em>число</em> до ближайшего целого числа и возвращает
+        его. Примеры:</p>
+
+      <div class="code">
+<pre class="code">var x;
+with (Math) {
+  x = round(2.49);	// x равно 2
+  x = round(2.5);	// x равно 3
+  x = round(-2.5);	// x равно -2
+  x = round(-2.51);	// x равно -3
+}</pre>
+      </div>
+
+      <h4><a name="hsin">Метод sin</a></h4>
+
+<pre class="syntax"><strong><a name="msin">Синтаксис</a></strong>: Math.sin(<em>число</em>)
+<strong>Аргументы</strong>: <em>число</em>&nbsp;— числовое выражение
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>sin</strong> возвращает синус <em>числа</em>. Результат находится в диапазоне
+        от -1 до +1. Примеры:</p>
+
+      <div class="code">
+<pre class="code">var x;
+with (Math) {
+  x = sin(0);		// x равно 0
+  x = sin(PI/2);	// x равно 1
+  x = sin(PI);		// x равно 1e-16 (почти 0)
+}</pre>
+      </div>
+
+      <h4><a name="hsqrt">Метод sqrt</a></h4>
+
+<pre class="syntax"><strong><a name="msqrt">Синтаксис</a></strong>: Math.sqrt(<em>число</em>)
+<strong>Аргументы</strong>: <em>число</em>&nbsp;— числовое выражение
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>sqrt</strong> возвращает квадратный корень из <em>числа</em>. Если <em>число</em>
+        отрицательно, то возвращается <a href="http://wdh.suncloud.ru/js08.htm#pnan"><strong>NaN</strong></a>. Примеры:</p>
+
+      <div class="code">
+<pre class="code">var x = Math.sqrt(2);	// x равно 1.4142135623730951
+var x = Math.sqrt(1);	// x равно 1
+var x = Math.sqrt(-1);	// x равно NaN</pre>
+      </div>
+
+      <h4><a name="htan">Метод tan</a></h4>
+
+<pre class="syntax"><strong><a name="mtan">Синтаксис</a></strong>: Math.tan(<em>число</em>)
+<strong>Аргументы</strong>: <em>число</em>&nbsp;— числовое выражение
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>tan</strong> возвращает тангенс <em>числа</em>. Примеры:</p>
+
+      <div class="code">
+<pre class="code">var x;
+with (Math) {
+  x = tan(0);		// x равно 0
+  x = tan(PI/2);	// x равно 16331778728383844
+  x = tan(PI);		// x равно -1e-16 (почти 0)
+}</pre>
+      </div>
+
+      <h3><a name="ref3123">3.12.3. Регулярные выражения: объект RegExp</a></h3>
+
+      <p>Объект <strong>RegExp</strong> используется для создания регулярных выражений, подробно описанных
+        в <a href="http://wdh.suncloud.ru/js05.htm#ref35">гл. 3.5</a>. Там же описаны способы создания этих объектов.</p>
+
+      <p>Все описанные ниже свойства объекта <strong>RegExp</strong> являются статическими. Это означает,
+        что они хранятся в единственном экземпляре и изменяются при каждой операции сопоставления с
+        регулярным выражением.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства объекта RegExp</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+            <th>Член прототипа</th>
+          </tr>
+          <tr>
+            <td><a href="#psave"><tt>$1</tt>, …, <tt>$9</tt></a></td>
+            <td>Хранят запомненные подстроки.</td>
+            <td align="center">Нет</td>
+          </tr>
+          <tr>
+            <td><a href="#psaveext"><tt>$01</tt>, …, <tt>$99</tt></a></td>
+            <td>Хранят запомненные подстроки.</td>
+            <td align="center">Нет</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#plastmatch">$&amp;</a></tt></td>
+            <td>См. <a href="#plastmatch"><tt>lastMatch</tt></a>.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pleftcontext">&amp;`</a></tt></td>
+            <td>См. <a href="#pleftcontext"><tt>leftContext</tt></a>.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#prightcontext">&amp;'</a></tt></td>
+            <td>См. <a href="#prightcontext"><tt>rightContext</tt></a>.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#plastparen">&amp;+</a></tt></td>
+            <td>См. <a href="#plastparen"><tt>lastParen</tt></a>.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pmultiline">&amp;*</a></tt></td>
+            <td>См. <a href="#pmultiline"><tt>multiline</tt></a>.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="http://wdh.suncloud.ru/js08.htm#pconstructor"><tt>constructor</tt></a></td>
+            <td>Конструктор, который создал объект.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#pglobal"><tt>global</tt></a></td>
+            <td>Значение опции глобального поиска.</td>
+            <td align="center">Нет</td>
+          </tr>
+          <tr>
+            <td><a href="#pignorecase"><tt>ignoreCase</tt></a></td>
+            <td>Значение опции не различать строчные и прописные буквы.</td>
+            <td align="center">Нет</td>
+          </tr>
+          <tr>
+            <td><a href="#pinput"><tt>input</tt></a></td>
+            <td>Последняя исходная строка.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#plastindex"><tt>lastIndex</tt></a></td>
+            <td>Номер позиции в строке для следующего сопоставления с образцом.</td>
+            <td align="center">Нет</td>
+          </tr>
+          <tr>
+            <td><a href="#plastmatch"><tt>lastMatch</tt></a></td>
+            <td>Последняя найденная подстрока.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#plastparen"><tt>lastParen</tt></a></td>
+            <td>Последняя запомненная подстрока.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#pleftcontext"><tt>leftContext</tt></a></td>
+            <td>Подстрока, предшествующая последней найденной подстроке.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#pmultiline"><tt>multiline</tt></a></td>
+            <td>Значение опции многострочного поиска.</td>
+            <td align="center">Нет</td>
+          </tr>
+          <tr>
+            <td><a href="http://wdh.suncloud.ru/js08.htm#pprototype"><tt>prototype</tt></a></td>
+            <td>Ссылка на прототип класса объектов.</td>
+            <td align="center">Нет</td>
+          </tr>
+          <tr>
+            <td><a href="#prightcontext"><tt>rightContext</tt></a></td>
+            <td>Подстрока, следующая за последней найденной подстрокой.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#psource"><tt>source</tt></a></td>
+            <td>Текст регулярного выражения.</td>
+            <td align="center">Нет</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы объекта RegExp</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+            <th>Член прототипа</th>
+          </tr>
+          <tr>
+            <td><a href="#mcompile"><tt>compile</tt></a></td>
+            <td>Компилирует регулярное выражение.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mexec"><tt>exec</tt></a></td>
+            <td>Выполняет сопоставление строки с образцом и заносит результаты в массив.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mtest"><tt>test</tt></a></td>
+            <td>Проверяет успешность сопоставления строки с образцом.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mregexp-tostring"><tt>toString</tt></a></td>
+            <td>Преобразует регулярное выражение в строку.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="http://wdh.suncloud.ru/js08.htm#mvalueof"><tt>valueOf</tt></a></td>
+            <td>Возвращает примитивное значение объекта.</td>
+            <td align="center">Нет</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hsave">Свойства $1, …, $9</a></h4>
+
+<pre class="syntax"><strong><a name="psave">Синтаксис</a></strong>: RegExp.$<em>n</em>
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Если часть регулярного выражения заключена в круглые скобки, то соответствующая ей подстрока
+        запоминается для последующего использования. Значениями свойств <strong>$1</strong>, …,
+        <strong>$9</strong> являются подстроки исходной строки, которые были запомнены в процессе последнего
+        сопоставления с образцом. Регулярное выражение может содержать любое количество выражений в
+        круглых скобках, но в объекте <strong>RegExp</strong> запоминаются только последние девять найденных
+        соответствий. Пример: следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var re = new RegExp("(\\d*)\\s*(\\d*)","ig");
+var arr = re.exec("111 2222 33333");
+var s = "$1 = '" + RegExp.$1 + "' ";
+s += "$2 = '" + RegExp.$2 + "' ";
+s += "$3 = '" + RegExp.$3 + "'";
+document.write(s);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя текст <samp>$1 = '111' $2 = '2222' $3 = ''</samp>.</p>
+
+      <p>Эти свойства объекта <strong>RegExp</strong> являются статическими и изменяются при каждой
+        операции сопоставления с регулярным выражением. В методе <a href="http://wdh.suncloud.ru/js09.htm#mreplace"><tt>String.replace</tt></a>
+        они употребляются без имени объекта <strong>RegExp</strong>. См. пример в <a href="http://wdh.suncloud.ru/js05.htm#ref354">п.
+        3.5.4</a>.</p>
+
+      <h4><a name="hsaveext">Свойства $01, …, $99</a></h4>
+
+<pre class="syntax"><strong><a name="psaveext">Синтаксис</a></strong>: RegExp.$<em>nn</em>
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/ie.gif" alt="Internet Explorer"> Поддерживаются с версии 5.5.
+           <img src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/nn.gif" alt="Netscape Navigator"> Не поддерживаются.</pre>
+
+      <p>Если часть регулярного выражения заключена в круглые скобки, то соответствующая ей подстрока
+        запоминается для последующего использования. Значениями свойств <strong>$01</strong>, …,
+        <strong>$99</strong> являются подстроки исходной строки, которые были запомнены в процессе последнего
+        сопоставления с образцом. Регулярное выражение может содержать любое количество выражений в
+        круглых скобках, но в этих свойствах<strong></strong> запоминаются только последние 99 найденных
+        соответствий. Пример: следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var re = new RegExp("(\\d*)\\s*(\\d*)","ig");
+var arr = re.exec("111 2222 33333");
+var s = "$01 = '" + RegExp.$01 + "' ";
+s += "$02 = '" + RegExp.$02 + "' ";
+s += "$03 = '" + RegExp.$03 + "'";
+document.write(s);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя текст <samp>$01 = '111' $02 = '2222' $03 = ''</samp>.</p>
+
+      <p>Эти свойства объекта <strong>RegExp</strong> являются статическими и изменяются при каждой
+        операции сопоставления с регулярным выражением. В методе <a href="http://wdh.suncloud.ru/js09.htm#mreplace"><tt>String.replace</tt></a>
+        они употребляются без имени объекта <strong>RegExp</strong>. См. пример в <a href="http://wdh.suncloud.ru/js05.htm#ref354">п.
+        3.5.4</a>.</p>
+
+      <h4><a name="hglobal">Свойство global</a></h4>
+
+<pre class="syntax"><strong><a name="pglobal">Синтаксис</a></strong>: <em>регвыр</em>.global
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>global</strong> является значение опции "g" (глобальный
+        поиск), заданное при создании объекта <em>регвыр</em>. Например, следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var re = new RegExp("a+b+c","ig");
+document.write(re.global);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя текст <samp>true</samp>.</p>
+
+      <h4><a name="hignorecase">Свойство ignoreCase</a></h4>
+
+<pre class="syntax"><strong><a name="pignorecase">Синтаксис</a></strong>: <em>регвыр</em>.ignoreCase
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>ignoreCase</strong> является значение опции "i" (не различать
+        строчные и прописные буквы), заданное при создании объекта <em>регвыр</em>. Например, следующий
+        сценарий</p>
+
+      <div class="code">
+<pre class="code">var re = new RegExp("a+b+c","ig");
+document.write(re.ignoreCase);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя текст <samp>true</samp>.</p>
+
+      <h4><a name="hinput">Свойство input</a></h4>
+
+<pre class="syntax"><strong><a name="pinput">Синтаксис</a></strong>: RegExp.input
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>input</strong> является последняя исходная строка, к которой применялось
+        сопоставление с образцом. Это свойство объекта <strong>RegExp</strong> является статическим
+        и изменяется при каждой операции сопоставления с регулярным выражением. Пример: следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var re = new RegExp("\\d+", "g");
+var arr = re.exec("111 2222 33333");
+document.write(RegExp.input);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя текст <samp>111 2222 33333</samp>.</p>
+
+      <h4><a name="hlastindex">Свойство lastIndex</a></h4>
+
+<pre class="syntax"><strong><a name="plastindex">Синтаксис</a></strong>: <em>регвыр</em>.lastIndex
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a> }</pre>
+
+      <p>Значением свойства <strong>lastIndex</strong> является целое число, содержащее номер элемента
+        строки, с которого начнется следующее сопоставление с образцом. При создании объекта <em>регвыр</em>
+        этому свойству присваивается значение 0. Оно используется только в тех случаях, когда включена
+        опция глобального поиска (т.&nbsp;е. свойство <a href="#pglobal"><strong>global</strong></a>
+        имеет значение <strong>true</strong>). Пример:</p>
+
+      <div class="code">
+<pre class="code">var re = /(aha)/g;
+var a = re.exec("aha");	// a равно ["aha", "aha"], re.lastIndex равно 3
+var a = re.exec("aha");	// a равно [""], re.lastIndex по-прежнему равно 3
+re.lastIndex = 0;	// повторить поиск
+var a = re.exec("aha");	// a равно ["aha", "aha"], re.lastIndex равно 3</pre>
+      </div>
+
+      <h4><a name="hlastmatch">Свойство lastMatch ($&amp;)</a></h4>
+
+<pre class="syntax"><strong><a name="plastmatch">Синтаксис</a></strong>: RegExp.lastMatch
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/ie.gif" alt="Internet Explorer"> Поддерживается с версии 5.5.
+           <img src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/nn.gif" alt="Netscape Navigator"> Поддерживается с версии 4.0.</pre>
+
+      <p>Значением свойства <strong>lastMatch</strong> является последняя найденная подстрока исходной
+        строки. Это свойство объекта <strong>RegExp</strong> является статическим и изменяется при каждой
+        операции сопоставления с регулярным выражением. Пример: следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var re = new RegExp("\\d+", "g");
+var arr = re.exec("111 2222 33333");
+document.write(RegExp.lastMatch);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя текст <samp>111</samp>.</p>
+
+      <h4><a name="hlastparen">Свойство lastParen (&amp;+)</a></h4>
+
+<pre class="syntax"><strong><a name="plastparen">Синтаксис</a></strong>: RegExp.lastParen
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/ie.gif" alt="Internet Explorer"> Поддерживается с версии 5.5.
+           <img src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/nn.gif" alt="Netscape Navigator"> Поддерживается с версии 4.0.</pre>
+
+      <p>Значением свойства <strong>lastParen</strong> является последняя запомненная подстрока исходной
+        строки, соответствующая подвыражению регулярного выражения, заключенному в круглые скобки. Это
+        свойство объекта <strong>RegExp</strong> является статическим и изменяется при каждой операции
+        сопоставления с регулярным выражением. Пример: следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var re = new RegExp("(\\d+) (\\d+)", "g");
+var arr = re.exec("111 2222 33333");
+document.write(RegExp.lastParen);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя текст <samp>2222</samp>.</p>
+
+      <h4><a name="hleftcontext">Свойство leftContext (&amp;`)</a></h4>
+
+<pre class="syntax"><strong><a name="pleftcontext">Синтаксис</a></strong>: RegExp.leftContext
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/ie.gif" alt="Internet Explorer"> Поддерживается с версии 5.5.
+           <img src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/nn.gif" alt="Netscape Navigator"> Поддерживается с версии 4.0.</pre>
+
+      <p>Значением свойства <strong>leftContext</strong> является подстрока исходной строки, предшествующая
+        последней найденной подстроке. Это свойство объекта <strong>RegExp</strong> является статическим
+        и изменяется при каждой операции сопоставления с регулярным выражением. Пример: следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var arr = / (\d+)/.exec("111 2222 33333");
+document.write(RegExp.leftContext + "|" + RegExp.lastMatch + "|" + RegExp.rightContext);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя текст <samp>111| 2222| 33333</samp>.</p>
+
+      <h4><a name="hmultiline">Свойство multiline ($*)</a></h4>
+
+<pre class="syntax"><strong><a name="pmultiline">Синтаксис</a></strong>: <em>регвыр</em>.multiline
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/ie.gif" alt="Internet Explorer"> Поддерживается с версии 5.5.
+           <img src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/nn.gif" alt="Netscape Navigator"> Поддерживается с версии 4.0.</pre>
+
+      <p>Значением свойства <strong>multiline</strong> является значение опции "m" (многострочный
+        поиск), заданное при создании объекта <em>регвыр</em>. Например, следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var re = new RegExp("a+b+c","im");
+document.write(re.ignoreCase);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя текст <samp>true</samp>.</p>
+
+      <p>В обозревателях Netscape опция "m" не поддерживается, а свойство <strong>multiline</strong>
+        является статическим свойством объекта <strong>RegExp</strong>. Мы можем присваивать ему логическое
+        значение, которое включает или выключает многострочный поиск для всех регулярных выражений,
+        например <code>RegExp.multiline = true</code>. Помните, что обработчики событий после своего
+        завершения всегда сбрасывают значение этого свойства в <strong>false</strong>. Кроме того, Netscape
+        поддерживает <tt>$*</tt> как синоним данного свойства.</p>
+
+      <h4><a name="hrightcontext">Свойство rightContext (&amp;')</a></h4>
+
+<pre class="syntax"><strong><a name="prightcontext">Синтаксис</a></strong>: RegExp.rightContext
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/ie.gif" alt="Internet Explorer"> Поддерживается с версии 5.5.
+           <img src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/nn.gif" alt="Netscape Navigator"> Поддерживается с версии 4.0.</pre>
+
+      <p>Значением свойства <strong>rightContext</strong> является подстрока исходной строки, следующая
+        за последней найденной подстрокой. Это свойство объекта <strong>RegExp</strong> является статическим
+        и изменяется при каждой операции сопоставления с регулярным выражением. Пример: следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var arr = / (\d+)/.exec("111 2222 33333");
+document.write(RegExp.leftContext + "|" + RegExp.lastMatch + "|" + RegExp.rightContext);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя текст <samp>111| 2222| 33333</samp>.</p>
+
+      <h4><a name="hsource">Свойство source</a></h4>
+
+<pre class="syntax"><strong><a name="psource">Синтаксис</a></strong>: <em>регвыр</em>.source
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>source</strong> является строка, содержащая регулярное выражение,
+        заданное при создании объекта <em>регвыр</em>. Например, следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var re = new RegExp("a+b+c","ig");
+document.write(re.source);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя текст <samp>a+b+c</samp>.</p>
+
+      <h4><a name="hcompile">Метод compile</a></h4>
+
+<pre class="syntax"><strong><a name="mcompile">Синтаксис</a></strong>: <em>регвыр</em>.compile(<em>образец</em>, <em>опции</em>?)
+<strong>Аргументы</strong>: <em>образец</em>&nbsp;— регулярное выражение
+           <em>опции</em>&nbsp;— необязательные <a href="http://wdh.suncloud.ru/js05.htm#ref353">опции поиска</a></pre>
+
+      <p>Метод <strong>compile</strong> компилирует <em>образец</em> во внутренний формат хранения,
+        что в дальнейшем ускоряет сопоставление с этим образцом. Компиляция регулярного выражения имеет
+        смысл, если вы собираетесь использовать это выражение несколько раз. Пример:</p>
+
+      <div class="code">
+<pre class="code">var r = new RegExp("[A-Z]", "g");
+r.compile("[a-z]", "g"); </pre>
+      </div>
+
+      <h4><a name="hexec">Метод exec</a></h4>
+
+<pre class="syntax"><strong><a name="mexec">Синтаксис</a></strong>: <em>регвыр</em>.exec(<em>строка</em>)
+<strong>Аргументы</strong>: <em>строка</em>&nbsp;— любое строковое выражение
+<strong>Результат</strong>: массив результатов или <strong>null</strong></pre>
+
+      <p>Метод <strong>exec</strong> выполняет сопоставление <em>строки</em> с образцом, заданным <em>регвыр</em>.
+        Если сопоставление с образцом закончилось неудачей, то возвращается значение <strong>null</strong>.
+        В противном случае результатом является массив подстрок, соответствующих заданному образцу.
+        В процессе сопоставления производится обновление всех свойств объекта <em>регвыр</em> (и тем
+        самым всех свойств объекта <strong>RegExp</strong>).</p>
+
+      <p>Результирующий массив имеет следующие свойства:</p>
+
+      <ul>
+        <li>свойство <strong>input</strong> содержит исходную строку;</li>
+        <li>свойство <strong>index</strong> содержит позицию найденной подстроки в исходной строке;</li>
+        <li>свойство <strong>length</strong> равно n + 1, где n&nbsp;— количество подвыражений
+          регулярного выражения, заключенных в круглые скобки;</li>
+        <li>элемент 0 содержит найденную подстроку;</li>
+        <li>элементы 1, …, n содержат подстроки, соответствующие подвыражениям регулярного выражения
+          в круглых скобках.</li>
+      </ul>
+
+      <p>Пример: следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var arr = /(\d+)\.(\d+)\.(\d+)/.exec("Я родился 21.05.1958");
+document.write("Дата рождения: ", arr[0], "&lt;br&gt;");
+document.write("День рождения: ", arr[1], "&lt;br&gt;");
+document.write("Месяц рождения: ", arr[2], "&lt;br&gt;");
+document.write("Год рождения: ", arr[3], "&lt;br&gt;");</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя текст:</p>
+
+      <p class="noindent"><samp>Дата рождения: 21.05.1958<br>
+        День рождения: 21<br>
+        Месяц рождения: 05<br>
+        Год рождения: 1958</samp></p>
+
+      <p>Включение в регулярное выражение опции глобального поиска позволяет многократно применять этот
+        метод к исходной строке для последовательного выделения всех подстрок, соответствующих данному
+        образцу. Например, следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var re = /\d+/g;
+var s = "123 abc 456 def 789 xyz";
+var result;
+while (result = re.exec(s))
+  document.write(result[0] + " ");
+</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя строку <samp>123 456 789</samp>.</p>
+
+      <p class="note"><strong>Примечание</strong>. Помните, что в подобных циклах нельзя выполнять операции с регулярными
+        выражениями, поскольку они изменяют статические свойства объекта <strong>RegExp</strong>.</p>
+
+      <h4><a name="htest">Метод test</a></h4>
+
+<pre class="syntax"><strong><a name="mtest">Синтаксис</a></strong>: <em>регвыр</em>.test(<em>строка</em>)
+<strong>Аргументы</strong>: <em>строка</em>&nbsp;— любое строковое выражение
+<strong>Результат</strong>: логическое значение</pre>
+
+      <p>Метод <strong>test</strong> выполняет сопоставление <em>строки</em> с образцом, заданным <em>регвыр</em>
+        и возвращает <strong>true</strong>, нсли сопоставление с образцом прошло успешно, и <strong>false</strong>
+        в противном случае. Этот метод эквивалентен выражению <em>регвыр</em>.<tt>exec</tt>(<em>строка</em>)
+        != <strong>null</strong>.</p>
+
+      <p>Пример:</p>
+
+      <div class="code">
+<pre class="code">if (!/(\d+)\.(\d+)\.(\d+)/.test(str))
+  document.write("Неверное значение строки!");</pre>
+      </div>
+
+      <h4><a name="htostring">Метод toString</a></h4>
+
+<pre class="syntax"><strong><a name="mregexp-tostring">Синтаксис</a></strong>: <em>регвыр</em>.toString()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>toString</strong> преобразует <em>регвыр</em> в строковое значение. Например,
+        сценарий</p>
+
+      <div class="code">
+<pre class="code">var x = new RegExp("a+b+c", "g");
+document.write(x.toString());</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя строку <samp>/a+b+c/g</samp>.</p>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js11.htm"><img name="imgleftb" src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/nnleft.gif" alt="" title="Дата и время: встроенный объект Date" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/js13.htm"><img name="imgrightb" src="3.12.%20%C2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB%20Error,%20Math%20%E8%20RegExp_files/nnright.gif" alt="" title="Дополнительные возможности JScript" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html manifest="wslsdemo.manifest">
+<head>
+<meta name="viewport" content="width=device-width">
+<style type="text/css">
+@font-face{
+	src: url('nobile.ttf');
+	font-family: 'nobile';
+}
+
+body{
+	background-image: url('pattern_044.gif');
+}
+h1, h2, p{
+	font-family: 'nobile' serif !important;
+	color: #333;
+}
+#draft{
+	font-family: 'nobile' serif;
+	font-size: 1.1em;
+	color: #222;
+}
+#warning{
+	background-color: #cb0000;
+}
+
+#warning p{
+	font-family: 'nobile';
+	color: #ffffff;
+}
+</style>
+
+</head>
+<body>
+<h1>Web Storage demo</h1>
+<h2>This page saves your typed in message to local storage every half a second.</h2>
+<p>Try typing a message, and close or reload the tab. Your message should still be available in the text box. Also, if your browser supports supports it, try to go to 'File->Work Offline'.</p>
+<div id="main">
+<form id="theform" method="">
+<textarea id="draft" rows="10" cols="30"></textarea><br />
+<input type="submit" name="submit" value="Submit!"  />
+</form>
+<br />
+</div>
+<div id="warning"></div>
+</div>
+</body>
+
+
+<script type="text/javascript">
+
+window.addEventListener("DOMContentLoaded", loadMessage, false);
+setInterval(saveMessage, 500);
+
+window.addEventListener( "offline", function(){showWarningDiv("on")}, false);
+window.addEventListener( "online", function(){showWarningDiv("off")}, false);
+window.addEventListener( "submit", submitForm, false);
+
+
+function showWarningDiv(status){
+var warningdiv = document.getElementById("warning");
+if (status == "on"){
+warningdiv.innerHTML = "<p style=\"padding:3px;\">Right now you are in offline mode. This message is saved and will be sent to the server the next time you are online.</p>";
+} else {
+warningdiv.innerHTML = "";
+	}
+}
+
+
+var form = document.getElementById('theform');
+form.onsubmit = function(){ return submitForm() }
+
+function showWarningIfOffline(){
+var warningdiv = document.getElementById("warning");
+if (!navigator.onLine){
+	warningdiv.innerHTML = "<p style=\"padding:3px;\">Right now you are in offline mode. This message is saved and will be sent to the server the next time you are online.</p>";
+} else{
+	warningdiv.innerHTML = "";
+	
+	}
+}
+
+
+function saveMessage(){
+	var message = document.getElementById("draft");
+	localStorage.setItem("message", message.value)
+}
+
+
+function loadMessage(){
+	var textbox = document.getElementById("draft");
+	var message = localStorage.getItem("message");
+	 
+	 if (!message) {
+	 	textbox.value = "";
+	 }else {
+		textbox.value = message;
+	}
+}	
+
+
+
+function submitForm(){
+	saveMessage();
+	if (!navigator.onLine){
+		return false;
+	} 
+	
+}
+
+</script>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Заголовок</title>
+	<script>
+
+		function str(id) {
+		    var myStr = prompt("Enter string");
+			var findStr = prompt("Enter text to find");
+			document.getElementById(id).innerHTML = myStr.indexOf(findStr);
+		}
+
+	</script>
+</head>
+
+<body>
+
+	<main>
+		
+		<button onclick="str('strId')"> 
+			Press to set string and text to find in this string
+		</button>
+		
+		<div>
+			<div id="strId"></div> 
+		</div>
+		
+	</main>
+
+</body>
+
+
+</html>

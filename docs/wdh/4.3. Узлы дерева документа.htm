@@ -1,0 +1,1041 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: DHTML - Узлы дерева документа</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/dhtml02.htm" title="Объектная модель документа">
+<link rel="Next" href="http://wdh.suncloud.ru/dhtml04.htm" title="Элементы и атрибуты">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/load.js"></script>
+<script type="text/javascript" src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/link.js"></script><link rel="stylesheet" type="text/css" href="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml02.htm"><img name="imglefta" src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nnleft.gif" alt="" title="Объектная модель документа" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml04.htm"><img name="imgrighta" src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nnright.gif" alt="" title="Элементы и атрибуты" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=7053" target="_blank"><img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref43">Глава 4.3. Узлы дерева документа</a></h2>
+
+      <p>В этой главе мы рассматриваем базовый тип узлов дерева документа и списки, образованные такими
+        узлами.</p>
+
+      <h3><a name="ref431">4.3.1. Абстрактный узел: интерфейс Node</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Поддерживается для XML-документов (XMLDOMNode);
+              для HTML-документов поддерживается частично.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> DOM 1 полностью, DOM 2 частично.</pre>
+
+      <p>Интерфейс <tt>Node</tt> соответствует абстрактному узлу дерева XML- или HTML-документа. Все
+        конкретные составляющие документа реализуются интерфейсами, которые являются его потомками.
+        Тип узла задается значением его свойства <tt><a href="#pnodetype">nodeType</a></tt> в соответствии
+        со следующей таблицей:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption><a name="table43">Таблица 4.3. Типы узлов DOM</a></caption>
+          <tbody><tr>
+            <th>Название</th>
+            <th>Значение</th>
+            <th>Интерфейс</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt>ELEMENT_NODE</tt></td>
+            <td>1</td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt></td>
+            <td>Элемент</td>
+          </tr>
+          <tr>
+            <td><tt>ATTRIBUTE_NODE</tt></td>
+            <td>2</td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref441">Attr</a></tt></td>
+            <td>Атрибут</td>
+          </tr>
+          <tr>
+            <td><tt>TEXT_NODE</tt></td>
+            <td>3</td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref444">Text</a></tt></td>
+            <td>Текст</td>
+          </tr>
+          <tr>
+            <td><tt>CDATA_SECTION_NODE</tt></td>
+            <td>4</td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref451">CDATASection</a></tt></td>
+            <td>Секция CDATA</td>
+          </tr>
+          <tr>
+            <td><tt>ENTITY_REFERENCE_NODE</tt></td>
+            <td>5</td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref455">EntityReference</a></tt></td>
+            <td>Ссылка на раздел</td>
+          </tr>
+          <tr>
+            <td><tt>ENTITY_NODE</tt></td>
+            <td>6</td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref454">Entity</a></tt></td>
+            <td>Раздел документа</td>
+          </tr>
+          <tr>
+            <td><tt>PROCESSING_INSTRUCTION_NODE</tt></td>
+            <td>7</td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref456">ProcessingInstruction</a></tt></td>
+            <td>Директива</td>
+          </tr>
+          <tr>
+            <td><tt>COMMENT_NODE</tt></td>
+            <td>8</td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref445">Comment</a></tt></td>
+            <td>Комментарий</td>
+          </tr>
+          <tr>
+            <td><tt>DOCUMENT_NODE</tt></td>
+            <td>9</td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#ref426">Document</a></tt></td>
+            <td>Документ</td>
+          </tr>
+          <tr>
+            <td><tt>DOCUMENT_TYPE_NODE</tt></td>
+            <td>10</td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref452">DocumentType</a></tt></td>
+            <td>Тип документа</td>
+          </tr>
+          <tr>
+            <td><tt>DOCUMENT_FRAGMENT_NODE</tt></td>
+            <td>11</td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#ref425">DocumentFragment</a></tt></td>
+            <td>Фрагмент документа</td>
+          </tr>
+          <tr>
+            <td><tt>NOTATION_NODE</tt></td>
+            <td>12</td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref453">Notation</a></tt></td>
+            <td>Нотация</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p class="vindent">Значения свойств узла <tt><a href="#pnodename">nodeName</a></tt>, <tt><a href="#pnodevalue">nodeValue</a></tt>
+        и <tt><a href="#pattributes">attributes</a></tt> меняются в зависимости от его типа:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption><a name="table44">Таблица 4.4. Свойства узлов DOM</a></caption>
+          <tbody><tr>
+            <th>Интерфейс</th>
+            <th>nodeName</th>
+            <th>nodeValue</th>
+            <th>attributes</th>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref441">Attr</a></tt></td>
+            <td>Имя атрибута</td>
+            <td>Значение атрибута</td>
+            <td>null</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref451">CDATASection</a></tt></td>
+            <td>#cdata-section</td>
+            <td>Содержимое секции CDATA</td>
+            <td>null</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#ref426">Document</a></tt></td>
+            <td>#document</td>
+            <td>null</td>
+            <td>null</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#ref425">DocumentFragment</a></tt></td>
+            <td>#document-fragment</td>
+            <td>null</td>
+            <td>null</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref452">DocumentType</a></tt></td>
+            <td>Имя типа документа</td>
+            <td>null</td>
+            <td>null</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt></td>
+            <td>Тег элемента</td>
+            <td>null</td>
+            <td>NamedNodeMap</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref454">Entity</a></tt></td>
+            <td>Имя раздела</td>
+            <td>null</td>
+            <td>null</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref455">EntityReference</a></tt></td>
+            <td>Имя раздела</td>
+            <td>null</td>
+            <td>null</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref453">Notation</a></tt></td>
+            <td>Имя нотации</td>
+            <td>null</td>
+            <td>null</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref456">ProcessingInstruction</a></tt></td>
+            <td>Имя директивы</td>
+            <td>Содержимое директивы</td>
+            <td>null</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref444">Text</a></tt></td>
+            <td>#text</td>
+            <td>Содержимое текстового узла</td>
+            <td>null</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p class="note" style="margin-top: 1em;"><strong>Примечание</strong>. Internet Explorer поддерживает
+        только узлы типа <tt class="note">Element</tt>, <tt class="note">Attr</tt> и <tt class="note">Text</tt>.
+        Для остальных типов узлов перечисленные в таблице свойства не определены.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса Node</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pattributes">attributes</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Атрибуты узла.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pchildnodes">childNodes</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Список детей.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfirstchild">firstChild</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Первый ребенок.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#plastchild">lastChild</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Последний ребенок.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#plocalname">localName</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Локальное имя в пространстве имен.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pnamespaceuri">namespaceURI</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>URI пространства имен.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pnextsibling">nextSibling</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Следующий узел дерева.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pnodename">nodeName</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Имя узла.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pnodetype">nodeType</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Тип узла.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pnodevalue">nodeValue</a></tt></td>
+            <td>Да</td>
+            <td>DOM 1</td>
+            <td>Значение узла.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pownerdocument">ownerDocument</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Документ&nbsp;— владелец узла.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pparentnode">parentNode</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Отец данного узла.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pprefix">prefix</a></tt></td>
+            <td>Да</td>
+            <td>DOM 2</td>
+            <td>Префикс пространства имен.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pprevioussibling">previousSibling</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Предыдущий узел дерева.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы интерфейса Node</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#mappendchild">appendChild</a></tt></td>
+            <td>DOM 1</td>
+            <td>Добавляет сына в конец списка детей.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mclonenode">cloneNode</a></tt></td>
+            <td>DOM 1</td>
+            <td>Создает копию данного узла.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mhasattributes">hasAttrbutes</a></tt></td>
+            <td>DOM 2</td>
+            <td>Проверяет наличие у узла атрибутов.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mhaschildnodes">hasChildNodes</a></tt></td>
+            <td>DOM 1</td>
+            <td>Проверяет наличие у узла детей.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#minsertBefore">insertBefore</a></tt></td>
+            <td>DOM 1</td>
+            <td>Вставляет новый узел перед заданным сыном.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#missupported">isSupported</a></tt></td>
+            <td>DOM 2</td>
+            <td>Проверяет свойство реализации DOM.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mnormalize">normalize</a></tt></td>
+            <td>DOM 1</td>
+            <td>Нормализует текстовое содержимое узла.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mremovechild">removeChild</a></tt></td>
+            <td>DOM 1</td>
+            <td>Удаляет заданного сына.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mreplaceChild">replaceChild</a></tt></td>
+            <td>DOM 1</td>
+            <td>Заменяет заданного сына новым узлом.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hattributes">Свойство attributes</a></h4>
+
+<pre class="syntax"><strong><a name="pattributes">Синтаксис</a></strong>:  <em>узел</em>.attributes
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Для XML-документов соответствует стандарту;
+              для HTML-документов частично (см. прим.).
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>attributes</strong> возвращает объект типа <tt><a href="#ref433">NamedNodeMap</a></tt>, содержащий
+        список всех атрибутов данного узла, если узел имеет тип <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt>, и <strong>null</strong>
+        в противном случае.</p>
+
+      <p class="note"><strong>Примечание</strong>. В Internet Explorer это свойство реализовано нестандартно:</p>
+
+      <ol>
+        <li class="note">Список атрибутов элемента является статическим, а не живым, т.&nbsp;е. изменение
+          атрибутов элемента не влечет его автоматического обновления.</li>
+        <li class="note">Этот список не содержит атрибута <strong><a href="http://wdh.suncloud.ru/html01.htm#astyle">style</a></strong>
+          (для доступа к нему используется нестандартное свойство <em>узел</em>.<tt class="note">style.cssText</tt>)
+          и expando-атрибутов.</li>
+      </ol>
+
+      <p>Следующий пример</p>
+
+      <div class="code">
+<pre class="code">&lt;BODY bgcolor="yellow" text="green"&gt;
+&lt;SCRIPT&gt;
+var body = document.getElementsByTagName("BODY")[0];
+var attrs = body.attributes;
+for (var i = 0; i &lt; attrs.length; i++) {
+  if (attrs[i].nodeValue)
+    document.write(attrs[i].nodeName, "=", attrs[i].nodeValue, " ");
+}
+&lt;/SCRIPT&gt;
+&lt;/BODY&gt;</pre>
+      </div>
+
+      <p class="noindent">выведет в Gecko текст: <samp>bgcolor=yellow text=green</samp>,<br>
+        а в Internet Explorer: <samp>contentEditable=inherit&nbsp;text=1140883456&nbsp;bgColor=-1694433281</samp>.</p>
+
+      <h4><a name="hchildnodes">Свойство childNodes</a></h4>
+
+<pre class="syntax"><strong><a name="pchildnodes">Синтаксис</a></strong>:  <em>узел</em>.childNodes
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>childNodes</strong> возвращает объект типа <tt><a href="#ref432">NodeList</a></tt>, содержащий список
+        всех детей данного узла. Если узел не имеет детей, то возвращается список нулевой длины. Следующий
+        пример</p>
+
+      <div class="code">
+<pre class="code">&lt;BODY&gt;
+&lt;SCRIPT&gt;
+var body = document.getElementsByTagName("BODY")[0];
+var list = body.childNodes;
+for (var i = 0; i &lt; list.length; i++) {
+    document.write(list[i].nodeName, " ");
+}
+&lt;/SCRIPT&gt;
+&lt;/BODY&gt;</pre>
+      </div>
+
+      <p class="noindent">выведет в Gecko текст: <samp>#text SCRIPT</samp>, а в Internet Explorer: <samp>SCRIPT
+        #text</samp>. Как мы видим, порядок элементов в списке может быть любым; гарантируется только,
+        что в нем присутствуют все дети данного узла.</p>
+
+      <h4><a name="hfirstchild">Свойство firstChild</a></h4>
+
+<pre class="syntax"><strong><a name="pfirstchild">Синтаксис</a></strong>:  <em>узел</em>.firstChild
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>firstChild</strong> возвращает указатель на первый узел, являющийся сыном
+        данного узла. Если узел не имеет детей, то возвращается <strong>null</strong>. Это свойство
+        эквивалентно выражению <code><em>узел</em>.childNodes[0]</code>.</p>
+
+      <h4><a name="hlastchild">Свойство lastChild</a></h4>
+
+<pre class="syntax"><strong><a name="plastchild">Синтаксис</a></strong>:  <em>узел</em>.lastChild
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>lastChild</strong> возвращает указатель на последний узел, являющийся сыном
+        данного узла. Если узел не имеет детей, то возвращается <strong>null</strong>. Это свойство
+        эквивалентно выражению <code><em>узел</em>.childNodes[<em>узел</em>.childNodes.length-1]</code>.</p>
+
+      <h4><a name="hlocalname">Свойство localName</a></h4>
+
+<pre class="syntax"><strong><a name="plocalname">Синтаксис</a></strong>:  <em>узел</em>.localName
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>localName</strong> возвращает строку, содержащую локальную часть <a href="http://wdh.suncloud.ru/xml03.htm#qualified-name">ограниченного
+        имени</a> узла. Оно имеет смысл только для узлов типа <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt> и <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref441">Attr</a></tt>, созданных
+        соответственно методами <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#mcreateelementns">CreateElementNS</a></tt>
+        и <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#mcreateattributens">CreateAttributeNS</a></tt>. В остальных случаях
+        возвращается <strong>null</strong>.</p>
+
+      <h4><a name="hnamespaceuri">Свойство namespaceURI</a></h4>
+
+<pre class="syntax"><strong><a name="pnamespaceuri">Синтаксис</a></strong>:  <em>узел</em>.namespaceURI
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>namespaceURI</strong> возвращает строку, содержащую <a href="http://wdh.suncloud.ru/xml03.htm#ref832">URI
+        пространства имен</a> данного узла. Оно имеет смысл только для узлов типа <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt> и
+        <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref441">Attr</a></tt>, созданных соответственно методами <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#mcreateelementns">CreateElementNS</a></tt>
+        и <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#mcreateattributens">CreateAttributeNS</a></tt>. В остальных случаях
+        возвращается <strong>null</strong>.</p>
+
+      <h4><a name="hnextsibling">Свойство nextSibling</a></h4>
+
+<pre class="syntax"><strong><a name="pnextsibling">Синтаксис</a></strong>:  <em>узел</em>.nextSibling
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>nextSibling</strong> возвращает указатель на узел, непосредственно следующий
+        в документе за данным узлом. Если такого узла нет, то возвращается <strong>null</strong>.</p>
+
+      <h4><a name="hnodename">Свойство nodeName</a></h4>
+
+<pre class="syntax"><strong><a name="pnodename">Синтаксис</a></strong>:  <em>узел</em>.nodeName
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Для XML-документов соответствует стандарту;
+              для HTML-документов частично (см. прим. к <a href="#table44">Таблице 4.4</a>).
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>nodeName</strong> возвращает строку, содержащую имя данного узла согласно
+        <a href="#table44">Таблицы 4.4</a>. Пример: оператор <code>alert(document.nodeName)</code> выведет
+        в Gecko строку <samp>#document</samp> (в Internet Explorer имя узла <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#ref426">Document</a></tt> не определено).</p>
+
+      <h4><a name="hnodetype">Свойство nodeType</a></h4>
+
+<pre class="syntax"><strong><a name="pnodetype">Синтаксис</a></strong>:  <em>узел</em>.nodeType
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Для XML-документов соответствует стандарту;
+              для HTML-документов частично (см. прим.).
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>nodeType</strong> возвращает тип данного узла согласно <a href="#table43">Таблицы
+        4.3</a>.</p>
+
+      <p class="note"><strong>Примечание</strong>. В Internet Explorer это свойство реализовано для
+        узлов <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt> и <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref444">Text</a></tt>.
+        Для остальных типов узлов оно не определено.</p>
+
+      <p>Пример: оператор <code>alert(document.nodeName)</code> выведет в Gecko строку <samp>9</samp>.</p>
+
+      <h4><a name="hnodevalue">Свойство nodeValue</a></h4>
+
+<pre class="syntax"><strong><a name="pnodevalue">Синтаксис</a></strong>:  <em>узел</em>.nodeValue
+<strong>Изменяемое</strong>: да
+<strong>Исключения</strong>: NO_MODIFICATION_ALLOWED_ERR (при записи), DOMSTRING_SIZE_ERR (при чтении)</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Cоответствует стандарту.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>nodeValue</strong> обеспечивает доступ к значению данного узла. Значение узла
+        зависит от его типа (см. <a href="#table44">Таблицу 4.4</a>). Если значением узла может быть
+        только <strong>null</strong>, то попытка изменить его значение игнорируется. Пример:</p>
+
+      <div class="code">
+<pre class="code">var text = document.createTextNode("");
+text.nodeValue = "Пример абзаца.";
+var elem = document.createElement("P");
+elem.appendChild(text);
+document.body.appendChild(elem);</pre>
+      </div>
+
+      <h4><a name="hownerdocument">Свойство ownerDocument</a></h4>
+
+<pre class="syntax"><strong><a name="pownerdocument">Синтаксис</a></strong>:  <em>узел</em>.ownerDocument
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>ownerDocument</strong> возвращает указатель на объект <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#ref426">Document</a></tt>, к
+        которому принадлежит данный узел. Для узлов типа <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#ref426">Document</a></tt> и <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref452">DocumentType</a></tt>,
+        которые еще не связаны с конкретным документом, возвращается <strong>null</strong>. Пример:</p>
+
+      <div class="code">
+<pre class="code">var elem = document.createElement("P");
+document.body.appendChild(elem);
+alert(elem.ownerDocument.documentElement.nodeName);</pre>
+      </div>
+
+      <h4><a name="hparentnode">Свойство parentNode</a></h4>
+
+<pre class="syntax"><strong><a name="pparentnode">Синтаксис</a></strong>:  <em>узел</em>.parentNode
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>parentNode</strong> возвращает указатель на узел, являющийся отцом данного
+        узла. Если узел не имеет отца, то возвращается <strong>null</strong>.</p>
+
+      <h4><a name="hprefix">Свойство prefix</a></h4>
+
+<pre class="syntax"><strong><a name="pprefix">Синтаксис</a></strong>:  <em>узел</em>.prefix
+<strong>Изменяемое</strong>: да
+<strong>Исключения</strong>: INVALID_CHARACTER_ERR, NO_MODIFICATION_ALLOWED_ERR, NAMESPACE_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Только для XML-документов; неизменяемое.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>prefix</strong> возвращает строку, содержащую префикс <a href="http://wdh.suncloud.ru/xml03.htm#ref832">пространства
+        имен</a> данного узла. Оно имеет смысл только для узлов типа <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt> и <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref441">Attr</a></tt>,
+        созданных соответственно методами <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#mcreateelementns">CreateElementNS</a></tt>
+        и <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#mcreateattributens">CreateAttributeNS</a></tt>. В остальных случаях
+        возвращается <strong>null</strong>.</p>
+
+      <p>При записи этого свойства автоматически изменяются свойство узла <tt><a href="#pnodename">nodeName</a></tt>,
+        содержащее <a href="http://wdh.suncloud.ru/xml03.htm#qualified-name">ограниченное имя</a> узла, а также свойства <tt>tagName</tt>
+        (если это <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt>) и <tt>name</tt> (если это <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref441">Attr</a></tt>).</p>
+
+      <h4><a name="hprevioussibling">Свойство previousSibling</a></h4>
+
+<pre class="syntax"><strong><a name="pprevioussibling">Синтаксис</a></strong>:  <em>узел</em>.previousSibling
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>previousSibling</strong> возвращает указатель на узел, непосредственно предшествующий
+        в документе данному узлу. Если такого узла нет, то возвращается <strong>null</strong>.</p>
+
+      <h4><a name="happendchild">Метод appendChild</a></h4>
+
+<pre class="syntax"><strong><a name="mappendchild">Синтаксис</a></strong>:  <em>узел</em>.appendChild(newChild)
+<strong>Аргументы</strong>:  newChild&nbsp;— выражение типа Node
+<strong>Результат</strong>:  узел Node
+<strong>Исключения</strong>: HIERARCHY_REQUEST_ERR, WRONG_DOCUMENT_ERR, NO_MODIFICATION_ALLOWED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>appendChild</strong> добавляет узел <tt>newChild</tt> в конец списка детей данного
+        узла и возвращает его в качестве результата. Если узел <tt>newChild</tt> уже был в списке, то
+        он сначала удаляется, а затем добавляется. Пример: сценарий</p>
+
+      <div class="code">
+<pre class="code">var elem = document.createElement("IMG");
+document.body.appendChild(elem);
+alert(document.body.lastChild.tagName);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран текст <samp>IMG</samp>.</p>
+
+      <h4><a name="hclonenode">Метод cloneNode</a></h4>
+
+<pre class="syntax"><strong><a name="mclonenode">Синтаксис</a></strong>:  <em>узел</em>.cloneNode(deep)
+<strong>Аргументы</strong>:  deep&nbsp;— логическое выражение
+<strong>Результат</strong>:  новый узел Node
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>cloneNode</strong> создает копию данного узла и возвращает ее. Если аргумент
+        <tt>deep</tt> равен <strong>true</strong>, то создается копия поддерева документа, начиная с
+        данного узла; если он равен <strong>false</strong>, то копируется только сам узел (и его атрибуты,
+        если это <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt>).</p>
+
+      <h4><a name="hhasattributes">Метод hasAttributes</a></h4>
+
+<pre class="syntax"><strong><a name="mhasattributes">Синтаксис</a></strong>:  <em>узел</em>.hasAttributes()
+<strong>Результат</strong>:  логическое значение
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>hasAttributes</strong> возвращает <strong>true</strong>, если узел является элементом
+        и имеет хотя бы один атрибут. В остальных случаях возвращается <strong>false</strong>. Вызов
+        этого метода эквивалентен выражению <code>(<em>узел</em>.attributes.length != 0)</code>.</p>
+
+      <h4><a name="hhaschildnodes">Метод hasChildNodes</a></h4>
+
+<pre class="syntax"><strong><a name="mhaschildnodes">Синтаксис</a></strong>:  <em>узел</em>.hasChildNodes()
+<strong>Результат</strong>:  логическое значение
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>hasChildNodes</strong> возвращает <strong>true</strong>, если узел имеет хотя
+        бы одного ребенка; в противном случае возвращается <strong>false</strong>. Вызов этого метода
+        эквивалентен выражению <code>(<em>узел</em>.childNodes.length != 0)</code>.</p>
+
+      <h4><a name="hinsertbefore">Метод insertBefore</a></h4>
+
+<pre class="syntax"><strong><a name="minsertbefore">Синтаксис</a></strong>:  <em>узел</em>.insertBefore(newChild, refChild)
+<strong>Аргументы</strong>:  newChild, refChild&nbsp;— выражения типа Node
+<strong>Результат</strong>:  узел Node
+<strong>Исключения</strong>: HIERARCHY_REQUEST_ERR, WRONG_DOCUMENT_ERR, NO_MODIFICATION_ALLOWED_ERR,
+            NOT_FOUND_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>insertBefore</strong> вставляет узел <tt>newChild</tt> в список детей данного
+        узла перед узлом <tt>refChild</tt> и возвращает его в качестве результата. Если узел <tt>newChild</tt>
+        уже был в списке, то он сначала удаляется, а затем добавляется. Пример: сценарий</p>
+
+      <div class="code">
+<pre class="code">var elem = document.createElement("IMG");
+document.body.insertBefore(elem, document.body.firstChild);
+alert(document.body.firstChild.tagName);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран текст <samp>IMG</samp>.</p>
+
+      <h4><a name="hissupported">Метод isSupported</a></h4>
+
+<pre class="syntax"><strong><a name="missupported">Синтаксис</a></strong>:  <em>объект</em>.isSupported(feature, version)
+<strong>Аргументы</strong>:  feature, version&nbsp;— выражения типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  логическое значение
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>isSupported</strong> возвращает <strong>true</strong>, если реализация DOM поддерживает
+        указанное свойство, и <strong>false</strong> в противном случае. Имя свойства (в любом регистре)
+        задается аргументом <tt>feature</tt>; оно должно соответствовать правилам образования <a href="http://wdh.suncloud.ru/xml01.htm#ref8134">имен
+        XML</a>. Аргумент <tt>version</tt> задает имя версии проверяемого свойства. Если он не задан,
+        то возвращается <strong>true</strong>, если поддерживается хотя бы какая-то версия данного свойства.
+        Ср. метод <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#mhasfeature">DOMImplementation.hasFeature</a></tt>.</p>
+
+      <p>В Gecko значениями <tt>feature</tt> могут быть строки "XML" и "HTML", а значением <tt>version</tt>&nbsp;—
+        строки "1.0" и "2.0". Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.body.isSupported("HTML", "1.0"));
+alert(document.body.isSupported("HTML", "2.0"));
+alert(document.body.isSupported("HTML", "3.0"));</pre>
+      </div>
+
+      <p>Первые два оператора <tt>alert</tt> выведут строку <samp>true</samp>, а третий <samp>false</samp>.</p>
+
+      <h4><a name="hnormalize">Метод normalize</a></h4>
+
+<pre class="syntax"><strong><a name="mnormalize">Синтаксис</a></strong>:  <em>узел</em>.normalize()
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>normalize</strong> нормализует текстовое содержимое данного узла. Нормализация
+        состоит в том, что пустые текстовые узлы удаляются, а соседние текстовые узлы сливаются в один.
+        В результате остаются только текстовые узлы, разделенные какими-либо символами разметки (тегами,
+        комментариями, директивами, секциями CDATA или ссылками на разделы). Нормализованная форма элементов
+        дерева обеспечивает неизменность его структуры при сохранении и перезагрузке. Следующий пример
+        нормализует все абзацы документа.</p>
+
+      <div class="code">
+<pre class="code">var pars = document.getElementsByTagName("P");
+for (var i = 0; i &lt; pars.length; i++)
+  pars[i].normalize();</pre>
+      </div>
+
+      <h4><a name="hremovechild">Метод removeChild</a></h4>
+
+<pre class="syntax"><strong><a name="mremovechild">Синтаксис</a></strong>:  <em>узел</em>.removeChild(oldChild)
+<strong>Аргументы</strong>:  oldChild&nbsp;— выражение типа Node
+<strong>Результат</strong>:  узел Node
+<strong>Исключения</strong>: NO_MODIFICATION_ALLOWED_ERR, NOT_FOUND_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>removeChild</strong> удаляет узел <tt>oldChild</tt> из списка детей данного узла
+        и возвращает его в качестве результата. Пример:</p>
+
+      <div class="code">
+<pre class="code">document.body.removeChild(document.body.firstChild);</pre>
+      </div>
+
+      <h4><a name="hreplacechild">Метод replaceChild</a></h4>
+
+<pre class="syntax"><strong><a name="mreplacechild">Синтаксис</a></strong>:  <em>узел</em>.replaceChild(newChild, oldChild)
+<strong>Аргументы</strong>:  newChild, oldChild&nbsp;— выражения типа Node
+<strong>Результат</strong>:  узел Node
+<strong>Исключения</strong>: HIERARCHY_REQUEST_ERR, WRONG_DOCUMENT_ERR, NO_MODIFICATION_ALLOWED_ERR,
+            NOT_FOUND_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>replaceChild</strong> заменяет узел <tt>oldChild</tt> в списке детей данного
+        узла на узел <tt>newChild</tt> и возвращает <tt>oldChild</tt> в качестве результата. Если <tt>newChild</tt>
+        уже был в списке детей, то он удаляется из него до замены. Пример:</p>
+
+      <div class="code">
+<pre class="code">var elem = document.createElement("P");
+document.body.replaceChild(elem, document.body.firstChild);</pre>
+      </div>
+
+      <h3><a name="ref432">4.3.2. Упорядоченный список узлов: интерфейс NodeList</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Для XML-документов соответствует стандарту (XMLDOMNodeList);
+              для HTML-документов поддерживается в виде <a href="http://wdh.suncloud.ru/dhtml06.htm#ref462">коллекций</a>.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>NodeList</tt> реализует упорядоченные списки узлов, которые возвращаются многими
+        свойствами и методами DOM. Списки узлов в DOM являются <em>живыми</em>, т.&nbsp;е. любое изменение
+        документа влечет автоматическое изменение всех связанных с ним списков.</p>
+
+      <p>Этот интерфейс имеет единственное свойство <tt><a href="#pnodelist-length">length</a></tt>,
+        возвращающее количество узлов в списке, и единственный метод <tt><a href="#mnodelist-item">item</a></tt>,
+        возвращающий элемент списка с заданным номером (элементы списка узлов нумеруются, начиная с
+        нуля).</p>
+
+      <h4><a name="hnodelist-length">Свойство length</a></h4>
+
+<pre class="syntax"><strong><a name="pnodelist-length">Синтаксис</a></strong>:  <em>список</em>.length
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Cоответствует стандарту.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>length</strong> возвращает количество элементов в данном списке. Допустимые
+        индексы элементов списка лежат в диапазоне от 0 до <tt>length</tt>-1 включительно. Следующий
+        пример выводит на экран количество элементов в дереве документа:</p>
+
+      <div class="code">
+<pre class="code">alert(document.getElementsByTagName("*").length); // в Gecko (стандарт)
+alert(document.all.length);                       // в Internet Explorer</pre>
+      </div>
+
+      <h4><a name="hnodelist-item">Метод item</a></h4>
+
+<pre class="syntax"><strong><a name="mnodelist-item">Синтаксис</a></strong>:  <em>список</em>.item(index)
+<strong>Аргументы</strong>:  index&nbsp;— числовое выражение
+<strong>Результат</strong>:  узел <a href="#ref431">Node</a> или null
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>item</strong> возвращает элемент списка узлов с заданным индексом в качестве
+        результата. Если индекс выходит за пределы диапазона элементов списка, то возвращается <strong>null</strong>.
+        Пример: оператор</p>
+
+      <div class="code">
+<pre class="code">alert(document.childNodes.item(0).nodeName);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран текст <samp>HTML</samp>.</p>
+
+      <p>JavaScript позволяет нам записать обращение к элементу списка более компактно. Предыдущий оператор
+        может выглядеть так:</p>
+
+      <div class="code">
+<pre class="code">alert(document.childNodes[0].nodeName);</pre>
+      </div>
+
+      <p>Internet Explorer поддерживает еще одну форму обращения к элементу списка, а именно:</p>
+
+      <div class="code">
+<pre class="code">alert(document.childNodes(0).nodeName);</pre>
+      </div>
+
+      <p>Однако, эта форма является нестандартной, и ей лучше не пользоваться.</p>
+
+      <h3><a name="ref433">4.3.3. Неупорядоченный список узлов: интерфейс NamedNodeMap</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Для XML-документов соответствует стандарту (XMLDOMNamedNodeMap);
+              для HTML-документов поддерживается в виде <a href="http://wdh.suncloud.ru/dhtml06.htm#ref462">коллекций</a>.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>NamedNodeMap</tt> реализует неупорядоченные списки узлов, доступ к которым осуществляется
+        по имени узла. Эти списки также являются <em>живыми</em>, т.&nbsp;е. любое изменение документа
+        влечет автоматическое изменение всех связанных с ним списков.</p>
+
+      <p>DOM допускает возможность доступа к элементам списка <tt>NamedNodeMap</tt> по их номеру в списке,
+        но подчеркивает, что эта возможность не означает упорядоченности списка по какому-либо признаку.</p>
+
+      <p>Этот интерфейс имеет единственное свойство <tt><a href="#pnodemap-length">length</a></tt>,
+        возвращающее количество узлов в списке, и несколько методов, обеспечивающих доступ к элементам
+        списка:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы интерфейса NamedNodeMap</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetnameditem">getNamedItem</a></tt></td>
+            <td>DOM 1</td>
+            <td>Возвращает узел с заданным именем.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetnameditemns">getNamedItemNS</a></tt></td>
+            <td>DOM 2</td>
+            <td>Возвращает узел с заданным именем с учетом пространства имен.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mnodemap-item">item</a></tt></td>
+            <td>DOM 1</td>
+            <td>Возвращает узел с заданным номером.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mremovenameditem">removeNamedItem</a></tt></td>
+            <td>DOM 1</td>
+            <td>Удаляет узел с заданным именем.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mremovenameditemns">removeNamedItemNS</a></tt></td>
+            <td>DOM 2</td>
+            <td>Удаляет узел с заданным именем с учетом пространства имен.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#msetnameditem">setNamedItem</a></tt></td>
+            <td>DOM 1</td>
+            <td>Добавляет узел в список.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#msetnameditemns">setNamedItemNS</a></tt></td>
+            <td>DOM 2</td>
+            <td>Добавляет узел в список с учетом пространства имен.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hnodemap-length">Свойство length</a></h4>
+
+<pre class="syntax"><strong><a name="pnodemap-length">Синтаксис</a></strong>:  <em>список</em>.length
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Cоответствует стандарту.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>length</strong> возвращает количество элементов в данном списке. Допустимые
+        индексы элементов списка лежат в диапазоне от 0 до <tt>length</tt>-1 включительно. Следующий
+        пример выводит на экран количество атрибутов элемента <strong><a href="http://wdh.suncloud.ru/html02.htm#ebody">BODY</a></strong>:</p>
+
+      <div class="code">
+<pre class="code">alert(document.body.attributes.length);</pre>
+      </div>
+
+      <h4><a name="hgetnameditem">Метод getNamedItem</a></h4>
+
+<pre class="syntax"><strong><a name="mgetnameditem">Синтаксис</a></strong>:  <em>список</em>.getNamedItem(name)
+<strong>Аргументы</strong>:  name&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  узел <a href="#ref431">Node</a> или null
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>getNamedItem</strong> возвращает элемент списка узлов с заданным именем <tt>name</tt>
+        в качестве результата. Если узла с таким именем в списке нет, то возвращается <strong>null</strong>.
+        Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.body.attributes.getNamedItem("text").nodeValue);</pre>
+      </div>
+
+      <p>В Internet Explorer этот пример должен быть записан любым из двух следующих способов:</p>
+
+      <div class="code">
+<pre class="code">alert(document.body.attributes["text"].nodeValue);
+alert(document.body.attributes("text").nodeValue);</pre>
+      </div>
+
+      <h4><a name="hgetnameditemns">Метод getNamedItemNS</a></h4>
+
+<pre class="syntax"><strong><a name="mgetnameditemns">Синтаксис</a></strong>:  <em>список</em>.getNamedItemNS(namespaceURI, localName)
+<strong>Аргументы</strong>:  namespaceURI, localName&nbsp;— выражения типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  узел <a href="#ref431">Node</a> или null
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Нестандартная поддержка для XML-документов (см. прим.).
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>getNamedItemNS</strong> возвращает элемент списка узлов с заданным именем в качестве
+        результата. Если узла с таким именем в списке нет, то возвращается <strong>null</strong>. Этот
+        метод предназначен для XML-документов и для HTML-документов может не поддерживаться. Аргумент
+        <tt>namespaceURI</tt> задает <a href="http://wdh.suncloud.ru/xml03.htm#ref832">URI пространства имен</a>, а <tt>localName</tt>&nbsp;—
+        <a href="http://wdh.suncloud.ru/xml03.htm#qualified-name">локальное имя</a> узла.</p>
+
+      <p class="note"><strong>Примечание</strong>. В Microsoft XML DOM этот метод имеет вид <tt class="note">getQualifiedItem(localName,
+        namespaceURI)</tt>.</p>
+
+      <h4><a name="hnodemap-item">Метод item</a></h4>
+
+<pre class="syntax"><strong><a name="mnodemap-item">Синтаксис</a></strong>:  <em>список</em>.item(index)
+<strong>Аргументы</strong>:  index&nbsp;— числовое выражение
+<strong>Результат</strong>:  узел <a href="#ref431">Node</a> или null
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>item</strong> возвращает элемент списка узлов с заданным индексом в качестве
+        результата. Если индекс выходит за пределы диапазона элементов списка, то возвращается <strong>null</strong>.
+        Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.body.attributes.item(0).nodeName);</pre>
+      </div>
+
+      <p>JavaScript позволяет нам записать обращение к элементу списка более компактно. Предыдущий оператор
+        может выглядеть так:</p>
+
+      <div class="code">
+<pre class="code">alert(document.attributes[0].nodeName);</pre>
+      </div>
+
+      <p>Internet Explorer поддерживает еще одну форму обращения к элементу списка, а именно:</p>
+
+      <div class="code">
+<pre class="code">alert(document.attributes(0).nodeName);</pre>
+      </div>
+
+      <p>Однако, эта форма является нестандартной, и ей лучше не пользоваться.</p>
+
+      <h4><a name="hremovenameditem">Метод removeNamedItem</a></h4>
+
+<pre class="syntax"><strong><a name="mremovenameditem">Синтаксис</a></strong>:  <em>список</em>.removeNamedItem(name)
+<strong>Аргументы</strong>:  name&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  узел <a href="#ref431">Node</a>
+<strong>Исключения</strong>: NOT_FOUND_ERR, NO_MODIFICATION_ALLOWED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>removeNamedItem</strong> удаляет элемент списка узлов с заданным именем <tt>name</tt>
+        и возвращает его в качестве результата. Если удаляемый узел является атрибутом элемента, имеющим
+        значение по умолчанию, то сразу после его удаления он вновь появляется в списке со значением
+        по умолчанию. Пример:</p>
+
+      <div class="code">
+<pre class="code">document.body.attributes.removeNamedItem("text");</pre>
+      </div>
+
+      <h4><a name="hremovenameditemns">Метод removeNamedItemNS</a></h4>
+
+<pre class="syntax"><strong><a name="mremovenameditemns">Синтаксис</a></strong>:  <em>список</em>.removeNamedItemNS(namespaceURI, localName)
+<strong>Аргументы</strong>:  namespaceURI, localName&nbsp;— выражения типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  узел <a href="#ref431">Node</a>
+<strong>Исключения</strong>: NOT_FOUND_ERR, NO_MODIFICATION_ALLOWED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Нестандартная поддержка для XML-документов (см. прим.).
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>removeNamedItemNS</strong> удаляет элемент списка узлов с заданным именем и возвращает
+        его в качестве результата. Если удаляемый узел является атрибутом элемента, имеющим значение
+        по умолчанию, то сразу после его удаления он вновь появляется в списке со значением по умолчанию.
+        Этот метод предназначен для XML-документов и для HTML-документов может не поддерживаться. Аргумент
+        <tt>namespaceURI</tt> задает <a href="http://wdh.suncloud.ru/xml03.htm#ref832">URI пространства имен</a>, а <tt>localName</tt>&nbsp;—
+        <a href="http://wdh.suncloud.ru/xml03.htm#qualified-name">локальное имя</a> узла.</p>
+
+      <p class="note"><strong>Примечание</strong>. В Microsoft XML DOM этот метод имеет вид <tt class="note">removeQualifiedItem(localName,
+        namespaceURI)</tt>.</p>
+
+      <h4><a name="hsetnameditem">Метод setNamedItem</a></h4>
+
+<pre class="syntax"><strong><a name="msetnameditem">Синтаксис</a></strong>:  <em>список</em>.setNamedItem(arg)
+<strong>Аргументы</strong>:  arg&nbsp;— выражение типа <a href="#ref431">Node</a>
+<strong>Результат</strong>:  узел <a href="#ref431">Node</a> или null
+<strong>Исключения</strong>: WRONG_DOCUMENT_ERR, NO_MODIFICATION_ALLOWED_ERR, INUSE_ATTRIBURE_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>setNamedItem</strong> добавляет элемент <tt>arg</tt> в данный список узлов. Если
+        узел с таким именем в списке есть, то он заменяется на <tt>arg</tt> и возвращается в качестве
+        результата. Если узла с таким именем в списке нет, то <tt>arg</tt> вставляется в список и возвращается
+        <strong>null</strong>. Пример:</p>
+
+      <div class="code">
+<pre class="code">var attr = document.createAttribute("text");
+attr.nodeValue = "red";
+document.body.attributes.setNamedItem(attr);</pre>
+      </div>
+
+      <h4><a name="hsetnameditemns">Метод setNamedItemNS</a></h4>
+
+<pre class="syntax"><strong><a name="msetnameditemns">Синтаксис</a></strong>:  <em>список</em>.setNamedItemNS(arg)
+<strong>Аргументы</strong>:  arg&nbsp;— выражение типа <a href="#ref431">Node</a>
+<strong>Результат</strong>:  узел <a href="#ref431">Node</a> или null
+<strong>Исключения</strong>: WRONG_DOCUMENT_ERR, NO_MODIFICATION_ALLOWED_ERR, INUSE_ATTRIBURE_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>setNamedItemNS</strong> добавляет элемент <tt>arg</tt> в данный список узлов.
+        Если узел с таким именем в списке есть, то он заменяется на <tt>arg</tt> и возвращается в качестве
+        результата. Если узла с таким именем в списке нет, то <tt>arg</tt> вставляется в список и возвращается
+        <strong>null</strong>. Этот метод предназначен для XML-документов и для HTML-документов может
+        не поддерживаться. Он отличается от метода <tt><a href="#msetnameditem">setNamedItem</a></tt>
+        тем, что при вставке узла используются <a href="http://wdh.suncloud.ru/xml03.htm#ref832">URI его пространства имен</a>,
+        и <a href="http://wdh.suncloud.ru/xml03.htm#qualified-name">его локальное имя</a>.</p>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml02.htm"><img name="imgleftb" src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nnleft.gif" alt="" title="Объектная модель документа" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml04.htm"><img name="imgrightb" src="4.3.%20%D3%E7%EB%FB%20%E4%E5%F0%E5%E2%E0%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nnright.gif" alt="" title="Элементы и атрибуты" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

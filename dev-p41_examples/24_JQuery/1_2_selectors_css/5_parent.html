@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <script src="js/jquery-2.0.0.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script>
+  $(document).ready(function(){
+    $("#main > *").css("border", "3px double red");
+  });
+  </script>
+  <style>
+  body { font-size:9pt; }
+  span#main { display:block; background:yellow; height:210px; }
+  button { display:block; float:left; margin:2px;
+           font-size:9pt; }
+  div { width:90px; height:90px; margin:5px; float:left;
+        background:#bbf; font-weight:bold; }
+  div.mini { width:30px; height:30px; background:green; }
+  </style>
+</head>
+<body>
+  <span id="main">
+
+    <div></div>
+    <button>Child</button>
+    <div class="mini"></div>
+    <div>
+      <div class="mini"></div>
+      <div class="mini"></div>
+    </div>
+    <div><button>Grand</button></div>
+
+    <div><span>A Span <em>in</em> child</span></div>
+    <span>A Span in main</span>
+  </span>
+</body>
+</html>

@@ -1,0 +1,1379 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: DHTML - Обработка событий в DOM</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/dhtml10.htm" title="Динамическое управление стилями">
+<link rel="Next" href="http://wdh.suncloud.ru/dhtml12.htm" title="Обработка событий в Internet Explorer">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/load.js"></script>
+<script type="text/javascript" src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/link.js"></script><link rel="stylesheet" type="text/css" href="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml10.htm"><img name="imglefta" src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/nnleft.gif" alt="" title="Динамическое управление стилями" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml12.htm"><img name="imgrighta" src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/nnright.gif" alt="" title="Обработка событий в Internet Explorer" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=7934" target="_blank"><img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref411">Глава 4.11. Обработка событий в DOM</a></h2>
+
+      <h3><a name="ref4111">4.11.1. Основные понятия</a></h3>
+      
+      <h4><a name="ref41111">4.11.1.1. Генерация и распространение событий</a></h4>
+      
+      <p>В этой главе мы описываем модель обработки событий, принятую в DOM 2. Именно реакция на внешние
+        события делает документы динамическими, поэтому методы и свойства, описанные в этой главе, служат
+        клеем, соединяющим описанные ранее элементы DOM в единое и живое целое, реагирующее на различные события.
+        Начнем с самого понятия <em>событие</em>. Все события в DOM 2 подразделяются на следующие:</p>
+
+      <ul>
+        <li>Аппаратные события пользовательского интерфейса. Это события, вызванные взаимодействием пользователя с
+          устройствами ввода-вывода (нажатие клавиши, движение мыши и т.&nbsp;п.)</li>
+        <li>Логические события пользовательского интерфейса. Это события, не связанные с внешними устройствами, например,
+          получение от операционной системы сообщения о смене фокуса.</li>
+        <li>События, генерируемые изменением структуры документа, например, добавление нового элемента.</li>
+      </ul>
+
+      <p>Модель
+событий DOM 2 пока реализована только в Gecko. Internet Explorer имеет
+свою модель генерации и обработки событий, которая описана в <a href="http://wdh.suncloud.ru/dhtml12.htm">гл. 4.12</a>.</p>
+
+      <p><img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/plus.gif" alt="WDH+"> О различиях в обработке событий этими обозревателями см.
+        <a target="_blank" href="http://go.suncloud.ru/to.asp?workshop/extreme/scrint/scrint.htm">WDH+: Прерывание скрипта</a>.</p>
+
+      <p>Любое событие связано с конкретным узлом документа (<em>цель события</em>), доступным через интерфейс <tt><a href="#ref4112">EventTarget</a></tt>, который
+        указывается в свойстве <tt><a href="#ptarget">target</a></tt> объекта <tt><a href="#ref4115">Event</a></tt>, описывающего данное событие. Когда событие достигает своей цели,
+        активизируются все <em>обработчики событий</em> данного узла, описываемые интерфейсом <tt><a href="#ref4113">EventListener</a></tt>.
+При этом гарантируется, что все обработчики будут активизированы, но не
+оговаривается порядок, в котором это будет происходить. Если не
+произойдет перехвата или просачивания события, то процесс генерации
+события завершится, когда все обработчики будут активизированы. Этот
+процесс называется <em>распространением события</em> (event propagation). Если происходит перехват события или его просачивание, то процесс обработки события
+        изменяется, как описано ниже.</p>
+
+      <p>Исключения, возникающие в процессе обработки события, не прекращают его распространения: управление просто передается следующему
+        обработчику событий. Если обработка события генерирует новые события, то они должны обрабатываться синхронно.</p>
+      
+      <h4><a name="ref41112">4.11.1.2. Перехват события</a></h4>
+
+      <p><em>Перехват события</em> (event capture) состоит в следующем. Обработчик события любого предка цели может перехватить событие прежде,
+        чем оно достигнет своей цели. Процесс перехвата действует сверху вниз от корня дерева документа, т.&nbsp;е. от объекта <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#ref426">Document</a></tt>.
+В момент генерации события фиксируется цепочка его существующих
+обработчиков от корня дерева до узла-цели; если во время обработки
+события какие-то обработчики будут удалены или добавлены, то это не
+окажет влияния на процесс обработки данного события.</p>
+
+      <p>Для включения механизма перехвата событий нужно установить аргумент <tt>useCapture</tt> метода <tt><a href="#maddeventlistener">addEventListener</a></tt> в <strong>true</strong>.
+После этого обработчик событий будет перехватывать все события
+заданного типа, направленные к потомках узла, в котором он
+зарегистрирован. Это приведет к тому, что все обработчики данного
+события у всех узлов цепочки от данного узла до цели будут
+активизированы. При этом события, целью которых является узел, в
+котором зарегистрирован перехватывающий обработчик, его не активизируют.</p>
+
+      <p>Если перехватывающий обработчик хочет прекратить дальнейшую обработку события, то он должен вызвать метод <tt><a href="#mstoppropagation">stopPropagation</a></tt> объекта <tt><a href="#ref4115">Event</a></tt>.
+Тем самым он прекратит передачу события по цепочке узлов вниз. Однако,
+обработчики событий в узлах того же уровня иерархии все равно будут
+активизированы.</p>
+      
+      <h4><a name="ref41113">4.11.1.3. Просачивание события</a></h4>
+
+      <p><em>Просачивание события</em>
+(event bubbling)&nbsp;— это процесс, который происходит в направлении,
+противоположном перехвату. Он состоит в том, что после активизации
+обработчиков события узла-цели происходит активизация обработчиков
+этого события у элементов, являющихся предками этого узла вверх по
+дереву документа вплоть до его корня. Обработчики событий,
+зарегистрированные для перехвата событий, при этом не активизируются. В
+момент генерации события фиксируется цепочка его существующих
+обработчиков от узла-цели до корня дерева; если во время обработки
+события какие-то обработчики будут удалены или добавлены, то это не
+окажет влияния на процесс просачивания данного события.</p>
+
+      <p>Любой обработчик может прекратить дальнейшее просачивание события вызовом метода <tt><a href="#mstoppropagation">stopPropagation</a></tt> объекта <tt><a href="#ref4115">Event</a></tt>. Тем самым он
+        прекратит передачу события по цепочке узлов вверх. Однако, обработчики событий в этом узле будут активизированы.</p>
+
+      <p>Является событие просачивающимся или нет, определяется свойством <tt><a href="#pbubbles">bubbles</a></tt> его интерфейса <tt><a href="#ref4115">Event</a></tt>.</p>
+      
+      <h4><a name="ref41114">4.11.1.4. Отмена события</a></h4>
+
+      <p>Некоторые события являются <em>отменяемыми</em>
+(cancelable). Для таких событий обычно предусмотрена типовая обработка.
+Примером может служить щелчок мышью на гиперссылке, где действием по
+умолчанию является загрузка ресурса, на который указывает гиперссылка.
+Перед выполнением типовой обработки реализация DOM должна вызвать
+обработчики данного события, если таковые зарегистрированы. Обработчики
+имеют возможность либо отменить типовую обработку события, либо
+разрешить ее. В примере с гиперссылкой отмена события означает, что
+загрузка ресурса не произойдет.</p>
+
+      <p>Является событие отменяемым или нет, определяется свойством <tt><a href="#pcancelable">cancelable</a></tt> его интерфейса <tt><a href="#ref4115">Event</a></tt>.
+        Отмена типовой обработки события производится вызовом метода <tt><a href="#mpreventdefault">preventDefault</a></tt> этого интерфейса.</p>
+
+      <h4><a name="ref41115">4.11.1.5. Исключения: интерфейс EventException</a></h4>
+
+      <p>В процессе обработки события может быть сгенерировано исключение, описываемое интерфейсом <tt>EventException</tt>.
+        Этот интерфейс имеет единственное свойство <tt>code</tt> типа <strong>Number</strong>, которое содержит номер исключения согласно следующей таблицы:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Название</th>
+            <th>Значение</th>
+            <th>Описание</th>
+            <th>Модель</th>
+          </tr>
+          <tr>
+            <td><tt>UNSPECIFIED_EVENT_TYPE_ERR</tt></td>
+            <td>0</td>
+            <td>Тип события не задан или пуст.</td>
+            <td>DOM 2</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h3><a name="ref4112">4.11.2. Регистрация обработчиков событий: интерфейс EventTarget</a></h3>
+      
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>EventTarget</tt> реализуется всеми узлами документа, которые поддерживают обработку событий.
+        Иными словами, его методы являются дополнительными методами объектов <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a></tt>.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы интерфейса EventTarget</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#maddeventlistener">addEventListener</a></tt></td>
+            <td>DOM 2</td>
+            <td>Регистрирует обработчик события.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mdispatchevent">dispatchEvent</a></tt></td>
+            <td>DOM 2</td>
+            <td>Генерирует заданное событие.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mremoveeventlistener">removeEventListener</a></tt></td>
+            <td>DOM 2</td>
+            <td>Удаляет обработчик события.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="haddeventlistener">Метод addEventListener</a></h4>
+
+<pre class="syntax"><strong><a name="maddeventlistener">Синтаксис</a></strong>:  <em>узел</em>.addEventListener(type, listener, useCapture)
+<strong>Аргументы</strong>:  type&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+            listener&nbsp;— выражение типа <a href="#ref4113">EventListener</a>
+            useCapture&nbsp;— логическое выражение</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>addEventListener</strong> регистрирует новый обработчик <tt>listener</tt> события <tt>type</tt> для данного узла.
+        Если аргумент <tt>useCapture</tt> равен <strong>true</strong>, то этот обработчик будет <a href="#ref41112">перехватывать событие</a> <tt>type</tt>.
+Если новый обработчик регистрируется во время обработки события, то он
+будет активизироваться только следующими событиями. Повторная
+регистрация уже существующего обработчика для данного события
+игнорируется. Следующий пример перехватывает все щелчки мыши на
+Веб-странице и выводит тег HTML-элемента, на котором мы щелкнули.</p>
+
+      <div class="code">
+<pre class="code">function mouseClick(event) {
+  var tag = event.target.tagName ? event.target.tagName :
+    event.target.parentNode.tagName;
+  alert(tag);
+}
+
+document.addEventListener("click", mouseClick, true);</pre>
+      </div>
+
+      <p>Если узел копируется методом <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#mclonenode">cloneNode</a></tt>, то зарегистрированные для него обработчики событий не
+        присоединяются к копии. При необходимости они должны быть вновь зарегистрированы для нового узла.</p>
+
+      <h4><a name="hdispatchevent">Метод dispatchEvent</a></h4>
+
+<pre class="syntax"><strong><a name="mdispatchevent">Синтаксис</a></strong>:  <em>узел</em>.dispatchEvent(evt)
+<strong>Аргументы</strong>:  evt&nbsp;— выражение типа <a href="#ref4115">Event</a>
+<strong>Исключения</strong>: UNSPECIFIED_EVENT_TYPE_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>dispatchEvent</strong> генерирует событие <tt>evt</tt>.
+Обработка события, созданного этим методом, происходит так же, как
+обработка событий, сгенерированных исполняющей системой. Целью события
+является узел, из которого вызван данный метод. Пример:</p>
+
+      <div class="code">
+<pre class="code">var evt = new Event;
+evt.initEvent("click", true, true);
+document.body.dispatchEvent(evt);</pre>
+      </div>
+
+      <h4><a name="hremoveeventlistener">Метод removeEventListener</a></h4>
+
+<pre class="syntax"><strong><a name="mremoveeventlistener">Синтаксис</a></strong>:  <em>узел</em>.removeEventListener(type, listener, useCapture)
+<strong>Аргументы</strong>:  type&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+            listener&nbsp;— выражение типа <a href="#ref4113">EventListener</a>
+            useCapture&nbsp;— логическое выражение</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>removeEventListener</strong> удаляет обработчик события для данного узла. Аргументы <tt>listener</tt>, <tt>type</tt> и
+        <tt>useCapture</tt> имеют тот же смысл, что в методе <tt><a href="#maddeventlistener">addEventListener</a></tt>.
+Если обработчик удаляется во время обработки события, то он уже не
+будет активизирован текущим событием. Попытка удалить обработчик с
+параметрами, не соответствующими ни одному из зарегистрированных
+обработчиков игнорируется. Пример:</p>
+
+      <div class="code">
+<pre class="code">document.removeEventListener("click", mouseClick, true);</pre>
+      </div>
+
+      <h3><a name="ref4113">4.11.3. Обработчики событий: интерфейс EventListener</a></h3>
+      
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Нестандартная.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>EventListener</tt>
+соответствует обработчикам событий в DOM. Обработчик событий&nbsp;— это
+подпрограмма, которая вызывается всякий раз, когда происходит событие,
+для которого зарегистрирован данный обработчик. Активизация обработчика
+вызывается внутренним методом <tt>handleEvent</tt>:</p>
+
+      <h4><a name="hhandleevent">Метод handleEvent</a></h4>
+
+<pre class="syntax"><strong><a name="mhandleevent">Синтаксис</a></strong>:  <em>обработчик</em>.handleEvent(evt)
+<strong>Аргументы</strong>:  evt&nbsp;— выражение типа <a href="#ref4115">Event</a></pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Нестандартная.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>handleEvent</strong> вызывается в процессе обработки события <tt>evt</tt>. Пример обработчика события
+        приведен в описании метода <tt><a href="#maddeventlistener">addEventListener</a></tt>.</p>
+
+      <h3><a name="ref4114">4.11.4. Обработчики событий HTML 4.0</a></h3>
+
+      <p>В HTML 4.0 обработчики событий задаются как атрибуты соответствующих элементов, например:</p>
+      
+      <div class="code">
+<pre class="code">&lt;BODY onclick="mouseClick()"&gt;</pre>
+      </div>
+
+      <p>При
+таком подходе задание нового обработчика события заменяет его старый
+обработчик. DOM допускает регистрацию нескольких обработчиков для
+одного события, поэтому в нем произошел отказ от задания обработчиков в
+атрибутах. Однако, в целях совместимости все действующие реализации DOM
+поддерживают форму регистрации обработчиков событий в синтаксисе HTML.
+Она считается совпадающей с заданием обработчика методом <tt><a href="#maddeventlistener">addEventListener</a></tt> с аргументом <tt>useCapture</tt>,
+        равным <strong>false</strong>. Например, приведенное выше задание обработчика событий эквивалентно оператору</p>
+
+      <div class="code">
+<pre class="code">document.body.addEventListener("click", mouseClick, false);</pre>
+      </div>
+
+      <p>DOM
+не предусматривает доступа к контексту события для обработчиков
+прерываний, заданных через атрибуты элементов. Однако, в Gecko в момент
+вызова обработчика события создается объект <tt>event</tt>, соответствующий интерфейсу <tt><a href="#ref4115">Event</a></tt> для данного события. Пример:</p>
+
+      <div class="code">
+<pre class="code">function checkKey(evt) {
+  var key = evt.which;  // код нажатой клавиши
+  ...
+}
+
+&lt;BODY onkeydown="checkKey(event)"&gt;</pre>
+      </div>
+
+      <p>Перечень событий HTML приведен в <a href="#ref41110">п. 4.11.10</a>.</p>
+
+      <h3><a name="ref4115">4.11.5. События: интерфейс Event</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Нестандартная.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>Event</tt> передает обработчику события информацию о событии, которое его активизировало.
+        В зависимости от типа события, его контекстная информация может отличаться, но все интерфейсы, описывающие
+        конкретные события, являются производными от интерфейса <tt>Event</tt>.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса Event</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pbubbles">bubbles</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Просачивается ли данное событие.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcancelable">cancelable</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Отменяемо ли данное событие.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcurrenttarget">currentTarget</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Узел, чьи обработчики событий сейчас активизируются.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#peventphase">eventPhase</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Текущая фаза обработки события.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ptarget">target</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Узел, являющийся целью события.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ptimestamp">timeStamp</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Время генерации события.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ptype">type</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Имя события.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы интерфейса Event</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#minitevent">initEvent</a></tt></td>
+            <td>DOM 2</td>
+            <td>Инициализирует событие.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mpreventdefault">preventDefault</a></tt></td>
+            <td>DOM 2</td>
+            <td>Отменяет обработку события по умолчанию.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mstoppropagation">stopPropagation</a></tt></td>
+            <td>DOM 2</td>
+            <td>Прекращает дальнейшее распространение события.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hbubbles">Свойство bubbles</a></h4>
+
+<pre class="syntax"><strong><a name="pbubbles">Синтаксис</a></strong>:  <em>событие</em>.bubbles
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>bubbles</strong> возвращает <strong>true</strong>, если данное событие является <a href="#ref41113">просачивающимся</a>,
+        и <strong>false</strong> в противном случае.</p>
+
+      <h4><a name="hcancelable">Свойство cancelable</a></h4>
+
+<pre class="syntax"><strong><a name="pcancelable">Синтаксис</a></strong>:  <em>событие</em>.cancelable
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>cancelable</strong> возвращает <strong>true</strong>, если данное событие является <a href="#ref41114">отменяемым</a>,
+        и <strong>false</strong> в противном случае.</p>
+
+      <h4><a name="hcurrenttarget">Свойство currentTarget</a></h4>
+
+<pre class="syntax"><strong><a name="pcurrenttarget">Синтаксис</a></strong>:  <em>событие</em>.currentTarget
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>currentTarget</strong> возвращает объект <tt><a href="#ref4112">EventTarget</a></tt>, соответствующий
+        узлу, чьи обработчики событий сейчас активизируются. Это свойство особенно полезно при перехвате и просачивании событий.</p>
+
+      <h4><a name="heventphase">Свойство eventPhase</a></h4>
+
+<pre class="syntax"><strong><a name="peventphase">Синтаксис</a></strong>:  <em>событие</em>.eventPhase
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>eventPhase</strong> возвращает текущую фазу обработки события, которая задается целым числом в
+        соответствии со следующей таблицей:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Название</th>
+            <th>Значение</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt>CAPTURING_PHASE</tt></td>
+            <td>1</td>
+            <td>Фаза обработки перехвата события.</td>
+          </tr>
+          <tr>
+            <td><tt>AT_TARGET</tt></td>
+            <td>2</td>
+            <td>Фаза активизации перехватчиков события узла.</td>
+          </tr>
+          <tr>
+            <td><tt>BUBBLING_PHASE</tt></td>
+            <td>3</td>
+            <td>Фаза обработки просачивания события.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="htarget">Свойство target</a></h4>
+
+<pre class="syntax"><strong><a name="ptarget">Синтаксис</a></strong>:  <em>событие</em>.target
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>target</strong> возвращает объект <tt><a href="#ref4112">EventTarget</a></tt>, соответствующий
+        узлу, для которого это событие было сгенерировано.</p>
+
+      <h4><a name="htimestamp">Свойство timeStamp</a></h4>
+
+<pre class="syntax"><strong><a name="ptimestamp">Синтаксис</a></strong>:  <em>событие</em>.timeStamp
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>timeStamp</strong> возвращает объект <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domtimestamp">DOMTimeStamp</a></tt>,
+        соответствующий времени генерации данного события. Для некоторых операционных систем и типов событий это значение
+        может быть недоступно; в таких случаях данное свойство должно возвращать 0.</p>
+
+      <h4><a name="htype">Свойство type</a></h4>
+
+<pre class="syntax"><strong><a name="ptype">Синтаксис</a></strong>:  <em>событие</em>.type
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>type</strong> возвращает название данного события в формате <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt>.
+        Это название должно быть <a href="http://wdh.suncloud.ru/xml01.htm#ref8134">именем языка XML</a>, не зависящим от регистра, но и MSHTML, и Gecko возвращают
+        название события строчными буквами, например: "click", "keydown", "resize".</p>
+
+      <h4><a name="hinitevent">Метод initEvent</a></h4>
+
+<pre class="syntax"><strong><a name="minitevent">Синтаксис</a></strong>:  <em>узел</em>.initEvent(eventType, canBubble, isCancelable)
+<strong>Аргументы</strong>:  eventType&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+            canBubble, isCancelable&nbsp;— логические выражения</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>initEvent</strong> используется для инициализации параметров события, созданного методом <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#mcreateevent">createEvent</a></tt>.
+        Он должен вызываться до того, как данное событие будет сгенерировано методом <tt><a href="#mdispatchevent">dispatchEvent</a></tt>,
+        и изменяет только те параметры события, которые задаются его аргументами. Аргумент <tt>eventType</tt> задает название данного события
+        в формате <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt>; это название должно быть <a href="http://wdh.suncloud.ru/xml01.htm#ref8134">именем языка XML</a>.
+        Аргументы <tt>canBubble</tt> и <tt>isCancelable</tt> указывают соответственно, является ли данное событие <a href="#ref41113">просачивающимся</a>
+        и <a href="#ref41114">отменяемым</a>.</p>
+
+      <h4><a name="hpreventdefault">Метод preventDefault</a></h4>
+
+<pre class="syntax"><strong><a name="mpreventdefault">Синтаксис</a></strong>:  <em>узел</em>.preventDefault()</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>preventDefault</strong> сообщает системе, что нужно отменить обработку данного события, принятую по умолчанию. Если
+        событие не является <a href="#ref41114">отменяемым</a>, то вызов этого метода игнорируется. Этот метод может быть вызван в
+        любой фазе обработки события.</p>
+
+      <h4><a name="hstoppropagation">Метод stopPropagation</a></h4>
+
+<pre class="syntax"><strong><a name="mstoppropagation">Синтаксис</a></strong>:  <em>узел</em>.stopPropagation()</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>stopPropagation</strong>
+сообщает системе, что нужно прекратить распространение данного события.
+После его вызова завершается активация обработчиков событий текущего
+узла, и дальнейшее распространение события не происходит. Этот метод
+может быть вызван в любой фазе обработки события.</p>
+
+      <h3><a name="ref4116">4.11.6. События пользовательского интерфейса: интерфейс UIEvent</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>UIEvent</tt> является производным от интерфейса <tt><a href="#ref4115">Event</a></tt> и содержит
+        дополнительную информацию о событиях пользовательского интерфейса.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса UIEvent</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pdetail">detail</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Дополнительные сведения о событии.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pview">view</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Окно отображения документа.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы интерфейса UIEvent</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#minituievent">initUIEvent</a></tt></td>
+            <td>DOM 2</td>
+            <td>Инициализирует событие.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hdetail">Свойство detail</a></h4>
+
+<pre class="syntax"><strong><a name="pdetail">Синтаксис</a></strong>:  <em>событие</em>.detail
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>detail</strong> возвращает число, содержащее дополнительные сведения о данном событии. Его
+        значение зависит от типа события, как описано ниже.</p>
+
+      <h4><a name="hview">Свойство view</a></h4>
+
+<pre class="syntax"><strong><a name="pview">Синтаксис</a></strong>:  <em>событие</em>.view
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>view</strong> возвращает указатель на объект <tt><a href="http://wdh.suncloud.ru/dhtml13.htm#ref4131">AbstractView</a></tt>, соответствующий окну отображения документа,
+        в котором сгенерировано данное событие.</p>
+
+      <h4><a name="hinituievent">Метод initUIEvent</a></h4>
+
+<pre class="syntax"><strong><a name="minituievent">Синтаксис</a></strong>:  <em>узел</em>.initUIEvent(eventType, canBubble, isCancelable, view, detail)
+<strong>Аргументы</strong>:  eventType&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+            canBubble, isCancelable&nbsp;— логические выражения
+            view&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml13.htm#ref4131">AbstractView</a>
+            detail&nbsp;— числовое выражение</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>initUIEvent</strong> используется для инициализации параметров события пользовательского интерфейса, созданного методом 
+        <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#mcreateevent">createEvent</a></tt>. Он должен вызываться до того, как данное событие будет сгенерировано методом
+        <tt><a href="#mdispatchevent">dispatchEvent</a></tt>, и изменяет только те параметры события, которые задаются его аргументами. Аргумент <tt>eventType</tt>
+        задает название данного события в формате <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt>; это название должно быть <a href="http://wdh.suncloud.ru/xml01.htm#ref8134">именем языка XML</a>.
+        Аргументы <tt>canBubble</tt> и <tt>isCancelable</tt> указывают соответственно, является ли данное событие <a href="#ref41113">просачивающимся</a>
+        и <a href="#ref41114">отменяемым</a>. Аргумент <tt>view</tt> задает окно отображения документа, а аргумент <tt>detail</tt>&nbsp;— дополнительные сведения о событии.</p>
+
+      <h4><a name="uievents">Типы событий пользовательского интерфейса</a></h4>
+
+      <p>DOM 2 определяет три типа событий пользовательского интерфейса (которые пока обозревателями не поддерживаются):</p>
+
+      <dl>
+        <dt><strong><a name="edomfocusin">DOMFocusIn</a></strong></dt>
+        <dd>Это
+событие генерируется, когда объект получает фокус (например, при
+наведении на него курсора мыши или при попадании на него
+последовательными нажатиями клавиши Tab). Оно аналогично событию <strong><a href="#efocus">focus</a></strong> в HTML, но применимо к любым объектам, способным получать фокус, а не только к управляющим элементам форм.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="edomfocusout">DOMFocusOut</a></strong></dt>
+        <dd>Это
+событие генерируется, когда объект теряет фокус (например, при удалении
+с него курсора мыши или при уходе с него нажатием клавиши Tab). Оно
+аналогично событию <strong><a href="#eblur">blur</a></strong> в HTML, но применимо к любым объектам, способным получать фокус, а не только к управляющим элементам форм.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="edomactivate">DOMActivate</a></strong></dt>
+        <dd>Это событие генерируется при активизации элемента (например, щелчком мыши или нажатием клавиши).
+          Способ активизации указывается в свойстве <tt>detail</tt>: 1 означает обычную активизацию (одинарный щелчок мыши или
+          нажатие клавиши Enter), 2 означает гиперактивизацию (двойной щелчок мыши или нажатие Shift+Enter).
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>true</strong>;</li>
+            <li>контекст: <tt>detail</tt>.</li>
+          </ul>
+        </dd>
+      </dl>
+
+      <h3><a name="ref4117">4.11.7. События мыши: интерфейс MouseEvent</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>MouseEvent</tt> является производным от интерфейса <tt><a href="#ref4116">UIEvent</a></tt> и содержит
+        дополнительную информацию о событиях, генерируемых мышью.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса MouseEvent</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#paltkey">altKey</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Состояние клавиши Alt.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pbutton">button</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Номер кнопки мыши, изменившей состояние.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pclientx">clientX</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Горизонтальная координата события в клиентской области.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pclienty">clientY</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Вертикальная координата события в клиентской области.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pctrlkey">ctrlKey</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Состояние клавиши Ctrl.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pmetakey">metaKey</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Состояние клавиши Meta.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#prelatedtarget">relatedTarget</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Вторичная цель события.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pscreenx">screenX</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Горизонтальная координата события на экране.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pscreeny">screenY</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Вертикальная координата события на экране.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pshiftkey">shiftKey</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Состояние клавиши Shift.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы интерфейса MouseEvent</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#minitmouseevent">initMouseEvent</a></tt></td>
+            <td>DOM 2</td>
+            <td>Инициализирует событие.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="haltkey">Свойство altKey</a></h4>
+
+<pre class="syntax"><strong><a name="paltkey">Синтаксис</a></strong>:  <em>событие</em>.altKey
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>altKey</strong> возвращает <strong>true</strong>, если в момент генерации события была нажата клавиша Alt, и <strong>false</strong> в противном случае.</p>
+
+      <h4><a name="hbutton">Свойство button</a></h4>
+
+<pre class="syntax"><strong><a name="pbutton">Синтаксис</a></strong>:  <em>событие</em>.button
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Нестандартная.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>button</strong> возвращает номер кнопки мыши, нажатие или отпускание которой вызвало генерацию события.
+        При этом 0 означает левую кнопку, 1&nbsp;— среднюю кнопку, 2&nbsp;— правую кнопку. Если мышь сконфигурирована для
+        левой руки, то значения этого свойства присваиваются в обратном порядке.</p>
+
+      <h4><a name="hclientx">Свойство clientX</a></h4>
+
+<pre class="syntax"><strong><a name="pclientx">Синтаксис</a></strong>:  <em>событие</em>.clientX
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>clientX</strong> возвращает число, равное горизонтальной координате точки, в которой произошла генерация события,
+        относительно клиентской области обозревателя.</p>
+
+      <h4><a name="hclienty">Свойство clientY</a></h4>
+
+<pre class="syntax"><strong><a name="pclienty">Синтаксис</a></strong>:  <em>событие</em>.clientY
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>clientY</strong> возвращает число, равное вертикальной координате точки, в которой произошла генерация события,
+        относительно клиентской области обозревателя.</p>
+
+      <h4><a name="hctrlkey">Свойство ctrlKey</a></h4>
+
+<pre class="syntax"><strong><a name="pctrlkey">Синтаксис</a></strong>:  <em>событие</em>.ctrlKey
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>ctrlKey</strong> возвращает <strong>true</strong>, если в момент генерации события была нажата клавиша Ctrl, и <strong>false</strong> в противном случае.</p>
+
+      <h4><a name="hmetakey">Свойство metaKey</a></h4>
+
+<pre class="syntax"><strong><a name="pmetakey">Синтаксис</a></strong>:  <em>событие</em>.metaKey
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>metaKey</strong> возвращает <strong>true</strong>, если в момент генерации события была нажата клавиша Meta, и <strong>false</strong> в противном случае.</p>
+
+      <h4><a name="hrelatedtarget">Свойство relatedTarget</a></h4>
+
+<pre class="syntax"><strong><a name="prelatedtarget">Синтаксис</a></strong>:  <em>событие</em>.relatedTarget
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>relatedTarget</strong> возвращает вторичный объект <tt><a href="#ref4112">EventTarget</a></tt>, связанный с данным событием.
+        В настоящее время этот атрибут используется в событии <strong>mouseover</strong> для указания узла, который курсор мыши покинул, и в событии
+        <strong>mouseout</strong> для указания узла, на который курсор мыши попал.</p>
+
+      <h4><a name="hscreenx">Свойство screenX</a></h4>
+
+<pre class="syntax"><strong><a name="pscreenx">Синтаксис</a></strong>:  <em>событие</em>.screenX
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>screenX</strong> возвращает число, равное горизонтальной координате точки, в которой произошла генерация события,
+        относительно экрана.</p>
+
+      <h4><a name="hscreeny">Свойство screenY</a></h4>
+
+<pre class="syntax"><strong><a name="pscreeny">Синтаксис</a></strong>:  <em>событие</em>.screenY
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>screenY</strong> возвращает число, равное вертикальной координате точки, в которой произошла генерация события,
+        относительно экрана.</p>
+
+      <h4><a name="hshiftkey">Свойство shiftKey</a></h4>
+
+<pre class="syntax"><strong><a name="pshiftkey">Синтаксис</a></strong>:  <em>событие</em>.shiftKey
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>shiftKey</strong> возвращает <strong>true</strong>, если в момент генерации события была нажата клавиша Shift, и <strong>false</strong> в противном случае.</p>
+
+      <h4><a name="hinitmouseevent">Метод initMouseEvent</a></h4>
+
+<pre class="syntax"><strong><a name="minitmouseevent">Синтаксис</a></strong>:  <em>узел</em>.initMouseEvent(eventType, canBubble, isCancelable, view, detail,
+                                screenX, screenY, clientX, clientY, ctrlKey, altKey,
+                                shiftKey, metaKey, button, relatedTarget)
+<strong>Аргументы</strong>:  eventType&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+            canBubble, isCancelable&nbsp;— логические выражения
+            view&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml13.htm#ref4131">AbstractView</a>
+            detail, screenX, screenY, clientX, clientY, button&nbsp;— числовые выражения
+            ctrlKey, altKey, shiftKey, metaKey&nbsp;— логические выражения
+            relatedTarget&nbsp;— выражение типа <tt><a href="#ref4112">EventTarget</a></tt></pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>initMouseEvent</strong> используется для инициализации параметров события мыши, созданного методом <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#mcreateevent">createEvent</a></tt>.
+        Он должен вызываться до того, как данное событие будет сгенерировано методом <tt><a href="#mdispatchevent">dispatchEvent</a></tt>,
+        и изменяет только те параметры события, которые задаются его аргументами. Аргумент <tt>eventType</tt> задает название данного события
+        в формате <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt>; это название должно быть <a href="http://wdh.suncloud.ru/xml01.htm#ref8134">именем языка XML</a>.
+        Аргументы <tt>canBubble</tt> и <tt>isCancelable</tt> указывают соответственно, является ли данное событие <a href="#ref41113">просачивающимся</a>
+        и <a href="#ref41114">отменяемым</a>. Аргумент <tt>view</tt> задает окно отображения документа, аргумент <tt>detail</tt>&nbsp;— количество щелчков мыши,
+        а остальные аргументы задают значения одноименных свойств события.</p>
+
+      <h4><a name="mouseevents">Типы событий мыши</a></h4>
+
+      <p>DOM 2 определяет следующие типы событий мыши:</p>
+
+      <dl>
+        <dt><strong><a name="eclick">click</a></strong></dt>
+        <dd>Это
+событие генерируется при щелчке мышью на элементе. Щелчок определяется
+как нажатие и отпускание кнопки мыши на одной и той же точке экрана.
+Соответствующая последовательность генерируемых событий: <strong>mousedown</strong>, <strong>mouseup</strong>, <strong>click</strong>.
+          При двойном или множественном щелчке в одной точке количество щелчков заносится в свойство события <tt><a href="#pdetail">detail</a></tt>.
+          Это событие применимо к большинству элементов.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>true</strong>;</li>
+            <li>контекст: <tt>screenX</tt>, <tt>screenY</tt>, <tt>clientX</tt>, <tt>clientY</tt>, <tt>altKey</tt>, <tt>ctrlKey</tt>, <tt>shiftKey</tt>, <tt>metaKey</tt>, <tt>button</tt>, <tt>detail</tt>.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="emousedown">mousedown</a></strong></dt>
+        <dd>Это событие генерируется при нажатии кнопки мыши на элементе. Это событие применимо к большинству элементов.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>true</strong>;</li>
+            <li>контекст: <tt>screenX</tt>, <tt>screenY</tt>, <tt>clientX</tt>, <tt>clientY</tt>, <tt>altKey</tt>, <tt>ctrlKey</tt>, <tt>shiftKey</tt>, <tt>metaKey</tt>, <tt>button</tt>, <tt>detail</tt>.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="emouseup">mouseup</a></strong></dt>
+        <dd>Это событие генерируется при отпускании кнопки мыши на элементе. Это событие применимо к большинству элементов.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>true</strong>;</li>
+            <li>контекст: <tt>screenX</tt>, <tt>screenY</tt>, <tt>clientX</tt>, <tt>clientY</tt>, <tt>altKey</tt>, <tt>ctrlKey</tt>, <tt>shiftKey</tt>, <tt>metaKey</tt>, <tt>button</tt>, <tt>detail</tt>.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="emouseover">mouseover</a></strong></dt>
+        <dd>Это событие генерируется при попадании курсора мыши на элемент. Это событие применимо к большинству элементов.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>true</strong>;</li>
+            <li>контекст: <tt>screenX</tt>, <tt>screenY</tt>, <tt>clientX</tt>, <tt>clientY</tt>, <tt>altKey</tt>, <tt>ctrlKey</tt>, <tt>shiftKey</tt>, <tt>metaKey</tt>,
+            <tt>relatedTarget</tt> (элемент, который курсор мыши покинул).</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="emouseout">mouseout</a></strong></dt>
+        <dd>Это событие генерируется при покидании курсором мыши элемента. Это событие применимо к большинству элементов.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>true</strong>;</li>
+            <li>контекст: <tt>screenX</tt>, <tt>screenY</tt>, <tt>clientX</tt>, <tt>clientY</tt>, <tt>altKey</tt>, <tt>ctrlKey</tt>, <tt>shiftKey</tt>, <tt>metaKey</tt>,
+            <tt>relatedTarget</tt> (элемент, на который курсор мыши попал).</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="emousemove">mousemove</a></strong></dt>
+        <dd>Это событие генерируется при движении курсора мыши по элементу. Это событие применимо к большинству элементов.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: <tt>screenX</tt>, <tt>screenY</tt>, <tt>clientX</tt>, <tt>clientY</tt>, <tt>altKey</tt>, <tt>ctrlKey</tt>, <tt>shiftKey</tt>, <tt>metaKey</tt>.</li>
+          </ul>
+        </dd>
+      </dl>
+
+      <h3><a name="ref4118">4.11.8. События клавиатуры: интерфейс KeyEvent</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Нестандартная.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Нестандартная.</pre>
+
+      <p>Интерфейс <tt>KeyEvent</tt> является производным от интерфейса <tt><a href="#ref4116">UIEvent</a></tt> и содержит
+        дополнительную информацию о событиях, генерируемых клавиатурой. DOM 2 не содержит спецификации этого интерфейса, она
+        будет включена в DOM 3. Поэтому здесь мы приводим описание реализации интерфейса <tt>KeyEvent</tt> в Gecko (см.
+        <a href="http://www.mozilla.org/editor/key-event-spec.html" target="_blank">"Key Events in SeaMonkey"</a>).</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса KeyEvent</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#paltkey">altKey</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Состояние клавиши Alt.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcharcode">charCode</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Код Unicode клавиши.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pctrlkey">ctrlKey</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Состояние клавиши Ctrl.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pkeycode">keyCode</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Виртуальный код клавиши.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pmetakey">metaKey</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Состояние клавиши Meta.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pshiftkey">shiftKey</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Состояние клавиши Shift.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hcharcode">Свойство charCode</a></h4>
+
+<pre class="syntax"><strong><a name="pcharcode">Синтаксис</a></strong>:  <em>событие</em>.charCode
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>charCode</strong> действительно только для события <strong>keypress</strong>. Если нажатая клавиша
+        соответствует символу Unicode, то данное свойство возвращает код этого символа. Если же клавиша является служебной
+        или событие отлично от <strong>keypress</strong>, то возвращается 0.</p>
+
+      <h4><a name="hkeycode">Свойство keyCode</a></h4>
+
+<pre class="syntax"><strong><a name="pkeycode">Синтаксис</a></strong>:  <em>событие</em>.keyCode
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Нестандартная.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>keyCode</strong> возвращает виртуальный код клавищи, вызвавшей событие, или 0, если <tt><a href="#pcharcode">charCode</a></tt> не равно нулю.
+        Список виртуальных кодов клавиш содержится в <a href="http://wdh.suncloud.ru/keycodes.htm#table181a">Таблице П18.1</a>.</p>
+
+      <h4><a name="keyevents">Типы событий клавиатуры</a></h4>
+
+      <p>Клавиатура всегда генерирует три отдельных события: <strong>keydown</strong> (нажатие клавиши), <strong>keypress</strong> (удержание нажатой клавиши)
+        и <strong>keyup</strong> (отпускание клавиши). Длительное нажатие клавиши приводит к тому, что событие <strong>keypress</strong> генерируется многократно.</p>
+
+      <dl>
+        <dt><strong><a name="ekeydown">keydown</a></strong></dt>
+        <dd>Генерируется при нажатии клавиши. Виртуальный код клавиши заносится в <tt>keyCode</tt>, <tt>charCode</tt> обнуляется.
+          Это событие применимо к большинству элементов.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>true</strong>;</li>
+            <li>контекст: <tt>altKey</tt>, <tt>ctrlKey</tt>, <tt>shiftKey</tt>, <tt>metaKey</tt>, <tt>keyCode</tt>.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="ekeypress">keypress</a></strong></dt>
+        <dd>Генерируется при удержании нажатой клавиши. Свойства <tt>keyCode</tt> и <tt>charCode</tt> формируются как описано выше.
+          Это событие применимо к большинству элементов.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>true</strong>;</li>
+            <li>контекст: <tt>altKey</tt>, <tt>ctrlKey</tt>, <tt>shiftKey</tt>, <tt>metaKey</tt>, <tt>keyCode</tt>, <tt>charCode</tt>.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="ekeyup">keyup</a></strong></dt>
+        <dd>Генерируется при отпускании клавиши. Виртуальный код клавиши заносится в <tt>keyCode</tt>, <tt>charCode</tt> обнуляется.
+          Это событие применимо к большинству элементов.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>true</strong>;</li>
+            <li>контекст: <tt>altKey</tt>, <tt>ctrlKey</tt>, <tt>shiftKey</tt>, <tt>metaKey</tt>, <tt>keyCode</tt>.</li>
+          </ul>
+        </dd>
+      </dl>
+
+      <h3><a name="ref4119">4.11.9. События изменения документа: интерфейс MutationEvent</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Интерфейс <tt>MutationEvent</tt> является производным от интерфейса <tt><a href="#ref4115">Event</a></tt> и содержит
+        дополнительную информацию о событиях, порожденных изменением структуры документа.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса MutationEvent</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pattrchange">attrChange</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Тип изменения атрибута.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pattrname">attrName</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Название изменившегося атрибута.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pnewvalue">newValue</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Новое значение атрибута или текста.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pprevvalue">prevValue</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Старое значение атрибута или текста.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#prelatednode">relatedNode</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Вторичный узел, связанный с событием.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы интерфейса MutationEvent</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#minitmutationevent">initMutationEvent</a></tt></td>
+            <td>DOM 2</td>
+            <td>Инициализирует событие.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hattrchange">Свойство attrChange</a></h4>
+
+<pre class="syntax"><strong><a name="pattrchange">Синтаксис</a></strong>:  <em>событие</em>.attrChange
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>attrChange</strong> возвращает тип изменения атрибута для события <strong><a href="#edomattrmodified">DOMAttrModified</a></strong>.
+        Тип изменения атрибута задается целым числом в соответствии со следующей таблицей:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Название</th>
+            <th>Значение</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt>MODIFICATION</tt></td>
+            <td>1</td>
+            <td>Изменено значение атрибута.</td>
+          </tr>
+          <tr>
+            <td><tt>ADDITION</tt></td>
+            <td>2</td>
+            <td>Добавлен новый атрибут.</td>
+          </tr>
+          <tr>
+            <td><tt>REMOVAL</tt></td>
+            <td>3</td>
+            <td>Удален атрибут.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="hattrname">Свойство attrName</a></h4>
+
+<pre class="syntax"><strong><a name="pattrname">Синтаксис</a></strong>:  <em>событие</em>.attrName
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>attrName</strong> возвращает строку, содержащую название изменившегося атрибута для события <strong><a href="#edomattrmodified">DOMAttrModified</a></strong>.</p>
+
+      <h4><a name="hnewvalue">Свойство newValue</a></h4>
+
+<pre class="syntax"><strong><a name="pnewvalue">Синтаксис</a></strong>:  <em>событие</em>.newValue
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>newValue</strong> возвращает строку, содержащую новое значение узла <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref441">Attr</a></tt>
+        для события <strong><a href="#edomattrmodified">DOMAttrModified</a></strong> или новое значение узла <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref443">CharacterData</a></tt> для события
+        <strong><a href="#edomcharacterdatamodified">DOMCharacterDataModified</a></strong>.</p>
+
+      <h4><a name="hprevvalue">Свойство prevValue</a></h4>
+
+<pre class="syntax"><strong><a name="pprevvalue">Синтаксис</a></strong>:  <em>событие</em>.prevValue
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>prevValue</strong> возвращает строку, содержащую предыдущее значение узла <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref441">Attr</a></tt>
+        для события <strong><a href="#edomattrmodified">DOMAttrModified</a></strong> или предыдущее значение узла <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref443">CharacterData</a></tt> для события
+        <strong><a href="#edomcharacterdatamodified">DOMCharacterDataModified</a></strong>.</p>
+
+      <h4><a name="hrelatednode">Свойство relatedNode</a></h4>
+
+<pre class="syntax"><strong><a name="prelatednode">Синтаксис</a></strong>:  <em>событие</em>.relatedNode
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>relatedNode</strong> возвращает указатель на объект <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a></tt>,
+соответствующий вторичному узлу, связанному с данным событием. Какой
+именно узел является вторичным, зависит от события и описано ниже для
+каждого из событий.</p>
+
+      <h4><a name="hinitmutationevent">Метод initMutationEvent</a></h4>
+
+<pre class="syntax"><strong><a name="minitmutationevent">Синтаксис</a></strong>:  <em>узел</em>.initMutationEvent(eventType, canBubble, isCancelable, relatedNode,
+                                   prevValue, newValue, attrName, attrChange)
+<strong>Аргументы</strong>:  eventType, prevValue, newValue, attrName&nbsp;— выражения типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+            canBubble, isCancelable&nbsp;— логические выражения
+            relatedNode&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a>
+            attrChange&nbsp;— числовое выражение</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>initMutationEvent</strong> используется для инициализации параметров события изменения документа, созданного методом
+        <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#mcreateevent">createEvent</a></tt>. Он должен вызываться до того, как данное событие будет сгенерировано методом
+        <tt><a href="#mdispatchevent">dispatchEvent</a></tt>, и изменяет только те параметры события, которые задаются его аргументами. Аргумент <tt>eventType</tt>
+        задает название данного события в формате <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt>; это название должно быть <a href="http://wdh.suncloud.ru/xml01.htm#ref8134">именем языка XML</a>.
+        Аргументы <tt>canBubble</tt> и <tt>isCancelable</tt> указывают соответственно, является ли данное событие <a href="#ref41113">просачивающимся</a>
+        и <a href="#ref41114">отменяемым</a>. Остальные аргументы задают значения одноименных свойств события.</p>
+
+      <h4><a name="mutationvents">Типы событий изменения документа</a></h4>
+
+      <p>DOM 2 определяет следующие типы событий изменения документа (которые обозревателями пока не поддерживаются):</p>
+
+      <dl>
+        <dt><strong><a name="edomsubtreemodified">DOMSubtreeModified</a></strong></dt>
+        <dd>Это
+событие носит общий характер и может использоваться вместо конкретных
+событий, описанных далее. В зависимости от реализации оно может
+генерироваться либо после каждой модификации документа, либо после
+группы взаимосвязанных изменений. Целью этого события является
+наименьший общий предок узлов, подвергшихся модификации. <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="edomnodeinserted">DOMNodeInserted</a></strong></dt>
+        <dd>Это событие генерируется после добавления нового узла в дерево документа. Его целью является новый узел.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: <tt>relatedNode</tt> указывает на отца нового узла.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="edomnodeinsertedintodocument">DOMNodeInsertedIntoDocument</a></strong></dt>
+        <dd>Это событие генерируется после добавления нового узла в дерево документа либо непосредственной вставкой, либо
+          вставкой поддерева, содержащего данный узел. При непосредственном добавлении узла перед этим событием генерируется
+          <strong>DOMNodeInserted</strong>. Целью является новый узел.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>false</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="edomnoderemoved">DOMNodeRemoved</a></strong></dt>
+        <dd>Это событие генерируется перед удалением узла из дерева документа. Его целью является удаляемый узел.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: <tt>relatedNode</tt> указывает на отца удаляемого узла.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="edomnoderemovedfromdocument">DOMNodeRemovedFromDocument</a></strong></dt>
+        <dd>Это событие генерируется перед удалением узла из дерева документа либо непосредственным удалением, либо
+          удалением поддерева, содержащего данный узел. При непосредственном удалении узла перед этим событием генерируется
+          <strong>DOMNodeRemoved</strong>. Целью является удаляемый узел.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>false</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="edomattrmodified">DOMAttrModified</a></strong></dt>
+        <dd>Это событие генерируется при изменении атрибутов узла. Его целью является <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a></tt>,
+          чьи атрибуты изменились; <tt>relatedNode</tt> указывает на сооветствующий объект <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref441">Attr</a></tt>.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: <tt>relatedNode</tt>, <tt>prevValue</tt>, <tt>newValue</tt>, <tt>attrName</tt>, <tt>attrChange</tt>.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="edomcharacterdatamodified">DOMCharacterDataModified</a></strong></dt>
+        <dd>Это событие генерируется при изменении текстового содержимого узла. Его целью является изменившийся  объект
+        <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref443">CharacterData</a></tt>.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: <tt>prevValue</tt>, <tt>newValue</tt>.</li>
+          </ul>
+        </dd>
+      </dl>
+
+      <h3><a name="ref41110">4.11.10. События HTML</a></h3>
+
+      <p>DOM 2 поддерживает следующие события HTML 4.0:</p>
+
+      <dl>
+        <dt><strong><a name="eload">load</a></strong></dt>
+        <dd>Это событие генерируется по завершении загрузки документа, всех фреймов в <strong><a href="http://wdh.suncloud.ru/html07.htm#eframeset">FRAMESET</a></strong>
+          или элемента <strong><a href="http://wdh.suncloud.ru/html06.htm#eobject">OBJECT</a></strong>.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>false</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="eunload">unload</a></strong></dt>
+        <dd>Это событие генерируется по завершении выгрузки документа из окна или фрейма. Оно применимо
+          к элементам <strong><a href="http://wdh.suncloud.ru/html02.htm#ebody">BODY</a></strong> и <strong><a href="http://wdh.suncloud.ru/html07.htm#eframeset">FRAMESET</a></strong>.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>false</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="eabort">abort</a></strong></dt>
+        <dd>Это событие происходит, если загрузка страницы была прервана до завершения загрузки графического образа.
+          Оно применимо к элементу <strong><a href="http://wdh.suncloud.ru/html06.htm#eobject">OBJECT</a></strong>.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="eerror">error</a></strong></dt>
+        <dd>Это событие происходит, если произошла ошибка при загрузке графического образа или при
+          выполнении сценария. Оно применимо к элементам <strong><a href="http://wdh.suncloud.ru/html06.htm#eobject">OBJECT</a></strong>,
+          <strong><a href="http://wdh.suncloud.ru/html02.htm#ebody">BODY</a></strong> и <strong><a href="http://wdh.suncloud.ru/html07.htm#eframeset">FRAMESET</a></strong>.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="eselect">select</a></strong></dt>
+        <dd>Это событие происходит, когда пользователь выделяет текст в текстовом поле. Оно применимо к элементам <strong><a href="http://wdh.suncloud.ru/html08.htm#einput">INPUT</a></strong>
+          и <strong><a href="http://wdh.suncloud.ru/html08.htm#etextarea">TEXTAREA</a></strong>.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="echange">change</a></strong></dt>
+        <dd>Это событие происходит, когда управляющий элемент формы теряет фокус и его значение изменилось после получения им фокуса.
+          Оно применимо к элементам <strong><a href="http://wdh.suncloud.ru/html08.htm#einput">INPUT</a></strong>, <strong><a href="http://wdh.suncloud.ru/html08.htm#eselect">SELECT</a></strong>
+          и <strong><a href="http://wdh.suncloud.ru/html08.htm#etextarea">TEXTAREA</a></strong>.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="esubmit">submit</a></strong></dt>
+        <dd>Это событие происходит при пересылке формы. Оно применимо только к элементу <strong><a href="http://wdh.suncloud.ru/html08.htm#eform">FORM</a></strong>.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>true</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="ereset">reset</a></strong></dt>
+        <dd>Это событие происходит при инициализации формы. Оно применимо только к элементу <strong><a href="http://wdh.suncloud.ru/html08.htm#eform">FORM</a></strong>.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="efocus">focus</a></strong></dt>
+        <dd>Это событие происходит, когда управляющий элемент формы получает фокус. Оно применимо к элементам <strong><a href="http://wdh.suncloud.ru/html08.htm#einput">INPUT</a></strong>,
+          <strong><a href="http://wdh.suncloud.ru/html08.htm#eselect">SELECT</a></strong>, <strong><a href="http://wdh.suncloud.ru/html08.htm#etextarea">TEXTAREA</a></strong>, <strong><a href="http://wdh.suncloud.ru/html08.htm#ebutton">BUTTON</a></strong>
+          и <strong><a href="http://wdh.suncloud.ru/html08.htm#elabel">LABEL</a></strong>.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>false</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="eblur">blur</a></strong></dt>
+        <dd>Это событие происходит, когда управляющий элемент формы теряет фокус. Оно применимо к элементам <strong><a href="http://wdh.suncloud.ru/html08.htm#einput">INPUT</a></strong>,
+          <strong><a href="http://wdh.suncloud.ru/html08.htm#eselect">SELECT</a></strong>, <strong><a href="http://wdh.suncloud.ru/html08.htm#etextarea">TEXTAREA</a></strong>, <strong><a href="http://wdh.suncloud.ru/html08.htm#ebutton">BUTTON</a></strong>
+          и <strong><a href="http://wdh.suncloud.ru/html08.htm#elabel">LABEL</a></strong>.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>false</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="eresize">resize</a></strong></dt>
+        <dd>Это событие происходит при изменении размеров окна обозревателя.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="escroll">scroll</a></strong></dt>
+        <dd>Это событие происходит при прокрутке окна обозревателя.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+      </dl>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml10.htm"><img name="imgleftb" src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/nnleft.gif" alt="" title="Динамическое управление стилями" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml12.htm"><img name="imgrightb" src="4.11.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20DOM_files/nnright.gif" alt="" title="Обработка событий в Internet Explorer" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

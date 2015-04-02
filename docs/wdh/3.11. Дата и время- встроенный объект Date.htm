@@ -1,0 +1,2563 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 14">
+<meta name=Originator content="Microsoft Word 14">
+<link rel=File-List
+href="3.11.%20Дата%20и%20время-%20встроенный%20объект%20Date.files/filelist.xml">
+<link rel=Edit-Time-Data
+href="3.11.%20Дата%20и%20время-%20встроенный%20объект%20Date.files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>WDH: JavaScript - Дата и время: встроенный объект Date</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>elenab</o:Author>
+  <o:Template>B1D95AA2.dotm</o:Template>
+  <o:LastAuthor>elenab</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>0</o:TotalTime>
+  <o:Created>2012-02-29T09:24:00Z</o:Created>
+  <o:LastSaved>2012-02-29T09:24:00Z</o:LastSaved>
+  <o:Pages>10</o:Pages>
+  <o:Words>5659</o:Words>
+  <o:Characters>32260</o:Characters>
+  <o:Company>FST SPbSPU ISMI</o:Company>
+  <o:Lines>268</o:Lines>
+  <o:Paragraphs>75</o:Paragraphs>
+  <o:CharactersWithSpaces>37844</o:CharactersWithSpaces>
+  <o:Version>14.00</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:AllowPNG/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+<link rel=themeData
+href="3.11.%20Дата%20и%20время-%20встроенный%20объект%20Date.files/themedata.thmx">
+<link rel=colorSchemeMapping
+href="3.11.%20Дата%20и%20время-%20встроенный%20объект%20Date.files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>RU</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SplitPgBreakAndParaMark/>
+  </w:Compatibility>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">
+  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<link rel=Stylesheet type="text/css" media=all
+href="3.11.%20%25C4%25E0%25F2%25E0%20%25E8%20%25E2%25F0%25E5%25EC%25FF-%20%25E2%25F1%25F2%25F0%25EE%25E5%25ED%25ED%25FB%25E9%20%25EE%25E1%25FA%25E5%25EA%25F2%20Date_files/nn5.css">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:204;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520081665 -1073717157 41 0 66047 0;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:auto;
+	mso-font-signature:0 0 0 0 0 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+h2
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Заголовок 2 Знак";
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	font-weight:bold;}
+h4
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Заголовок 4 Знак";
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:4;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	font-weight:bold;}
+p
+	{mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+pre
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Стандартный HTML Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+samp
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+tt
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Текст выноски Знак";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+span.2
+	{mso-style-name:"Заголовок 2 Знак";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Заголовок 2";
+	mso-ansi-font-size:13.0pt;
+	mso-bidi-font-size:13.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;}
+span.HTML
+	{mso-style-name:"Стандартный HTML Знак";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Стандартный HTML";
+	font-family:"Consolas","serif";
+	mso-ascii-font-family:Consolas;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Consolas;}
+span.4
+	{mso-style-name:"Заголовок 4 Знак";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Заголовок 4";
+	mso-ansi-font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;
+	font-style:italic;}
+p.noindent, li.noindent, div.noindent
+	{mso-style-name:noindent;
+	mso-style-unhide:no;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+span.a
+	{mso-style-name:"Текст выноски Знак";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Текст выноски";
+	mso-ansi-font-size:8.0pt;
+	mso-bidi-font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-ascii-font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Tahoma;
+	mso-bidi-font-family:Tahoma;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 42.5pt 2.0cm 3.0cm;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:853617503;
+	mso-list-template-ids:527073536;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l0:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l0:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l0:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l0:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l0:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l0:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l0:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l1
+	{mso-list-id:1432776136;
+	mso-list-template-ids:-1605470238;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l1:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l1:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l1:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l1:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l1:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l1:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l1:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l1:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Обычная таблица";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+</style>
+<![endif]-->
+<meta name=Author content="Юрий Лукач">
+<meta name=Description
+content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name=Keywords
+content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML">
+<link rel=Prev href="http://wdh.suncloud.ru/js10.htm"
+title="Массивы: встроенный объект Array">
+<link rel=Next href="http://wdh.suncloud.ru/js12.htm"
+title="Встроенные объекты Error, Math и RegExp">
+<link rel=Copyright href="http://wdh.suncloud.ru/cpyright.htm"
+title="Сведения об авторских правах">
+<link rev=Made href="mailto:yury@suncloud.ru" title="Обратная связь">
+
+<script  type="text/javascript" src="3.11.%20%C4%E0%F2%E0%20%E8%20%E2%F0%E5%EC%FF-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20Date_files/load.js">
+</script>
+
+<script  type="text/javascript" src="3.11.%20%C4%E0%F2%E0%20%E8%20%E2%F0%E5%EC%FF-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20Date_files/link.js">
+</script>
+<!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1026"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=RU link=blue vlink=purple style='tab-interval:35.4pt'
+onload="initDoc(); addBanner(true);">
+
+<div class=WordSection1>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:0cm;mso-yfti-tbllook:1184;mso-padding-alt:
+ 0cm 0cm 0cm 0cm'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td style='padding:0cm 0cm 0cm 0cm'>
+  <div id=divHeader>
+  <p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'><span
+  style='font-family:"Arial","sans-serif";color:#0000CC'>Ю. Лукач «Справочник
+  Веб-разработчика»<o:p></o:p></span></p>
+  <div class=MsoNormal align=center style='text-align:center'><span
+  style='mso-fareast-font-family:"Times New Roman"'>
+  <hr size=2 width="100%" align=center>
+  </span></div>
+  <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width="100%"
+   style='width:100.0%;mso-cellspacing:0cm;mso-yfti-tbllook:1184;mso-padding-alt:
+   0cm 0cm 0cm 0cm' height=24>
+   <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+    <td width="33%" style='width:33.0%;padding:0cm 0cm 0cm 0cm'>
+    <p class=MsoNormal><a href="http://wdh.suncloud.ru/js10.htm"><span
+    style='mso-fareast-font-family:"Times New Roman";mso-no-proof:yes;
+    text-decoration:none;text-underline:none'><img border=0 width=32 height=32
+    id="_x0000_i1046"
+    src="3.11.%20%25C4%25E0%25F2%25E0%20%25E8%20%25E2%25F0%25E5%25EC%25FF-%20%25E2%25F1%25F2%25F0%25EE%25E5%25ED%25ED%25FB%25E9%20%25EE%25E1%25FA%25E5%25EA%25F2%20Date_files/nnleft.gif"
+    alt="Описание: Z:\IT Курсы\DEV-P11. Динамический HTML и JavaScript\docs\wdh\3.11. %C4%E0%F2%E0 %E8 %E2%F0%E5%EC%FF- %E2%F1%F2%F0%EE%E5%ED%ED%FB%E9 %EE%E1%FA%E5%EA%F2 Date_files\nnleft.gif"></span></a><span
+    style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
+    </td>
+    <td width="34%" style='width:34.0%;padding:0cm 0cm 0cm 0cm'>
+    <p class=MsoNormal align=center style='text-align:center'><a
+    href="http://wdh.suncloud.ru/contents.htm"><span style='mso-fareast-font-family:
+    "Times New Roman";mso-no-proof:yes;text-decoration:none;text-underline:
+    none'><img border=0 width=32 height=32 id="_x0000_i1045"
+    src="3.11.%20%25C4%25E0%25F2%25E0%20%25E8%20%25E2%25F0%25E5%25EC%25FF-%20%25E2%25F1%25F2%25F0%25EE%25E5%25ED%25ED%25FB%25E9%20%25EE%25E1%25FA%25E5%25EA%25F2%20Date_files/nnup.gif"
+    alt="Описание: Z:\IT Курсы\DEV-P11. Динамический HTML и JavaScript\docs\wdh\3.11. %C4%E0%F2%E0 %E8 %E2%F0%E5%EC%FF- %E2%F1%F2%F0%EE%E5%ED%ED%FB%E9 %EE%E1%FA%E5%EA%F2 Date_files\nnup.gif"></span></a><span
+    style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
+    </td>
+    <td width="33%" style='width:33.0%;padding:0cm 0cm 0cm 0cm'>
+    <p class=MsoNormal align=right style='text-align:right'><a
+    href="http://wdh.suncloud.ru/js12.htm"><span style='mso-fareast-font-family:
+    "Times New Roman";mso-no-proof:yes;text-decoration:none;text-underline:
+    none'><img border=0 width=32 height=32 id="_x0000_i1044"
+    src="3.11.%20%25C4%25E0%25F2%25E0%20%25E8%20%25E2%25F0%25E5%25EC%25FF-%20%25E2%25F1%25F2%25F0%25EE%25E5%25ED%25ED%25FB%25E9%20%25EE%25E1%25FA%25E5%25EA%25F2%20Date_files/nnright.gif"
+    alt="Описание: Z:\IT Курсы\DEV-P11. Динамический HTML и JavaScript\docs\wdh\3.11. %C4%E0%F2%E0 %E8 %E2%F0%E5%EC%FF- %E2%F1%F2%F0%EE%E5%ED%ED%FB%E9 %EE%E1%FA%E5%EA%F2 Date_files\nnright.gif"></span></a><span
+    style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
+    </td>
+   </tr>
+  </table>
+  <div class=MsoNormal align=center style='text-align:center'><span
+  style='mso-fareast-font-family:"Times New Roman"'>
+  <hr size=2 width="100%" align=center>
+  </span></div>
+  </div>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td style='padding:0cm 0cm 0cm 0cm' id=tdBanner>
+  <div>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='mso-fareast-font-family:"Times New Roman"'><script  type="text/javascript">
+addBanner(false);
+  </script></span><a
+  href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=3838"
+  target="_blank"><span style='mso-fareast-font-family:"Times New Roman";
+  mso-no-proof:yes;text-decoration:none;text-underline:none'><img border=0
+  width=468 height=60 id="_x0000_i1043"
+  src="3.11.%20%25C4%25E0%25F2%25E0%20%25E8%20%25E2%25F0%25E5%25EC%25FF-%20%25E2%25F1%25F2%25F0%25EE%25E5%25ED%25ED%25FB%25E9%20%25EE%25E1%25FA%25E5%25EA%25F2%20Date_files/bb.gif"
+  alt="Описание: TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ"></span></a><span
+  style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
+  </div>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td style='padding:0cm 0cm 0cm 0cm'>
+  <h2><a name=ref311><span style='mso-fareast-font-family:"Times New Roman"'>Глава
+  3.11. Дата и время: встроенный объект Date</span></a><span style='mso-fareast-font-family:
+  "Times New Roman"'><o:p></o:p></span></h2>
+  <p><a name=basetime>Объект <strong>Date</strong> предназначен для манипуляций
+  с датами и временами. Его примитивным значением является число, равное
+  количеству миллисекунд относительно <em>базового времени</em></a>, равного
+  полуночи 1 января 1970 г. по Гринвичскому меридиану (UTC, Universal
+  Coordinated Time). Если это значение равно <a
+  href="http://wdh.suncloud.ru/js08.htm#pnan"><strong>NaN</strong></a>, то оно считается
+  неопределенным.</p>
+  <p>День состоит из 86400000 миллисекунд. Диапазон значений Date от -100000000
+  дней до 100000000 дней относительно базового времени, что приблизительно
+  равно 285616 лет в каждую сторону отсчета.</p>
+  <p>Для создания объектов Date используются следующие конструкторы:</p>
+  <pre><span lang=EN-US style='mso-ansi-language:EN-US'>new Date()<o:p></o:p></span></pre><pre><span
+  lang=EN-US style='mso-ansi-language:EN-US'>new Date(</span><em><span
+  style='font-family:"Courier New"'>число</span></em><span lang=EN-US
+  style='mso-ansi-language:EN-US'>)<o:p></o:p></span></pre><pre>new Date(<em><span
+  style='font-family:"Courier New"'>строка</span></em>)</pre><pre>new Date(<em><span
+  style='font-family:"Courier New"'>год</span></em>, <em><span
+  style='font-family:"Courier New"'>месяц</span></em>, <em><span
+  style='font-family:"Courier New"'>день</span></em> [,<em><span
+  style='font-family:"Courier New"'>часы</span></em> [,<em><span
+  style='font-family:"Courier New"'>минуты</span></em> [,<em><span
+  style='font-family:"Courier New"'>секунды</span></em> [,<em><span
+  style='font-family:"Courier New"'>мс</span></em>]?]?]?]?)</pre>
+  <p>Здесь: </p>
+  <ul type=disc>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l1 level1 lfo1;tab-stops:list 36.0pt'><em><span
+       style='mso-fareast-font-family:"Times New Roman"'>число</span></em><span
+       style='mso-fareast-font-family:"Times New Roman"'>&nbsp;— числовое
+       выражение, задающее примитивное значение объекта в миллисекундах;<o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l1 level1 lfo1;tab-stops:list 36.0pt'><em><span
+       style='mso-fareast-font-family:"Times New Roman"'>строка</span></em><span
+       style='mso-fareast-font-family:"Times New Roman"'>&nbsp;— строковое
+       выражение, задающее дату и время в формате, описанном в методе <a
+       href="#mparse"><strong>parse</strong></a>;<o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l1 level1 lfo1;tab-stops:list 36.0pt'><em><span
+       style='mso-fareast-font-family:"Times New Roman"'>год</span></em><span
+       style='mso-fareast-font-family:"Times New Roman"'>&nbsp;— числовое
+       выражение, задающее полный номер года (например, 1988, а не 88);<o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l1 level1 lfo1;tab-stops:list 36.0pt'><em><span
+       style='mso-fareast-font-family:"Times New Roman"'>месяц</span></em><span
+       style='mso-fareast-font-family:"Times New Roman"'>&nbsp;— числовое
+       выражение, задающее номер месяца (0 = январь, 1 = февраль, …, 11 =
+       декабрь);<o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l1 level1 lfo1;tab-stops:list 36.0pt'><em><span
+       style='mso-fareast-font-family:"Times New Roman"'>день</span></em><span
+       style='mso-fareast-font-family:"Times New Roman"'>&nbsp;— числовое
+       выражение, задающее номер для в месяце от 1 до 31;<o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l1 level1 lfo1;tab-stops:list 36.0pt'><em><span
+       style='mso-fareast-font-family:"Times New Roman"'>часы</span></em><span
+       style='mso-fareast-font-family:"Times New Roman"'>&nbsp;— необязательное
+       числовое выражение, задающее номер часа от 0 до 23;<o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l1 level1 lfo1;tab-stops:list 36.0pt'><em><span
+       style='mso-fareast-font-family:"Times New Roman"'>минуты</span></em><span
+       style='mso-fareast-font-family:"Times New Roman"'>&nbsp;— необязательное
+       числовое выражение, задающее номер минуты от 0 до 59;<o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l1 level1 lfo1;tab-stops:list 36.0pt'><em><span
+       style='mso-fareast-font-family:"Times New Roman"'>секунды</span></em><span
+       style='mso-fareast-font-family:"Times New Roman"'>&nbsp;— необязательное
+       числовое выражение, задающее номер секунды от 0 до 59;<o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l1 level1 lfo1;tab-stops:list 36.0pt'><em><span
+       style='mso-fareast-font-family:"Times New Roman"'>мс</span></em><span
+       style='mso-fareast-font-family:"Times New Roman"'>&nbsp;— необязательное
+       числовое выражение, задающее номер миллисекунды от 0 до 999.<o:p></o:p></span></li>
+  </ul>
+  <p>Первый конструктор создает объект <strong>Date</strong> с текущей датой и
+  временем по местному времени. Остальные конструкторы создают объект <strong>Date</strong>
+  с датой и временем, заданными аргументами конструктора.</p>
+  <p>Примеры:</p>
+  <div><pre>var a = new Date();<span style='mso-tab-count:2'>            </span><span style='mso-spacerun:yes'>           </span>// текущие дата и время</pre><pre>var b = new Date(&quot;May 21, 1958 10:15 AM&quot;); // заданные дата и время</pre><pre>var c = new Date(1958, 4, 21, 10, 15);<span style='mso-spacerun:yes'>  </span><span style='mso-spacerun:yes'>   </span>// то же самое в другом формате</pre></div>
+  <div>
+  <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+   style='mso-cellspacing:0cm;mso-yfti-tbllook:1184;mso-padding-alt:3.75pt 3.75pt 3.75pt 3.75pt'>
+   <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+    <td colspan=3 style='border:none;padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Свойства
+    объекта Date<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:1'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><b><span
+    style='mso-fareast-font-family:"Times New Roman"'>Свойство<o:p></o:p></span></b></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><b><span
+    style='mso-fareast-font-family:"Times New Roman"'>Описание<o:p></o:p></span></b></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><b><span
+    style='mso-fareast-font-family:"Times New Roman"'>Член прототипа<o:p></o:p></span></b></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:2'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="http://wdh.suncloud.ru/js08.htm#pconstructor"><tt><span
+    style='font-size:10.0pt'>constructor</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Конструктор,
+    который создал объект.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:3;mso-yfti-lastrow:yes'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="http://wdh.suncloud.ru/js08.htm#pprototype"><tt><span
+    style='font-size:10.0pt'>prototype</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Ссылка
+    на прототип класса объектов.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Нет<o:p></o:p></span></p>
+    </td>
+   </tr>
+  </table>
+  <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman";
+  display:none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+  <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+   style='mso-cellspacing:0cm;mso-yfti-tbllook:1184;mso-padding-alt:3.75pt 3.75pt 3.75pt 3.75pt'>
+   <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+    <td colspan=3 style='border:none;padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Методы
+    объекта Date<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:1'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><b><span
+    style='mso-fareast-font-family:"Times New Roman"'>Метод<o:p></o:p></span></b></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><b><span
+    style='mso-fareast-font-family:"Times New Roman"'>Описание<o:p></o:p></span></b></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><b><span
+    style='mso-fareast-font-family:"Times New Roman"'>Член прототипа<o:p></o:p></span></b></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:2'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mgetdate"><tt><span style='font-size:10.0pt'>getDate</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    день месяца по местному времени.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:3'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mgetday"><tt><span style='font-size:10.0pt'>getDay</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    день недели по местному времени.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:4'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mgetfullyear"><tt><span style='font-size:10.0pt'>getFullYear</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    полный номер года по местному времени.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:5'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mgethours"><tt><span style='font-size:10.0pt'>getHours</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    часы по местному времени.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:6'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mgetmilliseconds"><tt><span style='font-size:10.0pt'>getMilliseconds</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    миллисекунды по местному времени.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:7'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mgetminutes"><tt><span style='font-size:10.0pt'>getMinutes</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    минуты по местному времени.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:8'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mgetmonth"><tt><span style='font-size:10.0pt'>getMonth</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    месяц по местному времени.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:9'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mgetseconds"><tt><span style='font-size:10.0pt'>getSeconds</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    секунды по местному времени.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:10'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mgettime"><tt><span style='font-size:10.0pt'>getTime</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    примитивное значение объекта.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:11'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mgettimezoneoffset"><tt><span style='font-size:10.0pt'>getTimezoneOffset</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    разницу в минутах между местным временем и UTC.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:12'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mgetutcdate"><tt><span style='font-size:10.0pt'>getUTCDate</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    день месяца по времени UTC.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:13'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mgetutcday"><tt><span style='font-size:10.0pt'>getUTCDay</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    день недели по времени UTC.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:14'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mgetutcfullyear"><tt><span style='font-size:10.0pt'>getUTCFullYear</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    полный номер года по времени UTC.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:15'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mgetutchours"><tt><span style='font-size:10.0pt'>getUTCHours</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    часы по времени UTC.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:16'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mgetutcmilliseconds"><tt><span style='font-size:10.0pt'>getUTCMilliseconds</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    миллисекунды по времени UTC.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:17'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mgetutcminutes"><tt><span style='font-size:10.0pt'>getUTCMinutes</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    минуты по времени UTC.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:18'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mgetutcmonth"><tt><span style='font-size:10.0pt'>getUTCMonth</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    месяц по времени UTC.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:19'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mgetutcseconds"><tt><span style='font-size:10.0pt'>getUTCSeconds</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    секунды по времени UTC.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:20'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><tt><span style='font-size:10.0pt'><a href="#mgetvardate">getVarDate</a></span></tt><span
+    style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    примитивное значение объекта в формате VT_DATE.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Нет<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:21'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mgetyear"><tt><span style='font-size:10.0pt'>getYear</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    номер года по местному времени.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:22'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mparse"><tt><span style='font-size:10.0pt'>parse</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Преобразует
+    дату, заданную строкой, в количество миллисекунд относительно базового
+    времени.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Нет<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:23'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#msetdate"><tt><span style='font-size:10.0pt'>setDate</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Устанавливает
+    день месяца по местному времени.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:24'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#msetfullyear"><tt><span style='font-size:10.0pt'>setFullYear</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Устанавливает
+    полный номер года по местному времени.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:25'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#msethours"><tt><span style='font-size:10.0pt'>setHours</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Устанавливает
+    часы по местному времени.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:26'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#msetmilliseconds"><tt><span style='font-size:10.0pt'>setMilliseconds</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Устанавливает
+    миллисекунды по местному времени.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:27'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#msetminutes"><tt><span style='font-size:10.0pt'>setMinutes</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Устанавливает
+    минуты по местному времени.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:28'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#msetmonth"><tt><span style='font-size:10.0pt'>setMonth</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Устанавливает
+    месяц по местному времени.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:29'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#msetseconds"><tt><span style='font-size:10.0pt'>setSeconds</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Устанавливает
+    секунды по местному времени.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:30'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#msettime"><tt><span style='font-size:10.0pt'>setTime</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Устанавливает
+    примитивное значение объекта.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:31'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#msetutcdate"><tt><span style='font-size:10.0pt'>setUTCDate</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Устанавливает
+    день месяца по времени UTC.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:32'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#msetutcfullyear"><tt><span style='font-size:10.0pt'>setUTCFullYear</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Устанавливает
+    полный номер года по времени UTC.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:33'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#msetutchours"><tt><span style='font-size:10.0pt'>setUTCHours</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Устанавливает
+    часы по времени UTC.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:34'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#msetutcmilliseconds"><tt><span style='font-size:10.0pt'>setUTCMilliseconds</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Устанавливает
+    миллисекунды по времени UTC.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:35'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#msetutcminutes"><tt><span style='font-size:10.0pt'>setUTCMinutes</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Устанавливает
+    минуты по времени UTC.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:36'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#msetutcmonth"><tt><span style='font-size:10.0pt'>setUTCMonth</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Устанавливает
+    месяц по времени UTC.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:37'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#msetutcseconds"><tt><span style='font-size:10.0pt'>setUTCSeconds</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Устанавливает
+    секунды по времени UTC.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:38'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#msetyear"><tt><span style='font-size:10.0pt'>setYear</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Устанавливает
+    номер года по местному времени.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:39'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mtodatestring"><tt><span style='font-size:10.0pt'>toDateString</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Преобразует
+    примитивное значение объекта в строку даты.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:40'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mtogmtstring"><tt><span style='font-size:10.0pt'>toGMTString</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Преобразует
+    примитивное значение объекта в строку даты и времени по Гринвичскому
+    меридиану.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:41'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mtolocaledatestring"><tt><span style='font-size:10.0pt'>toLocaleDateString</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Преобразует
+    примитивное значение объекта в строку даты в формате операционной системы.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:42'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mdate-tolocalestring"><tt><span style='font-size:10.0pt'>toLocaleString</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Преобразует
+    примитивное значение объекта в строку даты и времени в формате операционной
+    системы.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:43'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mtolocaletimestring"><tt><span style='font-size:10.0pt'>toLocaleTimeString</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Преобразует
+    примитивное значение объекта в строку времени в формате операционной
+    системы.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:44'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mdate-tostring"><tt><span style='font-size:10.0pt'>toString</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Преобразует
+    примитивное значение объекта в строку.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:45'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mtotimestring"><tt><span style='font-size:10.0pt'>toTimeString</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Преобразует
+    примитивное значение объекта в строку времени.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:46'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mtoutcstring"><tt><span style='font-size:10.0pt'>toUTCString</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Преобразует
+    примитивное значение объекта в строку даты и времени по UTC.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:47'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mutc"><tt><span style='font-size:10.0pt'>UTC</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    примитивное значение объекта по времени UTC.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Нет<o:p></o:p></span></p>
+    </td>
+   </tr>
+   <tr style='mso-yfti-irow:48;mso-yfti-lastrow:yes'>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><a
+    href="#mdate-valueof"><tt><span style='font-size:10.0pt'>valueOf</span></tt></a><o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'>Возвращает
+    примитивное значение объекта.<o:p></o:p></span></p>
+    </td>
+    <td style='padding:3.75pt 3.75pt 3.75pt 3.75pt'>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='mso-fareast-font-family:"Times New Roman"'>Да<o:p></o:p></span></p>
+    </td>
+   </tr>
+  </table>
+  </div>
+  <h4><a name=hgetdate><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  getDate</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mgetdate><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.getDate()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>getDate</strong> преобразует примитивное значение объекта <em>дата</em>
+  в номер дня месяца по местному времени и возвращает его. Результатом является
+  целое число в диапазоне от 1 до 31. Например, сценарий</p>
+  <div><pre>var xmas = new Date(&quot;December 25, 1999 23:59:59&quot;);</pre><pre>document.write(xmas.getDate());</pre></div>
+  <p class=noindent>выведет на экран обозревателя число <samp>25</samp>.</p>
+  <h4><a name=hgetday><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  getDay</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mgetday><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.getDay()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>getDay</strong> преобразует примитивное значение объекта <em>дата</em>
+  в номер дня недели по местному времени и возвращает его. Результатом является
+  целое число в диапазоне от 0 до 6:</p>
+  <p>0 = воскресенье, 1 = понедельник, 2 = вторник, 3 = среда, 4 = четверг, 5 =
+  пятница, 6 = суббота.</p>
+  <p>Например<span lang=EN-US style='mso-ansi-language:EN-US'>, </span>сценарий<span
+  lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+  <div><pre><span lang=EN-US style='mso-ansi-language:EN-US'>var xmas = new Date(&quot;December 25, 1999 23:59:59&quot;);<o:p></o:p></span></pre><pre>document.write(xmas.getDay());</pre></div>
+  <p class=noindent>выведет на экран обозревателя число <samp>6</samp>
+  (т.&nbsp;е. рождество в 1999 г. пришлось на субботу).</p>
+  <h4><a name=hgetfullyear><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  getFullYear</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mgetfullyear><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.getFullYear()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>getFullYear</strong> преобразует примитивное значение
+  объекта <em>дата</em> в полный (четырехзначный) номер года по местному
+  времени и возвращает его. Например<span lang=EN-US style='mso-ansi-language:
+  EN-US'>, </span>сценарий<span lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+  <div><pre><span lang=EN-US style='mso-ansi-language:EN-US'>var today = new Date();<o:p></o:p></span></pre><pre><span
+  lang=EN-US style='mso-ansi-language:EN-US'>document.write(today.getFullYear());<o:p></o:p></span></pre></div>
+  <p class=noindent>выведет на экран обозревателя число <samp>2000</samp>.</p>
+  <h4><a name=hgethours><span style='mso-fareast-font-family:"Times New Roman"'>Метод</span></a><span
+  style='mso-bookmark:hgethours'><span lang=EN-US style='mso-fareast-font-family:
+  "Times New Roman";mso-ansi-language:EN-US'> getHours</span></span><span
+  lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
+  EN-US'><o:p></o:p></span></h4>
+  <pre><a name=mgethours><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a><span
+  lang=EN-US style='mso-ansi-language:EN-US'>: </span><em><span
+  style='font-family:"Courier New"'>дата</span></em><span lang=EN-US
+  style='mso-ansi-language:EN-US'>.getHours()<o:p></o:p></span></pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>getHours</strong> преобразует примитивное значение объекта <em>дата</em>
+  в номер часа по местному времени и возвращает его. Результатом является целое
+  число в диапазоне от 0 до 23. Например, сценарий</p>
+  <div><pre>var xmas = new Date(&quot;December 25, 1999 23:59:59&quot;);</pre><pre>document.write(xmas.getHours());</pre></div>
+  <p class=noindent>выведет на экран обозревателя число <samp>23</samp>.</p>
+  <h4><a name=hgetmilliseconds><span style='mso-fareast-font-family:"Times New Roman"'>Метод</span></a><span
+  style='mso-bookmark:hgetmilliseconds'><span lang=EN-US style='mso-fareast-font-family:
+  "Times New Roman";mso-ansi-language:EN-US'> getMilliseconds</span></span><span
+  lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
+  EN-US'><o:p></o:p></span></h4>
+  <pre><a name=mgetmilliseconds><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a><span
+  lang=EN-US style='mso-ansi-language:EN-US'>: </span><em><span
+  style='font-family:"Courier New"'>дата</span></em><span lang=EN-US
+  style='mso-ansi-language:EN-US'>.getMilliseconds()<o:p></o:p></span></pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>getMilliseconds</strong> преобразует примитивное значение
+  объекта <em>дата</em> в микросекунды по местному времени и возвращает его.
+  Результатом является целое число в диапазоне от 0 до 999. Например, сценарий</p>
+  <div><pre>var xmas = new Date(&quot;December 25, 1999 23:59:59&quot;);</pre><pre>document.write(xmas.getMilliseconds());</pre></div>
+  <p class=noindent>выведет на экран обозревателя число <samp>0</samp>.</p>
+  <h4><a name=hgetminutes><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  getMinutes</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mgetminutes><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.getMinutes()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>getMinutes</strong> преобразует примитивное значение объекта
+  <em>дата</em> в минуты по местному времени и возвращает его. Результатом
+  является целое число в диапазоне от 0 до 59. Например, сценарий</p>
+  <div><pre>var xmas = new Date(&quot;December 25, 1999 23:59:59&quot;);</pre><pre>document.write(xmas.getMinutes());</pre></div>
+  <p class=noindent>выведет на экран обозревателя число <samp>59</samp>.</p>
+  <h4><a name=hgetmonth><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  getMonth</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mgetmonth><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.getMonth()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>getMonth</strong> преобразует примитивное значение объекта <em>дата</em>
+  в номер месяца по местному времени и возвращает его. Результатом является
+  целое число в диапазоне от 0 до 11: 0 = январь, 1 = февраль, 2 = март, 3 =
+  апрель, 4 = май, 5 = июнь, 6 = июль, 7 = август, 8 = сентябрь, 9 = октябрь,
+  10 = ноябрь, 11 = декабрь.</p>
+  <p>Например<span lang=EN-US style='mso-ansi-language:EN-US'>, </span>сценарий<span
+  lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+  <div><pre><span lang=EN-US style='mso-ansi-language:EN-US'>var xmas = new Date(&quot;December 25, 1999 23:59:59&quot;);<o:p></o:p></span></pre><pre>document.write(xmas.getMonth());</pre></div>
+  <p class=noindent>выведет на экран обозревателя число <samp>11</samp>.</p>
+  <h4><a name=hgetseconds><span style='mso-fareast-font-family:"Times New Roman"'>Метод</span></a><span
+  style='mso-bookmark:hgetseconds'><span lang=EN-US style='mso-fareast-font-family:
+  "Times New Roman";mso-ansi-language:EN-US'> getSeconds</span></span><span
+  lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
+  EN-US'><o:p></o:p></span></h4>
+  <pre><a name=mgetseconds><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a><span
+  lang=EN-US style='mso-ansi-language:EN-US'>: </span><em><span
+  style='font-family:"Courier New"'>дата</span></em><span lang=EN-US
+  style='mso-ansi-language:EN-US'>.getSeconds()<o:p></o:p></span></pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>getSeconds</strong> преобразует примитивное значение объекта
+  <em>дата</em> в секунды по местному времени и возвращает его. Результатом является
+  целое число в диапазоне от 0 до 59. Например, сценарий</p>
+  <div><pre>var xmas = new Date(&quot;December 25, 1999 23:59:59&quot;);</pre><pre>document.write(xmas.getSeconds());</pre></div>
+  <p class=noindent>выведет на экран обозревателя число <samp>59</samp>.</p>
+  <h4><a name=hgettime><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  getTime</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mgettime><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.getTime()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>getTime</strong> возвращает примитивное значение объекта <em>дата</em>.
+  Этот метод полезен для копирования значения одного объекта <strong>Date</strong>
+  в другой. Пример<span lang=EN-US style='mso-ansi-language:EN-US'>:<o:p></o:p></span></p>
+  <div><pre><span lang=EN-US style='mso-ansi-language:EN-US'>var d1 = new Date(&quot;May 21, 1958&quot;);<o:p></o:p></span></pre><pre><span
+  lang=EN-US style='mso-ansi-language:EN-US'>var d2 = new Date();<o:p></o:p></span></pre><pre>d2.SetTime(d1.<span
+  lang=EN-US style='mso-ansi-language:EN-US'>g</span>etTime());<span
+  style='mso-tab-count:1'>      </span>// теперь значения этих объектов равны</pre></div>
+  <h4><a name=hgettimezoneoffset><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  getTimezoneOffset</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mgettimezoneoffset><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.getTimezoneOffset()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>getTimezoneOffset</strong> возвращает разницу в минутах
+  между временем UTC и местным временем (т.&nbsp;е. временем компьютера, на
+  котором выполняется сценарий). Из-за переходов на летнее и зимнее время эта
+  разница в течение года может изменяться. Для перевода местного времени в UTC
+  следует <em>прибавить</em> к нему полученное значение.</p>
+  <p>Если, например, следующий сценарий</p>
+  <div><pre>var today = new Date();</pre><pre>document.write(today.getTimezoneOffset() / 60);</pre></div>
+  <p class=noindent>выполняется на компьютере, находящемся в Екатеринбурге, то
+  он выведет на экран обозревателя число <samp>-6</samp>. Это означает, что
+  время в Екатеринбурге на 6 часов <em>больше</em>, чем UTC.</p>
+  <h4><a name=hgetutcdate><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  getUTCDate</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mgetutcdate><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.getUTCDate()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>getUTCDate</strong> преобразует примитивное значение объекта
+  <em>дата</em> в номер дня месяца по времени UTC и возвращает его. Результатом
+  является целое число в диапазоне от 1 до 31. Например, сценарий</p>
+  <div><pre>var today = new Date();</pre><pre>document.write(today.getUTCDate());</pre></div>
+  <p class=noindent>выведет на экран обозревателя сегодняшний день месяца.</p>
+  <h4><a name=hgetutcday><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  getUTCDay</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mgetutcday><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.getUTCDay()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>getUTCDay</strong> преобразует примитивное значение объекта <em>дата</em>
+  в номер дня недели по времени UTC и возвращает его. Результатом является
+  целое число в диапазоне от 0 до 6:</p>
+  <p>0 = воскресенье, 1 = понедельник, 2 = вторник, 3 = среда, 4 = четверг, 5 =
+  пятница, 6 = суббота.</p>
+  <p>Например<span lang=EN-US style='mso-ansi-language:EN-US'>, </span>сценарий<span
+  lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+  <div><pre><span lang=EN-US style='mso-ansi-language:EN-US'>var today = new Date();<o:p></o:p></span></pre><pre>document.write(today.getUTCDay());</pre></div>
+  <p class=noindent>выведет на экран обозревателя сегодняшний день недели.</p>
+  <h4><a name=hgetutcfullyear><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  getUTCFullYear</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mgetutcfullyear><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.getUTCFullYear()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>getUTCFullYear</strong> преобразует примитивное значение
+  объекта <em>дата</em> в полный (четырехзначный) номер года по времени UTC и
+  возвращает его. Например<span lang=EN-US style='mso-ansi-language:EN-US'>, </span>сценарий<span
+  lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+  <div><pre><span lang=EN-US style='mso-ansi-language:EN-US'>var today = new Date();<o:p></o:p></span></pre><pre><span
+  lang=EN-US style='mso-ansi-language:EN-US'>document.write(today.getUTCFullYear());<o:p></o:p></span></pre></div>
+  <p class=noindent>выведет на экран обозревателя номер текущего года.</p>
+  <h4><a name=hgetutchours><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  getUTCHours</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mgetutchours><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.getHours()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>getUTCHours</strong> преобразует примитивное значение
+  объекта <em>дата</em> в номер часа по времени UTC и возвращает его.
+  Результатом является целое число в диапазоне от 0 до 23. Например, сценарий</p>
+  <div><pre>var today = new Date();</pre><pre>document.write(today.getUTCHours());</pre></div>
+  <p class=noindent>выведет на экран обозревателя текущее количество часов.</p>
+  <h4><a name=hgetutcmilliseconds><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  getUTCMilliseconds</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mgetutcmilliseconds><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.getUTCMilliseconds()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>getUTCMilliseconds</strong> преобразует примитивное значение
+  объекта <em>дата</em> в микросекунды по времени UTC и возвращает его.
+  Результатом является целое число в диапазоне от 0 до 999. Например, сценарий</p>
+  <div><pre>var today = new Date();</pre><pre>document.write(today.getUTCMilliseconds());</pre></div>
+  <p class=noindent>выведет на экран обозревателя текущее количество
+  миллисекунд.</p>
+  <h4><a name=hgetutcminutes><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  getUTCMinutes</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mgetutcminutes><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.getUTCMinutes()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>getUTCMinutes</strong> преобразует примитивное значение
+  объекта <em>дата</em> в минуты по времени UTC и возвращает его. Результатом
+  является целое число в диапазоне от 0 до 59. Например, сценарий</p>
+  <div><pre>var today = new Date();</pre><pre>document.write(today.getUTCMinutes());</pre></div>
+  <p class=noindent>выведет на экран обозревателя текущее количество минут.</p>
+  <h4><a name=hgetutcmonth><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  getUTCMonth</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mgetutcmonth><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.getUTCMonth()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>getUTCMonth</strong> преобразует примитивное значение
+  объекта <em>дата</em> в номер месяца по времени UTC и возвращает его.
+  Результатом является целое число в диапазоне от 0 до 11: 0 = январь, 1 =
+  февраль, 2 = март, 3 = апрель, 4 = май, 5 = июнь, 6 = июль, 7 = август, 8 =
+  сентябрь, 9 = октябрь, 10 = ноябрь, 11 = декабрь.</p>
+  <p>Например<span lang=EN-US style='mso-ansi-language:EN-US'>, </span>сценарий<span
+  lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+  <div><pre><span lang=EN-US style='mso-ansi-language:EN-US'>var today = new Date();<o:p></o:p></span></pre><pre>document.write(today.getUTCMonth());</pre></div>
+  <p class=noindent>выведет на экран обозревателя номер текущего месяца.</p>
+  <h4><a name=hgetutcseconds><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  getUTCSeconds</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mgetutcseconds><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.getSeconds()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>getUTCSeconds</strong> преобразует примитивное значение объекта
+  <em>дата</em> в секунды по времени UTC и возвращает его. Результатом является
+  целое число в диапазоне от 0 до 59. Например, сценарий</p>
+  <div><pre>var today = new Date();</pre><pre>document.write(today.getUTCSeconds());</pre></div>
+  <p class=noindent>выведет на экран обозревателя текущее количество секунд.</p>
+  <h4><a name=hgetvardate><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  getVarDate</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mgetvardate><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.getVarDate()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>getVarDate</strong> преобразует примитивное значение объекта
+  <em>дата</em> в формат VT_DATE и возвращает его. Результат зависит от
+  региональных настроек и не используется JavaScript. Поэтому этот метод
+  предназначен исключительно для взаимодействия с COM-объектами, объектами
+  ActiveX или с языками, которые используют формат даты VT_DATE (таковы,
+  например, Visual Basic и VBScript).</p>
+  <h4><a name=hgetyear><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  getYear</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mgetyear><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.getYear()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre><pre><strong><span
+  style='font-family:"Courier New"'>Поддержка</span></strong>: <span
+  style='mso-no-proof:yes'><img border=0 width=32 height=32 id="_x0000_i1042"
+  src="3.11.%20%25C4%25E0%25F2%25E0%20%25E8%20%25E2%25F0%25E5%25EC%25FF-%20%25E2%25F1%25F2%25F0%25EE%25E5%25ED%25ED%25FB%25E9%20%25EE%25E1%25FA%25E5%25EA%25F2%20Date_files/ie.gif"
+  alt="Описание: Internet Explorer"></span><span style='mso-spacerun:yes'> </span>Годы 1900-1999 возвращаются как 00-99; все остальные годы</pre><pre><span style='mso-spacerun:yes'>              </span>возвращаются четырехзначными числами.</pre><pre><span style='mso-spacerun:yes'>           </span><span
+  style='mso-no-proof:yes'><img border=0 width=32 height=32 id="_x0000_i1041"
+  src="3.11.%20%25C4%25E0%25F2%25E0%20%25E8%20%25E2%25F0%25E5%25EC%25FF-%20%25E2%25F1%25F2%25F0%25EE%25E5%25ED%25ED%25FB%25E9%20%25EE%25E1%25FA%25E5%25EA%25F2%20Date_files/nn.gif"
+  alt="Описание: Netscape Navigator"></span><span style='mso-spacerun:yes'> </span>Возвращается номер года минус 1900.</pre>
+  <p>Метод <strong>getYear</strong> преобразует примитивное значение объекта <em>дата</em>
+  в номер года по местному времени и возвращает его. Этот метод является
+  устаревшим и поддерживается только в целях совместимости; вместо него следует
+  пользоваться методом <a href="#mgetfullyear"><strong>getFullYear</strong></a>.</p>
+  <p>Например<span lang=EN-US style='mso-ansi-language:EN-US'>, </span>сценарий<span
+  lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+  <div><pre><span lang=EN-US style='mso-ansi-language:EN-US'>var today = new Date();<o:p></o:p></span></pre><pre><span
+  lang=EN-US style='mso-ansi-language:EN-US'>document.write(today.getYear());<o:p></o:p></span></pre></div>
+  <p class=noindent>выведет<span style='mso-ansi-language:EN-US'> </span>на<span
+  style='mso-ansi-language:EN-US'> </span>экран<span lang=EN-US
+  style='mso-ansi-language:EN-US'> Internet Explorer </span>число<span
+  style='mso-ansi-language:EN-US'> </span><samp><span lang=EN-US
+  style='mso-ansi-language:EN-US'>2000</span></samp><span lang=EN-US
+  style='mso-ansi-language:EN-US'>, </span>а<span style='mso-ansi-language:
+  EN-US'> </span>на<span style='mso-ansi-language:EN-US'> </span>экран<span
+  lang=EN-US style='mso-ansi-language:EN-US'> Netscape Navigator </span>число<span
+  style='mso-ansi-language:EN-US'> </span><samp><span lang=EN-US
+  style='mso-ansi-language:EN-US'>100</span></samp><span lang=EN-US
+  style='mso-ansi-language:EN-US'>. <o:p></o:p></span></p>
+  <h4><a name=hparse><span style='mso-fareast-font-family:"Times New Roman"'>Метод</span></a><span
+  style='mso-bookmark:hparse'><span lang=EN-US style='mso-fareast-font-family:
+  "Times New Roman";mso-ansi-language:EN-US'> parse</span></span><span
+  lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
+  EN-US'><o:p></o:p></span></h4>
+  <pre><a name=mparse><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a><span
+  lang=EN-US style='mso-ansi-language:EN-US'>: Date.parse(</span><em><span
+  style='font-family:"Courier New"'>строка</span></em><span lang=EN-US
+  style='mso-ansi-language:EN-US'>)<o:p></o:p></span></pre><pre><strong><span
+  style='font-family:"Courier New"'>Аргументы</span></strong>: <em><span
+  style='font-family:"Courier New"'>строка</span></em>&nbsp;— строковое выражение</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>parse</strong> преобразует дату, заданную <em>строкой</em>,
+  в количество миллисекунд относительно <a href="#basetime">базового времени</a>,
+  и возвращает его. <em>Строка</em>: должна содержать дату и время в
+  определенном формате. Допускаются следующие форматы даты (пробелы и запятые
+  трактуются как разделители):</p>
+  <p><tt><span style='font-size:10.0pt'>&quot;7/20/82&quot;&nbsp;&nbsp;&nbsp;&nbsp;&quot;July
+  10, 1995&quot;&nbsp;&nbsp;&nbsp;&nbsp;
+  &quot;12-11-76&quot;&nbsp;&nbsp;&nbsp;&nbsp;&quot;10 Jan 2000&quot;</span></tt></p>
+  <p>Время может содержать часы, минуты и секунды, разделенные двоеточием:</p>
+  <p><tt><span style='font-size:10.0pt'>&quot;11:&quot;&nbsp;&nbsp;&nbsp;&nbsp;&quot;11:45&quot;&nbsp;&nbsp;&nbsp;&nbsp;
+  &quot;23:45:12&quot;&nbsp;&nbsp;&nbsp;&nbsp;&quot;11:45:12 PM&quot;</span></tt></p>
+  <p>После даты и времени может стоять указатель временной зоны следующего вида
+  (обе формы эквивалентны и означают на 4 часа 30 минут больше UTC):</p>
+  <p><tt><span style='font-size:10.0pt'>&quot;UTC+0430&quot;&nbsp;&nbsp;&nbsp;&nbsp;&quot;GMT+0430&quot;</span></tt></p>
+  <p>Если такого указателя нет, то время считается местным. Перед датой и
+  временем может стоять название дня недели; если оно не соответствует заданной
+  дате, то игнорируется.</p>
+  <p>Это статический метод объекта <strong>Date</strong>, поэтому для доступа к
+  нему используется форма <tt><span style='font-size:10.0pt'>Date.parse</span></tt>,
+  а не <em><span style='font-size:10.0pt;font-family:"Courier New"'>объект</span></em><tt><span
+  style='font-size:10.0pt'>.parse</span></tt>.</p>
+  <p>Например, сценарий</p>
+  <div><pre>var d = new Date();</pre><pre><span lang=EN-US style='mso-ansi-language:
+  EN-US'>d.setTime(Date.parse(&quot;21 May 1958 10:12&quot;));<o:p></o:p></span></pre><pre>document.write(d.toLocaleString());</pre></div>
+  <p class=noindent>выведет на экран обозревателя примерно такую строку: <samp>Wednesday,
+  May 21, 1958 10:12:00</samp> (точный вид этой строки зависит от обозревателя
+  и настроек операционной системы).</p>
+  <h4><a name=hsetdate><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  setDate</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=msetdate><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.setDate(<em><span
+  style='font-family:"Courier New"'>день</span></em>)</pre><pre><strong><span
+  style='font-family:"Courier New"'>Аргументы</span></strong>: <em><span
+  style='font-family:"Courier New"'>день</span></em>&nbsp;— числовое выражение</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: нет</pre>
+  <p>Метод <strong>setDate</strong> изменяет номер <em>дня</em> месяца по
+  местному времени в объекте <em>дата</em>. <em>День</em> должен быть целым
+  числом в диапазоне от 1 до 31. Если <em>день</em> превышает количество дней в
+  данном месяце, то устанавливается день, равный <em>дню</em> минус количество
+  дней в данном месяце, а номер месяца увеличивается. Если <em>день</em>
+  отрицателен, то день и месяц изменяются по аналогичным правилам.</p>
+  <p>Например<span lang=EN-US style='mso-ansi-language:EN-US'>, </span>сценарий<span
+  lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+  <div><pre><span lang=EN-US style='mso-ansi-language:EN-US'>var d = new Date(&quot;July 27, 1962 23:30:00&quot;);<o:p></o:p></span></pre><pre><span
+  lang=EN-US style='mso-ansi-language:EN-US'>d.setDate(32);<o:p></o:p></span></pre><pre><span
+  lang=EN-US style='mso-ansi-language:EN-US'>document.write(d.toLocaleString());<o:p></o:p></span></pre></div>
+  <p class=noindent>выведет на экран обозревателя строку <samp>Wednesday,
+  August 01, 1962 23:30:00</samp>.</p>
+  <h4><a name=hsetfullyear><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  setFullYear</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=msetfullyear><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.setFullYear(<em><span
+  style='font-family:"Courier New"'>год</span></em> [,<em><span
+  style='font-family:"Courier New"'>месяц</span></em> [,<em><span
+  style='font-family:"Courier New"'>день</span></em>]?]?)</pre><pre><strong><span
+  style='font-family:"Courier New"'>Аргументы</span></strong>: <em><span
+  style='font-family:"Courier New"'>год</span></em>, <em><span
+  style='font-family:"Courier New"'>месяц</span></em>, <em><span
+  style='font-family:"Courier New"'>день</span></em>&nbsp;— числовые выражения</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: нет</pre>
+  <p>Метод <strong>setFullYear</strong> изменяет полный (четырехзначный) номер <em>года</em>
+  по местному времени в объекте <em>дата</em>. Одновременно он позволяет
+  изменить номер <em>месяца</em> и номер <em>дня</em> в месяце (ср. методы <a
+  href="#msetmonth"><strong>setMonth</strong></a> и <a href="#msetdate"><strong>setDate</strong></a>).
+  Например<span lang=EN-US style='mso-ansi-language:EN-US'>, </span>сценарий<span
+  lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+  <div><pre><span lang=EN-US style='mso-ansi-language:EN-US'>var d = new Date(&quot;September 26, 2000 09:52:30&quot;);<o:p></o:p></span></pre><pre><span
+  lang=EN-US style='mso-ansi-language:EN-US'>d.setFullYear(1999);<o:p></o:p></span></pre><pre><span
+  lang=EN-US style='mso-ansi-language:EN-US'>document.write(d.toLocaleString());<o:p></o:p></span></pre></div>
+  <p class=noindent>выведет на экран обозревателя строку <samp>Sunday,
+  September 26, 1999 09:52:30</samp>.</p>
+  <h4><a name=hsethours><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  setHours</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=msethours><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.setHours(<em><span
+  style='font-family:"Courier New"'>часы</span></em> [,<em><span
+  style='font-family:"Courier New"'>минуты</span></em> [,<em><span
+  style='font-family:"Courier New"'>секунды</span></em> [,<em><span
+  style='font-family:"Courier New"'>миллисекунды</span></em>]?]?]?)</pre><pre><strong><span
+  style='font-family:"Courier New"'>Аргументы</span></strong>: <em><span
+  style='font-family:"Courier New"'>часы</span></em>, <em><span
+  style='font-family:"Courier New"'>минуты</span></em>, <em><span
+  style='font-family:"Courier New"'>секунды</span></em>, <em><span
+  style='font-family:"Courier New"'>миллисекунды</span></em>&nbsp;— числовые выражения</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: нет</pre>
+  <p>Метод <strong>setHours</strong> задает <em>часы</em> по местному времени в
+  объекте <em>дата</em>. <em>Часы</em> должны быть целым числом в диапазоне от
+  0 до 23. Если <em>часы</em> больше 23, то устанавливается час, равный <em>часам</em>
+  минус 23, а номер дня увеличивается. Если <em>часы</em> отрицательны, то час
+  и день изменяются по аналогичным правилам.</p>
+  <p>Этот метод позволяет одновременно изменить <em>минуты</em>, <em>секунды</em>
+  и <em>миллисекунды</em> в объекте <em>дата</em>. Ср. методы <a
+  href="#msetminutes"><strong>setMinutes</strong></a>, <a href="#msetseconds"><strong>setSeconds</strong></a>
+  и <a href="#msetmilliseconds"><strong>setMilliseconds</strong></a>.</p>
+  <p>Например, сценарий</p>
+  <div><pre>var d = new Date(&quot;July 27, 1962 23:30:00&quot;);</pre><pre>d.setHours(25);</pre><pre>document.write(d.toLocaleString());</pre></div>
+  <p class=noindent>выведет на экран обозревателя строку <samp>Saturday, July
+  28, 1962 01:30:00</samp>.</p>
+  <h4><a name=hsetmilliseconds><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  setMilliseconds</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=msetmilliseconds><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.setMilliseconds(<em><span
+  style='font-family:"Courier New"'>миллисекунды</span></em>)</pre><pre><strong><span
+  style='font-family:"Courier New"'>Аргументы</span></strong>: <em><span
+  style='font-family:"Courier New"'>миллисекунды</span></em>&nbsp;— числовое выражение</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: нет</pre>
+  <p>Метод <strong>setMilliseconds</strong> задает <em>миллисекунды</em> по
+  местному времени в объекте <em>дата</em>. <em>Миллисекунды</em> должны быть
+  целым числом в диапазоне от 0 до 999. Если <em>миллисекунды</em> больше 999,
+  то устанавливаются миллисекунды, равные <em>миллисекундам</em> минус 999, а
+  номер секунды увеличивается. Если <em>миллисекунды</em> отрицательны, то
+  миллисекунды и секунды изменяются по аналогичным правилам.</p>
+  <p>Например, сценарий</p>
+  <div><pre>var d = new Date(&quot;January 20, 1999 23:59:59&quot;);</pre><pre>d.setMilliseconds(-1000);</pre><pre>document.write(d.toLocaleString());</pre></div>
+  <p class=noindent>выведет на экран обозревателя строку <samp>Wednesday,
+  January 20, 1999 23:59:58</samp>.</p>
+  <h4><a name=hsetminutes><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  setMinutes</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=msetminutes><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.setMinutes(<em><span
+  style='font-family:"Courier New"'>минуты</span></em> [,<em><span
+  style='font-family:"Courier New"'>секунды</span></em> [,<em><span
+  style='font-family:"Courier New"'>миллисекунды</span></em>]?]?)</pre><pre><strong><span
+  style='font-family:"Courier New"'>Аргументы</span></strong>: <em><span
+  style='font-family:"Courier New"'>минуты</span></em>, <em><span
+  style='font-family:"Courier New"'>секунды</span></em>, <em><span
+  style='font-family:"Courier New"'>миллисекунды</span></em>&nbsp;— числовое выражение</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: нет</pre>
+  <p>Метод <strong>setMinutes</strong> задает <em>минуты</em> по местному
+  времени в объекте <em>дата</em>. <em>Минуты</em> должны быть целым числом в
+  диапазоне от 0 до 59. Если <em>минуты</em> больше 59, то устанавливаются
+  минуты, равные <em>минутам</em> минус 59, а номер часа увеличивается. Если <em>минуты</em>
+  отрицательны, то минуты и часы изменяются по аналогичным правилам.</p>
+  <p>Этот метод позволяет одновременно изменить <em>секунды</em> и <em>миллисекунды</em>
+  в объекте <em>дата</em>. Ср. методы <a href="#msetseconds"><strong>setSeconds</strong></a>
+  и <a href="#msetmilliseconds"><strong>setMilliseconds</strong></a>.</p>
+  <p>Например, сценарий</p>
+  <div><pre>var d = new Date(&quot;January 20, 1999 23:59:59&quot;);</pre><pre>d.setMinutes(60);</pre><pre>document.write(d.toLocaleString());</pre></div>
+  <p class=noindent>выведет на экран обозревателя строку <samp>Thursday,
+  January 21, 1999 00:00:59</samp>.</p>
+  <h4><a name=hsetmonth><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  setMonth</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=msetmonth><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.setMonth(<em><span
+  style='font-family:"Courier New"'>месяц</span></em> [,день]?)</pre><pre><strong><span
+  style='font-family:"Courier New"'>Аргументы</span></strong>: <em><span
+  style='font-family:"Courier New"'>месяц</span></em>, <em><span
+  style='font-family:"Courier New"'>день</span></em>&nbsp;— числовые выражения</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: нет</pre>
+  <p>Метод <strong>setMonth</strong> задает номер <em>месяца</em> по местному
+  времени в объекте <em>дата</em>. <em>Месяц</em> должен быть целым числом в
+  диапазоне от 0 до 11. Если <em>месяц</em> больше 11, то устанавливается
+  месяц, равный <em>месяцу</em> минус 11, а номер года увеличивается. Если <em>месяц</em>
+  отрицателен, то месяц и годы изменяются по аналогичным правилам.</p>
+  <p>Этот метод позволяет одновременно изменить номер <em>дня</em> в месяце
+  (ср. метод <a href="#msetdate"><strong>setDate</strong></a>).</p>
+  <p>Например, сценарий</p>
+  <div><pre>var d = new Date(&quot;January 20, 1999 23:59:59&quot;);</pre><pre>d.setMonth(-1);</pre><pre>document.write(d.toLocaleString());</pre></div>
+  <p class=noindent>выведет на экран обозревателя строку <samp>Sunday, December
+  20, 1998 23:59:59</samp>.</p>
+  <h4><a name=hsetseconds><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  setSeconds</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=msetseconds><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.setSeconds(<em><span
+  style='font-family:"Courier New"'>секунды</span></em> [,<em><span
+  style='font-family:"Courier New"'>миллисекунды</span></em>]?)</pre><pre><strong><span
+  style='font-family:"Courier New"'>Аргументы</span></strong>: <em><span
+  style='font-family:"Courier New"'>секунды</span></em>, <em><span
+  style='font-family:"Courier New"'>миллисекунды</span></em>&nbsp;— числовые выражения</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: нет</pre>
+  <p>Метод <strong>setSeconds</strong> задает <em>секунды</em> по местному
+  времени в объекте <em>дата</em>. <em>Cекунды</em> должны быть целым числом в
+  диапазоне от 0 до 59. Если <em>секунды</em> больше 59, то устанавливаются
+  секунды, равные <em>секундам</em> минус 59, а номер минуты увеличивается.
+  Если <em>секунды</em> отрицательны, то секунды и минуты изменяются по
+  аналогичным правилам.</p>
+  <p>Этот метод позволяет одновременно изменить <em>микросекунды</em> (ср.
+  метод <a href="#msetmilliseconds"><strong>setMilliseconds</strong></a>).</p>
+  <p>Например, сценарий</p>
+  <div><pre>var d = new Date(&quot;January 20, 1999 23:59:59&quot;);</pre><pre>d.setSeconds(60);</pre><pre>document.write(d.toLocaleString());</pre></div>
+  <p class=noindent>выведет на экран обозревателя строку <samp>Thursday,
+  January 21, 1999 00:00:00</samp>.</p>
+  <h4><a name=hsettime><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  setTime</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=msettime><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.setTime(<em><span
+  style='font-family:"Courier New"'>значение</span></em>)</pre><pre><strong><span
+  style='font-family:"Courier New"'>Аргументы</span></strong>: <em><span
+  style='font-family:"Courier New"'>значение</span></em>&nbsp;— числовое выражение</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>setTime</strong> устанавливает примитивное значение объекта <em>дата</em>,
+  равным <em>значению</em>. Заданное <em>значение</em> объекта не зависит от
+  временной зоны. Этот метод полезен для копирования значения одного объекта <strong>Date</strong>
+  в другой. Пример:</p>
+  <div><pre>var d1 = new Date(&quot;May 21, 1958&quot;);</pre><pre>var d2 = new Date();</pre><pre>d2.SetTime(d1.GetTime());<span
+  style='mso-tab-count:1'>      </span>// теперь значения этих объектов равны</pre></div>
+  <h4><a name=hsetutcdate><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  setUTCDate</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=msetutcdate><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.setUTCDate(<em><span
+  style='font-family:"Courier New"'>день</span></em>)</pre><pre><strong><span
+  style='font-family:"Courier New"'>Аргументы</span></strong>: <em><span
+  style='font-family:"Courier New"'>день</span></em>&nbsp;— числовое выражение</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: нет</pre>
+  <p>Метод <strong>setUTCDate</strong> изменяет номер <em>дня</em> месяца по
+  времени UTC в объекте <em>дата</em>. <em>День</em> должен быть целым числом в
+  диапазоне от 1 до 31. Если <em>день</em> превышает количество дней в данном
+  месяце, то устанавливается день, равный <em>дню</em> минус количество дней в
+  данном месяце, а номер месяца увеличивается. Если <em>день</em> отрицателен,
+  то день и месяц изменяются по аналогичным правилам. Пример:</p>
+  <div><pre>var d = new Date(&quot;July 27, 1962 23:30:00&quot;);</pre><pre>d.setUTCDate(25);</pre></div>
+  <h4><a name=hsetutcfullyear><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  setUTCFullYear</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=msetutcfullyear><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.setUTCFullYear(<em><span
+  style='font-family:"Courier New"'>год</span></em> [,<em><span
+  style='font-family:"Courier New"'>месяц</span></em> [,<em><span
+  style='font-family:"Courier New"'>день</span></em>]?]?)</pre><pre><strong><span
+  style='font-family:"Courier New"'>Аргументы</span></strong>: <em><span
+  style='font-family:"Courier New"'>год</span></em>, <em><span
+  style='font-family:"Courier New"'>месяц</span></em>, <em><span
+  style='font-family:"Courier New"'>день</span></em>&nbsp;— числовые выражения</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: нет</pre>
+  <p>Метод <strong>setUTCFullYear</strong> изменяет полный (четырехзначный)
+  номер <em>года</em> по времени UTC в объекте <em>дата</em>. Одновременно он
+  позволяет изменить номер <em>месяца</em> и номер <em>дня</em> в месяце (ср.
+  методы <a href="#msetutcmonth"><strong>setUTCMonth</strong></a> и <a
+  href="#msetutcdate"><strong>setUTCDate</strong></a>). Пример:</p>
+  <div><pre>var d = new Date(&quot;July 27, 1962 23:30:00&quot;);</pre><pre>d.setUTCFullYear(1978);</pre></div>
+  <h4><a name=hsetutchours><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  setUTCHours</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=msetutchours><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.setUTCHours(<em><span
+  style='font-family:"Courier New"'>часы</span></em> [,<em><span
+  style='font-family:"Courier New"'>минуты</span></em> [,<em><span
+  style='font-family:"Courier New"'>секунды</span></em> [,<em><span
+  style='font-family:"Courier New"'>миллисекунды</span></em>]?]?]?)</pre><pre><strong><span
+  style='font-family:"Courier New"'>Аргументы</span></strong>: <em><span
+  style='font-family:"Courier New"'>часы</span></em>, <em><span
+  style='font-family:"Courier New"'>минуты</span></em>, <em><span
+  style='font-family:"Courier New"'>секунды</span></em>, <em><span
+  style='font-family:"Courier New"'>миллисекунды</span></em>&nbsp;— числовые выражения</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: нет</pre>
+  <p>Метод <strong>setUTCHours</strong> задает <em>часы</em> по времени UTC в
+  объекте <em>дата</em>. <em>Часы</em> должны быть целым числом в диапазоне от
+  0 до 23 . Если <em>часы</em> больше 23, то устанавливается час, равный <em>часам</em>
+  минус 23, а номер дня увеличивается. Если <em>часы</em> отрицательны, то час
+  и день изменяются по аналогичным правилам.</p>
+  <p>Этот метод позволяет одновременно изменить <em>минуты</em>, <em>секунды</em>
+  и <em>миллисекунды</em> в объекте <em>дата</em>. Ср. методы <a
+  href="#msetutcminutes"><strong>setUTCMinutes</strong></a>, <a
+  href="#msetutcseconds"><strong>setUTCSeconds</strong></a> и <a
+  href="#msetutcmilliseconds"><strong>setUTCMilliseconds</strong></a>. Пример:</p>
+  <div><pre>var d = new Date(&quot;July 27, 1962 23:30:00&quot;);</pre><pre>d.setUTCHours(22);</pre></div>
+  <h4><a name=hsetutcmilliseconds><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  setUTCMilliseconds</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=msetutcmilliseconds><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.setUTCMilliseconds(<em><span
+  style='font-family:"Courier New"'>миллисекунды</span></em>)</pre><pre><strong><span
+  style='font-family:"Courier New"'>Аргументы</span></strong>: <em><span
+  style='font-family:"Courier New"'>миллисекунды</span></em>&nbsp;— числовое выражение</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: нет</pre>
+  <p>Метод <strong>setUTCMilliseconds</strong> задает <em>миллисекунды</em> по
+  времени UTC в объекте <em>дата</em>. <em>Миллисекунды</em> должны быть целым
+  числом в диапазоне от 0 до 999. Если <em>миллисекунды</em> больше 999, то
+  устанавливаются миллисекунды, равные <em>миллисекундам</em> минус 999, а
+  номер секунды увеличивается. Если <em>миллисекунды</em> отрицательны, то
+  миллисекунды и секунды изменяются по аналогичным правилам. Пример:</p>
+  <div><pre>var d = new Date(&quot;July 27, 1962 23:30:00&quot;);</pre><pre>d.setUTCMilliseconds(999);</pre></div>
+  <h4><a name=hsetutcminutes><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  setUTCMinutes</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=msetutcminutes><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.setUTCMinutes(<em><span
+  style='font-family:"Courier New"'>минуты</span></em> [,<em><span
+  style='font-family:"Courier New"'>секунды</span></em> [,<em><span
+  style='font-family:"Courier New"'>миллисекунды</span></em>]?]?)</pre><pre><strong><span
+  style='font-family:"Courier New"'>Аргументы</span></strong>: <em><span
+  style='font-family:"Courier New"'>минуты</span></em>, <em><span
+  style='font-family:"Courier New"'>секунды</span></em>, <em><span
+  style='font-family:"Courier New"'>миллисекунды</span></em>&nbsp;— числовое выражение</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: нет</pre>
+  <p>Метод <strong>setUTCMinutes</strong> задает <em>минуты</em> по времени UTC
+  в объекте <em>дата</em>. <em>Минуты</em> должны быть целым числом в диапазоне
+  от 0 до 59. Если <em>минуты</em> больше 59, то устанавливаются минуты, равные
+  <em>минутам</em> минус 59, а номер часа увеличивается. Если <em>минуты</em>
+  отрицательны, то минуты и часы изменяются по аналогичным правилам.</p>
+  <p>Этот метод позволяет одновременно изменить <em>секунды</em> и <em>миллисекунды</em>
+  в объекте <em>дата</em>. Ср. методы <a href="#msetutcseconds"><strong>setUTCSeconds</strong></a>
+  и <a href="#msetutcmilliseconds"><strong>setUTCMilliseconds</strong></a>.
+  Пример:</p>
+  <div><pre>var d = new Date(&quot;July 27, 1962 23:30:00&quot;);</pre><pre>d.setUTCMinutes(31);</pre></div>
+  <h4><a name=hsetutcmonth><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  setUTCMonth</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=msetutcmonth><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.setUTCMonth(<em><span
+  style='font-family:"Courier New"'>месяц</span></em> [,день]?)</pre><pre><strong><span
+  style='font-family:"Courier New"'>Аргументы</span></strong>: <em><span
+  style='font-family:"Courier New"'>месяц</span></em>, <em><span
+  style='font-family:"Courier New"'>день</span></em>&nbsp;— числовые выражения</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: нет</pre>
+  <p>Метод <strong>setUTCMonth</strong> задает номер <em>месяца</em> по времени
+  UTC в объекте <em>дата</em>. <em>Месяц</em> должен быть целым числом в
+  диапазоне от 0 до 11. Если <em>месяц</em> больше 11, то устанавливается
+  месяц, равный <em>месяцу</em> минус 11, а номер года увеличивается. Если <em>месяц</em>
+  отрицателен, то месяц и годы изменяются по аналогичным правилам.</p>
+  <p>Этот метод позволяет одновременно изменить номер <em>дня</em> в месяце
+  (ср. метод <a href="#msetutcdate"><strong>setUTCDate</strong></a>). Пример:</p>
+  <div><pre>var d = new Date(&quot;July 27, 1962 23:30:00&quot;);</pre><pre>d.setUTCMonth(11);</pre></div>
+  <h4><a name=hsetutcseconds><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  setUTCSeconds</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=msetutcseconds><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.setUTCSeconds(<em><span
+  style='font-family:"Courier New"'>секунды</span></em> [,<em><span
+  style='font-family:"Courier New"'>миллисекунды</span></em>]?)</pre><pre><strong><span
+  style='font-family:"Courier New"'>Аргументы</span></strong>: <em><span
+  style='font-family:"Courier New"'>секунды</span></em>, <em><span
+  style='font-family:"Courier New"'>миллисекунды</span></em>&nbsp;— числовые выражения</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: нет</pre>
+  <p>Метод <strong>setUTCSeconds</strong> задает <em>секунды</em> по времени
+  UTC в объекте <em>дата</em>. <em>Cекунды</em> должны быть целым числом в
+  диапазоне от 0 до 59. Если <em>секунды</em> больше 59, то устанавливаются
+  секунды, равные <em>секундам</em> минус 59, а номер минуты увеличивается.
+  Если <em>секунды</em> отрицательны, то секунды и минуты изменяются по
+  аналогичным правилам.</p>
+  <p>Этот метод позволяет одновременно изменить <em>микросекунды</em> (ср.
+  метод <a href="#msetutcmilliseconds"><strong>setUTCMilliseconds</strong></a>).
+  Пример:</p>
+  <div><pre>var d = new Date(&quot;July 27, 1962 23:30:00&quot;);</pre><pre>d.setUTCSeconds(59);</pre></div>
+  <h4><a name=hsetyear><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  setYear</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=msetyear><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.setYear(<em><span
+  style='font-family:"Courier New"'>год</span></em>)</pre><pre><strong><span
+  style='font-family:"Courier New"'>Аргументы</span></strong>: <em><span
+  style='font-family:"Courier New"'>год</span></em>&nbsp;— числовое выражение</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: нет</pre>
+  <p>Метод <strong>setYear</strong> устанавливает номер года по местному
+  времени в объекте <em>дата</em>. Если <em>год</em> лежит в диапазоне от 0 до
+  99 включительно, то устанавливается номер года, равный 1900 + <em>год</em>, в
+  остальных случаях устанавливается номер года, равный <em>году</em>. Этот
+  метод является устаревшим и поддерживается только в целях совместимости;
+  вместо него следует пользоваться методом <a href="#msetfullyear"><strong>setFullYear</strong></a>.</p>
+  <p>Например, сценарий</p>
+  <div><pre>var d = new Date(&quot;May 1, 2000 20:00:00&quot;);</pre><pre>d.setYear(99);</pre><pre>document.write(d.toLocaleString());</pre></div>
+  <p class=noindent>выведет на экран обозревателя строку <samp>Saturday, May
+  01, 1999 20:00:00</samp>.</p>
+  <h4><a name=htodatestring><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  toDateString</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mtodatestring><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.toDateString()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: строковое выражение</pre><pre><strong><span
+  style='font-family:"Courier New"'>Поддержка</span></strong>: <span
+  style='mso-no-proof:yes'><img border=0 width=32 height=32 id="_x0000_i1040"
+  src="3.11.%20%25C4%25E0%25F2%25E0%20%25E8%20%25E2%25F0%25E5%25EC%25FF-%20%25E2%25F1%25F2%25F0%25EE%25E5%25ED%25ED%25FB%25E9%20%25EE%25E1%25FA%25E5%25EA%25F2%20Date_files/ie.gif"
+  alt="Описание: Internet Explorer"></span><span style='mso-spacerun:yes'> </span>Поддерживается с версии 5.5.</pre><pre><span style='mso-spacerun:yes'>           </span><span
+  style='mso-no-proof:yes'><img border=0 width=32 height=32 id="_x0000_i1039"
+  src="3.11.%20%25C4%25E0%25F2%25E0%20%25E8%20%25E2%25F0%25E5%25EC%25FF-%20%25E2%25F1%25F2%25F0%25EE%25E5%25ED%25ED%25FB%25E9%20%25EE%25E1%25FA%25E5%25EA%25F2%20Date_files/nn.gif"
+  alt="Описание: Netscape Navigator"></span><span style='mso-spacerun:yes'> </span>Не поддерживается.</pre>
+  <p>Метод <strong>toDateString</strong> преобразует примитивное значение
+  объекта <em>дата</em> в строку даты по местному времени. Например, сценарий</p>
+  <div><pre>var d = new Date();</pre><pre>document.write(d.toDateString());</pre></div>
+  <p class=noindent>выведет на экран обозревателя Internet Explorer строку вида
+  <samp>Sun Oct 29 2000</samp>.</p>
+  <h4><a name=htogmtstring><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  toGMTString</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mtogmtstring><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.toGMTString()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: строковое выражение</pre>
+  <p>Метод <strong>toGMTString</strong> преобразует примитивное значение
+  объекта <em>дата</em> в строку даты и времени по Гринвичскому меридиану
+  (GMT). Этот метод является устаревшим и поддерживается только в целях
+  совместимости. Вместо него следует пользоваться методом <a
+  href="#mtoutcstring"><strong>toUTCString</strong></a>. Формат результирующей
+  строки зависит от обозревателя, например, сценарий</p>
+  <div><pre>var d = new Date();</pre><pre>document.write(d.toGMTString());</pre></div>
+  <p class=noindent>выведет на экран обозревателя Internet Explorer строку вида
+  <samp>Tue, 26 Sep 2000 05:16:41 UTC</samp>, а на экран Netscape
+  Navigator&nbsp;— строку вида <samp>Tue, 26 Sep 2000 05:16:41 GMT</samp>.</p>
+  <h4><a name=htolocaledatestring><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  toLocaleDateString</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mtolocaledatestring><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.toLocaleDateString()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: строковое выражение</pre><pre><strong><span
+  style='font-family:"Courier New"'>Поддержка</span></strong>: <span
+  style='mso-no-proof:yes'><img border=0 width=32 height=32 id="_x0000_i1038"
+  src="3.11.%20%25C4%25E0%25F2%25E0%20%25E8%20%25E2%25F0%25E5%25EC%25FF-%20%25E2%25F1%25F2%25F0%25EE%25E5%25ED%25ED%25FB%25E9%20%25EE%25E1%25FA%25E5%25EA%25F2%20Date_files/ie.gif"
+  alt="Описание: Internet Explorer"></span><span style='mso-spacerun:yes'> </span>Поддерживается с версии 5.5.</pre><pre><span style='mso-spacerun:yes'>           </span><span
+  style='mso-no-proof:yes'><img border=0 width=32 height=32 id="_x0000_i1037"
+  src="3.11.%20%25C4%25E0%25F2%25E0%20%25E8%20%25E2%25F0%25E5%25EC%25FF-%20%25E2%25F1%25F2%25F0%25EE%25E5%25ED%25ED%25FB%25E9%20%25EE%25E1%25FA%25E5%25EA%25F2%20Date_files/nn.gif"
+  alt="Описание: Netscape Navigator"></span><span style='mso-spacerun:yes'> </span>Не поддерживается.</pre>
+  <p>Метод <strong>toLocaleDateString</strong> преобразует примитивное значение
+  объекта <em>дата</em> в строку даты по местному времени с учетом локальных
+  установок операционной системы. Формат результирующей строки зависит от
+  локализации операционной системы и обозревателя, например, сценарий</p>
+  <div><pre>var d = new Date();</pre><pre>document.write(d.toLocaleDateString());</pre></div>
+  <p class=noindent>в русифицированной версии Windows выведет на экран
+  обозревателя Internet Explorer строку вида <samp>26 сентября 2000 г.</samp></p>
+  <h4><a name=htolocalestring><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  toLocaleString</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mdate-tolocalestring><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.toLocaleString()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: строковое выражение</pre>
+  <p>Метод <strong>toLocaleString</strong> преобразует примитивное значение
+  объекта <em>дата</em> в строку даты и времени по местному времени с учетом
+  локальных установок операционной системы. Формат результирующей строки
+  зависит от локализации операционной системы и обозревателя, например,
+  сценарий</p>
+  <div><pre>var d = new Date();</pre><pre>document.write(d.toLocaleString());</pre></div>
+  <p class=noindent>в русифицированной версии Windows может вывести на экран
+  обозревателя Internet Explorer строку вида <samp>26 сентября 2000 г. 11:24:24</samp>,
+  а на экран Netscape Navigator&nbsp;— строку вида <samp>Tuesday, September 26,
+  2000 11:24:24</samp>.</p>
+  <h4><a name=htolocaletimestring><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  toLocaleTimeString</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mtolocaletimestring><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.toLocaleTimeString()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: строковое выражение</pre><pre><strong><span
+  style='font-family:"Courier New"'>Поддержка</span></strong>: <span
+  style='mso-no-proof:yes'><img border=0 width=32 height=32 id="_x0000_i1036"
+  src="3.11.%20%25C4%25E0%25F2%25E0%20%25E8%20%25E2%25F0%25E5%25EC%25FF-%20%25E2%25F1%25F2%25F0%25EE%25E5%25ED%25ED%25FB%25E9%20%25EE%25E1%25FA%25E5%25EA%25F2%20Date_files/ie.gif"
+  alt="Описание: Internet Explorer"></span><span style='mso-spacerun:yes'> </span>Поддерживается с версии 5.5.</pre><pre><span style='mso-spacerun:yes'>           </span><span
+  style='mso-no-proof:yes'><img border=0 width=32 height=32 id="_x0000_i1035"
+  src="3.11.%20%25C4%25E0%25F2%25E0%20%25E8%20%25E2%25F0%25E5%25EC%25FF-%20%25E2%25F1%25F2%25F0%25EE%25E5%25ED%25ED%25FB%25E9%20%25EE%25E1%25FA%25E5%25EA%25F2%20Date_files/nn.gif"
+  alt="Описание: Netscape Navigator"></span><span style='mso-spacerun:yes'> </span>Не поддерживается.</pre>
+  <p>Метод <strong>toLocaleTimeString</strong> преобразует примитивное значение
+  объекта <em>дата</em> в строку времени по местному времени с учетом локальных
+  установок операционной системы. Формат результирующей строки зависит от
+  локализации операционной системы и обозревателя, например, сценарий</p>
+  <div><pre>var d = new Date();</pre><pre>document.write(d.toLocaleTimeString());</pre></div>
+  <p class=noindent>в русифицированной версии Windows выведет на экран
+  обозревателя Internet Explorer строку вида <samp>11:24:24.</samp></p>
+  <h4><a name=htotimestring><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  toTimeString</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mtotimestring><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.toTimeString()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: строковое выражение</pre><pre><strong><span
+  style='font-family:"Courier New"'>Поддержка</span></strong>: <span
+  style='mso-no-proof:yes'><img border=0 width=32 height=32 id="_x0000_i1034"
+  src="3.11.%20%25C4%25E0%25F2%25E0%20%25E8%20%25E2%25F0%25E5%25EC%25FF-%20%25E2%25F1%25F2%25F0%25EE%25E5%25ED%25ED%25FB%25E9%20%25EE%25E1%25FA%25E5%25EA%25F2%20Date_files/ie.gif"
+  alt="Описание: Internet Explorer"></span><span style='mso-spacerun:yes'> </span>Поддерживается с версии 5.5.</pre><pre><span style='mso-spacerun:yes'>           </span><span
+  style='mso-no-proof:yes'><img border=0 width=32 height=32 id="_x0000_i1033"
+  src="3.11.%20%25C4%25E0%25F2%25E0%20%25E8%20%25E2%25F0%25E5%25EC%25FF-%20%25E2%25F1%25F2%25F0%25EE%25E5%25ED%25ED%25FB%25E9%20%25EE%25E1%25FA%25E5%25EA%25F2%20Date_files/nn.gif"
+  alt="Описание: Netscape Navigator"></span><span style='mso-spacerun:yes'> </span>Не поддерживается.</pre>
+  <p>Метод <strong>toTimeString</strong> преобразует примитивное значение
+  объекта <em>дата</em> в строку времени по местному времени. Например,
+  сценарий</p>
+  <div><pre>var d = new Date();</pre><pre>document.write(d.toTimeString());</pre></div>
+  <p class=noindent>выведет на экран обозревателя Internet Explorer строку вида
+  <samp>13:05:09 UTC+0500</samp>.</p>
+  <h4><a name=htostring><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  toString<o:p></o:p></span></a></h4>
+  <pre><span style='mso-bookmark:htostring'><a name=mdate-tostring><strong><span
+  style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.toString()</span></pre><pre><span
+  style='mso-bookmark:htostring'><strong><span style='font-family:"Courier New"'>Результат</span></strong>: строковое выражение</span></pre>
+  <p><span style='mso-bookmark:htostring'>Метод <strong>toString</strong>
+  преобразует примитивное значение объекта <em>дата</em> в строку даты и
+  времени по местному времени. Формат результирующей строки зависит от
+  обозревателя, например, сценарий</span></p>
+  <div><pre><span style='mso-bookmark:htostring'>var d = new Date();</span></pre><pre><span
+  style='mso-bookmark:htostring'>document.write(d.toString());</span></pre></div>
+  <p class=noindent><span style='mso-bookmark:htostring'>может вывести на экран
+  обозревателя Internet Explorer строку вида </span><span style='mso-bookmark:
+  htostring'><samp>Tue Sep 26 11:28:35 UTC-0700 2000 </samp>, а на экран
+  Netscape Navigator&nbsp;— строку вида </span><span style='mso-bookmark:htostring'><samp>Tue
+  Sep 26 11:28:35 GMT-0700 (Pacific Daylight Time) 2000</samp>.</span></p>
+  <h4><span style='mso-bookmark:htostring'><span style='mso-fareast-font-family:
+  "Times New Roman"'>Метод toUTCString</span></span><span style='mso-fareast-font-family:
+  "Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mtoutcstring><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.toUTCString()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: строковое выражение</pre>
+  <p>Метод <strong>toUTCString</strong> преобразует примитивное значение
+  объекта <em>дата</em> в строку даты и времени по времени UTC. Формат
+  результирующей строки зависит от обозревателя, например, сценарий</p>
+  <div><pre>var d = new Date();</pre><pre>document.write(d.toUTCString());</pre></div>
+  <p class=noindent>выведет на экран обозревателя Internet Explorer строку вида
+  <samp>Tue, 26 Sep 2000 05:16:41 UTC</samp>, а на экран Netscape
+  Navigator&nbsp;— строку вида <samp>Tue, 26 Sep 2000 05:16:41 GMT</samp>.</p>
+  <h4><a name=hutc><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  UTC</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mutc><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: Date.UTC(<em><span
+  style='font-family:"Courier New"'>год</span></em>, <em><span
+  style='font-family:"Courier New"'>месяц</span></em>, <em><span
+  style='font-family:"Courier New"'>день</span></em> [,<em><span
+  style='font-family:"Courier New"'>часы </span></em>[,<em><span
+  style='font-family:"Courier New"'>минуты</span></em> [,<em><span
+  style='font-family:"Courier New"'>секунды</span></em> [,<em><span
+  style='font-family:"Courier New"'>мс</span></em>]?]?]?]?)</pre><pre><strong><span
+  style='font-family:"Courier New"'>Аргументы</span></strong>: <em><span
+  style='font-family:"Courier New"'>год, месяц</span></em>, <em><span
+  style='font-family:"Courier New"'>день</span></em>, <em><span
+  style='font-family:"Courier New"'>часы</span></em>, <em><span
+  style='font-family:"Courier New"'>минуты</span></em>, <em><span
+  style='font-family:"Courier New"'>секунды</span></em>, <em><span
+  style='font-family:"Courier New"'>мс</span></em>&nbsp;— числовые выражения</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>UTC</strong> преобразует заданные дату и время в примитивное
+  значение объекта <strong>Date</strong> по времени UTC и возвращает его.
+  Аргументы имеют следующие значения:</p>
+  <ul type=disc>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l0 level1 lfo2;tab-stops:list 36.0pt'><em><span
+       style='mso-fareast-font-family:"Times New Roman"'>год</span></em><span
+       style='mso-fareast-font-family:"Times New Roman"'>&nbsp;— выражение,
+       задающее полный номер года (например, 1988, а не 88);<o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l0 level1 lfo2;tab-stops:list 36.0pt'><em><span
+       style='mso-fareast-font-family:"Times New Roman"'>месяц</span></em><span
+       style='mso-fareast-font-family:"Times New Roman"'>&nbsp;— выражение,
+       задающее номер месяца (0 = январь, 1 = февраль, …, 11 = декабрь);<o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l0 level1 lfo2;tab-stops:list 36.0pt'><em><span
+       style='mso-fareast-font-family:"Times New Roman"'>день</span></em><span
+       style='mso-fareast-font-family:"Times New Roman"'>&nbsp;— выражение,
+       задающее номер для в месяце от 1 до 31;<o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l0 level1 lfo2;tab-stops:list 36.0pt'><em><span
+       style='mso-fareast-font-family:"Times New Roman"'>часы</span></em><span
+       style='mso-fareast-font-family:"Times New Roman"'>&nbsp;— необязательное
+       выражение, задающее номер часа от 0 до 23;<o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l0 level1 lfo2;tab-stops:list 36.0pt'><em><span
+       style='mso-fareast-font-family:"Times New Roman"'>минуты</span></em><span
+       style='mso-fareast-font-family:"Times New Roman"'>&nbsp;— необязательное
+       выражение, задающее номер минуты от 0 до 59;<o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l0 level1 lfo2;tab-stops:list 36.0pt'><em><span
+       style='mso-fareast-font-family:"Times New Roman"'>секунды</span></em><span
+       style='mso-fareast-font-family:"Times New Roman"'>&nbsp;— необязательное
+       выражение, задающее номер секунды от 0 до 59;<o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l0 level1 lfo2;tab-stops:list 36.0pt'><em><span
+       style='mso-fareast-font-family:"Times New Roman"'>мс</span></em><span
+       style='mso-fareast-font-family:"Times New Roman"'>&nbsp;— необязательное
+       выражение, задающее номер миллисекунды от 0 до 999.<o:p></o:p></span></li>
+  </ul>
+  <p>Это статический метод объекта <strong>Date</strong>, поэтому для доступа к
+  нему используется форма <tt><span style='font-size:10.0pt'>Date.UTC</span></tt>,
+  а не <em><span style='font-size:10.0pt;font-family:"Courier New"'>объект</span></em><tt><span
+  style='font-size:10.0pt'>.UTC</span></tt>. Он полностью аналогичен <a
+  href="#ref311">конструктору <strong>Date</strong></a> с единственным
+  отличием: полученное примитивное значение вычисляется по времени UTC, а не по
+  местному времени.</p>
+  <p>Этот метод полезен для присваивания значения объектам <strong>Date</strong>.
+  Например, следующий сценарий</p>
+  <div><pre>var x = Date.UTC(2000, 1, 2, 12, 35, 40);</pre><pre>var d = new Date(x);</pre><pre>document.write(d.toUTCString());</pre></div>
+  <p class=noindent>выведет на экран обозревателя строку <samp>Wed, 2 Feb 2000
+  12:35:40 UTC</samp>.</p>
+  <h4><a name=hvalueof><span style='mso-fareast-font-family:"Times New Roman"'>Метод
+  valueOf</span></a><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h4>
+  <pre><a name=mdate-valueof><strong><span style='font-family:"Courier New"'>Синтаксис</span></strong></a>: <em><span
+  style='font-family:"Courier New"'>дата</span></em>.valueOf()</pre><pre><strong><span
+  style='font-family:"Courier New"'>Результат</span></strong>: числовое значение</pre>
+  <p>Метод <strong>valueOf</strong> возвращает примитивное значение объекта <em>дата</em>.
+  Иными словами, этот метод возвращает тот же результат, что и метод <a
+  href="#mgettime"><strong>getTime</strong></a>.</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3;mso-yfti-lastrow:yes'>
+  <td style='padding:0cm 0cm 0cm 0cm'>
+  <div id=divFooter>
+  <div class=MsoNormal align=center style='text-align:center'><span
+  style='mso-fareast-font-family:"Times New Roman"'>
+  <hr size=2 width="100%" align=center>
+  </span></div>
+  <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width="100%"
+   style='width:100.0%;mso-cellspacing:0cm;mso-yfti-tbllook:1184;mso-padding-alt:
+   0cm 0cm 0cm 0cm' height=24>
+   <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+    <td width="33%" style='width:33.0%;padding:0cm 0cm 0cm 0cm'>
+    <p class=MsoNormal><a href="http://wdh.suncloud.ru/js10.htm"><span
+    style='mso-fareast-font-family:"Times New Roman";mso-no-proof:yes;
+    text-decoration:none;text-underline:none'><img border=0 width=32 height=32
+    id="_x0000_i1032"
+    src="3.11.%20%25C4%25E0%25F2%25E0%20%25E8%20%25E2%25F0%25E5%25EC%25FF-%20%25E2%25F1%25F2%25F0%25EE%25E5%25ED%25ED%25FB%25E9%20%25EE%25E1%25FA%25E5%25EA%25F2%20Date_files/nnleft.gif"
+    alt="Описание: Z:\IT Курсы\DEV-P11. Динамический HTML и JavaScript\docs\wdh\3.11. %C4%E0%F2%E0 %E8 %E2%F0%E5%EC%FF- %E2%F1%F2%F0%EE%E5%ED%ED%FB%E9 %EE%E1%FA%E5%EA%F2 Date_files\nnleft.gif"></span></a><span
+    style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
+    </td>
+    <td width="34%" style='width:34.0%;padding:0cm 0cm 0cm 0cm'>
+    <p class=MsoNormal align=center style='text-align:center'><a
+    href="http://wdh.suncloud.ru/contents.htm"><span style='mso-fareast-font-family:
+    "Times New Roman";mso-no-proof:yes;text-decoration:none;text-underline:
+    none'><img border=0 width=32 height=32 id="_x0000_i1031"
+    src="3.11.%20%25C4%25E0%25F2%25E0%20%25E8%20%25E2%25F0%25E5%25EC%25FF-%20%25E2%25F1%25F2%25F0%25EE%25E5%25ED%25ED%25FB%25E9%20%25EE%25E1%25FA%25E5%25EA%25F2%20Date_files/nndown.gif"
+    alt="Описание: Z:\IT Курсы\DEV-P11. Динамический HTML и JavaScript\docs\wdh\3.11. %C4%E0%F2%E0 %E8 %E2%F0%E5%EC%FF- %E2%F1%F2%F0%EE%E5%ED%ED%FB%E9 %EE%E1%FA%E5%EA%F2 Date_files\nndown.gif"></span></a><span
+    style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
+    </td>
+    <td width="33%" style='width:33.0%;padding:0cm 0cm 0cm 0cm'>
+    <p class=MsoNormal align=right style='text-align:right'><a
+    href="http://wdh.suncloud.ru/js12.htm"><span style='mso-fareast-font-family:
+    "Times New Roman";mso-no-proof:yes;text-decoration:none;text-underline:
+    none'><img border=0 width=32 height=32 id="_x0000_i1030"
+    src="3.11.%20%25C4%25E0%25F2%25E0%20%25E8%20%25E2%25F0%25E5%25EC%25FF-%20%25E2%25F1%25F2%25F0%25EE%25E5%25ED%25ED%25FB%25E9%20%25EE%25E1%25FA%25E5%25EA%25F2%20Date_files/nnright.gif"
+    alt="Описание: Z:\IT Курсы\DEV-P11. Динамический HTML и JavaScript\docs\wdh\3.11. %C4%E0%F2%E0 %E8 %E2%F0%E5%EC%FF- %E2%F1%F2%F0%EE%E5%ED%ED%FB%E9 %EE%E1%FA%E5%EA%F2 Date_files\nnright.gif"></span></a><span
+    style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
+    </td>
+   </tr>
+  </table>
+  <div class=MsoNormal align=center style='text-align:center'><span
+  style='mso-fareast-font-family:"Times New Roman"'>
+  <hr size=2 width="100%" align=center>
+  </span></div>
+  <p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'><span
+  style='font-family:"Arial","sans-serif";color:#0000CC'>Последнее изменение
+  страницы: 13 мая 2002 г.<o:p></o:p></span></p>
+  </div>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

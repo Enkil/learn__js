@@ -1,0 +1,828 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: DHTML - Элементы и атрибуты</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/dhtml03.htm" title="Узлы дерева документа">
+<link rel="Next" href="http://wdh.suncloud.ru/dhtml05.htm" title="Дополнительные интерфейсы базовой модели">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/load.js"></script>
+<script type="text/javascript" src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/link.js"></script><link rel="stylesheet" type="text/css" href="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml03.htm"><img name="imglefta" src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/nnleft.gif" alt="" title="Узлы дерева документа" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml05.htm"><img name="imgrighta" src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/nnright.gif" alt="" title="Дополнительные интерфейсы базовой модели" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=4051" target="_blank"><img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref44">Глава 4.4. Элементы и атрибуты</a></h2>
+
+      <p>В этой главе мы рассматриваем узлы дерева документа <tt><a href="#ref441">Attr</a></tt>, <tt><a href="#ref442">Element</a></tt>, <tt><a href="#ref443">CharacterData</a></tt>,
+        <tt><a href="#ref444">Text</a></tt> и <tt><a href="#ref445">Comment</a></tt>.</p>
+
+      <h3><a name="ref441">4.4.1. Атрибут: интерфейс Attr</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Поддерживается для XML-документов (XMLDOMAttribute);
+              для HTML-документов поддерживается частично.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>Attr</tt> соответствует атрибуту элемента XML- или HTML-документа. Он наследует
+        интерфейс <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a></tt>, но поскольку атрибуты фактически не являются детьми элемента, который
+        они описывают, DOM не считает их частью дерева документа. Поэтому значения свойств <tt>parentNode</tt>,
+        <tt>previousSibling</tt> и <tt>nextSibling</tt> для атрибутов всегда равны <strong>null</strong>.</p>
+
+      <p>В XML значение атрибута представляется узлами типа <tt><a href="#ref444">Text</a></tt> и <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref455">EntityReference</a></tt>,
+        поскольку здесь значения атрибутов могут содержать ссылки на разделы. В HTML значением атрибута
+        является просто строка типа <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt>.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса Attr</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pattr-name">name</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Имя атрибута.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pownerelement">ownerElement</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Элемент-владелец атрибута.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pspecified">specified</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Явно ли задан атрибут.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pattr-value">value</a></tt></td>
+            <td>Да</td>
+            <td>DOM 1</td>
+            <td>Значение атрибута.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hattr-name">Свойство name</a></h4>
+
+<pre class="syntax"><strong><a name="pattr-name">Синтаксис</a></strong>:  <em>атрибут</em>.name
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>name</strong> возвращает строку, содержащую имя данного атрибута. Введение
+        этого свойства в DOM не вполне обоснованно, т.&nbsp;к. его значение всегда совпадает со значением
+        свойства <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#pnodename">nodeName</a></tt>. По этой причине MSHTML это свойство
+        не поддерживает, и в целях совместимости лучше пользоваться свойством <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#pnodename">nodeName</a></tt>.</p>
+
+      <h4><a name="hownerelement">Свойство ownerElement</a></h4>
+
+<pre class="syntax"><strong><a name="pownerelement">Синтаксис</a></strong>:  <em>атрибут</em>.ownerElement
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>ownerElement</strong> возвращает указатель на узел <tt><a href="#ref442">Element</a></tt>, атрибутом
+        которого является данный атрибут, или <strong>null</strong>, если такого элемента нет. Пример:
+        оператор</p>
+
+      <div class="code">
+<pre class="code">alert(document.body.attributes[0].ownerElement.tagName)</pre>
+      </div>
+
+      <p class="noindent">выведет на экран строку <samp>BODY</samp>.</p>
+
+      <h4><a name="hspecified">Свойство specified</a></h4>
+
+<pre class="syntax"><strong><a name="pspecified">Синтаксис</a></strong>:  <em>атрибут</em>.specified
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>specified</strong> возвращает <strong>true</strong>, если значение атрибута
+        было явно задано в тексте документа или в сценарии, и <strong>false</strong> в противном случае.
+        Точнее говоря:</p>
+
+      <ul>
+        <li>если атрибуту присвоено значение в документе или сценарии, то <tt>specified</tt> равно <strong>true</strong>,
+          а значением атрибута является присвоенное значение;</li>
+        <li>если атрибуту не присваивалось значение в документе или сценарии и он имеет <a href="http://wdh.suncloud.ru/xml02.htm#ref8232">значение
+          по умолчанию, заданное в DTD</a>, то <tt>specified</tt> равно <strong>false</strong>, а значением
+          атрибута является значение по умолчанию;</li>
+        <li>если атрибуту не присваивалось значение в документе или сценарии и он имеет <a href="http://wdh.suncloud.ru/xml02.htm#ref8232">значение
+          #IMPILED в DTD</a>, то этот атрибут не включается в дерево документа;</li>
+        <li>если свойство атрибута <tt>ownerElement</tt> равно <strong>null</strong>, то <tt>specified</tt>
+          равно <strong>true</strong>.</li>
+      </ul>
+
+      <h4><a name="hattr-value">Свойство value</a></h4>
+
+<pre class="syntax"><strong><a name="pattr-value">Синтаксис</a></strong>:  <em>атрибут</em>.value
+<strong>Изменяемое</strong>: да
+<strong>Исключения</strong>: NO_MODIFICATION_ALLOWED_ERR (при записи)</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>value</strong> позволяет задавать и считывать значение данного атрибута. В
+        HTML его значение всегда совпадает со значением свойства <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#pnodevalue">nodeValue</a></tt>.
+        По этой причине MSHTML это свойство не поддерживает, и в целях совместимости лучше пользоваться
+        свойством <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#pnodevalue">nodeValue</a></tt>.</p>
+
+      <p>В XML значение атрибута может содержать ссылки на разделы, поэтому здесь ситуация немного сложнее.
+        При задании значения этого свойства создается новый узел <tt><a href="#ref444">Text</a></tt>, в который заносится
+        содержимое новой строки без ее анализа XML-процессором. При чтении этого свойства ссылки на
+        разделы заменяются на соответствующий текст, а затем возвращается результирующая строка.</p>
+
+      <h3><a name="ref442">4.4.2. Элемент: интерфейс Element</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Поддерживается для XML-документов (XMLDOMEelement);
+              для HTML-документов поддерживается частично.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>Element</tt> соответствует элементу XML- или HTML-документа. Он наследует интерфейс
+        <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a></tt>.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса Element</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#ptagname">tagName</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Имя тега.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы интерфейса Element</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetattribute">getAttribute</a></tt></td>
+            <td>DOM 1</td>
+            <td>Возвращает значение заданного атрибута.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetattributens">getAttributeNS</a></tt></td>
+            <td>DOM 2</td>
+            <td>Возвращает значение заданного атрибута с учетом пространства имен.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetattributenode">getAttributeNode</a></tt></td>
+            <td>DOM 1</td>
+            <td>Возвращает заданный узел Attr.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetattributenodens">getAttributeNodeNS</a></tt></td>
+            <td>DOM 2</td>
+            <td>Возвращает заданный узел Attr с учетом пространства имен.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetelementsbytagname">getElementsByTagName</a></tt></td>
+            <td>DOM 1</td>
+            <td>Возвращает список потомков, имеющих заданный тег.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetelementsbytagnamens">getElementsByTagNameNS</a></tt></td>
+            <td>DOM 2</td>
+            <td>Возвращает список потомков, имеющих заданный тег, с учетом пространства имен.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mhasattribute">hasAttribute</a></tt></td>
+            <td>DOM 2</td>
+            <td>Проверяет наличие заданного атрибута.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mhasattributens">hasAttributeNS</a></tt></td>
+            <td>DOM 2</td>
+            <td>Проверяет наличие заданного атрибута с учетом пространства имен.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mremoveattribute">removeAttribute</a></tt></td>
+            <td>DOM 1</td>
+            <td>Удаляет заданный атрибут.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mremoveattributens">removeAttributeNS</a></tt></td>
+            <td>DOM 2</td>
+            <td>Удаляет заданный атрибут с учетом пространства имен.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mremoveattributenode">removeAttributeNode</a></tt></td>
+            <td>DOM 1</td>
+            <td>Удаляет заданный узел Attr.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#msetattribute">setAttribute</a></tt></td>
+            <td>DOM 1</td>
+            <td>Добавляет новый атрибут.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#msetattributens">setAttributeNS</a></tt></td>
+            <td>DOM 2</td>
+            <td>Добавляет новый атрибут с учетом пространства имен.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#msetattributenode">setAttributeNode</a></tt></td>
+            <td>DOM 1</td>
+            <td>Добавляет новый узел Attr.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#msetattributenodens">setAttributeNodeNS</a></tt></td>
+            <td>DOM 2</td>
+            <td>Добавляет новый узел Attr с учетом пространства имен.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="htagname">Свойство tagName</a></h4>
+
+<pre class="syntax"><strong><a name="ptagname">Синтаксис</a></strong>:  <em>элемент</em>.tagName
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>tagName</strong> возвращает строку, содержащую имя тега данного элемента.
+        Имя тега HTML всегда преобразуется в прописные буквы, тогда как имя тега XML хранится так, как оно
+        задано в документе. Это свойство является избыточным, т.&nbsp;к. его значение всегда совпадает со значением свойства
+        <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#pnodename">nodeName</a></tt>. Пример: оператор</p>
+
+      <div class="code">
+<pre class="code">alert(document.documentElement.tagName);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран строку <samp>HTML</samp>.</p>
+
+      <h4><a name="hgetattribute">Метод getAttribute</a></h4>
+
+<pre class="syntax"><strong><a name="mgetattribute">Синтаксис</a></strong>:  <em>элемент</em>.getAttribute(name)
+<strong>Аргументы</strong>:  name&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  значение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>getAttribute</strong> возвращает значение атрибута, имеющего имя <tt>name</tt>.
+        Если атрибут не имеет значения, то возвращается пустая строка. Пример:</p>
+
+      <div class="code">
+<pre class="code">&lt;BODY text="blue"&gt;
+&lt;SCRIPT&gt;
+alert(document.body.getAttribute("text"));
+&lt;/SCRIPT&gt;
+&lt;/BODY&gt;</pre>
+      </div>
+
+      <p>Оператор <tt>alert</tt> в Internet Explorer выведет строку <samp>#0000ff</samp>, а в Gecko&nbsp;—
+        строку <samp>blue</samp>.</p>
+
+      <h4><a name="hgetattributens">Метод getAttributeNS</a></h4>
+
+<pre class="syntax"><strong><a name="mgetattributens">Синтаксис</a></strong>:  <em>элемент</em>.getAttributeNS(namespaceURI, localName)
+<strong>Аргументы</strong>:  namespaceURI, localName&nbsp;— выражения типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  значение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>getAttributeNS</strong> возвращает значение заданного атрибута. Если атрибут
+        не имеет значения, то возвращается пустая строка. Этот метод предназначен для XML-документов
+        и для HTML-документов может не поддерживаться. Аргумент <tt>namespaceURI</tt> задает <a href="http://wdh.suncloud.ru/xml03.htm#ref832">URI
+        пространства имен</a>, а <tt>localName</tt>&nbsp;— <a href="http://wdh.suncloud.ru/xml03.htm#qualified-name">локальное
+        имя</a> атрибута.</p>
+
+      <h4><a name="hgetattributenode">Метод getAttributeNode</a></h4>
+
+<pre class="syntax"><strong><a name="mgetattributenode">Синтаксис</a></strong>:  <em>элемент</em>.getAttributeNode(name)
+<strong>Аргументы</strong>:  name&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  значение типа <a href="#ref441">Attr</a> или null
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>getAttributeNode</strong> возвращает указатель на объект <tt><a href="#ref441">Attr</a></tt>, соответствующий
+        атрибуту с именем <tt>name</tt>. Если такого атрибута нет, то возвращается <strong>null</strong>.
+        Пример:</p>
+
+      <div class="code">
+<pre class="code">&lt;BODY text="blue"&gt;
+&lt;SCRIPT&gt;
+alert(document.body.getAttributeNode("text").nodeValue);
+&lt;/SCRIPT&gt;
+&lt;/BODY&gt;</pre>
+      </div>
+
+      <p>Оператор <tt>alert</tt> в Gecko выведет строку <samp>blue</samp> (Internet Explorer этот метод
+        не поддерживает).</p>
+
+      <h4><a name="hgetattributenodens">Метод getAttributeNodeNS</a></h4>
+
+<pre class="syntax"><strong><a name="mgetattributenodens">Синтаксис</a></strong>:  <em>элемент</em>.getAttributeNodeNS(namespaceURI, localName)
+<strong>Аргументы</strong>:  namespaceURI, localName&nbsp;— выражения типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  значение типа <a href="#ref441">Attr</a> или null
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>getAttributeNodeNS</strong> возвращает указатель на объект <tt><a href="#ref441">Attr</a></tt>, соответствующий
+        заданному атрибуту. Если такого атрибута нет, то возвращается <strong>null</strong>. Этот метод
+        предназначен для XML-документов и для HTML-документов может не поддерживаться. Аргумент <tt>namespaceURI</tt>
+        задает <a href="http://wdh.suncloud.ru/xml03.htm#ref832">URI пространства имен</a>, а <tt>localName</tt>&nbsp;—
+        <a href="http://wdh.suncloud.ru/xml03.htm#qualified-name">локальное имя</a> атрибута.</p>
+
+      <h4><a name="hgetelementsbytagname">Метод getElementsByTagName</a></h4>
+
+<pre class="syntax"><strong><a name="mgetelementsbytagname">Синтаксис</a></strong>:  <em>элемент</em>.getElementsByTagName(tagname)
+<strong>Аргументы</strong>:  tagname&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  объект <a href="http://wdh.suncloud.ru/dhtml03.htm#ref432">NodeList</a>
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту (см. примечание).
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>getElementsByTagName</strong> создает новый объект <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref432">NodeList</a></tt>, состоящий
+        из всех потомков данного элемента типа <tt>Element</tt>, имеющих заданное имя и возвращает указатель
+        на него. Аргумент <tt>tagname</tt> задает искомый тег; если он равен "*", то возвращается список
+        всех элементов документа.</p>
+
+      <p class="note"><strong>Примечание</strong>. Internet Explorer не поддерживает специальное имя
+        "*". В нем вместо <code class="note">element.getElementsByTagName("*")</code> следует использовать
+        нестандартное свойство <code class="note">element.all</code>.</p>
+
+      <p>Следующий пример выводит на экран количество графических образов в документе, а затем URI первого
+        образа:</p>
+
+      <div class="code">
+<pre class="code">var imgList = document.body.getElementsByTagName("IMG");
+alert(imgList.length);
+alert(imgList[0].src);</pre>
+      </div>
+
+      <h4><a name="hgetelementsbytagnamens">Метод getElementsByTagNameNS</a></h4>
+
+<pre class="syntax"><strong><a name="mgetelementsbytagnamens">Синтаксис</a></strong>:  <em>элемент</em>.getElementsByTagNameNS(namespaceURI, localName)
+<strong>Аргументы</strong>:  namespaceURI, localName&nbsp;— выражения типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  объект <a href="http://wdh.suncloud.ru/dhtml03.htm#ref432">NodeList</a>
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>getElementsByTagNameNS</strong> создает новый объект <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref432">NodeList</a></tt>, состоящий
+        из всех потомков данного элемента типа <tt>Element</tt>, имеющих заданное имя и возвращает указатель
+        на него. Он предназначен для XML-документов и для HTML-документов может не поддерживаться. Аргумент
+        <tt>namespaceURI</tt> задает <a href="http://wdh.suncloud.ru/xml03.htm#ref832">URI пространства имен</a>, а <tt>localName</tt>&nbsp;—
+        <a href="http://wdh.suncloud.ru/xml03.htm#qualified-name">локальное имя</a> искомого тега в этом пространстве имен;
+        если он равен "*", то возвращается список всех элементов документа, относящихся к данному словарю.</p>
+
+      <h4><a name="hhasattribute">Метод hasAttribute</a></h4>
+
+<pre class="syntax"><strong><a name="mhasattribute">Синтаксис</a></strong>:  <em>элемент</em>.hasAttribute(name)
+<strong>Аргументы</strong>:  name&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  логическое значение
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>hasAttribute</strong> возвращает <strong>true</strong>, если элемент имеет атрибут
+        с именем <tt>name</tt>, и <strong>false</strong> в противном случае. Пример:</p>
+
+      <div class="code">
+<pre class="code">&lt;BODY text="blue"&gt;
+&lt;SCRIPT&gt;
+alert(document.body.hasAttribute("text"));
+alert(document.body.hasAttribute("size"));
+&lt;/SCRIPT&gt;
+&lt;/BODY&gt;</pre>
+      </div>
+
+      <p>Первый оператор <tt>alert</tt> выведет в Gecko строку <samp>true</samp>, второй&nbsp;—
+        строку <samp>false</samp>.</p>
+
+      <h4><a name="hhasattributens">Метод hasAttributeNS</a></h4>
+
+<pre class="syntax"><strong><a name="mhasattributens">Синтаксис</a></strong>:  <em>элемент</em>.hasAttributeNS(namespaceURI, localName)
+<strong>Аргументы</strong>:  namespaceURI, localName&nbsp;— выражения типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  логическое значение
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>hasAttributeNS</strong> возвращает <strong>true</strong>, если элемент имеет
+        заданный атрибут, и <strong>false</strong> в противном случае. Он предназначен для XML-документов
+        и для HTML-документов может не поддерживаться. Аргумент <tt>namespaceURI</tt> задает <a href="http://wdh.suncloud.ru/xml03.htm#ref832">URI
+        пространства имен</a>, а <tt>localName</tt>&nbsp;— <a href="http://wdh.suncloud.ru/xml03.htm#qualified-name">локальное
+        имя</a> атрибута.</p>
+
+      <h4><a name="hremoveattribute">Метод removeAttribute</a></h4>
+
+<pre class="syntax"><strong><a name="mremoveattribute">Синтаксис</a></strong>:  <em>элемент</em>.removeAttribute(name)
+<strong>Аргументы</strong>:  name&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Исключения</strong>: NO_MODIFICATION_ALLOWED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>removeAttribute</strong> удаляет атрибут с именем <tt>name</tt>. Если атрибут
+        имеет значение по умолчанию, то он немедленно появляется вновь, со значением по умолчанию. Пример:</p>
+
+      <div class="code">
+<pre class="code">var elem = document.getElementsByTagName("BODY")[0];
+elem.removeAttribute("text");
+alert(elem.getAttribute("text"));</pre>
+      </div>
+
+      <p>Оператор <tt>alert</tt> выведет на экран пустую строку.</p>
+
+      <h4><a name="hremoveattributens">Метод removeAttributeNS</a></h4>
+
+<pre class="syntax"><strong><a name="mremoveattributens">Синтаксис</a></strong>:  <em>элемент</em>.removeAttributeNS(namespaceURI, localName)
+<strong>Аргументы</strong>:  namespaceURI, localName&nbsp;— выражения типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Исключения</strong>: NO_MODIFICATION_ALLOWED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>removeAttributeNS</strong> удаляет заданный атрибут. Если атрибут имеет значение
+        по умолчанию, то он немедленно появляется вновь, со значением по умолчанию. Этот метод предназначен
+        для XML-документов и для HTML-документов может не поддерживаться. Аргумент <tt>namespaceURI</tt>
+        задает <a href="http://wdh.suncloud.ru/xml03.htm#ref832">URI пространства имен</a>, а <tt>localName</tt>&nbsp;—
+        <a href="http://wdh.suncloud.ru/xml03.htm#qualified-name">локальное имя</a> атрибута.</p>
+
+      <h4><a name="hremoveattributenode">Метод removeAttributeNode</a></h4>
+
+<pre class="syntax"><strong><a name="mremoveattributenode">Синтаксис</a></strong>:  <em>элемент</em>.removeAttributeNode(oldAttr)
+<strong>Аргументы</strong>:  oldAttr&nbsp;— выражение типа <a href="#ref441">Attr</a>
+<strong>Результат</strong>:  объект типа <a href="#ref441">Attr</a>
+<strong>Исключения</strong>: NO_MODIFICATION_ALLOWED_ERR, NOT_FOUND_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>removeAttributeNode</strong> удаляет заданный узел <tt>oldAttr</tt> и возвращает
+        указатель на него. Если атрибут имеет значение по умолчанию, то он немедленно появляется вновь,
+        со значением по умолчанию. Пример:</p>
+
+      <div class="code">
+<pre class="code">document.body.removeAttributeNode(elem.getAttributeNode("text"));</pre>
+      </div>
+
+      <h4><a name="hsetattribute">Метод setAttribute</a></h4>
+
+<pre class="syntax"><strong><a name="msetattribute">Синтаксис</a></strong>:  <em>элемент</em>.setAttribute(name, value)
+<strong>Аргументы</strong>:  name, value&nbsp;— выражения типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Исключения</strong>: INVALID_CHARACTER_ERR, NO_MODIFICATION_ALLOWED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>setAttribute</strong> создает новый атрибут с именем <tt>name</tt> и значением
+        <tt>value</tt>. Если атрибут с таким именем уже есть, то ему просто присваивается новое значение.
+        Следующий пример изменяет цвет отображения текста документа на зеленый:</p>
+
+      <div class="code">
+<pre class="code">document.body.setAttribute("text", "green");</pre>
+      </div>
+
+      <p>При работе с XML-документами следует учитывать, что значение <tt>value</tt> рассматривается
+        как обычная строка и не анализируется XML-процессором. Поэтому если мы хотим присвоить атрибуту
+        значение, содержащее ссылки на разделы, то должны сначала создать новый узел <tt><a href="#ref441">Attr</a></tt>,
+        затем создать необходимые узлы <tt><a href="#ref444">Text</a></tt> и <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref455">EntityReference</a></tt>, включить их в дерево
+        атрибута и присоединить все созданное дерево к элементу методом <tt><a href="#msetattributenode">setAttributeNode</a></tt>.</p>
+
+      <h4><a name="hsetattributens">Метод setAttributeNS</a></h4>
+
+<pre class="syntax"><strong><a name="msetattributens">Синтаксис</a></strong>:  <em>элемент</em>.setAttributeNS(namespaceURI, qualifiedName, value)
+<strong>Аргументы</strong>:  namespaceURI, qualifiedName, value&nbsp;— выражения типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Исключения</strong>: INVALID_CHARACTER_ERR, NO_MODIFICATION_ALLOWED_ERR, NAMESPACE_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>setAttributeNS</strong> создает новый атрибут с заданным именем и значением <tt>value</tt>.
+        Если атрибут с таким именем уже есть, то ему просто присваивается новое значение. Этот метод
+        предназначен для XML-документов и для HTML-документов может не поддерживаться. Аргумент <tt>namespaceURI</tt>
+        задает <a href="http://wdh.suncloud.ru/xml03.htm#ref832">URI пространства имен</a>, а <tt>qualifiedName</tt>&nbsp;—
+        <a href="http://wdh.suncloud.ru/xml03.htm#qualified-name">ограниченное имя</a> атрибута. При работе с XML-документами
+        следует учитывать замечания к методу <tt><a href="#msetattribute">setAttribute</a></tt>.</p>
+
+      <h4><a name="hsetattributenode">Метод setAttributeNode</a></h4>
+
+<pre class="syntax"><strong><a name="msetattributenode">Синтаксис</a></strong>:  <em>элемент</em>.setAttributeNode(newAttr)
+<strong>Аргументы</strong>:  newAttr&nbsp;— выражение типа <a href="#ref441">Attr</a>
+<strong>Результат</strong>:  объект типа <a href="#ref441">Attr</a> или null
+<strong>Исключения</strong>: WRONG_DOCUMENT_ERR, NO_MODIFICATION_ALLOWED_ERR, INUSE_ATTRIBUTE_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>setAttributeNode</strong> добавляет к данному элементу новый узел <tt>newAttr</tt>.
+        Если атрибут с именем <tt>newAttr.nodeName</tt> уже есть, то он заменяется на новый узел, а
+        указатель на старый узел возвращается в качестве результата. Если такого атрибута нет, то возвращается
+        <strong>null</strong>. Пример:</p>
+
+      <div class="code">
+<pre class="code">var attr = document.createAttribute("temp");
+attr.value = "temporary";
+document.body.setAttributeNode(attr);
+alert(document.body.getAttribute("temp"));</pre>
+      </div>
+
+      <p>Оператор <tt>alert</tt> в Gecko выведет на экран строку <samp>temporary</samp>.</p>
+
+      <h4><a name="hsetattributenodens">Метод setAttributeNodeNS</a></h4>
+
+<pre class="syntax"><strong><a name="msetattributenodens">Синтаксис</a></strong>:  <em>элемент</em>.setAttributeNodeNS(newAttr)
+<strong>Аргументы</strong>:  newAttr&nbsp;— выражение типа <a href="#ref441">Attr</a>
+<strong>Результат</strong>:  объект типа <a href="#ref441">Attr</a> или null
+<strong>Исключения</strong>: WRONG_DOCUMENT_ERR, NO_MODIFICATION_ALLOWED_ERR, INUSE_ATTRIBUTE_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>setAttributeNodeNS</strong> добавляет к данному элементу новый узел <tt>newAttr</tt>.
+        Если атрибут с такими же <tt>newAttr.localName</tt> и <tt>newAttr.namespaceURI</tt> уже есть,
+        то он заменяется на новый узел, а указатель на старый узел возвращается в качестве результата.
+        Если такого атрибута нет, то возвращается <strong>null</strong>. Этот метод предназначен для
+        XML-документов и для HTML-документов может не поддерживаться.</p>
+
+      <h3><a name="ref443">4.4.3. Символьные данные: интерфейс CharacterData</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Поддерживается для XML-документов (XMLDOMCharacterData);
+              для HTML-документов поддерживается частично.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>CharacterData</tt> инкапсулирует свойства и методы, присущие узлам, содержащим
+        текстовые данные. Самостоятельно он не употребляется, а только служит прототипом для интерфейсов
+        <tt><a href="#ref444">Text</a></tt> и <tt><a href="#ref445">Comment</a></tt>. Этот интерфейс спроектирован так, чтобы поддерживать большие
+        объемы текстовой информации в XML-документах, которые могут не помещаться в символьные строки
+        сценарных языков. Для HTML-документов эта проблема не актуальна, и мы можем работать с содержимым
+        текстовых узлов как с обычными строками JavaScript. Напомним, что текстовые строки представляются
+        в DOM строками символов формата UTF-16, а нумерация символов в строке начинается с нуля.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса CharacterData</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pdata">data</a></tt></td>
+            <td>Да</td>
+            <td>DOM 1</td>
+            <td>Символьные данные узла.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#plength">length</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Количество символов в <tt>data</tt>.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы интерфейса CharacterData</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#mappenddata">appendData</a></tt></td>
+            <td>DOM 1</td>
+            <td>Добавляет строку в конец данных узла.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mdeletedata">deleteData</a></tt></td>
+            <td>DOM 1</td>
+            <td>Удаляет фрагмент данных узла.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#minsertdata">insertData</a></tt></td>
+            <td>DOM 1</td>
+            <td>Вставляет строку в заданное место данных узла.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mreplacedata">replaceData</a></tt></td>
+            <td>DOM 1</td>
+            <td>Заменяет фрагмент данных узла на новую строку.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#msubstringdata">substringData</a></tt></td>
+            <td>DOM 1</td>
+            <td>Извлекает фрагмент данных узла.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hdata">Свойство data</a></h4>
+
+<pre class="syntax"><strong><a name="pdata">Синтаксис</a></strong>:  <em>узел</em>.data
+<strong>Изменяемое</strong>: да
+<strong>Исключения</strong>: NO_MODIFICATION_ALLOWED_ERR (при записи), DOMSTRING_SIZE_ERR (при чтении)</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>data</strong> задает или возвращает строку, содержащую текстовое содержимое
+        данного узла. Пример:</p>
+
+      <div class="code">
+<pre class="code">var node = document.createTextNode("Мой текст");
+node.data = "Новый текст";
+alert(node.data);</pre>
+      </div>
+
+      <p>Оператор <tt>alert</tt> выведет на экран строку <samp>Новый текст</samp>.</p>
+
+      <h4><a name="hlength">Свойство length</a></h4>
+
+<pre class="syntax"><strong><a name="plength">Синтаксис</a></strong>:  <em>узел</em>.length
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>length</strong> возвращает беззнаковое целое число, равное количеству символов
+        в текстовом содержимом узла. Пример:</p>
+
+      <div class="code">
+<pre class="code">var node = document.createTextNode("Мой текст");
+alert(node.length);</pre>
+      </div>
+
+      <p>Оператор <tt>alert</tt> выведет на экран число <samp>9</samp>.</p>
+
+      <h4><a name="happenddata">Метод appendData</a></h4>
+
+<pre class="syntax"><strong><a name="mappenddata">Синтаксис</a></strong>:  <em>элемент</em>.appendData(arg)
+<strong>Аргументы</strong>:  arg&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Исключения</strong>: NO_MODIFICATION_ALLOWED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>appendData</strong> добавляет в конец текстового содержимого узла строку <tt>arg</tt>.
+        Пример:</p>
+
+      <div class="code">
+<pre class="code">var node = document.createTextNode("12345");
+node.appendData("67890");
+alert(node.data);</pre>
+      </div>
+
+      <p>Оператор <tt>alert</tt> выведет в Gecko на экран строку <samp>1234567890</samp>. В Internet
+        Explorer вместо этого метода следует использовать оператор <code>node.data += arg</code>.</p>
+
+      <h4><a name="hdeletedata">Метод deleteData</a></h4>
+
+<pre class="syntax"><strong><a name="mdeletedata">Синтаксис</a></strong>:  <em>элемент</em>.deleteData(offset, count)
+<strong>Аргументы</strong>:  offset, count&nbsp;— неотрицательные целые выражения
+<strong>Исключения</strong>: NO_MODIFICATION_ALLOWED_ERR, INDEX_SIZE_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>deleteData</strong> удаляет фрагмент текстового содержимого узла длиной <tt>count</tt>
+        символов, начиная с позиции <tt>offset</tt>. Если <tt>count + offset &gt; length</tt>, то удаляется
+        подстрока, начиная с позиции <tt>offset</tt> и до конца данных. Если <tt>offset</tt> отрицателен
+        или больше <tt>length</tt>, либо если <tt>count</tt> отрицателен, то генерируется исключение
+        INDEX_SIZE_ERR. Пример:</p>
+
+      <div class="code">
+<pre class="code">var node = document.createTextNode("12345");
+node.deleteData(1, 3);
+alert(node.data);</pre>
+      </div>
+
+      <p>Оператор <tt>alert</tt> выведет в Gecko на экран строку <samp>15</samp>. В Internet Explorer
+        вместо этого метода следует использовать оператор <code>node.data = node.data.substr(0, offset)
+        + node.data.substr(offset+count)</code>.</p>
+
+      <h4><a name="hinsertdata">Метод insertData</a></h4>
+
+<pre class="syntax"><strong><a name="minsertdata">Синтаксис</a></strong>:  <em>элемент</em>.insertData(offset, arg)
+<strong>Аргументы</strong>:  offset&nbsp;— неотрицательное целое выражение
+            arg&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Исключения</strong>: NO_MODIFICATION_ALLOWED_ERR, INDEX_SIZE_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>insertData</strong> вставляет строку <tt>arg</tt> в текстовое содержимое, начиная
+        с позиции <tt>offset</tt>. Если <tt>offset</tt> отрицателен или больше <tt>length</tt>, то генерируется
+        исключение INDEX_SIZE_ERR. Пример:</p>
+
+      <div class="code">
+<pre class="code">var node = document.createTextNode("12345");
+node.insertData(0, "0");
+alert(node.data);</pre>
+      </div>
+
+      <p>Оператор <tt>alert</tt> выведет в Gecko на экран строку <samp>012345</samp>. В Internet Explorer
+        вместо этого метода следует использовать оператор<br>
+        <code>node.data = node.data.substr(0, offset) + arg + node.data.substr(offset)</code>.</p>
+
+      <h4><a name="hreplacedata">Метод replaceData</a></h4>
+
+<pre class="syntax"><strong><a name="mreplacedata">Синтаксис</a></strong>:  <em>элемент</em>.replaceData(offset, count, arg)
+<strong>Аргументы</strong>:  offset, count&nbsp;— неотрицательные целые выражения
+            arg&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Исключения</strong>: NO_MODIFICATION_ALLOWED_ERR, INDEX_SIZE_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>replaceData</strong> заменяет фрагмент текста длиной <tt>count</tt> символов,
+        начиная с позиции <tt>offset</tt>, на строку <tt>arg</tt>. Если <tt>offset</tt> отрицателен
+        или больше <tt>length</tt>, либо <tt>count</tt> отрицателен, то генерируется исключение INDEX_SIZE_ERR.
+        Пример:</p>
+
+      <div class="code">
+<pre class="code">var node = document.createTextNode("12345");
+node.replaceData(0, 3, "678");
+alert(node.data);</pre>
+      </div>
+
+      <p>Оператор <tt>alert</tt> выведет в Gecko на экран строку <samp>67845</samp>. В Internet Explorer
+        вместо этого метода следует использовать оператор<br>
+        <code>node.data = node.data.substr(0, offset) + arg + node.data.substr(offset+count)</code>.</p>
+
+      <h4><a name="hsubstringdata">Метод substringData</a></h4>
+
+<pre class="syntax"><strong><a name="msubstringdata">Синтаксис</a></strong>:  <em>элемент</em>.substringData(offset, count)
+<strong>Аргументы</strong>:  offset, count&nbsp;— неотрицательные целые выражения
+<strong>Результат</strong>:  значение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Исключения</strong>: DOMSTRING_SIZE_ERR, INDEX_SIZE_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>substringData</strong> возвращает фрагмент текстового содержимого узла длиной
+        <tt>count</tt> символов, начиная с позиции <tt>offset</tt>. Если <tt>count + offset &gt; length</tt>,
+        то возвращается подстрока, начиная с позиции <tt>offset</tt> и до конца данных. Текстовое содержимое
+        узла не изменяется. Если <tt>offset</tt> отрицателен или больше <tt>length</tt>, либо если <tt>count</tt>
+        отрицателен, то генерируется исключение INDEX_SIZE_ERR. Пример:</p>
+
+      <div class="code">
+<pre class="code">var node = document.createTextNode("12345");
+alert(node.substringData(1, 3));</pre>
+      </div>
+
+      <p>Оператор <tt>alert</tt> выведет в Gecko на экран строку <samp>234</samp>. В Internet Explorer
+        вместо этого метода следует использовать оператор <code>node.data.substr(offset, count)</code>.</p>
+
+      <h3><a name="ref444">4.4.4. Текстовый узел: интерфейс Text</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Поддерживается для XML-документов (XMLDOMText);
+              для HTML-документов поддерживается частично.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>Text</tt> реализует текстовое содержимое элементов и атрибутов. Он наследует
+        все свойства и методы интерфейса <tt><a href="#ref443">CharacterData</a></tt> и имеет единственный собственный метод
+        <tt><a href="#msplittext">splitText</a></tt>.</p>
+
+      <h4><a name="hsplittext">Метод splitText</a></h4>
+
+<pre class="syntax"><strong><a name="msplittext">Синтаксис</a></strong>:  <em>элемент</em>.splitText(offset)
+<strong>Аргументы</strong>:  offset&nbsp;— неотрицательное целое выражение
+<strong>Результат</strong>:  новый узел Text
+<strong>Исключения</strong>: NO_MODIFICATION_ALLOWED_ERR, INDEX_SIZE_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>splitText</strong> расщепляет текстовый узел на два узла, которые являются братьями
+        в дереве документа. Старый узел будет содержать свое исходное содержимое до позиции <tt>offset</tt>
+        исключительно, а новый узел&nbsp;— исходное содержимое, начиная с позиции <tt>offset</tt>
+        и до конца текста. Если <tt>offset</tt> отрицателен или больше <tt>length</tt>, то генерируется
+        исключение INDEX_SIZE_ERR. Пример:</p>
+
+      <div class="code">
+<pre class="code">var node = document.createTextNode("0123456789");
+var newnode = node.splitText(5);
+alert(node.data);
+alert(newnode.data);</pre>
+      </div>
+
+      <p>Первый оператор <tt>alert</tt> выведет на экран строку <samp>01234</samp>, а второй&nbsp;—
+        строку <samp>56789</samp>.</p>
+
+      <h3><a name="ref445">4.4.5. Комментарий: интерфейс Comment</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/ie.gif" alt="Internet Explorer"> Поддерживается только для XML-документов (XMLDOMComment).
+           <img src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>Comment</tt> реализует комментарии XML- и HTML-документов. Он наследует все свойства
+        и методы интерфейса <tt><a href="#ref443">CharacterData</a></tt> и содержит текст комментария, т.&nbsp;е. все, что
+        находится между ограничителями <tt>&lt;!--</tt> и <tt>--&gt;</tt>. Собственных свойств и методов
+        у него нет.</p>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml03.htm"><img name="imgleftb" src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/nnleft.gif" alt="" title="Узлы дерева документа" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml05.htm"><img name="imgrightb" src="4.4.%20%DD%EB%E5%EC%E5%ED%F2%FB%20%E8%20%E0%F2%F0%E8%E1%F3%F2%FB_files/nnright.gif" alt="" title="Дополнительные интерфейсы базовой модели" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

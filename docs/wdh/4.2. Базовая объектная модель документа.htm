@@ -1,0 +1,1210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: DHTML - Объектная модель документа</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/dhtml01.htm" title="Введение в Dynamic HTML">
+<link rel="Next" href="http://wdh.suncloud.ru/dhtml03.htm" title="Узлы дерева документа">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/load.js"></script>
+<script type="text/javascript" src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/link.js"></script><link rel="stylesheet" type="text/css" href="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml01.htm"><img name="imglefta" src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nnleft.gif" alt="" title="Введение в Dynamic HTML" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml03.htm"><img name="imgrighta" src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nnright.gif" alt="" title="Узлы дерева документа" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=2856" target="_blank"><img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref42">Глава 4.2. Базовая объектная модель документа</a></h2>
+
+      <h3><a name="ref421">4.2.1. Введение в DOM</a></h3>
+
+      <p>При описании <a href="http://wdh.suncloud.ru/css01.htm#ref211">каскадных таблиц стилей</a> мы уже ввели рассмотрение
+        HTML-документа как <em>дерева элементов</em>. Приведем еще раз пример, иллюстрирующий этот подход.
+        Пусть наш документ имеет вид:</p>
+
+      <div class="code">
+<pre class="code">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Моя домашняя страница&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;H1&gt;Моя домашняя страница&lt;/H1&gt;
+&lt;P&gt;Добро пожаловать!&lt;/P&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;</pre>
+      </div>
+
+      <p>Тогда мы можем представить его в виде следующего дерева:</p>
+
+      <div class="figure"> <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/doctree.gif" alt="Дерево элементов HTML-документа"></div>
+
+      <p><em>Корнем</em> этого дерева является элемент <a href="http://wdh.suncloud.ru/html02.htm#ehtml"><strong>HTML</strong></a>,
+        который имеет двух <em>детей</em>&nbsp;— <a href="http://wdh.suncloud.ru/html02.htm#ehead"><strong>HEAD</strong></a>
+        и <a href="http://wdh.suncloud.ru/html02.htm#ebody"><strong>BODY</strong></a>. Элемент <a href="http://wdh.suncloud.ru/html02.htm#ehead"><strong>HEAD</strong></a>
+        является <em>отцом</em> элемента <a href="http://wdh.suncloud.ru/html02.htm#etitle"><strong>TITLE</strong></a>, а элемент
+        <a href="http://wdh.suncloud.ru/html02.htm#ebody"><strong>BODY</strong></a>&nbsp;— отцом элементов <a href="http://wdh.suncloud.ru/html03.htm#eh"><strong>H1</strong></a>
+        и <a href="http://wdh.suncloud.ru/html03.htm#ep"><strong>P</strong></a> (два последних элемента называются <em>братьями</em>,
+        причем <a href="http://wdh.suncloud.ru/html03.htm#eh"><strong>H1</strong></a> является <em>старшим братом</em>, а <a href="http://wdh.suncloud.ru/html03.htm#ep"><strong>P</strong></a>&nbsp;—
+        <em>младшим</em>). Все элементы дерева являются <em>потомками</em> корня, а тот является их
+        <em>предком</em>. При этом все элементы и тексты, образующие их содержимое, являются <em>узлами</em>
+        дерева документа.</p>
+
+      <p>Каждый элемент данного дерева соответствует элементу HTML и, следовательно, имеет тег(и), содержимое
+        и набор атрибутов. Для перехода к объектной модели документа остается сделать единственный шаг:
+        назвать все элементы дерева объектами, а их атрибуты сделать доступными для чтения и для изменения
+        из сценариев и аплетов. В результате дерево элементов HTML-документа становится динамически
+        управляемым; более того, теперь мы можем легко добавлять к каждому элементу новые свойства,
+        помимо стандартных атрибутов HTML.</p>
+
+      <p>Именно такой подход был положен в основу динамической модели HTML обозревателей Microsoft,
+        а затем принят за основу стандартов W3C, получивших название <em>объектная модель документа</em>
+        (Document Object Model или DOM). При этом W3C расширил понятие DOM на любые XML-документы, рассматривая
+        HTML DOM как специализированный частный случай с дополнительными возможностями. Таким образом,
+        DOM&nbsp;— это модель HTML- и XML-документов, независимая от платформы и языка программирования,
+        которая определяет:</p>
+
+      <ul>
+        <li>интерфейсы и объекты, которые используются для представления документа и манипулирования
+          им;</li>
+        <li>семантику этих интерфейсов и объектов, включая их атрибуты и реакцию на события;</li>
+        <li>взаимосвязи между этими интерфейсами и объектами.</li>
+      </ul>
+
+      <p>На сегодняшний день W3C стандартизовал DOM первого и второго уровней (DOM 1 и DOM 2);
+        в стадии рабочего проекта находится DOM 3. Эти аббревиатуры соответственно обозначают следующее:</p>
+
+      <ul>
+        <li>DOM 1 описывает базовое представление XML- и HTML-документов в виде деревьев объектов;</li>
+        <li>DOM 2 расширяет базовые интерфейсы DOM 1 и добавляет к ним поддержку событий и стилей;</li>
+        <li>DOM 3 описывает загрузку и синтаксический анализом документов, а также их отображение и форматирование.</li>
+      </ul>
+
+      <p>Учитывая текущее состояние вещей, мы рассматриваем здесь только DOM 2 (и содержащуюся в нем DOM 1).
+        DOM 2 состоит из следующих групп взаимосвязанных интерфейсов:</p>
+
+      <ul>
+        <li>Core&nbsp;— базовые интерфейсы, определяющие представление любого XML-документа в виде
+          дерева;</li>
+        <li>View&nbsp;— интерфейсы, описывающие возможные отображения документа;</li>
+        <li>Event&nbsp;— интерфейсы, определяющие порядок генерации и обработки событий;</li>
+        <li>Style&nbsp;— интерфейсы, определяющие применение к документам таблиц стилей;</li>
+        <li>Traversal &amp; Range&nbsp;— интерфейсы, определяющие прохождение дерева документа
+          и манипулирование областями его содержимого;</li>
+        <li>HTML&nbsp;— интерфейсы, определяющие представление HTML-документа в виде дерева.</li>
+      </ul>
+
+      <p><img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/plus.gif" alt="WDH+"> См. также WDH+:
+        <a target="_blank" href="http://go.suncloud.ru/to.asp?wdh+/domview/domview.htm">Программы просмотра дерева объектов</a>.</p>
+
+      <p>Начнем с определения базовых интерфейсов, лежащих в основе всех дальнейших спецификаций.</p>
+
+      <h3><a name="ref422">4.2.2. Основные понятия</a></h3>
+
+      <p>DOM 2 Core представляет XML-документы в виде деревьев, состоящих из узлов, которые, в свою
+        очередь, также являются объектами и реализуют более специализированные интерфейсы. Одни типы
+        узлов могут иметь детей, т.&nbsp;е. сами являться поддеревьями, другие являются листьями, т.&nbsp;е.
+        детей не имеют. В следующей таблице сведены все возможные типы узлов абстрактного документа;
+        для каждого типа узлов перечислены те узлы, которые могут быть его детьми. О понятиях, соответствующих
+        перечисленным узлам, см. <a href="http://wdh.suncloud.ru/xml01.htm#ref813">описание структуры XML-документа</a>.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption><a name="table41">Таблица 4.1. Структура дерева документа</a></caption>
+          <tbody><tr>
+            <th>Интерфейс</th>
+            <th>Описание</th>
+            <th>Дети</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#ref426">Document</a></tt></td>
+            <td>Документ</td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt> (не более одного), <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref456">ProcessingInstruction</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref445">Comment</a></tt>,
+              <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref452">DocumentType</a></tt> (не более одного)</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ref425">DocumentFragment</a></tt></td>
+            <td>Фрагмент документа</td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref456">ProcessingInstruction</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref445">Comment</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref444">Text</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref451">CDATASection</a></tt>,
+              <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref455">EntityReference</a></tt></td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref452">DocumentType</a></tt></td>
+            <td>Тип документа</td>
+            <td>детей не имеет</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref455">EntityReference</a></tt></td>
+            <td>Ссылка на раздел</td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref456">ProcessingInstruction</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref445">Comment</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref444">Text</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref451">CDATASection</a></tt>,
+              <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref455">EntityReference</a></tt></td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt></td>
+            <td>Элемент</td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref456">ProcessingInstruction</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref445">Comment</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref444">Text</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref451">CDATASection</a></tt>,
+              <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref455">EntityReference</a></tt></td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref441">Attr</a></tt></td>
+            <td>Атрибут</td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref444">Text</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref455">EntityReference</a></tt></td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref456">ProcessingInstruction</a></tt></td>
+            <td>Директива XML</td>
+            <td>детей не имеет</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref445">Comment</a></tt></td>
+            <td>Комментарий</td>
+            <td>детей не имеет</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref444">Text</a></tt></td>
+            <td>Текст</td>
+            <td>детей не имеет</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref451">CDATASection</a></tt></td>
+            <td>Секция CDATA</td>
+            <td>детей не имеет</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref454">Entity</a></tt></td>
+            <td>Раздел</td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref456">ProcessingInstruction</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref445">Comment</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref444">Text</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref451">CDATASection</a></tt>,
+              <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref455">EntityReference</a></tt></td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref453">Notation</a></tt></td>
+            <td>Нотация</td>
+            <td>детей не имеет</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Кроме того, DOM 2 Core содержит спецификацию интерфейсов <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref432">NodeList</a></tt> (упорядоченные списки
+        узлов, доступных по номеру в списке) и <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref432">NamedNodeMap</a></tt> (неупорядоченные списки узлов,
+        доступных по своему имени). Эти объекты являются <em>живыми</em>, т.&nbsp;е. любое изменение
+        документа автоматически влечет изменение всех связанных с ним списков.</p>
+
+      <p>Интерфейсы <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref444">Text</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref445">Comment</a></tt> и <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref451">CDATASection</a></tt> являются потомками интерфейса
+        <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref443">CharacterData</a></tt>.</p>
+
+      <p>Следует подчеркнуть, что DOM 2 Core содержит два набора интерфейсов, каждый из которых обеспечивает
+        полный доступ ко всем элементам документа. Первый набор представляет объектно-ориентированный
+        подход со следующей иерархией наследования: документ&nbsp;— составляющие его элементы&nbsp;—
+        их атрибуты и текстовое содержимое. При таком рассмотрении дерева документа мы говорим о <em>иерархии
+        объектов</em>. Второй подход построен по принципу "все есть узлы (<tt>Nodes</tt>)".
+        Здесь все составляющие документа рассматриваются как равноправные узлы его дерева, и мы можем
+        говорить только о <em>иерархии узлов</em>. Таким образом, DOM 2 по своей сути является избыточной,
+        но предоставляет нам возможность в зависимости от задачи рассматривать документ тем или иным
+        способом.</p>
+
+      <p>Все интерфейсы DOM 2 Core подразделяются на основные (fundamental) и дополнительные (extended).
+        Основными являются интерфейсы <tt><a href="#ref423">DOMException</a></tt>, <tt><a href="#ref424">DOMImplementation</a></tt>,
+        <tt><a href="#ref425">DocumentFragment</a></tt>, <tt><a href="#ref426">Document</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a></tt>,
+        <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref432">NodeList</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref432">NamedNodeMap</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref443">CharacterData</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref441">Attr</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt>,
+        <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref444">Text</a></tt> и <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref445">Comment</a></tt>. Эти интерфейсы должны поддерживаться всеми реализациями DOM,
+        как для XML-, так и для HTML-документов. Дополнительные интерфейсы ориентированы на XML-документы,
+        поэтому реализации DOM для HTML могут их не поддерживать. К ним относятся <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref451">CDATASection</a></tt>,
+        <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref452">DocumentType</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref453">Notation</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref454">Entity</a></tt>, <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref455">EntityReference</a></tt> и <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref456">ProcessingInstruction</a></tt>.</p>
+
+      <p>В целях независимости от языка и платформы DOM определяет следующие типы:</p>
+
+      <dl>
+        <dt><strong><a name="domstring">DOMString</a></strong></dt>
+        <dd>Текстовая строка, состоящая из символов Unicode в формате <a href="http://wdh.suncloud.ru/unicode.htm#utf16">UTF-16</a>.
+          В JavaScript и в Java реализуется типом String.</dd>
+        <dt><strong><a name="domtimestamp">DOMTimeStamp</a></strong></dt>
+        <dd>Дата и время в приемлемом для конкретного языка формате. Например, в JavaScript это будет
+          объект <strong><a href="http://wdh.suncloud.ru/js11.htm#ref311">Date</a></strong>, а в Java&nbsp;— целое число
+          типа <tt>long</tt>, содержащее количество миллисекунд.</dd>
+      </dl>
+
+      <p>Ниже приведено краткое описание всех интерфейсов DOM с указанием уровня модели (DOM 1 или DOM
+        2), в которой определено то или иное свойство интерфейса. Спецификации W3C написаны на платформо-независимом
+        языке IDL. Мы же приводим их в соответствии с синтаксисом JavaScript, который на сегодня является
+        основным сценарным языком.</p>
+
+      <p>Вместе с описание стандарта мы приводим краткое описание его реализации в объектных моделях
+        Microsoft и Gecko. При этом следует учитывать, что реализации Microsoft для XML и HTML совершенно
+        независимы (они реализуются соответственно программными компонентами XMLDOM и MSHTML), тогда
+        как в Gecko объектная модель одинакова для HTML- и XML-документов. Основное внимание в последующем
+        изложении уделено DOM для HTML; XML DOM подробно будет рассмотрена в Части VIII.</p>
+
+      <h3><a name="ref423">4.2.3. Исключения: интерфейс DOMException</a></h3>
+
+      <p>Объект <tt>DOMException</tt> является прототипом всех исключительных ситуаций, которые могут
+        возникнуть в процессе обработки документа. Он имеет единственное свойство <tt>code</tt> типа
+        <strong>Number</strong>, которое содержит номер исключения согласно следующей таблицы:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption><a name="table42">Таблица 4.2. Стандартные исключения DOM</a></caption>
+          <tbody><tr>
+            <th>Название</th>
+            <th>Значение</th>
+            <th>Описание</th>
+            <th>Модель</th>
+          </tr>
+          <tr>
+            <td><tt>INDEX_SIZE_ERR</tt></td>
+            <td>1</td>
+            <td>Выход индекса за пределы допустимого диапазона.</td>
+            <td>DOM 1</td>
+          </tr>
+          <tr>
+            <td><tt>DOMSTRING_SIZE_ERR</tt></td>
+            <td>2</td>
+            <td>Заданный текст не может быть приведен к типу <tt><a href="#domstring">DOMString</a></tt>.</td>
+            <td>DOM 1</td>
+          </tr>
+          <tr>
+            <td><tt>HIERARCHY_REQUEST_ERR</tt></td>
+            <td>3</td>
+            <td>Попытка вставить узел в ненадлежащее место дерева.</td>
+            <td>DOM 1</td>
+          </tr>
+          <tr>
+            <td><tt>WRONG_DOCUMENT_ERR</tt></td>
+            <td>4</td>
+            <td>Недопустимый тип документа.</td>
+            <td>DOM 1</td>
+          </tr>
+          <tr>
+            <td><tt>INVALID_CHARACTER_ERR</tt></td>
+            <td>5</td>
+            <td>Встречен недопустимый символ.</td>
+            <td>DOM 1</td>
+          </tr>
+          <tr>
+            <td><tt>NO_DATA_ALLOWED_ERR</tt></td>
+            <td>6</td>
+            <td>Узел не содержит данных.</td>
+            <td>DOM 1</td>
+          </tr>
+          <tr>
+            <td><tt>NO_MODIFICATION_ALLOWED_ERR</tt></td>
+            <td>7</td>
+            <td>Попытка недопустимой модификации объекта.</td>
+            <td>DOM 1</td>
+          </tr>
+          <tr>
+            <td><tt>NOT_FOUND_ERR</tt></td>
+            <td>8</td>
+            <td>Обращение к несуществующему узлу.</td>
+            <td>DOM 1</td>
+          </tr>
+          <tr>
+            <td><tt>NOT_SUPPORTED_ERR</tt></td>
+            <td>9</td>
+            <td>Параметр или операция не реализованы.</td>
+            <td>DOM 1</td>
+          </tr>
+          <tr>
+            <td><tt>INUSE_ATTRIBUTE_ERR</tt></td>
+            <td>10</td>
+            <td>Попытка добавления атрибута, который уже существует.</td>
+            <td>DOM 1</td>
+          </tr>
+          <tr>
+            <td><tt>INVALID_STATE_ERR</tt></td>
+            <td>11</td>
+            <td>Обращение к несуществующему объекту.</td>
+            <td>DOM 1</td>
+          </tr>
+          <tr>
+            <td><tt>SYNTAX_ERR</tt></td>
+            <td>12</td>
+            <td>Синтаксическая ошибка.</td>
+            <td>DOM 2</td>
+          </tr>
+          <tr>
+            <td><tt>INVALID_MODIFICATION_ERR</tt></td>
+            <td>13</td>
+            <td>Попытка изменения типа объекта.</td>
+            <td>DOM 2</td>
+          </tr>
+          <tr>
+            <td><tt>NAMESPACE_ERR</tt></td>
+            <td>14</td>
+            <td>Попытка создания или изменения объекта, не соответствующая <a href="http://wdh.suncloud.ru/xml03.htm#ref83">пространству
+              имен XML</a>.</td>
+            <td>DOM 2</td>
+          </tr>
+          <tr>
+            <td><tt>INVALID_ACCESS_ERR</tt></td>
+            <td>15</td>
+            <td>Параметр или операция не поддерживаются объектом.</td>
+            <td>DOM 2</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+<pre class="support"><strong>Поддержка</strong>:  <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Нестандартная реализация.
+            <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Поддерживается часть кодов ошибок.</pre>
+
+      <h3><a name="ref424">4.2.4. Описание реализации: интерфейс DOMImplementation</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Только для XML-документов (XMLDOMImplementation).
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует DOM 1.</pre>
+
+      <p>Интерфейс <tt>DOMImplementation</tt> содержит методы, выполнение которых не зависит от
+        конкретной объектной модели документа. Он доступен через свойство <tt><a href="#pimplementation">implementation</a></tt>
+        объекта <tt><a href="#ref426">Document</a></tt>.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы интерфейса DOMImplementation</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#mcreatecssstylesheet">createCSSStyleSheet</a></tt></td>
+            <td>DOM 2</td>
+            <td>Создает новый объект <tt><a href="http://wdh.suncloud.ru/dhtml09.htm#ref4915">CSSStyleSheet</a></tt>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mcreatedocument">createDocument</a></tt></td>
+            <td>DOM 2</td>
+            <td>Создает объект <tt><a href="#ref426">Document</a></tt> для данного XML-документа.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mcreatedocumenttype">createDocumentType</a></tt></td>
+            <td>DOM 2</td>
+            <td>Создает пустой узел <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref452">DocumentType</a></tt>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mhasfeature">hasFeature</a></tt></td>
+            <td>DOM 1</td>
+            <td>Проверяет наличие заданного свойства у реализации.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hcreatecssstylesheet">Метод createCSSStyleSheet</a></h4>
+
+<pre class="syntax"><strong><a name="mcreatecssstylesheet">Синтаксис</a></strong>:  <em>объект</em>.createCSSStyleSheet(title, media)
+<strong>Аргументы</strong>:  title, media&nbsp;— выражения типа <a href="#domstring">DOMString</a>
+<strong>Результат</strong>:  новый объект <a href="http://wdh.suncloud.ru/dhtml09.htm#ref4915">CSSStyleSheet</a>
+<strong>Исключения</strong>: SYNTAX_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>createCSSStyleSheet</strong> создает новый объект <tt><a href="http://wdh.suncloud.ru/dhtml09.htm#ref4915">CSSStyleSheet</a></tt> и возвращает указатель
+        на него. Этот метод должен поддерживаться только теми реализациями DOM, которые поддерживают CSS.
+        Объект создается вне контекста документа; DOM 2 не позволяет поключить вновь созданную таблицу стилей к документу.
+        Аргумент <tt>title</tt> задает титул таблицы стилей, а <tt>media</tt>&nbsp;— список устройств отображения через запятую.</p>
+
+      <h4><a name="hcreatedocument">Метод createDocument</a></h4>
+
+<pre class="syntax"><strong><a name="mcreatedocument">Синтаксис</a></strong>:  <em>объект</em>.createDocument(namespaceURI, qualifiedName, doctype)
+<strong>Аргументы</strong>:  namespaceURI, qualifiedName&nbsp;— выражения типа <a href="#domstring">DOMString</a>
+            doctype&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml05.htm#ref452">DocumentType</a>
+<strong>Результат</strong>:  новый объект <a href="#ref426">Document</a>
+<strong>Исключения</strong>: INVALID_CHARACTER_ERR, NAMESPACE_ERR, WRONG_DOCUMENT_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>createDocument</strong> создает новый объект <tt><a href="#ref426">Document</a></tt> и возвращает указатель
+        на него. Он предназначен для создания XML-документов и для HTML-документов может не поддерживаться.
+        Аргумент <tt>namespaceURI</tt> задает <a href="http://wdh.suncloud.ru/xml03.htm#ref832">URI пространства имен</a> <a href="http://wdh.suncloud.ru/xml01.htm#ref8132">корневого
+        элемента</a> документа, <tt>qualifiedName</tt>&nbsp;— его <a href="http://wdh.suncloud.ru/xml03.htm#qualified-name">ограниченное
+        имя</a>, а <tt>doctype</tt>&nbsp;— тип создаваемого документа (может иметь значение <strong>null</strong>).</p>
+
+      <h4><a name="hcreatedocumenttype">Метод createDocumentType</a></h4>
+
+<pre class="syntax"><strong><a name="mcreatedocumenttype">Синтаксис</a></strong>:  <em>объект</em>.createDocumentType(qualifiedName, publicId, systemId)
+<strong>Аргументы</strong>:  qualifiedName, publicId, systemId&nbsp;— выражения типа <a href="#domstring">DOMString</a>
+<strong>Результат</strong>:  новый узел <a href="http://wdh.suncloud.ru/dhtml05.htm#ref452">DocumentType</a>
+<strong>Исключения</strong>: INVALID_CHARACTER_ERR, NAMESPACE_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>createDocumentType</strong> создает пустой узел типа <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref452">DocumentType</a></tt> и
+        возвращает указатель на него. Он предназначен для XML-документов и для HTML-документов может
+        не поддерживаться. Аргумент <tt>qualifiedName</tt> задает <a href="http://wdh.suncloud.ru/xml03.htm#qualified-name">ограниченное
+        имя</a> создаваемого типа документа, <tt>publicId</tt>&nbsp;— <a href="http://wdh.suncloud.ru/xml01.htm#ref8143">публичный
+        идентификатор внешнего раздела</a>, а <tt>systemId</tt>&nbsp;— <a href="http://wdh.suncloud.ru/xml01.htm#ref8143">системный
+        идентификатор внешнего раздела</a>.</p>
+
+      <h4><a name="hhasfeature">Метод hasFeature</a></h4>
+
+<pre class="syntax"><strong><a name="mhasfeature">Синтаксис</a></strong>:  <em>объект</em>.hasFeature(feature, version)
+<strong>Аргументы</strong>:  feature, version&nbsp;— выражения типа <a href="#domstring">DOMString</a>
+<strong>Результат</strong>:  логическое значение
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>hasFeature</strong> возвращает <strong>true</strong>, если реализация DOM поддерживает
+        указанное свойство, и <strong>false</strong> в противном случае. Имя свойства (в любом регистре)
+        задается аргументом <tt>feature</tt>; оно должно соответствовать правилам образования <a href="http://wdh.suncloud.ru/xml01.htm#ref8134">имен
+        XML</a>. Аргумент <tt>version</tt> задает имя версии проверяемого свойства. Если он не задан,
+        то возвращается <strong>true</strong>, если поддерживается хотя бы какая-то версия данного свойства.</p>
+
+      <p>DOM 2 рекомендует, чтобы реализации DOM возвращали <strong>true</strong>, если <tt>version</tt> равно "2.0", а
+        <tt>feature</tt> принимает следующие значения:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Поддерживаются</th>
+            <th>feature</th>
+          </tr>
+          <tr>
+            <td>Базовые интерфейсы</td>
+            <td>"Core"</td>
+          </tr>
+          <tr>
+            <td>XML-документы</td>
+            <td>"XML"</td>
+          </tr>
+          <tr>
+            <td>HTML-документы</td>
+            <td>"HTML"</td>
+          </tr>
+          <tr>
+            <td>Таблицы стилей</td>
+            <td>"StyleSheets"</td>
+          </tr>
+          <tr>
+            <td>Модуль CSS</td>
+            <td>"CSS"</td>
+          </tr>
+          <tr>
+            <td>Модуль CSS2</td>
+            <td>"CSS2"</td>
+          </tr>
+          <tr>
+            <td>Обработка событий</td>
+            <td>"Events"</td>
+          </tr>
+          <tr>
+            <td>События пользовательского интерфейса</td>
+            <td>"UIEvents"</td>
+          </tr>
+          <tr>
+            <td>События, генерируемые мышью</td>
+            <td>"MouseEvents"</td>
+          </tr>
+          <tr>
+            <td>События, генерируемые изменением содержимого</td>
+            <td>"MutationEvents"</td>
+          </tr>
+          <tr>
+            <td>События HTML</td>
+            <td>"HTMLEvents"</td>
+          </tr>
+          <tr>
+            <td>Модуль Views</td>
+            <td>"Views"</td>
+          </tr>
+          <tr>
+            <td>Модуль Range</td>
+            <td>"Range"</td>
+          </tr>
+          <tr>
+            <td>Модуль Traversal</td>
+            <td>"Traversal"</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>В Gecko значениями <tt>feature</tt> могут быть строки "XML" и "HTML", а значением <tt>version</tt>&nbsp;—
+        строки "1.0" и "2.0". Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.implementation.hasFeature("HTML", "1.0"));
+alert(document.implementation.hasFeature("HTML", "2.0"));
+alert(document.implementation.hasFeature("HTML", "3.0"));</pre>
+      </div>
+
+      <p>Первые два оператора <tt>alert</tt> выведут строку <samp>true</samp>, а третий <samp>false</samp>.</p>
+
+      <p>В Microsoft XMLDOM значениями <tt>feature</tt> могут быть строки "XML", "DOM" и "MS-DOM", а
+        значением <tt>version</tt>&nbsp;— строка "1.0". Пример:</p>
+
+      <div class="code">
+<pre class="code">var objDoc = new ActiveXObject("Microsoft.XMLDOM");
+alert(objDoc.implementation.hasFeature("XML", "1.0"));
+alert(objDoc.implementation.hasFeature("XML", "2.0"));</pre>
+      </div>
+
+      <p>Первый оператор <tt>alert</tt> выведет строку <samp>true</samp>, а второй <samp>false</samp>.</p>
+      
+      <h3><a name="ref425">4.2.5. Фрагмент документа: интерфейс DocumentFragment</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Только для XML-документов (XMLDOMDocumentFragment).
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует DOM 1.</pre>
+
+      <p>Интерфейс <tt>DocumentFragment</tt> является потомком интерфейса <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a></tt> и наследует
+        все его свойства и методы. Как и вытекает из его названия, он предназначен для операций с <em>фрагментами
+        документов</em> (извлечение части дерева документа, создание нового фрагмента документа, вставка
+        фрагмента в качестве сына какого-либо узла и т.&nbsp;п.). Отметим, что при вставке объекта типа
+        <tt>DocumentFragment</tt> в узел <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a></tt>, способный иметь детей, вставляются все дети
+        этого объекта, но не сам объект. Примеры см. в описании интерфейса <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a></tt>.</p>
+
+      <h3><a name="ref426">4.2.6. Документ: интерфейс Document</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Поддерживается для XML-документов (XMLDOMDocument);
+              для HTML-документов поддерживается частично.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> DOM 1 полностью, DOM 2 частично.</pre>
+
+      <p>Интерфейс <tt>Document</tt> соответствует XML- или HTML-документу. Он является основой для
+        доступа к содержанию документа и для создания его составляющих.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса Document</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pdoctype">doctype</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Тип документа.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pdocumentelement">documentElement</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Корневой элемент документа.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pimplementation">implementation</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Реализация DOM.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pstylesheets">styleSheets</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Список таблиц стилей документа.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы интерфейса Document</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#mcreateattribute">createAttribute</a></tt></td>
+            <td>DOM 1</td>
+            <td>Создает атрибут.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mcreateattributens">createAttributeNS</a></tt></td>
+            <td>DOM 2</td>
+            <td>Создает атрибут с учетом пространства имен.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mcreatecdatasection">createCDATASection</a></tt></td>
+            <td>DOM 1</td>
+            <td>Создает секцию CDATA.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mcreatecomment">createComment</a></tt></td>
+            <td>DOM 1</td>
+            <td>Создает комментарий.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mcreatedocumentfragment">createDocumentFragment</a></tt></td>
+            <td>DOM 1</td>
+            <td>Создает новый фрагмент документа.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mcreateelement">createElement</a></tt></td>
+            <td>DOM 1</td>
+            <td>Создает новый элемент.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mcreateelementns">createElementNS</a></tt></td>
+            <td>DOM 2</td>
+            <td>Создает элемент с с учетом пространства имен.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mcreateentityreference">createEntityReference</a></tt></td>
+            <td>DOM 1</td>
+            <td>Создает ссылку на раздел.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mcreateevent">createEvent</a></tt></td>
+            <td>DOM 2</td>
+            <td>Создает новый объект <tt><a href="http://wdh.suncloud.ru/dhtml11.htm#ref4115">Event</a></tt>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mcreateprocessinginstruction">createProcessingInstruction</a></tt></td>
+            <td>DOM 1</td>
+            <td>Создает директиву.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mcreatetextnode">createTextNode</a></tt></td>
+            <td>DOM 1</td>
+            <td>Создает новый текстовый узел.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetelementbyid">getElementById</a></tt></td>
+            <td>DOM 2</td>
+            <td>Возвращает элемент с заданным идентификатором.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetelementsbytagname">getElementsByTagName</a></tt></td>
+            <td>DOM 1</td>
+            <td>Возвращает коллекцию всех элементов, имеющих данный тег.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetelementsbytagnamens">getElementsByTagNameNS</a></tt></td>
+            <td>DOM 2</td>
+            <td>Возвращает коллекцию всех элементов, имеющих данный тег с учетом пространства имен.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mimportnode">importNode</a></tt></td>
+            <td>DOM 2</td>
+            <td>Импортирует узел из другого документа.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hdoctype">Свойство doctype</a></h4>
+
+<pre class="syntax"><strong><a name="pdoctype">Синтаксис</a></strong>:  <em>документ</em>.doctype
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>doctype</strong> возвращает тип данного документа (типа <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref452">DocumentType</a></tt>).
+        Для HTML-документов и для XML-документов, не имеющих <a href="http://wdh.suncloud.ru/xml01.htm#ref815">декларации типа
+        документа</a>, возвращается <strong>null</strong>.</p>
+
+      <h4><a name="hdocumentelement">Свойство documentElement</a></h4>
+
+<pre class="syntax"><strong><a name="pdocumentelement">Синтаксис</a></strong>:  <em>документ</em>.documentElement
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>documentElement</strong> возвращает корневой элемент данного документа (типа
+        <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt>). Для HTML-документов возвращается элемент <strong><a href="http://wdh.suncloud.ru/html02.htm#ehtml">HTML</a></strong>.
+        Пример: оператор</p>
+
+      <div class="code">
+<pre class="code">alert(document.documentElement.tagName);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран строку <samp>HTML</samp>.</p>
+
+      <h4><a name="himplementation">Свойство implementation</a></h4>
+
+<pre class="syntax"><strong><a name="pimplementation">Синтаксис</a></strong>:  <em>документ</em>.implementation
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует DOM 1.</pre>
+
+      <p>Свойство <strong>implementation</strong> возвращает объект типа <tt><a href="#ref424">DOMImplementation</a></tt>,
+        описывающий данную реализацию DOM.</p>
+
+      <h4><a name="hstylesheets">Свойство styleSheets</a></h4>
+
+<pre class="syntax"><strong><a name="pstylesheets">Синтаксис</a></strong>:  <em>документ</em>.styleSheets
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Только для HTML-документов.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>styleSheets</strong> возвращает объект типа <tt><a href="http://wdh.suncloud.ru/dhtml09.htm#ref494">StyleSheetList</a></tt>,
+соответствующий списку внешних и внутренних таблиц стилей документа.
+Это свойство поддерживается только теми реализациями DOM, которые
+поддерживают <a href="http://wdh.suncloud.ru/dhtml09.htm#ref491">динамические таблицы стилей</a>.</p>
+
+      <h4><a name="hcreateattribute">Метод createAttribute</a></h4>
+
+<pre class="syntax"><strong><a name="mcreateattribute">Синтаксис</a></strong>:  <em>документ</em>.createAttribute(name)
+<strong>Аргументы</strong>:  name&nbsp;— выражение типа <a href="#domstring">DOMString</a>
+<strong>Результат</strong>:  новый объект <a href="http://wdh.suncloud.ru/dhtml04.htm#ref441">Attr</a>
+<strong>Исключения</strong>: INVALID_CHARACTER_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>createAttribute</strong> создает новый объект типа <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref441">Attr</a></tt> и возвращает
+        указатель на него. Аргумент <tt>name</tt> задает имя создаваемого атрибута. У нового объекта
+        атрибут <tt>nodeName</tt> имеет значение <tt>name</tt>, а атрибуты <tt>localName</tt>, <tt>prefix</tt>
+        и <tt>namespaceURI</tt> равны <strong>null</strong>. В дальнейшем созданный атрибут может быть
+        присвоен какому-либо элементу методом <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#hsetattributenode">Element.setAttributeNode</a></tt>.
+
+      </p><p>Пример создания атрибута для элемента HTML:</p>
+
+      <div class="code">
+<pre class="code">var myDiv = document.getElementById('idDiv');
+var attr = document.createAttribute('temp');
+attr.value = 'temporary';
+myDiv.setAttributeNode(attr);
+alert(myDiv.getAttribute('temp'));</pre>
+      </div>
+
+      <p>Оператор <tt>alert</tt> выведет строку <samp>temporary</samp>.</p>
+
+      <p>Пример создания атрибута в Microsoft XMLDOM:</p>
+
+      <div class="code">
+<pre class="code">var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+xmlDoc.async = false;
+xmlDoc.load("c:\My Documents\books.xml");
+var root = xmlDoc.documentElement;
+var newAttr = xmlDoc.createAttribute("temp");
+newAttr.value = 'temporary';
+root.setAttributeNode(attr);
+alert(root.getAttribute('temp'));</pre>
+      </div>
+
+      <p>Здесь оператор <tt>alert</tt> также выведет строку <samp>temporary</samp>.</p>
+
+      <h4><a name="hcreateattributens">Метод createAttributeNS</a></h4>
+
+<pre class="syntax"><strong><a name="mcreateattributens">Синтаксис</a></strong>:  <em>документ</em>.createAttributeNS(namespaceURI, qualifiedName)
+<strong>Аргументы</strong>:  namespaceURI, qualifiedName&nbsp;— выражения типа <a href="#domstring">DOMString</a>
+<strong>Результат</strong>:  новый объект <a href="http://wdh.suncloud.ru/dhtml04.htm#ref441">Attr</a>
+<strong>Исключения</strong>: INVALID_CHARACTER_ERR, NAMESPACE_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>createAttributeNS</strong> создает новый объект типа <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref441">Attr</a></tt> и возвращает
+        указатель на него. Он предназначен для XML-документов и для HTML-документов может не поддерживаться.
+        Аргумент <tt>namespaceURI</tt> задает <a href="http://wdh.suncloud.ru/xml03.htm#ref832">URI пространства имен</a>,
+        а <tt>qualifiedName</tt>&nbsp;— <a href="http://wdh.suncloud.ru/xml03.htm#qualified-name">ограниченное имя</a>
+        создаваемого атрибута в этом пространстве имен. Созданный объект типа <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref441">Attr</a></tt> имеет следующие
+        атрибуты:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Атрибут</th>
+            <th>Значение</th>
+          </tr>
+          <tr>
+            <td><tt>nodeName</tt></td>
+            <td>ограниченное имя</td>
+          </tr>
+          <tr>
+            <td><tt>namespaceURI</tt></td>
+            <td>URI пространства имен</td>
+          </tr>
+          <tr>
+            <td><tt>prefix</tt></td>
+            <td>префикс, извлеченный из ограниченного имени, или <strong>null</strong>, если ограниченное
+              имя не содержит префикса</td>
+          </tr>
+          <tr>
+            <td><tt>localName</tt></td>
+            <td>локальное имя, извлеченное из ограниченного имени</td>
+          </tr>
+          <tr>
+            <td><tt>name</tt></td>
+            <td>ограниченное имя</td>
+          </tr>
+          <tr>
+            <td><tt>nodeValue</tt></td>
+            <td>пустая строка</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>В дальнейшем созданный атрибут может быть присвоен какому-либо элементу методом <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#hsetattributenode">Element.setAttributeNode</a></tt>.
+
+      </p><h4><a name="hcreatecdatasection">Метод createCDATASection</a></h4>
+
+<pre class="syntax"><strong><a name="mcreatecdatasection">Синтаксис</a></strong>:  <em>документ</em>.createCDATASection(data)
+<strong>Аргументы</strong>:  data&nbsp;— выражение типа <a href="#domstring">DOMString</a>
+<strong>Результат</strong>:  новый объект <a href="http://wdh.suncloud.ru/dhtml05.htm#ref451">CDATASection</a>
+<strong>Исключения</strong>: NOT_SUPPORTED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>createCDATASection</strong> создает новый объект типа <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref451">CDATASection</a></tt> и
+        возвращает указатель на него. Он предназначен только для XML-документов; попытка вызвать его
+        в HTML DOM генерирует исключение <tt>NOT_SUPPORTED_ERR</tt>. Аргумент <tt>data</tt> задает содержимое
+        создаваемой <a href="http://wdh.suncloud.ru/xml01.htm#ref8136">секции CDATA</a>. Пример создания секции CDATA в Microsoft
+        XMLDOM:</p>
+
+      <div class="code">
+<pre class="code">var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+xmlDoc.async = false;
+xmlDoc.load("c:\My Documents\books.xml");
+var root = xmlDoc.documentElement;
+var newSection = xmlDoc.createCDATASection("Hello World!");
+root.appendChild(newSection);</pre>
+      </div>
+
+      <h4><a name="hcreatecomment">Метод createComment</a></h4>
+
+<pre class="syntax"><strong><a name="mcreatecomment">Синтаксис</a></strong>:  <em>документ</em>.createComment(data)
+<strong>Аргументы</strong>:  data&nbsp;— выражение типа <a href="#domstring">DOMString</a>
+<strong>Результат</strong>:  новый объект <a href="http://wdh.suncloud.ru/dhtml04.htm#ref445">Comment</a>
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>createComment</strong> создает новый объект типа <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref445">Comment</a></tt> и возвращает
+        указатель на него. Аргумент <tt>data</tt> задает содержимое создаваемого комментария. Пример
+        создания комментария в Gecko:</p>
+
+      <div class="code">
+<pre class="code">var root = document.documentElement.firstChild;
+var comm = document.createComment('Это комментарий.');
+root.appendChild(comm);</pre>
+      </div>
+
+      <h4><a name="hcreatedocumentfragment">Метод createDocumentFragment</a></h4>
+
+<pre class="syntax"><strong><a name="mcreatedocumentfragment">Синтаксис</a></strong>:  <em>документ</em>.createDocumentFragment()
+<strong>Результат</strong>:  новый объект <a href="#ref425">DocumentFragment</a>
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>createDocumentFragment</strong> создает новый пустой объект типа <tt><a href="#ref425">DocumentFragment</a></tt>
+        и возвращает указатель на него. Пример создания фрагмента документа в Gecko:</p>
+
+      <div class="code">
+<pre class="code">var elem = document.documentElement.firstChild;
+var o = document.createDocumentFragment();
+elem.appendChild(o);</pre>
+      </div>
+
+      <h4><a name="hcreateelement">Метод createElement</a></h4>
+
+<pre class="syntax"><strong><a name="mcreateelement">Синтаксис</a></strong>:  <em>документ</em>.createElement(tagName)
+<strong>Аргументы</strong>:  tagName&nbsp;— выражение типа <a href="#domstring">DOMString</a>
+<strong>Результат</strong>:  новый объект <a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a>
+<strong>Исключения</strong>: INVALID_CHARACTER_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту (см. прим. 2).
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>createElement</strong> создает новый объект типа <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt> и возвращает
+        указатель на него. Аргумент <tt>tagName</tt> задает тег создаваемого элемента. У нового объекта
+        атрибут <tt>nodeName</tt> имеет значение <tt>tagName</tt>, а атрибуты <tt>localName</tt>, <tt>prefix</tt>
+        и <tt>namespaceURI</tt> равны <strong>null</strong>. Если объект имеет атрибуты со значениями
+        по умолчанию, то автоматически создаются соответствующие узлы <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref441">Attr</a></tt> и присоединяются
+        к элементу.</p>
+
+      <p class="note"><strong>Примечания</strong>:</p>
+
+      <ol>
+        <li class="note">Для XML названия тегов элементов чувствительны к регистру. Для HTML они могут
+          быть заданы в любом регистре, но при создании элемента преобразуются в прописные буквы.</li>
+        <li class="note">Попытка создания в Internet Explorer элемента <strong><a href="http://wdh.suncloud.ru/html07.htm#eframe">FRAME</a></strong>
+          или <strong><a href="http://wdh.suncloud.ru/html07.htm#eiframe">IFRAME</a></strong> приводит либо к неустранимой
+          ошибке обозревателя, либо, как минимум, к полному разрушению объектного дерева документа.</li>
+      </ol>
+
+      <p>Пример создания элемента <strong><a href="http://wdh.suncloud.ru/html03.htm#ep">P</a></strong> и включения его в документ:</p>
+
+      <div class="code">
+<pre class="code">var text = document.createTextNode("Пример абзаца.");
+var elem = document.createElement("P");
+elem.appendChild(text);
+document.body.appendChild(elem);</pre>
+      </div>
+
+      <h4><a name="hcreateelementns">Метод createElementNS</a></h4>
+
+<pre class="syntax"><strong><a name="mcreateelementns">Синтаксис</a></strong>:  <em>документ</em>.createElementNS(namespaceURI, qualifiedName)
+<strong>Аргументы</strong>:  namespaceURI, qualifiedName&nbsp;— выражения типа <a href="#domstring">DOMString</a>
+<strong>Результат</strong>:  новый объект <a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a>
+<strong>Исключения</strong>: INVALID_CHARACTER_ERR, NAMESPACE_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>createElementNS</strong> создает новый объект типа <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt> и возвращает
+        указатель на него. Он предназначен для XML-документов и для HTML-документов может не поддерживаться.
+        Аргумент <tt>namespaceURI</tt> задает <a href="http://wdh.suncloud.ru/xml03.htm#ref832">URI пространства имен</a>,
+        а <tt>qualifiedName</tt>&nbsp;— <a href="http://wdh.suncloud.ru/xml03.htm#qualified-name">ограниченное имя</a>
+        создаваемого элемента в этом пространстве имен. Созданный объект типа <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt> имеет
+        следующие атрибуты:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Атрибут</th>
+            <th>Значение</th>
+          </tr>
+          <tr>
+            <td><tt>nodeName</tt></td>
+            <td>ограниченное имя</td>
+          </tr>
+          <tr>
+            <td><tt>namespaceURI</tt></td>
+            <td>URI пространства имен</td>
+          </tr>
+          <tr>
+            <td><tt>prefix</tt></td>
+            <td>префикс, извлеченный из ограниченного имени, или <strong>null</strong>, если ограниченное
+              имя не содержит префикса</td>
+          </tr>
+          <tr>
+            <td><tt>localName</tt></td>
+            <td>локальное имя, извлеченное из ограниченного имени</td>
+          </tr>
+          <tr>
+            <td><tt>tagName</tt></td>
+            <td>ограниченное имя</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="hcreatecdatasection">Метод createEntityReference</a></h4>
+
+<pre class="syntax"><strong><a name="mcreateentityreference">Синтаксис</a></strong>:  <em>документ</em>.createEntityReference(name)
+<strong>Аргументы</strong>:  name&nbsp;— выражение типа <a href="#domstring">DOMString</a>
+<strong>Результат</strong>:  новый объект <a href="http://wdh.suncloud.ru/dhtml05.htm#ref455">EntityReference</a>
+<strong>Исключения</strong>: INVALID_CHARACTER_ERR, NOT_SUPPORTED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>createEntityReference</strong> создает новый объект типа <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref455">EntityReference</a></tt>
+        и возвращает указатель на него. Он предназначен только для XML-документов; попытка вызвать его
+        в HTML DOM генерирует исключение <tt>NOT_SUPPORTED_ERR</tt>. Аргумент <tt>name</tt> задает <a href="http://wdh.suncloud.ru/xml01.htm#ref8141">имя
+        раздела</a>, на который должна быть создана ссылка. Пример создания <a href="http://wdh.suncloud.ru/xml01.htm#entity-reference">ссылки
+        на раздел</a> в Microsoft XMLDOM:</p>
+
+      <div class="code">
+<pre class="code">var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+xmlDoc.async = false;
+xmlDoc.load("c:\My Documents\books.xml");
+var root = xmlDoc.documentElement;
+var myEntity = xmlDoc.createEntityReference("newRef");
+root.childNodes.item(0).appendChild(myEntity);</pre>
+      </div>
+
+      <h4><a name="hcreateevent">Метод createEvent</a></h4>
+
+<pre class="syntax"><strong><a name="mcreateevent">Синтаксис</a></strong>:  <em>документ</em>.createEvent(type)
+<strong>Аргументы</strong>:  type&nbsp;— выражение типа <a href="#domstring">DOMString</a>
+<strong>Результат</strong>:  новый объект <a href="http://wdh.suncloud.ru/dhtml11.htm#ref4115">Event</a>
+<strong>Исключения</strong>: NOT_SUPPORTED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>createEvent</strong> создает новый объект <tt><a href="http://wdh.suncloud.ru/dhtml11.htm#ref4115">Event</a></tt> и возвращает указатель
+        на него. Этот метод должен поддерживаться только теми реализациями DOM, которые поддерживают события.
+        Аргумент <tt>type</tt> задает тип создаваемого события:</p>
+      <ul>
+        <li>"UIEvents"&nbsp;— <a href="http://wdh.suncloud.ru/dhtml11.htm#ref4116">события пользовательского интерфейса</a>;</li>
+        <li>"MouseEvents"&nbsp;— <a href="http://wdh.suncloud.ru/dhtml11.htm#ref4117">события мыши</a>;</li>
+        <li>"KeyEvents"&nbsp;— <a href="http://wdh.suncloud.ru/dhtml11.htm#ref4118">события клавиатуры</a>;</li>
+        <li>"MutationEvents"&nbsp;— <a href="http://wdh.suncloud.ru/dhtml11.htm#ref4119">события изменения документа</a>;</li>
+        <li>"HTMLEvents"&nbsp;— <a href="http://wdh.suncloud.ru/dhtml11.htm#ref41110">события HTML</a>.</li>
+      </ul>
+
+      <h4><a name="hcreateprocessinginstruction">Метод createProcessingInstruction</a></h4>
+
+<pre class="syntax"><strong><a name="mcreateprocessinginstruction">Синтаксис</a></strong>:  <em>документ</em>.createProcessingInstruction(target, data)
+<strong>Аргументы</strong>:  target, data&nbsp;— выражения типа <a href="#domstring">DOMString</a>
+<strong>Результат</strong>:  новый объект <a href="http://wdh.suncloud.ru/dhtml05.htm#ref456">ProcessingInstruction</a>
+<strong>Исключения</strong>: INVALID_CHARACTER_ERR, NOT_SUPPORTED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>createProcessingInstruction</strong> создает новый объект типа <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref456">ProcessingInstruction</a></tt>
+        и возвращает указатель на него. Он предназначен только для XML-документов; попытка вызвать его
+        в HTML DOM генерирует исключение <tt>NOT_SUPPORTED_ERR</tt>. Аргумент <tt>target</tt> задает
+        имя создаваемой <a href="http://wdh.suncloud.ru/xml01.htm#processing-instruction">директивы</a>, а аргумент <tt>data</tt>&nbsp;—
+        ее содержимое, т.&nbsp;е. все что следует в директиве после ее имени до закрывающего тега <tt>"?&gt;"</tt>.
+        Пример создания директивы <code>&lt;?xml version="1.0"?&gt;</code> в Microsoft XMLDOM:</p>
+
+      <div class="code">
+<pre class="code">var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+xmlDoc.async = false;
+xmlDoc.load("c:\My Documents\books.xml");
+var root = xmlDoc.documentElement;
+var pi = xmlDoc.createProcessingInstruction("xml", ' version="1.0"');
+xmlDoc.insertBefore(pi, xmlDoc.childNodes.item(0));</pre>
+      </div>
+
+      <h4><a name="hcreatetextnode">Метод createTextNode</a></h4>
+
+<pre class="syntax"><strong><a name="mcreatetextnode">Синтаксис</a></strong>:  <em>документ</em>.createTextNode(data)
+<strong>Аргументы</strong>:  data&nbsp;— выражение типа <a href="#domstring">DOMString</a>
+<strong>Результат</strong>:  новый объект <a href="http://wdh.suncloud.ru/dhtml04.htm#ref444">Text</a>
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>createTextNode</strong> создает новый объект типа <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref444">Text</a></tt> и возвращает
+        указатель на него. Аргумент <tt>data</tt> задает текст, который присваивается атрибуту <tt>nodeValue</tt>
+        объекта. Пример:</p>
+
+      <div class="code">
+<pre class="code">var text = document.createTextNode("Пример абзаца.");
+var elem = document.createElement("P");
+elem.appendChild(text);
+document.body.appendChild(elem);</pre>
+      </div>
+
+      <h4><a name="hgetelementbyid">Метод getElementById</a></h4>
+
+<pre class="syntax"><strong><a name="mgetelementbyid">Синтаксис</a></strong>:  <em>документ</em>.getElementById(elementId)
+<strong>Аргументы</strong>:  elementId&nbsp;— выражение типа <a href="#domstring">DOMString</a>
+<strong>Результат</strong>:  объект <a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a> или null
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Только для HTML-документов.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>getElementById</strong> возвращает указатель на объект <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt>, имеющий
+        заданный идентификатор <tt>elementId</tt>. Если такого объекта нет, то возвращается <strong>null</strong>;
+        если же таких элементов несколько, то возвращается первый из них. Следующий пример</p>
+
+      <div class="code">
+<pre class="code">&lt;P id="id1"&gt;Абзац 1&lt;/P&gt;
+&lt;P id="id1"&gt;Абзац 2&lt;/P&gt;
+&lt;SCRIPT&gt;
+var o = document.getElementById("id1");
+alert(o.firstChild.nodeValue);
+&lt;/SCRIPT&gt;
+...</pre>
+      </div>
+
+      <p class="noindent">выведет на экран текст <samp>Абзац 1</samp>.</p>
+
+      <p class="note"><strong>Примечание</strong>. В HTML идентификатором элемента является значение
+        его атрибута <strong><a href="http://wdh.suncloud.ru/html01.htm#aid">id</a></strong>. В XML такого атрибута нет, поэтому
+        данный метод имеет смысл только применительно к тем элементам, у которых в DTD определен <a href="http://wdh.suncloud.ru/xml02.htm#ref8231">атрибут-идентификатор</a>.
+        Для остальных элементов этот метод должен возвращать <strong>null</strong>.</p>
+
+      <h4><a name="hgetelementsbytagname">Метод getElementsByTagName</a></h4>
+
+<pre class="syntax"><strong><a name="mgetelementsbytagname">Синтаксис</a></strong>:  <em>документ</em>.getElementsByTagName(tagname)
+<strong>Аргументы</strong>:  tagname&nbsp;— выражение типа <a href="#domstring">DOMString</a>
+<strong>Результат</strong>:  объект <a href="http://wdh.suncloud.ru/dhtml03.htm#ref432">NodeList</a>
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту (см. прим.).
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>getElementsByTagName</strong> создает новый объект <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref432">NodeList</a></tt>, состоящий
+        из всех объектов <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt>, имеющих заданное имя и возвращает указатель на него. Аргумент
+        <tt>tagname</tt> задает искомый тег; если он равен "*", то возвращается список всех элементов
+        документа.</p>
+
+      <p class="note"><strong>Примечание</strong>. Internet Explorer не поддерживает специальное имя
+        "*". В нем вместо <code class="note">document.getElementsByTagName("*")</code> следует использовать
+        нестандартное свойство <code class="note">document.all</code>.</p>
+
+      <p>Следующий пример выводит на экран количество графических образов в документе, а затем URI первого
+        образа:</p>
+
+      <div class="code">
+<pre class="code">var imgList = document.getElementsByTagName("IMG");
+alert(imgList.length);
+alert(imgList[0].src);</pre>
+      </div>
+
+      <h4><a name="hgetelementsbytagnamens">Метод getElementsByTagNameNS</a></h4>
+
+<pre class="syntax"><strong><a name="mgetelementsbytagnamens">Синтаксис</a></strong>:  <em>документ</em>.getElementsByTagNameNS(namespaceURI, localName)
+<strong>Аргументы</strong>:  namespaceURI, localName&nbsp;— выражения типа <a href="#domstring">DOMString</a>
+<strong>Результат</strong>:  объект <a href="http://wdh.suncloud.ru/dhtml03.htm#ref432">NodeList</a>
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>getElementsByTagNameNS</strong> создает новый объект <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref432">NodeList</a></tt>, состоящий
+        из всех объектов <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt>, имеющих заданное имя и возвращает указатель на него. Он предназначен
+        для XML-документов и для HTML-документов может не поддерживаться. Аргумент <tt>namespaceURI</tt>
+        задает <a href="http://wdh.suncloud.ru/xml03.htm#ref832">URI пространства имен</a>, а <tt>localName</tt>&nbsp;—
+        <a href="http://wdh.suncloud.ru/xml03.htm#qualified-name">локальное имя</a> искомого тега в этом пространстве имен;
+        если он равен "*", то возвращается список всех элементов документа, относящихся к данному словарю.</p>
+
+      <h4><a name="himportnode">Метод importNode</a></h4>
+
+<pre class="syntax"><strong><a name="mimportnode">Синтаксис</a></strong>:  <em>документ</em>.importNode(node, deep)
+<strong>Аргументы</strong>:  node&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a>
+            deep&nbsp;— логическое выражение
+<strong>Результат</strong>:  объект <a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a>
+<strong>Исключения</strong>: NOT_SUPPORTED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>importNode</strong> импортирует копию узла <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a></tt> из другого документа
+        в данный. При этом создается копия исходного узла, как описано ниже; исходный узел не изменяется.
+        Метод возвращает указатель на созданный объект <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a></tt>. Если аргумент <tt>deep</tt> равен
+        <strong>true</strong>, то производится импорт поддерева исходного документа, начиная с данного
+        узла; в противном случае импортируется только сам узел.</p>
+
+      <p>Возвращаемый узел не имеет предка (его атрибут <tt>parentNode</tt> равен <strong>null</strong>).
+        Значения атрибутов <tt>nodeName</tt>, <tt>nodeType</tt>, <tt>prefix</tt>, <tt>localName</tt>
+        и <tt>namespaceURI</tt> копируются из исходного узла. Дополнительная информация, копируемая
+        в новый узел, зависит от типа узла (см. <a href="http://wdh.suncloud.ru/dhtml03.htm#table43">Таблицу 4.3</a>):</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th><tt>Тип узла</tt></th>
+            <th>Поведение</th>
+          </tr>
+          <tr>
+            <td><tt>ATTRIBUTE_NODE</tt></td>
+            <td>Атрибут <tt>ownerElement</tt> равен <strong>null</strong>, <tt>specified</tt> равен
+              <strong>true</strong>. Все потомки исходного узла рекурсивно копируются в новый узел <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref441">Attr</a></tt>,
+              независимо от значения <tt>deep</tt>.</td>
+          </tr>
+          <tr>
+            <td><tt>DOCUMENT_FRAGMENT_NODE</tt></td>
+            <td>Если <tt>deep</tt> равен <strong>true</strong>, то производится импорт заданного фрагмента
+              документа; в противном случае создается пустой узел <tt><a href="#ref425">DocumentFragment</a></tt>.</td>
+          </tr>
+          <tr>
+            <td><tt>DOCUMENT_NODE</tt>, <tt>DOCUMENT_TYPE_NODE</tt></td>
+            <td>Не могут быть импортированы.</td>
+          </tr>
+          <tr>
+            <td><tt>ELEMENT_NODE</tt></td>
+            <td>В новый узел <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt> копируются все атрибуты исходного узла, кроме заданных
+              по умолчанию в исходном документе. Затем создаются атрибуты по умолчанию, принятые в данном
+              документе для элементов с этим именем. Если <tt>deep</tt> равен <strong>true</strong>,
+              то производится импорт всего поддерева исходного элемента.</td>
+          </tr>
+          <tr>
+            <td><tt>ENTITY_NODE</tt></td>
+            <td>Узлы <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref454">Entity</a></tt> могут быть импортированы, но в DOM 2 объект <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref452">DocumentType</a></tt>
+              доступен только для чтения, поэтому импорт таких узлов не имеет смысла.</td>
+          </tr>
+          <tr>
+            <td><tt>ENTITY_REFERENCE_NODE</tt></td>
+            <td>Копируется только сам узел <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref455">EntityReference</a></tt>, независимо от значения <tt>deep</tt>.
+              Если в нашем документе есть определение раздела с данным именем, то оно заносится в новый
+              узел.</td>
+          </tr>
+          <tr>
+            <td><tt>NOTATION_NODE</tt></td>
+            <td>Узлы <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref453">Notation</a></tt> могут быть импортированы, но в DOM 2 объект <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref452">DocumentType</a></tt>
+              доступен только для чтения, поэтому импорт таких узлов не имеет смысла.</td>
+          </tr>
+          <tr>
+            <td><tt>PROCESSING_INSTRUCTION_NODE</tt></td>
+            <td>Копируются значения атрибутов <tt>target</tt> и <tt>data</tt> исходного узла.</td>
+          </tr>
+          <tr>
+            <td><tt>TEXT_NODE, CDATA_SECTION_NODE, COMMENT_NODE</tt></td>
+            <td>Копируются значения атрибутов <tt>data</tt> и <tt>length</tt> исходного узла.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml01.htm"><img name="imgleftb" src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nnleft.gif" alt="" title="Введение в Dynamic HTML" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml03.htm"><img name="imgrightb" src="4.2.%20%C1%E0%E7%EE%E2%E0%FF%20%EE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nnright.gif" alt="" title="Узлы дерева документа" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

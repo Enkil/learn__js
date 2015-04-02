@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="js/jquery-2.0.0.min.js"></script>
+  
+  <script>
+  $(document).ready(function(){
+    
+    $(document.body).click(function () {
+      $("div").each(function (i) {
+        if (this.style.color != "blue") {
+          this.style.color = "blue";
+        } else {
+          this.style.color = "";
+        }
+      });
+    });
+
+  });
+  </script>
+  <style>
+  div { color:red; text-align:center; cursor:pointer; font-weight:bolder; width:300px; border:1px solid #ccc; margin:4px; }
+  </style>
+</head>
+<body>
+  <div>div #1 Щелкай здесь</div>
+  <div>div #2 чтобы перебрать</div>
+  <div>div #3 все разделы div.</div>
+</body>
+</html>

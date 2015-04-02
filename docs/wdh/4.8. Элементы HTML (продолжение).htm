@@ -1,0 +1,1955 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: DHTML - Элементы HTML (продолжение)</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/dhtml07.htm" title="Элементы HTML">
+<link rel="Next" href="http://wdh.suncloud.ru/dhtml09.htm" title="Динамические таблицы стилей">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="4.8.%20%DD%EB%E5%EC%E5%ED%F2%FB%20HTML%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/load.js"></script>
+<script type="text/javascript" src="4.8.%20%DD%EB%E5%EC%E5%ED%F2%FB%20HTML%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/link.js"></script><link rel="stylesheet" type="text/css" href="4.8.%20%DD%EB%E5%EC%E5%ED%F2%FB%20HTML%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml07.htm"><img name="imglefta" src="4.8.%20%DD%EB%E5%EC%E5%ED%F2%FB%20HTML%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/nnleft.gif" alt="" title="Элементы HTML" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="4.8.%20%DD%EB%E5%EC%E5%ED%F2%FB%20HTML%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml09.htm"><img name="imgrighta" src="4.8.%20%DD%EB%E5%EC%E5%ED%F2%FB%20HTML%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/nnright.gif" alt="" title="Динамические таблицы стилей" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=7764" target="_blank"><img src="4.8.%20%DD%EB%E5%EC%E5%ED%F2%FB%20HTML%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref48">Глава 4.8. Элементы HTML (продолжение)</a></h2>
+
+      <h3><a name="ref481">4.8.1. Гиперссылки, объекты и графические образы</a></h3>
+
+      <h4><a name="ref4811">4.8.1.1. Интерфейс HTMLAnchorElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLAnchorElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html06.htm#ea">A</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>accessKey</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>accesskey</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>charset</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>charset</strong></td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+          <tr>
+            <td><tt>coords</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>coords</strong></td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+          <tr>
+            <td><tt>href</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>href</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>hreflang</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>hreflang</strong></td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+          <tr>
+            <td><tt>name</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>name</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>rel</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>rel</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>rev</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>rev</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>shape</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>shape</strong></td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+          <tr>
+            <td><tt>tabIndex</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>tabindex</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>target</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>target</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>type</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>type</strong></td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Кроме того, данный интерфейс поддерживает два метода, управляющие фокусом:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Результат</th>
+            <th>Описание</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>blur()</tt></td>
+            <td>Нет</td>
+            <td>Удаляет фокус с данного элемента.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>focus()</tt></td>
+            <td>Нет</td>
+            <td>Помещает фокус на данный элемент.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4812">4.8.1.2. Интерфейс HTMLImageElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLImageElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html06.htm#eimg">IMG</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>align</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>align</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>alt</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>alt</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>border</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>border</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>height</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>height</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>hspace</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>hspace</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>isMap</tt></td>
+            <td>логический</td>
+            <td><strong>ismap</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>longDesc</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>longdesc</strong></td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+          <tr>
+            <td><tt>lowSrc</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td>URI графического образа для экранов с низким разрешением.</td>
+            <td><tt>lowsrc</tt></td>
+            <td><tt>lowSrc</tt>,&nbsp;<tt>lowsrc</tt></td>
+          </tr>
+          <tr>
+            <td><tt>name</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>name</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>src</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>src</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>useMap</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>usemap</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>vspace</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>vspace</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>width</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>width</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4813">4.8.1.3. Интерфейс HTMLObjectElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLObjectElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html06.htm#eobject">OBJECT</a></strong>.
+Его свойства описаны ниже. Стандарт объявляет их доступными для
+изменения, но оговаривает, что реальное поведение свойств определяется
+типом объекта и его окружением.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>align</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>align</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>archive</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>archive</strong></td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+          <tr>
+            <td><tt>border</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>border</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>code</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>code</strong> (см. <strong><a href="http://wdh.suncloud.ru/deprecat.htm#eapplet">APPLET</a></strong>)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>codeBase</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>codebase</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>codeType</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>codetype</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>contentDocument</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#ref426">Document</a></tt></td>
+            <td>Указатель на документ, содержащий данный объект, или <strong>null</strong> (DOM 2, неизменяемый).</td>
+            <td>Нет</td>
+            <td><strong>null</strong></td>
+          </tr>
+          <tr>
+            <td><tt>data</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>data</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>declare</tt></td>
+            <td>логический</td>
+            <td><strong>declare</strong></td>
+            <td>Нет</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>form</tt></td>
+            <td><tt><a href="#ref4831">HTMLFormElement</a></tt></td>
+            <td>Указатель на элемент <strong><a href="http://wdh.suncloud.ru/html08.htm#eform">FORM</a></strong>, содержащий данный объект, или <strong>null</strong> (неизменяемый).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>height</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>height</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>hspace</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>hspace</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>name</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>name</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>standby</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>standby</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>tabIndex</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>tabindex</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>type</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>type</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>useMap</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>usemap</strong></td>
+            <td>Нет</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>vspace</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>vspace</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>width</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>width</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4814">4.8.1.4. Интерфейс HTMLParamElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLParamElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html06.htm#eparam">PARAM</a></strong>.
+        Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>name</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>name</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>type</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>type</strong></td>
+            <td>Нет</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>value</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>value</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>valueType</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>valuetype</strong></td>
+            <td>Нет</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4815">4.8.1.5. Интерфейс HTMLMapElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLMapElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html06.htm#emap">MAP</a></strong>.
+        Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>areas</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml06.htm#ref462">HTMLCollection</a></tt></td>
+            <td>Коллекция элементов <strong>AREA</strong>, определенных для данной карты (неизменяемая).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>name</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>name</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4816">4.8.1.6. Интерфейс HTMLAreaElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLAreaElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html06.htm#earea">AREA</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>accessKey</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>accesskey</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>alt</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>alt</strong></td>
+            <td>Да</td>
+            <td>Игнорируется</td>
+          </tr>
+          <tr>
+            <td><tt>coords</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>coords</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>href</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>href</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>nohref</tt></td>
+            <td>логический</td>
+            <td><strong>nohref</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>shape</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>shape</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>tabIndex</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>tabindex</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>target</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>target</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h3><a name="ref482">4.8.2. Фреймы</a></h3>
+
+      <h4><a name="ref4821">4.8.2.1. Интерфейс HTMLFrameSetElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLFrameSetElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html07.htm#eframeset">FRAMESET</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>cols</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>cols</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>rows</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>rows</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4822">4.8.2.2. Интерфейс HTMLFrameElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLFrameElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html07.htm#eframe">FRAME</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>contentDocument</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#ref426">Document</a></tt></td>
+            <td>Указатель на документ, содержащийся в данном фрейме, или <strong>null</strong> (DOM 2, неизменяемый).</td>
+            <td>Нет</td>
+            <td>Нет</td>
+          </tr>
+          <tr>
+            <td><tt>frameBorder</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>frameborder</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>longDesc</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>longdesc</strong></td>
+            <td>Нет</td>
+            <td>Нет</td>
+          </tr>
+          <tr>
+            <td><tt>marginHeight</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>marginheight</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>marginWidth</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>marginwidth</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>name</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>name</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>noResize</tt></td>
+            <td>логический</td>
+            <td><strong>noresize</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>scrolling</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>scrolling</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>src</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>src</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4823">4.8.2.3. Интерфейс HTMLIFrameElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLIFrameElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html07.htm#eiframe">IFRAME</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>align</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>align</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>contentDocument</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#ref426">Document</a></tt></td>
+            <td>Указатель на документ, содержащийся в данном фрейме, или <strong>null</strong> (DOM 2, неизменяемый).</td>
+            <td>Нет</td>
+            <td>Нет</td>
+          </tr>
+          <tr>
+            <td><tt>frameBorder</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>frameborder</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>height</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>height</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>longDesc</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>longdesc</strong></td>
+            <td>Нет</td>
+            <td>Нет</td>
+          </tr>
+          <tr>
+            <td><tt>marginHeight</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>marginheight</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>marginWidth</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>marginwidth</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>name</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>name</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>scrolling</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>scrolling</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>src</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>src</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>width</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>width</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h3><a name="ref483">4.8.3. Формы</a></h3>
+
+      <h4><a name="ref4831">4.8.3.1. Интерфейс HTMLFormElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLFormElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html08.htm#eform">FORM</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>acceptCharset</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>accept-charset</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>action</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>action</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>elements</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml06.htm#ref462">HTMLCollection</a></tt></td>
+            <td>Коллекция всех управляющих элементов данной формы (неизменяемая).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>enctype</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>enctype</strong></td>
+            <td>encoding</td>
+            <td>enctype, encoding</td>
+          </tr>
+          <tr>
+            <td><tt>length</tt></td>
+            <td>целый</td>
+            <td>Количество управляющих элементов в данной форме (неизменяемое).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>method</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>method</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>name</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>name</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>target</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>target</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Кроме того, данный интерфейс поддерживает два метода, управляющие пересылкой формы:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Результат</th>
+            <th>Описание</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>reset()</tt></td>
+            <td>Нет</td>
+            <td>Инициализирует форму (эквивалентно кнопке <strong>reset</strong>).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>submit()</tt></td>
+            <td>Нет</td>
+            <td>Пересылает форму (эквивалентно кнопке <strong>submit</strong>).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4832">4.8.3.2. Интерфейс HTMLInputElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLInputElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html08.htm#einput">INPUT</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>accept</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>accept</strong></td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+          <tr>
+            <td><tt>accessKey</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>accesskey</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>align</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>align</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>alt</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>alt</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>checked</tt></td>
+            <td>логический</td>
+            <td>Текущее значение <strong>checked</strong> (для флажков и переключателей).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>defaultChecked</tt></td>
+            <td>логический</td>
+            <td>Начальное значение <strong>checked</strong> (для флажков и переключателей).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>defaultValue</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td>Начальное значение <strong>value</strong> (для ввода текста, пароля и выбора файлов).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>disabled</tt></td>
+            <td>логический</td>
+            <td><strong>disabled</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>form</tt></td>
+            <td><tt><a href="#ref4831">HTMLFormElement</a></tt></td>
+            <td>Указатель на элемент <strong><a href="http://wdh.suncloud.ru/html08.htm#eform">FORM</a></strong>, содержащий данный элемент, или <strong>null</strong> (неизменяемый).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>maxLength</tt></td>
+            <td>целый</td>
+            <td><strong>maxlength</strong> (для полей ввода текста и пароля)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>readOnly</tt></td>
+            <td>логический</td>
+            <td><strong>readonly</strong> (для полей ввода текста и пароля)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>size</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>size</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>src</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>src</strong> (для графических кнопок)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>tabIndex</tt></td>
+            <td>целый</td>
+            <td><strong>tabindex</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>type</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>type</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>useMap</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>usemap</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>value</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td>Текущее значение <strong>value</strong>.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Кроме того, данный интерфейс поддерживает следующие методы:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Результат</th>
+            <th>Описание</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>blur()</tt></td>
+            <td>Нет</td>
+            <td>Удаляет фокус с данного элемента.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>click()</tt></td>
+            <td>Нет</td>
+            <td>Имитирует щелчок кнопки мыши (для кнопок, флажков и переключателей).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>focus()</tt></td>
+            <td>Нет</td>
+            <td>Помещает фокус на данный элемент.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><nobr><tt>select()</tt></nobr></td>
+            <td>Нет</td>
+            <td>Выбирает содержимое текстового поля (для полей ввода текста, пароля и селекторов файлов).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4833">4.8.3.3. Интерфейс HTMLButtonElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLButtonElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html08.htm#ebutton">BUTTON</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>accessKey</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>accesskey</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>disabled</tt></td>
+            <td>логический</td>
+            <td><strong>disabled</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>form</tt></td>
+            <td><tt><a href="#ref4831">HTMLFormElement</a></tt></td>
+            <td>Указатель на элемент <strong><a href="http://wdh.suncloud.ru/html08.htm#eform">FORM</a></strong>, содержащий данный элемент, или <strong>null</strong> (неизменяемый).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>name</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>name</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>tabIndex</tt></td>
+            <td>целый</td>
+            <td><strong>tabindex</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>type</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>type</strong> (неизменяемый)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>value</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>value</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4834">4.8.3.4. Интерфейс HTMLSelectElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLSelectElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html08.htm#eselect">SELECT</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>disabled</tt></td>
+            <td>логический</td>
+            <td><strong>disabled</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>form</tt></td>
+            <td><tt><a href="#ref4831">HTMLFormElement</a></tt></td>
+            <td>Указатель на элемент <strong><a href="http://wdh.suncloud.ru/html08.htm#eform">FORM</a></strong>, содержащий данный элемент, или <strong>null</strong> (неизменяемый).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>length</tt></td>
+            <td>целый</td>
+            <td>Количество опций в данном элементе (неизменяемое).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>multiple</tt></td>
+            <td>логический</td>
+            <td><strong>multiple</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>name</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>name</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>options</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml06.htm#ref462">HTMLCollection</a></tt></td>
+            <td>Коллекция элементов <strong>OPTION</strong>, содержащихся в данном элементе (неизменяемая).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>selectedIndex</tt></td>
+            <td>целый</td>
+            <td>Порядковый номер выбранной опции, считая с нуля. Если выбранных опций нет, то -1;
+              если их несколько, то номер первой из них.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>size</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>size</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>tabIndex</tt></td>
+            <td>целый</td>
+            <td><strong>tabindex</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>type</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>type</strong> (неизменяемый)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>value</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>value</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Кроме того, данный интерфейс поддерживает следующие методы:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Результат</th>
+            <th>Описание</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>add(element, before)</tt></td>
+            <td>Нет</td>
+            <td>Добавляет HTML-элемент <tt>element</tt> в коллекцию <tt>options</tt> перед HTML-элементом <tt>before</tt>.
+              Если <tt>before</tt> равен <strong>null</strong>, то добавляет в конец коллекции.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>blur()</tt></td>
+            <td>Нет</td>
+            <td>Удаляет фокус с данного элемента.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>focus()</tt></td>
+            <td>Нет</td>
+            <td>Помещает фокус на данный элемент.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><nobr><tt>remove(index)</tt></nobr></td>
+            <td>Нет</td>
+            <td>Удаляет HTML-элемент с номером <tt>index</tt>, считая с нуля, из коллекции <tt>options</tt>.
+              Если такого элемента нет, то не делает ничего.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4835">4.8.3.5. Интерфейс HTMLOptGroupElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLOptGroupElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html08.htm#eoptgroup">OPTGROUP</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>disabled</tt></td>
+            <td>логический</td>
+            <td><strong>disabled</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>label</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>label</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4836">4.8.3.6. Интерфейс HTMLOptionElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLOptionElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html08.htm#eoption">OPTION</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>defaultSelected</tt></td>
+            <td>логический</td>
+            <td>Начальное значение <strong>selected</strong>.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>disabled</tt></td>
+            <td>логический</td>
+            <td><strong>disabled</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>form</tt></td>
+            <td><tt><a href="#ref4831">HTMLFormElement</a></tt></td>
+            <td>Указатель на элемент <strong><a href="http://wdh.suncloud.ru/html08.htm#eform">FORM</a></strong>, содержащий данный элемент, или <strong>null</strong> (неизменяемый).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>index</tt></td>
+            <td>целый</td>
+            <td>Номер данного элемента в содержащем его элементе <strong>SELECT</strong>, считая с нуля (неизменяемый).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>label</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>label</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>selected</tt></td>
+            <td>логический</td>
+            <td>Текущее значение <strong>selected</strong>.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>text</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td>Текст, содержащийся в данном элементе (неизменяемый).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>value</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>value</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4837">4.8.3.7. Интерфейс HTMLTextAreaElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLTextAreaElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html08.htm#etextarea">TEXTAREA</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>accessKey</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>accesskey</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>cols</tt></td>
+            <td>целый</td>
+            <td><strong>cols</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>defaultValue</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td>Начальное содержимое элемента.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>disabled</tt></td>
+            <td>логический</td>
+            <td><strong>disabled</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>form</tt></td>
+            <td><tt><a href="#ref4831">HTMLFormElement</a></tt></td>
+            <td>Указатель на элемент <strong><a href="http://wdh.suncloud.ru/html08.htm#eform">FORM</a></strong>, содержащий данный элемент, или <strong>null</strong> (неизменяемый).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>name</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>name</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>readOnly</tt></td>
+            <td>логический</td>
+            <td><strong>readonly</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>rows</tt></td>
+            <td>целый</td>
+            <td><strong>rows</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>tabIndex</tt></td>
+            <td>целый</td>
+            <td><strong>tabindex</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>type</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td>Строка "textarea" (неизменяемая).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>value</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td>Текущее содержимое элемента.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Кроме того, данный интерфейс поддерживает следующие методы:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Результат</th>
+            <th>Описание</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>blur()</tt></td>
+            <td>Нет</td>
+            <td>Удаляет фокус с данного элемента.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>focus()</tt></td>
+            <td>Нет</td>
+            <td>Помещает фокус на данный элемент.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><nobr><tt>select()</tt></nobr></td>
+            <td>Нет</td>
+            <td>Выбирает содержимое текстового поля.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4838">4.8.3.8. Интерфейс HTMLLabelElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLLabelElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html08.htm#elabel">LABEL</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>accessKey</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>accesskey</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>form</tt></td>
+            <td><tt><a href="#ref4831">HTMLFormElement</a></tt></td>
+            <td>Указатель на элемент <strong><a href="http://wdh.suncloud.ru/html08.htm#eform">FORM</a></strong>, содержащий данный элемент, или <strong>null</strong> (неизменяемый).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>htmlFor</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>for</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4839">4.8.3.9. Интерфейс HTMLFieldSetElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLFieldSetElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html08.htm#efieldset">FIELDSET</a></strong>. Он имеет единственное свойство:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>form</tt></td>
+            <td><tt><a href="#ref4831">HTMLFormElement</a></tt></td>
+            <td>Указатель на элемент <strong><a href="http://wdh.suncloud.ru/html08.htm#eform">FORM</a></strong>, содержащий данный элемент, или <strong>null</strong> (неизменяемый).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref48310">4.8.3.10. Интерфейс HTMLLegendElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLLegendElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html08.htm#elegend">LEGEND</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>accessKey</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>accesskey</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>align</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>align</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>form</tt></td>
+            <td><tt><a href="#ref4831">HTMLFormElement</a></tt></td>
+            <td>Указатель на элемент <strong><a href="http://wdh.suncloud.ru/html08.htm#eform">FORM</a></strong>, содержащий данный элемент, или <strong>null</strong> (неизменяемый).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h3><a name="ref484">4.8.4. Прочие элементы</a></h3>
+
+      <h4><a name="ref4841">4.8.4.1. Интерфейс HTMLScriptElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLScriptElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html09.htm#escript">SCRIPT</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>charset</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>charset</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>defer</tt></td>
+            <td>логический</td>
+            <td><strong>defer</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>event</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><em>Зарезервировано для будущего использования</em>.</td>
+            <td>Да, атрибут <strong>event</strong> (неизменяемое)</td>
+            <td>Нет</td>
+          </tr>
+          <tr>
+            <td><tt>htmlFor</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><em>Зарезервировано для будущего использования</em>.</td>
+            <td>Да, атрибут <strong>for</strong> (неизменяемое)</td>
+            <td>Нет</td>
+          </tr>
+          <tr>
+            <td><tt>src</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>src</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>text</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td>Текст сценария, содержащийся в данном элементе.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>type</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>type</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4842">4.8.4.2. Интерфейс HTMLDivElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLDivElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html10.htm#ediv">DIV</a></strong>. Он имеет единственное свойство:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>align</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>align</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4843">4.8.4.3. Интерфейс HTMLHRElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLHRElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html10.htm#ehr">HR</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>align</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>align</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>noShade</tt></td>
+            <td>логический</td>
+            <td><strong>noshade</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>size</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>size</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>width</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>width</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h3><a name="ref485">4.8.5. Морально устаревшие элементы</a></h3>
+
+      <h4><a name="ref4851">4.8.5.1. Интерфейс HTMLAppletElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLAppletElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/deprecat.htm#eapplet">APPLET</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>align</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>align</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>alt</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>alt</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>archive</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>archive</strong> (морально устаревший)</td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+          <tr>
+            <td><tt>code</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>code</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>codeBase</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>codebase</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>height</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>height</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>hspace</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>hspace</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>name</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>name</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>object</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>object</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>vspace</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>vspace</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>width</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>width</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4852">4.8.5.2. Интерфейс HTMLBaseFontElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLBaseFontElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/deprecat.htm#ebasefont">BASEFONT</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>color</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>color</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>face</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>face</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>size</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>size</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4853">4.8.5.3. Интерфейс HTMLDirectoryElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLDirectoryElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/deprecat.htm#edir">DIR</a></strong>. Он имеет единственное свойство:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>compact</tt></td>
+            <td>логический</td>
+            <td><strong>compact</strong> (морально устаревший)</td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4854">4.8.5.4. Интерфейс HTMLFontElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLFontElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/deprecat.htm#efont">FONT</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>color</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>color</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>face</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>face</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>size</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>size</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4855">4.8.5.5. Интерфейс HTMLIsIndexElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLIsIndexElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/deprecat.htm#eisindex">ISINDEX</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>form</tt></td>
+            <td><tt><a href="#ref4831">HTMLFormElement</a></tt></td>
+            <td>Указатель на элемент <strong><a href="http://wdh.suncloud.ru/html08.htm#eform">FORM</a></strong>, содержащий данный элемент, или <strong>null</strong> (неизменяемый).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>prompt</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>prompt</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4856">4.8.5.6. Интерфейс HTMLMenuElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLMenuElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/deprecat.htm#emenu">MENU</a></strong>. Он имеет единственное свойство:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>compact</tt></td>
+            <td>логический</td>
+            <td><strong>compact</strong> (морально устаревший)</td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml07.htm"><img name="imgleftb" src="4.8.%20%DD%EB%E5%EC%E5%ED%F2%FB%20HTML%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/nnleft.gif" alt="" title="Элементы HTML" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="4.8.%20%DD%EB%E5%EC%E5%ED%F2%FB%20HTML%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml09.htm"><img name="imgrightb" src="4.8.%20%DD%EB%E5%EC%E5%ED%F2%FB%20HTML%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/nnright.gif" alt="" title="Динамические таблицы стилей" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

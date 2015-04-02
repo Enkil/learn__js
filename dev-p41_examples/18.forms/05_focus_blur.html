@@ -1,0 +1,28 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+  a:link { background-color:yellow; }
+  a:active { background-color:green; }
+</style>
+<script type="text/javascript">
+window.onload = function(){
+	document.getElementById("inp1").onclick = function(){
+		document.getElementById('myAnchor').focus();
+		document.getElementById('mydiv').innerHTML = "Фокус передан";
+	}
+	document.getElementById("inp2").onclick = function(){
+		document.getElementById('myAnchor').blur();
+		document.getElementById('mydiv').innerHTML = "Фокус унесен с элемента";
+	}
+}
+</script>
+</head>
+
+<body>
+<a id="myAnchor" href="#">Посетите сайт W3Schools.com</a>
+<div id="mydiv">Где фокус?</div>
+<input type="button" id="inp1" value="Перенести фокус на элемент">
+<input type="button" id="inp2"  value="Перенести фокус с элемента">
+</body>
+</html>

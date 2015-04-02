@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Анимированная панель навигации</title>
+<link href="css/site.css" rel="stylesheet">
+<style>
+#dashboard {
+	width: 70px;
+	background-color: rgb(110,138,195);
+	padding: 20px 20px 0 20px;
+	position: absolute;
+	left: -92px;
+	z-index: 100;
+}
+#dashboard img {
+	margin-bottom: 20px;
+	border: 1px solid rgb(0,0,0);
+}
+</style>
+<!-- 
+<script src="jquery.js"></script>
+<script src="query.easing.1.3.js"></script>
+<script src="jquery.color.js"></script> -->
+<script>
+$(document).ready(function() {
+  $('#dashboard').hover(
+     
+  ); 
+}); 
+</script>
+</head>
+<body>
+<div class="wrapper">
+<div class="header">
+	<p class="logo">jQuery</p>
+</div>
+<div id="dashboard">
+<img src="images/blue_h.jpg" width="70" height="70" alt="blue">
+<img src="images/green_h.jpg" width="70" height="70" alt="green">
+<img src="images/orange_h.jpg" width="70" height="70" alt="orange">
+<img src="images/purple_h.jpg" width="70" height="70" alt="purple">
+<img src="images/red_h.jpg" width="70" height="70" alt="red">
+<img src="images/yellow_h.jpg" width="70" height="70" alt="yellow">
+</div>
+<div class="content">
+<div class="main">
+<h1>Анимированная панель навигации</h1>
+<p>Наведите указатель мыши на голубую полосу у левого края страницы</p>
+</div>
+</div>
+<div class="footer">
+<p> jQuery</p>
+</div>
+</div>
+</body>
+</html>

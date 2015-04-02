@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Заголовок</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script language="JavaScript">
+	<!--
+	function AvailSpace() {
+  var fso = new ActiveXObject("Scripting.FileSystemObject");
+  var d = fso.GetDrive("C");
+  return d.AvailableSpace / 1024;
+}
+//объем дискового пространства, доступного для пользователя, в байтах.
+document.write(AvailSpace());
+
+var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFile("C:\\benken.jpg");
+var x = f.Type;	
+document.write("<br>"+x);
+
+var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFile("c:\\config.sys");
+f.Copy("d:\\Temp");
+
+function ShowFileList(folderspec) {
+   var fso = new ActiveXObject("Scripting.FileSystemObject");
+   var f = fso.GetFolder(folderspec);
+   var fc = new Enumerator(f.Files);
+   var s = "";
+   for (; !fc.atEnd(); fc.moveNext())
+      s += fc.item() + "<br>";
+   return s;
+}
+
+document.write(ShowFileList("c:\\"));
+function ShowFileList(folderspec) {
+   var fso = new ActiveXObject("Scripting.FileSystemObject");
+   var f = fso.GetFolder(folderspec);
+   var fc = new Enumerator(f.SubFolders);
+   var s = "";
+   for (; !fc.atEnd(); fc.moveNext())
+      s += fc.item() + "<br>";
+   return s;
+}
+
+document.write(ShowFileList("c:\\"));
+
+	-->
+	</script>
+</head>
+<body>
+</body>
+</html>
+

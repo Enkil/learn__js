@@ -1,0 +1,1242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: DHTML - Элементы HTML</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/dhtml06.htm" title="Объектная модель HTML-документа">
+<link rel="Next" href="http://wdh.suncloud.ru/dhtml08.htm" title="Элементы HTML (продолжение)">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="4.7.%20%DD%EB%E5%EC%E5%ED%F2%FB%20HTML_files/load.js"></script>
+<script type="text/javascript" src="4.7.%20%DD%EB%E5%EC%E5%ED%F2%FB%20HTML_files/link.js"></script><link rel="stylesheet" type="text/css" href="4.7.%20%DD%EB%E5%EC%E5%ED%F2%FB%20HTML_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml06.htm"><img name="imglefta" src="4.7.%20%DD%EB%E5%EC%E5%ED%F2%FB%20HTML_files/nnleft.gif" alt="" title="Объектная модель HTML-документа" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="4.7.%20%DD%EB%E5%EC%E5%ED%F2%FB%20HTML_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml08.htm"><img name="imgrighta" src="4.7.%20%DD%EB%E5%EC%E5%ED%F2%FB%20HTML_files/nnright.gif" alt="" title="Элементы HTML (продолжение)" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=2811" target="_blank"><img src="4.7.%20%DD%EB%E5%EC%E5%ED%F2%FB%20HTML_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref47">Глава 4.7. Элементы HTML</a></h2>
+
+      <p>Теперь мы готовы перейти к описанию интерфейсов отдельных элементов языка HTML. Все эти
+        интерфейсы наследуют интерфейс <tt><a href="http://wdh.suncloud.ru/dhtml06.htm#ref464">HTMLElement</a></tt> и добавляют к нему собственные методы и свойства,
+        специфичные для данного элемента. В большинстве случаев добавляется набор свойств, соответствующих
+        атрибутам, предусмотренных в HTML для данного элемента. Исключение составляют только элементы форм
+        и таблиц, которые имеют еще и собственные методы. Поэтому описания интерфейсов построены в виде кратких таблиц,
+        которые содержат имена свойств интерфейса и имена соответствующих HTML-атрибутов (они не всегда совпадают из-за
+        ограничений, навязанных синтаксисом языков программирования). Все свойства HTML-элементов доступны и для чтения, и для
+        записи, если не оговорено противное.</p>
+
+      <p>Интерфейсы описываются в том же порядке, что и элементы в <a href="http://wdh.suncloud.ru/html01.htm">Части I</a>.
+        Обратите внимание, что в <a href="http://wdh.suncloud.ru/html01.htm">Части I</a>
+мы не описывали морально устаревшие элементы и атрибуты HTML. Здесь же
+мы решили дать полный перечень интерфейсов DOM, включая морально
+устаревшие элементы и свойства. Информацию о последних можно найти в <a href="http://wdh.suncloud.ru/deprecat.htm">Приложении 10</a>.</p>
+
+      <p>Важно
+понимать, что для создания описанных ниже интерфейсов не требуется
+каких-то специальных методов. В процессе синтаксического разбора
+HTML-документа ядро обозревателя строит его дерево объектов; при этом
+оно анализирует тег очередного элемента и в зависимости от него создает
+объект соответствующего типа. Например, операция <code>document.createElement("TABLE")</code>
+        возвращает указатель на новый объект типа <tt>HTMLTableElement</tt>.</p>
+
+      <h3><a name="ref471">4.7.1. Структурные элементы HTML</a></h3>
+
+      <h4><a name="ref4711">4.7.1.1. Интерфейс HTMLHtmlElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLHtmlElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html02.htm#ehtml">HTML</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>version</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>version</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4712">4.7.1.2. Интерфейс HTMLHeadElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLHeadElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html02.htm#ehead">HEAD</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>profile</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>profile</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4713">4.7.1.3. Интерфейс HTMLTitleElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLTitleElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html02.htm#etitle">TITLE</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Описание</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>text</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td>Титул документа как текстовая строка.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4714">4.7.1.4. Интерфейс HTMLMetaElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLMetaElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html02.htm#emeta">META</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>content</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>content</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>httpEquiv</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>http-equiv</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>name</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>name</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>scheme</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>scheme</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4715">4.7.1.5. Интерфейс HTMLBaseElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLBaseElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html02.htm#ebase">BASE</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>href</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>href</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>target</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>target</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4716">4.7.1.6. Интерфейс HTMLLinkElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLLinkElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html02.htm#elink">LINK</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>charset</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>charset</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>disabled</tt></td>
+            <td>логический</td>
+            <td>Запрещает или разрешает данную связь. Имеет смысл только для внешних таблиц стилей.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>href</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>href</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>hreflang</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>hreflang</strong></td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+          <tr>
+            <td><tt>media</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>media</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>rel</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>rel</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>rev</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>rev</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>sheet</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml09.htm#ref493">StyleSheet</a></tt></td>
+            <td>Указатель на таблицу стилей (неизменяемый). Имеет смысл только для внешних таблиц стилей.</td>
+            <td>Нет</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>target</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>target</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>type</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>type</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4717">4.7.1.7. Интерфейс HTMLStyleElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLStyleElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html02.htm#estyle">STYLE</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>disabled</tt></td>
+            <td>логический</td>
+            <td>Запрещает или разрешает данную таблицу стилей.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>media</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>media</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>sheet</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml09.htm#ref493">StyleSheet</a></tt></td>
+            <td>Указатель на таблицу стилей (неизменяемый).</td>
+            <td>Нет</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>type</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>type</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4718">4.7.1.8. Интерфейс HTMLBodyElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLBodyElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html02.htm#ebody">BODY</a></strong>.
+        Этот элемент всегда присутствует в документе, даже если соответствующие теги опущены. Он имеет следующие свойства,
+        которые являются морально устаревшими:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>aLink</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>alink</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>background</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>alink</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>bgColor</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>bgcolor</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>link</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>link</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>text</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>text</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>vLink</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>vlink</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h3><a name="ref472">4.7.2. Отображение текста</a></h3>
+
+      <h4><a name="ref4721">4.7.2.1. Интерфейс HTMLParagraphElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLParagraphElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html03.htm#ep">P</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>align</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>align</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4722">4.7.2.2. Интерфейс HTMLBRElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLBRElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html03.htm#ebr">BR</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>clear</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>clear</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4723">4.7.2.3. Интерфейс HTMLPreElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLPreElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html03.htm#epre">PRE</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>width</tt></td>
+            <td>целый</td>
+            <td><strong>width</strong> (морально устаревший)</td>
+            <td>Игнорируется</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4724">4.7.2.4. Интерфейс HTMLHeadingElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLHeadingElement</tt> соответствует элементам <strong><a href="http://wdh.suncloud.ru/html03.htm#eh">H1&nbsp;— H6</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>align</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>align</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4725">4.7.2.5. Интерфейс HTMLQuoteElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLQuoteElement</tt> соответствует элементам <strong><a href="http://wdh.suncloud.ru/html03.htm#eblockquote">BLOCKQUOTE</a></strong> и <strong><a href="http://wdh.suncloud.ru/html03.htm#eq">Q</a></strong>.
+        Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>cite</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>cite</strong></td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4726">4.7.2.6. Интерфейс HTMLModElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLModElement</tt> соответствует элементам <strong><a href="http://wdh.suncloud.ru/html03.htm#eins">INS</a></strong> и <strong><a href="http://wdh.suncloud.ru/html03.htm#edel">DEL</a></strong>.
+        Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>cite</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>cite</strong></td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+          <tr>
+            <td><tt>dateTime</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>datetime</strong></td>
+            <td>Нет</td>
+            <td>Игнорируется</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h3><a name="ref473">4.7.3. Списки</a></h3>
+
+      <h4><a name="ref4731">4.7.3.1. Интерфейс HTMLUListElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLUListElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html04.htm#eul">UL</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>compact</tt></td>
+            <td>логический</td>
+            <td><strong>compact</strong> (морально устаревший)</td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+          <tr>
+            <td><tt>type</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>type</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4732">4.7.3.2. Интерфейс HTMLOListElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLOListElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html04.htm#eol">OL</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>compact</tt></td>
+            <td>логический</td>
+            <td><strong>compact</strong> (морально устаревший)</td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+          <tr>
+            <td><tt>start</tt></td>
+            <td>целый</td>
+            <td><strong>start</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>type</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>type</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4733">4.7.3.3. Интерфейс HTMLLIElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLLIElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html04.htm#eli">LI</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>type</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>type</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>value</tt></td>
+            <td>целый</td>
+            <td><strong>value</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4734">4.7.3.4. Интерфейс HTMLDListElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLDListElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html04.htm#edl">DL</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>compact</tt></td>
+            <td>логический</td>
+            <td><strong>compact</strong> (морально устаревший)</td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h3><a name="ref474">4.7.4. Таблицы</a></h3>
+
+      <h4><a name="ref4741">4.7.4.1. Интерфейс HTMLTableElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLTableElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html05.htm#etable">TABLE</a></strong>.
+        Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>align</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>align</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>bgColor</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>bgcolor</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>border</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>border</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>caption</tt></td>
+            <td><tt><a href="#ref4742">HTMLTableCaptionElement</a></tt></td>
+            <td>Указатель на <strong><a href="http://wdh.suncloud.ru/html05.htm#ecaption">CAPTION</a></strong> таблицы или <strong>null</strong>.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>cellPadding</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>cellpadding</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>cellSpacing</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>cellspacing</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>frame</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>frame</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>rows</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml06.htm#ref462">HTMLCollection</a></tt></td>
+            <td>Коллекция всех строк таблицы в ее элементах <strong><a href="http://wdh.suncloud.ru/html05.htm#ethead">THEAD</a></strong>,
+              <strong><a href="http://wdh.suncloud.ru/html05.htm#etfoot">TFOOT</a></strong> и <strong><a href="http://wdh.suncloud.ru/html05.htm#etbody">TBODY</a></strong>
+              (неизменяемая).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>rules</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>rules</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>summary</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>summary</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>tBodies</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml06.htm#ref462">HTMLCollection</a></tt></td>
+            <td>Коллекция всех элементов <strong><a href="http://wdh.suncloud.ru/html05.htm#etbody">TBODY</a></strong> в таблице (неизменяемая).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>tFoot</tt></td>
+            <td><tt><a href="#ref4743">HTMLTableSectionElement</a></tt></td>
+            <td>Указатель на <strong><a href="http://wdh.suncloud.ru/html05.htm#etfoot">TFOOT</a></strong> таблицы или <strong>null</strong>.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>tHead</tt></td>
+            <td><tt><a href="#ref4743">HTMLTableSectionElement</a></tt></td>
+            <td>Указатель на <strong><a href="http://wdh.suncloud.ru/html05.htm#ethead">THEAD</a></strong> таблицы или <strong>null</strong>.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>width</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>width</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Кроме того, данный интерфейс поддерживает несколько методов, позволяющих создавать и удалять фрагменты таблицы:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Результат</th>
+            <th>Описание</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>createCaption()</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml06.htm#ref464">HTMLElement</a></tt></td>
+            <td>Создает новый элемент <strong><a href="http://wdh.suncloud.ru/html05.htm#ecaption">CAPTION</a></strong> и возвращает указатель на него.
+              Если такой элемент в таблице уже был, то возвращается указатель на него.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>createTFoot()</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml06.htm#ref464">HTMLElement</a></tt></td>
+            <td>Создает новый элемент <strong><a href="http://wdh.suncloud.ru/html05.htm#etfoot">TFOOT</a></strong> и возвращает указатель на него.
+              Если такой элемент в таблице уже был, то возвращается указатель на него.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>createTHead()</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml06.htm#ref464">HTMLElement</a></tt></td>
+            <td>Создает новый элемент <strong><a href="http://wdh.suncloud.ru/html05.htm#ethead">THEAD</a></strong> и возвращает указатель на него.
+              Если такой элемент в таблице уже был, то возвращается указатель на него.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>deleteCaption()</tt></td>
+            <td>Нет</td>
+            <td>Удаляет элемент <strong><a href="http://wdh.suncloud.ru/html05.htm#ecaption">CAPTION</a></strong>, если он есть в таблице.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>deleteRow(index)</tt></td>
+            <td>Нет</td>
+            <td>Удаляет строку таблицы с номером <tt>index</tt>. Строки нумеруются с нуля сквозным образом,
+              независимо от их группировки. Возможно исключение <tt>INDEX_SIZE_ERR</tt>.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>deleteTFoot()</tt></td>
+            <td>Нет</td>
+            <td>Удаляет элемент <strong><a href="http://wdh.suncloud.ru/html05.htm#etfoot">TFOOT</a></strong>, если он есть в таблице.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>deleteTHead()</tt></td>
+            <td>Нет</td>
+            <td>Удаляет элемент <strong><a href="http://wdh.suncloud.ru/html05.htm#ethead">THEAD</a></strong>, если он есть в таблице.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><nobr><tt>insertRow(index)</tt></nobr></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml06.htm#ref464">HTMLElement</a></tt></td>
+            <td>Вставляет пустую строку в таблицу перед строкой с номером <tt>index</tt> в той же группе строк
+              и возвращает указатель на нее. Строки нумеруются с нуля сквозным образом, независимо от их группировки.
+              Если <tt>index</tt> равен числу строк таблицы, то новая строка добавляется в конец таблицы. Возможно исключение <tt>INDEX_SIZE_ERR</tt>.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4742">4.7.4.2. Интерфейс HTMLTableCaptionElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLTableCaptionElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html05.htm#ecaption">CAPTION</a></strong>.
+        Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>align</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>align</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4743">4.7.4.3. Интерфейс HTMLTableSectionElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLTableSectionElement</tt> соответствует элементам, управляющим группировкой строк:
+        <strong><a href="http://wdh.suncloud.ru/html05.htm#ethead">THEAD</a></strong>, <strong><a href="http://wdh.suncloud.ru/html05.htm#etfoot">TFOOT</a></strong>
+        и <strong><a href="http://wdh.suncloud.ru/html05.htm#ethead">TBODY</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>align</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>align</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>ch</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>char</strong></td>
+            <td>Нет</td>
+            <td>Нет</td>
+          </tr>
+          <tr>
+            <td><tt>chOff</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>charoff</strong></td>
+            <td>Нет</td>
+            <td>Нет</td>
+          </tr>
+          <tr>
+            <td><tt>rows</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml06.htm#ref462">HTMLCollection</a></tt></td>
+            <td>Коллекция всех строк данной группы (неизменяемая).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>vAlign</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>valign</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Кроме того, данный интерфейс поддерживает два метода, позволяющих создавать и удалять строки таблицы:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Результат</th>
+            <th>Описание</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>deleteRow(index)</tt></td>
+            <td>Нет</td>
+            <td>Удаляет строку таблицы с номером <tt>index</tt>. Строки нумеруются с нуля сквозным образом,
+              независимо от их группировки. Возможно исключение <tt>INDEX_SIZE_ERR</tt>.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><nobr><tt>insertRow(index)</tt></nobr></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml06.htm#ref464">HTMLElement</a></tt></td>
+            <td>Вставляет пустую строку в таблицу перед строкой с номером <tt>index</tt> в той же группе строк
+              и возвращает указатель на нее. Строки нумеруются с нуля сквозным образом, независимо от их группировки.
+              Если <tt>index</tt> равен числу строк таблицы, то новая строка добавляется в конец таблицы. Возможно исключение <tt>INDEX_SIZE_ERR</tt>.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4744">4.7.4.4. Интерфейс HTMLTableColElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLTableColElement</tt> соответствует элементам, управляющим группировкой столбцов:
+        <strong><a href="http://wdh.suncloud.ru/html05.htm#ecol">COL</a></strong> и <strong><a href="http://wdh.suncloud.ru/html05.htm#ecolgroup">COLGROUP</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>align</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>align</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>ch</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>char</strong></td>
+            <td>Нет</td>
+            <td>Нет</td>
+          </tr>
+          <tr>
+            <td><tt>chOff</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>charoff</strong></td>
+            <td>Нет</td>
+            <td>Нет</td>
+          </tr>
+          <tr>
+            <td><tt>span</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>span</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>vAlign</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>valign</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>width</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>width</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4745">4.7.4.5. Интерфейс HTMLTableRowElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLTableRowElement</tt> соответствует элементу <strong><a href="http://wdh.suncloud.ru/html05.htm#etr">TR</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>align</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>align</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>bgColor</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>bgcolor</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>cells</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml06.htm#ref462">HTMLCollection</a></tt></td>
+            <td>Коллекция всех ячеек данной строки (неизменяемая).</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>ch</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>char</strong></td>
+            <td>Нет</td>
+            <td>Нет</td>
+          </tr>
+          <tr>
+            <td><tt>chOff</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>charoff</strong></td>
+            <td>Нет</td>
+            <td>Нет</td>
+          </tr>
+          <tr>
+            <td><tt>rowIndex</tt></td>
+            <td>целый</td>
+            <td>Сквозной номер строки в таблице, считая с нуля без учета групп строк (неизменяемый). Это номер в порядке
+              прохождения дерева документа, а не в порядке отображения таблицы.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>sectionRowIndex</tt></td>
+            <td>целый</td>
+            <td>Номер строки в текущей группе строк (<strong><a href="http://wdh.suncloud.ru/html05.htm#ethead">THEAD</a></strong>, <strong><a href="http://wdh.suncloud.ru/html05.htm#etfoot">TFOOT</a></strong>
+              или <strong><a href="http://wdh.suncloud.ru/html05.htm#ethead">TBODY</a></strong>), считая с нуля.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>vAlign</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>valign</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Кроме того, данный интерфейс поддерживает два метода, позволяющих создавать и удалять ячейки таблицы:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Результат</th>
+            <th>Описание</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><nobr><tt>deleteCell(index)</tt></nobr></td>
+            <td>Нет</td>
+            <td>Удаляет ячейку данной строки с номером <tt>index</tt>, считая с нуля. Возможно исключение <tt>INDEX_SIZE_ERR</tt>.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><nobr><tt>insertCell(index)</tt></nobr></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml06.htm#ref464">HTMLElement</a></tt></td>
+            <td>Вставляет пустую ячейку в данную строку перед ячейкой с номером <tt>index</tt>, считая с нуля, и возвращает указатель на нее.
+              Если <tt>index</tt> равен числу ячеек в строке, то новая ячейка добавляется в конец строки. Возможно исключение <tt>INDEX_SIZE_ERR</tt>.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref4746">4.7.4.6. Интерфейс HTMLTableCellElement</a></h4>
+
+      <p>Интерфейс <tt>HTMLTableCellElement</tt> соответствует элементам <strong><a href="http://wdh.suncloud.ru/html05.htm#eth">TH</a></strong> и <strong><a href="http://wdh.suncloud.ru/html05.htm#etd">TD</a></strong>. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Тип</th>
+            <th>Атрибут</th>
+            <th>MSHTML</th>
+            <th>Gecko</th>
+          </tr>
+          <tr>
+            <td><tt>abbr</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>abbr</strong></td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+          <tr>
+            <td><tt>align</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>align</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>axis</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>axis</strong></td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+          <tr>
+            <td><tt>bgColor</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>bgcolor</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>cellIndex</tt></td>
+            <td>целый</td>
+            <td>Сквозной номер ячейки в строке, считая с нуля (неизменяемый). Это номер в порядке
+              прохождения дерева документа, а не в порядке отображения таблицы.</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>ch</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>char</strong></td>
+            <td>Нет</td>
+            <td>Нет</td>
+          </tr>
+          <tr>
+            <td><tt>chOff</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>charoff</strong></td>
+            <td>Нет</td>
+            <td>Нет</td>
+          </tr>
+          <tr>
+            <td><tt>colSpan</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>colspan</strong></td>
+            <td>Нет</td>
+            <td>Нет</td>
+          </tr>
+          <tr>
+            <td><tt>headers</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>headers</strong></td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+          <tr>
+            <td><tt>height</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>height</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>noWrap</tt></td>
+            <td>логический</td>
+            <td><strong>nowrap</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>rowSpan</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>rowspan</strong></td>
+            <td>Нет</td>
+            <td>Нет</td>
+          </tr>
+          <tr>
+            <td><tt>scope</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>scope</strong></td>
+            <td>Игнорируется</td>
+            <td>Игнорируется</td>
+          </tr>
+          <tr>
+            <td><tt>vAlign</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>valign</strong></td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+          <tr>
+            <td><tt>width</tt></td>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt></td>
+            <td><strong>width</strong> (морально устаревший)</td>
+            <td>Да</td>
+            <td>Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml06.htm"><img name="imgleftb" src="4.7.%20%DD%EB%E5%EC%E5%ED%F2%FB%20HTML_files/nnleft.gif" alt="" title="Объектная модель HTML-документа" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="4.7.%20%DD%EB%E5%EC%E5%ED%F2%FB%20HTML_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml08.htm"><img name="imgrightb" src="4.7.%20%DD%EB%E5%EC%E5%ED%F2%FB%20HTML_files/nnright.gif" alt="" title="Элементы HTML (продолжение)" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

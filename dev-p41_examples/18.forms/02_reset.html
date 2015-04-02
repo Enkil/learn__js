@@ -1,0 +1,20 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript">
+window.onload = function(){
+	document.getElementById("formReset").onclick = function(){
+		document.getElementById("myForm").reset(); 
+	}
+}
+</script>
+</head>
+<body>
+<p>Введите текст в поля, а затем щелкните по кнопке "Reset" для очистки формы.</p>
+<form id="myForm">
+Имя: <input type="text" size="20"><br />
+Возраст: <input type="text" size="20"><br /> <br />
+<input type="button" id="formReset" value="Reset">
+</form>
+</body>
+</html> 

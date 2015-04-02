@@ -1,0 +1,18 @@
+<html>
+<head>
+<meta charset="utf-8">
+<script>
+	function changeLink(){
+	document.getElementById('myAnchor').innerHTML = "W3Schools";
+}
+window.onload = function(){
+	document.getElementById("but").onclick = changeLink;
+}
+
+</script>
+</head>	
+<body>
+<div><input type="button" id="but" value="Щелкай" /></div>
+<div id="myAnchor"> Раздел </div>
+</body>
+</html>

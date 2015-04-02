@@ -1,0 +1,29 @@
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+.forest{
+color: #228B22;
+background-color: #C0DCC0;
+width: 40px;
+border: 1px solid  #228B22;
+}
+</style>
+<script>
+function offsets(){
+	var elem = document.getElementById('myAnchor');
+	var block = document.getElementById('block');
+	elem.innerHTML = "offsetTop: " + block.offsetTop +  " offsetLeft родителя: "  + block.offsetParent.offsetLeft;
+}
+window.onload = function(){
+	document.getElementById("but").onclick = offsets;
+}
+
+</script>
+</head>	
+<body>
+<div><input type="button" id="but" value="Щелкай" /></div>
+<div id="myAnchor"> Пишем сюда! </div>
+<div class="forest" id="block">Блок</div>
+</body>
+</html>

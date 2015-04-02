@@ -1,0 +1,61 @@
+<html>
+<head>
+<style>
+#blk{position:relative;top:100px}
+/******** стили стильные ************/
+.toppest {z-index:10;}
+</style>
+</head>
+<body>
+<div id="blk">
+<div id="s1" style="position:absolute;width:200px;height:200px;background:red;top:0px;left:0px;">1</div>
+<div id="s2" style="position:absolute;width:200px;height:200px;background:blue;top:0px;left:150px;">2</div>
+<div id="s3" style="position:absolute;width:200px;height:200px;background:green;top:150px;left:0px;">3</div>
+<div id="s4" style="position:absolute;width:200px;height:200px;background:orange;top:150px;left:150px;">4</div>
+</div>
+<a href="#" onclick="up('s1');return false">1</a>
+<a href="#" onclick="up('s2');return false">2</a>
+<a href="#" onclick="up('s3');return false">3</a>
+<a href="#" onclick="up('s4');return false">4</a>
+<script>
+/**
+ *  Магия для работы с классами
+ */
+function cls(cl){
+    var reg; (reg=new RegExp("(^|\\b)"+cl+"(\\b|$)")).compile;
+    return {
+        add:function(x){
+            if (typeof x.className =="string"){
+                if (!x.className.match(reg)) // не хочу писать трим
+                    x.className+=(x.className&&' '||'')+cl;
+            } else        
+                x.className=cl
+        },
+        have:function(x){
+            if (typeof x.className =="string")
+                return (x.className.match(reg))
+            else    
+                return false;    
+        },
+        remove:function(x){
+            if (typeof x.className =="string") {
+                if (x.className.match(reg))
+                    x.className=x.className.replace(reg,'')
+            }
+        }
+    }
+}
+var toppest=cls('toppest');
+function up(y)
+{
+  // отпускаем все элементы "вниз"
+  var x=document.getElementById('blk').getElementsByTagName('div');
+  for(var i=0;i<x.length;i++){
+    toppest.remove(x[i])
+  }
+  // поднимаем наш элемент "вверх"
+  toppest.add(document.getElementById(y));
+}
+</script>
+</body>
+</html>

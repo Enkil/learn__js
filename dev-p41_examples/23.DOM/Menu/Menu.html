@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<title>Пример выпадающего меню</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="text/javascript" src="menu.js"></script>
+		<link href="menu.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<!-- Таблица с основными пунктами меню -->
+		<table class="globalmenu">
+			<tr>
+				<td id="home">Домой</td>
+				<td id="mnuItem1" class="menuItem" onmouseover="OpenSubMenu( 'mnuItem1', 'mnuSubMenu1' );" onmouseout="CloseSubMenu( 'mnuSubMenu1')">
+					<a href="#">Пункт 1</a>
+				</td>
+				<td id="mnuItem2" class="menuItem" onmouseover="OpenSubMenu( 'mnuItem2', 'mnuSubMenu2' ); " onmouseout="CloseSubMenu( 'mnuSubMenu2' );">
+					<a href="#">Пункт 2</a>
+				</td>
+				<td id="mnuItem3" class="menuItem" onmouseover="OpenSubMenu( 'mnuItem3', 'mnuSubMenu3' );" onmouseout="CloseSubMenu( 'mnuSubMenu3' );">
+					<a href="#">Пункт3</a>
+				</td>
+			</tr>
+		</table>
+		Содержимое страницы
+		<!-- Выпадающий блок 1 -->
+		<div class="subMenu" id="mnuSubMenu1" onmouseover="OpenSubMenu( 'mnuItem1', 'mnuSubMenu1' );" onmouseout="CloseSubMenu( 'mnuSubMenu1' );">
+			<div>
+				<a href="#">Ссылка 1</a></div>
+			<div>
+				<a href="#">Ссылка 1</a></div>
+			<div><a href="#">Ссылка
+					1</a></div>
+			<div class="subMenuItem"><a href="#">Дополнительно</a></div>
+		</div>
+		
+		<!-- Выпадающий блок 2 -->
+		<div class="subMenu" id="mnuSubMenu2" onmouseover="OpenSubMenu( 'mnuItem2', 'mnuSubMenu2' );" onmouseout="CloseSubMenu( 'mnuSubMenu2' );">
+			<div>
+				<a href="#">Ссылка 2</a></div>
+			<div>
+				<a href="#">Ссылка 2</a></div>
+			<div>
+				<a href="#">Ссылка 2</a></div>
+			<div>
+				<a href="#">Дополнительно</a></div>
+		</div>
+		
+		<!-- Выпадающий блок 3 -->
+		<div class="subMenu" id="mnuSubMenu3" onmouseover="OpenSubMenu( 'mnuItem3', 'mnuSubMenu3' );" onmouseout="CloseSubMenu( 'mnuSubMenu3' );">
+			<div>
+				<a href="#">Ссылка 3</a></div>
+			<div>
+				<a href="#">Ссылка 3</a></div>
+			<div>
+				<a href="#">Ссылка 3</a></div>
+			<div>
+				<a href="#">Дополнительно</a></div>
+		</div>
+	</body>
+</html>

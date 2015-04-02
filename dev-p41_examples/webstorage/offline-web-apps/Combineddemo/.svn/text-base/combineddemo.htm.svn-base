@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html manifest="combineddemo.manifest">
+<head>
+<meta name="viewport" content="width=device-width">
+<title>WebSQL Demo along with Application Cache and Web Storage</title>
+<style type="text/css">
+
+body{
+	background-color: black;
+	color: white;
+	font-family: sans-serif;
+}
+
+
+table { border-collapse: collapse; }
+table td, table th { padding: 0.5em; }
+tr td:last-child { text-align: center; }
+td a { display: block; }
+
+img { float: left; }
+
+details{
+	float: left;
+	width: 70%;
+}
+
+.smallstuff{
+	font-size: 0.6em;
+	display: block;
+}
+
+#mainimage{	padding-left: 10px; }
+
+#detailstable tr:nth-child(odd), 
+#detailstable tr:nth-child(odd) a {
+	background-color: #ccc;
+	color: black;
+}
+#detailstable th { background-color: #fff; }
+
+
+a, a:hover {
+	text-decoration: none;
+	color: white;
+}
+
+#footer{
+	clear: both;
+}
+
+#footer p a{
+	color: #ff0000;
+	opacity: 0.9;
+}
+#searchquery{
+	height: 25px;
+	width: 240px;
+	font-family: serif;
+	font-size: 1.2em;
+	color: #222;
+	padding-left: 5px;
+}
+
+#disclaimer{
+	font-size: 0.8em;
+}
+
+@media all and (min-width: 481px) {
+  img {	float: left; }
+}
+</style>
+<script src="combineddemo.js" type="text/javascript"></script>
+<script>
+window.onload  = function(){
+dbInitialize();
+
+var lastsearch = localStorage.getItem("searchquery");
+document.getElementById('searchquery').value = lastsearch;
+};
+
+var form  = document.getElementById('search_form');
+
+
+function processInfo(){
+	var lastsearch = localStorage.getItem("searchquery"); // useless
+	var searchquery = document.getElementById('searchquery'); //get input reference
+	var searchquery_value = searchquery.value; // get its value
+	localStorage.setItem("searchquery", searchquery_value); //set new value of local storage to the one just entered
+	search_cal_list(searchquery_value);
+return false;	
+}
+
+</script>
+
+</head>
+<body>
+
+<img id="logo" src="Donut.png" width="40" height="40" /> <h1>Calorie Finder</h1>
+
+<form method="" action="" id="search_form" onsubmit=" return processInfo();">
+<input id="searchquery" type="text" name="searchquery" value="" />
+<input type="submit" name="submit" value="Search!"  />
+</form>
+<p class="smallstuff">Enter your favourite foods like 'pizza', 'donut', 'cake', 'cheese' etc.</p>
+
+<div id="details">
+
+</div>
+
+<div id="footer"><p>Icon by <a href="http://www.iconblock.com/">IconBlock</a>. Go back to <a href="#">the article on offline apps</a>.</p></div>
+<div id="disclaimer">*Calorie values listed in this page are fictional and for demo purposes only</div>
+
+
+</body>
+</html>

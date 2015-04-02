@@ -1,0 +1,277 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: JavaScript - Типы данных</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/js02.htm" title="Основные понятия">
+<link rel="Next" href="http://wdh.suncloud.ru/js04.htm" title="Выражения и операции">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="3.3.%20%D2%E8%EF%FB%20%E4%E0%ED%ED%FB%F5_files/load.js"></script>
+<script type="text/javascript" src="3.3.%20%D2%E8%EF%FB%20%E4%E0%ED%ED%FB%F5_files/link.js"></script><link rel="stylesheet" type="text/css" href="3.3.%20%D2%E8%EF%FB%20%E4%E0%ED%ED%FB%F5_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js02.htm"><img name="imglefta" src="3.3.%20%D2%E8%EF%FB%20%E4%E0%ED%ED%FB%F5_files/nnleft.gif" alt="" title="Основные понятия" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="3.3.%20%D2%E8%EF%FB%20%E4%E0%ED%ED%FB%F5_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/js04.htm"><img name="imgrighta" src="3.3.%20%D2%E8%EF%FB%20%E4%E0%ED%ED%FB%F5_files/nnright.gif" alt="" title="Выражения и операции" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=381" target="_blank"><img src="3.3.%20%D2%E8%EF%FB%20%E4%E0%ED%ED%FB%F5_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref33">Глава 3.3. Типы данных</a></h2>
+
+      <h3><a name="ref331">3.3.1. Описание типов данных</a></h3>
+
+      <p>Язык JavaScript содержит шесть типов данных: <strong>Undefined</strong> (неопределенный), <strong>Null</strong>
+        (нулевой), <strong>Boolean</strong> (логический), <strong>String</strong> (строковый), <strong>Number</strong>
+        (числовый) и <strong>Object</strong> (объектный). Это относительно небольшое количество типов
+        позволяет, тем не менее, создавать полноценные сценарии для выполнения многих функций.</p>
+
+      <h4><a name="ref3311">3.3.1.1. Тип Undefined (неопределенный)</a></h4>
+
+      <p>Этот тип состоит из единственного значения <strong>undefined</strong>. Это значение, которое
+        принимает переменная, которая объявлена в программе, но которой еще не присвоено никакого значения.</p>
+
+      <h4><a name="ref3312">3.3.1.2. Тип Null (нулевой)</a></h4>
+
+      <p>Этот тип состоит из единственного значения <strong>null</strong>. Это значение означает нулевую,
+        пустую или несуществующую ссылку.</p>
+
+      <h4><a name="ref3313">3.3.1.3. Тип Boolean (логический)</a></h4>
+
+      <p>Этот тип состоит ровно из двух логических значений: <strong>true</strong> (истина) и <strong>false</strong>
+        (ложь).</p>
+
+      <h4><a name="ref3314">3.3.1.4. Тип String (строковый)</a></h4>
+
+      <p>Этот тип состоит из всех возможных текстовых строк. Каждая строка представляет собой упорядоченный
+        массив из нуля или более символов Unicode (т.&nbsp;е. 16-битовых целых чисел без знака), называемых
+        <em>элементами строки</em>. Элементы строки нумеруются, начиная с нуля. Длина строки&nbsp;—
+        это количество элементов в ней; пустая строка состоит из нуля элементов.</p>
+
+      <h4><a name="ref3315">3.3.1.5. Тип Number (числовой)</a></h4>
+
+      <p>Этот тип имеет ровно 18437736874454810627 (т.&nbsp;е. 2<sup>64</sup> - 2<sup>53</sup> + 3)
+        значений, соответствующих 64-битовому формату плавающих чисел двойной точности IEEE 754 с тем
+        единственным исключением, что 9007199254740990 (т.&nbsp;е. 2<sup>53</sup> - 2) различных значений
+        "Не число" данного формата представляются в JavaScript одним значением <strong>NaN</strong>.</p>
+
+      <p>Еще два специальных значения&nbsp;— это положительная бесконечность и отрицательная бесконечность,
+        которым в JavaScript соответствуют выражения <strong>+Infinity</strong> (или просто <strong>Inifinity</strong>)
+        и <strong>-Infinity</strong>. Отметим также, что в данном формате различаются положительный
+        нуль (<strong>+0</strong> или <strong>0</strong>) и отрицательный нуль (<strong>-0</strong>).</p>
+
+      <h4><a name="ref3316">3.3.1.6. Тип Object (объектный)</a></h4>
+
+      <p>Значением этого типа являются <em>объекты</em>. Объект&nbsp;— это неупорядоченный набор
+        <em>свойств</em>, который подробно описан в <a href="http://wdh.suncloud.ru/js07.htm#ref371">разделе 3.7.1</a>.</p>
+
+      <h3><a name="ref332">3.3.2. Преобразование типов</a></h3>
+
+      <p>JavaScript&nbsp;— <em>слаботипизированный язык</em>. Это означает, что в декларации переменной
+        мы не указываем ее тип и в дальнейшем можем присваивать ей значения любых типов. Исполняющая
+        система JavaScript сама выполняет автоматическое преобразование типов данных по мере необходимости.
+        Для явного преобразования типов используются методы <a href="http://wdh.suncloud.ru/js08.htm#mboolean"><strong>Boolean</strong></a>,
+        <a href="http://wdh.suncloud.ru/js08.htm#mnumber"><strong>Number</strong></a>, <a href="http://wdh.suncloud.ru/js08.htm#mobject"><strong>Object</strong></a>
+        и <a href="http://wdh.suncloud.ru/js08.htm#mstring"><strong>String</strong></a>.</p>
+
+      <p>Преобразования типов происходят по следующим правилам.</p>
+
+      <h4><a name="ref3321">3.3.2.1. Преобразование к логическому типу</a></h4>
+
+      <div style="margin-left: 3em; margin-top: 1em; margin-bottom: 2em;">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Исходный тип</th>
+            <th>Результат</th>
+          </tr>
+          <tr>
+            <td>Undefined</td>
+            <td><strong>false</strong></td>
+          </tr>
+          <tr>
+            <td>Null</td>
+            <td><strong>false</strong></td>
+          </tr>
+          <tr>
+            <td>Boolean</td>
+            <td>без изменений</td>
+          </tr>
+          <tr>
+            <td>Number</td>
+            <td><strong>false</strong>, если аргумент равен <strong>+0</strong>, <strong>-0</strong>
+              или <strong>NaN</strong>; <strong>true</strong> в остальных случаях</td>
+          </tr>
+          <tr>
+            <td>String</td>
+            <td><strong>false</strong>, если аргумент&nbsp;— пустая строка; <strong>true</strong>
+              в остальных случаях</td>
+          </tr>
+          <tr>
+            <td>Object</td>
+            <td><strong>true</strong></td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref3322">3.3.2.2. Преобразование к числовому типу</a></h4>
+
+      <div style="margin-left: 3em; margin-top: 1em; margin-bottom: 2em;">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Исходный тип</th>
+            <th>Результат</th>
+          </tr>
+          <tr>
+            <td>Undefined</td>
+            <td><strong>NaN</strong></td>
+          </tr>
+          <tr>
+            <td>Null</td>
+            <td><strong>+0</strong></td>
+          </tr>
+          <tr>
+            <td>Boolean</td>
+            <td><strong>1</strong>, если аргумент равен <strong>true</strong>, и <strong>0</strong>,
+              если аргумент равен <strong>false</strong></td>
+          </tr>
+          <tr>
+            <td>Number</td>
+            <td>без изменений</td>
+          </tr>
+          <tr>
+            <td>String</td>
+            <td>если строка содержит правильное число (возможно с пробелами перед и/или после него),
+              то это число; <strong>NaN</strong> в противном случае</td>
+          </tr>
+          <tr>
+            <td>Object</td>
+            <td>результат преобразования значения объекта по умолчанию</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref3323">3.3.2.3. Преобразование к строковому типу</a></h4>
+
+      <div style="margin-left: 3em; margin-top: 1em; margin-bottom: 2em;">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Исходный тип</th>
+            <th>Результат</th>
+          </tr>
+          <tr>
+            <td>Undefined</td>
+            <td><tt>"undefined"</tt></td>
+          </tr>
+          <tr>
+            <td>Null</td>
+            <td><tt>"null"</tt></td>
+          </tr>
+          <tr>
+            <td>Boolean</td>
+            <td><tt>"true"</tt>, если аргумент равен <strong>true</strong>, и <tt>"false"</tt>,
+              если аргумент равен <strong>false</strong></td>
+          </tr>
+          <tr>
+            <td>Number</td>
+            <td>текстовое представление числа (см. ниже)</td>
+          </tr>
+          <tr>
+            <td>String</td>
+            <td>без изменений</td>
+          </tr>
+          <tr>
+            <td>Object</td>
+            <td>результат преобразования значения объекта по умолчанию</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Преобразование числа <em>n</em> в строку происходит по следующим правилам:</p>
+
+      <ul>
+        <li>если <em>n</em> равно <strong>NaN</strong>, то результат <strong>"NaN"</strong>;</li>
+        <li>если <em>n</em> равно <strong>+0</strong> или <strong>-0</strong>, то результат <strong>"0"</strong>;</li>
+        <li>если <em>n</em> отрицательно, то результат будет конкатенацией строки <strong>"-"</strong>
+          и результата преобразования в строку числа <em>-n</em>;</li>
+        <li>если <em>n</em> равно бесконечности, то результат <strong>"Infinity"</strong>;</li>
+        <li>в остальных случаях пусть <em>m</em>, <em>k</em> и <em>s</em>&nbsp;— такие целые числа,
+          что <em>k</em>&nbsp;&gt;=&nbsp;1, 10<sup><em>k</em>-1</sup>&nbsp;&lt;=&nbsp;<em>s</em>&nbsp;&lt;&nbsp;10<sup><em>k</em></sup>,
+          <em>n</em> равно <em>s</em>&nbsp;x&nbsp;10<sup><em>m</em>-<em>k</em></sup> и <em>k</em>&nbsp;—
+          наименьшее из возможных. Отметим, что <em>k</em>&nbsp;— это количество цифр в десятичном
+          представлении <em>s</em>, что <em>s</em> не делится на 10 и что наименее значимая цифра <em>s</em>
+          может не быть однозначно определенной. Тогда</li>
+        <li>если <em>k</em> &lt;= <em>m</em> &lt;= 21, то результат состоит из <em>k</em> десятичных
+          цифр <em>s</em> (без ведущих нулей), за которыми следуют <em>m</em>-<em>k</em> символов <strong>'0'</strong>;</li>
+        <li>иначе, если 0 &lt; <em>m</em> &lt;= 21, то результат состоит из <em>m</em> старших десятичных
+          цифр <em>s</em>, за которыми следуют десятичная точка <strong>'.'</strong> и <em>k</em>-<em>m</em>
+          оставшихся десятичных цифр <em>s</em>;</li>
+        <li>иначе, если -6 &lt; <em>m</em> &lt;= 0, то результат состоит из символа <strong>'0'</strong>,
+          за которым следуют десятичная точка <strong>'.'</strong>, -<em>m</em> символов <strong>'0'</strong>
+          и <em>k</em> десятичных цифр <em>s</em>;</li>
+        <li>иначе, если <em>k</em> = 1, то результат состоит из единственной цифры <em>s</em>, символа
+          <strong>'e'</strong>, символа плюс <strong>'+'</strong> или минус <strong>'-'</strong> в зависимости
+          от того, положительно или отрицательно <em>m</em>-1, за которыми следует десятичное представление
+          числа abs(<em>m</em>-1);</li>
+        <li>иначе результат состоит из старшей десятичной цифры <em>s</em>, за которой следуют десятичная
+          точка <strong>'.'</strong> и <em>k</em>-1 оставшихся десятичных цифр <em>s</em>, символ <strong>'e'</strong>,
+          символ плюс <strong>'+'</strong> или минус <strong>'-'</strong> в зависимости от того, положительно
+          или отрицательно <em>m</em>-1, за которыми следует десятичное представление числа abs(<em>m</em>-1).</li>
+      </ul>
+
+      <h4><a name="ref3324">3.3.2.4. Преобразование к объектному типу</a></h4>
+
+      <div style="margin-left: 3em; margin-top: 1em; margin-bottom: 2em;">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Исходный тип</th>
+            <th>Результат</th>
+          </tr>
+          <tr>
+            <td>Undefined</td>
+            <td>генерируется исключение <strong><a href="http://wdh.suncloud.ru/js12.htm#table39">TypeError</a></strong></td>
+          </tr>
+          <tr>
+            <td>Null</td>
+            <td>генерируется исключение <strong><a href="http://wdh.suncloud.ru/js12.htm#table39">TypeError</a></strong></td>
+          </tr>
+          <tr>
+            <td>Boolean</td>
+            <td>новый логический объект с данным значением по умолчанию</td>
+          </tr>
+          <tr>
+            <td>Number</td>
+            <td>новый числовой объект с данным значением по умолчанию</td>
+          </tr>
+          <tr>
+            <td>String</td>
+            <td>новый строковый объект с данным значением по умолчанию</td>
+          </tr>
+          <tr>
+            <td>Object</td>
+            <td>без изменений</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref3325">3.3.2.5. Примеры неявных преобразований</a></h4>
+
+      <p>В выражениях, соединяющих числовые и строковые значения операцией +, JavaScript преобразует
+        числа в строки, например:</p>
+
+      <div class="code">
+<pre class="code">x = "Ответ равен " + 21  // возвращает "Ответ равен 21"
+y = 21 + "  - вот ответ" // возвращает "21 - вот ответ"</pre>
+      </div>
+
+      <p>В остальных случаях JavaScript пытается преобразовать строку в число, например:</p>
+
+      <div class="code">
+<pre class="code">a = "21" - 1 // возвращает 20
+b = "21" + 1 // возвращает 211</pre>
+      </div>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js02.htm"><img name="imgleftb" src="3.3.%20%D2%E8%EF%FB%20%E4%E0%ED%ED%FB%F5_files/nnleft.gif" alt="" title="Основные понятия" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="3.3.%20%D2%E8%EF%FB%20%E4%E0%ED%ED%FB%F5_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/js04.htm"><img name="imgrightb" src="3.3.%20%D2%E8%EF%FB%20%E4%E0%ED%ED%FB%F5_files/nnright.gif" alt="" title="Выражения и операции" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

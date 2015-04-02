@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <script src="js/jquery-2.0.0.min.js"></script>
+
+  <script>
+  $(document).ready(function(){
+    $("#myDiv").css("color","red");
+  });
+  </script>
+  <style>
+  div {
+    width: 90px;
+    height: 90px;
+    float:left;
+    padding: 5px;
+    margin: 5px;
+    background-color: #EEEEEE;
+  }
+  </style>
+</head>
+<body>
+  <div id="notMe"><p>id="notMe"</p></div>
+
+  <div id="myDiv">id="myDiv"</div>
+</body>
+</html>

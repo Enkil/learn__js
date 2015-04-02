@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script src="js/jquery-2.0.0.min.js"></script>
+
+  <script>
+  $(document).ready(function(){
+    $("p:first").text("DOM загружена и готова к работе!");
+  });
+jQuery(document).ready(function(){
+  jQuery("p:last").text("Объектная модель документа готова!");
+});
+  </script>
+  <style>p { color:red; }</style>
+</head>
+<body>
+  <p></p>
+
+  <p></p>
+</body>
+</html>

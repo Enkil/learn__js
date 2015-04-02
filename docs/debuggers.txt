@@ -1,0 +1,7 @@
+http://learn.javascript.ru/debugging-chrome
+http://habrahabr.ru/post/76485/
+http://ruseller.com/lessons.php?rub=28&id=1408
+http://popel-studio.com/blog/article/otladka-javascript-v-chrome-developer-tools-chast-1-konsol.html
+https://netbeans.org/kb/73/webclient/html5-js-support_ru.html
+http://msdn.microsoft.com/ru-ru/library/ie/gg699336%28v=vs.85%29.aspx
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<SCRIPT src="/design/jquery.min.js" type=text/javascript></SCRIPT>
+<!--[if IE 6]>
+<script type="text/javascript" src="jquery.dropdown.js"></script>
+<![endif]-->
+
+<style>
+.menu ul {
+		margin:0;
+		list-style:none;
+		padding:0;
+		vertical-align:top;
+		}	
+.menu ul li {
+		background:#CCC;
+		padding:3px 4px;
+		margin:0;
+		list-style:none;
+		position:relative;
+		/*хак для каталога*/
+		display:-moz-inline-box; 
+		display:inline-block;
+		vertical-align:top; 
+		*zoom:1; 
+		*display:inline;
+		
+		}
+.menu ul li a {color:#CC0000;text-decoration:underline;}
+.menu ul li a:visited {color:#CC0000;text-decoration:underline;}
+.menu ul li a:hover,.menu ul li:hover a {color:#000;text-decoration:underline;}
+
+.menu ul li ul {display:none;position:absolute;z-index: 598;left:0;top:100%;}
+.menu ul li:hover ul, ul li.hover ul {display:block;}
+.menu ul li ul li {
+		background:yellow;
+		display:block;
+		}
+.menu ul li ul li a{
+		white-space:nowrap;	
+		}
+
+.menu ul li ul li a, 
+.menu ul li:hover ul li a, 
+.menu ul li.hover ul li a {color:#FF0000;text-decoration:underline;}
+.menu ul li ul li a:visited, 
+.menu ul li:hover ul li a:visited, 
+.menu ul li.hover ul li a:visited {color:#FF0000;text-decoration:underline;}
+.menu ul li ul li a:hover, 
+.menu ul li:hover ul li a:hover, 
+.menu ul li.hover ul li a:hover {color:green;text-decoration:underline;}
+</style>
+
+</head>
+
+<body>
+
+<div class="menu">
+<ul class="dropdown">
+	<li><a href="#">Каталог</a>
+		<ul>
+			<li><a href="#">Детям в быту</a></li>
+			<li><a href="#">Детям в развлечении</a></li>
+			<li><a href="#">Мамам</a></li>
+		</ul>
+	</li>
+	<li><a href="#">Скидки</a></li>
+	<li><a href="#">Барахолка</a></li>
+</ul>
+</div>
+
+</body>
+</html>

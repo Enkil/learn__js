@@ -1,0 +1,379 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: JavaScript - Использование объектов</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/js06.htm" title="Операторы и функции">
+<link rel="Next" href="http://wdh.suncloud.ru/js08.htm" title="Примитивные встроенные объекты">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="3.7.%20%C8%F1%EF%EE%EB%FC%E7%EE%E2%E0%ED%E8%E5%20%EE%E1%FA%E5%EA%F2%EE%E2_files/load.js"></script>
+<script type="text/javascript" src="3.7.%20%C8%F1%EF%EE%EB%FC%E7%EE%E2%E0%ED%E8%E5%20%EE%E1%FA%E5%EA%F2%EE%E2_files/link.js"></script><link rel="stylesheet" type="text/css" href="3.7.%20%C8%F1%EF%EE%EB%FC%E7%EE%E2%E0%ED%E8%E5%20%EE%E1%FA%E5%EA%F2%EE%E2_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js06.htm"><img name="imglefta" src="3.7.%20%C8%F1%EF%EE%EB%FC%E7%EE%E2%E0%ED%E8%E5%20%EE%E1%FA%E5%EA%F2%EE%E2_files/nnleft.gif" alt="" title="Операторы и функции" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="3.7.%20%C8%F1%EF%EE%EB%FC%E7%EE%E2%E0%ED%E8%E5%20%EE%E1%FA%E5%EA%F2%EE%E2_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/js08.htm"><img name="imgrighta" src="3.7.%20%C8%F1%EF%EE%EB%FC%E7%EE%E2%E0%ED%E8%E5%20%EE%E1%FA%E5%EA%F2%EE%E2_files/nnright.gif" alt="" title="Примитивные встроенные объекты" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=2261" target="_blank"><img src="3.7.%20%C8%F1%EF%EE%EB%FC%E7%EE%E2%E0%ED%E8%E5%20%EE%E1%FA%E5%EA%F2%EE%E2_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref37">Глава 3.7. Использование объектов</a></h2>
+
+      <h3><a name="ref371">3.7.1. Объекты, свойства и методы</a></h3>
+
+      <h4><a name="ref3711">3.7.1.1. Основные понятия</a></h4>
+
+      <p>Как уже отмечалось выше, JavaScript&nbsp;— это язык программирования, основанный на объектах.
+        Все объекты, доступные сценарию на языке JavaScript, подразделяются на три группы:</p>
+
+      <ul>
+        <li><em>встроенные объекты</em> исполняющей системы;</li>
+        <li><em>объекты среды</em>, в которой исполняется сценарий (т.&nbsp;е. либо объекты клиента,
+          либо объекты сервера);</li>
+        <li><em>пользовательские объекты</em>, создаваемые сценарием в процессе его выполнения.</li>
+      </ul>
+
+      <p><em>Объект</em> JavaScript&nbsp;— это неупорядоченный набор <em>свойств</em>. Свойство,
+        являющееся функцией, называется <em>методом</em>. Для доступа к свойству объекта используется
+        синтаксис:</p>
+
+<pre class="syntax"><em>имя_объекта</em>.<em>имя_свойства</em></pre>
+
+      <p>Если название свойства задано текстовой строкой, то доступ к свойству возможен и так:</p>
+
+<pre class="syntax"><em>имя_объекта</em>[<em>"имя_свойства"</em>]</pre>
+
+      <p>Этот синтаксис используется оператором итерации <a href="http://wdh.suncloud.ru/js06.htm#ref365"><strong>for…in</strong></a>.</p>
+
+      <p>Каждое свойство состоит из названия, значения и набора следующих атрибутов:</p>
+
+      <div style="margin-left: 3em; margin-top: 1em;"><a name="prop-attr"></a>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Атрибут</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt>DontEnum</tt></td>
+            <td>Свойство не должно попадать в перечисление при итерации объекта оператором <a href="http://wdh.suncloud.ru/js06.htm#ref365"><strong>for…in</strong></a>.</td>
+          </tr>
+          <tr>
+            <td><tt>DontDelete</tt></td>
+            <td>Попытка программно удалить данное свойство будет проигнорирована. См. описание операции
+              <a href="http://wdh.suncloud.ru/js04.htm#ref3473"><strong>delete</strong></a>.</td>
+          </tr>
+          <tr>
+            <td><tt>ReadOnly</tt></td>
+            <td>Неизменяемое свойство. Попытка программно изменить данное свойство будет проигнорирована.
+              (Отметим, что в некоторых случаях значение свойства с этим атрибутом может быть изменено
+              через внешнюю среду.)</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Новое свойство объекта создается просто присваиванием ему значения. Пусть, например, мы уже
+        создали объект <tt>myBrowser</tt>, который должен описывать наш Веб-обозреватель. Это описание
+        будет состоять из названия обозревателя (<tt>name</tt>) и его версии (<tt>version</tt>). Для
+        создания указанных свойств мы должны включить в сценарий следующие строки:</p>
+
+      <div class="code">
+<pre class="code">myBrowser.name = "Microsoft Internet Explorer";
+myBrowser.version = "5.5";</pre>
+      </div>
+
+      <p>У таких свойств, созданным пользователем, все перечисленные выше атрибуты сброшены в <strong>false</strong>.
+        В дальнейшем мы можем изменять значения этих свойств или извлекать их, например:</p>
+
+      <div class="code">
+<pre class="code">document.write(myBrowser.name, myBrowser.version);</pre>
+      </div>
+
+      <p>Существует два способа создания новых объектов в JavaScript, а именно:</p>
+
+      <ol>
+        <li>Использование инициализатора объекта.</li>
+        <li>Использование конструктора объектов.</li>
+      </ol>
+
+      <h4><a name="ref3712">3.7.1.2. Создание объектов с помощью инициализатора</a></h4>
+
+      <p>Этот способ позволяет одновременно создать объект и присвоить значения всем или части его свойств.
+        Он применяется в тех случаях, когда мы создаем объект с уникальным набором свойств. <em>Инициализатор
+        объекта</em> имеет вид:</p>
+
+<pre class="syntax">{<em>свойство</em>:<em>значение</em> [,<em>свойство</em>:<em>значение</em>]?}</pre>
+
+      <p>Здесь <em>свойство</em>&nbsp;— идентификатор, задающий имя свойства, а <em>значение</em>&nbsp;—
+        выражение, задающее значение этого свойства.</p>
+
+      <p>Например, объект <tt>myBrowser</tt> из предыдущего примера может быть создан так:</p>
+
+      <div class="code">
+<pre class="code">var myBrowser = {name: "Microsoft Internet Explorer", version: "5.5"};</pre>
+      </div>
+
+      <p>Усложним этот пример, добавив еще одно свойство объекта <tt>myBrowser</tt>, которое называется
+        <tt>options</tt> (опции обозревателя) и само является объектом:</p>
+
+      <div class="code">
+<pre class="code">var myBrowser = {name: "Microsoft Internet Explorer", version: "5.5",
+  options: {enableJava: true, enableCookies: false}};</pre>
+      </div>
+
+      <h4><a name="ref3713">3.7.1.3. Создание объектов с помощью конструктора</a></h4>
+
+      <p>Этот способ применяется в тех случаях, когда мы хотим создать класс объектов с определенным
+        набором свойств, а затем создавать новые объекты, просто указывая, к какому классу они должны
+        принадлежать. Для этого нужно сначала создать <em>конструктор объектов</em>, который является
+        функцией специального вида, а именно:</p>
+
+      <ul>
+        <li>имя функции задает имя создаваемого класса объектов;</li>
+        <li>тело функции должно содержать присваивание начальных значений свойствам и методам создаваемого
+          объекта.</li>
+      </ul>
+
+      <p>Например, конструктор для класса объектов <strong>Browser</strong> из предыдущего примера может
+        иметь следующий вид:</p>
+
+      <div class="code">
+<pre class="code">function Browser(name, version) {
+  this.name = name;
+  this.version = version;
+}</pre>
+      </div>
+
+      <p>Обратите внимание на использование операции <a href="http://wdh.suncloud.ru/js04.htm#ref3477"><tt>this</tt></a> для
+        доступа к свойствам объекта.</p>
+
+      <p>Теперь для создания новых объектов класса <strong>Browser</strong> достаточно вызвать этот
+        конструктор в операции <a href="http://wdh.suncloud.ru/js04.htm#ref3476"><tt>new</tt></a>, например:</p>
+
+      <div class="code">
+<pre class="code">var myBrowser = new Browser("Microsoft Internet Explorer", "5.5");</pre>
+      </div>
+
+      <p>Вспомним теперь, что выше мы добавили свойство <tt>options</tt> объекта <strong>Browser</strong>,
+        которое само является объектом. Перепишем приведенный пример с учетом этого свойства:</p>
+
+      <div class="code">
+<pre class="code">function Options(enableJava, enableCookies) {
+  this.enableJava = enableJava;
+  this.enableCookies = enableCookies;
+}
+
+function Browser(name, version) {
+  this.name = name;
+  this.version = version;
+  this.options = options;
+}
+
+var myOptions = new Options(true, false);
+var myBrowser = new Browser("Microsoft Internet Explorer", "5.5", myOptions);</pre>
+      </div>
+
+      <p>Для доступа к свойствам свойства <tt>options</tt> используется нотация <code>myBrowser.options.enableJava</code>.</p>
+
+      <h4><a name="ref3714">3.7.1.4. Создание методов</a></h4>
+
+      <p>Поскольку методы являются разновидностью свойств, они создаются так же, как описано выше. Например,
+        мы можем добавить к конструктору объектов <strong>Browser</strong> метод <tt>aboutBrowser</tt>,
+        который будет выводить на экран обозревателя информацию о свойствах этого объекта:</p>
+
+      <div class="code">
+<pre class="code">function showBrowser() {
+  document.write("Обозреватель: " + this.name + " " + this.version);
+}
+
+function Browser(name, version) {
+  this.name = name;
+  this.version = version;
+  this.aboutBrowser = showBrowser;
+}</pre>
+      </div>
+
+      <p>В дальнейшем мы можем вызвать этот метод так: <code>myBrowser.aboutBrowser()</code>.</p>
+
+      <p>При желании конструктор можно записать и короче, используя вложенное определение функции:</p>
+
+      <div class="code">
+<pre class="code">function Browser(name, version) {
+  this.name = name;
+  this.version = version;
+  this.aboutBrowser = function() {
+    document.write("Обозреватель: " + this.name + " " + this.version);
+  }
+}</pre>
+      </div>
+
+      <h4><a name="ref3715">3.7.1.5. Изменение прототипа объекта</a></h4>
+
+      <p>Допустим, что мы хотим в процессе выполнения сценария добавить новое свойство <tt>security</tt>
+        (безопасность) классу объектов <strong>Options</strong> (подчеркнем еще раз&nbsp;— классу
+        объектов, а не отдельному его представителю <tt>myOptions</tt>). Для этого используется свойство
+        <tt>prototype</tt> объекта <strong><a href="http://wdh.suncloud.ru/js08.htm#ref383">Function</a></strong>:</p>
+
+      <div class="code">
+<pre class="code">Options.prototype.security = null;</pre>
+      </div>
+
+      <p>Теперь мы можем присвоить значение новому свойству объекта:</p>
+
+      <div class="code">
+<pre class="code">myBrowser.options.security = "Высокая";</pre>
+      </div>
+
+      <p>Для удаления свойств объектов используется операция <a href="http://wdh.suncloud.ru/js04.htm#ref3473"><tt>delete</tt></a>,
+        например:</p>
+
+      <div class="code">
+<pre class="code">delete Options.prototype.security;</pre>
+      </div>
+
+      <p>JavaScript позволяет нам задать новый прототип для класса пользовательских объектов (прототипы встроенных
+        объектов доступны только для чтения). Рассмотрим такой пример:</p>
+
+      <div class="code">
+<pre class="code">function Circle(radius) {
+  this.radius = radius;
+}
+
+Circle.prototype.area = function() {
+  return Math.PI * this.radius * this.radius;
+}
+
+function FullCircle(x, y, radius) {
+  this.x = x;
+  this.y = y;
+  this.radius = radius;
+}
+
+FullCircle.prototype = Circle.prototype;
+
+var myCircle = new FullCircle(0, 0, 1);
+document.write(myCircle.area());</pre>
+      </div>
+
+      <p>В этом примере сначала определяется класс объектов <strong>Circle</strong> со свойством <tt>radius</tt> и
+        методом <tt>area</tt>, возвращающим площадь круга. Затем определяется класс <strong>FullCircle</strong>,
+        конструктор которого дополнительно содержит координаты центра окружности. Затем указывается, что он наследует
+        прототип класс <strong>Circle</strong>. После этого мы создаем объект <tt>myCircle</tt> и вызываем его метод
+        <tt>area</tt>, который он унаследовал от прототипа класса <strong>Circle</strong>.</p>
+
+      <h4><a name="ref3716">3.7.1.6. Удаление объектов</a></h4>
+
+      <p>Мы можем удалить ранее созданный объект с помощью операции <a href="http://wdh.suncloud.ru/js04.htm#ref3473"><tt>delete</tt></a>,
+        например:</p>
+
+      <div class="code">
+<pre class="code">delete myBrowser;</pre>
+      </div>
+
+      <h3><a name="ref372">3.7.2. Объектная модель JavaScript</a></h3>
+
+      <p>Чтение этого раздела не обязательно для того, чтобы научиться писать сценарии на языке JavaScript.
+        Его назначение состоит в том, чтобы дать представление о внутренних механизмах реализации JavaScript
+        тем программистам, которые имеют опыт работы с другими объектно-ориентированными языками программирования.
+        Если эти детали Вас не интересуют, то можете перейти к следующему разделу.</p>
+
+      <h4><a name="ref3721">3.7.2.1. Прототипы объектов</a></h4>
+
+      <p>Большинство объектно-ориентированных языков (например, Java и C++) основаны на двух базовых
+        понятиях: классы объектов и экземпляры (instances) объектов.</p>
+
+      <ul>
+        <li><em>Класс объектов</em>&nbsp;— это абстрактное понятие, описывающее все свойства данного
+          класса (в Java эти свойства называются полями и методами, а в C++ членами класса, но суть
+          от этого не меняется).</li>
+        <li><em>Экземпляр объекта</em>&nbsp;— это реализация класса, т.&nbsp;е. конкретный объект,
+          наделенный всеми свойствами данного класса.</li>
+      </ul>
+
+      <p>JavaScript, в отличие от этих языков, основан на прототипах и не проводит различия между двумя
+        приведенными понятиями: в нем есть только объекты. Некоторым аналогом класса здесь выступает
+        <em>прототип объекта</em>, который определяет начальный набор свойств нового объекта. В процессе
+        выполнения программы объект может получать новые свойства; более того, он может сам выступать
+        в качестве прототипа при создании новых объектов.</p>
+
+      <h4><a name="ref3722">3.7.2.2. Создание объектов</a></h4>
+
+      <p>В языках, основанных на классах, класс объектов описывается отдельной декларацией класса. В
+        этой декларации мы можем указать специальные методы, называемые <em>конструкторами</em>, которые
+        создают экземпляры данного класса. Конструктор выделяет память для экземпляра, инициализирует
+        значения его свойств и выполняет другие необходимые действия. После написания декларации класса
+        мы можем создавать его экземпляры путем вызова операции <code>new имя_конструктора(...)</code>.</p>
+
+      <p>Создание объектов в JavaScript происходит примерно так же, но здесь декларация конструктора
+        совпадает с декларацией класса. Иными словами, мы определяем конструктор как функцию, которая
+        создает объекты с заданным начальным набором свойств и их значений. Затем мы так же создаем
+        объекты вызовом операции&nbsp; <code>new имя_конструктора(...)</code>.</p>
+
+      <h4><a name="ref3723">3.7.2.3. Наследование</a></h4>
+
+      <p>В языках, основанных на классах, классы объектов образуют <em>иерархию классов</em>, в которой
+        каждый класс может быть потомком какого-либо ранее определенного класса. Потомок класса наследует
+        все его свойства, но может иметь дополнительные собственные свойства или изменять свойства своего
+        предка. При этом набор свойств данного класса зафиксирован в его декларации и не может быть
+        изменен в ходе выполнения программы. Можно сказать, что здесь текущее состояние реализуется
+        экземплярами классов, методы реализуются классами, а наследование&nbsp;— структурой и поведением.</p>
+
+      <p>JavaScript поддерживает наследование, основанное на прототипах. С каждым конструктором связан
+        соответствующий прототип объекта, и каждый объект, созданный конструктором, содержит неявную
+        ссылку на этот прототип. Прототип, в свою очередь, может содержать ссылку на свой прототип и
+        так далее. Так образуется <em>цепочка прототипов</em>. Ссылка на свойство объекта&nbsp;—
+        это ссылка на первый прототип в цепочке прототипов объекта, который содержит свойство с данным
+        именем. Иными словами, если данный объект имеет свойство с данным именем, то используется ссылка
+        на это свойство; если нет, то исследуется прототип этого объекта и т.&nbsp;д.</p>
+
+      <p>В JavaScript текущее состояние и методы реализуются объектами, а структура и поведение наследуются.
+        Все объекты, которое явно содержат свойство, которое содержит их прототип, разделяют это свойство
+        и его значение. В отличие от языков, основанных на классах, свойства могут динамически добавляться
+        к объектам и динамически удаляться. В частности, конструкторы не обязаны присваивать значения
+        всем или некоторым свойствам создаваемого объекта.</p>
+
+      <h4><a name="ref3724">3.7.2.4. Резюме</a></h4>
+
+      <p>Перечисленные в этом разделе отличия объектной модели JavaScript от языков, основанных на классах,
+        сведены в следующей таблице.</p>
+
+      <table border="1" cellpadding="5" cellspacing="0" width="100%">
+        <caption><a name="table38">Таблица 3.8. Объектная модель JavaScript</a></caption>
+        <tbody><tr>
+          <th>Модель, основанная на классах<br>
+            (Java и C++)</th>
+          <th>Модель, основанная на прототипах (JavaScript)</th>
+        </tr>
+        <tr>
+          <td>Класс объектов и экземпляр объекта&nbsp;— это различные понятия.</td>
+          <td>Все объекты являются экземплярами объектов.</td>
+        </tr>
+        <tr>
+          <td>Класс определяется декларацией класса. Экземпляр класса создается конструктором.</td>
+          <td>Набор объектов определяется и создается функцией-конструктором.</td>
+        </tr>
+        <tr>
+          <td>Новый объект создается операцией <tt>new</tt>.</td>
+          <td>Новый объект создается операцией <tt>new</tt>.</td>
+        </tr>
+        <tr>
+          <td>Существует иерархия классов, в которой новые классы являются потомками ранее определенных.</td>
+          <td>Существует иерархия объектов, в которой объект имеет прототип, заданной функцией-конструктором.</td>
+        </tr>
+        <tr>
+          <td>Свойства наследуются по цепочке классов-потомков.</td>
+          <td>Свойства наследуются по цепочке прототипов.</td>
+        </tr>
+        <tr>
+          <td>Декларация класса определяет <em>все</em> свойства всех экземпляров данного класса. Набор
+            свойств не может динамически изменяться в ходе выполнения программы.</td>
+          <td>Конструктор или прототип определяют <em>начальный набор</em> свойств. Свойства набора
+            объектов или отдельного объекта могут динамически добавляться и удаляться в ходе выполнения
+            программы.</td>
+        </tr>
+      </tbody></table>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js06.htm"><img name="imgleftb" src="3.7.%20%C8%F1%EF%EE%EB%FC%E7%EE%E2%E0%ED%E8%E5%20%EE%E1%FA%E5%EA%F2%EE%E2_files/nnleft.gif" alt="" title="Операторы и функции" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="3.7.%20%C8%F1%EF%EE%EB%FC%E7%EE%E2%E0%ED%E8%E5%20%EE%E1%FA%E5%EA%F2%EE%E2_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/js08.htm"><img name="imgrightb" src="3.7.%20%C8%F1%EF%EE%EB%FC%E7%EE%E2%E0%ED%E8%E5%20%EE%E1%FA%E5%EA%F2%EE%E2_files/nnright.gif" alt="" title="Примитивные встроенные объекты" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

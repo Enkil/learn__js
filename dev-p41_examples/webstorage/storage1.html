@@ -1,0 +1,19 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Storage</title>
+
+</head>
+<body>
+<div id="result"></div>
+<script>
+if (typeof(Storage) != "undefined") {
+localStorage.setItem("lastname", "Smith");
+document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+} else {
+document.getElementById("result").innerHTML =
+"Увы, ваш браузер не поддерживает Web Storage...";
+}
+</script>
+</body>
+</html>

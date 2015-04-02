@@ -1,0 +1,1041 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: JavaScript - Исполняющая система JScript</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/js13.htm" title="Дополнительные возможности JScript">
+<link rel="Next" href="http://wdh.suncloud.ru/js15.htm" title="Исполняющая система JScript (продолжение)">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="3.14.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript_files/load.js"></script>
+<script type="text/javascript" src="3.14.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript_files/link.js"></script><link rel="stylesheet" type="text/css" href="3.14.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js13.htm"><img name="imglefta" src="3.14.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript_files/nnleft.gif" alt="" title="Дополнительные возможности JScript" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="3.14.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/js15.htm"><img name="imgrighta" src="3.14.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript_files/nnright.gif" alt="" title="Исполняющая система JScript (продолжение)" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=8169" target="_blank"><img src="3.14.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref314">Глава 3.14. Исполняющая система JScript</a></h2>
+
+      <p>В этой и следующей главах приведено описание исполняющей системы Microsoft JScript, которая
+        существенно расширяет возможности обозревателей Internet Explorer. Все описанные ниже объекты
+        реализованы как управляющие элементы ActiveX, интегрированные в библиотеку типов исполняющей
+        системы JScript.</p>
+
+      <h3><a name="ref3141">3.14.1. Словари: объект Dictionary</a></h3>
+
+      <p>Объект <strong>Dictionary</strong> предназначен для создания <em>словарей</em>. Словарь в JScript
+        аналогичен ассоциативному массиву языка PERL и представляет собой набор пар (ключ, значение).
+        Значения могут быть данными любого типа. При этом каждое значение ассоциируется с уникальным
+        ключом, который используется для его поиска и выборки из словаря. Обычно в качестве ключа используются
+        числа или текстовые строки, хотя ключ может быть чем угодно, кроме массива. Конструктор объекта
+        <strong>Dictionary</strong> имеет вид:</p>
+
+<pre class="syntax">new ActiveXObject("Scripting.Dictionary")</pre>
+
+      <p>Следующий пример демонстрирует использование словаря:</p>
+
+      <div class="code">
+<pre class="code">var d = new ActiveXObject("Scripting.Dictionary");	// Создаем словарь d
+d.Add("а", "Архангельск");				// Добавляем несколько пар
+d.Add("б", "Баку");
+d.Add("в", "Воронеж");
+var a = (new VBArray(d.Keys())).toArray();		// Извлекаем массив ключей
+var s = "";
+for (var i = 0; i &lt; d.Count; i++)			// Просматриваем словарь
+  s += a[i] + " - " + d(a[i]) + "&lt;br&gt;";
+document.write(s);					// Выводим на экран результат</pre>
+      </div>
+
+      <p>Последний оператор этого примера выведет на экран обозревателя текст:</p>
+
+      <p class="noindent"><samp>а - Архангельск<br>
+        б - Баку<br>
+        в - Воронеж<br>
+        </samp></p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства объекта Dictionary</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><a href="#pcomparemode"><tt>CompareMode</tt></a></td>
+            <td>Способ сравнения ключей.</td>
+          </tr>
+          <tr>
+            <td><a href="#pcount"><tt>Count</tt></a></td>
+            <td>Количество элементов в словаре.</td>
+          </tr>
+          <tr>
+            <td><a href="#pitem"><tt>Item</tt></a></td>
+            <td>Значение, соответствующее ключу.</td>
+          </tr>
+          <tr>
+            <td><a href="#pkey"><tt>Key</tt></a></td>
+            <td>Изменяет значение ключа.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы объекта Dictionary</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#madd">Add</a></tt></td>
+            <td>Добавляет в словарь пару (ключ, значение).</td>
+          </tr>
+          <tr>
+            <td><a href="#mexists"><tt>Exists</tt></a></td>
+            <td>Проверяет наличие заданного ключа в словаре.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mitems">Items</a></tt></td>
+            <td>Возвращает массив значений словаря.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mkeys">Keys</a></tt></td>
+            <td>Возвращает массив ключей словаря.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mremove">Remove</a></tt></td>
+            <td>Удаляет из словаря пару (ключ, значение).</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mremoveall">RemoveAll</a></tt></td>
+            <td>Очищает словарь.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hcomparemode">Свойство CompareMode</a></h4>
+
+<pre class="syntax"><strong><a name="pcomparemode">Синтаксис</a></strong>: <em>объект</em>.CompareMode
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a> }</pre>
+
+      <p>Свойство <strong>CompareMode</strong> позволяет задать способ сравнения текстовых ключей в
+        словаре <em>объект</em>. Оно может принимать следующие значения:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <td>0</td>
+            <td>Двоичное сравнение. Задает сравнение строк на основе порядка сортировки, определяемого
+              внутренним двоичным представлением символов. В Windows порядок сортировки определяется
+              кодовой страницей символов, например: A &lt; B &lt; E &lt; Z &lt; a &lt; b &lt; e &lt;
+              z &lt; Б &lt; Л &lt; Ш &lt; б &lt; л &lt; ш.</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Текстовое сравнение. Задает сравнение строк без учета регистра символов на основе национальной
+              настройки операционной системы. Тем же символам, что и выше, в этом случае соответствует
+              следующий порядок: (A=a)&nbsp;&lt; (B=b) &lt; (E=e) &lt; (Z=z) &lt; (Б=б) &lt; (Л=л) &lt;
+              (Ш=ш).</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Сравнение на основе национальной настройки базы данных. В обозревателях не используется.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Значения, большие двух, могут использоваться для сравнения ключей в определенной кодировке
+        символов и в этом случае они должны быть равны идентификатору кодировки (LCID).</p>
+
+      <p>Значение этого свойства может быть считано в любое время, но задается оно до занесения в словарь
+        любых значений. Попытка задать способ сравнения ключей для непустого словаря приводит к ошибке
+        исполнения. Пример:</p>
+
+      <div class="code">
+<pre class="code">var d = new ActiveXObject("Scripting.Dictionary");
+d.CompareMode = 0;	// различать строчные и прописные буквы в ключах
+d.Add ("а", "ааа");
+d.Add ("А", "ААА");
+document.write(d.Item("а"));</pre>
+      </div>
+
+      <h4><a name="hcount">Свойство Count</a></h4>
+
+<pre class="syntax"><strong><a name="pcount">Синтаксис</a></strong>: <em>объект</em>.Count
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>Count</strong> является размер <em>объекта</em>, т.&nbsp;е. количество
+        содержащихся в нем пар (ключ, значение). Пример использования этого свойства приведен выше.</p>
+
+      <h4><a name="hitem">Свойство Item</a></h4>
+
+<pre class="syntax"><strong><a name="pitem">Синтаксис</a></strong>: <em>объект</em>.Item(<em>ключ</em>)
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a> }</pre>
+
+      <p>Значением свойства <strong>Item</strong> является значение словаря <em>объект</em>, соответствующее
+        <em>ключу</em>. Точнее говоря, при чтении этого свойства:</p>
+
+      <ul>
+        <li>Если заданный <em>ключ</em> в словаре отсутствует, то создается новая пара с данным ключом
+          и неопределенным значением и возвращается значение <strong>undefined</strong>.</li>
+        <li>Если заданный <em>ключ</em> в словаре есть, то возвращается ассоциированное с ним значение.</li>
+      </ul>
+
+      <p>При задании нового значения этого свойства:</p>
+
+      <ul>
+        <li>Если заданный <em>ключ</em> в словаре отсутствует, то создается новая пара с данным ключом
+          и заданным значением.</li>
+        <li>Если заданный <em>ключ</em> в словаре есть, то ассоциированное с ним значение заменяется
+          на заданное.</li>
+      </ul>
+
+      <p>Например, следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var d = new ActiveXObject("Scripting.Dictionary");
+d.Add("а", "Архангельск");
+d.Add("б", "Баку");
+d.Add("в", "Воронеж");
+d.Item("г") = "Гомель";
+document.write(d.Item("г"));</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя текст <samp>Гомель</samp>.</p>
+
+      <h4><a name="hkey">Свойство Key</a></h4>
+
+<pre class="syntax"><strong><a name="pkey">Синтаксис</a></strong>: <em>объект</em>.Key(<em>ключ</em>) = <em>новый_ключ</em>
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a> }</pre>
+
+      <p>Свойство <strong>Key</strong> используется для изменения <em>ключа</em> в словаре <em>объект</em>.
+        При этом</p>
+
+      <ul>
+        <li>Если заданный <em>ключ</em> в словаре отсутствует, то создается новая пара с ключом <em>новый_ключ</em>
+          и неопределенным значением.</li>
+        <li>Если заданный <em>ключ</em> в словаре есть, то он заменяется на <em>новый_ключ</em>.</li>
+      </ul>
+
+      <p>Чтение этого свойства невозможно. Например, следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var d = new ActiveXObject("Scripting.Dictionary");
+d.Add("а", "Архангельск");
+d.Add("б", "Баку");
+d.Add("в", "Воронеж");
+d.Key("а") = "ар";
+document.write(d.Item("ар"));</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя текст <samp>Архангельск</samp>.</p>
+
+      <h4><a name="hadd">Метод Add</a></h4>
+
+<pre class="syntax"><strong><a name="madd">Синтаксис</a></strong>: <em>объект</em>.Add(<em>ключ</em>, <em>значение</em>)
+<strong>Аргументы</strong>: <em>ключ</em>&nbsp;— ключ создаваемой пары
+           <em>значение</em>&nbsp;— соответствующее значение</pre>
+
+      <p>Метод <strong>Add</strong> добавляет в словарь <em>объект</em> новую пару (<em>ключ</em>, <em>значение</em>).
+        Если данный <em>ключ</em> уже имеется в словаре, то возникает ошибка. Примеры использования
+        этого метода приведены выше.</p>
+
+      <h4><a name="hexists">Метод Exists</a></h4>
+
+<pre class="syntax"><strong><a name="mexists">Синтаксис</a></strong>: <em>объект</em>.Exists(<em>ключ</em>)
+<strong>Аргументы</strong>: <em>ключ</em>&nbsp;— выражение, задающее искомый ключ
+<strong>Результат</strong>: логическое значение</pre>
+
+      <p>Метод <strong>Exists</strong> возвращает <strong>true</strong>, если <em>ключ</em> имеется
+        в словаре <em>объект</em> и <strong>false</strong> в противном случае. Пример:</p>
+
+      <div class="code">
+<pre class="code">var d = new ActiveXObject("Scripting.Dictionary");
+d.Add("а", "Архангельск");
+var x = d.Exists("а");	// x равно true</pre>
+      </div>
+
+      <h4><a name="hitems">Метод Items</a></h4>
+
+<pre class="syntax"><strong><a name="mitems">Синтаксис</a></strong>: <em>объект</em>.Items()
+<strong>Результат</strong>: массив VBScript</pre>
+
+      <p>Метод <strong>Items</strong> возвращает массив значений словаря <em>объект</em>. Возвращаемый
+        массив имеет формат VBScript, поэтому для его использования в JScript следует пользоваться приемом,
+        указанным в следующем примере:</p>
+
+      <div class="code">
+<pre class="code">var d = new ActiveXObject("Scripting.Dictionary");	// Создаем словарь d
+d.Add("а", "Архангельск");				// Добавляем несколько пар
+d.Add("б", "Баку");
+d.Add("в", "Воронеж");
+var a = (new VBArray(d.Items())).toArray();		// Извлекаем массив значений
+var s = "";
+for (var i in a)					// Просматриваем словарь
+  s += a[i] + " ";
+document.write(s);					// Выводим на экран результат</pre>
+      </div>
+
+      <p>Последний оператор этого примера выведет на экран обозревателя текст <samp>Архангельск Баку
+        Воронеж</samp>.</p>
+
+      <h4><a name="hkeys">Метод Keys</a></h4>
+
+<pre class="syntax"><strong><a name="mkeys">Синтаксис</a></strong>: <em>объект</em>.Keys()
+<strong>Результат</strong>: массив VBScript</pre>
+
+      <p>Метод <strong>Keys</strong> возвращает массив ключей словаря <em>объект</em>. Возвращаемый
+        массив имеет формат VBScript, поэтому для его использования в JScript следует пользоваться приемом,
+        указанным в следующем примере:</p>
+
+      <div class="code">
+<pre class="code">var d = new ActiveXObject("Scripting.Dictionary");	// Создаем словарь d
+d.Add("а", "Архангельск");				// Добавляем несколько пар
+d.Add("б", "Баку");
+d.Add("в", "Воронеж");
+var a = (new VBArray(d.Keys())).toArray();		// Извлекаем массив ключей
+var s = "";
+for (var i in a)					// Просматриваем словарь
+  s += a[i] + " ";
+document.write(s);					// Выводим на экран результат</pre>
+      </div>
+
+      <p>Последний оператор этого примера выведет на экран обозревателя текст <samp>а б в</samp>.</p>
+
+      <h4><a name="hremove">Метод Remove</a></h4>
+
+<pre class="syntax"><strong><a name="mremove">Синтаксис</a></strong>: <em>объект</em>.Remove(<em>ключ</em>)
+<strong>Аргументы</strong>: <em>ключ</em>&nbsp;— искомый ключ</pre>
+
+      <p>Метод <strong>Remove</strong> удаляет из словаря <em>объект</em> пару с заданным (<em>ключом</em>.
+        Если данного <em>ключа</em> нет в словаре, то возникает ошибка. Пример:</p>
+
+      <div class="code">
+<pre class="code">var d = new ActiveXObject("Scripting.Dictionary");	// Создаем словарь d
+d.Add("а", "Архангельск");				// Добавляем несколько пар
+d.Add("б", "Баку");
+d.Add("в", "Воронеж");
+d.Remove("б");						// Удаляем вторую пару</pre>
+      </div>
+
+      <h4><a name="hremoveall">Метод RemoveAll</a></h4>
+
+<pre class="syntax"><strong><a name="mremoveall">Синтаксис</a></strong>: <em>объект</em>.RemoveAll()</pre>
+
+      <p>Метод <strong>RemoveAll</strong> очищает словарь <em>объект</em>, т.&nbsp;е. удаляет из него
+        все пары.</p>
+
+      <h3><a name="ref3142">3.14.2. Файловая система: объект FileSystemObject</a></h3>
+
+      <p>Объект <strong>FileSystemObject</strong> обеспечивает доступ к файловой системе Windows. Его
+        конструктор имеет вид:</p>
+
+<pre class="syntax">new ActiveXObject("Scripting.FileSystemObject")</pre>
+
+      <p>Отметим, что сценарий может создать только один экземпляр данного объекта, сколько бы раз в
+        нем не вызывался данный конструктор.</p>
+
+      <p>Следующий пример демонстрирует использование объекта <strong>FileSystemObject</strong> для
+        создания текстового файла и вывода в него строки:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject"); // Создаем объект
+var file = fso.CreateTextFile("c:\\test.txt", true);	// Создаем файл
+file.WriteLine("This is a test.");			// Выводим в него строку
+file.Close();						// Закрываем файл</pre>
+      </div>
+
+      <p class="note"><strong>Примечание</strong>. Поскольку <strong>FileSystemObject</strong> обеспечивает
+        нам любые манипуляции с файлами и папками компьютера, то по умолчанию установки безопасности
+        Internet Explorer запрещают его использование на стороне клиента. Поэтому для использования
+        большинства из описанных ниже методов вы должны разрешить исполнение в Internet Explorer небезопасных
+        элементов ActiveX, что серьезно угрожает целостности вашей системы.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства объекта FileSystemObject</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pdrives">Drives</a></tt></td>
+            <td>Коллекция дисков локального компьютера.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы объекта FileSystemObject</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#mbuildpath">BuildPath</a></tt></td>
+            <td>Создает имя пути из двух компонентов.</td>
+          </tr>
+          <tr>
+            <td><a href="#mcopyfile"><tt>CopyFile</tt></a></td>
+            <td>Копирует один или несколько файлов.</td>
+          </tr>
+          <tr>
+            <td><a href="#mcopyfolder"><tt>CopyFolder</tt></a></td>
+            <td>Полностью копирует папку.</td>
+          </tr>
+          <tr>
+            <td><a href="#mcreatefolder"><tt>CreateFolder</tt></a></td>
+            <td>Создает новую папку.</td>
+          </tr>
+          <tr>
+            <td><a href="#mcreatetextfile"><tt>CreateTextFile</tt></a></td>
+            <td>Создает текстовый файл.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mdeletefile">DeleteFile</a></tt></td>
+            <td>Удаляет файл.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mdeletefolder">DeleteFolder</a></tt></td>
+            <td>Полностью удаляет папку.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mdriveexists">DriveExists</a></tt></td>
+            <td>Проверяет, существует ли данный диск.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mfileexists">FileExists</a></tt></td>
+            <td>Проверяет, существует ли данный файл.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mfolderexists">FolderExists</a></tt></td>
+            <td>Проверяет, существует ли данная папка.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetabsolutepathname">GetAbsolutePathName</a></tt></td>
+            <td>Возвращает полное название пути.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetbasename">GetBaseName</a></tt></td>
+            <td>Извлекает имя файла из пути.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetdrive">GetDrive</a></tt></td>
+            <td>Возвращает заданный объект <strong><a href="http://wdh.suncloud.ru/js15.htm#ref3151">Drive</a></strong>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetdrivename">GetDriveName</a></tt></td>
+            <td>Извлекает имя диска из пути.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetextensionname">GetExtensionName</a></tt></td>
+            <td>Извлекает расширение файла из пути.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetfile">GetFile</a></tt></td>
+            <td>Возвращает заданный объект <strong><a href="http://wdh.suncloud.ru/js15.htm#ref3152">File</a></strong>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetfilename">GetFileName</a></tt></td>
+            <td>Извлекает спецификацию файла из пути.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetfolder">GetFolder</a></tt></td>
+            <td>Возвращает заданный объект <strong>Folder</strong>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetparentfoldername">GetParentFolderName</a></tt></td>
+            <td>Возвращает имя отцовской папки.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetspecialfolder">GetSpecialFolder</a></tt></td>
+            <td>Возвращает объект <strong>Folder</strong> для системной папки.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgettempname">GetTempName</a></tt></td>
+            <td>Создает имя временного файла.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mmovefile">MoveFile</a></tt></td>
+            <td>Переносит файл.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mmovefolder">MoveFolder</a></tt></td>
+            <td>Полностью перемещает папку.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mopentextfile">OpenTextFile</a></tt></td>
+            <td>Открывает текстовый файл.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hdrives">Свойство Drives</a></h4>
+
+<pre class="syntax"><strong><a name="pdrives">Синтаксис</a></strong>: <em>fso</em>.Drives
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>Drives</strong> возвращает коллекцию объектов <strong><a href="http://wdh.suncloud.ru/js15.htm#ref3151">Drive</a></strong>,
+        соответствующих всем физическим и логическим дискам локального компьютера. Для просмотра этой
+        коллекции следует пользоваться объектом <a href="http://wdh.suncloud.ru/js13.htm#ref3132"><strong>Enumerator</strong></a>.</p>
+
+      <p>Пример использования свойства <strong>Drives</strong> был приведен <a href="http://wdh.suncloud.ru/js13.htm#ref3132">ранее</a>.</p>
+
+      <h4><a name="hbuildpath">Метод BuildPath</a></h4>
+
+<pre class="syntax"><strong><a name="mbuildpath">Синтаксис</a></strong>: <em>fso</em>.BuildPath(<em>путь</em>, <em>имя</em>)
+<strong>Аргументы</strong>: <em>путь</em>, <em>имя</em>&nbsp;— строковые выражения
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>BuildPath</strong> добавляет к <em>пути</em> заданное <em>имя</em> и
+        возвращает результирующую строку. При необходимости перед именем добавляется разделитель "<tt>\</tt>".
+        Например, следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var newpath = fso.BuildPath("c:\\My Documents", "New Folder");
+document.write(newpath);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя текст <samp>c:\My Documents\New Folder</samp>.</p>
+
+      <h4><a name="hcopyfile">Метод CopyFile</a></h4>
+
+<pre class="syntax"><strong><a name="mcopyfile">Синтаксис</a></strong>: <em>fso</em>.CopyFile(<em>источник</em>, <em>цель</em> [, <em>флаг</em>]?)
+<strong>Аргументы</strong>: <em>источник</em>, <em>цель</em>&nbsp;— строковые выражения
+           <em>флаг</em>&nbsp;— логическое значение</pre>
+
+      <p>Метод <strong>CopyFile</strong> копирует один или несколько файлов. При этом строка <em>источник</em>
+        задает спецификацию исходного файла и может содержать подстановочные знаки "<tt>*</tt>"
+        и "<tt>?</tt>" в последнем компоненте, строка <em>цель</em> задает имя результирующего
+        файла или папки, а необязательный аргумент <em>флаг</em> указывает, следует ли заменять при
+        копировании существующие файлы (по умолчанию он равен <strong>true</strong>, т.&nbsp;е. существующие
+        файлы заменяются).</p>
+
+      <p>Если <em>источник</em> содержит подстановочные знаки или <em>цель</em> заканчивается символом
+        "<tt>\</tt>", то <em>цель</em> считается именем папки, в которую копируются исходные
+        файлы. В остальных случаях <em>цель</em> считается именем результирующего файла. Сам процесс
+        копирования происходит так:</p>
+
+      <ul>
+        <li>если нет файлов, соответствующих спецификации <em>источника</em>, то метод завершается ошибкой;</li>
+        <li>если файла с именем <em>цель</em> нет, то производится копирование файла;</li>
+        <li>если файл <em>цель</em> существует и <em>флаг</em> равен <strong>false</strong>, то метод
+          завершается ошибкой, иначе делается попытка копирования <em>источника</em> поверх <em>цели</em>;
+          при этом независимо от значения <em>флага</em>, попытка замены существующего файла с атрибутом
+          "только для чтения" завершается ошибкой;</li>
+        <li>если <em>цель</em> является каталогом, то метод завершается ошибкой.</li>
+      </ul>
+
+      <p>Пример: следующий сценарий копирует все файлы из корневой папки дискеты A в папку d:\Temp.</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+fso.CopyFile("a:\\*.*", "d:\\Temp");</pre>
+      </div>
+
+      <h4><a name="hcopyfolder">Метод CopyFolder</a></h4>
+
+<pre class="syntax"><strong><a name="mcopyfolder">Синтаксис</a></strong>: <em>fso</em>.CopyFolder(<em>источник</em>, <em>цель</em> [, <em>флаг</em>]?)
+<strong>Аргументы</strong>: <em>источник</em>, <em>цель</em>&nbsp;— строковые выражения
+           <em>флаг</em>&nbsp;— логическое выражение</pre>
+
+      <p>Метод <strong>CopyFolder</strong> копирует одну папку в другую, включая подпапки. При этом
+        строка <em>источник</em> задает спецификацию исходной папки и может содержать подстановочные
+        знаки "<tt>*</tt>" и "<tt>?</tt>" в последнем компоненте, строка <em>цель</em>
+        задает имя результирующей папки, а необязательный аргумент <em>флаг</em> указывает, следует
+        ли заменять при копировании существующие файлы (по умолчанию он равен <strong>true</strong>,
+        т.&nbsp;е. существующие файлы заменяются).</p>
+
+      <p>Если <em>источник</em> содержит подстановочные знаки или <em>цель</em> заканчивается символом
+        "<tt>\</tt>", то <em>цель</em> считается именем существующей папки, в которую копируются
+        исходные файлы. В остальных случаях <em>цель</em> считается именем новой папки, которую необходимо
+        создать. Сам процесс копирования происходит так:</p>
+
+      <ul>
+        <li>если нет файлов, соответствующих спецификации <em>источника</em>, то метод завершается ошибкой;</li>
+        <li>если папки с именем <em>цель</em> нет, то она создается и производится копирование файлов;</li>
+        <li>если <em>цель</em> задает имя существующего файла, то метод завершается ошибкой;</li>
+        <li>если файлы исходной папки уже есть в <em>цели</em> и <em>флаг</em> равен <strong>false</strong>,
+          то метод завершается ошибкой, иначе делается попытка копирования <em>источника</em> поверх
+          <em>цели</em>; при этом независимо от значения <em>флага</em>, попытка замены существующего
+          файла с атрибутом "только для чтения" завершается ошибкой.</li>
+      </ul>
+
+      <p>Пример: следующий сценарий копирует все файлы и папки из корневой папки дискеты A в папку d:\Temp.</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+fso.CopyFolder("a:\\", "d:\\Temp");</pre>
+      </div>
+
+      <h4><a name="hcreatefolder">Метод CreateFolder</a></h4>
+
+<pre class="syntax"><strong><a name="mcreatefolder">Синтаксис</a></strong>: <em>fso</em>.CreateFolder(<em>имя</em>)
+<strong>Аргументы</strong>: <em>имя</em>&nbsp;— строковое выражение</pre>
+
+      <p>Метод <strong>CreateFolder</strong> создает папку с заданным <em>именем</em>. Если такая папка
+        уже есть, то метод завершается ошибкой.</p>
+
+      <p>Пример: следующий сценарий создает папку C:\New Folder.</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+fso.CreateFolder("c:\\New Folder");</pre>
+      </div>
+
+      <h4><a name="hcreatetextfile">Метод CreateTextFile</a></h4>
+
+<pre class="syntax"><strong><a name="mcreatetextfile">Синтаксис</a></strong>: <em>fso</em>.CreateTextFile(<em>имя</em> [[, <em>флаг</em>]?, <em>unicode</em>]?)
+<strong>Аргументы</strong>: <em>имя</em>&nbsp;— строковое выражение
+           <em>флаг</em>, <em>unicode</em>&nbsp;— логические выражения<strong>
+Результат</strong>: новый объект <strong><a href="http://wdh.suncloud.ru/js15.htm#ref3154">TextStream</a></strong></pre>
+
+      <p>Метод <strong>CreateTextFile</strong> создает текстовый файл с заданным <em>именем</em>. При
+        этом необязательный аргумент <em>флаг</em> указывает, следует ли удалять существующий файл с
+        этим именем (по умолчанию он равен <strong>true</strong>, т.&nbsp;е. существующие файлы заменяются
+        новыми), а необязательный аргумент <em>unicode</em> задает кодировку символов файла (<strong>true</strong>
+        означает кодировку Unicode, а <strong>false</strong>&nbsp;— кодировку ANSI; по умолчанию
+        создается файл в кодировке ANSI). Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var ts = fso.CreateTextFile("c:\\file.txt", false);
+ts.WriteLine("Тестовая строка.");
+ts.Close();</pre>
+      </div>
+
+      <h4><a name="hdeletefile">Метод DeleteFile</a></h4>
+
+<pre class="syntax"><strong><a name="mdeletefile">Синтаксис</a></strong>: <em>fso</em>.DeleteFile(<em>имя</em> [, <em>флаг</em>]?)
+<strong>Аргументы</strong>: <em>имя</em>&nbsp;— строковое выражение
+           <em>флаг</em>&nbsp;— логическое выражение</pre>
+
+      <p>Метод <strong>DeleteFile</strong> удаляет файл с заданным <em>именем</em>. При этом необязательный
+        аргумент <em>флаг</em> указывает, следует ли удалять файл, имеющий атрибут "только для
+        чтения" (по умолчанию он равен <strong>false</strong>, т.&nbsp;е. такие файлы не удаляются).
+        Если файла с данным именем нет, то метод завершается ошибкой. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+fso.DeleteFile("c:\\file.txt", true);</pre>
+      </div>
+
+      <h4><a name="hdeletefolder">Метод DeleteFolder</a></h4>
+
+<pre class="syntax"><strong><a name="mdeletefolder">Синтаксис</a></strong>: <em>fso</em>.DeleteFolder(<em>имя</em> [, <em>флаг</em>]?)
+<strong>Аргументы</strong>: <em>имя</em>&nbsp;— строковое выражение
+           <em>флаг</em>&nbsp;— логическое выражение</pre>
+
+      <p>Метод <strong>DeleteFolder</strong> удаляет папку с заданным <em>именем</em>. При этом необязательный
+        аргумент <em>флаг</em> указывает, следует ли удалять папку, имеющий атрибут "только для
+        чтения" (по умолчанию он равен <strong>false</strong>, т.&nbsp;е. такие папки не удаляются).
+        Если папки с данным именем нет, то метод завершается ошибкой. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+fso.DeleteFile("c:\\file.txt", true);</pre>
+      </div>
+
+      <h4><a name="hdriveexists">Метод DriveExists</a></h4>
+
+<pre class="syntax"><strong><a name="mdriveexists">Синтаксис</a></strong>: <em>fso</em>.DriveExists(<em>имя</em>)
+<strong>Аргументы</strong>: <em>имя</em>&nbsp;— строковое выражение
+<strong>Результат</strong>: логическое выражение</pre>
+
+      <p>Метод <strong>DriveExists</strong> проверяет, существует ли диск с заданным именем на локальном
+        компьютере, и возвращает соответствующий результат. Строка <em>имя</em> может состоять из буквы,
+        задающей имя диска ("c"), из буквы с двоеточием ("c:"), из буквы с двоеточием
+        и разделителем пути ("c:\\") или содержать спецификацию сетевого диска ("\\computer3\\public1").</p>
+
+      <p class="note"><strong>Примечание</strong>. Этот метод не проверяет наличие диска в дисководе
+        со сменными дисками, а только существование самого дисковода. Для проверки наличия диска в дисководе
+        пользуйтесь методом <tt>Drive.IsReady</tt>. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var b = fso.DriveExists("e");	// true, если есть диск E</pre>
+      </div>
+
+      <h4><a name="hfileexists">Метод FileExists</a></h4>
+
+<pre class="syntax"><strong><a name="mfileexists">Синтаксис</a></strong>: <em>fso</em>.FileExists(<em>имя</em>)
+<strong>Аргументы</strong>: <em>имя</em>&nbsp;— строковое выражение
+<strong>Результат</strong>: логическое выражение</pre>
+
+      <p>Метод <strong>FileExists</strong> проверяет, существует ли файл с заданным <em>именем</em>
+        на локальном компьютере, и возвращает соответствующий результат. Строка <em>имя</em> должна
+        содержать спецификацию файла.</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var b = fso.FileExists("c:\\test.htm");	// true, если данный файл существует</pre>
+      </div>
+
+      <h4><a name="hfolderexists">Метод FolderExists</a></h4>
+
+<pre class="syntax"><strong><a name="mfolderexists">Синтаксис</a></strong>: <em>fso</em>.FolderExists(<em>имя</em>)
+<strong>Аргументы</strong>: <em>имя</em>&nbsp;— строковое выражение
+<strong>Результат</strong>: логическое выражение</pre>
+
+      <p>Метод <strong>FolderExists</strong> проверяет, существует ли папка с заданным <em>именем</em>
+        на локальном компьютере, и возвращает соответствующий результат. Строка <em>имя</em> должна
+        содержать спецификацию папки.</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var b = fso.FolderExists("c:\\My Pictures");	// true, если данная папка существует</pre>
+      </div>
+
+      <h4><a name="hgetabsolutepathname">Метод GetAbsolutePathName</a></h4>
+
+<pre class="syntax"><strong><a name="mgetabsolutepathname">Синтаксис</a></strong>: <em>fso</em>.GetAbsolutePathName(<em>путь</em>)
+<strong>Аргументы</strong>: <em>путь</em>&nbsp;— строковое выражение
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>GetAbsolutePathName</strong> преобразует заданный <em>путь</em> в полное имя
+        пути и возвращает результирующую строку. Пусть, например, текущим каталогом является c:\My Documents\Letters.
+        Следующая таблица иллюстрирует результаты применения метода <strong>GetAbsolutePathName</strong>
+        к различным входным аргументам.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>имя</th>
+            <th>GetAbsolutePathName(имя)</th>
+          </tr>
+          <tr>
+            <td>""</td>
+            <td>"c:\\My Documents\\Letters"</td>
+          </tr>
+          <tr>
+            <td>".."</td>
+            <td>"c:\\My Documents"</td>
+          </tr>
+          <tr>
+            <td>"\\"</td>
+            <td>"c:\\"</td>
+          </tr>
+          <tr>
+            <td>"oct2000\\*.doc"</td>
+            <td>"c:\\My Documents\\Letters\\oct2000\\*.doc"</td>
+          </tr>
+          <tr>
+            <td>"file.txt"</td>
+            <td>"c:\\My Documents\\Letters\\file.txt"</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="hgetbasename">Метод GetBaseName</a></h4>
+
+<pre class="syntax"><strong><a name="mgetbasename">Синтаксис</a></strong>: <em>fso</em>.GetBaseName(<em>путь</em>)
+<strong>Аргументы</strong>: <em>путь</em>&nbsp;— строковое выражение
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>GetBaseName</strong> извлекает из заданного <em>пути</em> его последний компонент:
+        имя каталога или имя файла. В последнем случае имя файла возвращается без расширения. Примеры:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var s1 = fso.GetBaseName("c:\\My Documents\\Letters");	// s1 равно "Letters"
+var s2 = fso.GetBaseName("c:\\My Documents\\Letters\\d1.doc");	// s2 равно "d1"</pre>
+      </div>
+
+      <h4><a name="hgetdrive">Метод GetDrive</a></h4>
+
+<pre class="syntax"><strong><a name="mgetdrive">Синтаксис</a></strong>: <em>fso</em>.GetDrive(<em>имя</em>)
+<strong>Аргументы</strong>: <em>имя</em>&nbsp;— строковое выражение
+<strong>Результат</strong>: объект <strong><a href="http://wdh.suncloud.ru/js15.htm#ref3151">Drive</a></strong></pre>
+
+      <p>Метод <strong>GetDrive</strong> возвращает объект <strong><a href="http://wdh.suncloud.ru/js15.htm#ref3151">Drive</a></strong>,
+        соответствующий диску с заданным именем. Строка <em>имя</em> может состоять из буквы, задающей
+        имя диска ("c"), из буквы с двоеточием ("c:"), из буквы с двоеточием и разделителем
+        пути ("c:\\") или содержать спецификацию сетевого диска ("\\computer3\\public1").
+        Если диска с данным именем не существует, метод завершается ошибкой. Пример: следующая функция
+        извлекает имя диска из аргумента путь и возвращает объем свободного пространства на этом диске
+        в мегабайтах.</p>
+
+      <div class="code">
+<pre class="code">function DriveSpace(path) {
+  var fso = new ActiveXObject("Scripting.FileSystemObject");
+  var d = fso.GetDrive(fso.GetDriveName(fso.GetAbsolutePathName(path)));
+  return d.FreeSpace/1024/1024;
+}</pre>
+      </div>
+
+      <h4><a name="hgetdrivename">Метод GetDriveName</a></h4>
+
+<pre class="syntax"><strong><a name="mgetdrivename">Синтаксис</a></strong>: <em>fso</em>.GetDriveName(<em>путь</em>)
+<strong>Аргументы</strong>: <em>путь</em>&nbsp;— строковое выражение
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>GetDriveName</strong> извлекает из заданного <em>пути</em> имя диска. Если его
+        там нет, то возвращается пустая строка. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var d = fso.GetDriveName(fso.GetAbsolutePathName(path));</pre>
+      </div>
+
+      <h4><a name="hgetextensionname">Метод GetExtensionName</a></h4>
+
+<pre class="syntax"><strong><a name="mgetextensionname">Синтаксис</a></strong>: <em>fso</em>.GetExtensionName(<em>путь</em>)
+<strong>Аргументы</strong>: <em>путь</em>&nbsp;— строковое выражение
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>GetExtensionName</strong> извлекает из заданного <em>пути</em> расширение его
+        последнего компонента, т.&nbsp;е. расширение файла, если это имя файла, и пустую строку, если
+        это имя каталога. Примеры:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var s1 = fso.GetExtensionName("c:\\My Documents\\Letters");	// s1 равно ""
+var s2 = fso.GetExtensionName("c:\\My Documents\\Letters\\d1.doc");	// s2 равно "doc"</pre>
+      </div>
+
+      <h4><a name="hgetfile">Метод GetFile</a></h4>
+
+<pre class="syntax"><strong><a name="mgetfile">Синтаксис</a></strong>: <em>fso</em>.GetFile(<em>имя</em>)
+<strong>Аргументы</strong>: <em>имя</em>&nbsp;— строковое выражение
+<strong>Результат</strong>: объект <strong><a href="http://wdh.suncloud.ru/js15.htm#ref3152">File</a></strong></pre>
+
+      <p>Метод <strong>GetFile</strong> возвращает объект <strong><a href="http://wdh.suncloud.ru/js15.htm#ref3152">File</a></strong>,
+        соответствующий файлу с заданным <em>именем</em>. Если файла с данным именем не существует,
+        метод завершается ошибкой. Пример: следующая функция возвращает дату создания заданного файла.</p>
+
+      <div class="code">
+<pre class="code">function DateCreated(path) {
+  var fso = new ActiveXObject("Scripting.FileSystemObject");
+  var f = fso.GetFile(path);
+  return f.DateCreated;
+}</pre>
+      </div>
+
+      <h4><a name="hgetfilename">Метод GetFileName</a></h4>
+
+<pre class="syntax"><strong><a name="mgetfilename">Синтаксис</a></strong>: <em>fso</em>.GetFileName(<em>путь</em>)
+<strong>Аргументы</strong>: <em>путь</em>&nbsp;— строковое выражение
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>GetFileName</strong> извлекает из заданного <em>пути</em> его последний компонент:
+        имя каталога или имя файла. В последнем случае имя файла возвращается вместе с расширением.
+        Примеры:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var s1 = fso.GetBaseName("c:\\My Documents\\Letters");	// s1 равно "Letters"
+var s2 = fso.GetBaseName("c:\\My Documents\\Letters\\d1.doc");	// s2 равно "d1.doc"</pre>
+      </div>
+
+      <h4><a name="hgetfolder">Метод GetFolder</a></h4>
+
+<pre class="syntax"><strong><a name="mgetfolder">Синтаксис</a></strong>: <em>fso</em>.GetFolder(<em>имя</em>)
+<strong>Аргументы</strong>: <em>имя</em>&nbsp;— строковое выражение
+<strong>Результат</strong>: объект <strong><a href="http://wdh.suncloud.ru/js15.htm#ref3153">Folder</a></strong></pre>
+
+      <p>Метод <strong>GetFolder</strong> возвращает объект <strong><a href="http://wdh.suncloud.ru/js15.htm#ref3153">Folder</a></strong>,
+        соответствующий папке с заданным <em>именем</em>. Если папки с данным именем не существует,
+        метод завершается ошибкой. Пример: следующая функция возвращает дату создания заданного папки.</p>
+
+      <div class="code">
+<pre class="code">function DateCreated(path) {
+  var fso = new ActiveXObject("Scripting.FileSystemObject");
+  var f = fso.GetFolder(path);
+  return f.DateCreated;
+}</pre>
+      </div>
+
+      <h4><a name="hgetparentfoldername">Метод GetParentFolderName</a></h4>
+
+<pre class="syntax"><strong><a name="mgetparentfoldername">Синтаксис</a></strong>: <em>fso</em>.GetParentFolderName(<em>путь</em>)
+<strong>Аргументы</strong>: <em>путь</em>&nbsp;— строковое выражение
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>GetParentFolderName</strong> извлекает из заданного <em>пути</em> отцовскую папку
+        его последнего компонента или пустую строку, если такой папки в <em>пути</em> нет. Примеры:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var s1 = fso.GetParentFolderName("c:\\My Documents\\Letters");	// s1 = "My Documents"
+var s2 = fso.GetParentFolderName("file.txt");	// s2 = ""</pre>
+      </div>
+
+      <h4><a name="hgetspecialfolder">Метод GetSpecialFolder</a></h4>
+
+<pre class="syntax"><strong><a name="mgetspecialfolder">Синтаксис</a></strong>: <em>fso</em>.GetSpecialFolder(<em>номер</em>)
+<strong>Аргументы</strong>: <em>номер</em>&nbsp;— числовое выражение
+<strong>Результат</strong>: объект <strong><a href="http://wdh.suncloud.ru/js15.htm#ref3153">Folder</a></strong></pre>
+
+      <p>Метод <strong>GetSpecialFolder</strong> возвращает объект <strong><a href="http://wdh.suncloud.ru/js15.htm#ref3153">Folder</a></strong>,
+        соответствующий системной папке, заданной аргументом <em>номер</em> согласно следующей таблицы.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Номер</th>
+            <th>Системная папка</th>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>Папка операционной системы Windows</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Папка System операционной системы Windows</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Папка для хранения временных файлов.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Например, в системе Windows 98 будут возвращены следующие имена папок:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var s1 = fso.GetSpecialFolder(0).Path;	// s1 равно "C:\\WINDOWS"
+var s2 = fso.GetSpecialFolder(1).Path;	// s2 равно "C:\\WINDOWS\\SYSTEM"
+var s3 = fso.GetSpecialFolder(2).Path;	// s3 равно "C:\\WINDOWS\\TEMP"</pre>
+      </div>
+
+      <h4><a name="hgettempname">Метод GetTempName</a></h4>
+
+<pre class="syntax"><strong><a name="mgettempname">Синтаксис</a></strong>: <em>fso</em>.GetTempName()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>GetTempName</strong> возвращает случайно сгенерированное имя временного файла.
+        Этим методом следует пользоваться для создания временных файлов, которые после создания и использования
+        будут удалены сценарием. Пример: </p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var tempFolder = fso.GetSpecialFolder(2);
+var tempFile = tempFolder.CreateTextFile(fso.GetTempName());</pre>
+      </div>
+
+      <h4><a name="hmovefile">Метод MoveFile</a></h4>
+
+<pre class="syntax"><strong><a name="mmovefile">Синтаксис</a></strong>: <em>fso</em>.MoveFile(<em>источник</em>, <em>цель</em>)
+<strong>Аргументы</strong>: <em>источник</em>, <em>цель</em>&nbsp;— строковые выражения</pre>
+
+      <p>Метод <strong>MoveFile</strong> перемещает один или несколько файлов в другое место. При этом
+        строка <em>источник</em> задает спецификацию исходного файла и может содержать подстановочные
+        знаки "<tt>*</tt>" и "<tt>?</tt>" в последнем компоненте, а строка <em>цель</em>
+        задает имя результирующего файла или папки.</p>
+
+      <p>Если <em>источник</em> содержит подстановочные знаки или <em>цель</em> заканчивается символом
+        "<tt>\</tt>", то <em>цель</em> считается именем папки, в которую перемещаются исходные
+        файлы. В остальных случаях <em>цель</em> считается именем результирующего файла. Сам процесс
+        перемещения происходит так:</p>
+
+      <ul>
+        <li>если нет файлов, соответствующих спецификации <em>источника</em>, то метод завершается ошибкой;</li>
+        <li>если файла с именем <em>цель</em> нет, то производится перемещение файла;</li>
+        <li>если файл <em>цель</em> существует, то метод завершается ошибкой;</li>
+        <li>если <em>цель</em> является каталогом, то метод завершается ошибкой.</li>
+      </ul>
+
+      <p>Пример: следующий сценарий перемещает все файлы из корневой папки дискеты A в папку d:\Temp.</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+fso.MoveFile("a:\\*.*", "d:\\Temp");</pre>
+      </div>
+
+      <h4><a name="hmovefolder">Метод MoveFolder</a></h4>
+
+<pre class="syntax"><strong><a name="mmovefolder">Синтаксис</a></strong>: <em>fso</em>.MoveFolder(<em>источник</em>, <em>цель</em>)
+<strong>Аргументы</strong>: <em>источник</em>, <em>цель</em>&nbsp;— строковые выражения</pre>
+
+      <p>Метод <strong>MoveFolder</strong> перемещает одну папку в другую, включая подпапки. При этом
+        строка <em>источник</em> задает спецификацию исходной папки и может содержать подстановочные
+        знаки "<tt>*</tt>" и "<tt>?</tt>" в последнем компоненте, а строка <em>цель</em>
+        задает имя результирующей папки.</p>
+
+      <p>Если <em>источник</em> содержит подстановочные знаки или <em>цель</em> заканчивается символом
+        "<tt>\</tt>", то <em>цель</em> считается именем существующей папки, в которую перемещаются
+        исходные файлы. В остальных случаях <em>цель</em> считается именем новой папки, которую необходимо
+        создать. Сам процесс перемещения происходит так:</p>
+
+      <ul>
+        <li>если нет файлов, соответствующих спецификации <em>источника</em>, то метод завершается ошибкой;</li>
+        <li>если папки с именем <em>цель</em> нет, то она создается и производится перемещение файлов;</li>
+        <li>если <em>цель</em> задает имя существующего файла, то метод завершается ошибкой;</li>
+        <li>если файлы исходной папки уже есть в <em>цели</em>, то метод завершается ошибкой.</li>
+      </ul>
+
+      <p>Пример: следующий сценарий перемещает все файлы и папки из корневой папки дискеты A в папку
+        d:\Temp.</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+fso.CopyFolder("a:\\", "d:\\Temp");</pre>
+      </div>
+
+      <h4><a name="hopentextfile">Метод OpenTextFile</a></h4>
+
+<pre class="syntax"><strong><a name="mopentextfile">Синтаксис</a></strong>: <em>fso</em>.OpenTextFile(<em>имя</em> [[[, <em>режим</em>]?, <em>флаг</em>]?, <em>формат</em>]?)
+<strong>Аргументы</strong>: <em>имя</em>&nbsp;— строковое выражение
+           <em>режим</em>, <em>формат</em>&nbsp;— числовые выражения
+           <em>флаг</em>&nbsp;— логическое выражение
+<strong>Результат</strong>: новый объект <strong><a href="http://wdh.suncloud.ru/js15.htm#ref3154">TextStream</a></strong></pre>
+
+      <p>Метод <strong>OpenTextFile</strong> открывает текстовый файл с заданным <em>именем</em>. При
+        этом необязательный аргумент <em></em> <em>флаг</em> указывает, следует ли создавать новый файл,
+        если файла с таким именем нет (по умолчанию он равен <strong>false</strong>, т.&nbsp;е. файл
+        не создается).</p>
+
+      <p>Необязательный аргумент <em>режим</em> задает режим открытия файла и может принимать следующие
+        значения:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <td>1</td>
+            <td>Открыть файл только для чтения. Принято по умолчанию.</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Открыть файл для записи. Запись производится с начала файла, старое содержимое теряется.</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Открыть файл для добавления. Запись производится в конец файла.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Необязательный аргумент <em>формат</em> задает кодировку символов файла и может принимать следующие
+        значения:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <td>0</td>
+            <td>Открыть файл в кодировке ANSI. Принято по умолчанию.</td>
+          </tr>
+          <tr>
+            <td>-1</td>
+            <td>Открыть файл в кодировке Unicode.</td>
+          </tr>
+          <tr>
+            <td>-2</td>
+            <td>Открыть файл в кодировке операционной системы.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Пример открытия файла в режиме добавления:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var ts = fso.OpenTextFile("c:\\file.txt", 8);
+ts.WriteLine("Тестовая строка.");
+ts.Close();</pre>
+      </div>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js13.htm"><img name="imgleftb" src="3.14.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript_files/nnleft.gif" alt="" title="Дополнительные возможности JScript" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="3.14.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/js15.htm"><img name="imgrightb" src="3.14.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript_files/nnright.gif" alt="" title="Исполняющая система JScript (продолжение)" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

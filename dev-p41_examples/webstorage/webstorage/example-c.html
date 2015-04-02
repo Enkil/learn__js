@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<script src="js/jquery-1.5.2.min.js" type="text/javascript"></script>
+<style type="text/css">
+button { width:150px; }
+input { width:260px; }
+#result {
+	width:410px; height:200px;
+	overflow:auto;
+	border:1px solid #369;
+	padding:0 5px;
+}
+p {
+	font-size:12px; color:#666;
+	margin:0; border-bottom:1px dotted #ccc;
+}
+p.er { color:#c00; }
+</style>
+<script type="text/javascript">
+$(function(){
+	
+	var result = $('#result').empty();
+
+	// локальное хранилище
+	if(window.localStorage)
+	{
+		window.localStorage.setItem('myOtherData', 'Какие-то произвольные данные');
+	} else {
+		result.prepend('<p class="er">Браузер не поддерживает локальное хранилище.</p>');
+		$('#btn').attr('disabled','disabled');
+	}
+	
+	// добавить/изменить данные
+	$('#btn').bind('click',function(){
+		window.localStorage.setItem('myText', $('input').val());
+   	    $('#result').prepend('<p>' + $('input').val() + '</p>');
+	});
+
+    // добавляем обработчик события storage
+    window.addEventListener('storage', function(e){
+    	$('#result').prepend('<p>Ключ (свойство key): ' + e.key + 
+    	'<br />Новое значение (свойство newValue): ' + e.newValue + 
+    	'<br />Старое значение (свойство oldValue): ' + e.oldValue +
+        '<br />Адрес ресурса (свойство url): ' + e.url + 
+        '<br />Ссылка на хранилище (свойство storageArea): ' + e.storageArea.length + '</p>');
+    }, true);
+  
+});
+</script>
+</head>
+<body>
+<h1>Файл example-c.html</h1>
+<ul>
+	<li><a href="example-a.html">example-a</a></li>
+	<li><a href="example-b.html">example-b</a></li>
+	<li>example-c</li>
+	<li><a href="example-d.html">example-d</a></li>
+</ul>
+<input type="text" value=""><button id="btn">Изменить</button>
+<div id="result"></div>
+</body>
+</html>

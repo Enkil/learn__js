@@ -1,0 +1,33 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<style>
+div{position:absolute;left:10px;top:100px}
+</style>
+<script>
+window.onload = function(){
+function callLater(paramA, paramB){
+     return (function(){
+        // elem.innerHTML = paramA[paramB];
+		 if (parseInt(computedStyle.top) <300 ) {
+				elem.style.top = parseInt(computedStyle.top) + 2 + "px";
+			}
+    });
+}
+
+var elem = document.getElementById("mydiv");
+var computedStyle = elem.currentStyle || window.getComputedStyle(elem, null);
+var functRef = callLater(computedStyle, "left");
+document.getElementById("vniz").onclick = function(){
+   hideMenu=setInterval(functRef, 300);
+		}
+
+}
+</script>
+</head>
+<body>
+<input type="button" value="Вниз" id="vniz" />
+<div id="mydiv">Element</div>
+</body>
+</html>

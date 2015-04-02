@@ -1,0 +1,1158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: DHTML - Динамические таблицы стилей</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/dhtml08.htm" title="Элементы HTML (продолжение)">
+<link rel="Next" href="http://wdh.suncloud.ru/dhtml10.htm" title="Динамическое управление стилями">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/load.js"></script>
+<script type="text/javascript" src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/link.js"></script><link rel="stylesheet" type="text/css" href="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml08.htm"><img name="imglefta" src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/nnleft.gif" alt="" title="Элементы HTML (продолжение)" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml10.htm"><img name="imgrighta" src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/nnright.gif" alt="" title="Динамическое управление стилями" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=9477" target="_blank"><img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref49">Глава 4.9. Динамические таблицы стилей</a></h2>
+
+      <h3><a name="ref491">4.9.1. Включение таблиц стилей в документ</a></h3>
+
+      <p>В DOM 2 добавлена поддержка динамических таблиц стилей произвольного типа, хотя на сегодняшний день
+        единственным языком таблиц стилей является CSS. Как указано в <a href="http://wdh.suncloud.ru/css01.htm#ref212">п. 2.1.2</a>,
+        в HTML таблица стилей может быть либо <em>внешней</em> (и задаваться элементом <a href="http://wdh.suncloud.ru/html02.htm#link-stylesheet"><strong>LINK</strong></a>),
+        либо <em>внутренней</em> (и задаваться элементом <a href="http://wdh.suncloud.ru/html02.htm#estyle"><strong>STYLE</strong></a>).</p>
+
+      <p>В XML таблицы стилей могут быть только внешними и задаются директивой <tt>xml-stylesheet</tt>, имеющей следующий вид:</p>
+
+<pre class="syntax"><a name="exml-stylesheet"><strong>Синтаксис</strong>:</a> &lt;?xml-stylesheet <em>атрибуты</em>?&gt;
+<strong>Атрибуты</strong>:  <strong>href</strong> = CDATA #REQUIRED (URI таблицы стилей)
+           <strong>type</strong> = CDATA #REQUIRED (тип файла таблицы стилей)
+           title = CDATA #IMPLIED (титул таблицы стилей)
+           media = CDATA #IMPLIED (список устройства отображения)
+           charset = CDATA #IMPLIED (кодировка таблицы стилей)
+           alternate = (yes|no) "no"</pre>
+
+      <p>Здесь атрибуты <strong>href</strong>, <strong>title</strong>, <strong>media</strong> и <strong>charset</strong> в точности
+        соответствуют атрибутам HTML-элемента <strong><a href="http://wdh.suncloud.ru/html02.htm#link-stylesheet">&lt;LINK rel="StyleSheet"&gt;</a></strong>.
+        Атрибут <strong>alternate</strong>="yes" означает, что данная директива имеет семантику элемента
+        <strong><a href="http://wdh.suncloud.ru/html02.htm#link-alt-stylesheet">&lt;LINK rel="Alternate StyleSheet"&gt;</a></strong>. Примеры:</p>
+
+      <div class="code">
+<pre class="code">&lt;?xml-stylesheet href="mystyle.css" type="text/css" media="screen"?&gt;
+&lt;?xml-stylesheet alternate="yes" href="mystyle.css" media="print" type="text/css"?&gt;</pre>
+      </div>
+
+      <p class="note"><strong>Примечание</strong>. Поскольку значением атрибута <strong>href</strong>
+является URI общего вида, ссылка на таблицу стилей может быть
+относительным URI, содержащим закладку. В частности, это может быть
+ссылка на закладку, расположенную в том же XML-документе, т.&nbsp;е.
+таблица стилей может содержаться в самом документе.</p>
+
+      <p>Описанные в этой главе интерфейсы не являются обязательными для реализации DOM. Если реализация их поддерживает,
+        то рекомендуется, чтобы ее метод <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#mhasfeature">DOMImplementation.hasFeature</a></tt> возвращал true при соответствующем запросе.</p>
+
+      <p>В MSHTML поддержка стилей отличается от стандарта, поэтому всюду после описания стандартных методов и свойств
+        мы указываем на особенности их реализации в Internet Explorer.</p>
+
+      <h3><a name="ref492">4.9.2. Списки устройств: интерфейс MediaList</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>MediaList</tt> соответствует списку <a href="http://wdh.suncloud.ru/css01.htm#ref215">устройств отображения</a>, к которым применима таблица стилей.
+        Он представляет собой массив строк, содержащих имена устройств, и имеет следующие свойства и методы:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса MediaList</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pmedialist-length">length</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Размер списка устройств.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pmediatext">mediaText</a></tt></td>
+            <td>Да</td>
+            <td>DOM 2</td>
+            <td>Текстовое представление списка устройств.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы интерфейса MediaList</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#mappendmedium">appendMedium</a></tt></td>
+            <td>DOM 2</td>
+            <td>Добавляет новое устройство в конец списка.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mdeletemedium">deleteMedium</a></tt></td>
+            <td>DOM 2</td>
+            <td>Удаляет заданное устройство из списка.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mmedialist-item">item</a></tt></td>
+            <td>DOM 2</td>
+            <td>Возвращает элемент списка с заданным номером.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hmedialist-length">Свойство length</a></h4>
+
+<pre class="syntax"><strong><a name="pmedialist-length">Синтаксис</a></strong>:  <em>объект</em>.length
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>length</strong> возвращает количество элементов в данном списке устройств.
+
+      </p><h4><a name="hmediatext">Свойство mediaText</a></h4>
+
+<pre class="syntax"><strong><a name="pmediatext">Синтаксис</a></strong>:  <em>объект</em>.mediaText
+<strong>Изменяемое</strong>: да
+<strong>Иcключения</strong>: SYNTAX_ERR, NO_MODIFICATION_ALLOWED_ERR (при записи)</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>mediaText</strong> позволяет получать или задавать список устройств
+        отображения в виде текстовой строки, состоящей из имен устройств, разделенных запятыми
+        и, возможно, пробелами. Пример:</p>
+
+      <div class="code">
+<pre class="code">document.styleSheets[0].media.mediaText = "screen, print";</pre>
+      </div>
+
+      <h4><a name="happendmedium">Метод appendMedium</a></h4>
+
+<pre class="syntax"><strong><a name="mappendmedium">Синтаксис</a></strong>:  <em>объект</em>.appendMedium(newMedium)
+<strong>Аргументы</strong>:  newMedium&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Иcключения</strong>: INVALID_CHARACTER_ERR, NO_MODIFICATION_ALLOWED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>appendMedium</strong> добавляет устройство <tt>newMedium</tt> в конец списка устройств.
+        Если это устройство уже есть в списке, то оно будет сначала удалено из него, а затем добавлено. Пример:</p>
+
+      <div class="code">
+<pre class="code">document.styleSheets[0].media.appendMedium("print");</pre>
+      </div>
+
+      <h4><a name="hdeletemedium">Метод deleteMedium</a></h4>
+
+<pre class="syntax"><strong><a name="mdeletemedium">Синтаксис</a></strong>:  <em>объект</em>.deleteMedium(oldMedium)
+<strong>Аргументы</strong>:  oldMedium&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Иcключения</strong>: NOT_FOUND_ERR, NO_MODIFICATION_ALLOWED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>deleteMedium</strong> удаляет устройство <tt>oldMedium</tt> из списка устройств.
+        Если этого устройства нет в списке, то генерируется исключение. Пример:</p>
+
+      <div class="code">
+<pre class="code">document.styleSheets[0].media.deletedMedium("print");</pre>
+      </div>
+
+      <h4><a name="hmedialist-item">Метод item</a></h4>
+
+<pre class="syntax"><strong><a name="mmedialist-item">Синтаксис</a></strong>:  <em>объект</em>.item(index)
+<strong>Аргументы</strong>:  index&nbsp;— числовое выражение
+<strong>Результат</strong>:  <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a> или null
+<strong>Иcключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>item</strong> возвращает элемент списка устройств с номер <tt>index</tt>. Допустимые значения
+        индекса лежат в диапазоне от 0 до <tt><em>объект</em>.length</tt>-1 включительно. Если <tt>index</tt> выходит за пределы
+        этого диапазона, то возвращается <strong>null</strong>. Пример:</p>
+
+        <div class="code">
+<pre class="code">alert(document.styleSheets[0].media.item(1));</pre>
+        </div>
+
+        <p>JavaScript позволяет задать обращение к элементам списка более компактным образом. Например, приведенный пример
+          можно записать и так:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].media[1]);</pre>
+      </div>
+
+      <h3><a name="ref493">4.9.3. Таблицы стилей: интерфейс StyleSheet</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Только для HTML-документов.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>StyleSheet</tt> соответствует одной таблице стилей, подключаемой к XML- или HTML-документу.
+         Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса StyleSheet</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pdisabled">disabled</a></tt></td>
+            <td>Да</td>
+            <td>DOM 2</td>
+            <td>Запрещена ли таблица.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#phref">href</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>URL внешней таблицы стилей.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pmedia">media</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Устройства отображения.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pownernode">ownerNode</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Элемент-владелец таблицы.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pparentstylesheet">parentStyleSheet</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Родительская таблица стилей.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ptitle">title</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Титул таблицы.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ptype">type</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Язык таблицы стилей.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hdisabled">Свойство disabled</a></h4>
+
+<pre class="syntax"><strong><a name="pdisabled">Синтаксис</a></strong>:  <em>объект</em>.disabled
+<strong>Изменяемое</strong>: да</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Только для HTML-документов.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>disabled</strong> возвращает <strong>true</strong>, если таблица запрещена, и <strong>false</strong> в противном случае.
+        Запрещение таблицы стилей означает, что она не будет применяться к текущему документу. Точнее говоря,
+        таблица стилей применяется к документу тогда и только тогда, когда она применима к текущему устройству
+        отображения и ее свойство <strong>disabled</strong> равно <strong>false</strong>. Пример:</p>
+
+      <div class="code">
+<pre class="code">document.styleSheets[0].disabled = true;</pre>
+      </div>
+
+      <h4><a name="hhref">Свойство href</a></h4>
+
+<pre class="syntax"><strong><a name="phref">Синтаксис</a></strong>:  <em>объект</em>.href
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Только для HTML-документов.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>href</strong> возвращает URI файла таблицы стилей для внешних таблиц и <strong>null</strong>
+        для внутренних таблиц. Если адрес таблицы был задан относительным URI, то MSHTML вернет относительный URI,
+        а Gecko&nbsp;— полный URI. Например,</p>
+
+      <div class="code">
+<pre class="code">&lt;LINK rel=stylesheet href="ie4.css"&gt;
+...
+alert(document.styleSheets[0].href);</pre>
+      </div>
+
+      <p class="noindent">выведет в Internet Explorer строку <samp>ie4.css</samp>, а в Gecko строку вида <samp>http://mysite.com/ie4.css</samp>.</p>
+
+      <h4><a name="hmedia">Свойство media</a></h4>
+
+<pre class="syntax"><strong><a name="pmedia">Синтаксис</a></strong>:  <em>объект</em>.media
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Нестандартная.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>media</strong> возвращает объект <tt><a href="#ref492">MediaList</a></tt>, содержащий список устройств отображения, к которым
+        применима данная таблица стилей. Если атрибут <strong>media</strong> таблицы стилей не был задан, то список устройств пуст, что
+        соответствует устройству "all" (все типы устройств). Пример:</p>
+
+        <div class="code">
+<pre class="code">alert(document.styleSheets[0].media.mediaText);</pre>
+        </div>
+
+        <p>Internet Explorer не поддерживает объект <tt><a href="#ref492">MediaList</a></tt>, поэтому в нем
+          данное свойство возвращает строку, содержащую список устройств через запятую, т.&nbsp;е. <tt>media</tt> здесь
+          эквивалентно <tt>media.mediaText</tt> стандарта.</p>
+
+      <h4><a name="hownernode">Свойство ownerNode</a></h4>
+
+<pre class="syntax"><strong><a name="pownernode">Синтаксис</a></strong>:  <em>объект</em>.ownerNode
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Только для HTML-документов под названием owningElement.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>ownerNode</strong> возвращает ссылку на объект <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a></tt>,
+        соответствующий узлу документа, ссылающемуся на данную таблицу стилей. Как указывалось выше, в HTML-документе таблица
+        стилей задается либо элементом <a href="http://wdh.suncloud.ru/html02.htm#link-stylesheet"><strong>LINK</strong></a>, либо элементом
+        <a href="http://wdh.suncloud.ru/html02.htm#estyle"><strong>STYLE</strong></a>; в XML-документе данное свойство должно указывать на узел
+        типа <tt><a href="http://wdh.suncloud.ru/dhtml05.htm#ref456">ProcessingInstruction</a></tt>, содержащий директиву <tt>xml-stylesheet</tt>.
+        Для таблиц стилей, подключенных к документу через другие таблицы стилей, это свойство равно <strong>null</strong>. Пример: в Gecko</p>
+
+        <div class="code">
+<pre class="code">alert(document.styleSheets[0].ownerNode.tagName);</pre>
+        </div>
+
+        <p class="noindent">в Internet Explorer:</p>
+
+        <div class="code">
+<pre class="code">alert(document.styleSheets[0].owningElement.tagName);</pre>
+        </div>
+
+      <h4><a name="hparentstylesheet">Свойство parentStyleSheet</a></h4>
+
+<pre class="syntax"><strong><a name="pparentstylesheet">Синтаксис</a></strong>:  <em>объект</em>.parentStyleSheet
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Только для HTML-документов.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Если язык таблицы стилей допускает включение одних таблиц стилей в другие (таков, в частности, CSS2), и данная
+        таблица подключена к документу через другую таблицу стилей, то свойство <strong>parentStyleSheet</strong> возвращает
+        ссылку на объект <tt>StyleSheet</tt>, соответствующий таблице стилей, в которую включена данная таблица. В остальных
+        случаях это свойство равно <strong>null</strong>. Следующий пример выводит на экран URI таблицы стилей верхнего уровня,
+        содержащую данную таблицу стилей в качестве вложенного потомка.</p>
+
+      <div class="code">
+<pre class="code">var ss = document.styleSheets[0];
+while (ss.parentStyleSheet)
+  ss = ss.parentStyleSheet;
+alert(ss.href);</pre>
+      </div>
+
+      <h4><a name="htitle">Свойство title</a></h4>
+
+<pre class="syntax"><strong><a name="ptitle">Синтаксис</a></strong>:  <em>объект</em>.title
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Только для HTML-документов.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>title</strong> возвращает титул узла-владельца данной таблицы стилей, т.&nbsp;е. значение свойства
+        <tt>ownerNode.title</tt>. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].title);</pre>
+      </div>
+
+      <h4><a name="htype">Свойство type</a></h4>
+
+<pre class="syntax"><strong><a name="ptype">Синтаксис</a></strong>:  <em>объект</em>.type
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Только для HTML-документов.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>type</strong> возвращает язык данной таблицы стилей, т.&nbsp;е. значение свойства
+        <tt>ownerNode.type</tt>. Если втрибут <strong>type</strong> узла-владельца не задан, то MSHTML вернет пустую строку,
+        а Gecko&nbsp;— строку "text/css", соответствующую языку таблиц стилей, принятому по умолчанию. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].type);</pre>
+      </div>
+
+      <h3><a name="ref494">4.9.4. Списки таблиц стилей: интерфейс StyleSheetList</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Только для HTML-документов.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>StyleSheetList</tt> реализует упорядоченные списки таблиц стилей.
+        Он имеет единственное свойство <tt><a href="#pstylesheetlist-length">length</a></tt>,
+        возвращающее количество таблиц в списке, и единственный метод <tt><a href="#mstylesheetlist-item">item</a></tt>,
+        возвращающий элемент списка с заданным номером (элементы списка нумеруются, начиная с нуля).</p>
+
+      <h4><a name="hstylesheetlist-length">Свойство length</a></h4>
+
+<pre class="syntax"><strong><a name="pstylesheetlist-length">Синтаксис</a></strong>:  <em>список</em>.length
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Только для HTML-документов.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>length</strong> возвращает количество таблиц в данном списке. Допустимые
+        индексы элементов списка лежат в диапазоне от 0 до <tt>length</tt>-1 включительно. Следующий
+        пример выводит на экран количество таблиц стилей в документе:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets.length);</pre>
+      </div>
+
+      <h4><a name="hstylesheetlist-item">Метод item</a></h4>
+
+<pre class="syntax"><strong><a name="mstylesheetlist-item">Синтаксис</a></strong>:  <em>список</em>.item(index)
+<strong>Аргументы</strong>:  index&nbsp;— числовое выражение
+<strong>Результат</strong>:  объект <a href="#ref493">StyleSheet</a> или null
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Только для HTML-документов.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>item</strong> возвращает элемент списка таблиц с заданным индексом в качестве
+        результата. Если индекс выходит за пределы диапазона элементов списка, то возвращается <strong>null</strong>.
+        Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets.item(0).href);</pre>
+      </div>
+
+      <p>JavaScript позволяет нам записать обращение к элементу списка более компактно. Предыдущий оператор
+        может выглядеть так:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].href);</pre>
+      </div>
+
+      <p>Internet Explorer поддерживает еще одну форму обращения к элементу списка, а именно:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets(0).href);</pre>
+      </div>
+
+      <p>Однако, эта форма является нестандартной, и ей лучше не пользоваться.</p>
+
+      <h3><a name="ref495">4.9.5. Таблицы стилей на языке CSS</a></h3>
+
+      <p>Для практической реализации динамических стилей мы должны перейти от абстрактных интерфейсов, описанных выше,
+        к их конкретной реализации применительно к <a href="http://wdh.suncloud.ru/css01.htm#ref211">языку CSS</a> (точнее, CSS2). Такой конкретизацией
+        интерфейса <tt><a href="#ref493">StyleSheet</a></tt> для CSS является интерфейс <tt><a href="#ref4915">CSSStyleSheet</a></tt>,
+который обеспечивает доступ к коллекции правил, содержащихся в таблице
+стилей, и содержит методы, позволяющие изменять эту коллекцию. Но
+прежде, чем перейти к его описанию, мы должны описать интерфейсы,
+соответствующие отдельных правилам и директивам языка CSS. Все эти
+интерфейсы являются производными от базового интерфейса <tt><a href="#ref496">CSSRule</a></tt>, с которого мы и начнем рассмотрение.</p>
+
+      <p>Все объекты, связанные с CSS, являются "живыми" в том смысле, что изменение таблицы стилей влечет изменение всех
+        соответствующих стилей.</p>
+
+      <h3><a name="ref496">4.9.6. Операторы CSS: интерфейс CSSRule</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Нестандартная.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>CSSRule</tt>&nbsp;— это базовый абстрактный интерфейс для представления <a href="http://wdh.suncloud.ru/css01.htm#ref2133">операторов языка CSS</a>,
+      включая и директивы, и правила этого языка. Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса CSSRule</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcssrule-csstext">cssText</a></tt></td>
+            <td>Да</td>
+            <td>DOM 2</td>
+            <td>Текст оператора.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcssrule-parentrule">parentRule</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Директива, содержащая данный оператор.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcssrule-parentstylesheet">parentStyleSheet</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Таблица стилей, содержащая данный оператор.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcssrule-type">type</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Тип оператора.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hcssrule-csstext">Свойство cssText</a></h4>
+
+<pre class="syntax"><strong><a name="pcssrule-csstext">Синтаксис</a></strong>:  <em>объект</em>.cssText
+<strong>Изменяемое</strong>: да
+<strong>Иcключения</strong>: SYNTAX_ERR, INVALID_MODIFICATION_ERR, HIERARCHY_REQUEST_ERR,
+            NO_MODIFICATION_ALLOWED_ERR (при записи)</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Нестандартная.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>cssText</strong> позволяет читать или задавать текстовое представление данного оператора.
+        При задании нового текста оператора возможна генерация перечисленных выше исключений. Следующий пример выводит
+        на экран текст первого оператора первой таблицы стилей документа:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].cssRules[0].cssText);</pre>
+      </div>
+
+      <p>В Internet Explorer этот оператор должен выглядеть так:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].rules[0].style.cssText);</pre>
+      </div>
+
+      <h4><a name="hcssrule-parentrule">Свойство parentRule</a></h4>
+
+<pre class="syntax"><strong><a name="pcssrule-parentrule">Синтаксис</a></strong>:  <em>объект</em>.parentRule
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Если данный оператор вложен в другой оператор CSS (например, в директиву <strong><a href="http://wdh.suncloud.ru/css01.htm#ref216">@media</a></strong>),
+        то свойство <strong>parentRule</strong> возвращает объект <tt>CSSRule</tt> для оператора, содержащего данный. В противном случае
+        возвращается <strong>null</strong>. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].cssRules[0].parentRule);</pre>
+      </div>
+
+      <p>В объектной модели MSHTML директивы CSS недоступны, и ссылку на оператор, содержащий данный, получить невозможно.</p>
+
+      <h4><a name="hcssrule-parentstylesheet">Свойство parentStyleSheet</a></h4>
+
+<pre class="syntax"><strong><a name="pcssrule-parentstylesheet">Синтаксис</a></strong>:  <em>объект</em>.parentStyleSheet
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>parentStyleSheet</strong> возвращает объект <tt><a href="#ref4915">CSSStyleSheet</a></tt>, соответствующий таблице стилей,
+        содержащее данный оператор. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].cssRules[0].parentStyleSheet);</pre>
+      </div>
+
+      <p>В MSHTML правила CSS не содержат ссылки на свою таблицу стилей.</p>
+
+      <h4><a name="hcssrule-type">Свойство type</a></h4>
+
+<pre class="syntax"><strong><a name="pcssrule-type">Синтаксис</a></strong>:  <em>объект</em>.type
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>type</strong> возвращает целое число, означающее тип данного оператора CSS в соответствии со следующей таблицей:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption><a name="table45">Таблица 4.5. Типы операторов CSS</a></caption>
+          <tbody><tr>
+            <th>Название</th>
+            <th>Значение</th>
+            <th>Интерфейс</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt>UNKNOWN_RULE</tt></td>
+            <td>0</td>
+            <td><tt><a href="#ref4913">CSSUnknownRule</a></tt></td>
+            <td>Неизвестный оператор</td>
+          </tr>
+          <tr>
+            <td><tt>STYLE_RULE</tt></td>
+            <td>1</td>
+            <td><tt><a href="#ref497">CSSStyleRule</a></tt></td>
+            <td>Правило CSS</td>
+          </tr>
+          <tr>
+            <td><tt>CHARSET_RULE</tt></td>
+            <td>2</td>
+            <td><tt><a href="#ref4912">CSSCharsetRule</a></tt></td>
+            <td>Директива <strong><a href="http://wdh.suncloud.ru/css01.htm#ref2132">@charset</a></strong></td>
+          </tr>
+          <tr>
+            <td><tt>IMPORT_RULE</tt></td>
+            <td>3</td>
+            <td><tt><a href="#ref4911">CSSImportRule</a></tt></td>
+            <td>Директива <strong><a href="http://wdh.suncloud.ru/css03.htm#ref233">@import</a></strong></td>
+          </tr>
+          <tr>
+            <td><tt>MEDIA_RULE</tt></td>
+            <td>4</td>
+            <td><tt><a href="#ref498">CSSMediaRule</a></tt></td>
+            <td>Директива <strong><a href="http://wdh.suncloud.ru/css01.htm#ref216">@media</a></strong></td>
+          </tr>
+          <tr>
+            <td><tt>FONT_FACE_RULE</tt></td>
+            <td>5</td>
+            <td><tt><a href="#ref499">CSSFontFaceRule</a></tt></td>
+            <td>Директива <strong><a href="http://wdh.suncloud.ru/css08.htm#ref2832">@font-face</a></strong></td>
+          </tr>
+          <tr>
+            <td><tt>PAGE_RULE</tt></td>
+            <td>6</td>
+            <td><tt><a href="#ref4910">CSSPageRule</a></tt></td>
+            <td>Директива <strong><a href="http://wdh.suncloud.ru/css12.htm#ref2122">@page</a></strong></td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>В
+объектной модели MSHTML доступны только правила CSS, но не директивы,
+поэтому данное свойство лишено смысла и не поддерживается.</p>
+
+      <h3><a name="ref497">4.9.7. Правила CSS: интерфейс CSSStyleRule</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Нестандартная.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>CSSStyleRule</tt>&nbsp;— это интерфейс, производный от <tt><a href="#ref496">CSSRule</a></tt> и
+        соответствующий одному <a href="http://wdh.suncloud.ru/css01.htm#cssrule">правилу языка CSS</a>. Напомним, что правило CSS состоит из селектора
+        и блока деклараций. Поэтому данный интерфейс имеет два дополнительных свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса CSSStyleRule</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcssstylerule-selectortext">selectorText</a></tt></td>
+            <td>Да</td>
+            <td>DOM 2</td>
+            <td>Текст селектора.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcssstylerule-style">style</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Блок деклараций.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hcssstylerule-selectortext">Свойство selectorText</a></h4>
+
+<pre class="syntax"><strong><a name="pcssstylerule-selectortext">Синтаксис</a></strong>:  <em>объект</em>.selectorText
+<strong>Изменяемое</strong>: да
+<strong>Иcключения</strong>: SYNTAX_ERR, NO_MODIFICATION_ALLOWED_ERR (при записи)</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Нестандартная.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>selectorText</strong> позволяет читать или задавать текст селектора данного правила.
+        При задании нового текста селектора возможна генерация перечисленных выше исключений. Следующий пример выводит
+        на экран текст селектора первого оператора первой таблицы стилей документа:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].cssRules[0].selectorText);</pre>
+      </div>
+
+      <p>В Internet Explorer этот оператор должен выглядеть так:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].rules[0].selectorText);</pre>
+      </div>
+
+      <h4><a name="hcssstylerule-style">Свойство style</a></h4>
+
+<pre class="syntax"><strong><a name="pcssstylerule-style">Синтаксис</a></strong>:  <em>объект</em>.style
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Нестандартная.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>style</strong> возвращает объект <tt><a href="http://wdh.suncloud.ru/dhtml10.htm#ref4108">CSSStyleDeclaration</a></tt>, содержащий блок деклараций
+        данного правила. Пример чтения значения отдельного свойства CSS:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].cssRules[0].style.fontFamily);</pre>
+      </div>
+
+      <p>В Internet Explorer этот оператор должен выглядеть так:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].rules[0].style.fontFamily);</pre>
+      </div>
+
+      <h3><a name="ref498">4.9.8. Директива @media: интерфейс CSSMediaRule</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Интерфейс <tt>CSSMediaRule</tt>&nbsp;— это интерфейс, производный от <tt><a href="#ref496">CSSRule</a></tt> и
+        соответствующий <a href="http://wdh.suncloud.ru/css01.htm#ref216">директиве @media</a>. Он имеет следующие дополнительные свойства и методы:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса CSSMediaRule</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcssmediarule-cssrules">cssRules</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Коллекция правил директивы.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcssmediarule-media">media</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Коллекция устройств отображения.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы интерфейса CSSMediaRule</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#mcssmediarule-deleterule">deleteRule</a></tt></td>
+            <td>DOM 2</td>
+            <td>Удаляет заданное правило.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mcssmediarule-insertrule">insertRule</a></tt></td>
+            <td>DOM 2</td>
+            <td>Вставляет новое правило.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hcssmediarule-cssrules">Свойство cssRules</a></h4>
+
+<pre class="syntax"><strong><a name="pcssmediarule-cssrules">Синтаксис</a></strong>:  <em>объект</em>.cssRules
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>cssRules</strong> возвращает объект <tt><a href="#ref4914">CSSRuleList</a></tt>, содержащий список правил данной директивы. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].cssRules[0].cssRules.length);</pre>
+      </div>
+
+      <h4><a name="hcssmediarule-media">Свойство media</a></h4>
+
+<pre class="syntax"><strong><a name="pcssmediarule-media">Синтаксис</a></strong>:  <em>объект</em>.media
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>media</strong> возвращает объект <tt><a href="#ref492">MediaList</a></tt>, содержащий список устройств отображения данной директивы. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].cssRules[0].media.length);</pre>
+      </div>
+
+      <h4><a name="hcssmediarule-deleterule">Метод deleteRule</a></h4>
+
+<pre class="syntax"><strong><a name="mcssmediarule-deleterule">Синтаксис</a></strong>:  <em>объект</em>.deleteRule(index)
+<strong>Аргументы</strong>:  index&nbsp;— числовое выражение
+<strong>Исключения</strong>: INDEX_SIZE_ERR, NO_MODIFICATION_ALLOWED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>deleteRule</strong> удаляет правило с номером <tt>index</tt> из коллекции <tt><a href="#pcssmediarule-cssrules">cssRules</a></tt>.
+        Индекс должен лежать в диапазоне от 0 до <tt>cssRules.length-1</tt> включительно. Пример:</p>
+
+      <div class="code">
+<pre class="code">document.styleSheets[0].cssRules[0].deleteRule(0);</pre>
+      </div>
+
+      <h4><a name="hcssmediarule-insertrule">Метод insertRule</a></h4>
+
+<pre class="syntax"><strong><a name="mcssmediarule-insertrule">Синтаксис</a></strong>:  <em>объект</em>.insertRule(rule, index)
+<strong>Аргументы</strong>:  rule&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+            index&nbsp;— числовое выражение
+<strong>Исключения</strong>: HIERARCHY_REQUEST_ERR, INDEX_SIZE_ERR, NO_MODIFICATION_ALLOWED_ERR,
+            SYNTAX_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>insertRule</strong> вставляет новое правило в коллекцию <tt><a href="#pcssmediarule-cssrules">cssRules</a></tt>
+        перед правилом с номером <tt>index</tt>. Текст правила, включая селектор и декларацию, задается аргументом <tt>rule</tt>. 
+        Индекс должен лежать в диапазоне от 0 до <tt>cssRules.length</tt>; если он равен <tt>cssRules.length</tt>, то новое правило
+        добавляется в конец коллекции. Пример:</p>
+
+      <div class="code">
+<pre class="code">document.styleSheets[0].cssRules[0].insertRule("BODY { color: red }", 0);</pre>
+      </div>
+
+      <h3><a name="ref499">4.9.9. Директива @font-face: интерфейс CSSFontFaceRule</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Интерфейс <tt>CSSFontFaceRule</tt>&nbsp;— это интерфейс, производный от <tt><a href="#ref496">CSSRule</a></tt> и
+        соответствующий <a href="http://wdh.suncloud.ru/css08.htm#ref2832">директиве @font-face</a>. Он имеет одно дополнительное свойство <tt>style</tt>.</p>
+
+      <h4><a name="hcssfontfacerule-style">Свойство style</a></h4>
+
+<pre class="syntax"><strong><a name="pcssfontfacerule-style">Синтаксис</a></strong>:  <em>объект</em>.style
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>style</strong> возвращает объект <tt><a href="http://wdh.suncloud.ru/dhtml10.htm#ref4108">CSSStyleDeclaration</a></tt>, содержащий блок деклараций
+        данной директивы. Пример чтения значения отдельного дескриптора шрифта:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].cssRules[0].style.fontFamily);</pre>
+      </div>
+
+      <h3><a name="ref4910">4.9.10. Директива @page: интерфейс CSSPageRule</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Интерфейс <tt>CSSPageRule</tt>&nbsp;— это интерфейс, производный от <tt><a href="#ref496">CSSRule</a></tt> и
+        соответствующий <a href="http://wdh.suncloud.ru/css12.htm#ref2122">директиве @page</a>. Он имеет два дополнительных свойства
+        <tt><a href="#pcssstylerule-selectortext">selectorText</a></tt> и <tt><a href="#pcssstylerule-style">style</a></tt>,
+        которые соответствуют одноименным свойствам интерфейса <a href="#ref497">CSSStyleRule</a>.</p>
+
+      <h3><a name="ref4911">4.9.11. Директива @import: интерфейс CSSImportRule</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Интерфейс <tt>CSSImportRule</tt>&nbsp;— это интерфейс, производный от <tt><a href="#ref496">CSSRule</a></tt> и
+        соответствующий <a href="http://wdh.suncloud.ru/css03.htm#ref233">директиве @import</a>. Он имеет следующие дополнительные свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса CSSImportRule</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcssimportrule-href">href</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>URI импортируемой таблицы стилей.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcssimportrule-media">media</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Коллекция устройств отображения.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcssimportrule-stylesheet">styleSheet</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Указатель на импортируемую таблицу стилей.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hcssimportrule-href">Свойство href</a></h4>
+
+<pre class="syntax"><strong><a name="pcssimportrule-href">Синтаксис</a></strong>:  <em>объект</em>.href
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>href</strong> возвращает URI файла импортируемой таблицы стилей, например,</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].cssRules[0].href);</pre>
+      </div>
+
+      <h4><a name="hcssimportrule-media">Свойство media</a></h4>
+
+<pre class="syntax"><strong><a name="pcssimportrule-media">Синтаксис</a></strong>:  <em>объект</em>.media
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>media</strong> возвращает объект <tt><a href="#ref492">MediaList</a></tt>, содержащий список устройств отображения данной директивы. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].cssRules[0].media.length);</pre>
+      </div>
+
+      <h4><a name="hcssimportrule-stylesheet">Свойство styleSheet</a></h4>
+
+<pre class="syntax"><strong><a name="pcssimportrule-stylesheet">Синтаксис</a></strong>:  <em>объект</em>.styleSheet
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>styleSheet</strong> возвращает объект <tt><a href="#ref4915">CSSStyleSheet</a></tt>, соответствующий таблице стилей,
+        импортируемой данной директивой. Если таблица стилей еще не загружена (или не будет загружена из-за того, что текущего
+        устройства отображения нет в списке устройств директивы), то возвращается <strong>null</strong>. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].cssRules[0].styleSheet);</pre>
+      </div>
+
+      <h3><a name="ref4912">4.9.12. Директива @charset: интерфейс CSSCharsetRule</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Интерфейс <tt>CSSCharsetRule</tt>&nbsp;— это интерфейс, производный от <tt><a href="#ref496">CSSRule</a></tt> и
+        соответствующий <a href="http://wdh.suncloud.ru/css01.htm#ref2132">директиве @charset</a>. Он имеет одно дополнительное свойство <tt>encoding</tt>.</p>
+
+      <h4><a name="hencoding">Свойство encoding</a></h4>
+
+<pre class="syntax"><strong><a name="pencoding">Синтаксис</a></strong>:  <em>объект</em>.encoding
+<strong>Изменяемое</strong>: нет
+<strong>Иcключения</strong>: SYNTAX_ERR, NO_MODIFICATION_ALLOWED_ERR (при записи)</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>encoding</strong> позволяет читать и устанавливать название кодировки символов. Важно понимать,
+        что эта кодировка не влияет на текстовые данные объектов DOM, которые всегда хранятся в кодировке UTF-16. Поэтому
+        данное свойство нужно только для правильной перекодировки исходных документов в Unicode при их загрузке и обратной
+        перекодировки при записи документов. Пример:</p>
+
+      <div class="code">
+<pre class="code">document.styleSheets[0].cssRules[0].encoding = "windows-1251";</pre>
+      </div>
+
+      <h3><a name="ref4913">4.9.13. Неизвестный оператор: интерфейс CSSUnknownRule</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Стандарт требует, чтобы анализатор XML- и HTML-документов включал в коллекцию операторов все найденные в таблице
+        стилей операторы, даже если они не могут быть распознаны анализатором. Для хранения таких неопознанных операторов
+        введен интерфейс <tt>CSSUnknownRule</tt>, производный от <tt><a href="#ref496">CSSRule</a></tt> и не имеющий собственных
+        свойств и методов.</p>
+
+      <h3><a name="ref4914">4.9.14. Списки операторов CSS: интерфейс CSSRuleList</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Нестандартная, только для HTML-документов.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>CSSRuleList</tt> реализует упорядоченные списки операторов CSS.
+        Он имеет единственное свойство <tt><a href="#pcssrulelist-length">length</a></tt>,
+        возвращающее количество элементов в списке, и единственный метод <tt><a href="#mcssrulelist-item">item</a></tt>,
+        возвращающий элемент списка с заданным номером (элементы списка нумеруются, начиная с нуля).</p>
+
+      <h4><a name="hcssrulelist-length">Свойство length</a></h4>
+
+<pre class="syntax"><strong><a name="pcssrulelist-length">Синтаксис</a></strong>:  <em>список</em>.length
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Только для HTML-документов.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>length</strong> возвращает количество операторов в данном списке. Допустимые
+        индексы элементов списка лежат в диапазоне от 0 до <tt>length</tt>-1 включительно. Следующий
+        пример выводит на экран количество операторов в первой таблице стилей документа:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].cssRules.length); // в Gecko
+alert(document.styleSheets[0].rules.length);    // в Internet Explorer</pre>
+      </div>
+
+      <h4><a name="hcssrulelist-item">Метод item</a></h4>
+
+<pre class="syntax"><strong><a name="mcssrulelist-item">Синтаксис</a></strong>:  <em>список</em>.item(index)
+<strong>Аргументы</strong>:  index&nbsp;— числовое выражение
+<strong>Результат</strong>:  объект <a href="#ref496">CSSRule</a> или null
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Только для HTML-документов.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>item</strong> возвращает элемент списка операторов с заданным индексом в качестве
+        результата. Если индекс выходит за пределы диапазона элементов списка, то возвращается <strong>null</strong>.
+        Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].cssRules.item(0).cssText);</pre>
+      </div>
+
+      <p>JavaScript позволяет нам записать обращение к элементу списка более компактно. Предыдущий оператор
+        может выглядеть так:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].cssRules[0].cssText);</pre>
+      </div>
+
+      <p>Internet Explorer поддерживает еще одну форму обращения к элементу списка, а именно:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].rules(0).style.cssText);</pre>
+      </div>
+
+      <p>Однако, эта форма является нестандартной, и ей лучше не пользоваться.</p>
+
+      <h3><a name="ref4915">4.9.15. Таблицы стилей CSS: интерфейс CSSStyleSheet</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Нестандартная, только для HTML-документов.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>CSSStyleSheet</tt> соответствует одной таблице стилей на языке CSS. Он является производным от
+        интерфейса <tt><a href="#ref493">StyleSheet</a></tt> и имеет следующие дополнительные свойства и методы:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса CSSStyleSheet</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcssrules">cssRules</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Коллекция операторов таблицы.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pownerrule">ownerRule</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Директива, которой импортирована данная таблица.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы интерфейса CSSStyleSheet</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#mdeleterule">deleteRule</a></tt></td>
+            <td>DOM 2</td>
+            <td>Удаляет заданное правило из таблицы.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#minsertrule">insertRule</a></tt></td>
+            <td>DOM 2</td>
+            <td>Вставляет новое правило в таблицу.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hcssrules">Свойство cssRules</a></h4>
+
+<pre class="syntax"><strong><a name="pcssrules">Синтаксис</a></strong>:  <em>объект</em>.cssRules
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Под названием rules.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>cssRules</strong> возвращает объект <tt><a href="#ref4914">CSSRuleList</a></tt>, содержащий список 
+        всех операторов данной таблицы стилей. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].cssRules[0].cssText);</pre>
+      </div>
+
+      <p>В Internet Explorer это свойство называется <tt>rules</tt> и возвращает коллекцию всех правил таблицы, т.&nbsp;е.
+        директивы в нее не включаются:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].rules[0].style.cssText);</pre>
+      </div>
+
+      <h4><a name="hownerrule">Свойство ownerRule</a></h4>
+
+<pre class="syntax"><strong><a name="pownerrule">Синтаксис</a></strong>:  <em>объект</em>.ownerRule
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Если данная таблица стилей импортирована директивой <strong><a href="http://wdh.suncloud.ru/css03.htm#ref233">@import</a></strong>,
+        то свойство <strong>ownerRule</strong> возвращает объект <tt><a href="#ref4911">CSSImportRule</a></tt>,
+        соответствующий этой директиве. В этом случае свойство таблицы <tt><a href="#pownernode">ownerNode</a></tt>
+        равно <strong>null</strong>. В остальных случаях данное свойство возвращает <strong>null</strong>. Пример:</p>
+
+      <div class="code">
+<pre class="code">var imported = document.styleSheets[0].ownerRule != null;
+var external = document.styleSheets[0].ownerNode.tagName == "link";
+var sstype = (imported ? "импортированная" : (external ? "внешняя" : "внутренняя"));
+alert(sstype + " таблица");</pre>
+      </div>
+
+      <p>Internet Explorer это свойство не поддерживает. Вместо него таблицы содержат нестандартное свойство <tt>imports</tt>,
+        которое возвращает коллекцию всех таблиц, импортированных данной таблицей, и метод <tt>addImport(URL, index)</tt>,
+        добавляющий таблицу с заданным <tt>URL</tt> в эту коллекцию (аргумент <tt>index</tt> следует тем же правилам, что и в методе <tt>addRule</tt>).</p>
+
+      <h4><a name="hdeleterule">Метод deleteRule</a></h4>
+
+<pre class="syntax"><strong><a name="mdeleterule">Синтаксис</a></strong>:  <em>объект</em>.deleteRule(index)
+<strong>Аргументы</strong>:  index&nbsp;— числовое выражение
+<strong>Исключения</strong>: INDEX_SIZE_ERR, NO_MODIFICATION_ALLOWED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Под названием removeRule.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>deleteRule</strong> удаляет правило с номером <tt>index</tt> из коллекции <tt><a href="#pcssrules">cssRules</a></tt>.
+        Индекс должен лежать в диапазоне от 0 до <tt>cssRules.length-1</tt> включительно. Пример:</p>
+
+      <div class="code">
+<pre class="code">document.styleSheets[0].deleteRule(0);</pre>
+      </div>
+
+      <p>В Internet Explorer этот метод называется <tt>removeRule</tt> и аргумент <tt>index</tt> в нем может быть опущен;
+        в этом случае удаляется первое правило коллекции:</p>
+
+      <div class="code">
+<pre class="code">document.styleSheets[0].removeRule();</pre>
+      </div>
+
+      <h4><a name="hinsertrule">Метод insertRule</a></h4>
+
+<pre class="syntax"><strong><a name="minsertrule">Синтаксис</a></strong>:  <em>объект</em>.insertRule(rule, index)
+<strong>Аргументы</strong>:  rule&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+            index&nbsp;— числовое выражение
+<strong>Исключения</strong>: HIERARCHY_REQUEST_ERR, INDEX_SIZE_ERR, NO_MODIFICATION_ALLOWED_ERR,
+            SYNTAX_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/ie.gif" alt="Internet Explorer"> Под названием addRule.
+           <img src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>insertRule</strong> вставляет новое правило в коллекцию <tt><a href="#pcssrules">cssRules</a></tt>
+        перед правилом с номером <tt>index</tt>. Текст правила, включая селектор и декларацию, задается аргументом <tt>rule</tt>. 
+        Индекс должен лежать в диапазоне от 0 до <tt>cssRules.length</tt>; если он равен <tt>cssRules.length</tt>, то новое правило
+        добавляется в конец коллекции. Пример:</p>
+
+      <div class="code">
+<pre class="code">document.styleSheets[0].insertRule("BODY { color: red }", 0);</pre>
+      </div>
+
+      <p>В Internet Explorer этот метод называется <tt>addRule</tt> и имеет вид <tt>addRule(selector, style, index)</tt>,
+        где <tt>selector</tt>&nbsp;— текст селектора, <tt>style</tt>&nbsp;— текст декларации свойств, а <tt>index</tt>&nbsp;—
+        позиция вставки нового правила. Если аргумент <tt>index</tt> опущен, то правило добавляется в конец коллекции. Пример:</p>
+
+      <div class="code">
+<pre class="code">document.styleSheets[0].addRule("BODY", "color: red", 0);</pre>
+      </div>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml08.htm"><img name="imgleftb" src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/nnleft.gif" alt="" title="Элементы HTML (продолжение)" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml10.htm"><img name="imgrightb" src="4.9.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%E8%E5%20%F2%E0%E1%EB%E8%F6%FB%20%F1%F2%E8%EB%E5%E9_files/nnright.gif" alt="" title="Динамическое управление стилями" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="js/jquery-2.0.0.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+ 	 $("#mydiv").click( function () {
+	     $(this).addClass("myclass");
+    });
+  $("#mydiv").click();
+  });
+  </script>
+  <style>
+  p { color:blue; }
+  div { color:red; }
+  .myclass{ background-color:blue; }
+  </style>
+</head>
+<body>
+  <p>Щелкните по словам "Наш div"  </p>
+  <div id="mydiv">Наш div</div>
+  <div></div>
+</body>
+</html>

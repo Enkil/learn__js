@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>Заголовок</title>
+	<meta name="keywords" content="">
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+	//Создание функции
+	function myFunc(){
+		document.write(this.p1); //this - указательна текущий объект
+	}
+	
+	
+	//Создание объекта
+	obj = new Object();
+	obj.p1 = 4; //Создаём свойство объекта
+	obj.m1 = myFunc; //Метод объекта
+	obj.m2 = function(arg){ //Ещё один вариант создания метода объекта
+		this.p1 = arg;
+	}
+	
+	objc1 = new obj;
+	
+	//Создание объекта - краткая нотация
+	obj1 = {
+		p1:5, //Свойство объекта
+		m1:myFunc, //Метод объекта
+		m2:function(arg){ //Ещё один вариант создания метода объекта
+			this.p1 = arg;
+		}
+	};
+	
+	var a = obj1.p1; //Обращение к свойству объекта
+	obj1.m2(2); //Обращение к методу объекта
+	obj1.m1();
+	
+	
+	//Создаём функцию, как объект
+	function fnObject(arg){
+		this.p1 = arg; //Создаём свойство объекта
+		this.m1 = myFunc; //Метод объекта
+		this.m2	= function(arg){ //Ещё один вариант создания метода объекта
+			this.p1 = arg;
+		}
+	}
+	var fnObj = new fnObject(3); //Создаем экземпляры объекта
+	var fnObj1 = new fnObject(4); //Создаем экземпляры объекта
+	
+	fnObj.newProper = 12; //Новое свойство экземпляра
+	delete fnObj.newProper //Удаляем свойство экземпляра
+	
+	fnObj1.newMethod = function(arg){ // Новый метод экземпляра
+		alert(this.p1);
+	}
+	
+	fnObject.prototype.newGlobal = 7; //Новое свойство, которое унаследуют все экземпляры
+	fnObject.prototype.newGlobMeth = function(arg){ // Новый метод, который наследуют все экземпляры
+		alert(this.p1);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</script>
+</head>
+<body>
+</body>
+</html>

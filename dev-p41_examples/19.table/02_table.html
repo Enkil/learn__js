@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Table</title>
+<script type="text/javascript">
+var jsData = new Array();
+jsData[0] = {winner:"Uruguay", winScore:4, loser:"Argentina", losScore:2};
+jsData[1] = {winner:"Italy", winScore:4, loser:"Hungary", losScore:2};
+
+function drawTable(tbody) {
+    var tr, td;
+    tbody = document.getElementById(tbody);
+    for (var i = 0; i < jsData.length; i++) {
+        tr = tbody.insertRow(tbody.rows.length);
+        td = tr.insertCell(tr.cells.length);
+        td.innerHTML = jsData[i].winner;
+        td = tr.insertCell(tr.cells.length);
+        td.innerHTML = jsData[i].loser;
+        td = tr.insertCell(tr.cells.length);
+        td.innerHTML = jsData[i].winScore + " - " + jsData[i].losScore;
+    }
+}
+
+</script>
+</head>
+<body onload="drawTable('matchData')">
+<h1>Преобразование данных JavaScript в HTML таблицу</h1>
+
+<table id="cupFinals">
+<thead>
+<tr><th>Победитель</th>
+    <th>Проигравший</th>
+    <th>Счет</th>
+</tr>
+</thead>
+<tbody id="matchData"></tbody>
+</table>
+
+</body>
+</html>
+

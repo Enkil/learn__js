@@ -1,0 +1,22 @@
+<html>
+<head>
+<script>
+button1up = new Image; button1up.src = "blue.gif";
+button1down = new Image; button1down.src = "green.gif";
+
+function MouseOverRoutine()  {
+   document.getElementById("button").src = button1down.src;
+}
+
+function MouseOutRoutine()  {
+   document.getElementById("button").src = button1up.src;  
+}
+</script>
+<title>JavaScript - Samplepage </title>
+</head>
+<body>
+<a href="#" onmouseover="MouseOverRoutine()"
+    onmouseout="MouseOutRoutine()">
+<img src="blue.gif" width="60" height="60" id = "button" border="0"></a>
+</body>
+</html>

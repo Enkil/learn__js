@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>onblur</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript">
+    
+window.onload = function(){
+	coffee=document.getElementsByName("coffee");
+    txt="";
+	document.getElementById("orderbutton").onclick = function(){
+    for (i=0;i<coffee.length;++ i){
+       if (coffee[i].checked){
+          txt=txt + coffee[i].value + " ";
+       }
+    }
+    document.getElementById("order").value="Вы заказали кофе и " + txt;
+  }
+}
+</script>
+</head>
+<body>
+<p>С чем будет ваш кофе?</p>
+<form id="myform">
+<input type="checkbox" name="coffee" value="сливки">сливки<br />
+<input type="checkbox" name="coffee" value="сахар">сахар <br />
+<input type="button"  id="orderbutton" value="Заказать"><br />
+<input type="text" id="order" size="50">
+</form>
+</body></html>

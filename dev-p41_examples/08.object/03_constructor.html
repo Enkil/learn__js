@@ -1,0 +1,29 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>constructor</title>
+<script type="text/javascript">
+function newlastname(new_lastname)
+{
+  this.lastname=new_lastname;
+}
+
+function person(firstname,lastname,age,eyecolor)
+{
+  this.firstname=firstname;
+  this.lastname=lastname;
+  this.age=age;
+  this.eyecolor=eyecolor;
+  this.newlastname=newlastname;
+}
+var tableOfValues = 22;
+myFather=new person("Александр","Смирнов",tableOfValues,"синий");
+myMother=new person("Анна","Петрова",20,"зеленый");
+myMother.newlastname("Смирнова");
+alert(myMother.age); 
+</script>
+</head>
+<body>
+
+</body>
+</html>

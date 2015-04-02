@@ -1,0 +1,58 @@
+table.globalmenu
+{
+	background-color:	#cccccc;
+	text-align:		center;
+	vertical-align: middle;
+	border:			solid 1px navy;
+	border-collapse:collapse;
+	padding:		0px;
+	width:			70%;
+}
+
+table.globalmenu td
+{
+	border:		solid 1px navy;
+	height:		25px;
+	width:		100px;
+	padding:	0px;
+	margin:		0px;
+}
+
+div.subMenu 
+{
+	visibility:	hidden;
+	position:	absolute;
+	background-color: #eeeeee;
+	padding :	0px;
+	border:		1px solid navy;
+}
+div.subMenu div
+{
+	padding :	2px;
+}
+
+.menuItem a:link
+{
+	color:	Maroon;
+}
+.menuItem a:visited
+{
+	color:	Maroon;
+}
+.menuItem a:hover
+{
+	color:	White;
+}
+
+div.subMenu a:link
+{
+	color:	Navy;
+}
+div.subMenu a:visited
+{
+	color:	Navy;
+}
+div.subMenu a:hover
+{
+	color:	Yellow;
+}

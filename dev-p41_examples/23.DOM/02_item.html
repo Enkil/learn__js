@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Доступ к элементам документа</title>
+<script>
+window.onload = function(){
+	document.getElementById("modify").onclick = function(){
+	
+		document.getElementsByTagName("P")[0].innerHTML = 'Выбрали первый параграф методом getElementsByTagName объекта DOM Document';
+		
+		var spans = document.getElementsByTagName("span");
+		console.log(spans.length);
+		
+		document.getElementById("pometki").innerHTML='';
+		for (i=0; i < spans.length; i++){
+			document.getElementById("pometki").innerHTML+= spans.item(i).innerHTML; 
+		}
+		
+		var x=document.getElementsByName("x");
+		console.log(x.length);
+		
+		var a=document.getElementsByTagName("input")[0];
+		console.log(a.getAttribute("value"));
+	}
+	
+}
+
+</script>
+</head>
+<body>
+<div id="demo"></div>
+<p>Первый параграф</p>
+<p>Второй параграф</p>
+<p>Третий параграф</p>
+<p>Четвертый параграф</p>
+<span>Первый span</span>
+<span>Второй span </span>
+<span>Третий span </span>
+<div id="pometki"> Место для записей</div>
+<hr />
+<button id="read">Читаем содержимое элементов!</button>
+<hr />
+Кошка <input name="x" type="radio" value="Cats">
+Собака <input name="x" type="radio" value="Dogs">
+</body>
+</html>
+

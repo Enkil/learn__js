@@ -1,0 +1,28 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Storage</title>
+
+<script>
+function clickCounter() {
+if(typeof(Storage) !== "undefined") {
+if (sessionStorage.clickcount) {
+sessionStorage.clickcount = Number(sessionStorage.clickcount)+1;
+} else {
+sessionStorage.clickcount = 1;
+}
+document.getElementById("result").innerHTML = "Вы щелкнули по кнопке " + sessionStorage.clickcount + " раз в этой сессии.";
+} else {
+document.getElementById("result").innerHTML =
+" Увы, ваш браузер не поддерживает Web Storage web storage...";
+}
+}
+</script>
+</head>
+<body>
+<p><button onclick="clickCounter()" type="button">Щелкай!</button></p>
+<div id="result"></div>
+<p> Щелкаем по кнопке, чтобы увидеть работу счетчика.</p>
+<p> Закройте браузер, откройте снова, и вы увидите, что счетчик будет сброшен.</p>
+</body>
+</html>

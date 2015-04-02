@@ -1,0 +1,23 @@
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+<p id="demo">Время</p>
+<button onclick="myStopFunction()">Stop time</button>
+
+<script>
+var myVar = setInterval(function(){myTimer()}, 1000);
+
+function myTimer() {
+    var d = new Date();
+    var t = d.toLocaleTimeString();
+    document.getElementById("demo").innerHTML = t;
+}
+
+function myStopFunction() {
+    clearInterval(myVar);
+}
+</script>
+</body>
+</html>

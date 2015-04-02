@@ -1,0 +1,942 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="Query%20для%20JavaScript.files/filelist.xml">
+<title>Query для JavaScript-программистов</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>elena</o:Author>
+  <o:LastAuthor>elenab</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>17</o:TotalTime>
+  <o:Created>2008-10-03T06:05:00Z</o:Created>
+  <o:LastSaved>2008-10-03T06:05:00Z</o:LastSaved>
+  <o:Pages>5</o:Pages>
+  <o:Words>2005</o:Words>
+  <o:Characters>11435</o:Characters>
+  <o:Company>home</o:Company>
+  <o:Lines>95</o:Lines>
+  <o:Paragraphs>26</o:Paragraphs>
+  <o:CharactersWithSpaces>13414</o:CharactersWithSpaces>
+  <o:Version>11.5606</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:PunctuationKerning/>
+  <w:DrawingGridHorizontalSpacing>2,85 пт</w:DrawingGridHorizontalSpacing>
+  <w:DrawingGridVerticalSpacing>1,95 пт</w:DrawingGridVerticalSpacing>
+  <w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:24.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h2
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+code
+	{font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+pre
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:612.0pt 792.0pt;
+	margin:2.0cm 42.5pt 42.55pt 42.55pt;
+	mso-header-margin:36.0pt;
+	mso-footer-margin:36.0pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:709720685;
+	mso-list-template-ids:-615886410;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l1
+	{mso-list-id:844520816;
+	mso-list-template-ids:-592917644;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l2
+	{mso-list-id:1471827482;
+	mso-list-template-ids:120894870;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l3
+	{mso-list-id:1505852180;
+	mso-list-template-ids:-548522730;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l4
+	{mso-list-id:2114862578;
+	mso-list-template-ids:1552045052;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Обычная таблица";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]-->
+</head>
+
+<body lang=RU link=blue vlink=purple style='tab-interval:35.4pt'>
+
+<div class=Section1>
+
+<h1><span class=SpellE><span style='font-size:10.0pt;font-family:Arial'>Query</span></span><span
+style='font-size:10.0pt;font-family:Arial'> для JavaScript-программистов<o:p></o:p></span></h1>
+
+<p><span class=GramE><span style='font-size:10.0pt;font-family:Arial'>Она умело
+покрывает достаточно широкой диапазон повседневных функций и предоставляет при
+этом удобный API для расширений, с помощью которых можно добавить любую другую
+функциональность.</span></span><span style='font-size:10.0pt;font-family:Arial'>
+Абстрактность в ней заложена на уровне ядра — речь идет о выборе DOM-элементов
+— и она извлекает из него максимум пользы. <o:p></o:p></span></p>
+
+<h2><a name=habracut></a><span style='font-size:10.0pt;font-family:Arial'>Пространство
+имен (<span class=SpellE><em><span style='font-family:Arial'>namespacing</span></em></span>)<o:p></o:p></span></h2>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Ключевым моментом в
+создании хорошего JavaScript-кода для дальнейшего использования является
+тщательное управление пространством имен. В <span class=SpellE>JavaScript</span>
+существует единое глобальное пространство имен (объект <span class=SpellE><code><span
+style='font-family:Arial'>window</span></code></span>), и многие программисты
+(и даже некоторые библиотеки) засоряют его безо всякой надобности. <o:p></o:p></span></p>
+
+<p><span class=SpellE><span style='font-size:10.0pt;font-family:Arial'>jQuery</span></span><span
+style='font-size:10.0pt;font-family:Arial'> вводит единственный объе<span
+class=GramE>кт в гл</span>обальное пространство имен — функцию/объект <span
+class=SpellE>jQuery</span>. Все остальное — это либо непосредственное свойство <span
+class=SpellE>jQuery</span>, либо метод объекта, возвращаемого вызовом функции <span
+class=SpellE>jQuery</span>.</span><span lang=EN-US style='font-size:10.0pt;
+font-family:Arial;mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>В <span class=SpellE>jQuery</span>
+имеется некоторое количество функций, расширяющих возможность <span
+class=SpellE>JavaScript</span>, но каждая из них является доступной только как
+свойство объекта <span class=SpellE>jQuery</span>: <span class=SpellE><code><span
+style='font-family:Arial'>jQuery.each</span></code></span>, <span class=SpellE><code><span
+style='font-family:Arial'>jQuery.extend</span></code></span>, <span
+class=SpellE><code><span style='font-family:Arial'>jQuery.grep</span></code></span>,
+<span class=SpellE><code><span style='font-family:Arial'>jQuery.map</span></code></span>,
+<span class=SpellE><code><span style='font-family:Arial'>jQuery.merge</span></code></span>
+и <span class=SpellE><code><span style='font-family:Arial'>jQuery.trim</span></code></span>.
+Они по определению не будут конфликтовать с каким-либо другим кодом.<o:p></o:p></span></p>
+
+<h2><span style='font-size:10.0pt;font-family:Arial'>Печально известная функция
+<code><span style='font-family:Arial'>$</span></code><o:p></o:p></span></h2>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Я был не до конца честен,
+когда заявил о том, что <span class=SpellE>jQuery</span> вводит только один
+символ в глобальное пространство имен, на самом деле есть еще и <code><span
+style='font-family:Arial'>$</span></code>: он используется как сокращение для <span
+class=SpellE>jQuery</span>. Слава богу, это производится достаточно мягко: если
+вам снова требуется ваша прежняя функция <code><span style='font-family:Arial'>$</span></code>
+(например, если у вас есть часть кода, основанная на <span class=SpellE>Prototype</span>),
+вы можете вызвать <span class=SpellE><code><span style='font-family:Arial'>jQuery.noConflict</span></code></span><code><span
+style='font-family:Arial'>()</span></code>, чтобы вернуть свою старую функцию <code><span
+style='font-family:Arial'>$</span></code>.<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Если вам <span class=GramE>требуется
+ограничить использование функции <code><span style='font-family:Arial'>$</span></code>
+для <span class=SpellE>jQuery</span> не опасаясь</span> коллизий при каком-либо
+другом использовании глобальной функции <code><span style='font-family:Arial'>$</span></code>,
+документация по <span class=SpellE>jQuery</span> предлагает следующий способ:<o:p></o:p></span></p>
+
+<pre><span class=GramE><span style='font-family:Arial'>(<span class=SpellE>function</span>($) {</span></span><span
+style='font-family:Arial'><o:p></o:p></span></pre><pre><span style='font-family:
+Arial'><span style='mso-spacerun:yes'>    </span>// Внутри этого блока <code><span
+style='font-family:Arial'>$</span></code> относится к <span class=SpellE>jQuery</span><o:p></o:p></span></pre><pre><span
+style='font-family:Arial'><span style='mso-spacerun:yes'>    </span>// Изящно, правда?<o:p></o:p></span></pre><pre><span
+class=GramE><span style='font-family:Arial'>})(<span class=SpellE>jQuery</span>);</span></span><span
+style='font-family:Arial'><o:p></o:p></span></pre>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>В начале я расценивал
+повсеместное использование <code><span style='font-family:Arial'>$</span></code>
+в <span class=SpellE>jQuery</span> не более<span class=GramE>,</span> чем
+хитроумный трюк. Но если рассматривать его только в контексте <span
+class=SpellE>jQuery</span>, то такое решение выглядит очень гибким, и я с
+радостью использую сокращение <code><span style='font-family:Arial'>$</span></code>
+и в своем собственном коде.<o:p></o:p></span></p>
+
+<h2><span style='font-size:10.0pt;font-family:Arial'>Выбираем элементы<o:p></o:p></span></h2>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Каждый jQuery-оператор
+начинается с выбора одного или нескольких узлов DOM. <a
+href="http://docs.jquery.com/DOM/Traversing/Selectors" target="_blank">Синтаксис
+селекторов</a> <span class=SpellE>jQuery</span> (внутренний язык этой
+библиотеки) является интересным гибридом спецификаций CSS 1, 2, немного CSS 3,
+немного <span class=SpellE>XPath</span> и еще <span class=GramE>малость</span>
+других расширений. Я не буду углубляться в детали, просто приведу несколько
+полезных примеров:<o:p></o:p></span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l2 level1 lfo1;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     lang=EN-US style='font-size:10.0pt;font-family:Arial;mso-ansi-language:
+     EN-US'>jQuery</span></code></span><code><span lang=EN-US style='font-size:
+     10.0pt;font-family:Arial;mso-ansi-language:EN-US'>('<span class=SpellE>div.panel</span>')</span></code><span
+     lang=EN-US style='font-size:10.0pt;font-family:Arial;mso-ansi-language:
+     EN-US'><br>
+     </span><span style='font-size:10.0pt;font-family:Arial'>Все</span><span
+     style='font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-US'> <code><span
+     lang=EN-US style='font-family:Arial'>div</span></code><span lang=EN-US>'</span></span><span
+     class=SpellE><span style='font-size:10.0pt;font-family:Arial'>ы</span></span><span
+     style='font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-US'> </span><span
+     style='font-size:10.0pt;font-family:Arial'>с</span><span style='font-size:
+     10.0pt;font-family:Arial;mso-ansi-language:EN-US'> <code><span lang=EN-US
+     style='font-family:Arial'>class=&quot;panel&quot;</span></code><span
+     lang=EN-US><o:p></o:p></span></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l2 level1 lfo1;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     lang=EN-US style='font-size:10.0pt;font-family:Arial;mso-ansi-language:
+     EN-US'>jQuery</span></code></span><code><span lang=EN-US style='font-size:
+     10.0pt;font-family:Arial;mso-ansi-language:EN-US'>('<span class=SpellE>p#intro</span>')</span></code><span
+     lang=EN-US style='font-size:10.0pt;font-family:Arial;mso-ansi-language:
+     EN-US'><br>
+     </span><span style='font-size:10.0pt;font-family:Arial'>Параграф</span><span
+     style='font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-US'> </span><span
+     style='font-size:10.0pt;font-family:Arial'>с</span><span style='font-size:
+     10.0pt;font-family:Arial;mso-ansi-language:EN-US'> <code><span lang=EN-US
+     style='font-family:Arial'>id=&quot;intro&quot;</span></code><span
+     lang=EN-US><o:p></o:p></span></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l2 level1 lfo1;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     lang=EN-US style='font-size:10.0pt;font-family:Arial;mso-ansi-language:
+     EN-US'>jQuery</span></code></span><code><span lang=EN-US style='font-size:
+     10.0pt;font-family:Arial;mso-ansi-language:EN-US'>('<span class=SpellE>div#content</span>
+     <span class=SpellE>a:visible</span>')</span></code><span lang=EN-US
+     style='font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-US'><br>
+     </span><span style='font-size:10.0pt;font-family:Arial'>Все</span><span
+     style='font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-US'> </span><span
+     style='font-size:10.0pt;font-family:Arial'>видимые</span><span
+     style='font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-US'> </span><span
+     style='font-size:10.0pt;font-family:Arial'>ссылки</span><span
+     style='font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-US'> </span><span
+     style='font-size:10.0pt;font-family:Arial'>внутри</span><span
+     style='font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-US'> <code><span
+     lang=EN-US style='font-family:Arial'>div</span></code><span lang=EN-US> </span></span><span
+     style='font-size:10.0pt;font-family:Arial'>с</span><span style='font-size:
+     10.0pt;font-family:Arial;mso-ansi-language:EN-US'> <code><span lang=EN-US
+     style='font-family:Arial'>id=&quot;content&quot;</span></code><span
+     lang=EN-US><o:p></o:p></span></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l2 level1 lfo1;tab-stops:list 36.0pt'><span class=SpellE><span
+     style='font-size:10.0pt;font-family:Arial'>jQuery</span></span><span
+     style='font-size:10.0pt;font-family:Arial'>('<span class=SpellE>input</span>[@<span
+     class=SpellE>name=email</span>]')<br>
+     Все поля ввода с <span class=SpellE><code><span style='font-family:Arial'>name=</span></code></span><code><span
+     style='font-family:Arial'>&quot;<span class=SpellE>email</span>&quot;</span></code><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l2 level1 lfo1;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     style='font-size:10.0pt;font-family:Arial'>jQuery</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Arial'>('<span class=SpellE>table.orders</span>
+     <span class=SpellE>tr:odd</span>')</span></code><span style='font-size:
+     10.0pt;font-family:Arial'><br>
+     Все четные строки в таблице с <span class=SpellE><code><span
+     style='font-family:Arial'>class=</span></code></span><code><span
+     style='font-family:Arial'>&quot;<span class=SpellE>orders</span>&quot;</span></code><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l2 level1 lfo1;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     style='font-size:10.0pt;font-family:Arial'>jQuery</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Arial'>('<span class=SpellE>a</span>[@<span
+     class=SpellE>href^=</span>&quot;http://&quot;]')</span></code><span
+     style='font-size:10.0pt;font-family:Arial'><br>
+     Все внешние ссылки (те, которые начинаются с <code><span style='font-family:
+     Arial'>http://</span></code>)<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l2 level1 lfo1;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     style='font-size:10.0pt;font-family:Arial'>jQuery</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Arial'>('<span class=SpellE>p</span>[<span
+     class=SpellE>a</span>]')</span></code><span style='font-size:10.0pt;
+     font-family:Arial'><br>
+     Все параграфы, в которых есть хотя бы одна ссылка<o:p></o:p></span></li>
+</ul>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Наибольший интерес из
+вышеописанного представляют<span class=GramE> <code><span style='font-family:
+Arial'>:</span></code></span><span class=SpellE><code><span style='font-family:
+Arial'>visible</span></code></span> и <code><span style='font-family:Arial'>:<span
+class=SpellE>odd</span></span></code>, которые являются специфичными только для
+<span class=SpellE>jQuery</span>. Стоит также отметить, что выбор атрибутов
+использует знак <code><span style='font-family:Arial'>@</span></code>, что
+более соответствует <span class=SpellE><span class=GramE>XPath</span></span>
+нежели CSS 2.<o:p></o:p></span></p>
+
+<h2><span style='font-size:10.0pt;font-family:Arial'>Чего-нибудь с ними делаем<o:p></o:p></span></h2>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Объект, который возвращают
+селекторы <span class=SpellE>jQuery</span>, является довольно интересным
+зверем. Он представляет собой набор DOM-элементов и ведет себя немного как
+массив: у него есть свойство <span class=SpellE><code><span style='font-family:
+Arial'>length</span></code></span>, к его элементам можно получить доступ по
+индексу и (что более важно) <a href="http://www.getfirebug.com/" target="_blank"><span
+class=SpellE>Firebug</span></a> расценивает его именно как массив при
+отображении в своей консоли. Это не более<span class=GramE>,</span> чем
+красивая иллюзия: набор элементов, на самом деле, — это объект <span
+class=SpellE>jQuery</span>, у которого есть большое число методов для выбора,
+изменения или расширения имеющегося набора.<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>В <span class=SpellE>jQuery</span>
+имеется три разных категории методов: первые манипулируют со всеми элементами,
+которые подходят по шаблону, вторые возвращают значение от первого найденного
+элемента, и третьи изменяют саму выборку.<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Если у вас есть <span
+class=SpellE>Firebug</span>, вы можете попробовать их самостоятельно: просто
+нужно воспользоваться закладкой «Вставить <span class=SpellE>jQuery</span>» <span
+class=GramE>( </span><span class=SpellE><code><span style='font-family:Arial'>javascript:void</span></code></span><code><span
+style='font-family:Arial'>(<span class=SpellE>function</span>(){<span
+class=SpellE>var</span> <span class=SpellE>s=document.createElement</span>('<span
+class=SpellE>script</span>');<span class=SpellE>s.src='http</span>://code.jquery.com/jquery-1.1.2.js';
+<span class=SpellE>document.getElementsByTagName</span>('<span class=SpellE>head</span>')[0].<span
+class=SpellE>appendChild</span>(<span class=SpellE>s</span>);}())</span></code>
+) <span class=GramE>для загрузки самой библиотеки для любой страницы, а затем
+вставить примеры кода в консоль <span class=SpellE>Firebug</span> (<em><span
+style='font-family:Arial'>прим.: можно и без <span class=SpellE>Firebug</span>:
+достаточно загрузить <span class=SpellE>jQuery</span> с помощью указанной
+ссылки и вызвать приведенные примеры в адресной строке браузера, не забыв в
+начале </span></em><span class=SpellE><code><i><span style='font-family:Arial'>javascript</span></i></code></span><code><i><span
+style='font-family:Arial'>:</span></i></code><em><span style='font-family:Arial'>
+и какой-либо </span></em><span class=SpellE><code><i><span style='font-family:
+Arial'>alert</span></i></code></span><em><span style='font-family:Arial'> в
+конце (чтобы на страницу не выводилось возвращаемое значение)</span></em>).</span><o:p></o:p></span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l3 level1 lfo2;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     style='font-size:10.0pt;font-family:Arial'>jQuery</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Arial'>('<span class=SpellE>div#primary</span>').<span
+     class=SpellE>width</span>(300);</span></code><span style='font-size:10.0pt;
+     font-family:Arial'><br>
+     Выставляет ширину <span class=SpellE><code><span style='font-family:Arial'>div</span></code></span><code><span
+     style='font-family:Arial'> <span class=SpellE>id=</span>&quot;<span
+     class=SpellE>primary</span>&quot;</span></code> в 300 пикселей.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l3 level1 lfo2;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     style='font-size:10.0pt;font-family:Arial'>jQuery</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Arial'>('<span class=SpellE>p</span>').<span
+     class=SpellE>css</span>('<span class=SpellE>line-height</span>', '1.8em');</span></code><span
+     style='font-size:10.0pt;font-family:Arial'><br>
+     Выставляет высоту строки в 1.8em для всех параграфов.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l3 level1 lfo2;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     style='font-size:10.0pt;font-family:Arial'>jQuery</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Arial'>('<span class=SpellE>li:odd</span>').<span
+     class=SpellE>css</span>({<span class=SpellE>color</span>: '<span
+     class=SpellE>white</span>', <span class=SpellE>backgroundColor</span>: '<span
+     class=SpellE>black</span>'});</span></code><span style='font-size:10.0pt;
+     font-family:Arial'><br>
+     Применяет 2 CSS-правила для каждого пункта списка; заметьте, что функция <span
+     class=SpellE>css</span>() может принимать объект таблицы стилей вместо
+     двух строк.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l3 level1 lfo2;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     style='font-size:10.0pt;font-family:Arial'>jQuery</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Arial'>('<span class=SpellE>a</span>[@<span
+     class=SpellE>href^=</span>&quot;http://&quot;]').addClass('external').attr('<span
+     class=SpellE>target</span>', '<span class=SpellE>_blank</span>');</span></code><span
+     style='font-size:10.0pt;font-family:Arial'><br>
+     Добавляет класс <code><span style='font-family:Arial'>&quot;<span
+     class=SpellE>external</span>&quot;</span></code> для всех внешних ссылок
+     (тех, что начинаются с <code><span style='font-family:Arial'>http://</span></code>),
+     затем добавляет <span class=SpellE><code><span style='font-family:Arial'>target=</span></code></span><code><span
+     style='font-family:Arial'>&quot;_<span class=SpellE>blank</span>&quot;</span></code>,
+     чтобы увеличить различие. В данном примере используется цепочка вызовов,
+     описанная ниже.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l3 level1 lfo2;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     style='font-size:10.0pt;font-family:Arial'>jQuery</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Arial'>('<span class=SpellE>blockquote</span>').<span
+     class=SpellE>each</span>(<span class=SpellE>function</span>(<span
+     class=SpellE>el</span>) <span class=GramE>{ </span><span class=SpellE>alert</span>(<span
+     class=SpellE>jQuery</span>(<span class=SpellE>this</span>).<span
+     class=SpellE>text</span>()) });</span></code><span style='font-size:10.0pt;
+     font-family:Arial'><br>
+     Для каждого тега <span class=SpellE><code><span style='font-family:Arial'>blockquote</span></code></span>
+     на странице выводит сообщение (<span class=SpellE><em><span
+     style='font-family:Arial'>alert</span></em></span>) с его текстовым
+     содержанием (включая HTML-теги).<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l3 level1 lfo2;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     style='font-size:10.0pt;font-family:Arial'>jQuery</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Arial'>('<span class=SpellE>a</span>').<span
+     class=SpellE>html</span>('Нажми здесь!');</span></code><span
+     style='font-size:10.0pt;font-family:Arial'><br>
+     Заменяет весь те<span class=GramE>кст в сс</span>ылках на странице
+     призывом «Нажми здесь!».<o:p></o:p></span></li>
+</ul>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Ниже несколько примеров
+методов, которые возвращают значение от первого элемента, найденного по
+шаблону:<o:p></o:p></span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l4 level1 lfo3;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     style='font-size:10.0pt;font-family:Arial'>var</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Arial'> <span class=SpellE>width</span>
+     = <span class=SpellE>jQuery</span>('<span class=SpellE>div</span>').<span
+     class=SpellE>width</span>();</span></code><span style='font-size:10.0pt;
+     font-family:Arial'><br>
+     Какая ширина у первого <span class=SpellE><code><span style='font-family:
+     Arial'>div</span></code></span> на странице?<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l4 level1 lfo3;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     style='font-size:10.0pt;font-family:Arial'>var</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Arial'> <span class=SpellE>src</span>
+     = <span class=SpellE>jQuery</span>('<span class=SpellE>img</span>').<span
+     class=SpellE>attr</span>('<span class=SpellE>src</span>');</span></code><span
+     style='font-size:10.0pt;font-family:Arial'><br>
+     Какое значен<span class=GramE>ие у а</span>трибута <span class=SpellE><code><span
+     style='font-family:Arial'>src</span></code></span> у первой картинки на
+     странице?<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l4 level1 lfo3;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     style='font-size:10.0pt;font-family:Arial'>var</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Arial'> <span class=SpellE>color</span>
+     = <span class=SpellE>jQuery</span>('h1').<span class=SpellE>css</span>('<span
+     class=SpellE>color</span>');</span></code><span style='font-size:10.0pt;
+     font-family:Arial'><br>
+     Какой цвет у первого <code><span style='font-family:Arial'>h1</span></code>?<o:p></o:p></span></li>
+</ul>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Хочу отметить удобную
+симметрию таких методов: они используются как для выставления атрибутов (когда
+принимают 2 аргумента или у передаваемого объекта несколько свойств), так и для
+прочтения значений этих атрибутов (если передается только один аргумент). Такая
+симметрия используется во всей библиотеке <span class=SpellE>jQuery</span>, что
+очень сильно облегчает запоминание API.<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Наконец, есть несколько
+методов, которые изменяют весь набор найденных элементов. Многие из них также
+обеспечивают перемещение по DOM-дереву:<o:p></o:p></span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo4;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     style='font-size:10.0pt;font-family:Arial'>jQuery</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Arial'>('<span class=SpellE>div</span>').<span
+     class=SpellE>not</span>('[@<span class=SpellE>id</span>]')</span></code><span
+     style='font-size:10.0pt;font-family:Arial'><br>
+     Возвращает все <span class=SpellE><code><span style='font-family:Arial'>div</span></code></span>,
+     у которых нет атрибута <span class=SpellE><code><span style='font-family:
+     Arial'>id</span></code></span>.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo4;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     style='font-size:10.0pt;font-family:Arial'>jQuery</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Arial'>('h2').<span class=SpellE>parent</span>()</span></code><span
+     style='font-size:10.0pt;font-family:Arial'><br>
+     Возвращает все элементы, которые являются непосредственными родителями <code><span
+     style='font-family:Arial'>h2</span></code>.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo4;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     style='font-size:10.0pt;font-family:Arial'>jQuery</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Arial'>('<span class=SpellE>blockquote</span>').<span
+     class=SpellE>children</span>()</span></code><span style='font-size:10.0pt;
+     font-family:Arial'><br>
+     Возвращает все элементы, вложенные в <span class=SpellE><code><span
+     style='font-family:Arial'>blockquote</span></code></span>.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo4;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     style='font-size:10.0pt;font-family:Arial'>jQuery</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Arial'>('<span class=SpellE>p</span>').<span
+     class=SpellE>eq</span>(4).<span class=SpellE>next</span>()</span></code><span
+     style='font-size:10.0pt;font-family:Arial'><br>
+     Находит пятый параграф на странице, потом находит следующий элемент (т.е.
+     непосредственного соседа справа).<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo4;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     style='font-size:10.0pt;font-family:Arial'>jQuery</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Arial'>('<span class=SpellE>input:text:first</span>').<span
+     class=SpellE>parents</span>('<span class=SpellE>form</span>')</span></code><span
+     style='font-size:10.0pt;font-family:Arial'><br>
+     Находит родительский элемент для формы, которая содержит первое поле <span
+     class=SpellE><code><span style='font-family:Arial'>input</span></code></span><code><span
+     style='font-family:Arial'> <span class=SpellE>type=</span>&quot;<span
+     class=SpellE>text</span>&quot;</span></code> на странице. Опциональным
+     параметром для <span class=SpellE><code><span style='font-family:Arial'>parents</span></code></span><code><span
+     style='font-family:Arial'>()</span></code> является другой селектор.<o:p></o:p></span></li>
+</ul>
+
+<h2><span style='font-size:10.0pt;font-family:Arial'>Цепочки вызовов<o:p></o:p></span></h2>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Короче говоря, цепочки
+можно использовать для нескольких интересных трюков. В дополнение к
+использованию набора DOM-выборок вы можете применить jQuery-метод <span
+class=SpellE><code><span style='font-family:Arial'>end</span></code></span><code><span
+style='font-family:Arial'>()</span></code> для перемещения по стеку объектов и
+выхода из текущего контекста. Это немного сложно объяснить, но когда вы
+используете метод, который изменяет текущий (объектный) контекст (например, <span
+class=SpellE><code><span style='font-family:Arial'>children</span></code></span><code><span
+style='font-family:Arial'>()</span></code> или <span class=SpellE><code><span
+style='font-family:Arial'>filter</span></code></span><code><span
+style='font-family:Arial'>()</span></code>), вы можете использовать <span
+class=SpellE><code><span style='font-family:Arial'>end</span></code></span><code><span
+style='font-family:Arial'>()</span></code> чуть позже, чтобы вернуться к
+предыдущей выборке.<o:p></o:p></span></p>
+
+<pre><span style='font-family:Arial'>$('<span class=SpellE>form#login</span>')<o:p></o:p></span></pre><pre><span
+style='font-family:Arial'><span style='mso-spacerun:yes'>    </span>// прячем внутри формы все <span
+class=SpellE><code><span style='font-family:Arial'>label</span></code></span> с классом <span
+class=SpellE><code><span style='font-family:Arial'>optional</span></code></span><o:p></o:p></span></pre><pre><span
+style='font-family:Arial'><span style='mso-spacerun:yes'>    </span></span><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>.<span
+class=GramE>find(</span>'<span class=SpellE>label.optional</span>').hide().end()<o:p></o:p></span></pre><pre><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span></span><span
+style='font-family:Arial'>// добавляем красную границу ко всем полям типа <span
+class=SpellE><code><span style='font-family:Arial'>password</span></code></span> в форме<o:p></o:p></span></pre><pre><span
+style='font-family:Arial'><span style='mso-spacerun:yes'>    </span></span><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>.<span
+class=GramE>find(</span>'<span class=SpellE>input:password</span>').<span
+class=SpellE>css</span>('border', '1px solid red').end()<o:p></o:p></span></pre><pre><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span></span><span
+style='font-family:Arial'>// добавляем обработчик на событие <span
+class=SpellE><code><span style='font-family:Arial'>submit</span></code></span> для формы<o:p></o:p></span></pre><pre><span
+style='font-family:Arial'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>.<span class=SpellE>submit</span>(<span class=SpellE>function</span>(){</span><o:p></o:p></span></pre><pre><span
+style='font-family:Arial'><span style='mso-spacerun:yes'>        </span><span
+class=SpellE>return</span> <span class=SpellE>confirm</span>('Вы действительно хотите отправить данные?');<o:p></o:p></span></pre><pre><span
+style='font-family:Arial'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Все это большое
+преобразование займет всего одну строку. Оно находит форму, находит некоторые
+элементы внутри нее, применяет к ним изменения, возвращается обратно к форме и
+добавляет к ней обработчик события <span class=SpellE><code><span
+style='font-family:Arial'>submit</span></code></span><code><span
+style='font-family:Arial'>()</span></code>.<o:p></o:p></span></p>
+
+<h2><span style='font-size:10.0pt;font-family:Arial'>Манипулируем с DOM<o:p></o:p></span></h2>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>В <span class=SpellE>jQuery</span>
+имеется несколько способов для объемных манипуляций с DOM. Первый является
+несколько неожиданным: функция <span class=SpellE>jQuery</span> может принимать
+в качестве аргумента кусок HTML-кода, который преобразуется в DOM-элемент
+(фактически, это просто строка):<o:p></o:p></span></p>
+
+<pre><span class=SpellE><span class=GramE><span lang=EN-US style='font-family:
+Arial;mso-ansi-language:EN-US'>var</span></span></span><span lang=EN-US
+style='font-family:Arial;mso-ansi-language:EN-US'> div = <span class=SpellE>jQuery</span>('<o:p></o:p></span></pre><pre><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>Some text<o:p></o:p></span></pre><pre><span
+style='font-family:Arial'>');<o:p></o:p></span></pre>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Можно использовать цепочку
+вызовов, чтобы добавить атрибуты к <span class=SpellE><code><span
+style='font-family:Arial'>div</span></code></span>, как только он был создан:<o:p></o:p></span></p>
+
+<pre><span class=SpellE><span class=GramE><span lang=EN-US style='font-family:
+Arial;mso-ansi-language:EN-US'>var</span></span></span><span lang=EN-US
+style='font-family:Arial;mso-ansi-language:EN-US'> div = <span class=SpellE>jQuery</span>('<o:p></o:p></span></pre><pre><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>Some text<o:p></o:p></span></pre><pre><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>').<span
+class=SpellE><span class=GramE>addClass</span></span><span class=GramE>(</span>'inserted').<span
+class=SpellE>attr</span>('id', '<span class=SpellE>foo</span>');<o:p></o:p></span></pre>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Теперь добавим его к тегу <span
+class=SpellE><code><span style='font-family:Arial'>body</span></code></span>:<o:p></o:p></span></p>
+
+<pre><span class=SpellE><span style='font-family:Arial'>div.appendTo</span></span><span
+style='font-family:Arial'>(<span class=SpellE>document.body</span>)<o:p></o:p></span></pre>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Или вставим его, используя
+селектор, в имеющийся код:<o:p></o:p></span></p>
+
+<pre><span class=SpellE><span style='font-family:Arial'>div.prependTo</span></span><span
+style='font-family:Arial'>('<span class=SpellE>div#primary</span>')<o:p></o:p></span></pre>
+
+<h2><span style='font-size:10.0pt;font-family:Arial'>Перехватываем события<o:p></o:p></span></h2>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Все JavaScript-библиотеки
+нуждаются в методах для обработки событий, и <span class=SpellE>jQuery</span>
+не является исключением. Как и в случае <span class=SpellE><code><span
+style='font-family:Arial'>attr</span></code></span><code><span
+style='font-family:Arial'>()</span></code> и <span class=SpellE><code><span
+style='font-family:Arial'>css</span></code></span><code><span style='font-family:
+Arial'>()</span></code>, методы для событий могут служить двум целям: их вызов
+с функцией в качестве аргумента назначает обработчик события, вызов без
+аргумента эмулирует возникновение этого события:<o:p></o:p></span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l1 level1 lfo5;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     style='font-size:10.0pt;font-family:Arial'>jQuery</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Arial'>('<span class=SpellE>p</span>').<span
+     class=SpellE>click</span>(<span class=SpellE>function</span>() <span
+     class=GramE>{ </span><span class=SpellE>jQuery</span>(<span class=SpellE>this</span>).<span
+     class=SpellE>css</span>('<span class=SpellE>background-color</span>', '<span
+     class=SpellE>red</span>'); });</span></code><span style='font-size:10.0pt;
+     font-family:Arial'><br>
+     Выставляем для всех параграфов обработчик клика мыши, по которому они
+     становятся красными.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l1 level1 lfo5;tab-stops:list 36.0pt'><span class=SpellE><code><span
+     style='font-size:10.0pt;font-family:Arial'>jQuery</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Arial'>('<span class=SpellE>p:first</span>').<span
+     class=SpellE>click</span>()</span></code><span style='font-size:10.0pt;
+     font-family:Arial'><br>
+     Эмулируем клик для первого параграфа на странице.<o:p></o:p></span></li>
+</ul>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Похожие функции
+используются для других событий браузера: <span class=SpellE><code><span
+style='font-family:Arial'>mouseover</span></code></span>, <span class=SpellE><code><span
+style='font-family:Arial'>keyup</span></code></span> и т.д. Следует заметить,
+что при вызове обработчика событий ключевое слово <span class=SpellE><code><span
+style='font-family:Arial'>this</span></code></span> ссылается на элемент,
+который это событие вызвал; использование <span class=SpellE><code><span
+style='font-family:Arial'>jQuery</span></code></span><code><span
+style='font-family:Arial'>(<span class=SpellE>this</span>)</span></code>
+является <span class=GramE>расхожим</span> приемом, чтобы вызвать методы <span
+class=SpellE>jQuery</span> для этого элемента.<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Пара функций, относящихся к
+событиям, заслуживает отдельного упоминания:<o:p></o:p></span></p>
+
+<pre><span class=SpellE><span class=GramE><span lang=EN-US style='font-family:
+Arial;mso-ansi-language:EN-US'>jQuery</span></span></span><span class=GramE><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>(</span></span><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>'a').hover(function() {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE><span class=GramE>jQuery</span></span><span class=GramE>(</span>this).<span
+class=SpellE>css</span>('background-color', 'orange');<o:p></o:p></span></pre><pre><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>}, <span
+class=GramE>function(</span>) {<o:p></o:p></span></pre><pre><span lang=EN-US
+style='font-family:Arial;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE><span class=GramE>jQuery</span></span><span class=GramE>(</span>this).<span
+class=SpellE>css</span>('background-color', 'white');<o:p></o:p></span></pre><pre><span
+style='font-family:Arial'>});<o:p></o:p></span></pre>
+
+<p><span class=SpellE><code><span style='font-size:10.0pt;font-family:Arial'>hover</span></code></span><code><span
+style='font-size:10.0pt;font-family:Arial'>()</span></code><span
+style='font-size:10.0pt;font-family:Arial'> является сокращением для сразу двух
+событий: <span class=SpellE><code><span style='font-family:Arial'>onmouseover</span></code></span>
+и <span class=SpellE><code><span style='font-family:Arial'>onmouseout</span></code></span>.<o:p></o:p></span></p>
+
+<pre><span class=SpellE><span class=GramE><span lang=EN-US style='font-family:
+Arial;mso-ansi-language:EN-US'>jQuery</span></span></span><span class=GramE><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>(</span></span><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>'p').one('click', function() { alert(<span
+class=SpellE>jQuery</span>(this).html()); });<o:p></o:p></span></pre>
+
+<p><span class=SpellE><code><span style='font-size:10.0pt;font-family:Arial'>one</span></code></span><code><span
+style='font-size:10.0pt;font-family:Arial'>()</span></code><span
+style='font-size:10.0pt;font-family:Arial'> выставляет обработчик событий,
+который будет удален после первого своего вызова. В вышеприведенном примере
+всем параграфы должны сообщить (<span class=SpellE><em><span style='font-family:
+Arial'>alert</span></em></span>) свое содержание после первого клика по ним.<o:p></o:p></span></p>
+
+<p><span class=SpellE><span style='font-size:10.0pt;font-family:Arial'>jQuery</span></span><span
+style='font-size:10.0pt;font-family:Arial'> также поддерживает собственные
+события через методы <span class=SpellE><code><span style='font-family:Arial'>bind</span></code></span><code><span
+style='font-family:Arial'>()</span></code> и <span class=SpellE><code><span
+style='font-family:Arial'>trigger</span></code></span><code><span
+style='font-family:Arial'>()</span></code> (подобные <span class=SpellE><code><span
+style='font-family:Arial'>click</span></code></span><code><span
+style='font-family:Arial'>()</span></code>). Собственные события могут
+принимать аргументы, передаваемые при помощи массива в вызове <span
+class=SpellE><code><span style='font-family:Arial'>trigger</span></code></span><code><span
+style='font-family:Arial'>()</span></code>:<o:p></o:p></span></p>
+
+<pre><span class=SpellE><span class=GramE><span lang=EN-US style='font-family:
+Arial;mso-ansi-language:EN-US'>jQuery</span></span></span><span class=GramE><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>(</span></span><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>document).bind('<span
+class=SpellE>stuffHappened</span>', function(event, <span class=SpellE>msg</span>) {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span></span><span
+class=SpellE><span style='font-family:Arial'>alert</span></span><span
+style='font-family:Arial'>('Что <span class=SpellE>прозошло</span>: ' + <span
+class=SpellE>msg</span>);<o:p></o:p></span></pre><pre><span lang=EN-US
+style='font-family:Arial;mso-ansi-language:EN-US'>});<o:p></o:p></span></pre><pre><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-family:Arial;
+mso-ansi-language:EN-US'>jQuery</span></span></span><span class=GramE><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>(</span></span><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>document).trigger('<span
+class=SpellE>stuffHappened</span>', ['</span><span style='font-family:Arial'>Привет</span><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>!']);<o:p></o:p></span></pre>
+
+<h2><span style='font-size:10.0pt;font-family:Arial'>Ненавязчивое (<span
+class=SpellE><em><span style='font-family:Arial'>unobtrusive</span></em></span>)
+программирование<o:p></o:p></span></h2>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Во-первых, парадигма
+селекторов для выбора узла является основополагающей как для <span
+class=SpellE>jQuery</span>, так и для ненавязчивого программирования в целом.
+Вы можете выставить <span class=SpellE><span class=GramE>функцию-обработчик</span></span>
+тогда, когда DOM уже будет к ней готов:<o:p></o:p></span></p>
+
+<pre><span class=SpellE><span class=GramE><span lang=EN-US style='font-family:
+Arial;mso-ansi-language:EN-US'>jQuery</span></span></span><span class=GramE><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>(</span></span><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>document).ready(function() {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>alert(</span>'DOM </span><span style='font-family:Arial'>готов</span><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>!');<o:p></o:p></span></pre><pre><span
+style='font-family:Arial'>});<o:p></o:p></span></pre>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>И даже больше, вы можете
+сократить эту запись, назначив вашу функцию напрямую <span class=SpellE>jQuery</span>():<o:p></o:p></span></p>
+
+<pre><span class=SpellE><span class=GramE><span lang=EN-US style='font-family:
+Arial;mso-ansi-language:EN-US'>jQuery</span></span></span><span class=GramE><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>(</span></span><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>function() {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>alert(</span>'DOM </span><span style='font-family:Arial'>готов</span><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>!');<o:p></o:p></span></pre><pre><span
+style='font-family:Arial'>});<o:p></o:p></span></pre>
+
+<h2><span class=SpellE><span style='font-size:10.0pt;font-family:Arial'>jQuery</span></span><span
+style='font-size:10.0pt;font-family:Arial'> и AJAX<o:p></o:p></span></h2>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>У <span class=SpellE>jQuery</span>
+лучший API для работы с AJAX, который я когда-либо видел в больших библиотеках.
+Наиболее простая форма AJAX-вызова выглядит следующим образом:<o:p></o:p></span></p>
+
+<pre><span class=SpellE><span style='font-family:Arial'>jQuery</span></span><span
+style='font-family:Arial'>('<span class=SpellE>div#intro</span>').<span
+class=SpellE>load</span>('/<span class=SpellE>some</span>/fragment.html');<o:p></o:p></span></pre>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Он выполнит GET-запрос к <code><span
+style='font-family:Arial'>/<span class=SpellE>some</span>/fragment.html</span></code>
+и вставит в <span class=SpellE><code><span style='font-family:Arial'>div#intro</span></code></span>
+HTML-код, который получит.<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Первый раз, когда я это
+увидел, то не был сильно впечатлен. Всего лишь красивое сокращение, но если
+требуется что-то более сложное, например, вывести индикатор AJAX-загрузки? <span
+class=SpellE>jQuery</span> предоставляет набор собственных событий (<span
+class=SpellE><code><span style='font-family:Arial'>ajaxStart</span></code></span>,
+<span class=SpellE><code><span style='font-family:Arial'>ajaxComplete</span></code></span>,
+<span class=SpellE><code><span style='font-family:Arial'>ajaxError</span></code></span>
+и другие) для использования в случае необходимости. Также в этой библиотеки
+есть и более продвинутый API низкого уровня для <span class=GramE>сложных</span>
+AJAX-взаимодействий:<o:p></o:p></span></p>
+
+<pre><span class=SpellE><span class=GramE><span lang=EN-US style='font-family:
+Arial;mso-ansi-language:EN-US'>jQuery.get</span></span></span><span
+class=GramE><span lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>(</span></span><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>'/some/<span
+class=SpellE>script.php</span>', {'name': 'Simon'}, function(data) {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span></span><span
+class=SpellE><span style='font-family:Arial'>alert</span></span><span
+style='font-family:Arial'>('Сервер ответил: ' + <span class=SpellE>data</span>);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>}); // GET-</span><span
+style='font-family:Arial'>запрос</span><span style='font-family:Arial;
+mso-ansi-language:EN-US'> </span><span style='font-family:Arial'>к</span><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'> /some/<span
+class=SpellE>script.php?name</span>=Simon<o:p></o:p></span></pre><pre><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-family:Arial;
+mso-ansi-language:EN-US'>jQuery.post</span></span></span><span class=GramE><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>(</span></span><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>'/some/<span
+class=SpellE>script.php</span>', {'name': 'Simon'}, function(data) {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>   </span><span style='mso-spacerun:yes'> </span></span><span
+class=SpellE><span style='font-family:Arial'>alert</span></span><span
+style='font-family:Arial'>('Сервер ответил: ' + <span class=SpellE>data</span>);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>}); // POST-</span><span
+style='font-family:Arial'>запрос</span><span style='font-family:Arial;
+mso-ansi-language:EN-US'> </span><span style='font-family:Arial'>к</span><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'> /some/<span
+class=SpellE>script.php</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='font-family:Arial;mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-family:Arial;
+mso-ansi-language:EN-US'>jQuery.getJSON</span></span></span><span class=GramE><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>(</span></span><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>'/<span
+class=SpellE>some.json</span>', function(<span class=SpellE>json</span>) {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>alert(</span>'JSON </span><span style='font-family:Arial'>выдал</span><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>: ' + <span
+class=SpellE>json.foo</span> + ' <span class=SpellE>'</span> + <span
+class=SpellE>json.bar</span>);<o:p></o:p></span></pre><pre><span class=GramE><span
+style='font-family:Arial'>}); // Возвращает и преобразует ответ от /<span
+class=SpellE>some.json</span> как JSON</span></span><span style='font-family:
+Arial'><o:p></o:p></span></pre><pre><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></pre><pre><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-family:Arial;
+mso-ansi-language:EN-US'>jQuery.getScript</span></span></span><span
+class=GramE><span lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>(</span></span><span
+lang=EN-US style='font-family:Arial;mso-ansi-language:EN-US'>'/<span
+class=SpellE>script.js</span>'); // GET-</span><span style='font-family:Arial'>запрос</span><span
+style='font-family:Arial;mso-ansi-language:EN-US'> </span><span
+style='font-family:Arial'>к</span><span lang=EN-US style='font-family:Arial;
+mso-ansi-language:EN-US'> /<span class=SpellE>script.js</span> </span><span
+style='font-family:Arial'>и</span><span lang=EN-US style='font-family:Arial;
+mso-ansi-language:EN-US'> <span class=SpellE>eval</span>()<o:p></o:p></span></pre>
+
+<h2><span style='font-size:10.0pt;font-family:Arial'>Расширения<o:p></o:p></span></h2>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Рассматривая весь этот
+набор функций в стандартной поставке, стоит заметить, что ужатый вариант <span
+class=SpellE>jQuery</span> занимает всего 20 КБ, и даже еще меньше, если
+применить архивирование (<code><span style='font-family:Arial'>.<span
+class=SpellE>gz</span></span></code>). Дополнительная функциональность,
+выходящая за пределы это поставки, может быть организована с помощью
+расширений, которые могут (и так и делают) добавить новые методы к
+существующему объекту <span class=SpellE>jQuery</span>. При желании можно
+выполнить что-то вроде этого:<o:p></o:p></span></p>
+
+<pre><span class=SpellE><span style='font-family:Arial'>jQuery</span></span><span
+style='font-family:Arial'>('<span class=SpellE>p</span>').<span class=SpellE>bounceAroundTheScreenAndTurnGreen</span>();<o:p></o:p></span></pre>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Механизм расширений в <span
+class=SpellE>jQuery</span> обеспечивает <span class=SpellE>задокументированные</span>
+методы для их добавления в систему. Простота и удобство их использования
+привлекли большое сообщество авторов таких расширений; <a
+href="http://jquery.com/plugins/" target="_blank">справочник расширений</a>
+насчитывает уже более ста примеров.<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Еще одной приятной
+особенностью является возможность добавлять собственные селекторы так же, как и
+собственные методы. <a href="http://jquery.com/plugins/project/moreSelectors"
+target="_blank">Расширение <span class=SpellE>moreSelectors</span></a>
+добавляет методы типа <span class=SpellE><code><span style='font-family:Arial'>div:color</span></code></span><code><span
+style='font-family:Arial'>(<span class=SpellE>red</span>)</span></code>,
+который, например, выбирает все <span class=SpellE><code><span
+style='font-family:Arial'>div</span></code></span> с красным текстом.<o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

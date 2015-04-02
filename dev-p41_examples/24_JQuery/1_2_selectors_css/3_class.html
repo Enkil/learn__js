@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <script src="js/jquery-2.0.0.min.js"></script>
+
+  <script>
+  $(document).ready(function(){
+    $(".myClass").css("border","3px solid red");
+  });
+  </script>
+  <style>
+  div,span {
+    width: 90px;
+    height: 60px;
+    float:left;
+    padding: 10px;
+    margin: 10px;
+    background-color: #EEEEEE;
+  }
+  </style>
+</head>
+<body>
+  <div class="notMe">div class="notMe"</div>
+
+  <div class="myClass">div class="myClass"</div>
+  <span class="myClass">span class="myClass"</span>
+</body>
+</html>

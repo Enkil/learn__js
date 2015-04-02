@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title>event bubbling</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="text/javascript">
+	function fun_div(){
+		alert("event in div");
+	}
+	function fun_span(){
+		alert("event in span");
+	}
+	</script>
+</head>
+<body>
+<div onclick = "fun_div();">
+<span onclick = "fun_span();">Место для щелчка</span>
+</div>
+</body>
+</html>

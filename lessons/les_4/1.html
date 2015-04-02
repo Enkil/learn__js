@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Заголовок</title>
+	<script>
+
+		function setClock(id,id2) {
+			var time = new Date();
+			var isTimeLocal = time.toLocaleString();
+			var isTimeLocalHours = time.getHours();
+			var isTimeLocalMinutes = time.getMinutes();
+			var isTimeLocalSeconds = time.getSeconds();
+			
+			document.getElementById(id).innerHTML = isTimeLocal;
+			
+			if (isTimeLocalHours < 10){
+				isTimeLocalHours = "0" + isTimeLocalHours;
+			}
+			if (isTimeLocalMinutes < 10){
+				isTimeLocalMinutes = "0" + isTimeLocalMinutes;
+			}
+			if (isTimeLocalSeconds < 10){
+				isTimeLocalSeconds = "0" + isTimeLocalSeconds;
+			}
+			
+			document.getElementById(id2).innerHTML = isTimeLocalHours + ":" + isTimeLocalMinutes + ":" +  isTimeLocalSeconds;
+		}
+
+	</script>
+</head>
+
+<body>
+
+	<main>
+		
+		<button id="setClock" onclick="setClock('clock','clock2')"> 
+			Pres to get Local time
+		</button>
+		
+		<div>
+			Local Time is .. <br/>
+			<div id="clock"></div>
+		</div>
+		
+		<div>
+			Local Time in hh:mm:ss is .. <br/>
+			<div id="clock2"></div>
+		</div>
+		
+	</main>
+
+</body>
+
+
+</html>

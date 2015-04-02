@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+	<title>Моя домашняя библиотека</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<script type="text/javascript" src="js/books.js"></script>
+	<script type="text/javascript" src="js/functions.js"></script>
+	<script type="text/javascript">	
+		var booksPerPage = 5;
+		window.onload = function(){
+			printCatalogue(1, '');
+			printFavorites();
+		}
+	</script>
+</head>
+<body>
+	<div id="page">
+		<div id="header">
+			<div id="news">
+				<p><b>01 июл 2012</b> В очередной раз закупилась книжками на ОЗОНе. 6 новых экземпляров в моей библиотеке.</p>
+				<p><b>10 июл 2012</b> Прочитала "Звездные Корабли" и "Туманность Андромеды" советского писателя-фантаста с очень выраженными коммунистическими взглядами Ивана Ефремова.</p>
+				<p><b>26 авг 2012</b> Книга - лучший подарок! В День Рождения моя библиотека пополнилась книгой "Сёгун".</p>
+				<p><b>13 окт 2012</b> "Скотный двор" - слишком похоже на окружающую действительность, от чего нагоняет тоску и самую настоящую депрессию.</p>
+			</div>
+			<div id="title">
+				Моя домашняя<br>библиотека
+			</div>
+		</div>
+		<div id="content">
+			<table>
+				<tr>
+					<td class="left">
+						<div id="favorites" class="cornerAll shadow">
+							<h2>Любимые книги</h2>
+							<ul id="favoritesList"></ul>
+						</div>
+					</td>
+					<td class="right">
+						<div id="paginator"></div>
+						<div id="search">
+							<input type="text" id="searchField" class="cornerAll shadow"/>
+						</div>
+						<div id="changeable" class="catalogue"></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="footer"></div>
+	</div>
+</body>
+</html>

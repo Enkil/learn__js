@@ -1,0 +1,36 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <script src="js/jquery-2.0.0.min.js"></script>
+  
+  <script>
+  $(document).ready(function(){
+    
+    $("li").hover(
+      function () {
+        $(this).append($("<span> ***</span>"));
+      }, 
+      function () {
+        $(this).find("span").remove() ;
+      }
+    );
+
+  });
+  </script>
+  <style>
+  ul { margin-left:20px; color:blue; }
+  li { cursor:default; }
+  span { color:red; }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>Водка</li>
+    <li>Бренди</li>
+    <li>Коньяк</li>
+    <li>Пиво</li>
+  </ul>
+</body>
+</html>

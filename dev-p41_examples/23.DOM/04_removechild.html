@@ -1,0 +1,26 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Introduction to the DOM</title>
+<script>
+window.onload = function(){
+var li = document.getElementsByTagName("li");
+for ( var j = 0; j < li.length; j++ ) {
+li[j].style.border = "1px solid #f00";
+}
+var every = document.getElementById( "everywhere" );
+every.parentNode.removeChild( every );
+};
+</script>
+</head>
+<body>
+<h1>DOM</h1>
+<p class="test">Причины применения DOM:</p>
+
+<ul>
+<li id="everywhere">DOM встречается везде.</li>
+<li class="test">Проста в применении.</li>
+<li class="test">С ее помощью можно быстро найти элемены документа.</li>
+</ul>
+</body>
+</html>

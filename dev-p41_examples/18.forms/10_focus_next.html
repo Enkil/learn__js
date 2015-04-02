@@ -1,0 +1,28 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript">
+window.onload = function(){
+	var inputs = document.getElementsByTagName("input");
+	for (i in inputs) {
+		inputs.item(i).onkeyup= function(){
+			if (this.value.length==this.maxLength){
+				var next=this.tabIndex;
+				if (next<document.getElementById("myForm").length) {
+					document.getElementById("myForm").elements[next].focus();
+				}
+			}
+		}
+	}
+}
+</script>
+</head>
+<body>
+<p>Переход на следующее поле происходит, как только вносится максимальное число символов в поле.</p>
+<form id="myForm">
+<input size="3" tabindex="1" maxlength="3" >
+<input size="2" tabindex="2" maxlength="2" >
+<input size="3" tabindex="3" maxlength="3" >
+</form> 
+</body>
+</html>

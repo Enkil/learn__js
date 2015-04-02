@@ -1,0 +1,819 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: JavaScript - Строки: встроенный объект String</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/js08.htm" title="Примитивные встроенные объекты">
+<link rel="Next" href="http://wdh.suncloud.ru/js10.htm" title="Массивы: встроенный объект Array">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="3.9.%20%D1%F2%F0%EE%EA%E8-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20String_files/load.js"></script>
+<script type="text/javascript" src="3.9.%20%D1%F2%F0%EE%EA%E8-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20String_files/link.js"></script><link rel="stylesheet" type="text/css" href="3.9.%20%D1%F2%F0%EE%EA%E8-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20String_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js08.htm"><img name="imglefta" src="3.9.%20%D1%F2%F0%EE%EA%E8-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20String_files/nnleft.gif" alt="" title="Примитивные встроенные объекты" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="3.9.%20%D1%F2%F0%EE%EA%E8-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20String_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/js10.htm"><img name="imgrighta" src="3.9.%20%D1%F2%F0%EE%EA%E8-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20String_files/nnright.gif" alt="" title="Массивы: встроенный объект Array" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=912" target="_blank"><img src="3.9.%20%D1%F2%F0%EE%EA%E8-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20String_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref39">Глава 3.9. Строки: встроенный объект String</a></h2>
+
+      <p>Объект <strong>String</strong>&nbsp;— это объектная реализация примитивного строкового
+        значения. Его конструктор имеет вид:</p>
+
+<pre class="syntax">new String(<em>значение</em>?)</pre>
+
+      <p>Здесь <em>значение</em>&nbsp;— любое строковое выражение, задающее примитивное значение
+        объекта. Если оно не указано, то примитивное значение объекта равно <tt>""</tt>.</p>
+
+      <p>Все свойства и методы строковых объектов применимы и к строковым константам. В этом случае
+        исполняющая система создает временный строковый объект, со значением, заданным константой, выполняет
+        запрошенное действие, удаляет временный объект и возвращает результат.</p>
+
+      <p>Помимо методов, предусмотренных стандартом ECMAScript, обозреватели Microscape традиционно
+        поддерживают несколько методов объекта <strong>String</strong>, обеспечивающих заключение строки
+        в <a href="http://wdh.suncloud.ru/html01.htm#ref1121">теги HTML</a>. Эти методы также описаны ниже.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства объекта String</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+            <th>Член прототипа</th>
+          </tr>
+          <tr>
+            <td><a href="http://wdh.suncloud.ru/js08.htm#pconstructor"><tt>constructor</tt></a></td>
+            <td>Конструктор, который создал объект.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#pstring-length"><tt>length</tt></a></td>
+            <td>Количество символов в строке.</td>
+            <td align="center">Нет</td>
+          </tr>
+          <tr>
+            <td><a href="http://wdh.suncloud.ru/js08.htm#pprototype"><tt>prototype</tt></a></td>
+            <td>Ссылка на прототип класса объектов.</td>
+            <td align="center">Нет</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Стандартные методы объекта String</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+            <th>Член прототипа</th>
+          </tr>
+          <tr>
+            <td><a href="#mcharat"><tt>charAt</tt></a></td>
+            <td>Возвращает символ, находящийся в данной позиции строки.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mcharcodeat"><tt>charCodeAt</tt></a></td>
+            <td>Возвращает код символа, находящегося в данной позиции строки.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mstring-concat"><tt>concat</tt></a></td>
+            <td>Возвращает конкатенацию строк.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mfromcharcode"><tt>fromCharCode</tt></a></td>
+            <td>Создает строку из символов, заданных кодами Unicode.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mindexof"><tt>indexOf</tt></a></td>
+            <td>Возвращает позицию первого вхождения заданной подстроки.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mlastindexof"><tt>lastIndexOf</tt></a></td>
+            <td>Возвращает позицию последнего вхождения заданной подстроки.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mlocalecompare">localeCompare</a></tt></td>
+            <td>Сравнивает две строки с учетом языка операционной системы.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mmatch"><tt>match</tt></a></td>
+            <td>Сопоставляет строку с регулярным выражением.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mreplace"><tt>replace</tt></a></td>
+            <td>Сопоставляет строку с регулярным выражением и заменяет найденную подстроку новой подстрокой.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#msearch"><tt>search</tt></a></td>
+            <td>Ищет сопоставление строки с регулярным выражением.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mstring-slice"><tt>slice</tt></a></td>
+            <td>Извлекает часть строки и возвращает новую строку.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#msplit"><tt>split</tt></a></td>
+            <td>Разбивает строку на массив подстрок.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#msubstr"><tt>substr</tt></a></td>
+            <td>Возвращает подстроку, заданную позицией и длиной.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#msubstring"><tt>substring</tt></a></td>
+            <td>Возвращает подстроку, заданную начальной и конечной позициями.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mtolocalelowercase"><tt>toLocaleLowerCase</tt></a></td>
+            <td>Преобразует все буквы строки в строчные с учетом языка операционной системы.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mtolocaleuppercase"><tt>toLocaleUpperCase</tt></a></td>
+            <td>Преобразует все буквы строки в прописные с учетом языка операционной системы.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mtolowercase"><tt>toLowerCase</tt></a></td>
+            <td>Преобразует все буквы строки в строчные.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mstring-tostring"><tt>toString</tt></a></td>
+            <td>Преобразует объект в строку.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mtouppercase"><tt>toUpperCase</tt></a></td>
+            <td>Преобразует все буквы строки в прописные.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mstring-valueof"><tt>valueOf</tt></a></td>
+            <td>Возвращает примитивное значение объекта.</td>
+            <td align="center">Да</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Нестандартные методы объекта String</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+            <th>Член прототипа</th>
+          </tr>
+          <tr>
+            <td><a href="#manchor"><tt>anchor</tt></a></td>
+            <td>Создает <a href="http://wdh.suncloud.ru/html06.htm#ref161">закладку</a> HTML (&lt;<a href="http://wdh.suncloud.ru/html06.htm#ea">A</a>
+              NAME="имя"&gt;…&lt;/A&gt;).</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mbig"><tt>big</tt></a></td>
+            <td>Заключает строку в теги &lt;<a href="http://wdh.suncloud.ru/html03.htm#ebig">BIG</a>&gt;…&lt;/BIG&gt;.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mblink"><tt>blink</tt></a></td>
+            <td>Заключает строку в теги &lt;BLINK&gt;…&lt;/BLINK&gt;.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mbold"><tt>bold</tt></a></td>
+            <td>Заключает строку в теги &lt;<a href="http://wdh.suncloud.ru/html03.htm#eb">B</a>&gt;…&lt;/B&gt;.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mfixed"><tt>fixed</tt></a></td>
+            <td>Заключает строку в теги &lt;<a href="http://wdh.suncloud.ru/html03.htm#ett">TT</a>&gt;…&lt;/TT&gt;.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mfontcolor"><tt>fontcolor</tt></a></td>
+            <td>Заключает строку в теги &lt;<a href="http://wdh.suncloud.ru/deprecat.htm#efont">FONT</a> COLOR="цвет"&gt;…&lt;/FONT&gt;.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mfontsize"><tt>fontsize</tt></a></td>
+            <td>Заключает строку в теги &lt;<a href="http://wdh.suncloud.ru/deprecat.htm#efont">FONT</a> SIZE="размер"&gt;…&lt;/FONT&gt;.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mitalics"><tt>italics</tt></a></td>
+            <td>Заключает строку в теги &lt;<a href="http://wdh.suncloud.ru/html03.htm#ei">I</a>&gt;…&lt;/I&gt;.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mlink"><tt>link</tt></a></td>
+            <td>Создает <a href="http://wdh.suncloud.ru/html06.htm#ref161">гиперссылку</a> HTML (&lt;<a href="http://wdh.suncloud.ru/html06.htm#ea">A</a>
+              HREF="uri"&gt;…&lt;/A&gt;).</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#msmall"><tt>small</tt></a></td>
+            <td>Заключает строку в теги &lt;<a href="http://wdh.suncloud.ru/html03.htm#esmall">SMALL</a>&gt;…&lt;/SMALL&gt;.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mstrike"><tt>strike</tt></a></td>
+            <td>Заключает строку в теги &lt;<a href="http://wdh.suncloud.ru/deprecat.htm#es">STRIKE</a>&gt;…&lt;/STRIKE&gt;.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#msub"><tt>sub</tt></a></td>
+            <td>Заключает строку в теги &lt;<a href="http://wdh.suncloud.ru/html03.htm#esubsup">SUB</a>&gt;…&lt;/SUB&gt;.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#msup"><tt>sup</tt></a></td>
+            <td>Заключает строку в теги &lt;<a href="http://wdh.suncloud.ru/html03.htm#esubsup">SUP</a>&gt;…&lt;/SUP&gt;.</td>
+            <td align="center">Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hstring-length">Свойство length</a></h4>
+
+<pre class="syntax"><strong><a name="pstring-length">Синтаксис</a></strong>: <em>объект</em>.length
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>length</strong> является количество символов в строке. Для пустой
+        строки это значение равно нулю.</p>
+
+      <h4><a name="hanchor">Метод anchor</a></h4>
+
+<pre class="syntax"><strong><a name="manchor">Синтаксис</a></strong>: <em>объект</em>.anchor(<em>имя</em>)
+<strong>Аргументы</strong>: <em>имя</em>&nbsp;— любое строковое выражение
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>anchor</strong> возвращает строку, состоящую из примитивного значения строкового
+        <em>объекта</em>, заключенного в теги <tt>&lt;<a href="http://wdh.suncloud.ru/html06.htm#ea">A</a> NAME="<em>имя</em>"&gt;…&lt;/A&gt;</tt>.
+        Проверки на то, не была ли исходная строка уже заключена в эти теги, не делается. Этот метод
+        используется совместно с методами <tt>document.write</tt> и <tt>document.writeln</tt> для создания
+        в HTML-документе <a href="http://wdh.suncloud.ru/html06.htm#ref161">закладки</a> с заданным <em>именем</em>. Например,
+        оператор <code>document.write("Мой текст".anchor("Закладка"))</code> эквивалентен
+        оператору <code>document.write('&lt;A NAME="Закладка"&gt;Мой текст&lt;/A&gt;')</code>.</p>
+
+      <h4><a name="hbig">Метод big</a></h4>
+
+<pre class="syntax"><strong><a name="mbig">Синтаксис</a></strong>: <em>объект</em>.big()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>big</strong> возвращает строку, состоящую из примитивного значения строкового
+        <em>объекта</em>, заключенного в теги <tt>&lt;<a href="http://wdh.suncloud.ru/html03.htm#ebig">BIG</a>&gt;…&lt;/BIG&gt;</tt>.
+        Проверки на то, не была ли исходная строка уже заключена в эти теги, не делается. Этот метод
+        используется совместно с методами <tt>document.write</tt> и <tt>document.writeln</tt> для отображения
+        текста <a href="http://wdh.suncloud.ru/html03.htm#ref1354">крупным шрифтом</a>. Например, оператор <code>document.write("Мой
+        текст".big())</code> выведет на экран обозревателя строку <samp><big>Мой текст</big></samp>.</p>
+
+      <h4><a name="hblink">Метод blink</a></h4>
+
+<pre class="syntax"><strong><a name="mblink">Синтаксис</a></strong>: <em>объект</em>.blink()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>blink</strong> возвращает строку, состоящую из примитивного значения строкового
+        <em>объекта</em>, заключенного в теги <tt>&lt;BLINK&gt;…&lt;/BLINK&gt;</tt>. Проверки на
+        то, не была ли исходная строка уже заключена в эти теги, не делается. Этот метод используется
+        совместно с методами <tt>document.write</tt> и <tt>document.writeln</tt> для отображения текста
+        мигающим шрифтом. Указанные теги не входят в стандарт HTML и поддерживаются только обозревателями
+        Netscape и WebTV. Например, оператор <code>document.write("Мой текст".blink())</code>
+        выведет на экран обозревателя строку <samp><blink>Мой текст</blink></samp>.</p>
+
+      <h4><a name="hbold">Метод bold</a></h4>
+
+<pre class="syntax"><strong><a name="mbold">Синтаксис</a></strong>: <em>объект</em>.bold()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>bold</strong> возвращает строку, состоящую из примитивного значения строкового
+        <em>объекта</em>, заключенного в теги <tt>&lt;<a href="http://wdh.suncloud.ru/html03.htm#eb">B</a>&gt;…&lt;/B&gt;</tt>.
+        Проверки на то, не была ли исходная строка уже заключена в эти теги, не делается. Этот метод
+        используется совместно с методами <tt>document.write</tt> и <tt>document.writeln</tt> для отображения
+        текста <a href="http://wdh.suncloud.ru/html03.htm#ref1353">полужирным шрифтом</a>. Например, оператор <code>document.write("Мой
+        текст".bold())</code> выведет на экран обозревателя строку <samp><b>Мой текст</b></samp>.</p>
+
+      <h4><a name="hcharat">Метод charAt</a></h4>
+
+<pre class="syntax"><strong><a name="mcharat">Синтаксис</a></strong>: <em>объект</em>.charAt(<em>позиция</em>)
+<strong>Аргументы</strong>: <em>позиция</em>&nbsp;— любое числовое выражение
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>charAt</strong> возвращает строку, состоящую из символа, расположенного в данной
+        <em>позиции</em> примитивного значения строкового <em>объекта</em>. Позиции символов строки
+        нумеруются от нуля до <em>объект</em>.<a href="#pstring-length"><strong>length</strong></a>-1.
+        Если позиция лежит вне этого диапазона, то возвращается пустая строка. Например, оператор <code>document.write("Строка".charAt(0))</code>
+        выведет на экран обозревателя символ <samp>С</samp>.</p>
+
+      <h4><a name="hcharcodeat">Метод charCodeAt</a></h4>
+
+<pre class="syntax"><strong><a name="mcharcodeat">Синтаксис</a></strong>: <em>объект</em>.charCodeAt(<em>позиция</em>)
+<strong>Аргументы</strong>: <em>позиция</em>&nbsp;— любое числовое выражение
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>charAt</strong> возвращает число, равную коду Unicode символа, расположенного
+        в данной <em>позиции</em> примитивного значения строкового <em>объекта</em>. Позиции символов
+        строки нумеруются от нуля до <em>объект</em>.<a href="#pstring-length"><strong>length</strong></a>-1.
+        Если позиция лежит вне этого диапазона, то возвращается <a href="http://wdh.suncloud.ru/js08.htm#pnan"><strong>NaN</strong></a>.
+        Например, оператор <code>document.write("Строка".charCodeAt(0).toString(16))</code>
+        выведет на экран обозревателя шестнадцатеричный код русской буквы "С": <samp>421</samp>.</p>
+
+      <p><img src="3.9.%20%D1%F2%F0%EE%EA%E8-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20String_files/plus.gif" alt="WDH+"> О возможных проблемах см.
+        <a target="_blank" href="http://go.suncloud.ru/to.asp?workshop/extreme/unicode/unicode.htm">WDH+: ANSI и Unicode</a>.</p>
+
+      <h4><a name="hconcat">Метод concat</a></h4>
+
+<pre class="syntax"><strong><a name="mstring-concat">Синтаксис</a></strong>: <em>объект</em>.concat(<em>строка0</em>, <em>строка1</em>, …, <em>строкаN</em>)
+<strong>Аргументы</strong>: <em>строка0</em>, <em>строка1</em>, …, <em>строкаN</em>&nbsp;— любые строковые выражения
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>concat</strong> возвращает новую строку, являющуюся конкатенацией исходной строки
+        и аргументов метода. Этот метод эквивалентен операции</p>
+
+      <pre><em>объект</em> + <em>строка0</em> + <em>строка1</em> + … + <em>строкаN</em></pre>
+
+      <p>Например, оператор <code>document.write("Мороз и солнце. ".concat("День чудесный."))</code>
+        выведет на экран обозревателя строку <samp>Мороз и солнце. День чудесный.</samp></p>
+
+      <h4><a name="hfixed">Метод fixed</a></h4>
+
+<pre class="syntax"><strong><a name="mfixed">Синтаксис</a></strong>: <em>объект</em>.fixed()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>fixed</strong> возвращает строку, состоящую из примитивного значения строкового
+        <em>объекта</em>, заключенного в теги <tt>&lt;<a href="http://wdh.suncloud.ru/html03.htm#ett">TT</a>&gt;…&lt;/TT&gt;</tt>.
+        Проверки на то, не была ли исходная строка уже заключена в эти теги, не делается. Этот метод
+        используется совместно с методами <tt>document.write</tt> и <tt>document.writeln</tt> для отображения
+        текста <a href="http://wdh.suncloud.ru/html03.htm#ref1351">телетайпным шрифтом</a>. Например, оператор <code>document.write("Мой
+        текст".fixed())</code> выведет на экран обозревателя строку <samp><tt>Мой текст</tt></samp>.</p>
+
+      <h4><a name="hfontcolor">Метод fontcolor</a></h4>
+
+<pre class="syntax"><strong><a name="mfontcolor">Синтаксис</a></strong>: <em>объект</em>.fontcolor(цвет)
+<strong>Аргументы</strong>: <em>цвет</em>&nbsp;— строковое выражение
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>fontcolor</strong> возвращает строку, состоящую из примитивного значения строкового
+        <em>объекта</em>, заключенного в теги <tt>&lt;<a href="http://wdh.suncloud.ru/deprecat.htm#efont">FONT</a> COLOR=<em>цвет</em>&gt;…&lt;/FONT&gt;</tt>.
+        Проверки на то, не была ли исходная строка уже заключена в эти теги, не делается. Этот метод
+        используется совместно с методами <tt>document.write</tt> и <tt>document.writeln</tt> для отображения
+        текста заданным <a href="http://wdh.suncloud.ru/html01.htm#color">цветом</a>. Например, оператор <code>document.write("Мой
+        текст".fontcolor("red"))</code> выведет на экран обозревателя строку <span style="color: red;">Мой
+        текст</span>.</p>
+
+      <h4><a name="hfontsize">Метод fontsize</a></h4>
+
+<pre class="syntax"><strong><a name="mfontsize">Синтаксис</a></strong>: <em>объект</em>.fontsize(<em>размер</em>)
+<strong>Аргументы</strong>: <em>размер</em>&nbsp;— числовое выражение
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>fontsize</strong> возвращает строку, состоящую из примитивного значения строкового
+        <em>объекта</em>, заключенного в теги <tt>&lt;<a href="http://wdh.suncloud.ru/deprecat.htm#efont">FONT</a> SIZE="<em>размер</em>"&gt;…&lt;/FONT&gt;</tt>.
+        Проверки на то, не была ли исходная строка уже заключена в эти теги, не делается. Этот метод
+        используется совместно с методами <tt>document.write</tt> и <tt>document.writeln</tt> для отображения
+        текста шрифтом заданного размера. Например, оператор <code>document.write("Мой текст".fontsize(5))</code>
+        выведет на экран обозревателя строку <samp><span style="font-size: large;">Мой текст</span></samp>.</p>
+
+      <h4><a name="hfromcharcode">Метод fromCharCode</a></h4>
+
+<pre class="syntax"><strong><a name="mfromcharcode">Синтаксис</a></strong>: String.fromCharCode(<em>код1</em>, <em>код2</em>, …, <em>кодN</em>)
+<strong>Аргументы</strong>: <em>код1</em>, <em>код2</em>, …, <em>кодN</em>&nbsp;— числовые выражения
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>fromCharCode</strong> создает новую строку (но не строковый объект), которая
+        является конкатенацией символов Unicode с кодами <em>код1</em>, <em>код2</em>, …, <em>кодN</em>.</p>
+
+      <p>Это статический метод объекта <strong>String</strong>, поэтому для доступа к нему не нужно
+        специально создавать строковый объект. Пример:</p>
+
+      <div class="code">
+<pre class="code">var s = String.fromCharCode(65, 66, 67);	// s равно "ABC"</pre>
+      </div>
+
+      <h4><a name="hindexof">Метод indexOf</a></h4>
+
+<pre class="syntax"><strong><a name="mindexof">Синтаксис</a></strong>: <em>объект</em>.indexOf(<em>подстрока </em>[,<em>начало</em>]?)
+<strong>Аргументы</strong>: <em>подстрока</em>&nbsp;— любое строковое выражение
+           <em>начало</em>&nbsp;— любое числовое выражение
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>indexOf</strong> возвращает первую позицию <em>подстроки</em> в примитивном значении
+        строкового <em>объекта</em>. Позиции символов строки нумеруются от нуля до <em>объект</em>.<a href="#pstring-length"><strong>length</strong></a>-1.
+        Если задан необязательный аргумент <em>начало</em>, то поиск ведется, начиная с позиции <em>начало</em>;
+        если нет, то с позиции 0, т.&nbsp;е. с первого символа строки. Если <em>начало</em> отрицательно,
+        то оно принимается равным нулю; если <em>начало</em> больше, чем <em>объект</em>.<a href="#pstring-length"><strong>length</strong></a>-1,
+        то оно принимается равным <em>объект</em>.<a href="#pstring-length"><strong>length</strong></a>-1.
+        Если объект не содержит данной подстроки, то возвращается значение -1.</p>
+
+      <p>Поиск ведется слева направо. В остальном этом метод идентичен методу <a href="#mlastindexof"><strong>lastIndexOf</strong></a>.
+        Следующий пример подсчитывает количество вхождений подстроки <tt>pattern</tt> в строку <tt>str</tt>.</p>
+
+      <div class="code">
+<pre class="code">function occur(str, pattern) {
+  var pos = str.indexOf(pattern);
+  for (var count = 0; pos != -1; count++)
+    pos = str.indexOf(pattern, pos + pattern.length);
+  return count;
+}</pre>
+      </div>
+
+      <h4><a name="hitalics">Метод italics</a></h4>
+
+<pre class="syntax"><strong><a name="mitalics">Синтаксис</a></strong>: <em>объект</em>.italics()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>italics</strong> возвращает строку, состоящую из примитивного значения строкового
+        <em>объекта</em>, заключенного в теги <tt>&lt;<a href="http://wdh.suncloud.ru/html03.htm#ei">I</a>&gt;…&lt;/I&gt;</tt>.
+        Проверки на то, не была ли исходная строка уже заключена в эти теги, не делается. Этот метод
+        используется совместно с методами <tt>document.write</tt> и <tt>document.writeln</tt> для отображения
+        текста <a href="http://wdh.suncloud.ru/html03.htm#ref1352">курсивным шрифтом</a>. Например, оператор <code>document.write("Мой
+        текст".italics())</code> выведет на экран обозревателя строку <samp><i>Мой текст</i></samp>.</p>
+
+      <h4><a name="hlastindexof">Метод lastIndexOf</a></h4>
+
+<pre class="syntax"><strong><a name="mlastindexof">Синтаксис</a></strong>: <em>объект</em>.lastIndexOf(<em>подстрока </em>[,<em>начало</em>]?)
+<strong>Аргументы</strong>: <em>подстрока</em>&nbsp;— любое строковое выражение
+           <em>начало</em>&nbsp;— любое числовое выражение
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>lastIndexOf</strong> возвращает последнюю позицию <em>подстроки</em> в примитивном
+        значении строкового <em>объекта</em>. Позиции символов строки нумеруются от нуля до <em>объект</em>.<a href="#pstring-length"><strong>length</strong></a>-1.
+        Если задан необязательный аргумент <em>начало</em>, то поиск ведется, начиная с позиции <em>начало</em>;
+        если нет, то с позиции 0, т.&nbsp;е. с первого символа строки. Если <em>начало</em> отрицательно,
+        то оно принимается равным нулю; если <em>начало</em> больше, чем <em>объект</em>.<a href="#pstring-length"><strong>length</strong></a>-1,
+        то оно принимается равным <em>объект</em>.<a href="#pstring-length"><strong>length</strong></a>-1.
+        Если объект не содержит данной подстроки, то возвращается значение -1.</p>
+
+      <p>Поиск ведется справа налево. В остальном этом метод идентичен методу <a href="#mindexof"><strong>indexOf</strong></a>.
+        Пример:</p>
+
+      <div class="code">
+<pre class="code">var n = "Белый кит".lastIndexOf("кит");	// n равно 6</pre>
+      </div>
+
+      <h4><a name="hlink">Метод link</a></h4>
+
+<pre class="syntax"><strong><a name="mlink">Синтаксис</a></strong>: <em>объект</em>.link(<em>uri</em>)
+<strong>Аргументы</strong>: <em>uri</em>&nbsp;— любое строковое выражение
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>link</strong> возвращает строку, состоящую из примитивного значения строкового
+        <em>объекта</em>, заключенного в теги <tt>&lt;<a href="http://wdh.suncloud.ru/html06.htm#ea">A</a> HREF="<em>uri</em>"&gt;…&lt;/A&gt;</tt>.
+        Проверки на то, не была ли исходная строка уже заключена в эти теги, не делается. Этот метод
+        используется совместно с методами <tt>document.write</tt> и <tt>document.writeln</tt> для создания
+        в HTML-документе <a href="http://wdh.suncloud.ru/html06.htm#ref161">гиперссылки</a> с заданным <em>uri</em>. Например,
+        оператор <code>document.write("Мой текст".link("#Закладка"))</code> эквивалентен
+        оператору <code>document.write('&lt;A HREF="#Закладка"&gt;Мой текст&lt;/A&gt;')</code>.</p>
+
+      <h4><a name="hlocalecompare">Метод localeCompare</a></h4>
+
+<pre class="syntax"><strong><a name="mlocalecompare">Синтаксис</a></strong>: <em>объект</em>.localeCompare(<em>строка1</em>)
+<strong>Аргументы</strong>: <em>строка1</em>&nbsp;— любое строковое выражение
+<strong>Результат</strong>: число</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.9.%20%D1%F2%F0%EE%EA%E8-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20String_files/ie.gif" alt="Internet Explorer"> Поддерживается с версии 5.5.
+           <img src="3.9.%20%D1%F2%F0%EE%EA%E8-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20String_files/nn.gif" alt="Netscape Navigator"> Не поддерживается.</pre>
+
+      <p>Метод <strong>localeCompare</strong> сравнивает две строки с учетом национальных установок
+        операционной системы. Он возвращает -1, если примитивное значение <em>объекта</em> меньше <em>строки1</em>,
+        +1, если оно больше <em>строки1</em>, и 0, если эти значения совпадают.</p>
+
+      <h4><a name="hmatch">Метод match</a></h4>
+
+<pre class="syntax"><strong><a name="mmatch">Синтаксис</a></strong>: <em>объект</em>.match(<em>регвыр</em>)
+<strong>Аргументы</strong>: <em>регвыр</em>&nbsp;— любое регулярное выражение
+<strong>Результат</strong>: массив строк</pre>
+
+      <p>Метод <strong>match</strong> сопоставляет регулярное выражение <em>регвыр</em> с примитивным
+        значением строкового <em>объекта</em>. Результатом сопоставления является массив найденных подстрок
+        или <strong>null</strong>, если соответствий нет. При этом:</p>
+
+      <ul>
+        <li>Если <em>регвыр</em> не содержит <a href="http://wdh.suncloud.ru/js05.htm#ref353">опцию глобального поиска</a>,
+          то выполняется метод <em>регвыр</em>.<strong><a href="http://wdh.suncloud.ru/js12.htm#mexec">exec</a></strong>(<em>объект</em>)
+          и возвращается его результат. Результирующий массив содержит в элементе с индексом 0 найденную
+          подстроку, а в остальных элементах&nbsp;— подстроки, соответствующие подвыражениям <em>регвыр</em>,
+          заключенным в круглые скобки.</li>
+        <li>Если <em>регвыр</em> содержит <a href="http://wdh.suncloud.ru/js05.htm#ref353">опцию глобального поиска</a>, то
+          метод <em>регвыр</em>.<strong><a href="http://wdh.suncloud.ru/js12.htm#mexec">exec</a></strong>(<em>объект</em>)
+          выполняется до тех пор, пока находятся соответствия. Если <tt>n</tt>&nbsp;— количество
+          найденных соответствий, то результатом является массив из <tt>n</tt> элементов, которые содержат
+          найденные подстроки. Свойству <em>регвыр</em>.<strong><a href="http://wdh.suncloud.ru/js12.htm#plastindex">lastIndex</a></strong>
+          присваивается номер позиции в исходной строке, указывающий на первый символ после последнего
+          найденного соответствия, или 0, если соответствий не найдено.</li>
+      </ul>
+
+      <p>Следует помнить, что метод <em>регвыр</em>.<strong><a href="http://wdh.suncloud.ru/js12.htm#mexec">exec</a></strong>
+        изменяет свойства объекта <em>регвыр</em>. Примеры:</p>
+
+      <div class="code">
+<pre class="code">var src = "Он сказал: &lt;I&gt;Я ухожу&lt;/I&gt; и добавил: &lt;I&gt;До свидания&lt;/I&gt;.";
+var res = src.match(/&lt;i&gt;.*?&lt;\/i&gt;/i);	// res = ["&lt;I&gt;Я ухожу&lt;/I&gt;"]
+var res = src.match(/&lt;i&gt;.*?&lt;\/i&gt;/ig);	// res = ["&lt;I&gt;Я ухожу&lt;/I&gt;", "&lt;I&gt;До свидания&lt;/I&gt;"]</pre>
+      </div>
+
+      <h4><a name="hreplace">Метод replace</a></h4>
+
+<pre class="syntax"><strong><a name="mreplace">Синтаксис</a></strong>: <em>объект</em>.replace(<em>регвыр</em>,<em>строка</em>)
+           <em>объект</em>.replace(<em>регвыр</em>,<em>функция</em>)
+<strong>Аргументы</strong>: <em>регвыр</em>&nbsp;— регулярное выражение
+           строка&nbsp;— строковое выражение
+           <em>функция</em>&nbsp;— имя функции или декларация функции
+<strong>Результат</strong>: новая строка</pre>
+
+      <p>Метод <strong>replace</strong> сопоставляет регулярное выражение <em>регвыр</em> с примитивным
+        значением строкового <em>объекта</em> и заменяет найденные подстроки другими подстроками. Результатом
+        является новая строка, которая является копией исходной строки с проведенными заменами. Способ
+        замены определяется <a href="http://wdh.suncloud.ru/js05.htm#ref353">опцией глобального поиска</a> в <em>регвыр</em>
+        и типом второго аргумента.</p>
+
+      <p>Если <em>регвыр</em> не содержит <a href="http://wdh.suncloud.ru/js05.htm#ref353">опцию глобального поиска</a>, то
+        выполняется поиск первой подстроки, соответствующей <em>регвыр</em> и производится ее замена.
+        Если <em>регвыр</em> содержит <a href="http://wdh.suncloud.ru/js05.htm#ref353">опцию глобального поиска</a>, то выполняется
+        поиск всех подстрок, соответствующих <em>регвыр</em>, и производится их замена. </p>
+
+      <p>Если вторым аргументом является <em>строка</em>, то замена каждой найденной подстроки производится
+        на нее. При этом строка может содержать такие свойства объекта <strong><a href="http://wdh.suncloud.ru/js12.htm#ref3123">RegExp</a></strong>,
+        как <tt><a href="http://wdh.suncloud.ru/js12.htm#psave">$1</a></tt><a href="http://wdh.suncloud.ru/js12.htm#psave">, …, <tt>$9</tt></a>,
+        <tt><a href="http://wdh.suncloud.ru/js12.htm#plastmatch">lastMatch</a></tt>, <tt><a href="http://wdh.suncloud.ru/js12.htm#plastparen">lastParen</a></tt>,
+        <tt><a href="http://wdh.suncloud.ru/js12.htm#pleftcontext">leftContext</a></tt> и <tt><a href="http://wdh.suncloud.ru/js12.htm#prightcontext">rightContext</a></tt>.
+        Например, оператор <code>document.write("Вкусные яблоки, сочные яблоки.".replace(/яблоки/g,
+        "груши"))</code> выведет на экран обозревателя строку <samp>Вкусные груши, сочные
+        груши.</samp></p>
+
+      <p>Если вторым аргументом является <em>функция</em>, то замена каждой найденной подстроки производится
+        вызовом этой функции. Функция имеет следующие аргументы. Первый аргумент&nbsp;— это найденная
+        подстрока, затем следуют аргументы, соответствующие всем подвыражениям <em>регвыр</em>, заключенным
+        в круглые скобки, предпоследний аргумент&nbsp;— это позиция найденной подстроки в исходной
+        строке, считая с нуля, и последний аргумент— это сама исходная строка. Следующий пример
+        показывает, как с помощью метода <strong>replace</strong> можно написать функцию преобразования
+        градусов Фаренгейта в градусы Цельсия. Приведенный сценарий</p>
+
+      <div class="code">
+<pre class="code">function myfunc($0,$1) {
+  return (($1-32) * 5 / 9) + "C";
+}
+function f2c(x) {
+  var s = String(x);
+  return s.replace(/(\d+(\.\d*)?)F\b/, myfunc);
+}
+document.write(f2c("212F"));</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя строку <samp>100C</samp>.</p>
+
+      <p>Следует помнить, что этот метод изменяет свойства объекта <em>регвыр</em>.</p>
+
+      <h4><a name="hsearch">Метод search</a></h4>
+
+<pre class="syntax"><strong><a name="msearch">Синтаксис</a></strong>: <em>объект</em>.search(<em>регвыр</em>)
+<strong>Аргументы</strong>: <em>регвыр</em>&nbsp;— любое регулярное выражение
+<strong>Результат</strong>: числовое выражение</pre>
+
+      <p>Метод <strong>search</strong> сопоставляет регулярное выражение <em>регвыр</em> с примитивным
+        значением строкового <em>объекта</em>. Результатом сопоставления является позиция первой найденной
+        подстроки, считая с нуля, или -1, если соответствий нет. При этом <a href="http://wdh.suncloud.ru/js05.htm#ref353">опция
+        глобального поиска</a> в <em>регвыр</em> игнорируется, и свойства <em>регвыр</em> не изменяются.
+        Примеры:</p>
+
+      <div class="code">
+<pre class="code">var src = "Он сказал: &lt;I&gt;Я ухожу&lt;/I&gt; и добавил: &lt;I&gt;До свидания&lt;/I&gt;.";
+var n = src.search(/&lt;i&gt;.*?&lt;\/i&gt;/i);	// n равно 11</pre>
+      </div>
+
+      <h4><a name="hslice">Метод slice</a></h4>
+
+<pre class="syntax"><strong><a name="mstring-slice">Синтаксис</a></strong>: <em>объект</em>.slice(<em>начало</em> [,<em>конец</em>]?)
+<strong>Аргументы</strong>: <em>начало</em> и <em>конец</em>&nbsp;— любые числовые выражения
+<strong>Результат</strong>: новая строка</pre>
+
+      <p>Метод <strong>slice</strong> возвращает подстроку примитивного значения строкового <em>объекта</em>,
+        от позиции <em>начало</em> до позиции <em>конец</em>, не включая ее. Если <em>конец</em> не
+        задан, то возвращается подстрока, начиная с позиции <em>начало</em> и до конца исходной строки.</p>
+
+      <p>Позиции символов строки нумеруются от нуля до <em>объект</em>.<a href="#pstring-length"><strong>length</strong></a>-1.
+        Если значение <em>начало</em> отрицательно, то оно заменяется на <em>объект</em>.<a href="#pstring-length"><strong>length</strong></a>+<em>начало</em>.
+        Если значение <em>конец</em> отрицательно, то оно заменяется на <em>объект</em>.<a href="#pstring-length"><strong>length</strong></a>+<em>конец</em>.
+        Иными словами, отрицательные аргументы трактуются как смещения от конца строки.</p>
+
+      <p>Результатом является строковое значение, а не строковый объект. Например, оператор <code>document.write("ABCDEF".slice(2,-1))</code> выведет на экран
+        обозревателя строку <samp>CDE</samp>.</p>
+
+      <h4><a name="hsmall">Метод small</a></h4>
+
+<pre class="syntax"><strong><a name="msmall">Синтаксис</a></strong>: <em>объект</em>.small()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>small</strong> возвращает строку, состоящую из примитивного значения строкового
+        <em>объекта</em>, заключенного в теги <tt>&lt;<a href="http://wdh.suncloud.ru/html03.htm#esmall">SMALL</a>&gt;…&lt;/SMALL&gt;</tt>.
+        Проверки на то, не была ли исходная строка уже заключена в эти теги, не делается. Этот метод
+        используется совместно с методами <tt>document.write</tt> и <tt>document.writeln</tt> для отображения
+        текста <a href="http://wdh.suncloud.ru/html03.htm#ref1355">мелким шрифтом</a>. Например, оператор <code>document.write("Мой
+        текст".small())</code> выведет на экран обозревателя строку <samp><small>Мой текст</small></samp>.</p>
+
+      <h4><a name="hsplit">Метод split</a></h4>
+
+<pre class="syntax"><strong><a name="msplit">Синтаксис</a></strong>: <em>объект</em>.split(<em>разделитель</em> [,<em>число</em>]?)
+<strong>Аргументы</strong>: <em>разделитель</em>&nbsp;— строковое или регулярное выражение
+           <em>число</em>&nbsp;— числовое выражение
+<strong>Результат</strong>: массив строк (объект <a href="http://wdh.suncloud.ru/js10.htm#ref310"><strong>Array</strong></a>)</pre>
+
+      <p>Метод <strong>split</strong> разбивает примитивное значение <em>объекта</em> на массив подстрок
+        и возвращает его. Разбиение на подстроки производится следующим образом. Исходная строка просматривается
+        слева направо в поисках <em>разделителя</em>. Как только он найден, подстрока от конца предыдущего
+        разделителя (или от начала строки, если это первое вхождение разделителя) до начала найденного
+        добавляется в массив подстрок. Таким образом, сам разделитель в текст подстроки не попадает.</p>
+
+      <p>Необязательный аргумент <em>число</em> задает максимально возможный размер результирующего
+        массива. Если он задан, то после выделения <em>числа</em> подстрок метод завершает работу, даже
+        если просмотр исходной строки не закончен.</p>
+
+      <p><em>Разделитель</em> может быть задан либо строкой, либо регулярным выражением. Существует
+        несколько случаев, требующих особого рассмотрения:</p>
+
+      <ul>
+        <li>Если <em>разделитель</em> не задан, то результирующий массив состоит из одного элемента,
+          равного исходной строке.</li>
+        <li>Если <em>разделитель</em>&nbsp;— пустая строка или регулярное выражение, соответствующее
+          пустой строке, то результирующий массив состоит из <em>объект</em>.<strong><a href="#pstring-length">length</a></strong>
+          элементов, каждый из которых содержит один символ исходной строки.</li>
+        <li>Если <em>разделитель</em>&nbsp;— регулярное выражение, то очередная подстрока выделяется
+          всякий раз, когда нашлось соответствие регулярному выражению, и соответствующая подстрока
+          служит разделителем. Например, оператор <code>var s = "a1b2c3d".split(/\d/);</code>
+          вернет массив <tt>["a", "b", "c", "d"]</tt>.</li>
+      </ul>
+
+      <p>В следующем примере регулярное выражение используется для задания <a href="http://wdh.suncloud.ru/html01.htm#ref1121">тегов
+        HTML</a> в качестве разделителя. Оператор</p>
+
+      <div class="code">
+<pre class="code">document.write("Текст &lt;B&gt;полужирный&lt;/B&gt; и &lt;EM&gt;курсивный&lt;/EM&gt;".split(/&lt;\/?([^&lt;&gt;]+)&gt;/));</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя строку <samp>Текст ,полужирный, и ,курсивный</samp>.</p>
+
+      <h4><a name="hstrike">Метод strike</a></h4>
+
+<pre class="syntax"><strong><a name="mstrike">Синтаксис</a></strong>: <em>объект</em>.strike()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>strike</strong> возвращает строку, состоящую из примитивного значения строкового
+        <em>объекта</em>, заключенного в теги <tt>&lt;<a href="http://wdh.suncloud.ru/deprecat.htm#es">STRIKE</a>&gt;…&lt;/STRIKE&gt;</tt>.
+        Проверки на то, не была ли исходная строка уже заключена в эти теги, не делается. Этот метод
+        используется совместно с методами <tt>document.write</tt> и <tt>document.writeln</tt> для отображения
+        текста перечеркнутым шрифтом. Например, оператор <code>document.write("Мой текст".strike())</code>
+        выведет на экран обозревателя строку <samp><strike>Мой текст</strike></samp>.</p>
+
+      <h4><a name="hsub">Метод sub</a></h4>
+
+<pre class="syntax"><strong><a name="msub">Синтаксис</a></strong>: <em>объект</em>.sub()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>sub</strong> возвращает строку, состоящую из примитивного значения строкового
+        <em>объекта</em>, заключенного в теги <tt>&lt;<a href="http://wdh.suncloud.ru/html03.htm#esubsup">SUB</a>&gt;…&lt;/SUB&gt;</tt>.
+        Проверки на то, не была ли исходная строка уже заключена в эти теги, не делается. Этот метод
+        используется совместно с методами <tt>document.write</tt> и <tt>document.writeln</tt> для отображения
+        текста как <a href="http://wdh.suncloud.ru/html03.htm#ref1356">нижнего индекса</a>. Например, оператор <code>document.write("Мой
+        текст".sub())</code> выведет на экран обозревателя строку <samp><sub>Мой текст</sub></samp>.</p>
+
+      <h4><a name="hsubstr">Метод substr</a></h4>
+
+<pre class="syntax"><strong><a name="msubstr">Синтаксис</a></strong>: <em>объект</em>.substr(<em>позиция</em> [,<em>длина</em>]?)
+<strong>Аргументы</strong>: <em>позиция</em> и <em>длина</em>&nbsp;— числовые выражения
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>substr</strong> возвращает подстроку примитивного значения строкового <em>объекта</em>,
+        начинающуюся с данной <em>позиции</em> и содержащую <em>длина</em> символов. Если <em>длина</em>
+        не задана, то возвращается подстрока, начиная с данной <em>позиции</em> и до конца исходной
+        строки. Если <em>длина</em> отрицательна или равна нулю, то возвращается пустая строка.</p>
+
+      <p>Позиции символов строки нумеруются от нуля до <em>объект</em>.<a href="#pstring-length"><strong>length</strong></a>-1.
+        Если <em>позиция</em> больше или равна <em>объект</em>.<strong><a href="#pstring-length">length</a></strong>,
+        то возвращается пустая строка. Если <em>позиция</em> отрицательна, то она трактуется как смещение
+        от конца строки, т.&nbsp;е. заменяется на <em>объект</em>.<strong><a href="#pstring-length">length</a></strong>+<em>позиция</em>.</p>
+
+      <p class="note"><strong>Примечание</strong>. Если <em>позиция</em> отрицательна, то Internet Explorer
+        ошибочно заменяет ее на 0, поэтому в целях совместимости этот вариант использовать не следует.</p>
+
+      <p>Результатом является строковое значение, а не строковый объект. Примеры:</p>
+
+      <div class="code">
+<pre class="code">var src = "abcdef";
+var s1 = src.substr(1, 3);	// "bcd"
+var s2 = src.substr(1);		// "bcdef"
+var s3 = src.substr(-1);	// "f", но в MSIE: "abcdef"</pre>
+      </div>
+
+      <h4><a name="hsubstring">Метод substring</a></h4>
+
+<pre class="syntax"><strong><a name="msubstring">Синтаксис</a></strong>: <em>объект</em>.substring(<em>начало</em> [,<em>конец</em>])
+<strong>Аргументы</strong>: <em>начало</em> и <em>конец</em>&nbsp;— числовые выражения
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>substring</strong> возвращает подстроку примитивного значения строкового <em>объекта</em>,
+        от позиции <em>начало</em> до позиции <em>конец</em>, не включая ее. Если <em>конец</em> не
+        задан, то возвращается подстрока, начиная с позиции <em>начало</em> и до конца исходной строки.</p>
+
+      <p>Позиции символов строки нумеруются от нуля до <em>объект</em>.<a href="#pstring-length"><strong>length</strong></a>-1.
+        Отрицательные аргументы или равные <a href="http://wdh.suncloud.ru/js08.htm#pnan"><strong>NaN</strong></a> заменяются
+        на нуль; если аргумент больше длины исходной строки, то он заменяется на нее. Если <em>начало</em>
+        больше <em>конца</em>, то они меняются местами. Если <em>начало</em> равно <em>концу</em>, то
+        возвращается пустая строка.</p>
+
+      <p>Результатом является строковое значение, а не строковый объект. Примеры:</p>
+
+      <div class="code">
+<pre class="code">var src = "abcdef";
+var s1 = src.substring(1, 3);	// "bc"
+var s2 = src.substring(1, -1);	// "a"
+var s3 = src.substring(-1, 1);	// "a"</pre>
+      </div>
+
+      <h4><a name="hsup">Метод sup</a></h4>
+
+<pre class="syntax"><strong><a name="msup">Синтаксис</a></strong>: <em>объект</em>.sup()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>sup</strong> возвращает строку, состоящую из примитивного значения строкового
+        <em>объекта</em>, заключенного в теги <tt>&lt;<a href="http://wdh.suncloud.ru/html03.htm#esubsup">SUP</a>&gt;…&lt;/SUP&gt;</tt>.
+        Проверки на то, не была ли исходная строка уже заключена в эти теги, не делается. Этот метод
+        используется совместно с методами <tt>document.write</tt> и <tt>document.writeln</tt> для отображения
+        текста как <a href="http://wdh.suncloud.ru/html03.htm#ref1356">верхнего индекса</a>. Например, оператор <code>document.write("Мой
+        текст".sup())</code> выведет на экран обозревателя строку <samp><sup>Мой текст</sup></samp>.</p>
+
+      <h4><a name="htolocalelowercase">Метод toLocaleLowerCase</a></h4>
+
+<pre class="syntax"><strong><a name="mtolocalelowercase">Синтаксис</a></strong>: <em>объект</em>.toLocaleLowerCase()
+<strong>Результат</strong>: новая строка</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.9.%20%D1%F2%F0%EE%EA%E8-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20String_files/ie.gif" alt="Internet Explorer"> Поддерживается с версии 5.5.
+           <img src="3.9.%20%D1%F2%F0%EE%EA%E8-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20String_files/nn.gif" alt="Netscape Navigator"> Не поддерживается.</pre>
+
+      <p>Метод <strong>toLocaleLowerCase</strong> возвращает новую строку, в которой все буквы исходной
+        строки заменены на строчные с учетом национальных установок операционной системы. Остальные
+        символы исходной строки не изменяются. Исходная строка остается прежней. Обычно этот метод возвращает
+        тот же результат, что и <a href="#mtolowercase"><strong>toLowerCase</strong></a>; отличие возможно
+        только в том случае, если кодировка языка противоречит правилам Unicode по преобразованию прописных
+        букв в строчные.</p>
+
+      <h4><a name="htolocaleuppercase">Метод toLocaleUpperCase</a></h4>
+
+<pre class="syntax"><strong><a name="mtolocaleuppercase">Синтаксис</a></strong>: <em>объект</em>.toLocaleUpperCase()
+<strong>Результат</strong>: новая строка</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.9.%20%D1%F2%F0%EE%EA%E8-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20String_files/ie.gif" alt="Internet Explorer"> Поддерживается с версии 5.5.
+           <img src="3.9.%20%D1%F2%F0%EE%EA%E8-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20String_files/nn.gif" alt="Netscape Navigator"> Не поддерживается.</pre>
+
+      <p>Метод <strong>toLocaleUpperCase</strong> возвращает новую строку, в которой все буквы исходной
+        строки заменены на прописные с учетом национальных установок операционной системы. Остальные
+        символы исходной строки не изменяются. Исходная строка остается прежней. Обычно этот метод возвращает
+        тот же результат, что и <a href="#mtouppercase"><strong>toUpperCase</strong></a>; отличие возможно
+        только в том случае, если кодировка языка противоречит правилам Unicode по преобразованию строчных
+        букв в прописные.</p>
+
+      <h4><a name="htolowercase">Метод toLowerCase</a></h4>
+
+<pre class="syntax"><strong><a name="mtolowercase">Синтаксис</a></strong>: <em>объект</em>.toLowerCase()
+<strong>Результат</strong>: новая строка</pre>
+
+      <p>Метод <strong>toLowerCase</strong> возвращает новую строку, в которой все буквы исходной строки
+        заменены на строчные. Остальные символы исходной строки не изменяются. Исходная строка остается
+        прежней. Например, оператор <code>document.write("объект String".toUpperCase())</code>
+        выведет на экран обозревателя строку <samp>объект string</samp>.</p>
+
+      <h4><a name="htostring">Метод toString</a></h4>
+
+<pre class="syntax"><strong><a name="mstring-tostring">Синтаксис</a></strong>: <em>объект</em>.toString()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>toString</strong> возвращает примитивное значение строкового <em>объекта</em>.</p>
+
+      <h4><a name="htouppercase">Метод toUpperCase</a></h4>
+
+<pre class="syntax"><strong><a name="mtouppercase">Синтаксис</a></strong>: <em>объект</em>.toUpperCase()
+<strong>Результат</strong>: новая строка</pre>
+
+      <p>Метод <strong>toUpperCase</strong> возвращает новую строку, в которой все буквы исходной строки
+        заменены на прописные. Остальные символы исходной строки не изменяются. Исходная строка остается
+        прежней. Например, оператор <code>document.write("объект String".toUpperCase())</code>
+        выведет на экран обозревателя строку <samp>ОБЪЕКТ STRING</samp>.</p>
+
+      <h4><a name="hvalueof">Метод valueOf</a></h4>
+
+<pre class="syntax"><strong><a name="mstring-valueof">Синтаксис</a></strong>: <em>объект</em>.valueOf()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>valueOf</strong> возвращает примитивное значение строкового <em>объекта</em>.</p>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js08.htm"><img name="imgleftb" src="3.9.%20%D1%F2%F0%EE%EA%E8-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20String_files/nnleft.gif" alt="" title="Примитивные встроенные объекты" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="3.9.%20%D1%F2%F0%EE%EA%E8-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20String_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/js10.htm"><img name="imgrightb" src="3.9.%20%D1%F2%F0%EE%EA%E8-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20String_files/nnright.gif" alt="" title="Массивы: встроенный объект Array" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Анимация</title>
+<style>
+div{position:absolute;left:10px;top:100px}
+</style>
+<script language="Javascript">
+<!--
+		function moveTxt() {
+			elem = document.getElementById("ani1");
+			var computedStyle = elem.currentStyle || window.getComputedStyle(elem, null);
+			if (parseInt(computedStyle.left) <200) {
+				elem.style.left = parseInt(computedStyle.left) + 2 + "px";
+				setTimeout("moveTxt()", 50);
+			}
+		}	
+	window.onload = function(){
+		document.getElementById("vniz").onclick = function(){
+			 moveTxt();
+		}
+	}
+-->
+</script>
+</head>
+<body >
+<div id="ani1">Текст</div>
+</body>
+</html>

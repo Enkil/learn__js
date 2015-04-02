@@ -1,0 +1,1066 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: DHTML - Обработка событий в Internet Explorer</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/dhtml11.htm" title="Обработка событий в DOM">
+<link rel="Next" href="http://wdh.suncloud.ru/dhtml13.htm" title="Отображение документов в DOM и Gecko">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="4.12.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20Internet%20Explorer_files/load.js"></script>
+<script type="text/javascript" src="4.12.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20Internet%20Explorer_files/link.js"></script><link rel="stylesheet" type="text/css" href="4.12.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20Internet%20Explorer_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=6856" target="_blank"><img src="4.12.%20%CE%E1%F0%E0%E1%EE%F2%EA%E0%20%F1%EE%E1%FB%F2%E8%E9%20%E2%20Internet%20Explorer_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <p><em>Документ в процессе разработки!</em></p>
+
+      <h2><a name="ref412">Глава 4.12. Обработка событий в Internet Explorer</a></h2>
+
+      <h3><a name="ref4121">4.12.1. Общее описание</a></h3>
+      
+      <h4><a name="ref41211">4.12.1.1. Основные различия между DOM и Internet Explorer</a></h4>
+      
+      <p>В этой главе мы описываем модель обработки событий, принятую в Internet Explorer (далее IE). Она отличается
+      от модели обработки событий в DOM, поэтому начнем с краткого обзора различий между этими двумя моделями.</p>
+      <ol>
+        <li><a href="http://wdh.suncloud.ru/dhtml11.htm#ref41113">Просачивание событий</a> и <a href="http://wdh.suncloud.ru/dhtml11.htm#ref41114">отмена типовой обработки события</a> в IE
+          имеют тот же смысл, что в DOM, но реализованы другими свойствами и методами. Механизм <a href="http://wdh.suncloud.ru/dhtml11.htm#ref41112">перехвата событий</a>
+          реализован только для событий, генерируемых мышью (см. <tt><a href="#msetcapture">setCapture</a></tt> и <tt><a href="#mreleasecapture">releaseCapture</a></tt>).</li>
+        <li>Интерфейс <tt><a href="http://wdh.suncloud.ru/dhtml11.htm#ref4112">EventTarget</a></tt> узлами документа в IE не поддерживается. Вместо него есть нестандартные методы <tt><a href="#mattachevent">attachEvent</a></tt>,
+          <a href="#mdetachevent"><tt>detachEvent</tt></a> и <a href="#mfireevent"><tt>fireEvent</tt></a>.</li>
+        <li>В IE поддерживается нестандартный синтаксис создания обработчиков событий с помощью атрибутов <strong>for</strong> и <strong>event</strong> в теге <strong>SCRIPT</strong>,
+        описанный <a href="#script-event">ниже</a>.</li>
+        <li>Если в DOM объект <tt>event</tt> передается обработчику события как аргумент вызова (и, соответственно, недоступен вне тела этого обработчика), то в IE
+          объект <tt>event</tt> является свойством объекта <tt><a href="http://wdh.suncloud.ru/dhtml14.htm#ref4141">window</a></tt>,
+которое инициализируется всякий раз, когда генерируется событие.
+Поэтому этот объект является глобальным и указывать его в списке
+аргументов обработчика событий не обязательно. Кроме того, объекты <tt>event</tt> в DOM и IE различны по набору своих
+          свойств и методов (см. <a href="#ref4123">п. 4.12.3</a>).</li>
+        <li>Набор событий, генерируемых в IE, отличается от набора, предусмотренного в DOM (см. <a href="#ref4124">п. 4.12.4</a>).</li>
+      </ol>
+
+      <p>Теперь рассмотрим перечисленные различия подробно.</p>
+
+      <h4><a name="ref41212">4.12.1.2. Жизненный цикл события</a></h4>
+
+      <p>Для того, чтобы уяснить модель обработки событий в IE, начнем с описания жизненного цикла
+        события в этом обозревателе. Этот цикл состоит из следующих фаз:</p>
+      <ul>
+        <li>Выполняется действие пользователя или иное условие, порождающее событие.</li>
+        <li>Создается объект <tt><a href="#ref4123">window.event</a></tt>, в который заносятся свойства сгенерированного события.</li>
+        <li>Объектная модель документа оповещается о том, что произошло новое событие. Для этого вызывается
+          обработчик данного события того элемента дерева документа, в котором это событие произошло.</li>
+        <li>Обработчик выполняет указанные в нем действия и завершает работу. После этого событие просачивается
+          в обработчик событий его отца в дереве документа и т.&nbsp;д. до тех пор, пока не будет достигнут
+          объект <tt><a href="http://wdh.suncloud.ru/dhtml14.htm#ref4141">window</a></tt> или пока какой-нибудь из обработчиков в этой
+          цепочке не прервет просачивание.</li>
+        <li>Если событие имеет типовую обработку и она не была отменена предшествующими обработчиками,
+          то выполняется типовая обработка события.</li>
+      </ul>
+      
+      <h4><a name="ref41213">4.12.1.3. Статическое создание обработчиков событий</a></h4>
+
+      <p>IE предусматривает два статических способа создания обработчиков событий. Во-первых, мы можем использовать
+        стандартный синтаксис HTML 4.0 с использованием атрибутов <strong>on…</strong>, например:</p>
+
+      <div class="code">
+<pre class="code">&lt;IMG src="sample.gif" onclick="mouseClick()"&gt;</pre>
+      </div>
+
+      <p>В атрибуте <strong>on…</strong> мы можем указать любое выражение JavaScript, например:</p>
+
+      <div class="code">
+<pre class="code">&lt;BUTTON onclick="javascript: alert('Молодец!')"&gt;Нажми меня&lt;/BUTTON&gt;</pre>
+      </div>
+
+      <p><a name="script-event"></a>Во-вторых, IE поддерживает расширенный синтаксис элемента
+        <strong><a href="http://wdh.suncloud.ru/html09.htm#escript">SCRIPT</a></strong> с использованием следующих нестандартных атрибутов:</p>
+
+<pre class="syntax"><strong>Атрибуты</strong>:  event = <a href="http://wdh.suncloud.ru/html01.htm#cdata">CDATA</a> (тип событий)
+           for = <a href="http://wdh.suncloud.ru/html01.htm#idref">IDREF</a> (идентификатор элемента)</pre>
+           
+      <p>Здесь атрибут <strong>for</strong> задает идентификатор HTML-элемента, к которому будет присоединен данный обработчик,
+        а атрибут <strong>event</strong> задает тип событий, которые он должен обрабатывать. В следующем примере создается
+        обработчик щелчка мыши на графическом образе с идентификатором myImage:</p>
+
+      <div class="code">
+<pre class="code">&lt;SCRIPT for="myImage" event="onclick"&gt;
+  . . .
+&lt;/SCRIPT&gt;
+  . . .
+&lt;IMG id="myImage" src="sample.gif"&gt;</pre>
+      </div>
+
+      <p>Различие между этими способами создания обработчиков событий состоит в моменте их активизации
+        в процессе загрузки документа. Обработчик событий, созданный первым способом, начинает обрабатывать
+        возникающие события, как только будет создан элемент, в котором он описан атрибутом <strong>on…</strong>;
+        обработчик событий, созданный вторым способом, начинает работать только после загрузки всего документа.
+        Поскольку в процессе загрузки документа могут генерироваться различные события, такая схема
+        предоставляет нам большую гибкость, чем стандартная модель DOM.</p>
+
+      <h4><a name="ref41214">4.12.1.4. Динамическое создание обработчиков событий</a></h4>
+
+      <p>Для динамического создания обработчиков событий также есть два способа. Во-первых, мы можем присоединить
+        обработчик события к элементу через его DOM-атрибут <strong>on…</strong>, например:</p>
+
+      <div class="code">
+<pre class="code">&lt;IMG id="myImage" src="sample.gif"&gt;
+  . . .
+&lt;SCRIPT&gt;
+  document.getElementById("myImage").onclick = "mouseClick()";
+&lt;/SCRIPT&gt;</pre>
+      </div>
+
+      <p>Во-вторых, мы можем подключить обработку событий вызовом нестандартного метода <tt><a href="#mattachevent">attachEvent</a></tt>.</p>
+
+      <h4><a name="ref41215">4.12.1.5. Область действия обработчиков событий</a></h4>
+
+      <p>IE предусматривает различное поведение обработчиков событий в зависимости от того, связаны они
+        с управляющими элементами формы или нет. Если да, то поведение определяется местоположением сценария&nbsp;—
+        внутри или вне элемента <strong><a href="http://wdh.suncloud.ru/html08.htm#eform">FORM</a></strong>. При этом возможны
+        следующие варианты.</p>
+      <ol>
+        <li>Элемент, генерирующий события, расположен вне формы. В этом случае его обработчик событий также
+          должен располагаться вне формы; в противном случае он игнорируется.</li>
+        <li>Элемент, генерирующий события, расположен внутри формы. Если он имеет уникальный для всего документа идентификатор,
+          то его обработчик событий может располагаться в любом месте документа. В противном случае он должен располагаться
+          внутри той же формы.</li>
+      </ol>
+
+      <h3><a name="ref4122">4.12.2. Дополнительные методы интерфейса HTMLElement</a></h3>
+
+      <p>Вместо стандартного интерфейса <tt><a href="http://wdh.suncloud.ru/dhtml11.htm#ref4112">EventTarget</a></tt> элементы HTML в IE имеют следующие нестандартные методы:</p>
+      
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;"><nobr>Нестандартные методы интерфейса HTMLElement</nobr></caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#mattachevent">attachEvent</a></tt></td>
+            <td>Регистрирует обработчик событий заданного типа.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mdetachevent">detachEvent</a></tt></td>
+            <td>Удаляет заданный обработчик событий заданного типа.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mfireevent">fireEvent</a></tt></td>
+            <td>Генерирует заданное событие.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mreleasecapture">releaseCapture</a></tt></td>
+            <td>Отключает перехват событий мыши.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#msetcapture">setCapture</a></tt></td>
+            <td>Включает перехват событий мыши.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hattachevent">Метод attachEvent</a></h4>
+
+<pre class="syntax"><strong><a name="mattachevent">Синтаксис</a></strong>:  <em>элемент</em>.attachEvent(type, function)
+<strong>Аргументы</strong>:  type&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+            function&nbsp;— указатель на функцию
+<strong>Результат</strong>:  логическое значение</pre>
+
+      <p>Метод <strong>attachEvent</strong> регистрирует новый обработчик <tt>function</tt> события <tt>type</tt> для данного элемента.
+        Он возвращает <strong>true</strong>, если регистрация прошла успешно, и <strong>false</strong>
+в противном случае. Если новый обработчик регистрируется во время
+обработки события, то он будет активизироваться только следующими
+событиями. Если для события зарегистрированы несколько обработчиков, то
+они вызваются в произвольном порядке. В следующем примере создается
+обработчик нажатия клавиши, который сработает только один раз.</p>
+
+      <div class="code">
+<pre class="code">&lt;BODY onload="document.getElementById('btn').attachEvent('onclick', hurrah)"&gt;
+&lt;SCRIPT&gt;
+function hurrah() {
+  alert('Молодец!');
+  event.srcElement.detachEvent('onclick', hurrah);
+}
+&lt;/SCRIPT&gt;
+&lt;BUTTON id="btn"&gt;Нажми меня&lt;/BUTTON&gt;</pre>
+      </div>
+
+      <h4><a name="hdetachevent">Метод detachEvent</a></h4>
+
+<pre class="syntax"><strong><a name="mdetachevent">Синтаксис</a></strong>:  <em>элемент</em>.detachEvent(type, function)
+<strong>Аргументы</strong>:  type&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+            function&nbsp;— указатель на функцию</pre>
+
+      <p>Метод <strong>detachEvent</strong> дерегистрирует обработчик <tt>function</tt> события <tt>type</tt> для данного элемента,
+        который был ранее зарегистрирован методом <tt><a href="#mattachevent">attachEvent</a></tt>.</p>
+
+      <h4><a name="hfireevent">Метод fireEvent</a></h4>
+
+<pre class="syntax"><strong><a name="mfireevent">Синтаксис</a></strong>:  <em>элемент</em>.fireEvent(type, evt?)
+<strong>Аргументы</strong>:  type&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+            evt&nbsp;— выражение типа event
+<strong>Результат</strong>:  логическое значение</pre>
+
+      <p>Метод <strong>fireEvent</strong> генерирует событие <tt>type</tt> для данного элемента. Необязательный аргумент <tt>evt</tt>
+        должен содержать указатель на объект типа <tt>event</tt>, содержащий описание генерируемого события.
+        Метод возвращает <strong>true</strong>, если генерация события прошла успешно, и <strong>false</strong> в противном случае.</p>
+
+      <p>Независимо от содержимого аргумента <tt>evt</tt> четыре его параметра всегда инициализируются следующими значениями:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <td><tt>cancelBubble</tt></td>
+            <td><strong>false</strong></td>
+          </tr>
+          <tr>
+            <td><tt>returnValue</tt></td>
+            <td><strong>true</strong></td>
+          </tr>
+          <tr>
+            <td><tt>srcElement</tt></td>
+            <td>элемент, чей метод <tt>fireEvent</tt> вызван</td>
+          </tr>
+          <tr>
+            <td><tt>type</tt></td>
+            <td>тип события, заданный в вызове <tt>fireEvent</tt></td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Пример генерации события (переменная <tt>evt</tt> здесь на самом деле не нужна и приведена только для
+        того, чтобы показать, как создаются объекты типа <tt>event</tt>):</p>
+
+      <div class="code">
+<pre class="code">&lt;BODY onload="init()"&gt;
+&lt;SCRIPT&gt;
+function init() {
+  document.body.attachEvent('onclick', hurrah);
+  var evt = document.createEventObject();
+  document.body.fireEvent('onclick', evt);
+}
+function hurrah() { alert('Молодец!'); }
+&lt;/SCRIPT&gt;</pre>
+      </div>
+
+      <h4><a name="hreleasecapture">Метод releaseCapture</a></h4>
+
+<pre class="syntax"><strong><a name="mreleasecapture">Синтаксис</a></strong>:  <em>элемент</em>.releaseCapture()</pre>
+
+      <p>Метод <strong>releaseCapture</strong> отключает перехват событий мыши, включенный методом <tt><a href="#msetcapture">setCapture</a></tt>.</p>
+
+      <h4><a name="hsetcapture">Метод setCapture</a></h4>
+
+<pre class="syntax"><strong><a name="msetcapture">Синтаксис</a></strong>:  <em>элемент</em>.setCapture(flag?)
+<strong>Аргументы</strong>:  flag&nbsp;— логическое выражение</pre>
+
+      <p>Метод <strong>setCapture</strong> включает перехват всех <a href="http://wdh.suncloud.ru/dhtml11.htm#mouseevents">событий, генерируемых мышью</a>.
+        Если его аргумент <tt>flag</tt> равен <strong>true</strong> (принято по умолчанию), то данный элемент
+        будет перехватывать все события мыши в пределах всего документа. Если аргумент равен <strong>false</strong>, то
+        данный элемент будет перехватывать только события мыши от содержащихся внутри него элементов. Включение перехвата
+        событий мыши запрещает выбор текста и перетаскивание (drag-and-drop) в окне обозревателя. Пример:</p>
+
+      <div class="code">
+<pre class="code">&lt;BODY onload="document.getElementById('capturer').setCapture()"&gt;
+&lt;DIV id="capturer" onclick="alert('Молодец!')"&gt;&lt;/DIV&gt;
+&lt;BUTTON&gt;Щелчок на этой кнопке перехватывается элементом DIV.&lt;/BUTTON&gt;</pre>
+      </div>
+
+      <h3><a name="ref4123">4.12.3. События: объект event</a></h3>
+
+      <p>Всякий раз, когда генерируется событие, в свойство <tt>event</tt> объекта <tt><a href="http://wdh.suncloud.ru/dhtml14.htm#ref4141">window</a></tt>
+        заносятся параметры, описывающие это событие. Кроме того, мы можем создавать свои объекты этого типа вызовом
+        нестандартного метода <tt>document.createEventObject()</tt>, присваивать их свойствам нужные значения, а затем
+        генерировать события методом <tt><a href="#mfireevent">fireEvent</a></tt>. Объекты данного типа не имеют методов,
+        но обладают следующими свойствами.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства объектов event</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#paltkey">altKey</a></tt></td>
+            <td>Да</td>
+            <td>Состояние клавиши Alt.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#paltleft">altLeft</a></tt></td>
+            <td>Да</td>
+            <td>Состояние левой клавиши Alt.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pbookmarks">bookmarks</a></tt></td>
+            <td>Нет</td>
+            <td>Коллекция закладок ADO, связанных со строками цели события.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pboundElements">boundElements</a></tt></td>
+            <td>Нет</td>
+            <td>Коллекция элементов, связанных с набором данных.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pbutton">button</a></tt></td>
+            <td>Да</td>
+            <td>Номер кнопки мыши, изменившей состояние.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcancelbubble">cancelBubble</a></tt></td>
+            <td>Да</td>
+            <td>Просачивается ли данное событие.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pclientx">clientX</a></tt></td>
+            <td>Да</td>
+            <td>Горизонтальная координата события в клиентской области.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pclienty">clientY</a></tt></td>
+            <td>Да</td>
+            <td>Вертикальная координата события в клиентской области.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcontentoverflow">contentOverflow</a></tt></td>
+            <td>Нет</td>
+            <td>Признак переполнения содержания документа для события <strong><a href="#elayoutcomplete">onlayoutcomplete</a></strong>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pctrlkey">ctrlKey</a></tt></td>
+            <td>Да</td>
+            <td>Состояние клавиши Ctrl.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pctrlleft">ctrlLeft</a></tt></td>
+            <td>Да</td>
+            <td>Состояние левой клавиши Ctrl.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pdatafld">dataFld</a></tt></td>
+            <td>Да</td>
+            <td>Столбец данных для события <strong><a href="#ecellchange">oncellchange</a></strong>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pdatatransfer">dataTransfer</a></tt></td>
+            <td>Нет</td>
+            <td>Объект, управляющий перетаскиванием данных.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfromelement">fromElement</a></tt></td>
+            <td>Да</td>
+            <td>Элемент, который курсор мыши покинул, для событий <strong><a href="#emouseover">onmouseover</a></strong> и <strong><a href="#emouseout">onmouseout</a></strong>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pkeycode">keyCode</a></tt></td>
+            <td>Да</td>
+            <td>Виртуальный код клавиши.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pnextpage">nextPage</a></tt></td>
+            <td>Нет</td>
+            <td>Позиция следующей страницы в шаблоне печати.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#poffsetx">offsetX</a></tt></td>
+            <td>Да</td>
+            <td>Горизонтальная позиция курсора мыши относительно цели события.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#poffsety">offsetY</a></tt></td>
+            <td>Да</td>
+            <td>Вертикальная позиция курсора мыши относительно цели события.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ppropertyname">propertyName</a></tt></td>
+            <td>Да</td>
+            <td>Имя изменившегося свойства цели события для события <strong><a href="#epropertychange">onpropertychange</a></strong>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pqualifier">qualifier</a></tt></td>
+            <td>Да</td>
+            <td>Имя элемента данных в источнике данных.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#preason">reason</a></tt></td>
+            <td>Да</td>
+            <td>Результат обмена данными с источником данных.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#precordset">recordset</a></tt></td>
+            <td>Да</td>
+            <td>Указатель на текущую набор записей источника данных.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#prepeat">repeat</a></tt></td>
+            <td>Да</td>
+            <td>Признак нажатия клавиши для события <strong><a href="#ekeydown">onkeydown</a></strong>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#preturnvalue">returnValue</a></tt></td>
+            <td>Да</td>
+            <td>Код завершения обработчика событий.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pscreenx">screenX</a></tt></td>
+            <td>Да</td>
+            <td>Горизонтальная координата курсора мыши на экране.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pscreeny">screenY</a></tt></td>
+            <td>Да</td>
+            <td>Вертикальная координата курсора мыши на экране.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pshiftkey">shiftKey</a></tt></td>
+            <td>Да</td>
+            <td>Состояние клавиши Shift.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pshiftleft">shiftLeft</a></tt></td>
+            <td>Да</td>
+            <td>Состояние левой клавиши Shift.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#psrcelement">srcElement</a></tt></td>
+            <td>Да</td>
+            <td>Элемент, являющийся целью события.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#psrcfilter">srcFilter</a></tt></td>
+            <td>Да</td>
+            <td>Фильтр, вызвавший событие <strong><a href="#efilterchange">onfilterchange</a></strong>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#psrcurn">srcUrn</a></tt></td>
+            <td>Да</td>
+            <td>Имя реакции, сгенерировашей событие.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ptoelement">toElement</a></tt></td>
+            <td>Да</td>
+            <td>Элемент, на который курсор мыши попал, для событий <strong><a href="#emouseover">onmouseover</a></strong> и <strong><a href="#emouseout">onmouseout</a></strong>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ptype">type</a></tt></td>
+            <td>Да</td>
+            <td>Имя события.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#px">x</a></tt></td>
+            <td>Да</td>
+            <td>Горизонтальная позиция курсора мыши относительно отца цели события.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#py">y</a></tt></td>
+            <td>Да</td>
+            <td>Вертикальная позиция курсора мыши относительно отца цели события.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="haltkey">Свойство altKey</a></h4>
+
+<pre class="syntax"><strong><a name="paltkey">Синтаксис</a></strong>:  <em>событие</em>.altKey
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>altKey</strong> возвращает <strong>true</strong>, если в момент генерации события была нажата клавиша Alt, и <strong>false</strong> в противном случае.</p>
+
+      <h4><a name="haltleft">Свойство altLeft</a></h4>
+
+<pre class="syntax"><strong><a name="paltleft">Синтаксис</a></strong>:  <em>событие</em>.altLeft
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>altKey</strong> возвращает <strong>true</strong>, если в момент генерации события была нажата левая клавиша Alt, и <strong>false</strong>
+в противном случае. Это свойство поддерживается только в Windows NT 4.0
+и Windows 2000. Если документ не имеет фокуса, то всегда возвращается <strong>false</strong>.</p>
+
+      <h4><a name="hbookmarks">Свойство bookmarks</a></h4>
+
+<pre class="syntax"><strong><a name="pbookmarks">Синтаксис</a></strong>:  <em>событие</em>.bookmarks
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Свойство <strong>bookmarks</strong> возвращает <a href="http://wdh.suncloud.ru/dhtml06.htm#ref462">коллекцию</a> закладок ADO, связанных со строками, которые изменяются данным событием.
+        Оно формируется только событиями, связанными с изменением данных.</p>
+
+      <h4><a name="hboundelements">Свойство boundElements</a></h4>
+
+<pre class="syntax"><strong><a name="pboundelements">Синтаксис</a></strong>:  <em>событие</em>.boundElements
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Свойство <strong>boundElements</strong> возвращает <a href="http://wdh.suncloud.ru/dhtml06.htm#ref462">коллекцию</a> всех элементов страницы, связанных с набором данных.
+        Оно формируется только событиями, связанными с изменением данных.</p>
+
+      <h4><a name="hbutton">Свойство button</a></h4>
+
+<pre class="syntax"><strong><a name="pbutton">Синтаксис</a></strong>:  <em>событие</em>.button
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Свойство <strong>button</strong> возвращает номер нажатой кнопки мыши. При этом 0 означает, что ни одна кнопка не нажата, 1 означает
+        левую кнопку, 2&nbsp;— среднюю кнопку, 4&nbsp;— правую кнопку. Если нажаты две или три кнопки
+        одновременно, то соответствующие значения суммируются.</p>
+
+      <h4><a name="hcancelbubble">Свойство cancelBubble</a></h4>
+
+<pre class="syntax"><strong><a name="pcancelbubble">Синтаксис</a></strong>:  <em>событие</em>.cancelBubble
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>cancelBubble</strong> по умолчанию равно <strong>false</strong>. Установка его в <strong>true</strong>
+        прекращает <a href="http://wdh.suncloud.ru/dhtml11.htm#ref41113">просачивание</a>
+данного события. Иными словами, обработчик события предка данного
+элемента в иерархии документа не будет вызван. В следующем примере
+щелчок мышью на картинке вызовет вывод на экран имени графического
+файла (в обработчике события элемента <strong>BODY</strong>). Однако, щелчок при нажатой клавише Shift никаких действий не вызывает, поскольку
+        обработчик события элемента <strong>IMG</strong> в этом случае запрещает распространение события вверх.</p>
+
+      <div class="code">
+<pre class="code">&lt;SCRIPT&gt;
+function checkCancel() {
+  if (event.shiftKey)
+    event.cancelBubble = true;
+}
+function showSrc() {
+  if (event.srcElement.tagName == "IMG")
+    alert(event.srcElement.src);
+}
+&lt;/SCRIPT&gt;
+&lt;BODY onclick="showSrc()"&gt;
+&lt;IMG onclick="checkCancel()" src="sample.gif"&gt;</pre>
+      </div>
+
+      <h4><a name="hclientx">Свойство clientX</a></h4>
+
+<pre class="syntax"><strong><a name="pclientx">Синтаксис</a></strong>:  <em>событие</em>.clientX
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>clientX</strong> возвращает горизонтальную позицию курсора мыши 
+        относительно клиентской области обозревателя в пикселях.</p>
+
+      <h4><a name="hclienty">Свойство clientY</a></h4>
+
+<pre class="syntax"><strong><a name="pclienty">Синтаксис</a></strong>:  <em>событие</em>.clientY
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>clientY</strong> возвращает вертикальную позицию курсора мыши 
+        относительно клиентской области обозревателя в пикселях.</p>
+
+      <h4><a name="hcontentoverflow">Свойство contentOverflow</a></h4>
+
+<pre class="syntax"><strong><a name="pcontentoverflow">Синтаксис</a></strong>:  <em>событие</em>.contentOverflow
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Это свойство имеет смысл только для события <strong><a href="#elayoutcomplete">onlayoutcomplete</a></strong> в шаблонах печати. Оно равно
+        <strong>false</strong>, если все содержимое документа сгенерировано для печати, и <strong>true</strong>
+        в противном случае.</p>
+
+      <h4><a name="hctrlkey">Свойство ctrlKey</a></h4>
+
+<pre class="syntax"><strong><a name="pctrlkey">Синтаксис</a></strong>:  <em>событие</em>.ctrlKey
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>ctrlKey</strong> возвращает <strong>true</strong>, если в момент генерации события была нажата клавиша Ctrl, и <strong>false</strong> в противном случае.</p>
+
+      <h4><a name="hctrlleft">Свойство ctrlLeft</a></h4>
+
+<pre class="syntax"><strong><a name="pctrlleft">Синтаксис</a></strong>:  <em>событие</em>.ctrlLeft
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>ctrlKey</strong> возвращает <strong>true</strong>, если в момент генерации события была нажата левая клавиша Ctrl, и <strong>false</strong>
+в противном случае. Это свойство поддерживается только в Windows NT 4.0
+и Windows 2000. Если документ не имеет фокуса, то всегда возвращается <strong>false</strong>.</p>
+
+      <h4><a name="hdatafld">Свойство dataFld</a></h4>
+
+<pre class="syntax"><strong><a name="pdatafld">Синтаксис</a></strong>:  <em>событие</em>.dataFld
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Это свойство имеет смысл только для события <strong><a href="#ecellchange">oncellchange</a></strong>. Его значением
+        является строка, принимающая или задающая столбец данных в текущем наборе записей.</p>
+
+      <h4><a name="hdatatransfer">Свойство dataTransfer</a></h4>
+
+<pre class="syntax"><strong><a name="pdatatransfer">Синтаксис</a></strong>:  <em>событие</em>.dataTransfer
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Значением этого свойства является объект, который обеспечивает доступ к форматам системного буфера
+        сохранения (clipboard) при операциях перетаскивания (drag-and-drop). Он имеет два свойства, доступных для
+        чтения и записи:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt>dropEffect</tt></td>
+            <td>Тип операции перетаскивания и тип выводимого на экран курсора:
+              <table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0">
+                <tbody><tr>
+                  <td>"copy"</td>
+                  <td>Копирование.</td></tr>
+                <tr>
+                  <td>"link"</td>
+                  <td>Связывание.</td>
+                </tr>
+                <tr>
+                  <td>"move" &nbsp;</td>
+                  <td>Перемещение.</td>
+                </tr>
+                <tr>
+                  <td>"none"</td>
+                  <td>Курсор не задан (по умолчанию)</td>
+                </tr>
+            </tbody></table>
+            </td></tr>
+          <tr>
+            <td><tt>effectAllowed</tt></td>
+            <td>Указывает, какие операции переноса данных разрешены:
+              <table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0">
+                <tbody><tr>
+                  <td>"copy"</td>
+                  <td>Копирование.</td></tr>
+                <tr>
+                  <td>"link"</td>
+                  <td>Связывание.</td>
+                </tr>
+                <tr>
+                  <td>"move"</td>
+                  <td>Перемещение.</td>
+                </tr>
+                <tr>
+                  <td>"copyLink"</td>
+                  <td>Копирование или связывание.</td></tr>
+                <tr>
+                  <td>"copyMove"</td>
+                  <td>Копирование или перемещение.</td>
+                </tr>
+                <tr>
+                  <td>"linkMove"</td>
+                  <td>Связывание илм перемещение.</td>
+                </tr>
+                <tr>
+                  <td>"all"</td>
+                  <td>Все разрешены.</td>
+                </tr>
+                <tr>
+                  <td>"none"</td>
+                  <td>Все запрещены.</td>
+                </tr>
+                <tr>
+                  <td>"uninitialized" &nbsp;</td>
+                  <td>Не задано (по умолчанию).</td>
+                </tr>
+            </tbody></table>
+            </td></tr>
+        </tbody></table>
+      </div>
+
+      <p>Кроме того, данный объект имеет три метода (см. список форматов буфера сохранения в описании
+      объекта <a href="http://wdh.suncloud.ru/dhtml14.htm#pclipboarddata">clipboardData</a>):</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt>clearData(<em>формат</em>?)</tt></td>
+            <td>Удаляет заданный <em>формат</em> из буфера сохранения. Если <em>формат</em> не задан,
+              то удаляются все форматы. </td>
+          </tr>
+          <tr>
+            <td><tt>getData(<em>формат</em>)</tt></td>
+            <td>Извлекает данные из буфера сохранения заданного <em>формата</em>, который может иметь
+              значение "Text" или "URL", и возвращает их в виде строки.</td>
+          </tr>
+          <tr>
+            <td><nobr><tt>setData(<em>формат</em>, <em>данные</em>)</tt></nobr></td>
+            <td>Помещает в буфер сохранения строку <em>данные</em> в заданном <em>формате</em>, который
+              может иметь значение "Text" или "URL". Возвращает <strong>true</strong>
+              в случае успеха и <strong>false</strong> в противном случае.</td>
+          </tr>
+        </tbody></table>
+      </div>
+      <p>Пример перетаскивания объекта с использованием <tt>dataTransfer</tt>:</p>
+
+      <div class="code">
+<pre class="code">&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;META http-equiv="Content-Type" content="text/html; charset=windows-1251"&gt;
+&lt;SCRIPT&gt;
+// Сообщаем источнику, что объект нужно передать как URL.
+function initDrag() {
+  event.dataTransfer.setData("URL", src.href);
+}
+
+// Сообщаем приемнику, что объект нужно принять как URL.
+function finishDrag() {
+  dst.innerText = event.dataTransfer.getData("URL");
+}
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;A id=src href="about:текст_ссылки" onclick="return(false)"
+   ondragstart="initDrag()"&gt;Тестовая ссылка&lt;/A&gt;
+&lt;P id=dst ondragenter="finishDrag()"&gt;Бросьте ссылку сюда&lt;/P&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;</pre>
+      </div>
+
+      <h4><a name="hfromelement">Свойство fromElement</a></h4>
+
+<pre class="syntax"><strong><a name="pfromelement">Синтаксис</a></strong>:  <em>событие</em>.fromElement
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Это свойство имеет смысл только для событий <strong><a href="#emouseover">onmouseover</a></strong> и <strong><a href="#emouseover">onmouseout</a></strong>.
+        Его значением является указатель на объект, который покинул курсор мыши в момент генерации события.
+        Следующий пример выводит сообщение при попадании курсора мыши на заданный абзац.</p>
+
+      <div class="code">
+<pre class="code">&lt;SCRIPT&gt;
+function testMouse(obj) {
+  if (!obj.contains(event.fromElement)) alert("Приехали!");
+}
+&lt;/SCRIPT&gt;
+&lt;P onmouseover="testMouse(this)"&gt;Наведите мышку.&lt;/P&gt;</pre>
+      </div>
+
+      <h4><a name="hkeycode">Свойство keyCode</a></h4>
+
+<pre class="syntax"><strong><a name="pkeycode">Синтаксис</a></strong>:  <em>событие</em>.keyCode
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Это свойство имеет смысл только для событий <strong><a href="#ekeydown">onkeydown</a></strong>, <strong><a href="#ekeyup">onkeyup</a></strong> и <strong><a href="#ekeypress">onkeypress</a></strong>.
+        Его значением является <a href="http://wdh.suncloud.ru/keycodes.htm">виртуальный код</a> клавиши, нажатие или отпускание которой вызвало данное событие.
+        Для остальных событий это свойство равно нулю.</p>
+
+      <h4><a name="hnextpage">Свойство nextPage</a></h4>
+
+<pre class="syntax"><strong><a name="pnextpage">Синтаксис</a></strong>:  <em>событие</em>.nextPage
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Это свойство имеет смысл только для шаблонов печати. Оно может принимать три значения: "left" (левая страница при двусторонней
+        печати), "right" (правая страница при двусторонней печати) и "" (директива <a href="http://wdh.suncloud.ru/css12.htm#ref2122">@page</a> не задана).</p>
+
+      <h4><a name="hoffsetx">Свойство offsetX</a></h4>
+
+<pre class="syntax"><strong><a name="poffsetx">Синтаксис</a></strong>:  <em>событие</em>.offsetX
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>offsetX</strong> возвращает горизонтальную позицию курсора мыши 
+        относительно цели события в пикселях.</p>
+
+      <h4><a name="hoffsety">Свойство offsetY</a></h4>
+
+<pre class="syntax"><strong><a name="poffsety">Синтаксис</a></strong>:  <em>событие</em>.offsetY
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>offsetY</strong> возвращает вертикальную позицию курсора мыши 
+        относительно цели события в пикселях.</p>
+
+      <h4><a name="hpropertyname">Свойство propertyName</a></h4>
+
+<pre class="syntax"><strong><a name="ppropertyname">Синтаксис</a></strong>:  <em>событие</em>.propertyName
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>propertyName</strong> имеет смысл только для события <strong><a href="#epropertychange">onpropertychange</a></strong>.
+        В этом случае оно содержит имя свойства, изменение которого породило данное событие. Пример:</p>
+
+      <div class="code">
+<pre class="code">&lt;INPUT type="button" id="btn"
+  value="Щелкните, чтобы изменить свойство VALUE этой кнопки."
+  onclick='btn.value = "Новое значение VALUE этой кнопки."'
+  onpropertychange='alert("Значение свойства " + event.propertyName + " изменено.")'&gt;</pre>
+      </div>
+
+      <h4><a name="hqualifier">Свойство qualifier</a></h4>
+
+<pre class="syntax"><strong><a name="pqualifier">Синтаксис</a></strong>:  <em>событие</em>.qualifier
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>qualifier</strong> возвращает имя элемента данных в источнике данных, указанное в атрибуте <strong>datasrc</strong>
+        элемента, связанного с источником данных. Оно формируется только событиями, связанными с передачей данных.</p>
+
+      <h4><a name="hreason">Свойство reason</a></h4>
+
+<pre class="syntax"><strong><a name="preason">Синтаксис</a></strong>:  <em>событие</em>.reason
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>reason</strong>
+возвращает код результата обмена даными с источником данных: 0 - обмен
+завершился успешно, 1 - обмен был прерван, 2 - обмен завершился из-за
+ошибки. Оно формируется только событиями, связанными с передачей данных.</p>
+
+      <h4><a name="hrecordset">Свойство recordset</a></h4>
+
+<pre class="syntax"><strong><a name="precordset">Синтаксис</a></strong>:  <em>событие</em>.recordset
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>recordset</strong> задает или возвращает объект, который является текущим набором записей в источнике данных.
+        Оно формируется только событиями, связанными с передачей данных.</p>
+
+      <h4><a name="hrepeat">Свойство repeat</a></h4>
+
+<pre class="syntax"><strong><a name="prepeat">Синтаксис</a></strong>:  <em>событие</em>.repeat
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Это свойство имеет смысл только для события <strong><a href="#ekeydown">onkeydown</a></strong>. Оно равно <strong>true</strong> до тех пор, пока
+        пользователь держит клавишу нажатой, и сбрасывается в <strong>false</strong> при отпускании клавиши.</p>
+
+      <h4><a name="hreturnvalue">Свойство returnValue</a></h4>
+
+<pre class="syntax"><strong><a name="preturnvalue">Синтаксис</a></strong>:  <em>событие</em>.returnValue
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>returnValue</strong> по умолчанию равно <strong>true</strong>. Сброс его в <strong>false</strong>
+        запрещает типовую обработку данного события, принятую по умолчанию. В следующем примере щелчок мыши на ссылке выводит
+        адрес этой ссылки вместо перехода по ней (действие, принятое по умолчанию).</p>
+
+      <div class="code">
+<pre class="code">&lt;SCRIPT&gt;
+function showLink() {
+  if (event.srcElement.tagName == "A") {
+    event.returnValue = false;
+    alert(event.srcElement.href);
+  }
+}
+&lt;/SCRIPT&gt;
+&lt;A onclick="showLink()" href="http://wdh.suncloud.ru/"&gt;WDH&lt;/A&gt;</pre>
+      </div>
+
+      <h4><a name="hscreenx">Свойство screenX</a></h4>
+
+<pre class="syntax"><strong><a name="pscreenx">Синтаксис</a></strong>:  <em>событие</em>.screenX
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>screenX</strong> возвращает горизонтальную позицию курсора мыши 
+        относительно экрана.</p>
+
+      <h4><a name="hscreeny">Свойство screenY</a></h4>
+
+<pre class="syntax"><strong><a name="pscreeny">Синтаксис</a></strong>:  <em>событие</em>.screenY
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>screenY</strong> возвращает вертикальную позицию курсора мыши 
+        относительно экрана.</p>
+
+      <h4><a name="hshiftkey">Свойство shiftKey</a></h4>
+
+<pre class="syntax"><strong><a name="pshiftkey">Синтаксис</a></strong>:  <em>событие</em>.shiftKey
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>shiftKey</strong> возвращает <strong>true</strong>, если в момент генерации события была нажата клавиша Shift, и <strong>false</strong> в противном случае.</p>
+
+      <h4><a name="hshiftleft">Свойство shiftLeft</a></h4>
+
+<pre class="syntax"><strong><a name="pshiftleft">Синтаксис</a></strong>:  <em>событие</em>.shiftLeft
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>shiftKey</strong> возвращает <strong>true</strong>, если в момент генерации события была нажата левая клавиша Shift, и <strong>false</strong>
+в противном случае. Это свойство поддерживается только в Windows NT 4.0
+и Windows 2000. Если документ не имеет фокуса, то всегда возвращается <strong>false</strong>.</p>
+
+      <h4><a name="hsrcelement">Свойство srcElement</a></h4>
+
+<pre class="syntax"><strong><a name="psrcelement">Синтаксис</a></strong>:  <em>событие</em>.srcElement
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>srcElement</strong> возвращает или задает цель события, т.&nbsp;е. указатель на элемент, сгенерировавший данное событие.
+        В следующем примере щелчок мыши на любом элементе приведет к выводу на экран имени тега этого элемента:</p>
+
+      <div class="code">
+<pre class="code">&lt;BODY onclick="alert(event.srcElement.tagName)"&gt;
+  . . .
+&lt;/BODY&gt;</pre>
+      </div>
+
+      <h4><a name="hsrcfilter">Свойство srcFilter</a></h4>
+
+<pre class="syntax"><strong><a name="psrcfilter">Синтаксис</a></strong>:  <em>событие</em>.srcFilter
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>srcFilter</strong> возвращает или задает указатель на фильтр, сгенерировавший данное событие.
+        Оно имеет смысл только для события <strong><a href="#efilterchange">onfilterchange</a></strong>.</p>
+
+      <h4><a name="hsrcurn">Свойство srcUrn</a></h4>
+
+<pre class="syntax"><strong><a name="psrcurn">Синтаксис</a></strong>:  <em>событие</em>.srcUrn
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>srcUrn</strong> возвращает или задает имя ресурса (URN) для реакции (behavior), сгенерировавший данное событие.
+        Оно не равно <strong>null</strong> только в том случае, когда цель события имеет присоединенную реакцию, эта реакция
+        имеет URN и именно она породила данное событие.</p>
+
+      <h4><a name="htoelement">Свойство toElement</a></h4>
+
+<pre class="syntax"><strong><a name="ptoelement">Синтаксис</a></strong>:  <em>событие</em>.toElement
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Это свойство имеет смысл только для событий <strong><a href="#emouseover">onmouseover</a></strong> и <strong><a href="#emouseout">onmouseout</a></strong>.
+        Его значением является указатель на объект, на который попал курсор мыши в момент генерации события.
+        Следующий пример выводит сообщение при попадании курсора мыши на заданный абзац.</p>
+
+      <div class="code">
+<pre class="code">&lt;SCRIPT&gt;
+function testMouse(obj) {
+  if (obj.contains(event.toElement)) alert("Приехали!");
+}
+&lt;/SCRIPT&gt;
+&lt;P onmouseover="testMouse(this)"&gt;Наведите мышку.&lt;/P&gt;</pre>
+      </div>
+
+      <h4><a name="htype">Свойство type</a></h4>
+
+<pre class="syntax"><strong><a name="ptype">Синтаксис</a></strong>:  <em>событие</em>.type
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>type</strong> возвращает или задает тип данного события. Тип события&nbsp;—
+        это имя события без префикса <strong>on</strong>, например для события <strong><a href="#eclick">onclick</a></strong> эта строка равна "click".</p>
+
+      <h4><a name="hx">Свойство x</a></h4>
+
+<pre class="syntax"><strong><a name="px">Синтаксис</a></strong>:  <em>событие</em>.x
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>x</strong> возвращает горизонтальную позицию курсора мыши 
+        относительно отца цели события в пикселях. Если мышь находилась за пределами окна в момент
+        генерации события, то это свойство равно -1. Если цель события абсолютно позиционирована и
+        не является потомком абсолютно позиционированного элемента или событие сгенерировано мышью, то
+        возвращается позиция курсора мыши относительно элемента <strong>BODY</strong>.</p>
+
+      <h4><a name="hy">Свойство y</a></h4>
+
+<pre class="syntax"><strong><a name="py">Синтаксис</a></strong>:  <em>событие</em>.y
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <strong>y</strong> возвращает вертикальную позицию курсора мыши 
+        относительно отца цели события в пикселях. Если мышь находилась за пределами окна в момент
+        генерации события, то это свойство равно -1. Если цель события абсолютно позиционирована и
+        не является потомком абсолютно позиционированного элемента или событие сгенерировано мышью, то
+        возвращается позиция курсора мыши относительно элемента <strong>BODY</strong>.</p>
+
+      <h3><a name="ref4124">4.12.4. Классификация событий</a></h3>
+
+      <p>Internet Explorer поддерживает богатый набор разнообразных нестандартных событий. Ниже приводится
+        полный перечень событий, генерируемых этим обозревателем, разбитый на функциональные группы.</p>
+
+      <h4><a name="ref41241">4.12.4.1. События пользовательского интерфейса</a></h4>
+
+      <dl>
+        <dt><strong><a name="eactivate">activate</a></strong></dt>
+        <dd>Это событие генерируется, когда элемент становится активным, т.&nbsp;е. получает фокус.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="ebeforedeactivate">beforedeactivate</a></strong></dt>
+        <dd>Это событие генерируется перед тем, как элемент перестанет быть активным, т.&nbsp;е. потеряет фокус.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>true</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="ebeforeeditfocus">beforeeditfocus</a></strong></dt>
+        <dd>Это событие генерируется перед началом редактирования элемента. Оно возможно только для тех элементов,
+          которые могут иметь нестандартный атрибут <strong>contentEditable</strong>, равный "true".
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>true</strong>;</li>
+            <li>по умолчанию: переводит объект в режим редактирования;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="econtrolselect">controlselect</a></strong></dt>
+        <dd>Это событие генерируется перед тем как будет выбран элемент, допускающий изменение размеров.
+        Оно возможно только для тех элементов, которые могут иметь нестандартный атрибут <strong>contentEditable</strong>, равный "true".
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>true</strong>;</li>
+            <li>по умолчанию: появляются стрелки изменения размеров объекта;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="edeactivate">deactivate</a></strong></dt>
+        <dd>Это событие генерируется, когда элемент перестает быть активным, т.&nbsp;е. теряет фокус.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="eresizeend">resizeend</a></strong></dt>
+        <dd>Это событие происходит при завершении изменения размеров объекта.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>false</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="eresizestart">resizestart</a></strong></dt>
+        <dd>Это событие происходит при начале изменения размеров объекта.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>false</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+      </dl>
+
+      <h4><a name="ref41242">4.12.4.2. События мыши</a></h4>
+
+      <dl>
+        <dt><strong><a name="eclick">click</a></strong></dt>
+        <dd>Это событие генерируется при щелчке левой кнопкой мыши на элементе.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>true</strong>;</li>
+            <li>по умолчанию: зависит от цели события;</li>
+            <li>контекст: <tt>screenX</tt>, <tt>screenY</tt>, <tt>clientX</tt>, <tt>clientY</tt>, <tt>offsetX</tt>, <tt>offsetY</tt>, <tt>x</tt>, <tt>y</tt>, <tt>altKey</tt>, <tt>ctrlKey</tt>, <tt>shiftKey</tt>, <tt>button</tt>.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="econtextmenu">contextmenu</a></strong></dt>
+        <dd>Это событие генерируется при щелчке правой кнопкой мыши в клиентской области экрана.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>true</strong>;</li>
+            <li>по умолчанию: выводит на экран контекстно-зависимое меню;</li>
+            <li>контекст: <tt>screenX</tt>, <tt>screenY</tt>, <tt>clientX</tt>, <tt>clientY</tt>, <tt>offsetX</tt>, <tt>offsetY</tt>, <tt>x</tt>, <tt>y</tt>, <tt>altKey</tt>, <tt>ctrlKey</tt>, <tt>shiftKey</tt>, <tt>button</tt>.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="edblclick">dblclick</a></strong></dt>
+        <dd>Это событие генерируется при двойном щелчке левой кнопкой мыши на элементе.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>true</strong>;</li>
+            <li>по умолчанию: зависит от цели события;</li>
+            <li>контекст: <tt>screenX</tt>, <tt>screenY</tt>, <tt>clientX</tt>, <tt>clientY</tt>, <tt>offsetX</tt>, <tt>offsetY</tt>, <tt>x</tt>, <tt>y</tt>, <tt>altKey</tt>, <tt>ctrlKey</tt>, <tt>shiftKey</tt>, <tt>button</tt>.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="emousedown">mousedown</a></strong></dt>
+        <dd>Это событие генерируется при нажатии кнопки мыши на элементе.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>true</strong>;</li>
+            <li>контекст: <tt>screenX</tt>, <tt>screenY</tt>, <tt>clientX</tt>, <tt>clientY</tt>, <tt>offsetX</tt>, <tt>offsetY</tt>, <tt>x</tt>, <tt>y</tt>, <tt>altKey</tt>, <tt>ctrlKey</tt>, <tt>shiftKey</tt>, <tt>button</tt>.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="emouseenter">mouseenter</a></strong></dt>
+        <dd>Это событие генерируется при попадании курсора мыши на элемент.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>false</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: <tt>screenX</tt></li></ul></dd></dl></td></tr></tbody></table></body></html>

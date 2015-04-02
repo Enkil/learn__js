@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+
+<p>Щелкни по кнопке.</p>
+
+<button onclick="myFunction()">Кнопка</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction()
+{
+var x="";
+var time=new Date().getHours();
+if (time<10)
+  {
+  x="Доброе утро";
+  }
+else if (time<20)
+  {
+  x="Добрый день";
+  }
+else
+  {
+  x="Добрый вечер";
+  }
+document.getElementById("demo").innerHTML=x;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1391 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: JavaScript - Исполняющая система JScript (продолжение)</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/js14.htm" title="Исполняющая система JScript">
+<link rel="Next" href="http://wdh.suncloud.ru/dhtml01.htm" title="Введение в Dynamic HTML">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="3.15.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/load.js"></script>
+<script type="text/javascript" src="3.15.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/link.js"></script><link rel="stylesheet" type="text/css" href="3.15.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js14.htm"><img name="imglefta" src="3.15.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/nnleft.gif" alt="" title="Исполняющая система JScript" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="3.15.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml01.htm"><img name="imgrighta" src="3.15.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/nnright.gif" alt="" title="Введение в Dynamic HTML" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=5300" target="_blank"><img src="3.15.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref315">Глава 3.15. Исполняющая система JScript (продолжение)</a></h2>
+
+      <h3><a name="ref3151">3.15.1. Диски: объект Drive</a></h3>
+
+      <p>Объект <strong>Drive</strong> обеспечивает доступ к отдельному диску компьютера. Он может быть
+        создан методом <strong><a href="http://wdh.suncloud.ru/js14.htm#mgetdrive">FileSystemObject.GetDrive</a></strong> или
+        получен при итерации коллекции <strong><a href="http://wdh.suncloud.ru/js14.htm#pdrives">FileSystemObject.Drives</a></strong>.
+        Собственных методов этот объект не имеет.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства объекта Drive</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pavailablespace">AvailableSpace</a></tt></td>
+            <td>Объем доступного пространства на диске.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pdriveletter">DriveLetter</a></tt></td>
+            <td>Буква диска.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pdrivetype">DriveType</a></tt></td>
+            <td>Тип диска.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfilesystem">FileSystem</a></tt></td>
+            <td>Тип файловой системы.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfreespace">FreeSpace</a></tt></td>
+            <td>Объем свободного пространства на диске.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pisready">IsReady</a></tt></td>
+            <td>Готовность диска.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ppath">Path</a></tt></td>
+            <td>Путь доступа к диску.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#prootfolder">RootFolder</a></tt></td>
+            <td>Корневая папка диска.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pserialnumber">SerialNumber</a></tt></td>
+            <td>Серийный номер диска.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#psharename">ShareName</a></tt></td>
+            <td>Сетевое имя диска.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ptotalsize">TotalSize</a></tt></td>
+            <td>Общий объем диска.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pvolumename">VolumeName</a></tt></td>
+            <td>Метка тома.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="havailablespace">Свойство AvailableSpace</a></h4>
+
+<pre class="syntax"><strong><a name="pavailablespace">Синтаксис</a></strong>: <em>объект</em>.AvailableSpace
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>AvailableSpace</strong> возвращает объем дискового пространства, доступного
+        для пользователя, в байтах. Обычно его значение совпадает со значением свойства <a href="#pfreespace"><strong>FreeSpace</strong></a>;
+        исключение составляют такие файловые системы, как NTFS 5.0, поддерживающие дисковые квоты пользователей.
+        Следующий пример возвращает объем доступного пространства на диске C в килобайтах:</p>
+
+      <div class="code">
+<pre class="code">function AvailSpace() {
+  var fso = new ActiveXObject("Scripting.FileSystemObject");
+  var d = fso.GetDrive("C");
+  return d.AvailableSpace / 1024;
+}</pre>
+      </div>
+
+      <h4><a name="hdriveletter">Свойство DriveLetter</a></h4>
+
+<pre class="syntax"><strong><a name="pdriveletter">Синтаксис</a></strong>: <em>объект</em>.DriveLetter
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>DriveLetter</strong> возвращает букву, идентифицирующую данный диск. Если
+        диск является сетевым и не отображен на логический диск, то возвращается пустая строка. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var d = fso.GetDrive("C");
+var x = d.DriveLetter;	// x равно "C"</pre>
+      </div>
+
+      <h4><a name="hdrivetype">Свойство DriveType</a></h4>
+
+<pre class="syntax"><strong><a name="pdrivetype">Синтаксис</a></strong>: <em>объект</em>.DriveType
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>DriveType</strong> возвращает тип диска согласно следующей таблицы:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <td>0</td>
+            <td>Неизвестное устройство.</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Дисковод со сменными дисками.</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Жесткий диск.</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Сетевой диск.</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Компакт диск.</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Виртуальный диск в ОЗУ.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Пример использования этого свойства был приведен <a href="http://wdh.suncloud.ru/js13.htm#ref3132">ранее</a>.</p>
+
+      <h4><a name="hfilesystem">Свойство FileSystem</a></h4>
+
+<pre class="syntax"><strong><a name="pfilesystem">Синтаксис</a></strong>: <em>объект</em>.FileSystem
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>FileSystem</strong> возвращает тип файловой системы диска согласно следующей
+        таблицы:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <td>"FAT"</td>
+            <td>Файловая система MS-DOS и Windows 95/98.</td>
+          </tr>
+          <tr>
+            <td>"NTFS"</td>
+            <td>Файловая система Windows NT.</td>
+          </tr>
+          <tr>
+            <td>"CDFS"</td>
+            <td>Файловая система компакт-дисков.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var d = fso.GetDrive("C");
+var s = d.FileSystem;</pre>
+      </div>
+
+      <h4><a name="hfreespace">Свойство FreeSpace</a></h4>
+
+<pre class="syntax"><strong><a name="pfreespace">Синтаксис</a></strong>: <em>объект</em>.FreeSpace
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>FreeSpace</strong> возвращает объем свободного дискового пространства в байтах.
+        Обычно его значение совпадает со значением свойства <a href="#pavailablespace"><strong>AvailableSpace</strong></a>;
+        исключение составляют такие файловые системы, как NTFS 5.0, поддерживающие дисковые квоты пользователей.
+        Следующий пример возвращает объем свободного пространства на диске C в килобайтах:</p>
+
+      <div class="code">
+<pre class="code">function AvailSpace() {
+  var fso = new ActiveXObject("Scripting.FileSystemObject");
+  var d = fso.GetDrive("C");
+  return d.FreeSpace / 1024;
+}</pre>
+      </div>
+
+      <h4><a name="hisready">Свойство IsReady</a></h4>
+
+<pre class="syntax"><strong><a name="pisready">Синтаксис</a></strong>: <em>объект</em>.IsReady
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>IsReady</strong> возвращает <strong>true</strong>, если в дисководе есть диск,
+        и <strong>false</strong> в противном случае. Оно имеет смысл только для дисководов со сменными
+        дисками и компакт-дисков. Пример использования этого свойства был приведен <a href="http://wdh.suncloud.ru/js13.htm#ref3132">ранее</a>.</p>
+
+      <h4><a name="hpath">Свойство Path</a></h4>
+
+<pre class="syntax"><strong><a name="ppath">Синтаксис</a></strong>: <em>объект</em>.Path
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>Path</strong> возвращает путь, соответствующий данному диску в виде строки
+        "X:", где X&nbsp;— буква, обозначающая данный диск. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var d = fso.GetDrive("C");
+var s = d.Path;	// s равно "C:"</pre>
+      </div>
+
+      <h4><a name="hrootfolder">Свойство RootFolder</a></h4>
+
+<pre class="syntax"><strong><a name="prootfolder">Синтаксис</a></strong>: <em>объект</em>.RootFolder
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>RootFolder</strong> возвращает объект <strong><a href="#ref3153">Folder</a></strong>,
+        соответствующий корневой папке данного диска.</p>
+
+      <h4><a name="hserialnumber">Свойство SerialNumber</a></h4>
+
+<pre class="syntax"><strong><a name="pserialnumber">Синтаксис</a></strong>: <em>объект</em>.SerialNumber
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>SerialNumber</strong> возвращает десятичный серийный номер данного диска.
+        Это свойство позволяет проверить, правильный ли диск вставлен в дисковод. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var d = fso.GetDrive("A");
+var n = 959814235;	// серийный номер диска, который должен быть в дисководе A
+if (d.SerialNumber == n)
+   …</pre>
+      </div>
+
+      <h4><a name="hsharename">Свойство ShareName</a></h4>
+
+<pre class="syntax"><strong><a name="psharename">Синтаксис</a></strong>: <em>объект</em>.ShareName
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>ShareName</strong> возвращает сетевое имя данного диска. Если диск не является
+        сетевым, то возвращается пустая строка. Пример использования этого свойства был приведен <a href="http://wdh.suncloud.ru/js13.htm#ref3132">ранее</a>.</p>
+
+      <h4><a name="htotalsize">Свойство TotalSize</a></h4>
+
+<pre class="syntax"><strong><a name="ptotalsize">Синтаксис</a></strong>: <em>объект</em>.TotalSize
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>TotalSize</strong> возвращает полный объем данного диска в байтах. Следующий
+        пример возвращает объем диска C в килобайтах:</p>
+
+      <div class="code">
+<pre class="code">function AvailSpace() {
+  var fso = new ActiveXObject("Scripting.FileSystemObject");
+  var d = fso.GetDrive("C");
+  return d.TotalSize / 1024;
+}</pre>
+      </div>
+
+      <h4><a name="hvolumename">Свойство VolumeName</a></h4>
+
+<pre class="syntax"><strong><a name="pvolumename">Синтаксис</a></strong>: <em>объект</em>.VoulmeName
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a> }</pre>
+
+      <p>Свойство <strong>VolumeName</strong> возвращает или устанавливает метку тома для данного диска.
+        Это единственное свойство объекта <strong>Drive</strong>, доступное для изменения сценарием.
+        Пример использования этого свойства был приведен <a href="http://wdh.suncloud.ru/js13.htm#ref3132">ранее</a>.</p>
+
+      <h3><a name="ref3152">3.15.2. Файлы: объект File</a></h3>
+
+      <p>Объект <strong>File</strong> обеспечивает доступ к отдельному файлу. Он может быть создан методом
+        <strong><a href="http://wdh.suncloud.ru/js14.htm#mgetfile">FileSystemObject.GetFile</a></strong> или получен при просмотре
+        коллекции <strong><a href="#pfiles">Folder.Files</a></strong>.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства объекта File</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfile-attributes">Attributes</a></tt></td>
+            <td>Атрибуты файла.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfile-datecreated">DateCreated</a></tt></td>
+            <td>Дата и время создания файла.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfile-datelastaccessed">DateLastAccessed</a></tt></td>
+            <td>Дата и время последнего обращения к файлу.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfile-datelastmodified">DateLastModified</a></tt></td>
+            <td>Дата и время последнего изменения файла.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfile-drive">Drive</a></tt></td>
+            <td>Буква диска, на котором находится файл.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfile-name">Name</a></tt></td>
+            <td>Имя файла.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfile-parentfolder">ParentFolder</a></tt></td>
+            <td>Объект <strong><a href="#ref3153">Folder</a></strong> папки, в которой находится файл.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfile-path">Path</a></tt></td>
+            <td>Путь доступа к файлу.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfile-shortname">ShortName</a></tt></td>
+            <td>Короткое имя файла.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfile-shortpath">ShortPath</a></tt></td>
+            <td>Короткое имя пути доступа к файлу.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfile-size">Size</a></tt></td>
+            <td>Размер файла.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfile-type">Type</a></tt></td>
+            <td>Тип файла.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы объекта File</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#mfile-copy">Copy</a></tt></td>
+            <td>Копирует файл.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mfile-delete">Delete</a></tt></td>
+            <td>Удаляет файл.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mfile-move">Move</a></tt></td>
+            <td>Перемещает файл.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mopenastextstream">OpenAsTextStream</a></tt></td>
+            <td>Открывает файл как текстовый.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hattributes">Свойство Attributes</a></h4>
+
+<pre class="syntax"><strong><a name="pfile-attributes">Синтаксис</a></strong>: <em>объект</em>.Attributes
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a> }</pre>
+
+      <p>Свойство <strong>Attributes</strong> позволяет читать атрибуты данного файла и изменять некоторые
+        из них. Его значением является логическая комбинация следующих битовых флагов:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Бит</th>
+            <th>Атрибут</th>
+            <th>Можно изменять</th>
+          </tr>
+          <tr>
+            <td align="right">0</td>
+            <td>Обычный файл (все атрибуты сброшены).</td>
+            <td align="center">—</td>
+          </tr>
+          <tr>
+            <td align="right">1</td>
+            <td>Файл только для чтения.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td align="right">2</td>
+            <td>Скрытый файл.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td align="right">4</td>
+            <td>Системный файл.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td align="right">8</td>
+            <td>Метка дискового тома.</td>
+            <td align="center">Нет</td>
+          </tr>
+          <tr>
+            <td align="right">16</td>
+            <td>Папка или каталог.</td>
+            <td align="center">Нет</td>
+          </tr>
+          <tr>
+            <td align="right">32</td>
+            <td>Файл был изменен после архивирования.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td align="right">64</td>
+            <td>Ссылка или сокращение.</td>
+            <td align="center">Нет</td>
+          </tr>
+          <tr>
+            <td align="right">128</td>
+            <td>Сжатый файл.</td>
+            <td align="center">Нет</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Следующий пример показывает, как сбросить атрибут файла "только для чтения":</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFile("c:\\test.txt");
+f.Attributes = f.Attributes - 1;</pre>
+      </div>
+
+      <h4><a name="hdatecreated">Свойство DateCreated</a></h4>
+
+<pre class="syntax"><strong><a name="pfile-datecreated">Синтаксис</a></strong>: <em>объект</em>.DateCreated
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>DateCreated</strong> возвращает дату и время создания данного файла. Пример:
+        следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFile("c:\\config.sys");
+document.write(f.DateCreated);</pre>
+      </div>
+
+      <p style="">выведет на экран обозревателя текст следующего вида: <samp>Fri Jul 7
+        01:04:53 UTC+0600 2000</samp>.</p>
+
+      <p class="note"><strong>Примечание</strong>. Значение этого свойства имеет нестандартный тип VT_DATE
+        стандарта COM. При присваивании строковой переменной оно автоматически преобразуется в строку
+        указанного вида.</p>
+
+      <h4><a name="hdatelastaccessed">Свойство DateLastAccessed</a></h4>
+
+<pre class="syntax"><strong><a name="pfile-datelastaccessed">Синтаксис</a></strong>: <em>объект</em>.DateLastAccessed
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>DateLastAccessed</strong> возвращает дату и время последнего открытия данного
+        файла для чтения. Пример: следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFile("c:\\config.sys");
+document.write(f.DateLastAccessed);</pre>
+      </div>
+
+      <p style="">выведет на экран обозревателя текст следующего вида: <samp>Fri Jul 7
+        01:04:53 UTC+0600 2000</samp>.</p>
+
+      <p class="note"><strong>Примечание</strong>. Значение этого свойства имеет нестандартный тип VT_DATE
+        стандарта COM. При присваивании строковой переменной оно автоматически преобразуется в строку
+        указанного вида.</p>
+
+      <h4><a name="hdatelastmodified">Свойство DateLastModified</a></h4>
+
+<pre class="syntax"><strong><a name="pfile-datelastmodified">Синтаксис</a></strong>: <em>объект</em>.DateLastModified
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>DateLastModified</strong> возвращает дату и время последней модификации данного
+        файла. Пример: следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFile("c:\\config.sys");
+document.write(f.DateLastModified);</pre>
+      </div>
+
+      <p style="">выведет на экран обозревателя текст следующего вида: <samp>Fri Jul 7
+        01:04:53 UTC+0600 2000</samp>.</p>
+
+      <p class="note"><strong>Примечание</strong>. Значение этого свойства имеет нестандартный тип VT_DATE
+        стандарта COM. При присваивании строковой переменной оно автоматически преобразуется в строку
+        указанного вида.</p>
+
+      <h4><a name="hfile-drive">Свойство Drive</a></h4>
+
+<pre class="syntax"><strong><a name="pfile-drive">Синтаксис</a></strong>: <em>объект</em>.Drive
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>Drive</strong> возвращает букву, идентифицирующую диск, на котором находится
+        данный файл. Если диск является сетевым и не отображен на логический диск, то возвращается пустая
+        строка. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFile("c:\\config.sys");
+var x = f.Drive;	// x равно "C"</pre>
+      </div>
+
+      <h4><a name="hfile-name">Свойство Name</a></h4>
+
+<pre class="syntax"><strong><a name="pfile-name">Синтаксис</a></strong>: <em>объект</em>.Name
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a> }</pre>
+
+      <p>Свойство <strong>Name</strong> позволяет читать и изменять имя данного файла. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFile("c:\\config.sys");
+var x = f.Name;	// x равно "CONFIG.SYS"</pre>
+      </div>
+
+      <h4><a name="hfile-parentfolder">Свойство ParentFolder</a></h4>
+
+<pre class="syntax"><strong><a name="pfile-parentfolder">Синтаксис</a></strong>: <em>fso</em>.ParentFolder
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Метод <strong>ParentFolder</strong> возвращает объект <strong><a href="#ref3153">Folder</a></strong>,
+        соответствующий папке, содержащей данный файл.Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFile("c:\\config.sys");
+var p = f.ParentFolder;
+var x = p.Path;	// x равно "C:\\"
+</pre>
+      </div>
+
+      <h4><a name="hfile-path">Свойство Path</a></h4>
+
+<pre class="syntax"><strong><a name="pfile-path">Синтаксис</a></strong>: <em>объект</em>.Path
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>Path</strong> возвращает путь доступа к данному файлу. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFile("c:\\config.sys");
+var x = f.Path;	// x равно "C:\\CONFIG.SYS"</pre>
+      </div>
+
+      <h4><a name="hfile-shortname">Свойство ShortName</a></h4>
+
+<pre class="syntax"><strong><a name="pfile-shortname">Синтаксис</a></strong>: <em>объект</em>.ShortName
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>ShortName</strong> возвращает имя данного файла в нотации MS-DOS (8 символов
+        на имя файла и 3 символа на расширение). Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFile("C:\\Multimedia Files\\Graphics\\Animations\\Airpane.gif");
+var x = f.ShortName;	// x равно "AIRPLANE.GIF"</pre>
+      </div>
+
+      <h4><a name="hfile-shortpath">Свойство ShortPath</a></h4>
+
+<pre class="syntax"><strong><a name="pfile-shortpath">Синтаксис</a></strong>: <em>объект</em>.ShortPath
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>ShortPath</strong> возвращает путь доступа к данному файлу в нотации MS-DOS
+        (8 символов на имя файла и 3 символа на расширение). Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFile("C:\\Multimedia Files\\Graphics\\Animations\\Airpane.gif");
+var x = f.ShortPath;	// x равно "C:\\MULTIM~1\\GRAPHICS\\ANIMAT~1\\AIRPLANE.GIF"</pre>
+      </div>
+
+      <h4><a name="hfile-size">Свойство Size</a></h4>
+
+<pre class="syntax"><strong><a name="pfile-size">Синтаксис</a></strong>: <em>объект</em>.Size
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>Size</strong> возвращает размер данного файла в байтах. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFile("c:\\config.sys");
+var x = f.Size;</pre>
+      </div>
+
+      <h4><a name="hfile-type">Свойство Type</a></h4>
+
+<pre class="syntax"><strong><a name="pfile-type">Синтаксис</a></strong>: <em>объект</em>.Type
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>Type</strong> возвращает тип данного файла. Тип файла&nbsp;— это текстовая
+        строка, соответствующая расширению файла и хранящаяся в системном реестре. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFile("C:\\Multimedia Files\\Graphics\\Animations\\Airpane.gif");
+var x = f.Type;	// x равно "GIF Image"</pre>
+      </div>
+
+      <h4><a name="hfile-copy">Метод Copy</a></h4>
+
+<pre class="syntax"><strong><a name="mfile-copy">Синтаксис</a></strong>: <em>объект</em>.Copy(<em>цель</em> [, <em>флаг</em>]?)
+<strong>Аргументы</strong>: <em>цель</em>&nbsp;— строковое выражение
+           <em>флаг</em>&nbsp;— логическое значение</pre>
+
+      <p>Метод <strong>Copy</strong> копирует данный файл. Строка <em>цель</em> задает имя результирующего
+        файла или папки, а необязательный аргумент <em>флаг</em> указывает, следует ли заменять при
+        копировании существующие файлы (по умолчанию он равен <strong>true</strong>, т.&nbsp;е. существующие
+        файлы заменяются).</p>
+
+      <p>Если <em>цель</em> заканчивается символом "<tt>\</tt>", то <em>цель</em> считается
+        именем папки, в которую копируются исходный файл. В остальных случаях <em>цель</em> считается
+        именем результирующего файла. Сам процесс копирования происходит так:</p>
+
+      <ul>
+        <li>если файла с именем <em>цель</em> нет, то производится копирование файла;</li>
+        <li>если файл <em>цель</em> существует и <em>флаг</em> равен <strong>false</strong>, то метод
+          завершается ошибкой, иначе делается попытка копирования <em>источника</em> поверх <em>цели</em>;
+          при этом независимо от значения <em>флага</em>, попытка замены существующего файла с атрибутом
+          "только для чтения" завершается ошибкой;</li>
+        <li>если <em>цель</em> является каталогом, то метод завершается ошибкой.</li>
+      </ul>
+
+      <p>Пример: следующий сценарий копирует файл CONFIS.SYS в папку d:\Temp.</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFile("c:\\config.sys");
+f.Copy("d:\\Temp");</pre>
+      </div>
+
+      <p>Ср. метод <a href="http://wdh.suncloud.ru/js14.htm#mcopyfile"><strong>FileSystemObject.CopyFile</strong></a>.</p>
+
+      <h4><a name="hfile-delete">Метод Delete</a></h4>
+
+<pre class="syntax"><strong><a name="mfile-delete">Синтаксис</a></strong>: <em>объект</em>.Delete(<em>флаг</em>?)
+<strong>Аргументы</strong>: <em>флаг</em>&nbsp;— логическое выражение</pre>
+
+      <p>Метод <strong>Delete</strong> удаляет данный файл. При этом необязательный аргумент <em>флаг</em>
+        указывает, следует ли удалять файл, имеющий атрибут "только для чтения" (по умолчанию
+        он равен <strong>false</strong>, т.&nbsp;е. такие файлы не удаляются). Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFile("C:\\Multimedia Files\\Graphics\\Animations\\Airpane.gif");
+f.Delete(true);</pre>
+      </div>
+
+      <p>Ср. метод <a href="http://wdh.suncloud.ru/js14.htm#mdeletefile"><strong>FileSystemObject.DeleteFile</strong></a>.</p>
+
+      <h4><a name="hfile-move">Метод Move</a></h4>
+
+<pre class="syntax"><strong><a name="mfile-move">Синтаксис</a></strong>: <em>объект</em>.Move(<em>цель</em>)
+<strong>Аргументы</strong>: <em>цель</em>&nbsp;— строковое выражение</pre>
+
+      <p>Метод <strong>Move</strong> перемещает данный файл в другое место. При этом строка <em>цель</em>
+        задает имя результирующего файла или папки.</p>
+
+      <p>Если <em>цель</em> заканчивается символом "<tt>\</tt>", то <em>цель</em> считается
+        именем папки, в которую перемещается исходный файл. В остальных случаях <em>цель</em> считается
+        именем результирующего файла. Сам процесс перемещения происходит так:</p>
+
+      <ul>
+        <li>если файла с именем <em>цель</em> нет, то производится перемещение файла;</li>
+        <li>если файл <em>цель</em> существует, то метод завершается ошибкой;</li>
+        <li>если <em>цель</em> является каталогом, то метод завершается ошибкой.</li>
+      </ul>
+
+      <p>Пример: следующий сценарий перемещает файл CONFIS.SYS в папку d:\Temp (но делать этого не нужно!).</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFile("c:\\config.sys");
+f.Move("d:\\Temp");</pre>
+      </div>
+
+      <p>Ср. метод <a href="http://wdh.suncloud.ru/js14.htm#mmovefile"><strong>FileSystemObject.MoveFile</strong></a>.</p>
+
+      <h4><a name="hopenastextstream">Метод OpenAsTextStream</a></h4>
+
+<pre class="syntax"><strong><a name="mopenastextstream">Синтаксис</a></strong>: <em>объект</em>.OpenAsTextStream(<em>режим</em>? [, <em>формат</em>]?)
+<strong>Аргументы</strong>: <em>режим</em>, <em>формат</em>&nbsp;— числовые выражения
+<strong>Результат</strong>: новый объект <strong><a href="#ref3154">TextStream</a></strong></pre>
+
+      <p>Метод <strong>OpenTextFile</strong> открывает данный файл как текстовый. Он полностью аналогичен
+        методу <strong><a href="http://wdh.suncloud.ru/js14.htm#mopentextfile">FileSystemObject.OpenTextFile</a></strong>.</p>
+
+      <h3><a name="ref3153">3.15.3. Папки: объект Folder</a></h3>
+
+      <p>Объект <strong>Folder</strong> обеспечивает доступ к отдельному папке. Он может быть создан
+        методом <strong><a href="http://wdh.suncloud.ru/js14.htm#mgetfolder">FileSystemObject.GetFolder</a></strong> или получен
+        чтением свойств <strong><a href="#prootfolder">Drive.RootFolder</a></strong> и <strong><a href="#pfile-parentfolder">File.ParentFolder</a></strong>.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства объекта Folder</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfolder-attributes">Attributes</a></tt></td>
+            <td>Атрибуты папки.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfolder-datecreated">DateCreated</a></tt></td>
+            <td>Дата и время создания папки.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfolder-datelastaccessed">DateLastAccessed</a></tt></td>
+            <td>Дата и время последнего обращения к папке.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfolder-datelastmodified">DateLastModified</a></tt></td>
+            <td>Дата и время последнего изменения папки.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfolder-drive">Drive</a></tt></td>
+            <td>Буква диска, на котором находится папка.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfiles">Files</a></tt></td>
+            <td>Коллекция файлов данной папки.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pisrootfolder">IsRootFolder</a></tt></td>
+            <td>Проверяет, является ли папка корневой.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfolder-name">Name</a></tt></td>
+            <td>Имя папки.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfolder-parentfolder">ParentFolder</a></tt></td>
+            <td>Объект <strong><a href="#ref3153">Folder</a></strong> папки, в которой находится папка.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfolder-path">Path</a></tt></td>
+            <td>Путь доступа к папке.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfolder-shortname">ShortName</a></tt></td>
+            <td>Короткое имя папки.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfolder-shortpath">ShortPath</a></tt></td>
+            <td>Короткое имя пути доступа к папке.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfolder-size">Size</a></tt></td>
+            <td>Размер папки с подпапками.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#psubfolders">SubFolders</a></tt></td>
+            <td>Коллекция подпапок данной папки.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfolder-type">Type</a></tt></td>
+            <td>Тип папки.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы объекта Folder</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#mfolder-copy">Copy</a></tt></td>
+            <td>Копирует папку.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mfolder-createtextfile">CreateTextFile</a></tt></td>
+            <td>Создает текстовый файл.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mfolder-delete">Delete</a></tt></td>
+            <td>Удаляет папку.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mfolder-move">Move</a></tt></td>
+            <td>Перемещает папку.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hfolder-attributes">Свойство Attributes</a></h4>
+
+<pre class="syntax"><strong><a name="pfolder-attributes">Синтаксис</a></strong>: <em>объект</em>.Attributes
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a> }</pre>
+
+      <p>Свойство <strong>Attributes</strong> позволяет читать атрибуты данной папки и изменять некоторые
+        из них. Полностью аналогично свойству <strong><a href="#pfile-attributes">File.Attributes</a></strong>.</p>
+
+      <h4><a name="hfolder-datecreated">Свойство DateCreated</a></h4>
+
+<pre class="syntax"><strong><a name="pfolder-datecreated">Синтаксис</a></strong>: <em>объект</em>.DateCreated
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>DateCreated</strong> возвращает дату и время создания данной папки. Пример:
+        следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFolder("c:\\Program Files");
+document.write(f.DateCreated);</pre>
+      </div>
+
+      <p style="">выведет на экран обозревателя текст следующего вида: <samp>Mon Jul 12
+        20:43:58 UTC+0600 1999</samp>.</p>
+
+      <p class="note"><strong>Примечание</strong>. Значение этого свойства имеет нестандартный тип VT_DATE
+        стандарта COM. При присваивании строковой переменной оно автоматически преобразуется в строку
+        указанного вида.</p>
+
+      <h4><a name="hfolder-datelastaccessed">Свойство DateLastAccessed</a></h4>
+
+<pre class="syntax"><strong><a name="pfolder-datelastaccessed">Синтаксис</a></strong>: <em>объект</em>.DateLastAccessed
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>DateLastAccessed</strong> возвращает дату и время последнего доступа к данной
+        папке. Пример: следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFolder("c:\\Program Files");
+document.write(f.DateLastAccessed);</pre>
+      </div>
+
+      <p style="">выведет на экран обозревателя текст следующего вида: <samp>Mon Jul 12
+        20:43:58 UTC+0600 1999</samp>.</p>
+
+      <p class="note"><strong>Примечание</strong>. Значение этого свойства имеет нестандартный тип VT_DATE
+        стандарта COM. При присваивании строковой переменной оно автоматически преобразуется в строку
+        указанного вида.</p>
+
+      <h4><a name="hfolder-datelastmodified">Свойство DateLastModified</a></h4>
+
+<pre class="syntax"><strong><a name="pfolder-datelastmodified">Синтаксис</a></strong>: <em>объект</em>.DateLastModified
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>DateLastModified</strong> возвращает дату и время последней модификации данной
+        папки. Пример: следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFolder("c:\\Program Files");
+document.write(f.DateLastModified);</pre>
+      </div>
+
+      <p style="">выведет на экран обозревателя текст следующего вида: <samp>Mon Jul 12
+        20:43:58 UTC+0600 1999</samp>.</p>
+
+      <p class="note"><strong>Примечание</strong>. Значение этого свойства имеет нестандартный тип VT_DATE
+        стандарта COM. При присваивании строковой переменной оно автоматически преобразуется в строку
+        указанного вида.</p>
+
+      <h4><a name="hfolder-drive">Свойство Drive</a></h4>
+
+<pre class="syntax"><strong><a name="pfolder-drive">Синтаксис</a></strong>: <em>объект</em>.Drive
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>Drive</strong> возвращает букву, идентифицирующую диск, на котором находится
+        данная папка. Если диск является сетевым и не отображен на логический диск, то возвращается
+        пустая строка. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFolder("c:\\Program Files");
+var x = f.Drive;	// x равно "C"</pre>
+      </div>
+
+      <h4><a name="hfiles">Свойство Files</a></h4>
+
+<pre class="syntax"><strong><a name="pfiles">Синтаксис</a></strong>: <em>объект</em>.Files
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>Files</strong> возвращает коллекцию объектов <strong><a href="#ref3152">File</a></strong>,
+        соответствующих всем файлам, содержащимся в данной папке, включая скрытые и системные файлы.
+        Для просмотра этой коллекции следует пользоваться объектом <a href="http://wdh.suncloud.ru/js13.htm#ref3132"><strong>Enumerator</strong></a>.</p>
+
+      <p>Пример: следующий сценарий выведет на экран список всех файлов корневого каталога диска C.</p>
+
+      <div class="code">
+<pre class="code">function ShowFileList(folderspec) {
+   var fso = new ActiveXObject("Scripting.FileSystemObject");
+   var f = fso.GetFolder(folderspec);
+   var fc = new Enumerator(f.Files);
+   var s = "";
+   for (; !fc.atEnd(); fc.moveNext())
+      s += fc.item() + "&lt;br&gt;";
+   return s;
+}
+
+document.write(ShowFileList("c:\\"));</pre>
+      </div>
+
+      <h4><a name="hisrootfolder">Свойство IsRootFolder</a></h4>
+
+<pre class="syntax"><strong><a name="pisrootfolder">Синтаксис</a></strong>: <em>объект</em>.IsRootFolder
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>IsRootFolder</strong> возвращает <strong>true</strong>, если данная папка
+        является корневой, и <strong>false</strong> в противном случае.</p>
+
+      <h4><a name="hfolder-name">Свойство Name</a></h4>
+
+<pre class="syntax"><strong><a name="pfolder-name">Синтаксис</a></strong>: <em>объект</em>.Name
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a> }</pre>
+
+      <p>Свойство <strong>Name</strong> позволяет читать и изменять имя данной папки. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFolder("c:\\Program Files");
+var x = f.Name;	// x равно "Program Files"</pre>
+      </div>
+
+      <h4><a name="hfolder-parentfolder">Свойство ParentFolder</a></h4>
+
+<pre class="syntax"><strong><a name="pfolder-parentfolder">Синтаксис</a></strong>: <em>fso</em>.ParentFolder
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Метод <strong>ParentFolder</strong> возвращает объект <strong><a href="#ref3153">Folder</a></strong>,
+        соответствующий папке, содержащей данную папку. Если папка является корневой, то возвращается
+        <strong>null</strong>. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFolder("c:\\Program Files");
+var p = f.ParentFolder;
+var x = p.Path;	// x равно "C:\\"
+</pre>
+      </div>
+
+      <h4><a name="hfolder-path">Свойство Path</a></h4>
+
+<pre class="syntax"><strong><a name="pfolder-path">Синтаксис</a></strong>: <em>объект</em>.Path
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>Path</strong> возвращает путь доступа к данной папке. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFolder("c:\\Program Files");
+var x = f.Path;	// x равно "C:\\Program Files"</pre>
+      </div>
+
+      <h4><a name="hfolder-shortname">Свойство ShortName</a></h4>
+
+<pre class="syntax"><strong><a name="pfolder-shortname">Синтаксис</a></strong>: <em>объект</em>.ShortName
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>ShortName</strong> возвращает имя данной папки в нотации MS-DOS (8 символов
+        на имя файла и 3 символа на расширение). Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFolder("C:\\Multimedia Files\\Graphics\\Animations");
+var x = f.ShortName;	// x равно "ANIMAT~1"</pre>
+      </div>
+
+      <h4><a name="hfolder-shortpath">Свойство ShortPath</a></h4>
+
+<pre class="syntax"><strong><a name="pfolder-shortpath">Синтаксис</a></strong>: <em>объект</em>.ShortPath
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>ShortPath</strong> возвращает путь доступа к данной папке в нотации MS-DOS
+        (8 символов на имя файла и 3 символа на расширение). Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFolder("C:\\Multimedia Files\\Graphics\\Animations");
+var x = f.ShortPath;	// x равно "C:\\MULTIM~1\\GRAPHICS\\ANIMAT~1"</pre>
+      </div>
+
+      <h4><a name="hfolder-size">Свойство Size</a></h4>
+
+<pre class="syntax"><strong><a name="pfolder-size">Синтаксис</a></strong>: <em>объект</em>.Size
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>Size</strong> возвращает суммарный размер в байтах всех файлов, содержащихся
+        в данной папке и ее подпапках. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFolder("c:\\");
+var x = f.Size;</pre>
+      </div>
+
+      <h4><a name="hsubfolders">Свойство SubFolders</a></h4>
+
+<pre class="syntax"><strong><a name="psubfolders">Синтаксис</a></strong>: <em>объект</em>.SubFolders
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>SubFolders</strong> возвращает коллекцию объектов <strong>Folder</strong>,
+        соответствующих всем папкам, содержащимся в данной папке, включая скрытые и системные папки.
+        Для просмотра этой коллекции следует пользоваться объектом <a href="http://wdh.suncloud.ru/js13.htm#ref3132"><strong>Enumerator</strong></a>.</p>
+
+      <p>Пример: следующий сценарий выведет на экран список всех подпапок корневого каталога диска C.</p>
+
+      <div class="code">
+<pre class="code">function ShowFileList(folderspec) {
+   var fso = new ActiveXObject("Scripting.FileSystemObject");
+   var f = fso.GetFolder(folderspec);
+   var fc = new Enumerator(f.SubFolders);
+   var s = "";
+   for (; !fc.atEnd(); fc.moveNext())
+      s += fc.item() + "&lt;br&gt;";
+   return s;
+}
+
+document.write(ShowFileList("c:\\"));</pre>
+      </div>
+
+      <h4><a name="hfolder-type">Свойство Type</a></h4>
+
+<pre class="syntax"><strong><a name="pfolder-type">Синтаксис</a></strong>: <em>объект</em>.Type
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>Type</strong> возвращает тип данной папки. Тип&nbsp;— это текстовая строка,
+        соответствующая расширению файла и хранящаяся в системном реестре. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFolder("C:\\Multimedia Files\\Graphics\\Animations");
+var x = f.Type;	// x равно "Папка с файлами" (в русифицированной Windows)</pre>
+      </div>
+
+      <h4><a name="hfolder-copy">Метод Copy</a></h4>
+
+<pre class="syntax"><strong><a name="mfolder-copy">Синтаксис</a></strong>: <em>объект</em>.Copy(<em>цель</em> [, <em>флаг</em>]?)
+<strong>Аргументы</strong>: <em>цель</em>&nbsp;— строковое выражение
+           <em>флаг</em>&nbsp;— логическое значение</pre>
+
+      <p>Метод <strong>Copy</strong> полностью копирует данную папку. Строка <em>цель</em> задает имя
+        результирующей папки, а необязательный аргумент <em>флаг</em> указывает, следует ли заменять
+        при копировании существующие файлы (по умолчанию он равен <strong>true</strong>, т.&nbsp;е.
+        существующие файлы заменяются). Сам процесс копирования происходит так:</p>
+
+      <ul>
+        <li>если папки с именем <em>цель</em> нет, то производится копирование папки;</li>
+        <li>если папка <em>цель</em> существует и <em>флаг</em> равен <strong>false</strong>, то метод
+          завершается ошибкой, иначе делается попытка копирования <em>источника</em> поверх <em>цели</em>;
+          при этом независимо от значения <em>флага</em>, попытка замены существующего файла с атрибутом
+          "только для чтения" завершается ошибкой.</li>
+      </ul>
+
+      <p>Пример: следующий сценарий копирует папку c:\ в папку d:\Temp.</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFolder("c:\\");
+f.Copy("d:\\Temp");</pre>
+      </div>
+
+      <p>Ср. метод <a href="http://wdh.suncloud.ru/js14.htm#mcopyfolder"><strong>FileSystemObject.CopyFolder</strong></a>.</p>
+
+      <h4><a name="hfolder-createtextfile">Метод CreateTextFile</a></h4>
+
+<pre class="syntax"><strong><a name="mfolder-createtextfile">Синтаксис</a></strong>: <em>объект</em>.CreateTextFile(<em>имя</em> [[, <em>флаг</em>]?, <em>unicode</em>]?)
+<strong>Аргументы</strong>: <em>имя</em>&nbsp;— строковое выражение
+           <em>флаг</em>, <em>unicode</em>&nbsp;— логические выражения<strong>
+Результат</strong>: новый объект <strong><a href="#ref3154">TextStream</a></strong></pre>
+
+      <p>Метод <strong>CreateTextFile</strong> создает текстовый файл с заданным <em>именем</em>. Он
+        полностью аналогичен методу <strong><a href="http://wdh.suncloud.ru/js14.htm#mcreatetextfile">FileSystemObject.CreateTextFile</a></strong>.</p>
+
+      <h4><a name="hfolder-delete">Метод Delete</a></h4>
+
+<pre class="syntax"><strong><a name="mfolder-delete">Синтаксис</a></strong>: <em>объект</em>.Delete(<em>флаг</em>?)
+<strong>Аргументы</strong>: <em>флаг</em>&nbsp;— логическое выражение</pre>
+
+      <p>Метод <strong>Delete</strong> удаляет данную папку. При этом необязательный аргумент <em>флаг</em>
+        указывает, следует ли удалять файлы, имеющие атрибут "только для чтения" (по умолчанию
+        он равен <strong>false</strong>, т.&nbsp;е. такие файлы не удаляются). Папка удаляется независимо
+        от того, пуста оно или нет. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFolder("C:\\Multimedia Files\\Graphics\\Animations");
+f.Delete(true);</pre>
+      </div>
+
+      <p>Ср. метод <a href="http://wdh.suncloud.ru/js14.htm#mdeletefolder"><strong>FileSystemObject.DeleteFolder</strong></a>.</p>
+
+      <h4><a name="hfolder-move">Метод Move</a></h4>
+
+<pre class="syntax"><strong><a name="mfolder-move">Синтаксис</a></strong>: <em>объект</em>.Move(<em>цель</em>)
+<strong>Аргументы</strong>: <em>цель</em>&nbsp;— строковое выражение</pre>
+
+      <p>Метод <strong>Move</strong> перемещает данную папку в другое место. При этом строка <em>цель</em>
+        задает имя результирующей папки. Сам процесс перемещения происходит так:</p>
+
+      <ul>
+        <li>если папки с именем <em>цель</em> нет, то производится перемещение папки;</li>
+        <li>если папка <em>цель</em> существует, то метод завершается ошибкой.</li>
+      </ul>
+
+      <p>Пример: следующий сценарий перемещает папку c:\ в папку d:\Temp (но делать этого не нужно!).</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.GetFile("c:\\");
+f.Move("d:\\Temp");</pre>
+      </div>
+
+      <p>Ср. метод <a href="http://wdh.suncloud.ru/js14.htm#mmovefolder"><strong>FileSystemObject.MoveFolder</strong></a>.</p>
+
+      <h3><a name="ref3154">3.15.4. Текстовые файлы: объект TextStream</a></h3>
+
+      <p>Объект <strong>TextStream</strong> предназначен для работы с текстовыми файлами. Он может быть
+        создан методами <strong><a href="http://wdh.suncloud.ru/js14.htm#mcreatetextfile">FileSystemObject.CreateTextFile</a></strong>,
+        <strong><a href="http://wdh.suncloud.ru/js14.htm#mopentextfile">FileSystemObject.OpenTextFile</a></strong>, <strong><a href="#mfolder-createtextfile">Folder.CreateTextFile</a></strong>
+        и <strong><a href="#mopenastextstream">File.OpenAsTextStream</a></strong>.</p>
+
+      <p><img src="3.15.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/plus.gif" alt="WDH+"> О работе с текстовыми файлами см. также
+        <a target="_blank" href="http://go.suncloud.ru/to.asp?workshop/extreme/unicode/unicode.htm">WDH+: ANSI и Unicode</a>.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства объекта TextStream</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#patendofline">AtEndOfLine</a></tt></td>
+            <td>Проверяет конец строки.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#patendofstream">AtEndOfStream</a></tt></td>
+            <td>Проверяет конец файла.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcolumn">Column</a></tt></td>
+            <td>Номер текущего символа в строке.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pline">Line</a></tt></td>
+            <td>Номер текущей строки.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы объекта TextStream</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#mclose">Close</a></tt></td>
+            <td>Закрывает файл.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mread">Read</a></tt></td>
+            <td>Читает заданное количество символов.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mreadall">ReadAll</a></tt></td>
+            <td>Читает весь файл.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mreadline">ReadLine</a></tt></td>
+            <td>Читает строку.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mskip">Skip</a></tt></td>
+            <td>Пропускает заданное количество символов.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mskipline">SkipLine</a></tt></td>
+            <td>Пропускает строку.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mwrite">Write</a></tt></td>
+            <td>Выводит строку.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mwriteblanklines">WriteBlankLines</a></tt></td>
+            <td>Выводит пустые строки.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mwriteline">WriteLine</a></tt></td>
+            <td>Выводит строку и символ конца строки.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hatendofline">Свойство AtEndOfLine</a></h4>
+
+<pre class="syntax"><strong><a name="patendofline">Синтаксис</a></strong>: <em>объект</em>.AtEndOfLine
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>AtEndOfLine</strong> возвращает <strong>true</strong>, если следующим символом
+        файла является символ перевода строки, и <strong>false</strong> в противном случае. Этим свойством
+        обладают только файлы, открытые для чтения. Следующий пример показывает, как можно считать первую
+        строку текстового файла: </p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.OpenTextFile("c:\\test.txt", 1, false);
+var s = "";
+while (!f.AtEndOfLine)
+  s += f.Read(1);
+f.Close();</pre>
+      </div>
+
+      <h4><a name="hatendofstream">Свойство AtEndOfStream</a></h4>
+
+<pre class="syntax"><strong><a name="patendofstream">Синтаксис</a></strong>: <em>объект</em>.AtEndOfStream
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>AtEndOfStream</strong> возвращает <strong>true</strong>, если достигнут конец
+        файла, и <strong>false</strong> в противном случае. Этим свойством обладают только файлы, открытые
+        для чтения. Следующий пример показывает, как можно считать весь текстовый файл в строку: </p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.OpenTextFile("c:\\test.txt", 1, false);
+var s = "";
+while (!f.AtEndOfStream)
+  s += f.ReadLine();
+f.Close();</pre>
+      </div>
+
+      <h4><a name="hcolumn">Свойство Column</a></h4>
+
+<pre class="syntax"><strong><a name="pcolumn">Синтаксис</a></strong>: <em>объект</em>.Column
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>Column</strong> возвращает номер текущего символа в строке, считая с 1. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.OpenTextFile("c:\\test.txt", 1, false);
+var s = f.ReadLine();
+var n = f.Column;</pre>
+      </div>
+
+      <h4><a name="hline">Свойство Line</a></h4>
+
+<pre class="syntax"><strong><a name="pline">Синтаксис</a></strong>: <em>объект</em>.Line
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Свойство <strong>Line</strong> возвращает номер текущей строки файла, считая с 1. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.OpenTextFile("c:\\test.txt", 1, false);
+var s = f.ReadAll();
+var n = f.Line;</pre>
+      </div>
+
+      <h4><a name="hclose">Метод Close</a></h4>
+
+<pre class="syntax"><strong><a name="mclose">Синтаксис</a></strong>: <em>объект</em>.Close()</pre>
+
+      <p>Метод <strong>Close</strong> закрывает данный файл. Примеры его использования приведены выше.</p>
+
+      <h4><a name="hread">Метод Read</a></h4>
+
+<pre class="syntax"><strong><a name="mread">Синтаксис</a></strong>: <em>объект</em>.Read(<em>число</em>)
+<strong>Аргументы</strong>: <em>число</em>&nbsp;— числовое выражение
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>Read</strong> читает из файла заданное <em>число</em> символов и возвращает их
+        в новой строке. Пример его использования приведен выше.</p>
+
+      <h4><a name="hreadall">Метод ReadAll</a></h4>
+
+<pre class="syntax"><strong><a name="mreadall">Синтаксис</a></strong>: <em>объект</em>.ReadAll()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>ReadAll</strong> считывает файл полностью и возвращает результат в новой строке.
+        Пример его использования приведен выше. Этим методом можно пользоваться только в тех случаях,
+        когда размер файла невелик. В противном случае следует пользоваться последовательным обращением
+        к методу <a href="#mreadline"><strong>ReadLine</strong></a>.</p>
+
+      <h4><a name="hreadline">Метод ReadLine</a></h4>
+
+<pre class="syntax"><strong><a name="mreadline">Синтаксис</a></strong>: <em>объект</em>.ReadLine()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>ReadLine</strong> считывает очередную строку из файла и возвращает результат
+        в новой строке. Пример его использования приведен выше. Чтение производится до символа перевода
+        строки, но не включая его.</p>
+
+      <h4><a name="hskip">Метод Skip</a></h4>
+
+<pre class="syntax"><strong><a name="mskip">Синтаксис</a></strong>: <em>объект</em>.Skip(<em>число</em>)
+<strong>Аргументы</strong>: <em>число</em>&nbsp;— числовое выражение</pre>
+
+      <p>Метод <strong>Skip</strong> считывает из файла заданное <em>число</em> символов, но не возвращает
+        их. Используется для пропуска ненужного содержимого файла. Следующий пример пропускает при чтении
+        первую строку файла:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.OpenTextFile("c:\\test.txt", 1, false);
+while (!f.AtEndOfLine)
+  f.Skip(1);
+…</pre>
+      </div>
+
+      <h4><a name="hskipline">Метод SkipLine</a></h4>
+
+<pre class="syntax"><strong><a name="mskipline">Синтаксис</a></strong>: <em>объект</em>.SkipLine()</pre>
+
+      <p>Метод <strong>SkipLine</strong> считывает из файла очередную строку, но не возвращает ее. Используется
+        для пропуска ненужного содержимого файла. Следующий пример пропускает при чтении первую строку
+        файла:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.OpenTextFile("c:\\test.txt", 1, false);
+f.SkipLine();
+…</pre>
+      </div>
+
+      <h4><a name="hwrite">Метод Write</a></h4>
+
+<pre class="syntax"><strong><a name="mwrite">Синтаксис</a></strong>: <em>объект</em>.Write(<em>строка</em>)
+<strong>Аргументы</strong>: <em>строка</em>&nbsp;— строковое выражение</pre>
+
+      <p>Метод <strong>Write</strong> выводит в файл заданную <em>строку</em>. Символ перевода строки
+        после строки не выводится, для этого нужно пользоваться методом <a href="#mwriteline"><strong>WriteLine</strong></a>.
+        Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.OpenTextFile("c:\\test.txt", 2, true);
+f.Write("Тестовая строка");
+f.Close();</pre>
+      </div>
+
+      <h4><a name="hwriteblanklines">Метод WriteBlankLines</a></h4>
+
+<pre class="syntax"><strong><a name="mwriteblanklines">Синтаксис</a></strong>: <em>объект</em>.WriteBlankLines(<em>число</em>)
+<strong>Аргументы</strong>: <em>число</em>&nbsp;— числовое выражение</pre>
+
+      <p>Метод <strong>WriteBlankLines</strong> выводит в файл заданное <em>число</em> символов перевода
+        строки. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.OpenTextFile("c:\\test.txt", 2, false);
+f.WriteBlankLines(10);
+f.Close()</pre>
+      </div>
+
+      <h4><a name="hwritelines">Метод WriteLine</a></h4>
+
+<pre class="syntax"><strong><a name="mwriteline">Синтаксис</a></strong>: <em>объект</em>.Write(<em>строка</em>?)
+<strong>Аргументы</strong>: <em>строка</em>&nbsp;— строковое выражение</pre>
+
+      <p>Метод <strong>Write</strong> выводит в файл заданную <em>строку</em> и символ перевода строки
+        после нее. Если <em>строка</em> опущена, то выводится только символ перевода строки. Пример:</p>
+
+      <div class="code">
+<pre class="code">var fso = new ActiveXObject("Scripting.FileSystemObject");
+var f = fso.OpenTextFile("c:\\test.txt", 2, true);
+f.WriteLine("Тестовая строка");
+f.Close();</pre>
+      </div>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js14.htm"><img name="imgleftb" src="3.15.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/nnleft.gif" alt="" title="Исполняющая система JScript" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="3.15.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml01.htm"><img name="imgrightb" src="3.15.%20%C8%F1%EF%EE%EB%ED%FF%FE%F9%E0%FF%20%F1%E8%F1%F2%E5%EC%E0%20JScript%20%28%EF%F0%EE%E4%EE%EB%E6%E5%ED%E8%E5%29_files/nnright.gif" alt="" title="Введение в Dynamic HTML" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

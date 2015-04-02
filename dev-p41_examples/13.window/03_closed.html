@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Заголовок</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript">
+function openWin(){
+  myWindow=window.open("","","width=200,height=100");
+  myWindow.document.write("<p>This is 'myWindow'</p>");
+}
+
+function closeWin(){
+  myWindow.close();
+}
+function checkWin(){
+  if (myWindow.closed)  {
+    document.getElementById("msg").innerHTML="'myWindow' закрыто!";
+   }
+  else  {
+    document.getElementById("msg").innerHTML="'myWindow' не закрыто!";
+  }
+}
+</script>
+</head>
+<body>
+<input type="button" value="Open 'myWindow'" onclick="openWin()" />
+<input type="button" value="Close 'myWindow'" onclick="closeWin()" />
+<br /><br />
+<input type="button" value="Окно 'myWindow' закрыто?" onclick="checkWin()" />
+<br />
+<div id="msg"></div>
+</body>
+</html>
+
+

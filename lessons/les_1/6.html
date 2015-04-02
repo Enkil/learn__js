@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Заголовок</title>
+	<script>
+		
+		/* Eiler task 2*/
+		var x = 1,
+			y = 1,
+			z = 1,
+			sum = 0;
+			
+		do 
+		{
+			document.write(z + " ");
+
+			z = x + y;
+			x = y;
+			y = z;
+			
+			if ( z%2 == 0 )
+			{
+				sum += z;
+			} 
+			
+		}
+		while (x <= 4000000);
+		
+		console.info(sum);
+		
+	</script>
+</head>
+
+
+<body>
+</body>
+
+
+</html>

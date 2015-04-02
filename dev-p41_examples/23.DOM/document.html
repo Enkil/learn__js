@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+.navy{
+color: navy;
+background-color: ivory;
+width: 200px;
+border: 1px solid ivory;
+}
+.sienna{
+color: sienna;
+background-color: yellow;
+width: 200px;
+border: 1px solid sienna;
+}
+.forest{
+color: #228B22;
+background-color: #C0DCC0;
+width: 200px;
+border: 1px solid  #228B22;
+}
+</style>
+<script>
+	function changeColor(){
+		oli = document.getElementById("list1");
+		oli.className = "navy";
+	}
+	function changeLists(){
+		var olis = document.getElementsByTagName("li");
+		olis.item(0).className = "sienna";
+		olis.item(4).className = "sienna";
+	}
+	function changeParent(){
+		var spanparent = document.getElementById("span1");
+		spanparent.parentNode.className = "sienna";
+	}
+	function readSomeAttr(){
+		var olis = document.getElementsByTagName("li");
+		console.log(olis[2].id, "  ", olis[4].id);
+	}
+	function readAttrs(){
+		var oul = document.getElementById("ul1");
+		console.log(oul.previousSibling.id);
+		
+	}
+	
+	window.onload = function(){
+		document.getElementById("knopka1").onclick = changeColor;
+		document.getElementById("knopka2").onclick = changeLists;
+		document.getElementById("knopka3").onclick = changeParent;
+		document.getElementById("knopka4").onclick = readAttrs;		
+		document.getElementById("knopka5").onclick = readSomeAttr;
+	}
+</script>
+</head>	
+<body>
+<input type="button" id="knopka1" value="меняем list1" class="forest"> <br />
+<input type="button" id="knopka2" value="меняем list1 и list5" class="forest"> <br />
+<input type="button" id="knopka3" value="меняем div1" class="forest"> <br />
+<input type="button" id="knopka4" value="меняем previous sibling" class="forest"> <br />
+<input type="button" id="knopka5" value="читаем атрибуты" class="forest"> <br /><br />
+<div class="forest" id="div1" > раздел <span id="span1">Элемент span</span></div><ul class="forest" id="ul1">
+	<li id="list1" >Первый</li>
+	<li id="list2" >Второй</li>
+	<li id="list3" >Третий</li>
+	<li id="list3" >Четвертый</li>	
+	<li id="list3" >Пятый</li>	
+	<li id="list3" >Шестой</li>		
+</ul>
+
+<br />
+<div  class="forest" id="div1" > Второй раздел</div>
+</body>
+</html>

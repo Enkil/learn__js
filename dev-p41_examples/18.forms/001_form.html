@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Форма input</title>
+</head>
+
+<body>
+<h2>Регистрационная форма</h2>
+<form method="get" action="/cgi-bin/registar.cgi">
+Введите имя:<br>
+<input type="text" name="regname" size="3">
+<br><br>
+Введите пароль<br>
+<input type="password" name="password1" maxlength="8"><br>
+Повторите пароль:<br>
+<input type="password" name="password2" maxlength="8"><br>
+Пароль передается в незашифрованном виде!<br><br>
+
+Ваш возраст:
+<input type="radio" name="age" value="lt20" checked>До 20
+<input type="radio" name="age" value="20_30">20-30
+<input type="radio" name="age" value="30_50">30-50
+<input type="radio" name="age" value="gt50">старше 50
+<br><br>
+
+На каких языках читаете:
+<input type="checkbox" name="lan1" value="russian" checked>русский
+<input type="checkbox" name="lan2" value="english">английйский
+<input type="checkbox" name="lan3" value="french">французский
+<input type="checkbox" name="lan4" value="german">немецкий
+<br><br>
+
+Какой формат данных предпочитаете:
+<br>
+<select name="format" size=3>
+<option selected value="html">HTML
+<option value="Plain text">Plain text
+<option value="PostScript">PostScript
+<option value="PDF">PDF
+</select>
+<br><br>
+
+Любимые писатели:<br>
+<textarea name=wish" cols="40" rows="3"></textarea>
+<br><br>
+<input type="submit" value="OK">&nbsp;&nbsp;&nbsp;<input type="reset" value="Отменить"><br><br>
+
+
+</form>
+</body>
+</html>

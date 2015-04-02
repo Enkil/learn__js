@@ -1,0 +1,2320 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:st1="urn:schemas-microsoft-com:office:smarttags"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="jQuery_selectors.files/filelist.xml">
+<title>jQuery API: Selectors </title>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="place"/>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="City"/>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>elena</o:Author>
+  <o:LastAuthor>elena</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>137</o:TotalTime>
+  <o:Created>2008-10-12T17:15:00Z</o:Created>
+  <o:LastSaved>2008-10-12T17:15:00Z</o:LastSaved>
+  <o:Pages>19</o:Pages>
+  <o:Words>3715</o:Words>
+  <o:Characters>21178</o:Characters>
+  <o:Company>home</o:Company>
+  <o:Lines>176</o:Lines>
+  <o:Paragraphs>49</o:Paragraphs>
+  <o:CharactersWithSpaces>24844</o:CharactersWithSpaces>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:PunctuationKerning/>
+  <w:DrawingGridHorizontalSpacing>2,85 пт</w:DrawingGridHorizontalSpacing>
+  <w:DrawingGridVerticalSpacing>1,95 пт</w:DrawingGridVerticalSpacing>
+  <w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]--><!--[if !mso]><object
+ classid="clsid:38481807-CA0E-42D2-BF39-B33AF135CC4D" id=ieooui></object>
+<style>
+st1\:*{behavior:url(#ieooui) }
+</style>
+<![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:24.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h2
+	{mso-style-next:Обычный;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-weight:bold;
+	font-style:italic;}
+h3
+	{mso-style-next:Обычный;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:13.0pt;
+	font-family:Arial;
+	font-weight:bold;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+pre
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:612.0pt 792.0pt;
+	margin:2.0cm 42.5pt 42.55pt 42.55pt;
+	mso-header-margin:36.0pt;
+	mso-footer-margin:36.0pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Обычная таблица";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]-->
+</head>
+
+<body lang=RU style='tab-interval:35.4pt'>
+
+<div class=Section1>
+
+<h1>jQuery API: Selectors </h1>
+
+<h1>Селекторы jQuery: базовые и иерархические селекторы, базовые фильтры</h1>
+
+<h2><span style='color:#CC6600'>Базовые селекторы<o:p></o:p></span></h2>
+
+<h3>#id</h3>
+
+<p>возвращает: Array<br>
+Выбирает единственный элемент с переданным атрибутом id. Если id содержит
+специальные символы, их необходимо экранировать с помощью обратного слэша.</p>
+
+<p>Выбираем элемент с id &quot;myDiv&quot; (затем устанавливаем ему красную
+рамку шириной 3 пиксела).</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;#myDiv&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;border&quot;</span>,<span style='color:#3366CC'>&quot;3px solid red&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre>
+
+<p>Выбираем элемент с id &quot;myID.entry[1]&quot; (затем устанавливаем ему
+красную рамку шириной 3 пиксела). Посмотрите каким образом некоторые символы
+должны быть экранированы с помощью обратного слэша.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;#myID</span><b><span style='color:#000099'>\\</span></b><span
+style='color:#3366CC'>.entry</span><b><span style='color:#000099'>\\</span></b><span
+style='color:#3366CC'>[1</span><b><span style='color:#000099'>\\</span></b><span
+style='color:#3366CC'>]&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;border&quot;</span>,<span style='color:#3366CC'>&quot;3px solid red&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;html&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script
+src=&quot;js/jquery-1.2.3.js&quot;&gt;&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>   </span><span
+style='mso-spacerun:yes'> </span>$(&quot;#myDiv&quot;).css(&quot;border&quot;,&quot;3px
+solid red&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>div {<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>width: 90px;<span
+style='mso-spacerun:yes'>    </span>height: 90px;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>float:left;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>padding: 5px;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>margin: 5px;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>background-color: #EEEEEE;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div
+id=&quot;notMe&quot;&gt;&lt;p&gt;id=&quot;notMe&quot;&lt;/p&gt;&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div
+id=&quot;myDiv&quot;&gt;id=&quot;myDiv&quot;&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/html&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<h3>element</h3>
+
+<p>возвращает: Array<br>
+Выбирает все элементы с переданным именем.<br>
+Ищем все элементы DIV (затем устанавливаем ему красную рамку шириной 3
+пиксела). Аргументом является строка с названием элемента, которые необходимо
+выбрать. Ссылается на tagName узлов DOM.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;div&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;border&quot;</span>,<span style='color:#3366CC'>&quot;3px solid red&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;html&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script
+src=&quot;js/jquery-1.2.3.js&quot;&gt;&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>   
+</span>$(&quot;div&quot;).css(&quot;border&quot;,&quot;3px solid red&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>div,span {<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>width: 60px;<span
+style='mso-spacerun:yes'>    </span>height: 60px;<span
+style='mso-spacerun:yes'>    </span>float:left;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>padding: 10px;<span
+style='mso-spacerun:yes'>    </span>margin: 10px;<span
+style='mso-spacerun:yes'>    </span>background-color: #EEEEEE;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div&gt;DIV1&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div&gt;DIV2&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;span&gt;SPAN&lt;/span&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/html&gt;<o:p></o:p></span></p>
+
+<h3>.class</h3>
+
+<p>возвращает: Array<br>
+Выбирает все элементы с переданным именем класса. Аргументом является строка с
+именем класса. Если элемент имеет несколько имен классов, по одному из них он
+будет выбран.<br>
+Выбираем элементы с классом &quot;myClass&quot; (затем устанавливаем ему красную
+рамку шириной 3 пиксела).</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;.myClass&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;border&quot;</span>,<span style='color:#3366CC'>&quot;3px solid red&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;html&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script
+src=&quot;js/jquery-1.2.3.js&quot;&gt;&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>   
+</span>$(&quot;.myClass&quot;).css(&quot;border&quot;,&quot;3px solid
+red&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'> </span><span
+style='mso-spacerun:yes'> </span>div,span {<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>width: 90px;<span
+style='mso-spacerun:yes'>    </span>height: 60px;<span
+style='mso-spacerun:yes'>    </span>float:left;<span
+style='mso-spacerun:yes'>    </span>padding: 10px;<span
+style='mso-spacerun:yes'>    </span>margin: 10px;<span
+style='mso-spacerun:yes'>    </span>background-color: #EEEEEE;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div class=&quot;notMe&quot;&gt;div
+class=&quot;notMe&quot;&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div class=&quot;myClass&quot;&gt;div
+class=&quot;myClass&quot;&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;span class=&quot;myClass&quot;&gt;span
+class=&quot;myClass&quot;&lt;/span&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/html&gt;<o:p></o:p></span></p>
+
+<h3>*</h3>
+
+<p>возвращает: Array<br>
+Выбирает все элементы. В примере выбираем все элементы (включая head, body, и
+т.д.), затем устанавливаем им (всем) красную рамку шириной 3 пиксела.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;*&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;border&quot;</span>,<span style='color:#3366CC'>&quot;3px solid red&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre>
+
+<p>А вот простой путь, чтобы отыскать все элементы в контексте document.body.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;*&quot;</span>, document.<span style='color:#006600'>body</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>css</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;border&quot;</span>,<span
+style='color:#3366CC'>&quot;3px solid red&quot;</span><span style='color:#66CC66'>)</span>;<o:p></o:p></span></pre>
+
+<p>Таким образом элементы head, script, и т.д. не включаются в набор. Да, и
+конечно красная рамка шириной 3 пиксела...</p>
+
+<h3>selector1, selector2, selectorN</h3>
+
+<p>возвращает: Array<br>
+Собирает набор из всех элементов переданных в селекторах. Вы можете определить
+любое количество селекторов для объединения в единый результат. Заметьте, что
+порядок следования элементов в DOM и объекте jQuery не обязательно будет
+идентичным.<br>
+Ищем элементы, которые соответствуют любым элементам div, span и p с именем
+класса myClass и для всех их устанавливаем красную рамку шириной 3
+пикселаааааа...</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;div,span,p.myClass&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>css</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;border&quot;</span>,<span
+style='color:#3366CC'>&quot;3px solid red&quot;</span><span style='color:#66CC66'>)</span>;<o:p></o:p></span></pre>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;html&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script
+src=&quot;js/jquery-1.2.3.js&quot;&gt;&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>   
+</span>$(&quot;div,span,p.myClass&quot;).css(&quot;border&quot;,&quot;3px solid
+red&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>div,span,p {<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>width: 80px;<span
+style='mso-spacerun:yes'>    </span>height: 60px;<span
+style='mso-spacerun:yes'>    </span>float:left;<span
+style='mso-spacerun:yes'>    </span>padding: 3px;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>margin: 2px;<span
+style='mso-spacerun:yes'>    </span>background-color: #EEEEEE;<span
+style='mso-spacerun:yes'>    </span>font-size:8pt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div&gt;div&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;p class=&quot;myClass&quot;&gt;p
+class=&quot;myClass&quot;&lt;/p&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;p class=&quot;notMyClass&quot;&gt;p
+class=&quot;notMyClass&quot;&lt;/p&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;span&gt;span&lt;/span&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/html&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p>А вот так можно показать порядок следования элементов в объекте jQuery
+(заметьте, не в HTML-коде страницы!).</p>
+
+<pre><b><span lang=EN-US style='color:#003366;mso-ansi-language:EN-US'>var</span></b><span
+lang=EN-US style='mso-ansi-language:EN-US'> list = $<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;div,p,span&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>map</span><span style='color:#66CC66'>(</span><b><span
+style='color:#003366'>function</span></b> <span style='color:#66CC66'>()</span> <span
+style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><b><span
+style='color:#000066'>return</span></b> <b><span style='color:#000066'>this</span></b>.<span
+style='color:#006600'>tagName</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>})</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>.<span style='color:#006600'>get</span><span
+style='color:#66CC66'>()</span>.<span style='color:#006600'>join</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;, &quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;b&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>append</span><span style='color:#66CC66'>(</span>document.<span
+style='color:#006600'>createTextNode</span><span style='color:#66CC66'>(</span>list<span
+style='color:#66CC66'>))</span>;<o:p></o:p></span></pre>
+
+<h2><span style='color:#CC6600'>Иерархические селекторы<o:p></o:p></span></h2>
+
+<h3>ancestor descendant</h3>
+
+<p>возвращает: Array<br>
+Выбираются все элементы потомки элемента, определенного как предок. В общем
+лучше конечно на простом примере.<br>
+Ищем все элементы input, являющиеся потомками элемента form (и устанавливаем
+синюю рамку из точек, шириной 2 пиксела).</p>
+
+<pre>$<span style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;form input&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>css</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;border&quot;</span>, <span
+style='color:#3366CC'>&quot;2px dotted blue&quot;</span><span style='color:
+#66CC66'>)</span>;</pre>
+
+<h3>parent &gt; child</h3>
+
+<p>возвращает: Array<br>
+Выбираются все <strong>прямые</strong> наследники элемента-родителя. Опять же,
+лучше показать на примере.<br>
+Ищем все прямые наследники элемента с идентификатором &quot;main&quot; (в
+примере #main с желтым бэкграундом) и устанавливаем им двойную рамку красного
+цвета шириной в 3 пиксела.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$(&quot;#main &gt; *&quot;).css(&quot;border&quot;, &quot;3px double red&quot;);<o:p></o:p></span></pre>
+
+<h3>prev + next</h3>
+
+<p>возвращает: Array<br>
+Выбираются все элементы, которые являются следующими (next) за элементом,
+определенным как предыдущий (prev). Смотрим на примере.<br>
+Ищем все элементы input, которые следуют непосредственно за элементом label,
+устанавливаем текст синего цвета и вставляем значение Labeled! </p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;label + input&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;color&quot;</span>, <span style='color:#3366CC'>&quot;blue&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>val</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;Labeled!&quot;</span><span
+style='color:#66CC66'>)</span><o:p></o:p></span></pre>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;html&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;meta http-equiv=&quot;Content-Type&quot;
+content=&quot;text/html; charset=utf-8&quot;&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script
+src=&quot;js/jquery-1.2.3.js&quot;&gt;&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>$(&quot;label +
+input&quot;).css(&quot;color&quot;, &quot;blue&quot;).val(&quot;Labeled!&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;form&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;label&gt;Name:&lt;/label&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;input name=&quot;name&quot; /&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;fieldset&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>      </span>&lt;label&gt;Newsletter:&lt;/label&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>      </span>&lt;input name=&quot;newsletter&quot;
+/&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;/fieldset&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/form&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;input name=&quot;none&quot; /&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/html&gt;<o:p></o:p></span></p>
+
+<h3>prev ~ siblings</h3>
+
+<p>возвращает: Array<br>
+Выбираются все сестринские элементы, которые следую сразу за элементом prev.
+Также разберем на примере.<br>
+Ищем все элементы div, которые являются сестринскими по отношению друг к другу
+и следуют сразу за элементом с идентификатором #prev. Обратите внимание, что в
+примере не будут отобраны элементы span, поскольку отбор идет только для
+элементов div.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;#prev ~ div&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;border&quot;</span>, <span style='color:#3366CC'>&quot;3px groove blue&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre>
+
+<h2><span style='color:#CC6600'>Базовые фильтры<o:p></o:p></span></h2>
+
+<h3>:first</h3>
+
+<p>возвращает: Array<br>
+Выбирается первый элемент соответствующего селектора.<br>
+Ищем первую строку в таблице и устанавливаем для нее наклонное начертание
+шрифта.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;tr:first&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;font-style&quot;</span>, <span style='color:#3366CC'>&quot;italic&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;html&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;meta http-equiv=&quot;Content-Type&quot;
+content=&quot;text/html; charset=utf-8&quot;&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script
+src=&quot;js/jquery-1.2.3.js&quot;&gt;&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>   
+</span>$(&quot;tr:first&quot;).css(&quot;font-style&quot;, &quot;italic&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>td { color:blue; font-weight:bold; }<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;table&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;tr&gt;&lt;td&gt;Строка
+1&lt;/td&gt;&lt;/tr&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;tr&gt;&lt;td&gt;Строка
+2&lt;/td&gt;&lt;/tr&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'> </span><span style='mso-spacerun:yes'>  
+</span>&lt;tr&gt;&lt;td&gt;Строка 3&lt;/td&gt;&lt;/tr&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/table&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/html&gt;<o:p></o:p></span></p>
+
+<h3>:last</h3>
+
+<p>возвращает: Array<br>
+Выбирается последний элемент соответствующего селектора.<br>
+Ищем последнюю строку в таблице, устанавливаем для нее желтый фон и жирный
+шрифт.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;tr:last&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>({</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>backgroundColor: <span
+style='color:#3366CC'>&quot;yellow&quot;</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>fontWeight: <span
+style='color:#3366CC'>&quot;bolder&quot;</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>})</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>:not(selector)<o:p></o:p></span></h3>
+
+<p>возвращает<span lang=EN-US style='mso-ansi-language:EN-US'>: Array<br>
+</span>Отфильтровывает<span style='mso-ansi-language:EN-US'> </span>выбранные<span
+style='mso-ansi-language:EN-US'> </span>элементы<span lang=EN-US
+style='mso-ansi-language:EN-US'>, </span>используя<span style='mso-ansi-language:
+EN-US'> </span>условие<span style='mso-ansi-language:EN-US'> </span>отрицания<span
+lang=EN-US style='mso-ansi-language:EN-US'>. </span>На примере будет намного
+понятнее...<br>
+Ищем все элементы input, которые НЕ отмечены флажками выбора, а также элементы
+span, следующие непосредственно за ними.<br>
+<strong>Обратите внимание</strong>, что никаких изменений по клику на чекбоксах
+не происходит, но это вполне понятно, поскольку в пример не включена обработка
+событий.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;input:not(:checked) + span&quot;</span><span
+style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>.<span style='color:#006600'>css</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;background-color&quot;</span>, <span
+style='color:#3366CC'>&quot;yellow&quot;</span><span style='color:#66CC66'>)</span>;<o:p></o:p></span></pre>
+
+<h3>:even</h3>
+
+<p>возвращает: Array<br>
+Выбираются четные элементы. Отсчет начинается от 0.<br>
+Ищем четные строки таблицы, выбирая первую, третью и так далее. Обратите
+внимание еще раз: четные - потому что отбор производится по индексам,
+соответственно отбираются строки с индексами 0, 2, 4 и т.д.).</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;tr:even&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;background-color&quot;</span>, <span
+style='color:#3366CC'>&quot;#bbbbff&quot;</span><span style='color:#66CC66'>)</span>;<o:p></o:p></span></pre>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;script
+src=&quot;js/jquery-1.2.3.js&quot;&gt;&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>   
+</span>$(&quot;tr:even&quot;).css(&quot;background-color&quot;,
+&quot;#bbbbff&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>table {<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>   </span><span
+style='mso-spacerun:yes'> </span>background:#eeeeee;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;table border=&quot;1&quot;&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='mso-spacerun:yes'>    </span>&lt;<span
+lang=EN-US style='mso-ansi-language:EN-US'>tr</span>&gt;&lt;<span lang=EN-US
+style='mso-ansi-language:EN-US'>td</span>&gt;Строка с индексом #0&lt;/<span
+lang=EN-US style='mso-ansi-language:EN-US'>td</span>&gt;&lt;/<span lang=EN-US
+style='mso-ansi-language:EN-US'>tr</span>&gt;</p>
+
+<p class=MsoNormal><span style='mso-spacerun:yes'>    </span>&lt;<span
+lang=EN-US style='mso-ansi-language:EN-US'>tr</span>&gt;&lt;<span lang=EN-US
+style='mso-ansi-language:EN-US'>td</span>&gt;Строка с индексом #1&lt;/<span
+lang=EN-US style='mso-ansi-language:EN-US'>td</span>&gt;&lt;/<span lang=EN-US
+style='mso-ansi-language:EN-US'>tr</span>&gt;</p>
+
+<p class=MsoNormal><span style='mso-spacerun:yes'>    </span>&lt;<span
+lang=EN-US style='mso-ansi-language:EN-US'>tr</span>&gt;&lt;<span lang=EN-US
+style='mso-ansi-language:EN-US'>td</span>&gt;Строка с индексом #2&lt;/<span
+lang=EN-US style='mso-ansi-language:EN-US'>td</span>&gt;&lt;/<span lang=EN-US
+style='mso-ansi-language:EN-US'>tr</span>&gt;</p>
+
+<p class=MsoNormal><span style='mso-spacerun:yes'>    </span>&lt;<span
+lang=EN-US style='mso-ansi-language:EN-US'>tr</span>&gt;&lt;<span lang=EN-US
+style='mso-ansi-language:EN-US'>td</span>&gt;Строка с индексом #3&lt;/<span
+lang=EN-US style='mso-ansi-language:EN-US'>td</span>&gt;&lt;/<span lang=EN-US
+style='mso-ansi-language:EN-US'>tr</span>&gt;</p>
+
+<p class=MsoNormal><span style='mso-spacerun:yes'>  </span><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/table&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<h3>:odd</h3>
+
+<p>возвращает: Array<br>
+Выбираются нечетные элементы. Отсчет начинается от 0.<br>
+Ищем нечетные строки таблицы, выбирая вторую, четвертую и так далее. Обратите
+внимание еще раз: нечетные - потому что отбор производится по индексам,
+соответственно отбираются строки с индексами 1, 3, 5 и т.д.).</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;tr:odd&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;background-color&quot;</span>, <span
+style='color:#3366CC'>&quot;#bbbbff&quot;</span><span style='color:#66CC66'>)</span>;<o:p></o:p></span></pre>
+
+<h3>:eq(index)</h3>
+
+<p>возвращает: Array<br>
+Выбирается единственный элемент по его индексу.<br>
+Например, ищем третий элемент TD. Не забывайте, что отсчет ведется от 0.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;td:eq(2)&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;color&quot;</span>, <span style='color:#3366CC'>&quot;red&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre>
+
+<h3>:gt(index)</h3>
+
+<p>возвращает: Array<br>
+Выбираются все элементы с индексом больше указанного в селекторе.<br>
+В примере будут выбраны все элементы TD с индексом более 4, т.е. от 5 и более.
+Отсчет<span style='mso-ansi-language:EN-US'> </span>ведется<span
+style='mso-ansi-language:EN-US'> </span>от<span lang=EN-US style='mso-ansi-language:
+EN-US'> 0.<o:p></o:p></span></p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;td:gt(4)&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;text-decoration&quot;</span>, <span
+style='color:#3366CC'>&quot;line-through&quot;</span><span style='color:#66CC66'>)</span>;<o:p></o:p></span></pre>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;meta
+http-equiv=&quot;Content-Type&quot; content=&quot;text/html;
+charset=utf-8&quot;&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script
+src=&quot;js/jquery-1.2.3.js&quot;&gt;&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>   
+</span>$(&quot;td:gt(4)&quot;).css(&quot;text-decoration&quot;,
+&quot;line-through&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;table border=&quot;1&quot;&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;tr&gt;&lt;td&gt;TD
+#0&lt;/td&gt;&lt;td&gt;TD #1&lt;/td&gt;&lt;td&gt;TD #2&lt;/td&gt;&lt;/tr&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;tr&gt;&lt;td&gt;TD
+#3&lt;/td&gt;&lt;td&gt;TD #4&lt;/td&gt;&lt;td&gt;TD #5&lt;/td&gt;&lt;/tr&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;tr&gt;&lt;td&gt;TD
+#6&lt;/td&gt;&lt;td&gt;TD #7&lt;/td&gt;&lt;td&gt;TD #8&lt;/td&gt;&lt;/tr&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/table&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<h3>:header</h3>
+
+<p>возвращает: Array<br>
+Выбираются все элементы, которые являются заголовками, например h1, h2, h3 и
+так далее.<br>
+В примере мы устанавливаем серый цвет для бэкграунда и синий для текста для
+всех заголовков (т.е. элементов h) на странице.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;:header&quot;</span><span style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>.<span style='color:#006600'>css</span><span
+style='color:#66CC66'>({</span> background:<span style='color:#3366CC'>'#CCC'</span>, color:<span
+style='color:#3366CC'>'blue'</span> <span style='color:#66CC66'>})</span>;<o:p></o:p></span></pre>
+
+<h3>:animated</h3>
+
+<p>возвращает: Array<br>
+Выбираются все элементы, которые в настоящий момент являются анимированными.<br>
+В приведенном ниже примере мы щелчком мыши по кнопке меняем цвет анимированного
+элемента DIV. Элементы DIV, не являющиеся в этот момент анимированными, свой
+цвет не изменяют.</p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;meta
+http-equiv=&quot;Content-Type&quot; content=&quot;text/html;
+charset=utf-8&quot;&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script
+src=&quot;js/jquery-1.2.3.js&quot;&gt;&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>$(&quot;#run&quot;).click(function(){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>      </span>$(&quot;div:animated&quot;).toggleClass(&quot;colored&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>function animateIt() {<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>     
+</span>$(&quot;#mover&quot;).slideToggle(&quot;slow&quot;, animateIt);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>animateIt();<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>div { background:yellow; border:1px solid
+#AAA; width:80px; height:80px; margin:5px; float:left; }<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>div.colored { background:green; }<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;button
+id=&quot;run&quot;&gt;Run&lt;/button&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div&gt;&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div id=&quot;mover&quot;&gt;&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span></span>&lt;div&gt;&lt;/div&gt;</p>
+
+<p class=MsoNormal>&lt;/body&gt;<span lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<h1>Селекторы<span lang=EN-US style='mso-ansi-language:EN-US'> jQuery: </span>фильтры<span
+style='mso-ansi-language:EN-US'> </span>контента<span lang=EN-US
+style='mso-ansi-language:EN-US'>, visibility-</span>фильтры<span lang=EN-US
+style='mso-ansi-language:EN-US'>, </span>фильтры<span style='mso-ansi-language:
+EN-US'> </span>атрибутов<span lang=EN-US style='mso-ansi-language:EN-US'>,
+child-</span>фильтры</h1>
+
+<h2><span style='color:#CC6600'>Фильтры контента<o:p></o:p></span></h2>
+
+<h3>:contains(text)</h3>
+
+<p>возвращает: Array&lt;element&gt;<br>
+Выбираются элементы, которые содержат переданный текст.<br>
+Ищем все элементы DIV, содержащие подстроку &quot;John&quot; и подчеркиваем их.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;div:contains('John')&quot;</span><span
+style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>.<span style='color:#006600'>css</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;text-decoration&quot;</span>, <span
+style='color:#3366CC'>&quot;underline&quot;</span><span style='color:#66CC66'>)</span>;</span></pre><pre><o:p>&nbsp;</o:p></pre>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;meta
+http-equiv=&quot;Content-Type&quot; content=&quot;text/html;
+charset=utf-8&quot;&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script
+src=&quot;js/jquery-1.2.3.js&quot;&gt;&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>$(&quot;div:contains('John')&quot;).css(&quot;text-decoration&quot;,
+&quot;underline&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div&gt;John Resig&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div&gt;George Martin&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div&gt;Malcom John Sinclair&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span></span>&lt;div&gt;J. Ohn&lt;/div&gt;</p>
+
+<p class=MsoNormal>&lt;/body&gt;</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h3>:empty</h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются все элементы, которые не содержат потомков (в том числе и текстовых
+узлов).<br>
+Ищем все пустые элементы - они не должны содержать элементов-потомков или
+текст, вставляем в них текст &quot;Пустой!&quot; и устанавливаем фоновый цвет.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;td:empty&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>text</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;</span></span><span style='color:#3366CC'>Пустой</span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>!&quot;</span><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>)</span><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>.<span style='color:#006600'>css</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>'background'</span>, <span
+style='color:#3366CC'>'rgb(255,220,200)'</span><span style='color:#66CC66'>)</span>;<o:p></o:p></span></pre>
+
+<h3>:has(selector)</h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются элементы, которые содержат по крайней мере один элемент, указанный в
+селекторе.<br>
+В примере добавляем класс &quot;test&quot; ко всем элементам div, которые
+содержат внутри себя как минимум один элемент p.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;div:has(p)&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>addClass</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;test&quot;</span><span style='color:#66CC66'>)</span>;<o:p></o:p></span></pre>
+
+<h3>:parent</h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются все элементы, которые являются родительскими - т.е. имеют
+элементы-потомки, в том числе и текст.<br>
+Ищем все элементы td, имеющие потомков, включая текст. Если кликнуть на таком
+элементе мышкой, цвет его фона изменит прозрачность.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;td:parent&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>click</span><span style='color:#66CC66'>(</span><b><span
+style='color:#003366'>function</span></b> <span style='color:#66CC66'>()</span> <span
+style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span><b><span style='color:#000066'>this</span></b><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>fadeTo</span><span
+style='color:#66CC66'>(</span><span style='color:#CC0000'>1500</span>, <span
+style='color:#CC0000'>0.3</span><span style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>})</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre>
+
+<h2><span lang=EN-US style='color:#CC6600;mso-ansi-language:EN-US'>Visibility-</span><span
+style='color:#CC6600'>фильтры</span><span lang=EN-US style='color:#CC6600;
+mso-ansi-language:EN-US'><o:p></o:p></span></h2>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>:hidden<o:p></o:p></span></h3>
+
+<p>возвращает<span lang=EN-US style='mso-ansi-language:EN-US'>:
+Array&lt;Element(s)&gt;<br>
+</span>Выбираются<span style='mso-ansi-language:EN-US'> </span>все<span
+style='mso-ansi-language:EN-US'> </span>скрытые<span style='mso-ansi-language:
+EN-US'> </span>элементы<span style='mso-ansi-language:EN-US'> </span>или<span
+style='mso-ansi-language:EN-US'> </span>элементы<span lang=EN-US
+style='mso-ansi-language:EN-US'> input, </span>имеющие<span style='mso-ansi-language:
+EN-US'> </span>тип<span lang=EN-US style='mso-ansi-language:EN-US'>
+&quot;hidden&quot;.<br>
+</span>Выбираем все скрытые элементы div (их можно будет увидеть, кликнув
+мышкой по кнопке) и подсчитываем элементы input с типом &quot;hidden&quot;.</p>
+
+<pre><i><span style='color:#009900'>// в некоторых браузерах в набор будут включены</span></i></pre><pre><i><span
+lang=EN-US style='color:#009900;mso-ansi-language:EN-US'>// </span><span
+style='color:#009900'>элементы</span></i><i><span lang=EN-US style='color:#009900;
+mso-ansi-language:EN-US'> head, title, script </span><span style='color:#009900'>и</span></i><i><span
+style='color:#009900;mso-ansi-language:EN-US'> </span><span style='color:#009900'>т</span></i><i><span
+lang=EN-US style='color:#009900;mso-ansi-language:EN-US'>.</span><span
+style='color:#009900'>д</span></i><i><span lang=EN-US style='color:#009900;
+mso-ansi-language:EN-US'>.,</span></i><span lang=EN-US style='mso-ansi-language:
+EN-US'><o:p></o:p></span></pre><pre><i><span style='color:#009900'>// но как правило набор ограничивается элементом body.</span></i></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;span:first&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>text</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;</span></span><span style='color:#3366CC'>Всего</span><span
+style='color:#3366CC;mso-ansi-language:EN-US'> </span><span style='color:#3366CC'>найдено</span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'> &quot;</span><span
+lang=EN-US style='mso-ansi-language:EN-US'> +<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;:hidden&quot;</span>, document.<span
+style='color:#006600'>body</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>length</span> +<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+style='color:#3366CC'>&quot; </span></span><span style='color:#3366CC'>скрытых</span><span
+style='color:#3366CC;mso-ansi-language:EN-US'> </span><span style='color:#3366CC'>элементов</span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>.&quot;</span><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>)</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;#showHidden&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>click</span><span style='color:#66CC66'>(</span><b><span
+style='color:#003366'>function</span></b> <span style='color:#66CC66'>()</span> <span
+style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;div:hidden&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>show</span><span
+style='color:#66CC66'>(</span><span style='color:#CC0000'>3000</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span
+style='color:#66CC66'>})</span>;</pre>
+
+<h3>:visible</h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются все видимые элементы.<br>
+В примере: все видимые элементы div можно сделать желтыми, кликнув по ним
+мышкой. Невидимые элементы можно показать щелкнув по кнопке, но свой цвет
+изменять они не смогут.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;div:visible&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>click</span><span style='color:#66CC66'>(</span><b><span
+style='color:#003366'>function</span></b> <span style='color:#66CC66'>()</span> <span
+style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span><b><span style='color:#000066'>this</span></b><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>css</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;background&quot;</span>, <span
+style='color:#3366CC'>&quot;yellow&quot;</span><span style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>})</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;button&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>click</span><span style='color:#66CC66'>(</span><b><span
+style='color:#003366'>function</span></b> <span style='color:#66CC66'>()</span> <span
+style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;div:hidden&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>show</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;fast&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='color:#66CC66;mso-ansi-language:EN-US'>})</span><span lang=EN-US
+style='mso-ansi-language:EN-US'>;</span></pre><pre><o:p>&nbsp;</o:p></pre>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;meta
+http-equiv=&quot;Content-Type&quot; content=&quot;text/html;
+charset=utf-8&quot;&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script
+src=&quot;js/jquery-1.2.3.js&quot;&gt;&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>$(&quot;div:visible&quot;).click(function
+() {<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>      </span>$(this).css(&quot;background&quot;,
+&quot;yellow&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>$(&quot;button&quot;).click(function () {<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>     
+</span>$(&quot;div:hidden&quot;).show(&quot;fast&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>div { width:50px; height:40px; margin:5px;
+border:3px outset green; float:left; }<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>.starthidden { display:none; }<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;button&gt;Покажем скрытые&lt;/button&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div&gt;&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div
+class=&quot;starthidden&quot;&gt;&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div&gt;&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div&gt;&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div
+style=&quot;display:none;&quot;&gt;&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h2><span style='color:#CC6600'>Фильтры атрибутов<o:p></o:p></span></h2>
+
+<h3>[attribute]</h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются все элементы, имеющие указанный атрибут.<br>
+Клик мышкой по элементам div, которые имеют атрибут id, добавит значение этого
+атрибута в виде текста в соответствующий элемент div.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;div[id]&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>one</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;click&quot;</span>, <b><span style='color:#003366'>function</span></b><span
+style='color:#66CC66'>(){</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><b><span
+style='color:#003366'>var</span></b> idString = $<span style='color:#66CC66'>(</span><b><span
+style='color:#000066'>this</span></b><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>text</span><span style='color:#66CC66'>()</span> +<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'> <span style='color:#3366CC'>&quot; = &quot;</span> + $<span
+style='color:#66CC66'>(</span><b><span style='color:#000066'>this</span></b><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>attr</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;id&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span><b><span style='color:#000066'>this</span></b><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>text</span><span
+style='color:#66CC66'>(</span>idString<span style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>})</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>[attribute=value]<o:p></o:p></span></h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются элементы с атрибутом, значение которого соответствует указанному.<br>
+В примере мы ищем элемент input, атрибут name которого имеет значение
+newsletter и изменяем текст в следующем непосредственно за ним элементе span.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;input[name='newsletter']&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>click</span><span
+style='color:#66CC66'>(</span><b><span style='color:#003366'>function</span></b><span
+style='color:#66CC66'>(){</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span><b><span style='color:#000066'>this</span></b><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>next</span><span
+style='color:#66CC66'>()</span>.<span style='color:#006600'>text</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot; </span></span><span
+style='color:#3366CC'>атрибут</span><span lang=EN-US style='color:#3366CC;
+mso-ansi-language:EN-US'> name = newsletter&quot;</span><span lang=EN-US
+style='color:#66CC66;mso-ansi-language:EN-US'>)</span><span lang=EN-US
+style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre><pre><span
+style='color:#66CC66'>})</span>;</pre>
+
+<h3>[attribute!=value]</h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются элементы с атрибутом, значение которого не соответствует указанному.<br>
+Например ищем все элементы input атрибут name которых не соответствует значению
+newsletter и изменяем текст в следующем непосредственно за ним элементе span.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;input[name!='newsletter']&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>next</span><span
+style='color:#66CC66'>()</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>.<span style='color:#006600'>text</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot; is not newsletter&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre>
+
+<h3>[attribute^=value]</h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются все элементы, соответствующий атрибут которых начинается с
+указанного значения.<br>
+В примере мы ищем все элементы input, значение атрибута name которых начинается
+с news и затем вставляем в них значение &quot;Это news!&quot;.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;input[@name^='news']&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>val</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;</span></span><span
+style='color:#3366CC'>Это</span><span lang=EN-US style='color:#3366CC;
+mso-ansi-language:EN-US'> news!&quot;</span><span lang=EN-US style='color:#66CC66;
+mso-ansi-language:EN-US'>)</span><span lang=EN-US style='mso-ansi-language:
+EN-US'>;<o:p></o:p></span></pre>
+
+<h3>[attribute$=value]</h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются все элементы, соответствующий атрибут которых заканчивается
+указанным значением.<br>
+В примере мы ищем все элементы input, значение атрибута name которых
+заканчивается на letter и затем вставляем в них значение &quot;Это
+letter!&quot;.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;input[name$='letter']&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>val</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;</span></span><span
+style='color:#3366CC'>Это</span><span lang=EN-US style='color:#3366CC;
+mso-ansi-language:EN-US'> letter!&quot;</span><span lang=EN-US
+style='color:#66CC66;mso-ansi-language:EN-US'>)</span><span lang=EN-US
+style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre>
+
+<h3>[attribute*=value]</h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются все элементы, соответствующий атрибут которых содержит в качестве
+подстроки указанное значение.<br>
+В примере мы ищем все элементы input, значение атрибута name которых содержит
+подстроку man и затем вставляем в них значение &quot;Найдена подстрока
+man!&quot;.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;input[name*='man']&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>val</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;</span></span><span
+style='color:#3366CC'>Найдена</span><span style='color:#3366CC;mso-ansi-language:
+EN-US'> </span><span style='color:#3366CC'>подстрока</span><span lang=EN-US
+style='color:#3366CC;mso-ansi-language:EN-US'> man!&quot;</span><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>)</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre>
+
+<h3>[selector1][selector2]...[selectorN]</h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются все элементы, которые имеют указанные атрибуты и соответствующие
+значения.<br>
+Ищем все элементы input, которые имеют атрибут id, а также атрибут name,
+значение которого заканчивается подстрой &quot;man&quot;. Вставляем в найденные
+элементы значение &quot;найдено&quot;.</p>
+
+<pre>$<span style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;input[id][name$='man']&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>val</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;найдено&quot;</span><span
+style='color:#66CC66'>)</span>;</pre>
+
+<h2><span lang=EN-US style='color:#CC6600;mso-ansi-language:EN-US'>Child-</span><span
+style='color:#CC6600'>фильтры</span><span lang=EN-US style='color:#CC6600;
+mso-ansi-language:EN-US'><o:p></o:p></span></h2>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>:nth-child(index/even/odd/equation)<o:p></o:p></span></h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+В качестве аргумента принимает число или строку. Число может представлять
+индекс элемента (обратите внимание, что здесь отсчет ведется с 1), строка -
+even, odd, или equation. Выбираются все элементы, которые являются n-нными
+потомками своего родителя или четными/нечетными потомками.<br>
+В примере мы ищем каждый второй элемент li во всех отобранных элементах ul, ну
+и отмечаем их.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;ul li:nth-child(2)&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>append</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;&lt;span&gt; - 2-</span></span><span
+style='color:#3366CC'>ой</span><span lang=EN-US style='color:#3366CC;
+mso-ansi-language:EN-US'>!&lt;/span&gt;&quot;</span><span lang=EN-US
+style='color:#66CC66;mso-ansi-language:EN-US'>)</span><span lang=EN-US
+style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;meta
+http-equiv=&quot;Content-Type&quot; content=&quot;text/html;
+charset=utf-8&quot;&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script src=&quot;js/jquery-1.2.3.js&quot;&gt;&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>$(&quot;ul
+li:nth-child(2)&quot;).append(&quot;&lt;span&gt; - 2-</span>ой<span lang=EN-US
+style='mso-ansi-language:EN-US'>!&lt;/span&gt;&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>div { float:left; }<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>span { color:blue; }<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div&gt;&lt;ul&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;li&gt;John&lt;/li&gt;<span
+style='mso-spacerun:yes'>    </span>&lt;li&gt;Karl&lt;/li&gt;<span
+style='mso-spacerun:yes'>    </span>&lt;li&gt;<st1:City w:st="on"><st1:place
+ w:st="on">Brandon</st1:place></st1:City>&lt;/li&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/ul&gt;&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div&gt;&lt;ul&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;li&gt;Sam&lt;/li&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/ul&gt;&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div&gt;&lt;ul&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;li&gt;Glen&lt;/li&gt;<span
+style='mso-spacerun:yes'>    </span>&lt;li&gt;Tane&lt;/li&gt;<span
+style='mso-spacerun:yes'>    </span>&lt;li&gt;Ralph&lt;/li&gt;<span
+style='mso-spacerun:yes'>    </span>&lt;li&gt;David&lt;/li&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/ul&gt;&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal>&lt;/body&gt;</p>
+
+<h3>:first-child</h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются все элементы, которые являются первыми потомками своих родителей.<br>
+В примере мы выбираем первый элемент span в каждом найденном элементе div и
+подчеркиваем их текст. Да, и еще при наведении курсора мыши добавляем класс,
+который сделает текст жирным и зеленого цвета.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;div span:first-child&quot;</span><span
+style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;text-decoration&quot;</span>, <span
+style='color:#3366CC'>&quot;underline&quot;</span><span style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>.<span
+style='color:#006600'>hover</span><span style='color:#66CC66'>(</span><b><span
+style='color:#003366'>function</span></b> <span style='color:#66CC66'>()</span> <span
+style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$<span
+style='color:#66CC66'>(</span><b><span style='color:#000066'>this</span></b><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>addClass</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;sogreen&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+style='color:#66CC66'>}</span>, <b><span style='color:#003366'>function</span></b> <span
+style='color:#66CC66'>()</span> <span style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$<span
+style='color:#66CC66'>(</span><b><span style='color:#000066'>this</span></b><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>removeClass</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;sogreen&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+style='color:#66CC66'>})</span>;<o:p></o:p></span></pre>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>:last-child<o:p></o:p></span></h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются все элементы, которые являются последними потомками своих родителей.<br>
+В примере мы выбираем последний элемент span в каждом найденном элементе div и
+делаем их текст красного цвета. Уменьшаем размер шрифта до 80%. При наведении
+курсора мыши добавляем класс, который зачеркнет текст.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;div span:last-child&quot;</span><span
+style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>({</span>color:<span
+style='color:#3366CC'>&quot;red&quot;</span>, fontSize:<span style='color:#3366CC'>&quot;80%&quot;</span><span
+style='color:#66CC66'>})</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>.<span
+style='color:#006600'>hover</span><span style='color:#66CC66'>(</span><b><span
+style='color:#003366'>function</span></b> <span style='color:#66CC66'>()</span> <span
+style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$<span
+style='color:#66CC66'>(</span><b><span style='color:#000066'>this</span></b><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>addClass</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;solast&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+style='color:#66CC66'>}</span>, <b><span style='color:#003366'>function</span></b> <span
+style='color:#66CC66'>()</span> <span style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$<span
+style='color:#66CC66'>(</span><b><span style='color:#000066'>this</span></b><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>removeClass</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;solast&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+style='color:#66CC66'>})</span>;<o:p></o:p></span></pre>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>:only-child<o:p></o:p></span></h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются все элементы, которые являются единственными потомками своего
+родителя. Если родитель имеет других потомков - ничего не будет выбрано.<br>
+В этом примере в каждом отобранном элементе div ищем кнопку не имеющую
+сестринских элементов. Ну и немного ее модифицируем, устанавливая для нее текст
+&quot;Alone&quot; и синюю рамку<span style='mso-ansi-language:EN-US'> </span>шириной<span
+lang=EN-US style='mso-ansi-language:EN-US'> 2 </span>пиксела<span lang=EN-US
+style='mso-ansi-language:EN-US'>.<o:p></o:p></span></p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;div button:only-child&quot;</span><span
+style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>.<span style='color:#006600'>text</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;Alone&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>css</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;border&quot;</span>, <span
+style='color:#3366CC'>&quot;2px blue solid&quot;</span><span style='color:#66CC66'>)</span>;<o:p></o:p></span></pre>
+
+<h1>Selectors - селекторы jQuery: селекторы форм и фильтры форм</h1>
+
+<h2><span style='color:#CC6600'>Формы<o:p></o:p></span></h2>
+
+<h3>:input</h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются все элементы input, textarea, select и button.<br>
+В приведенном примере выбираются все элементы input.</p>
+
+<pre>var allInputs = $(&quot;:input&quot;);</pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>var formChildren = $(&quot;form &gt; *&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$(&quot;div&quot;).text(&quot;</span>Найдено<span
+lang=EN-US style='mso-ansi-language:EN-US'> &quot; + allInputs.length +<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&quot; </span>элементов<span
+lang=EN-US style='mso-ansi-language:EN-US'> input </span>и<span lang=EN-US
+style='mso-ansi-language:EN-US'> &quot; +<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>formChildren.length + &quot; </span>потомков<span
+lang=EN-US style='mso-ansi-language:EN-US'> form.&quot;)<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>.css(&quot;color&quot;, &quot;red&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$(&quot;form&quot;).submit(function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>return false;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>});<o:p></o:p></span></pre>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>:text<o:p></o:p></span></h3>
+
+<p>возвращает<span lang=EN-US style='mso-ansi-language:EN-US'>:
+Array&lt;Element(s)&gt;<br>
+</span>Выбираются<span style='mso-ansi-language:EN-US'> </span>все<span
+style='mso-ansi-language:EN-US'> </span>элементы<span lang=EN-US
+style='mso-ansi-language:EN-US'> input </span>типа<span lang=EN-US
+style='mso-ansi-language:EN-US'> text. </span>См<span lang=EN-US
+style='mso-ansi-language:EN-US'>. </span>пример<span lang=EN-US
+style='mso-ansi-language:EN-US'>.<o:p></o:p></span></p>
+
+<pre><b><span lang=EN-US style='color:#003366;mso-ansi-language:EN-US'>var</span></b><span
+lang=EN-US style='mso-ansi-language:EN-US'> input = $<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;:text&quot;</span><span style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>.<span style='color:#006600'>css</span><span
+style='color:#66CC66'>({</span>background:<span style='color:#3366CC'>&quot;yellow&quot;</span>, border:<span
+style='color:#3366CC'>&quot;3px red solid&quot;</span><span style='color:#66CC66'>})</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;div&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>text</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;</span></span><span style='color:#3366CC'>Найдено</span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'> type=text &quot;</span><span
+lang=EN-US style='mso-ansi-language:EN-US'> + input.<span style='color:#006600'>length</span> + <span
+style='color:#3366CC'>&quot;.&quot;</span><span style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>.<span style='color:#006600'>css</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;color&quot;</span>, <span
+style='color:#3366CC'>&quot;red&quot;</span><span style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;form&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>submit</span><span style='color:#66CC66'>(</span><b><span
+style='color:#003366'>function</span></b> <span style='color:#66CC66'>()</span> <span
+style='color:#66CC66'>{</span> <b><span style='color:#000066'>return</span></b> <b><span
+style='color:#003366'>false</span></b>; <span style='color:#66CC66'>})</span>;<o:p></o:p></span></pre>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>:password<o:p></o:p></span></h3>
+
+<p>возвращает<span lang=EN-US style='mso-ansi-language:EN-US'>:
+Array&lt;Element(s)&gt;<br>
+</span>Выбираются<span style='mso-ansi-language:EN-US'> </span>все<span
+style='mso-ansi-language:EN-US'> </span>элементы<span lang=EN-US
+style='mso-ansi-language:EN-US'> input </span>типа<span lang=EN-US
+style='mso-ansi-language:EN-US'> password. </span>См<span lang=EN-US
+style='mso-ansi-language:EN-US'>. </span>пример<span lang=EN-US
+style='mso-ansi-language:EN-US'>.<o:p></o:p></span></p>
+
+<pre><b><span lang=EN-US style='color:#003366;mso-ansi-language:EN-US'>var</span></b><span
+lang=EN-US style='mso-ansi-language:EN-US'> input = $<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;:password&quot;</span><span style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>.<span style='color:#006600'>css</span><span
+style='color:#66CC66'>({</span>background:<span style='color:#3366CC'>&quot;yellow&quot;</span>, border:<span
+style='color:#3366CC'>&quot;3px red solid&quot;</span><span style='color:#66CC66'>})</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;div&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>text</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;</span></span><span style='color:#3366CC'>Найдено</span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'> type=password &quot;</span><span
+lang=EN-US style='mso-ansi-language:EN-US'> +<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>input.<span style='color:#006600'>length</span> + <span
+style='color:#3366CC'>&quot;.&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;color&quot;</span>, <span style='color:#3366CC'>&quot;red&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;form&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>submit</span><span style='color:#66CC66'>(</span><b><span
+style='color:#003366'>function</span></b> <span style='color:#66CC66'>()</span> <span
+style='color:#66CC66'>{</span> <b><span style='color:#000066'>return</span></b> <b><span
+style='color:#003366'>false</span></b>; <span style='color:#66CC66'>})</span>;<o:p></o:p></span></pre>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>:radio<o:p></o:p></span></h3>
+
+<p>возвращает<span lang=EN-US style='mso-ansi-language:EN-US'>:
+Array&lt;Element(s)&gt;<br>
+</span>Выбираются<span style='mso-ansi-language:EN-US'> </span>все<span
+style='mso-ansi-language:EN-US'> </span>элементы<span lang=EN-US
+style='mso-ansi-language:EN-US'> input </span>типа<span lang=EN-US
+style='mso-ansi-language:EN-US'> radio. </span>См<span lang=EN-US
+style='mso-ansi-language:EN-US'>. </span>пример<span lang=EN-US
+style='mso-ansi-language:EN-US'>.<o:p></o:p></span></p>
+
+<pre><b><span lang=EN-US style='color:#003366;mso-ansi-language:EN-US'>var</span></b><span
+lang=EN-US style='mso-ansi-language:EN-US'> input = $<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;:radio&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>attr</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;checked&quot;</span>, <span style='color:#3366CC'>&quot;checked&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;div&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>text</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;</span></span><span style='color:#3366CC'>Найдено</span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'> type=radio &quot;</span><span
+lang=EN-US style='mso-ansi-language:EN-US'> + input.<span style='color:#006600'>length</span> + <span
+style='color:#3366CC'>&quot;.&quot;</span><span style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>.<span style='color:#006600'>css</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;color&quot;</span>, <span
+style='color:#3366CC'>&quot;red&quot;</span><span style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;form&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>submit</span><span style='color:#66CC66'>(</span><b><span
+style='color:#003366'>function</span></b> <span style='color:#66CC66'>()</span> <span
+style='color:#66CC66'>{</span> <b><span style='color:#000066'>return</span></b> <b><span
+style='color:#003366'>false</span></b>; <span style='color:#66CC66'>})</span>;<o:p></o:p></span></pre>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>:checkbox<o:p></o:p></span></h3>
+
+<p>возвращает<span lang=EN-US style='mso-ansi-language:EN-US'>:
+Array&lt;Element(s)&gt;<br>
+</span>Выбираются<span style='mso-ansi-language:EN-US'> </span>все<span
+style='mso-ansi-language:EN-US'> </span>элементы<span lang=EN-US
+style='mso-ansi-language:EN-US'> input </span>типа<span lang=EN-US
+style='mso-ansi-language:EN-US'> checkbox. </span>См<span lang=EN-US
+style='mso-ansi-language:EN-US'>. </span>пример<span lang=EN-US
+style='mso-ansi-language:EN-US'>.<o:p></o:p></span></p>
+
+<pre><b><span lang=EN-US style='color:#003366;mso-ansi-language:EN-US'>var</span></b><span
+lang=EN-US style='mso-ansi-language:EN-US'> input = $<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;:checkbox&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>attr</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;checked&quot;</span>,<span style='color:#3366CC'>&quot;checked&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;div&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>text</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;</span></span><span style='color:#3366CC'>Найдено</span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'> type=checkbox &quot;</span><span
+lang=EN-US style='mso-ansi-language:EN-US'> +<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>input.<span style='color:#006600'>length</span> + <span
+style='color:#3366CC'>&quot;.&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;color&quot;</span>, <span style='color:#3366CC'>&quot;red&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;form&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>submit</span><span style='color:#66CC66'>(</span><b><span
+style='color:#003366'>function</span></b> <span style='color:#66CC66'>()</span> <span
+style='color:#66CC66'>{</span> <b><span style='color:#000066'>return</span></b> <b><span
+style='color:#003366'>false</span></b>; <span style='color:#66CC66'>})</span>;<o:p></o:p></span></pre>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>:submit<o:p></o:p></span></h3>
+
+<p>возвращает<span lang=EN-US style='mso-ansi-language:EN-US'>:
+Array&lt;Element(s)&gt;<br>
+</span>Выбираются<span style='mso-ansi-language:EN-US'> </span>все<span
+style='mso-ansi-language:EN-US'> </span>элементы<span lang=EN-US
+style='mso-ansi-language:EN-US'> input </span>типа<span lang=EN-US
+style='mso-ansi-language:EN-US'> submit. </span>См<span lang=EN-US
+style='mso-ansi-language:EN-US'>. </span>пример<span lang=EN-US
+style='mso-ansi-language:EN-US'>.<o:p></o:p></span></p>
+
+<pre><b><span lang=EN-US style='color:#003366;mso-ansi-language:EN-US'>var</span></b><span
+lang=EN-US style='mso-ansi-language:EN-US'> input = $<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;:submit&quot;</span><span style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>.<span style='color:#006600'>css</span><span
+style='color:#66CC66'>({</span>background:<span style='color:#3366CC'>&quot;yellow&quot;</span>, border:<span
+style='color:#3366CC'>&quot;3px red solid&quot;</span><span style='color:#66CC66'>})</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;div&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>text</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;</span></span><span style='color:#3366CC'>Найдено</span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'> type=submit &quot;</span><span
+lang=EN-US style='mso-ansi-language:EN-US'> +<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>input.<span style='color:#006600'>length</span> + <span
+style='color:#3366CC'>&quot;.&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;color&quot;</span>, <span style='color:#3366CC'>&quot;red&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;form&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>submit</span><span style='color:#66CC66'>(</span><b><span
+style='color:#003366'>function</span></b> <span style='color:#66CC66'>()</span> <span
+style='color:#66CC66'>{</span> <b><span style='color:#000066'>return</span></b> <b><span
+style='color:#003366'>false</span></b>; <span style='color:#66CC66'>})</span>;<o:p></o:p></span></pre>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>:image<o:p></o:p></span></h3>
+
+<p>возвращает<span lang=EN-US style='mso-ansi-language:EN-US'>:
+Array&lt;Element(s)&gt;<br>
+</span>Выбираются<span style='mso-ansi-language:EN-US'> </span>все<span
+style='mso-ansi-language:EN-US'> </span>элементы<span lang=EN-US
+style='mso-ansi-language:EN-US'> input </span>типа<span lang=EN-US
+style='mso-ansi-language:EN-US'> image. </span>См<span lang=EN-US
+style='mso-ansi-language:EN-US'>. </span>пример<span lang=EN-US
+style='mso-ansi-language:EN-US'>.<o:p></o:p></span></p>
+
+<pre><b><span lang=EN-US style='color:#003366;mso-ansi-language:EN-US'>var</span></b><span
+lang=EN-US style='mso-ansi-language:EN-US'> input = $<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;:image&quot;</span><span style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>.<span style='color:#006600'>css</span><span
+style='color:#66CC66'>({</span>background:<span style='color:#3366CC'>&quot;yellow&quot;</span>, border:<span
+style='color:#3366CC'>&quot;3px red solid&quot;</span><span style='color:#66CC66'>})</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;div&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>text</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;</span></span><span style='color:#3366CC'>Найдено</span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'> type=image &quot;</span><span
+lang=EN-US style='mso-ansi-language:EN-US'> +<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>input.<span style='color:#006600'>length</span> + <span
+style='color:#3366CC'>&quot;.&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;color&quot;</span>, <span style='color:#3366CC'>&quot;red&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;form&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>submit</span><span style='color:#66CC66'>(</span><b><span
+style='color:#003366'>function</span></b> <span style='color:#66CC66'>()</span> <span
+style='color:#66CC66'>{</span> <b><span style='color:#000066'>return</span></b> <b><span
+style='color:#003366'>false</span></b>; <span style='color:#66CC66'>})</span>;<o:p></o:p></span></pre>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>:button<o:p></o:p></span></h3>
+
+<p>возвращает<span lang=EN-US style='mso-ansi-language:EN-US'>:
+Array&lt;Element(s)&gt;<br>
+</span>Выбираются<span style='mso-ansi-language:EN-US'> </span>все<span
+style='mso-ansi-language:EN-US'> </span>элементы<span lang=EN-US
+style='mso-ansi-language:EN-US'> input </span>типа<span lang=EN-US
+style='mso-ansi-language:EN-US'> button. </span>См<span lang=EN-US
+style='mso-ansi-language:EN-US'>. </span>пример<span lang=EN-US
+style='mso-ansi-language:EN-US'>.<o:p></o:p></span></p>
+
+<pre><b><span lang=EN-US style='color:#003366;mso-ansi-language:EN-US'>var</span></b><span
+lang=EN-US style='mso-ansi-language:EN-US'> input = $<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;:button&quot;</span><span style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>.<span style='color:#006600'>css</span><span
+style='color:#66CC66'>({</span>background:<span style='color:#3366CC'>&quot;yellow&quot;</span>, border:<span
+style='color:#3366CC'>&quot;3px red solid&quot;</span><span style='color:#66CC66'>})</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;div&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>text</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;</span></span><span style='color:#3366CC'>Найдено</span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'> type=button &quot;</span><span
+lang=EN-US style='mso-ansi-language:EN-US'> +<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>input.<span style='color:#006600'>length</span> + <span
+style='color:#3366CC'>&quot;.&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;color&quot;</span>, <span style='color:#3366CC'>&quot;red&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;form&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>submit</span><span style='color:#66CC66'>(</span><b><span
+style='color:#003366'>function</span></b> <span style='color:#66CC66'>()</span> <span
+style='color:#66CC66'>{</span> <b><span style='color:#000066'>return</span></b> <b><span
+style='color:#003366'>false</span></b>; <span style='color:#66CC66'>})</span>;<o:p></o:p></span></pre>
+
+<h3>:file</h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются все элементы input типа file. См<span lang=EN-US style='mso-ansi-language:
+EN-US'>. </span>пример<span lang=EN-US style='mso-ansi-language:EN-US'>.<o:p></o:p></span></p>
+
+<pre><b><span lang=EN-US style='color:#003366;mso-ansi-language:EN-US'>var</span></b><span
+lang=EN-US style='mso-ansi-language:EN-US'> input = $<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;:file&quot;</span><span style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>.<span style='color:#006600'>css</span><span
+style='color:#66CC66'>({</span>background:<span style='color:#3366CC'>&quot;yellow&quot;</span>, border:<span
+style='color:#3366CC'>&quot;3px red solid&quot;</span><span style='color:#66CC66'>})</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;div&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>text</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;</span></span><span style='color:#3366CC'>Найдено</span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'> type=file &quot;</span><span
+lang=EN-US style='mso-ansi-language:EN-US'> +<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>input.<span style='color:#006600'>length</span> + <span
+style='color:#3366CC'>&quot;.&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>css</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;color&quot;</span>, <span style='color:#3366CC'>&quot;red&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;form&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>submit</span><span style='color:#66CC66'>(</span><b><span
+style='color:#003366'>function</span></b> <span style='color:#66CC66'>()</span> <span
+style='color:#66CC66'>{</span> <b><span style='color:#000066'>return</span></b> <b><span
+style='color:#003366'>false</span></b>; <span style='color:#66CC66'>})</span>;<o:p></o:p></span></pre>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;meta
+http-equiv=&quot;Content-Type&quot; content=&quot;text/html;
+charset=utf-8&quot;&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script
+src=&quot;js/jquery-1.2.3.js&quot;&gt;&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>var input =
+$(&quot;:file&quot;).css({background:&quot;yellow&quot;, border:&quot;3px red
+solid&quot;});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>$(&quot;div&quot;).text(&quot;Найдено
+type=file &quot; + input.length + &quot;.&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>.css(&quot;color&quot;,
+&quot;red&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>$(&quot;form&quot;).submit(function
+() { return false; });<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>textarea { height:45px; }<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;form&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;input type=&quot;button&quot;
+value=&quot;Input Button&quot;/&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;input type=&quot;checkbox&quot; /&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;input type=&quot;file&quot; /&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;input type=&quot;hidden&quot;
+/&gt;&lt;br&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;input type=&quot;image&quot; /&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;input type=&quot;password&quot; /&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;input type=&quot;radio&quot;
+name=&quot;abcd&quot; /&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;input type=&quot;reset&quot;
+/&gt;&lt;br&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;input type=&quot;submit&quot; /&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;input type=&quot;text&quot; /&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>   
+</span>&lt;select&gt;&lt;option&gt;Option&lt;/option&gt;&lt;/select&gt;&lt;br&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;textarea&gt;&lt;/textarea&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;button&gt;Button&lt;/button&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/form&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/body&gt;</span></p>
+
+<h3>:hidden</h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются все скрытые элементы или элементы input, имеющие тип
+&quot;hidden&quot;. C этим фильтром мы уже знакомились в разделе
+Visibility-фильтры. Но поскольку повторение - мать учения, посмотрим на пример
+еще раз.</p>
+
+<pre><i><span style='color:#009900'>// в некоторых браузерах в набор будут включены</span></i></pre><pre><i><span
+lang=EN-US style='color:#009900;mso-ansi-language:EN-US'>//</span><span
+style='color:#009900'>элементы</span></i><i><span lang=EN-US style='color:#009900;
+mso-ansi-language:EN-US'> head, title, script </span><span style='color:#009900'>и</span></i><i><span
+style='color:#009900;mso-ansi-language:EN-US'> </span><span style='color:#009900'>т</span></i><i><span
+lang=EN-US style='color:#009900;mso-ansi-language:EN-US'>.</span><span
+style='color:#009900'>д</span></i><i><span lang=EN-US style='color:#009900;
+mso-ansi-language:EN-US'>.,</span></i><span lang=EN-US style='mso-ansi-language:
+EN-US'><o:p></o:p></span></pre><pre><i><span style='color:#009900'>// но как правило набор ограничивается элементом body.</span></i></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;span:first&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>text</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;Found &quot;</span> +<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;:hidden&quot;</span>, document.<span
+style='color:#006600'>body</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>length</span> +<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>&quot; hidden elements total.&quot;</span><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>)</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;div:hidden&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>show</span><span style='color:#66CC66'>(</span><span
+style='color:#CC0000'>3000</span><span style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;span:last&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>text</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;Found &quot;</span> +<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;input:hidden&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>length</span> +<o:p></o:p></span></pre><pre><span
+style='color:#3366CC'>&quot; hidden inputs.&quot;</span><span style='color:
+#66CC66'>)</span>;</pre>
+
+<h2><span style='color:#CC6600'>Фильтры форм<o:p></o:p></span></h2>
+
+<h3>:enabled</h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются все элементы, имеющие активное состояние (enabled). См. пример.</p>
+
+<pre>$<span style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;input:enabled&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>val</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;Этот элемент активен!&quot;</span><span
+style='color:#66CC66'>)</span>;</pre>
+
+<h3>:disabled</h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются все элементы, имеющие запрещенное состояние (disabled). См<span
+lang=EN-US style='mso-ansi-language:EN-US'>. </span>пример<span lang=EN-US
+style='mso-ansi-language:EN-US'>.<o:p></o:p></span></p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;input:disabled&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>val</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;</span></span><span style='color:#3366CC'>Запрещен</span><span
+style='color:#3366CC;mso-ansi-language:EN-US'> </span><span style='color:#3366CC'>к</span><span
+style='color:#3366CC;mso-ansi-language:EN-US'> </span><span style='color:#3366CC'>использованию</span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>!&quot;</span><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>)</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;meta http-equiv=&quot;Content-Type&quot;
+content=&quot;text/html; charset=utf-8&quot;&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script
+src=&quot;js/jquery-1.2.3.js&quot;&gt;&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>$(&quot;input:enabled&quot;).val(&quot;</span>Этот<span
+style='mso-ansi-language:EN-US'> </span>элемент<span style='mso-ansi-language:
+EN-US'> </span>активен<span lang=EN-US style='mso-ansi-language:EN-US'>!&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;style&gt;<span style='mso-spacerun:yes'> 
+</span>input {<span style='mso-spacerun:yes'>    </span>width:180px;<span
+style='mso-spacerun:yes'>  </span>}<span style='mso-spacerun:yes'>  
+</span>&lt;/style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;form&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;input name=&quot;email&quot; disabled=&quot;disabled&quot;
+/&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;input name=&quot;id&quot; /&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/form&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/body&gt;<o:p></o:p></span></p>
+
+<h3>:checked</h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются все отмеченные элементы (checked). См<span lang=EN-US
+style='mso-ansi-language:EN-US'>. </span>пример<span lang=EN-US
+style='mso-ansi-language:EN-US'>.<o:p></o:p></span></p>
+
+<pre><b><span lang=EN-US style='color:#003366;mso-ansi-language:EN-US'>function</span></b><span
+lang=EN-US style='mso-ansi-language:EN-US'> countChecked<span style='color:
+#66CC66'>()</span> <span style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><b><span
+style='color:#003366'>var</span></b> n = $<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;input:checked&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>length</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;div&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>text</span><span
+style='color:#66CC66'>(</span>n + <span style='color:#66CC66'>(</span>n == <span
+style='color:#CC0000'>1</span> ? <span style='color:#3366CC'>&quot; is&quot;</span> : <span
+style='color:#3366CC'>&quot; are&quot;</span><span style='color:#66CC66'>)</span> +<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>&quot; checked!&quot;</span><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>)</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>}</span><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>countChecked<span style='color:#66CC66'>()</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;:checkbox&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>click</span><span style='color:#66CC66'>(</span>countChecked<span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre>
+
+<h3>:selected</h3>
+
+<p>возвращает: Array&lt;Element(s)&gt;<br>
+Выбираются все выбранные элементы (selected). В примере при изменении выбора мы
+получаем текст каждой выбранной опции и записываем его в элемент div.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;select&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>change</span><span style='color:#66CC66'>(</span><b><span
+style='color:#003366'>function</span></b> <span style='color:#66CC66'>()</span> <span
+style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><b><span
+style='color:#003366'>var</span></b> str = <span style='color:#3366CC'>&quot;&quot;</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;select option:selected&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>each</span><span
+style='color:#66CC66'>(</span><b><span style='color:#003366'>function</span></b> <span
+style='color:#66CC66'>()</span> <span style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>str += $<span
+style='color:#66CC66'>(</span><b><span style='color:#000066'>this</span></b><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>text</span><span
+style='color:#66CC66'>()</span> + <span style='color:#3366CC'>&quot; &quot;</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+style='color:#66CC66'>})</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;div&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>text</span><span
+style='color:#66CC66'>(</span>str<span style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span
+style='color:#66CC66'>})</span>.<span style='color:#006600'>trigger</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>'change'</span><span
+style='color:#66CC66'>)</span>;</pre>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

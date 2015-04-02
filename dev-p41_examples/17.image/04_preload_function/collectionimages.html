@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Перекатывание</title>
+	<script language="JavaScript">
+	var ImgArr, ImgLen;
+	//Предварительная загрузка
+	function Preload (url)
+	{
+		if (!ImgArr){
+			ImgArr=new Array();
+			ImgLen=0;
+		}
+		ImgArr[ImgLen]=new Image();
+		ImgArr[ImgLen].src=url;
+		ImgLen++;
+	}
+	function ChImg(x,y) 
+	{
+		var temp;
+		temp=ImgArr[x].src;
+		ImgArr[x].src=document.images[y].src;
+		document.images[y].src=temp;
+	}
+	Preload('jerus.jpg');
+	</script>
+</head>
+
+<body>
+<a href="#" onMouseOver="ChImg(0,0)"
+            onMouseOut="ChImg(0,0)">
+			<img src="je.jpg">
+</a>
+
+
+</body>
+</html>

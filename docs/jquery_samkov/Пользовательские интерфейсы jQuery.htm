@@ -1,0 +1,1971 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List
+href="Пользовательские%20интерфейсы%20jQuery.files/filelist.xml">
+<title>Пользовательские интерфейсы jQuery: создаем слайдер</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>elena</o:Author>
+  <o:LastAuthor>elena</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>25</o:TotalTime>
+  <o:Created>2008-06-27T07:44:00Z</o:Created>
+  <o:LastSaved>2008-06-27T07:44:00Z</o:LastSaved>
+  <o:Pages>16</o:Pages>
+  <o:Words>5349</o:Words>
+  <o:Characters>30493</o:Characters>
+  <o:Company>home</o:Company>
+  <o:Lines>254</o:Lines>
+  <o:Paragraphs>71</o:Paragraphs>
+  <o:CharactersWithSpaces>35771</o:CharactersWithSpaces>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:PunctuationKerning/>
+  <w:DrawingGridHorizontalSpacing>2,85 пт</w:DrawingGridHorizontalSpacing>
+  <w:DrawingGridVerticalSpacing>1,95 пт</w:DrawingGridVerticalSpacing>
+  <w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:24.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+code
+	{font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+pre
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+p.postdate, li.postdate, div.postdate
+	{mso-style-name:postdate;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:612.0pt 792.0pt;
+	margin:2.0cm 42.5pt 42.55pt 42.55pt;
+	mso-header-margin:36.0pt;
+	mso-footer-margin:36.0pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Обычная таблица";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]-->
+</head>
+
+<body lang=RU link=blue vlink=purple style='tab-interval:35.4pt'>
+
+<div class=Section1>
+
+<h1><span class=SpellE><span style='font-size:12.0pt;color:#006600'>draggable</span></span><span
+style='font-size:12.0pt'> Пользовательские интерфейсы <span class=SpellE>jQuery</span>:
+свободно <span class=GramE>перемещаемый</span> <span class=SpellE>контент</span>.<o:p></o:p></span></h1>
+
+<p>Попробуем создавать элементы, которые можно будет свободно перемещать по
+странице с помощью мыши. Опять же обратимся к сайту разработчиков библиотеки.
+Там приведен вот такой простой код:</p>
+
+<pre>$<span style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;.<span
+class=SpellE>block</span>&quot;</span><span style='color:#66CC66'>)</span>.<span
+class=SpellE><span style='color:#006600'>draggable</span></span><span
+style='color:#66CC66'>()</span>;</pre>
+
+<p>В этом коде сообщается, что перемещаемыми элементами становятся все элементы
+с классом <span class=SpellE><strong>block</strong></span>. </p>
+
+<p>&lt;<span class=SpellE>script</span> <span class=SpellE>src=</span>&quot;<span
+class=SpellE>js</span>/jquery-1.2.1.js&quot; <span class=SpellE>type=</span>&quot;<span
+class=SpellE>text</span>/<span class=SpellE>javascript</span>&quot;&gt;&lt;/<span
+class=SpellE>script</span>&gt;<br>
+&lt;<span class=SpellE>script</span> <span class=SpellE>src=</span>&quot;<span
+class=SpellE>js</span>/<span class=SpellE>ui.mouse.js</span>&quot; <span
+class=SpellE>type=</span>&quot;<span class=SpellE>text</span>/<span
+class=SpellE>javascript</span>&quot;&gt;&lt;/<span class=SpellE>script</span>&gt;<br>
+&lt;<span class=SpellE>script</span> <span class=SpellE>src=</span>&quot;<span
+class=SpellE>js</span>/<span class=SpellE>ui.draggable.js</span>&quot; <span
+class=SpellE>type=</span>&quot;<span class=SpellE>text</span>/<span
+class=SpellE>javascript</span>&quot;&gt;&lt;/<span class=SpellE>script</span>&gt;<br>
+&lt;<span class=SpellE>script</span> <span class=SpellE>src=</span>&quot;<span
+class=SpellE>js</span>/<span class=SpellE>ui.draggable.ext.js</span>&quot; <span
+class=SpellE>type=</span>&quot;<span class=SpellE>text</span>/<span
+class=SpellE>javascript</span>&quot;&gt;&lt;/<span class=SpellE>script</span>&gt;</p>
+
+<p>Первым подключается библиотека <span class=SpellE>jQuery</span>, а затем -
+файл, выполняющий обработку событий мышки. Два следующих файла работают
+непосредственно над перемещением элементов по странице.<br>
+Далее в этом же разделе <strong>HEAD</strong> следует таблица стилей в которой
+мы определим класс (это может <span class=GramE>быть</span> например и
+идентификатор) для элементов, которые хотим сделать свободно перемещаемыми.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;script type=<span
+style='color:#3366CC'>&quot;text/<span class=SpellE>javascript</span>&quot;</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span>document<span style='color:#66CC66'>)</span>.<span
+class=GramE><span style='color:#006600'>ready</span><span style='color:#66CC66'>(</span></span><b><span
+style='color:#003366'>function</span></b><span style='color:#66CC66'>(){</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><i><span
+style='color:#009900'>// ----- </span></i></span><i><span style='color:#009900'>ПЕРЕМЕЩАЕМЫЙ</span></i><i><span
+style='color:#009900;mso-ansi-language:EN-US'> </span><span style='color:#009900'>КОНТЕНТ</span></i><i><span
+lang=EN-US style='color:#009900;mso-ansi-language:EN-US'> -----</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;.block&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=SpellE><span class=GramE><span
+style='color:#006600'>draggable</span></span></span><span class=GramE><span
+style='color:#66CC66'>({</span></span> <o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=GramE>revert</span>: <b><span style='color:#003366'>true</span></b>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=GramE>drag</span>: <b><span style='color:#003366'>function</span></b><span
+style='color:#66CC66'>(</span><span class=SpellE>e,ui</span><span
+style='color:#66CC66'>)</span> <span style='color:#66CC66'>{</span> <o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>            </span>$<span
+style='color:#66CC66'>(</span><b><span style='color:#000066'>this</span></b><span
+style='color:#66CC66'>)</span>.<span class=SpellE><span class=GramE><span
+style='color:#006600'>css</span></span></span><span class=GramE><span
+style='color:#66CC66'>(</span></span><span style='color:#3366CC'>&quot;background-color&quot;</span>,<span
+style='color:#3366CC'>&quot;#E2F2E2&quot;</span><span style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>            </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#position&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=GramE><span style='color:#006600'>text</span><span
+style='color:#66CC66'>(</span></span><span style='color:#3366CC'>&quot;</span></span><span
+style='color:#3366CC'>Положение</span><span style='color:#3366CC;mso-ansi-language:
+EN-US'> </span><span style='color:#3366CC'>перемещаемого</span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'> <o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>            </span></span><span
+style='color:#3366CC'>элемента</span><span lang=EN-US style='color:#3366CC;
+mso-ansi-language:EN-US'> - </span><span style='color:#3366CC'>слева</span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>: &quot;</span><span
+lang=EN-US style='mso-ansi-language:EN-US'> + <span class=SpellE>ui.<span
+style='color:#006600'>position</span>.<span style='color:#006600'>left</span></span> + <span
+style='color:#3366CC'>&quot;<span class=SpellE>px</span>, <o:p></o:p></span></span></pre><pre><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>            </span></span><span
+style='color:#3366CC'>а</span><span style='color:#3366CC;mso-ansi-language:
+EN-US'> </span><span style='color:#3366CC'>сверху</span><span lang=EN-US
+style='color:#3366CC;mso-ansi-language:EN-US'>: &quot;</span><span lang=EN-US
+style='mso-ansi-language:EN-US'> + <span class=SpellE>ui.<span
+style='color:#006600'>position</span>.<span style='color:#006600'>top</span></span> + <span
+style='color:#3366CC'>&quot;<span class=SpellE>px</span>&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+style='color:#66CC66'>}</span>,<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=GramE><span style='color:#000066'>stop</span></span>: <b><span
+style='color:#003366'>function</span></b><span style='color:#66CC66'>(</span><span
+class=SpellE>e,ui</span><span style='color:#66CC66'>)</span> <span
+style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>            </span>$<span
+style='color:#66CC66'>(</span><b><span style='color:#000066'>this</span></b><span
+style='color:#66CC66'>)</span>.<span class=SpellE><span class=GramE><span
+style='color:#006600'>css</span></span></span><span class=GramE><span
+style='color:#66CC66'>(</span></span><span style='color:#3366CC'>&quot;background-color&quot;</span>, <span
+style='color:#3366CC'>&quot;#58AEFC&quot;</span><span style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span></span><span
+style='color:#66CC66'>}</span></pre><pre><span style='mso-spacerun:yes'>    </span><span
+style='color:#66CC66'>})</span>;</pre><pre> <span style='mso-spacerun:yes'>   </span><i><span
+style='color:#009900'>// ----- ПЕРЕМЕЩАЕМЫЙ КОНТЕНТ -----</span></i></pre><pre><span
+style='color:#66CC66'>})</span>;</pre><pre>&lt;/<span class=SpellE>script</span>&gt;</pre>
+
+<p>Весь код &quot;обернут&quot; уже немного знакомой нам</p>
+
+<pre>&nbsp;</pre><pre><span class=GramE>$<span style='color:#66CC66'>(</span><span
+class=SpellE>document</span><span style='color:#66CC66'>)</span>.<span
+class=SpellE><span style='color:#006600'>ready</span></span><span
+style='color:#66CC66'>(</span><span class=SpellE><b><span style='color:#003366'>function</span></b></span><span
+style='color:#66CC66'>(){</span></span></pre><pre>...</pre><pre><span
+style='color:#66CC66'>})</span>;</pre>
+
+<p><span class=GramE>которая</span> отслеживает момент готовности объектной
+модели документа (DOM).</p>
+
+<p>Это чем-то похоже на событие <span class=SpellE>onload</span>, но в отличие
+от него разрешает выполнение <span class=SpellE>javascript</span> сразу после
+того, как DOM <span class=GramE>готова</span> к работе, а не после полной
+загрузки страницы.</p>
+
+<p>Итак, вначале мы сообщаем, что перемещаемыми элементами будут все элементы с
+классом <span class=SpellE><strong>block</strong></span>. А затем просто
+перечисляем те опции, которые мы хотим использовать.</p>
+
+<p><span class=SpellE><strong>revert</strong></span><strong>: <span
+class=SpellE>true</span></strong> указывает на то, что после окончания процесса
+перетаскивания, элемент должен вернуться на прежнее место.<br>
+Опция <span class=SpellE><strong>drag</strong></span> содержит функцию, которая
+будет выполняться во время самого процесса перетаскивания элемента. В этой
+функции мы сначала задаем свойство <span class=SpellE>background-color</span>
+для перетаскиваемого элемента (по-русски - меняем его цвет), а затем в элемент
+с идентификатором <strong>#<span class=SpellE>position</span></strong>
+вставляем строку текста, в которой сообщаем текущее <span class=SpellE>пололжение</span>
+левого верхнего угла перетаскиваемого элемента относительно окна браузера.<br>
+В опции <span class=SpellE><strong>stop</strong></span> мы определяем функцию,
+которая выполнится в момент остановки процесса перемещения элемента и просто
+вернет цвет элемента к <span class=GramE>начальному</span>.</p>
+
+<p>Вот и все. Далее я привожу всего несколько опций. Полный их перечень можно
+найти на сайте разработчиков библиотеки <span class=SpellE>jQuery</span>.</p>
+
+<p><span class=SpellE><strong>axis</strong></span> - ограничивает перемещение
+по горизонтальной (<span class=SpellE>x</span>) или вертикальной (<span
+class=SpellE>y</span>) осям.<br>
+<span class=SpellE><strong>containment</strong></span> - ограничивает
+перемещение <span class=GramE>к</span> в пределах границ указанного элемента -
+может быть элемент DOM, родительский элемент, документ или селектор <span
+class=SpellE>jQuery</span>.<br>
+<span class=SpellE><strong>effect</strong></span> - эффекты от начала
+перемещения до остановки. <span class=GramE>Возможно</span> например <span
+class=SpellE>FadeIn</span> при старте и <span class=SpellE>FadeOut</span> при
+остановке.<br>
+<span class=SpellE><strong>opacity</strong></span> - прозрачность перемещаемого
+элемента.<br>
+<span class=SpellE><strong>revert</strong></span> - если истина, элемент
+вернется на позицию откуда было начато перемещение.<br>
+<span class=SpellE><strong>start</strong></span><strong>(<span class=SpellE>e,ui</span>),
+<span class=SpellE>drag</span>(<span class=SpellE>e,ui</span>) и <span
+class=SpellE>stop</span>(<span class=SpellE>e,ui</span>)</strong> - функции,
+которые могут вызываться при начале, окончании или процессе перетаскивания
+элементов.</p>
+
+<h1 align=center style='text-align:center'><span style='font-size:12.0pt'><o:p>&nbsp;</o:p></span></h1>
+
+<h1 align=center style='text-align:center'><span style='font-size:12.0pt'>Пользовательские
+интерфейсы <span class=SpellE>jQuery</span>: создаем <span class=SpellE>слайдер</span>.<o:p></o:p></span></h1>
+
+<p>На сайте разработчиков приведен пример того, как просто это сделать:</p>
+
+<pre>$<span style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#<span
+class=SpellE>example</span>&quot;</span><span style='color:#66CC66'>)</span>.<span
+class=SpellE><span style='color:#006600'>slider</span></span><span
+style='color:#66CC66'>()</span>;</pre>
+
+<p>Итак, в разделе <strong>HEAD</strong> нашей страницы необходимо подключить
+четыре файла. Вот так:</p>
+
+<p>&lt;<span class=SpellE>script</span> <span class=SpellE>type=</span>&quot;<span
+class=SpellE>text</span>/<span class=SpellE>javascript</span>&quot; <span
+class=SpellE>src=</span>&quot;<span class=SpellE>js</span>/jquery-1.2.1.js&quot;&gt;&lt;/<span
+class=SpellE>script</span>&gt;<br>
+&lt;<span class=SpellE>script</span> <span class=SpellE>type=</span>&quot;<span
+class=SpellE>text</span>/<span class=SpellE>javascript</span>&quot; <span
+class=SpellE>src=</span>&quot;<span class=SpellE>js</span>/<span class=SpellE>jquery.dimensions.js</span>&quot;&gt;&lt;/<span
+class=SpellE>script</span>&gt;<br>
+&lt;<span class=SpellE>script</span> <span class=SpellE>type=</span>&quot;<span
+class=SpellE>text</span>/<span class=SpellE>javascript</span>&quot; <span
+class=SpellE>src=</span>&quot;<span class=SpellE>js</span>/<span class=SpellE>ui.mouse.js</span>&quot;&gt;&lt;/<span
+class=SpellE>script</span>&gt;<br>
+&lt;<span class=SpellE>script</span> <span class=SpellE>type=</span>&quot;<span
+class=SpellE>text</span>/<span class=SpellE>javascript</span>&quot; <span
+class=SpellE>src=</span>&quot;<span class=SpellE>js</span>/<span class=SpellE>ui.slider.js</span>&quot;&gt;&lt;/<span
+class=SpellE>script</span>&gt;</p>
+
+<p>Здесь первым подключается собственно библиотека <span class=SpellE>jQuery</span>,
+затем <span class=SpellE>плагин</span>, который отвечает за работу с размерами
+элементов, далее - файл, выполняющий обработку событий мышки <span class=GramE>и</span>
+наконец тот самый файл, который и позволит нам создать свой <span class=SpellE>слайдер</span>.</p>
+
+<p>Далее в этом же разделе <strong>HEAD</strong> включена таблица стилей. Обратите
+особенное внимание на классы <strong>.<span class=SpellE>ui-slider</span></strong>
+и <strong>.<span class=SpellE>ui-slider-handle</span></strong>. Их не стоит
+переименовывать, так как именно с этими классами работает файл <span
+class=SpellE>ui.slider.js</span>. Все остальное не так важно - это уже дело
+вкуса.</p>
+
+<pre>&nbsp;</pre><pre><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;script type=<span
+style='color:#3366CC'>&quot;text/<span class=SpellE>javascript</span>&quot;</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span>document<span
+style='color:#66CC66'>)</span>.<span class=GramE><span style='color:#006600'>ready</span><span
+style='color:#66CC66'>(</span></span><b><span style='color:#003366'>function</span></b><span
+style='color:#66CC66'>(){</span><o:p></o:p></span></pre><pre><i><span
+lang=EN-US style='color:#009900;mso-ansi-language:EN-US'>// --------------- </span><span
+style='color:#009900'>СЛАЙДЕР</span></i><i><span lang=EN-US style='color:#009900;
+mso-ansi-language:EN-US'> -------------------</span></i><span lang=EN-US
+style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;#Slider&quot;</span><span style='color:#66CC66'>)</span>.<span
+class=GramE><span style='color:#006600'>slider</span><span style='color:#66CC66'>({</span></span> <o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>stepping</span>: <span style='color:#CC0000'>1</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=SpellE><span class=GramE>minValue</span></span>: <span style='color:#CC0000'>0</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=SpellE><span class=GramE>maxValue</span></span>: <span style='color:#CC0000'>10</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>slide</span>: <b><span style='color:#003366'>function</span></b><span
+style='color:#66CC66'>(</span><span class=SpellE>e,ui</span><span
+style='color:#66CC66'>)</span> <span style='color:#66CC66'>{</span> <o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>     </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#<span
+class=SpellE>minResult</span>&quot;</span><span style='color:#66CC66'>)</span>.<span
+class=GramE><span style='color:#006600'>text</span><span style='color:#66CC66'>(</span></span> <span
+class=SpellE>ui.<span style='color:#006600'>values</span></span><span
+style='color:#66CC66'>[</span><span style='color:#CC0000'>0</span><span
+style='color:#66CC66'>]</span> <span style='color:#66CC66'>)</span>; <o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>     </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#<span
+class=SpellE>maxResult</span>&quot;</span><span style='color:#66CC66'>)</span>.<span
+class=GramE><span style='color:#006600'>text</span><span style='color:#66CC66'>(</span></span> <span
+class=SpellE>ui.<span style='color:#006600'>values</span></span><span
+style='color:#66CC66'>[</span><span style='color:#CC0000'>1</span><span
+style='color:#66CC66'>]</span> <span style='color:#66CC66'>)</span>; <o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+style='color:#66CC66'>}</span>,<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE><span style='color:#000066'>stop</span></span>: <b><span
+style='color:#003366'>function</span></b><span style='color:#66CC66'>(</span><span
+class=SpellE>e,ui</span><span style='color:#66CC66'>)</span> <span
+style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#<span
+class=SpellE>textResult</span>&quot;</span><span style='color:#66CC66'>)</span>.<span
+class=GramE><span style='color:#006600'>text</span><span style='color:#66CC66'>(</span></span><span
+style='color:#3366CC'>&quot;</span></span><span style='color:#3366CC'>Выбран</span><span
+style='color:#3366CC;mso-ansi-language:EN-US'> </span><span style='color:#3366CC'>диапазон</span><span
+style='color:#3366CC;mso-ansi-language:EN-US'> </span><span style='color:#3366CC'>значений</span><span
+style='color:#3366CC;mso-ansi-language:EN-US'> </span><span style='color:#3366CC'>от</span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'> &quot;</span><span
+lang=EN-US style='mso-ansi-language:EN-US'> <o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>+ <span
+class=SpellE><span class=GramE>ui.<span style='color:#006600'>values</span></span></span><span
+class=GramE><span style='color:#66CC66'>[</span></span><span style='color:#CC0000'>0</span><span
+style='color:#66CC66'>]</span> + <span style='color:#3366CC'>&quot; </span></span><span
+style='color:#3366CC'>до</span><span lang=EN-US style='color:#3366CC;
+mso-ansi-language:EN-US'> &quot;</span><span lang=EN-US style='mso-ansi-language:
+EN-US'> + <span class=SpellE>ui.<span style='color:#006600'>values</span></span><span
+style='color:#66CC66'>[</span><span style='color:#CC0000'>1</span><span
+style='color:#66CC66'>])</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span></span><span
+style='color:#66CC66'>}</span></pre><pre><span style='mso-spacerun:yes'>  </span><span
+style='color:#66CC66'>})</span>;</pre><pre><i><span style='color:#009900'>// --------------- СЛАЙДЕР -------------------</span></i></pre><pre><span
+style='color:#66CC66'>})</span>;</pre><pre>&lt;/<span class=SpellE>script</span>&gt;</pre>
+
+<p>Код самого <span class=SpellE>слайдера</span> отделен комментариями, а
+начинается код очень интересной функцией</p>
+
+<pre>&nbsp;</pre><pre><span class=GramE>$<span style='color:#66CC66'>(</span><span
+class=SpellE>document</span><span style='color:#66CC66'>)</span>.<span
+class=SpellE><span style='color:#006600'>ready</span></span><span
+style='color:#66CC66'>(</span><span class=SpellE><b><span style='color:#003366'>function</span></b></span><span
+style='color:#66CC66'>(){</span></span></pre><pre>...</pre><pre><span
+style='color:#66CC66'>})</span>;</pre>
+
+<p><span class=GramE>которая</span> отслеживает момент готовности DOM. С ней мы
+познакомимся позднее, а пока продолжим разбирать сам <span class=SpellE>слайдер</span>.<br>
+В первой строке <span class=GramE>мы</span> в общем просто сообщаем, что <span
+class=SpellE>слайдером</span> будет служить некий элемент с идентификатором <strong>#<span
+class=SpellE>Slider</span></strong>. <span class=GramE>И далее задаем значения
+шага <span class=SpellE><strong>stepping</strong></span><strong>: 1</strong>, минимального
+и максимального значения шкалы <span class=SpellE><strong>minValue</strong></span><strong>:
+0</strong> и <span class=SpellE><strong>maxValue</strong></span><strong>: 10</strong>,
+затем сообщаем, что в момент перемещения движка надо отслеживать его значения и
+передавать минимальное и максимальное значения в соответственно в элементы с
+идентификаторами <strong>#<span class=SpellE>minResult</span></strong> и <strong>#<span
+class=SpellE>maxResult</span></strong> и в тот момент, когда Вы отпускаете
+клавишу мыши, в элемент с идентификатором <strong>#<span class=SpellE>textResult</span></strong>
+будет вставлена строка</span> текста, в <span class=GramE>которую</span> будут
+включены окончательные минимальное и максимальное значения.<br>
+Что делать с этими значениями дальше - решать Вам самим. <span class=GramE>Можно</span>
+например передать их с помощью Ajax-запроса какому-либо файлу, который
+обратится к базе данных, выберет необходимые значения, определенные данными,
+снятыми со <span class=SpellE>слайдера</span> и вернет результат обратно в
+браузер пользователя.</p>
+
+<h1><span class=SpellE><strong><span style='font-size:12.0pt;mso-bidi-font-weight:
+normal'>droppable</span></strong></span><span style='font-size:12.0pt'>
+Пользовательские интерфейсы <span class=SpellE>jQuery</span>: перемещаемый и
+“сбрасываемый” <span class=SpellE>контент</span>.<o:p></o:p></span></h1>
+
+<p><span class=GramE>В состав расширений <span class=SpellE>jQuery</span>
+входит функция <span class=SpellE><strong>droppable</strong></span>, которая
+позволяет также довольно просто написать код, который будет обрабатывать
+события, которые происходят в момент окончания перемещения элемента.<br>
+&lt;<span class=SpellE>script</span> <span class=SpellE>type=</span>&quot;<span
+class=SpellE>text</span>/<span class=SpellE>javascript</span>&quot; <span
+class=SpellE>src=</span>&quot;<span class=SpellE>js</span>/jquery-1.2.1.js&quot;&gt;&lt;/<span
+class=SpellE>script</span>&gt;<br>
+&lt;<span class=SpellE>script</span> <span class=SpellE>type=</span>&quot;<span
+class=SpellE>text</span>/<span class=SpellE>javascript</span>&quot; <span
+class=SpellE>src=</span>&quot;<span class=SpellE>js</span>/<span class=SpellE>jquery.dimensions.js</span>&quot;&gt;&lt;/<span
+class=SpellE>script</span>&gt;<br>
+&lt;<span class=SpellE>script</span> <span class=SpellE>type=</span>&quot;<span
+class=SpellE>text</span>/<span class=SpellE>javascript</span>&quot; <span
+class=SpellE>src=</span>&quot;<span class=SpellE>js</span>/<span class=SpellE>ui.mouse.js</span>&quot;&gt;&lt;/<span
+class=SpellE>script</span>&gt;<br>
+&lt;<span class=SpellE>script</span> <span class=SpellE>type=</span>&quot;<span
+class=SpellE>text</span>/<span class=SpellE>javascript</span>&quot; <span
+class=SpellE>src</span></span><span class=SpellE>=</span>&quot;<span
+class=SpellE>js</span>/<span class=SpellE>ui.draggable.js</span>&quot;&gt;&lt;/<span
+class=SpellE>script</span>&gt;<br>
+&lt;<span class=SpellE>script</span> <span class=SpellE>type=</span>&quot;<span
+class=SpellE>text</span>/<span class=SpellE>javascript</span>&quot; <span
+class=SpellE>src=</span>&quot;<span class=SpellE>js</span>/<span class=SpellE>ui.draggable.ext.js</span>&quot;&gt;&lt;/<span
+class=SpellE>script</span>&gt;<br>
+&lt;<span class=SpellE>script</span> <span class=SpellE>type=</span>&quot;<span
+class=SpellE>text</span>/<span class=SpellE>javascript</span>&quot; <span
+class=SpellE>src=</span>&quot;<span class=SpellE>js</span>/<span class=SpellE>ui.droppable.js</span>&quot;&gt;&lt;/<span
+class=SpellE>script</span>&gt;<br>
+&lt;<span class=SpellE>script</span> <span class=SpellE>type=</span>&quot;<span
+class=SpellE>text</span>/<span class=SpellE>javascript</span>&quot; <span
+class=SpellE>src=</span>&quot;<span class=SpellE>js</span>/<span class=SpellE>ui.droppable.ext.js</span>&quot;&gt;&lt;/<span
+class=SpellE>script</span>&gt;</p>
+
+<p>Большинство их уже знакомы по предыдущим примерам, добавились только <span
+class=SpellE>ui.droppable.js</span> и <span class=SpellE>ui.droppable.ext.js</span>,
+которые и обеспечат нам те возможности, которые мы собираемся рассмотреть.</p>
+
+<pre><span class=GramE><span style='color:#6666FF'>.<span class=SpellE>products</span></span> <span
+style='color:#66CC66'>{</span></span></pre><pre><span style='mso-spacerun:yes'>  </span><span
+class=SpellE>float<span style='color:#3333FF'>:left</span></span>;</pre><pre><span
+style='color:#66CC66'>}</span></pre><pre><span class=GramE><span
+style='color:#CC00CC'>#<span class=SpellE>basket</span></span> <span
+style='color:#66CC66'>{</span></span></pre><pre><span style='mso-spacerun:yes'>  </span><span
+class=GramE><b><span lang=EN-US style='color:black;mso-ansi-language:EN-US'>background-color</span></b></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>:<span style='color:#CC00CC'>#e9b96e</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>border<span style='color:#3333FF'>:</span></span><span
+style='color:#993333'>3px</span> <span style='color:#993333'>double</span> <span
+style='color:#CC00CC'>#c17d11</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>width<span style='color:#3333FF'>:</span></span><span
+style='color:#993333'>150px</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>height<span style='color:#3333FF'>:</span></span><span
+style='color:#993333'>120px</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>margin<span style='color:#3333FF'>:</span></span><span
+style='color:#993333'>10px</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>padding<span style='color:#3333FF'>:</span></span><span
+style='color:#993333'>3px</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=SpellE><span class=GramE>position<span style='color:#3333FF'>:</span></span><span
+style='color:#3333FF'>absolute</span></span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>top<span style='color:#3333FF'>:</span></span><span
+style='color:#993333'>5px</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span></span>right<span
+style='color:#3333FF'>:</span><span style='color:#993333'>5px</span>;</pre><pre><span
+style='color:#66CC66'>}</span></pre>
+
+<p>В работе примера используются элементы с классом <strong>.<span
+class=SpellE>products</span></strong> и идентификатором <strong>#<span
+class=SpellE>basket</span></strong> (понятно, что <span class=SpellE>products</span>
+- это товары <span class=SpellE>интернет-магазина</span>, а <span class=SpellE>basket</span>
+- корзина). Никаких подводных камней тут нет, можно использовать любой стиль
+отображения этих элементов. Единственное, что необходимо учитывать - наш <span
+class=SpellE>скрипт</span> будет обращаться к этим элементам по имени класса и
+идентификатора.<br>
+Можно упомянуть еще два класса из таблицы стилей:</p>
+
+<pre>&nbsp;</pre><pre><span class=GramE><span style='color:#6666FF'>.<span
+class=SpellE>droppable-active</span></span> <span style='color:#66CC66'>{</span></span></pre><pre><span
+style='mso-tab-count:1'>        </span><span class=GramE><span lang=EN-US
+style='mso-ansi-language:EN-US'>outline<span style='color:#3333FF'>:</span></span></span><span
+lang=EN-US style='color:#993333;mso-ansi-language:EN-US'>1px</span><span
+lang=EN-US style='mso-ansi-language:EN-US'> <span style='color:#993333'>dotted</span> <span
+style='color:#CC00CC'>#F00</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>}</span><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#6666FF;mso-ansi-language:EN-US'>.droppable-hover</span><span
+lang=EN-US style='mso-ansi-language:EN-US'> <span style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-tab-count:1'>        </span></span>outline<span
+style='color:#3333FF'>:</span><span style='color:#993333'>1px</span> <span
+class=SpellE><span style='color:#993333'>dotted</span></span> <span
+style='color:#CC00CC'>#00F</span>;</pre><pre><span style='color:#66CC66'>}</span></pre>
+
+<p>Класс <strong>.<span class=SpellE>droppable-active</span></strong> будет
+использован <span class=SpellE>скриптом</span> в тот момент, когда процесс
+перемещения элемента уже начался, но перемещаемый элемент еще не находится
+&quot;в зоне действия&quot; целевого элемента. А класс <strong>.<span
+class=SpellE>droppable-hover</span></strong> будет применен, когда перемещаемый
+элемент окажется <span class=GramE>над</span> целевым.</p>
+
+<p>А вот сам <span class=SpellE>JavaScript</span>, который все это
+обрабатывает, разберем подробнее. </p>
+
+<pre>&nbsp;<span lang=EN-US style='mso-ansi-language:EN-US'>&lt;script type=<span
+style='color:#3366CC'>&quot;text/<span class=SpellE>javascript</span>&quot;</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span>document<span
+style='color:#66CC66'>)</span>.<span class=GramE><span style='color:#006600'>ready</span><span
+style='color:#66CC66'>(</span></span><b><span style='color:#003366'>function</span></b><span
+style='color:#66CC66'>(){</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&nbsp;<o:p></o:p></span></pre><pre><i><span
+lang=EN-US style='color:#009900;mso-ansi-language:EN-US'>// ---- DRAGGABLES &amp; DROPPABLES -----</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;<span class=SpellE>div.products</span>&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=SpellE><span class=GramE><span
+style='color:#006600'>draggable</span></span></span><span class=GramE><span
+style='color:#66CC66'>({</span></span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>helper</span>: clone,<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>opacity</span>: <span style='color:#CC0000'>0.5</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>})</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&nbsp;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;#basket&quot;</span><span style='color:#66CC66'>)</span>.<span
+class=GramE><span style='color:#006600'>droppable</span><span style='color:
+#66CC66'>({</span></span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>accept</span>: <span style='color:#3366CC'>&quot;.products&quot;</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=SpellE><span class=GramE>activeClass</span></span>: <span
+style='color:#3366CC'>&quot;droppable-active&quot;</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=SpellE><span class=GramE>hoverClass</span></span>: <span
+style='color:#3366CC'>&quot;droppable-hover&quot;</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>drop</span>: <b><span style='color:#003366'>function</span></b><span
+style='color:#66CC66'>(</span><span class=SpellE>ev</span>, <span class=SpellE>ui</span><span
+style='color:#66CC66'>)</span> <span style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE><span class=GramE><b><span style='color:#003366'>var</span></b></span></span> code = $<span
+style='color:#66CC66'>(</span><span class=SpellE>ui.<span style='color:#006600'>draggable</span>.<span
+style='color:#006600'>element</span></span><span style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>.<span
+class=GramE><span style='color:#006600'>find</span><span style='color:#66CC66'>(</span></span><span
+style='color:#3366CC'>&quot;<span class=SpellE>img</span>&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=SpellE><span style='color:#006600'>attr</span></span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;id&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE><b><span style='color:#000066'>if</span></b><span style='color:
+#66CC66'>(</span></span>$<span style='color:#66CC66'>(</span><b><span
+style='color:#000066'>this</span></b><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>find</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;div[@id=&quot;</span>+ code +<span
+style='color:#3366CC'>&quot;]&quot;</span><span style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>.<span
+class=GramE><span style='color:#006600'>html</span><span style='color:#66CC66'>(</span></span><span
+style='color:#66CC66'>)</span>==<b><span style='color:#003366'>null</span></b><span
+style='color:#66CC66'>)</span> <span style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span><span
+class=SpellE><span class=GramE><b><span style='color:#003366'>var</span></b></span></span> <span
+style='color:#000066'>name</span> = $<span style='color:#66CC66'>(</span><span
+class=SpellE>ui.<span style='color:#006600'>draggable</span>.<span
+style='color:#006600'>element</span></span><span style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>.<span
+class=GramE><span style='color:#006600'>find</span><span style='color:#66CC66'>(</span></span><span
+style='color:#3366CC'>&quot;<span class=SpellE>img</span>&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=SpellE><span style='color:#006600'>attr</span></span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;alt&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$<span
+style='color:#66CC66'>(</span><b><span style='color:#000066'>this</span></b><span
+style='color:#66CC66'>)</span>.<span class=GramE><span style='color:#006600'>append</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;</span></span><span
+style='color:#3366CC'><o:p></o:p></span></span></pre><pre><span lang=EN-US
+style='color:#3366CC;mso-ansi-language:EN-US'>&lt;div class=&quot;</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>basket<span style='color:#3366CC'>&quot; id=&quot;</span> + code + <span
+style='color:#3366CC'>&quot;&gt;<o:p></o:p></span></span></pre><pre><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>&lt;input type=&quot;</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>text<span style='color:#3366CC'>&quot; class=&quot;</span><span
+class=SpellE>qnt</span><span style='color:#3366CC'>&quot;/&gt; &quot;</span> + <span
+style='color:#000066'>name</span> + <o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>&quot;&lt;<span
+class=SpellE>img</span> <span class=SpellE>src</span>=&quot;</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>droppable-<span class=SpellE><b><span
+style='color:#000066'>delete</span></b>.<span style='color:#006600'>gif</span></span><span
+style='color:#3366CC'>&quot; class=&quot;</span><b><span style='color:#000066'>delete</span></b><span
+style='color:#3366CC'>&quot; <o:p></o:p></span></span></pre><pre><span
+class=GramE><span lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>alt</span></span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>=&quot;</span>Удалить<span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>&quot; /&gt;&lt;/div&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>&nbsp;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>&quot;</span><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>)</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+style='color:#66CC66'>}</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><i><span
+style='color:#009900'>// *******************</span></i><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;.delete&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=GramE><span style='color:#006600'>click</span><span
+style='color:#66CC66'>(</span></span><b><span style='color:#003366'>function</span></b> <span
+style='color:#66CC66'>()</span> <span style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$<span
+style='color:#66CC66'>(</span><b><span style='color:#000066'>this</span></b><span
+style='color:#66CC66'>)</span>.<span class=GramE><span style='color:#006600'>parent</span><span
+style='color:#66CC66'>(</span></span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>remove</span><span style='color:#66CC66'>()</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+style='color:#66CC66'>})</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><i><span
+style='color:#009900'>// *******************</span></i><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><i><span
+style='color:#009900'>// *******************</span></i><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#buy&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=GramE><span style='color:#006600'>click</span><span
+style='color:#66CC66'>(</span></span><b><span style='color:#003366'>function</span></b> <span
+style='color:#66CC66'>()</span> <span style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE><span class=GramE><b><span style='color:#003366'>var</span></b></span></span> <span
+class=SpellE>databox</span> = <b><span style='color:#003366'>new</span></b> Array<span
+style='color:#66CC66'>()</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#basket&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=GramE><span style='color:#006600'>find</span><span
+style='color:#66CC66'>(</span></span><span style='color:#3366CC'>&quot;input[@type=text]&quot;</span><span
+style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>.<span
+class=GramE><span style='color:#006600'>each</span><span style='color:#66CC66'>(</span></span><b><span
+style='color:#003366'>function</span></b><span style='color:#66CC66'>(){</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span><span
+class=SpellE><span class=GramE><b><span style='color:#003366'>var</span></b></span></span> <span
+class=SpellE>qnt</span> = $<span style='color:#66CC66'>(</span><b><span
+style='color:#000066'>this</span></b><span style='color:#66CC66'>)</span>.<span
+class=SpellE><span style='color:#006600'>attr</span></span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;value&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span><span
+class=GramE><b><span style='color:#000066'>if</span></b><span style='color:
+#66CC66'>(</span></span><span class=SpellE>qnt</span>===undefined<span
+style='color:#66CC66'>)</span> <span style='color:#66CC66'>{</span> <span
+class=SpellE>qnt</span> = <span style='color:#CC0000'>0</span>; <span
+style='color:#66CC66'>}</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span><span
+style='mso-tab-count:1'>  </span><span class=SpellE><span class=GramE><b><span
+style='color:#003366'>var</span></b></span></span> text = $<span
+style='color:#66CC66'>(</span><b><span style='color:#000066'>this</span></b><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>parent</span><span
+style='color:#66CC66'>()</span>.<span style='color:#006600'>text</span><span
+style='color:#66CC66'>()</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span><span
+style='mso-tab-count:1'>  </span><span class=SpellE><span class=GramE>databox</span></span><span
+class=GramE><span style='color:#66CC66'>[</span></span><span class=SpellE>databox.<span
+style='color:#006600'>length</span></span><span style='color:#66CC66'>]</span> =<span style='mso-spacerun:yes'>  </span>text + <span
+style='color:#3366CC'>&quot; - &quot;</span> + <span class=SpellE>qnt</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span><span
+style='color:#66CC66'>})</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span><span
+class=GramE>data</span> = <span class=SpellE>databox.<span style='color:#006600'>join</span></span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot; </span></span><span
+style='color:#3366CC'>кг</span><span lang=EN-US style='color:#3366CC;
+mso-ansi-language:EN-US'>, &quot;</span><span lang=EN-US style='color:#66CC66;
+mso-ansi-language:EN-US'>)</span><span lang=EN-US style='mso-ansi-language:
+EN-US'>;<o:p></o:p></span></pre><pre><span lang=EN-US style='mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>      </span>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;#<span class=SpellE>buyResult</span>&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=GramE><span style='color:#006600'>html</span><span
+style='color:#66CC66'>(</span></span><span style='color:#3366CC'>&quot;</span></span><span
+style='color:#3366CC'>Вы</span><span style='color:#3366CC;mso-ansi-language:
+EN-US'> </span><span style='color:#3366CC'>заказали</span><span lang=EN-US
+style='color:#3366CC;mso-ansi-language:EN-US'>:&quot;</span><span lang=EN-US
+style='mso-ansi-language:EN-US'> + data + <o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>&quot; </span><span
+class=SpellE><span class=GramE><span style='color:#3366CC'>кгСпасибо</span></span></span><span
+style='color:#3366CC;mso-ansi-language:EN-US'> </span><span style='color:#3366CC'>за</span><span
+style='color:#3366CC;mso-ansi-language:EN-US'> </span><span style='color:#3366CC'>покупку</span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>!&quot;</span><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>)</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+style='color:#66CC66'>})</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><i><span
+style='color:#009900'>// ****************</span></i><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+style='color:#66CC66'>}</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='color:#66CC66;mso-ansi-language:EN-US'>})</span><span lang=EN-US
+style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre><pre><i><span
+lang=EN-US style='color:#009900;mso-ansi-language:EN-US'>// ------ DRAGGABLES &amp; DROPPABLES ------</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span
+style='color:#66CC66'>})</span>;</pre><pre>&lt;/<span class=SpellE>script</span>&gt;</pre>
+
+<p>И начнем разбираться дальше.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;<span class=SpellE>div.products</span>&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=SpellE><span class=GramE><span
+style='color:#006600'>draggable</span></span></span><span class=GramE><span
+style='color:#66CC66'>({</span></span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>helper</span>: clone,<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span></span><span
+class=SpellE>opacity</span>: <span style='color:#CC0000'>0.5</span></pre><pre><span
+style='color:#66CC66'>})</span>;</pre>
+
+<p><span class=GramE>Это уже должно быть немножко знакомо: выбираем набор
+элементов <strong>DIV</strong>, имеющих класс <strong>.<span class=SpellE>products</span></strong>
+и делаем любой из них свободно перемещаемым, задавая при этом некоторые опции. <span
+class=SpellE><strong>helper</strong></span><strong>: <span class=SpellE>clone</span></strong>
+- при перемещении элемента он останется на месте, а перемещать с <span
+class=SpellE>помошью</span> мыши мы будем его клон, <span class=SpellE><strong>opacity</strong></span><strong>:
+0.5</strong> - прозрачность которого во время перемещения будет 0,5.</span></p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;#basket&quot;</span><span style='color:#66CC66'>)</span>.<span
+class=GramE><span style='color:#006600'>droppable</span><span style='color:
+#66CC66'>({</span></span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>accept</span>: <span style='color:#3366CC'>&quot;.products&quot;</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=SpellE><span class=GramE>activeClass</span></span>: <span
+style='color:#3366CC'>&quot;droppable-active&quot;</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span></span><span
+class=SpellE>hoverClass</span>: <span style='color:#3366CC'>&quot;<span
+class=SpellE>droppable-hover</span>&quot;</span></pre>
+
+<p>Выбираем элемент с идентификатором <span class=SpellE><strong>basket</strong></span>
+и делаем его <span class=SpellE><strong>droppable</strong></span> - туда будем
+&quot;сбрасывать&quot; перемещаемые элементы. <span class=GramE>Далее
+устанавливаем необходимые опции:<br>
+<span class=SpellE><strong>accept</strong></span><strong>: &quot;.<span
+class=SpellE>products</span>&quot;</strong> - &quot;сбросить&quot; мы можем
+только элементы, имеющие класс <span class=SpellE><strong>products</strong></span>.<br>
+<span class=SpellE><strong>activeClass</strong></span><strong>: &quot;<span
+class=SpellE>droppable-active</span>&quot;</strong> - имя класса, который будет
+применен к <strong>#<span class=SpellE>basket</span></strong> во время
+перемещения любого из элементов с классом <strong>.<span class=SpellE>products</span></strong>,
+но до того, как перемещаемый элемент окажется &quot;в зоне действия&quot;
+элемента <strong>#<span class=SpellE>basket</span></strong>.<br>
+<span class=SpellE><strong>hoverClass</strong></span><strong>: &quot;<span
+class=SpellE>droppable-hover</span>&quot;</strong> - все тоже самое, только
+класс будет применен тогда, когда перемещаемый элемент попадет в &quot;зону</span>
+действия&quot; элемента <strong>#<span class=SpellE>basket</span></strong>.<br>
+В опции <span class=SpellE><strong>drop</strong></span> - устанавливается
+функция, которая должна будет выполниться в момент, когда мы
+&quot;сбросили&quot; перемещаемый элемент. </p>
+
+<pre><span class=SpellE><span class=GramE><b><span lang=EN-US style='color:
+#003366;mso-ansi-language:EN-US'>var</span></b></span></span><span lang=EN-US
+style='mso-ansi-language:EN-US'> code = $<span style='color:#66CC66'>(</span><span
+class=SpellE>ui.<span style='color:#006600'>draggable</span>.<span
+style='color:#006600'>element</span></span><span style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre>.<span
+class=SpellE><span style='color:#006600'>find</span></span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;<span
+class=SpellE>img</span>&quot;</span><span style='color:#66CC66'>)</span>.<span
+class=SpellE><span style='color:#006600'>attr</span></span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;<span
+class=SpellE>id</span>&quot;</span><span style='color:#66CC66'>)</span>;</pre>
+
+<p>Мы обращаемся к перемещаемому элементу, находим в нем (именно в нем) элемент
+<span class=SpellE><strong>img</strong></span> и получаем значение его атрибута
+<span class=SpellE><strong>id</strong></span>. Сохраняем в переменной <span
+class=SpellE><strong>code</strong></span>.</p>
+
+<pre><span class=SpellE><b><span style='color:#000066'>if</span></b></span><span
+style='color:#66CC66'>(</span>$<span style='color:#66CC66'>(</span><span
+class=SpellE><b><span style='color:#000066'>this</span></b></span><span
+style='color:#66CC66'>)</span>.<span class=SpellE><span style='color:#006600'>find</span></span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;<span
+class=SpellE>div</span>[@<span class=SpellE>id=</span>&quot;</span>+ <span
+class=SpellE>code</span> +<span style='color:#3366CC'>&quot;]&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=SpellE><span style='color:#006600'>html</span></span><span
+style='color:#66CC66'>()</span>==<span class=SpellE><b><span style='color:#003366'>null</span></b></span><span
+style='color:#66CC66'>)</span></pre>
+
+<p>Здесь будем проверять, нет ли уже в нашей корзине товара с таким же <span
+class=SpellE><strong>id</strong></span>. Для этого обратимся к элементу,
+который представляет собой нашу корзину (<span class=SpellE><strong>this</strong></span>
+в данном случае <span class=GramE>тоже самое</span>, что и <strong>#<span
+class=SpellE>basket</span></strong>), найдем элемент <span class=SpellE><strong>div</strong></span>
+с <span class=SpellE><strong>id</strong></span> равным <span class=SpellE><strong>id</strong></span>
+перемещаемого элемента (хранится в переменной <span class=SpellE><strong>code</strong></span>)
+и получим его HTML-код. Сравним с <span class=SpellE><strong>null</strong></span>.
+Если условие верное, <span class=GramE>значит</span> такого продукта в корзине
+еще нет и мы можем выполнять следующие операторы, чтобы добавить товар в
+корзину.</p>
+
+<pre><span class=SpellE><span class=GramE><b><span lang=EN-US style='color:
+#003366;mso-ansi-language:EN-US'>var</span></b></span></span><span lang=EN-US
+style='mso-ansi-language:EN-US'> <span style='color:#000066'>name</span> = $<span
+style='color:#66CC66'>(</span><span class=SpellE>ui.<span style='color:#006600'>draggable</span>.<span
+style='color:#006600'>element</span></span><span style='color:#66CC66'>)</span><o:p></o:p></span></pre><pre>.<span
+class=SpellE><span style='color:#006600'>find</span></span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;<span
+class=SpellE>img</span>&quot;</span><span style='color:#66CC66'>)</span>.<span
+class=SpellE><span style='color:#006600'>attr</span></span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;<span
+class=SpellE>alt</span>&quot;</span><span style='color:#66CC66'>)</span>;</pre>
+
+<p>Обращаемся к перемещаемому элементу, ищем <span class=SpellE><strong>img</strong></span>,
+получаем значение атрибута <span class=SpellE><strong>alt</strong></span>, где
+у нас хранится название товара. Теперь осталось только сформировать нужный
+HTML-код и добавить его в корзину, т.е. в элемент <strong>#<span class=SpellE>basket</span></strong>.<code><span
+style='font-size:10.0pt'> </span></code></p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><b><span
+style='color:#000066'>this</span></b><span style='color:#66CC66'>)</span>.<span
+class=GramE><span style='color:#006600'>append</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;</span></span><span style='color:#3366CC'><o:p></o:p></span></span></pre><pre><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>&lt;p class=&quot;</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>basket<span style='color:#3366CC'>&quot; id=&quot;</span> + code + <span
+style='color:#3366CC'>&quot;&gt;<o:p></o:p></span></span></pre><pre><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>&lt;input class=&quot;</span><span
+class=SpellE><span lang=EN-US style='mso-ansi-language:EN-US'>qnt</span></span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>&quot; type=&quot;</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>text<span style='color:#3366CC'>&quot; /&gt; &quot;</span> + <span
+style='color:#000066'>name</span> +<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>&quot;&lt;<span
+class=SpellE>img</span> <span class=SpellE>src</span>=&quot;</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>droppable-<span class=SpellE><b><span
+style='color:#000066'>delete</span></b>.<span style='color:#006600'>gif</span></span><span
+style='color:#3366CC'>&quot; class=&quot;</span><b><span style='color:#000066'>delete</span></b><span
+style='color:#3366CC'>&quot; /&gt;<o:p></o:p></span></span></pre><pre><span
+class=SpellE><span style='color:#3366CC'>alt=</span></span><span
+style='color:#3366CC'>&quot;</span>Удалить<span style='color:#3366CC'>&quot; /&gt;<o:p></o:p></span></pre><pre><span
+style='color:#3366CC'>&nbsp;<o:p></o:p></span></pre><pre><span
+style='color:#3366CC'>&quot;</span><span style='color:#66CC66'>)</span>;</pre>
+
+<p>И осталось написать еще пару вспомогательных функций, чтобы пример был хоть
+немного действующим. Первая обрабатывает клик мышкой на картинке удаления
+товара из корзины и собственно удаляет выбранный элемент <span class=SpellE><strong>div</strong></span>.
+А вторая обходит все имеющиеся текстовые поля ввода, собирает их значения в
+массив, объединяет массив в строку и выводит результат в виде HTML-кода в
+элемент <strong>#<span class=SpellE>buyResult</span></strong>.</p>
+
+<h1><span style='font-size:12.0pt'><o:p>&nbsp;</o:p></span></h1>
+
+<h1 align=center style='text-align:center'><span class=SpellE><span
+style='font-size:12.0pt'>drag-and-drop</span></span><span style='font-size:
+12.0pt'> сортируемый список.<o:p></o:p></span></h1>
+
+<p>Меню слева работает с опциями, установленными по умолчанию. Все, что нужно
+для создания такого меню (разумеется, кроме библиотеки <span class=SpellE>jQuery</span>
+и своего HTML-кода), это написать следующее:</p>
+
+<pre>$<span style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#<span
+class=SpellE>menuList</span>&quot;</span><span style='color:#66CC66'>)</span>.<span
+class=SpellE><span style='color:#006600'>sortable</span></span><span
+style='color:#66CC66'>()</span>;</pre>
+
+<p>где <strong>#<span class=SpellE>menuList</span></strong> - это идентификатор
+списка.<br>
+В меню справа использованы некоторые дополнительно установленные опции. </p>
+
+<p><span class=GramE>&lt;<span class=SpellE>script</span> <span class=SpellE>src=</span>&quot;<span
+class=SpellE>js</span>/jquery-1.2.1.js&quot; <span class=SpellE>type=</span>&quot;<span
+class=SpellE>text</span>/<span class=SpellE>javascript</span>&quot;&gt;&lt;/<span
+class=SpellE>script</span>&gt;<br>
+&lt;<span class=SpellE>script</span> <span class=SpellE>src=</span>&quot;<span
+class=SpellE>js</span>/<span class=SpellE>jquery.dimensions.js</span>&quot; <span
+class=SpellE>type=</span>&quot;<span class=SpellE>text</span>/<span
+class=SpellE>javascript</span>&quot;&gt;&lt;/<span class=SpellE>script</span>&gt;<br>
+&lt;<span class=SpellE>script</span> <span class=SpellE>src=</span>&quot;<span
+class=SpellE>js</span>/<span class=SpellE>ui.mouse.js</span>&quot; <span
+class=SpellE>type=</span>&quot;<span class=SpellE>text</span>/<span
+class=SpellE>javascript</span>&quot;&gt;&lt;/<span class=SpellE>script</span>&gt;<br>
+&lt;<span class=SpellE>script</span> <span class=SpellE>src=</span>&quot;<span
+class=SpellE>js</span>/<span class=SpellE>ui.draggable.js</span>&quot; <span
+class=SpellE>type=</span>&quot;<span class=SpellE>text</span>/<span
+class=SpellE>javascript</span>&quot;&gt;&lt;/<span class=SpellE>script</span>&gt;<br>
+&lt;<span class=SpellE>script</span> <span class=SpellE>src=</span>&quot;<span
+class=SpellE>js</span>/<span class=SpellE>ui.draggable.ext.js</span>&quot; <span
+class=SpellE>type=</span>&quot;<span class=SpellE>text</span>/<span
+class=SpellE>javascript</span>&quot;&gt;&lt;/<span class=SpellE>script</span>&gt;<br>
+&lt;<span class=SpellE>script</span> <span class=SpellE>src=</span>&quot;<span
+class=SpellE>js</span>/<span class=SpellE>ui.droppable.js</span>&quot; <span
+class=SpellE>type=</span>&quot;<span class=SpellE>text</span>/<span
+class=SpellE>javascript</span></span>&quot;&gt;&lt;/<span class=SpellE>script</span>&gt;<br>
+&lt;<span class=SpellE>script</span> <span class=SpellE>src=</span>&quot;<span
+class=SpellE>js</span>/<span class=SpellE>ui.droppable.ext.js</span>&quot; <span
+class=SpellE>type=</span>&quot;<span class=SpellE>text</span>/<span
+class=SpellE>javascript</span>&quot;&gt;&lt;/<span class=SpellE>script</span>&gt;<br>
+&lt;<span class=SpellE>script</span> <span class=SpellE>src=</span>&quot;<span
+class=SpellE>js</span>/<span class=SpellE>ui.sortable.js</span>&quot; <span
+class=SpellE>type=</span>&quot;<span class=SpellE>text</span>/<span
+class=SpellE>javascript</span>&quot;&gt;&lt;/<span class=SpellE>script</span>&gt;</p>
+
+<p>Все файлы уже знакомы по предыдущим примерам. Добавился только один файл <span
+class=SpellE><strong>ui.sortable.js</strong></span>, который (как и все <span
+class=GramE>остальные) </span>мы подключаем в разделе <strong>HEAD</strong>
+нашей страницы.<br>
+<span style='color:#6666FF'>.</span><span class=SpellE><span lang=EN-US
+style='color:#6666FF;mso-ansi-language:EN-US'>dragStyle</span></span><span
+lang=EN-US> </span><span style='color:#66CC66'>{</span></p>
+
+<pre><span style='mso-spacerun:yes'>  </span><span class=GramE><b><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>background</span></b></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>:<span style='color:#CC00CC'>#CFD4E6</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>border<span style='color:#3333FF'>:</span></span><span
+style='color:#993333'>1px</span> <span style='color:#993333'>solid</span> <span
+style='color:#CC00CC'>#727EA3</span>;<o:p></o:p></span></pre><pre><span
+style='color:#66CC66'>}</span></pre>
+
+<p>Класс <span class=SpellE><strong>dragStyle</strong></span> используется во
+втором примере и применяется в момент перемещения элемента, отображая то место,
+на которое перемещаемый элемент будет &quot;сброшен&quot;.</p>
+
+<p>Далее полностью приведен кусок кода, который и отвечает за работу обоих
+списков.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;script type=<span
+style='color:#3366CC'>&quot;text/<span class=SpellE>javascript</span>&quot;</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span>document<span
+style='color:#66CC66'>)</span>.<span class=GramE><span style='color:#006600'>ready</span><span
+style='color:#66CC66'>(</span></span><b><span style='color:#003366'>function</span></b><span
+style='color:#66CC66'>(){</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><i><span
+style='color:#009900'>// --------------- SORTABLE -------------------</span></i><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#<span
+class=SpellE>menuList</span>&quot;</span><span style='color:#66CC66'>)</span>.<span
+class=SpellE><span class=GramE><span style='color:#006600'>sortable</span></span></span><span
+class=GramE><span style='color:#66CC66'>(</span></span><span style='color:#66CC66'>)</span>; <i><span
+style='color:#009900'>// 1-</span></i></span><span class=SpellE><i><span
+style='color:#009900'>ый</span></i></span><i><span style='color:#009900;
+mso-ansi-language:EN-US'> </span><span class=SpellE><span style='color:#009900'>спискок</span></span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&nbsp;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#menuList2&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=SpellE><span class=GramE><span
+style='color:#006600'>sortable</span></span></span><span class=GramE><span
+style='color:#66CC66'>(</span></span><span style='color:#66CC66'>{</span> <i><span
+style='color:#009900'>// 2-</span></i></span><i><span style='color:#009900'>ой</span></i><i><span
+style='color:#009900;mso-ansi-language:EN-US'> </span><span style='color:#009900'>список</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-tab-count:1'>        </span><span
+class=SpellE><span class=GramE>hoverClass</span></span>: <span
+style='color:#3366CC'>&quot;<span class=SpellE>dragStyle</span>&quot;</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-tab-count:1'>        </span><span
+class=GramE>start</span>: <b><span style='color:#003366'>function</span></b><span
+style='color:#66CC66'>(</span><span class=SpellE>ev</span>, <span class=SpellE>ui</span><span
+style='color:#66CC66'>)</span> <span style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-tab-count:1'>        </span><span style='mso-spacerun:yes'>  </span><span
+class=SpellE><span class=GramE><b><span style='color:#003366'>var</span></b></span></span> text = $<span
+style='color:#66CC66'>(</span><span class=SpellE>ui.<span style='color:#006600'>draggable</span>.<span
+style='color:#006600'>element</span></span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>text</span><span style='color:#66CC66'>()</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-tab-count:1'>        </span><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#result&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=GramE><span style='color:#006600'>text</span><span
+style='color:#66CC66'>(</span></span><span style='color:#3366CC'>&quot;</span></span><span
+style='color:#3366CC'>Перемещаем</span><span lang=EN-US style='color:#3366CC;
+mso-ansi-language:EN-US'> &quot;</span><span lang=EN-US style='mso-ansi-language:
+EN-US'> + text<span style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-tab-count:1'>        </span><span
+style='color:#66CC66'>}</span>,<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-tab-count:1'>        </span><span
+class=GramE><span style='color:#000066'>stop</span></span>: <b><span
+style='color:#003366'>function</span></b><span style='color:#66CC66'>(</span><span
+class=SpellE>ev</span>, <span class=SpellE>ui</span><span style='color:#66CC66'>)</span> <span
+style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-tab-count:1'>        </span><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#result&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=GramE><span style='color:#006600'>text</span><span
+style='color:#66CC66'>(</span></span><span style='color:#3366CC'>&quot;</span></span><span
+style='color:#3366CC'>Перемещение</span><span style='color:#3366CC;mso-ansi-language:
+EN-US'> </span><span style='color:#3366CC'>окончено</span><span lang=EN-US
+style='color:#3366CC;mso-ansi-language:EN-US'>!&quot;</span><span lang=EN-US
+style='color:#66CC66;mso-ansi-language:EN-US'>)</span><span lang=EN-US
+style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-tab-count:1'>        </span><span
+style='color:#66CC66'>}</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+style='color:#66CC66'>})</span>;<span style='mso-spacerun:yes'>  </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><i><span
+style='color:#009900'>// --------------- SORTABLE -------------------</span></i><o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>})</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;/script&gt;<o:p></o:p></span></pre>
+
+<p>За работу первого списка отвечает всего-навсего одна строка кода. Для
+второго списка мы используем некоторые дополнительные опции.<br>
+<span class=SpellE><strong>hoverClass</strong></span> - опция содержит название
+класса, который будет применен в процессе перемещения одного из пунктов списка,
+чтобы указать место, куда перемещаемый пункт будет &quot;сброшен&quot;.<br>
+<span class=SpellE><strong>start</strong></span> - здесь указываем функцию,
+которая выполнится в момент старта перемещения элемента списка. В этой функции
+мы обращаемся к перемещаемому элементу, получаем его содержимое в виде текста и
+записываем в переменную <span class=SpellE><strong>text</strong></span>. Затем
+отыскиваем элемент <strong>#<span class=SpellE>result</span></strong> и вставляем
+текст туда.<br>
+<span class=SpellE><strong>stop</strong></span> - указываем функцию, которая
+выполнится в момент, когда произошел &quot;сброс&quot; элемента на нужную
+позицию (независимо от того изменилась ли фактическая позиция элемента). Тут
+тоже все предельно просто - вставляем текст сообщения в элемент <strong>#<span
+class=SpellE>result</span></strong>.</p>
+
+<p><o:p>&nbsp;</o:p></p>
+
+<h1 align=center style='text-align:center'><span class=SpellE><span
+style='font-size:12.0pt'>tabs</span></span><span style='font-size:12.0pt'> -
+содержимое во вкладках.<o:p></o:p></span></h1>
+
+<p>В общем случае применение этого UI <span class=SpellE>jQuery</span> может
+быть и шире, но использование для построения навигационной панели - это первое,
+что приходит в голову. Такая панель хоть и имеет управление на <span
+class=SpellE>JavaScript</span>, управляется через имена селекторов, поэтому
+например поисковый робот &quot;увидит&quot; чистый HTML, а пользователь -
+элегантное меню. </p>
+
+<pre>$<span style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#<span
+class=SpellE>example</span> &gt; <span class=SpellE>ul</span>&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=SpellE><span style='color:#006600'>tabs</span></span><span
+style='color:#66CC66'>()</span>;</pre>
+
+<p>Файлы необходимые для реализации подключаем в раздел <strong>HEAD</strong>,
+их всего два - это сама библиотека <span class=SpellE>jQuery</span> и файл <span
+class=SpellE><strong>ui.tabs.js</strong></span></p>
+
+<p><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;script type=&quot;text/<span
+class=SpellE>javascript</span>&quot; <span class=SpellE>src</span>=&quot;js/jquery-1.2.1.js&quot;&gt;&lt;/script&gt;<br>
+&lt;script type=&quot;text/<span class=SpellE>javascript</span>&quot; <span
+class=SpellE>src</span>=&quot;<span class=SpellE>js/ui.tabs.js</span>&quot;&gt;&lt;/script&gt;<o:p></o:p></span></p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;script type=<span
+style='color:#3366CC'>&quot;text/<span class=SpellE>javascript</span>&quot;</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span>document<span
+style='color:#66CC66'>)</span>.<span class=GramE><span style='color:#006600'>ready</span><span
+style='color:#66CC66'>(</span></span><b><span style='color:#003366'>function</span></b><span
+style='color:#66CC66'>(){</span><o:p></o:p></span></pre><pre><i><span
+lang=EN-US style='color:#009900;mso-ansi-language:EN-US'>// --------------- TABS -------------------</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;#menu &gt; <span class=SpellE>ul</span>&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=GramE><span style='color:#006600'>tabs</span><span
+style='color:#66CC66'>({</span></span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-tab-count:1'>        </span><span
+class=SpellE><span class=GramE>fxFade</span></span>: <b><span style='color:
+#003366'>true</span></b>,<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-tab-count:1'>        </span></span><span
+class=SpellE>fxSpeed</span>: <span class=SpellE>slow</span></pre><pre><span
+style='color:#66CC66'>})</span>;</pre><pre><i><span style='color:#009900'>// --------------- TABS -------------------</span></i></pre><pre><span
+style='color:#66CC66'>})</span>;</pre><pre>&lt;/<span class=SpellE>script</span>&gt;</pre>
+
+<p>Как обычно все &quot;завернуто&quot; в $(<span class=SpellE>document</span>).<span
+class=SpellE>ready</span>(<span class=SpellE>function</span>(){...}); </p>
+
+<p><span style='mso-spacerun:yes'> </span>Просто мы добавили еще пару опций.<br>
+<span class=SpellE><strong>fxFade</strong></span><strong>: <span class=SpellE>true</span></strong>
+- используем функцию &quot;затухания&quot; при переходе на другую вкладку.<br>
+<span class=SpellE><strong>fxSpeed</strong></span><strong>: <span class=SpellE>slow</span></strong>
+- и скорость этого затухания - медленная...<br style='mso-special-character:
+line-break'>
+<![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
+<![endif]></p>
+
+<p align=center style='text-align:center'><span class=SpellE><b
+style='mso-bidi-font-weight:normal'>tooltip</b></span><b style='mso-bidi-font-weight:
+normal'> - всплывающая подсказка.<o:p></o:p></b></p>
+
+<p>Для примера <span class=GramE>выбраны</span> обычная ссылка - элемент <strong>а</strong>
+и элемент <span class=SpellE><strong>input</strong></span>.</p>
+
+<p>Файлы необходимые для реализации подключаем в раздел <strong>HEAD</strong>,
+их всего три - это сама библиотека <span class=SpellE>jQuery</span>, файл <span
+class=SpellE>jquery.dimensions.js</span> и файл для работы с подсказками <span
+class=SpellE><strong>jquery.tooltip.js</strong></span></p>
+
+<p><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;script type=&quot;text/<span
+class=SpellE>javascript</span>&quot; <span class=SpellE>src</span>=&quot;js/jquery-1.2.1.js&quot;&gt;&lt;/script&gt;<br>
+&lt;script type=&quot;text/<span class=SpellE>javascript</span>&quot; <span
+class=SpellE>src</span>=&quot;<span class=SpellE>js/jquery.dimensions.js</span>&quot;&gt;&lt;/script&gt;<br>
+&lt;script type=&quot;text/<span class=SpellE>javascript</span>&quot; <span
+class=SpellE>src</span>=&quot;<span class=SpellE>js/jquery.tooltip.js</span>&quot;&gt;&lt;/script&gt;<o:p></o:p></span></p>
+
+<p>Дальше посмотрим на таблицу стилей.</p>
+
+<pre><span class=GramE><span style='color:#CC00CC'>#<span class=SpellE>tooltip</span></span> <span
+style='color:#66CC66'>{</span></span></pre><pre><span style='mso-spacerun:yes'>  </span><span
+class=SpellE><b><span style='color:black'>position</span></b></span>: <span
+class=SpellE><span style='color:#993333'>absolute</span></span>;</pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE><b><span style='color:black'>z-index</span></b></span>: <span
+style='color:#993333'>3000</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>width<span style='color:#3333FF'>:</span></span><span
+style='color:#993333'>250px</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE><b><span style='color:black'>border</span></b></span>: <span
+style='color:#993333'>1px</span> <span style='color:#993333'>solid</span> <span
+style='color:#CC00CC'>#</span><span style='color:#993333'>269</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE><b><span style='color:black'>background-color</span></b></span>: <span
+style='color:#CC00CC'>#48b</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE><b><span style='color:black'>padding</span></b></span>: <span
+style='color:#993333'>0</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>opacity</span>: <span style='color:#993333'>0</span><span
+style='color:#6666FF'>.</span><span style='color:#993333'>85</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=SpellE><span class=GramE><b><span style='color:black'>color</span></b></span>:<span
+style='color:#CC00CC'>#fff</span></span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>}</span><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#CC00CC;mso-ansi-language:EN-US'>#<span class=SpellE>tooltip</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'> h3 <span style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE><b><span style='color:black'>background-color</span></b></span>: <span
+style='color:#CC00CC'>#</span><span style='color:#993333'>269</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>padding-left<span style='color:#3333FF'>:</span></span><span
+style='color:#993333'>5px</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>font-<span class=SpellE>weight<span style='color:#3333FF'>:</span></span></span><span
+class=SpellE><span style='color:#3333FF'>bold</span></span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>font-size<span style='color:#3333FF'>:</span></span><span
+style='color:#993333'>1.4em</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>}</span><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#CC00CC;mso-ansi-language:EN-US'>#<span class=SpellE>tooltip</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'> div <span style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>padding-left<span style='color:#3333FF'>:</span></span><span
+style='color:#993333'>5px</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>padding-right<span style='color:#3333FF'>:</span></span><span
+style='color:#993333'>5px</span>;<o:p></o:p></span></pre><pre><span
+style='color:#66CC66'>}</span></pre>
+
+<p><strong>#<span class=SpellE>tooltip</span></strong> - это и есть подсказка.
+Мы задаем абсолютное позиционирование, <span class=GramE>изымая</span> таким
+образом подсказку из общего потока, а свойству <span class=SpellE><strong>z-index</strong></span>
+задаем заведомо большое значение, чтобы расположить подсказку &quot;выше&quot;
+элементов страницы. <strong>#<span class=SpellE>tooltip</span> h3</strong> -
+это заголовок подсказки, в элементе <strong>#<span class=SpellE>tooltip</span> <span
+class=SpellE>div</span></strong> - текст подсказки. </p>
+
+<p><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;script type=<span
+style='color:#3366CC'>&quot;text/<span class=SpellE>javascript</span>&quot;</span>&gt;<br>
+$<span style='color:#66CC66'>(</span>document<span style='color:#66CC66'>)</span>.<span
+class=GramE><span style='color:#006600'>ready</span><span style='color:#66CC66'>(</span></span><b><span
+style='color:#003366'>function</span></b><span style='color:#66CC66'>(){</span><o:p></o:p></span></p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;a, input&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=SpellE><span class=GramE><span
+style='color:#006600'>tooltip</span></span></span><span class=GramE><span
+style='color:#66CC66'>({</span></span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>track</span>: <b><span style='color:#003366'>true</span></b>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span></span><span
+class=SpellE>delay</span>: <span style='color:#CC0000'>100</span>,</pre><pre><span style='mso-spacerun:yes'>    </span><span
+class=SpellE>showBody</span>: <span style='color:#3366CC'>&quot;::&quot;</span>,</pre><pre><span style='mso-spacerun:yes'>    </span><span
+class=SpellE>opacity</span>: <span style='color:#CC0000'>0.85</span></pre><pre><span style='mso-spacerun:yes'>  </span><span
+style='color:#66CC66'>})</span>;</pre><pre><span style='color:#66CC66'>})</span>;</pre><pre>&lt;/<span
+class=SpellE>script</span>&gt;</pre>
+
+<p>Указываем элементы <span class=SpellE><strong>a</strong></span> и <span
+class=SpellE><strong>input</strong></span> в качестве элементов, для которых
+будут вызываться всплывающие подсказки. Необходимо, чтобы эти элементы имели
+атрибут <span class=SpellE><strong>title</strong></span>. Именно его значение
+используется для формирования подсказки.</p>
+
+<p>Обратите внимание на опцию <span class=SpellE><strong>showBody</strong></span>.
+В ней можно указать разделитель. Часть до разделителя будет показана в
+заголовке подсказки, оставшаяся часть в теле подсказки.<br>
+Опция <span class=SpellE><strong>track</strong></span>: если установлена в <span
+class=SpellE><strong>true</strong></span> - подсказка будет
+&quot;привязана&quot; к указателю мыши.<br>
+<span class=SpellE><strong>delay</strong></span> - отсрочка появления подсказки
+в миллисекундах, по умолчанию установлено значение 250.<br>
+<span class=SpellE><strong>opacity</strong></span><strong>: 0.85</strong> -
+прозрачность (ну конечно не для IE).</p>
+
+<h1 align=center style='text-align:center'><span class=SpellE><span
+style='font-size:12.0pt'>Autocomplete</span></span><span style='font-size:12.0pt'>:
+<span class=SpellE>автозаполнение</span><o:p></o:p></span></h1>
+
+<p>В левом текстовом поле доступен выбор российских городов, которые начинаются
+на букву &quot;М&quot;, а в правом - список поселков городского типа (<span
+class=SpellE>пгт</span>) с численностью населения более 10 тыс. жителей (по
+данным Всероссийской переписи населения на 9 октября 2002 года).</p>
+
+<p><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;script type=&quot;text/<span
+class=SpellE>javascript</span>&quot; <span class=SpellE>src</span>=&quot;js/jquery-1.2.1.js&quot;&gt;&lt;/script&gt;<br>
+&lt;script type=&quot;text/<span class=SpellE>javascript</span>&quot; <span
+class=SpellE>src</span>=&quot;<span class=SpellE>js/jquery.autocomplete.js</span>&quot;&gt;&lt;/script&gt;<o:p></o:p></span></p>
+
+<p>Файл <span class=SpellE><strong>jquery.autocomplete.js</strong></span>
+использует имена классов (начинаются с <span class=SpellE>ac</span>_), но если
+Вы захотите по каким-то причинам изменить эти имена - это тоже можно будет
+довольно легко сделать.</p>
+
+<p>Что касается HTML-кода, то естественно нужно описать поле для ввода текста:</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;input id=&quot;example&quot; type=&quot;text&quot; /&gt;<o:p></o:p></span></pre>
+
+<p>А вот использовать <span class=SpellE><strong>jquery.autocomplete.js</strong></span>
+можно двумя разными способами.</p>
+
+<p><strong>Способ первый:</strong><br>
+Если объем данных не очень большой, и данные не будут изменяться, то их можно
+поместить непосредственно на странице, <span class=GramE>как</span> и сделано в
+примере в текстовом поле слева.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;script type=<span
+style='color:#3366CC'>&quot;text/<span class=SpellE>javascript</span>&quot;</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span>document<span
+style='color:#66CC66'>)</span>.<span class=GramE><span style='color:#006600'>ready</span><span
+style='color:#66CC66'>(</span></span><b><span style='color:#003366'>function</span></b><span
+style='color:#66CC66'>(){</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><i><span
+style='color:#009900'>// --- </span></i></span><span class=SpellE><i><span
+style='color:#009900'>Автозаполнение</span></i></span><i><span lang=EN-US
+style='color:#009900;mso-ansi-language:EN-US'> ---</span></i><span lang=EN-US
+style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#example&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=SpellE><span class=GramE><span
+style='color:#006600'>autocompleteArray</span></span></span><span class=GramE><span
+style='color:#66CC66'>([</span></span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+style='color:#3366CC'>&quot;</span></span><span style='color:#3366CC'>Магадан</span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>&quot;</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>,<o:p></o:p></span></pre><pre><span style='mso-spacerun:yes'>    </span>........</pre><pre><span style='mso-spacerun:yes'>    </span><span
+style='color:#3366CC'>&quot;Муром&quot;</span>,</pre><pre><span style='mso-spacerun:yes'>    </span><span
+style='color:#3366CC'>&quot;<span class=SpellE>Мценск</span>&quot;</span>,</pre><pre><span style='mso-spacerun:yes'>    </span><span
+style='color:#3366CC'>&quot;Мыски&quot;</span>,</pre><pre><span style='mso-spacerun:yes'>    </span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>&quot;</span><span
+style='color:#3366CC'>Мытищи</span><span lang=EN-US style='color:#3366CC;
+mso-ansi-language:EN-US'>&quot;</span><span lang=EN-US style='mso-ansi-language:
+EN-US'>,<o:p></o:p></span></pre><pre><span lang=EN-US style='mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span><span style='color:#3366CC'>&quot;</span></span><span
+style='color:#3366CC'>Мышкин</span><span lang=EN-US style='color:#3366CC;
+mso-ansi-language:EN-US'>&quot;</span><span lang=EN-US style='mso-ansi-language:
+EN-US'><o:p></o:p></span></pre><pre><span lang=EN-US style='mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span><span style='color:#66CC66'>]</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>delay:</span><span style='color:#CC0000'>10</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>minChars:</span><span style='color:#CC0000'>1</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>matchSubset:</span><span style='color:#CC0000'>1</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE><span class=GramE>autoFill:</span><b><span style='color:#003366'>true</span></b></span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>maxItemsToShow:</span><span style='color:#CC0000'>10</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+style='color:#66CC66'>}</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><i><span
+style='color:#009900'>// --- </span></i></span><span class=SpellE><i><span
+style='color:#009900'>Автозаполнение</span></i></span><i><span lang=EN-US
+style='color:#009900;mso-ansi-language:EN-US'> ---</span></i><span lang=EN-US
+style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span lang=EN-US
+style='color:#66CC66;mso-ansi-language:EN-US'>})</span><span lang=EN-US
+style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/script&gt;<o:p></o:p></span></pre>
+
+<p><strong>Способ второй:</strong><br>
+Если данные большого объема, и/или часто изменяются, то необходимо
+предусмотреть обработку этих данных на сервере (для примера <span class=GramE>выбран</span>
+PHP). <span class=SpellE><strong>jquery.autocomplete.js</strong></span>
+предусматривает отправку GET-запроса с параметром <span class=SpellE><strong>q</strong></span>,
+значением которого являются введенные символы. Именно так в примере работает
+текстовое поле справа.</p>
+
+<pre>&lt;<span class=SpellE>script</span> <span class=SpellE>type=</span><span
+style='color:#3366CC'>&quot;<span class=SpellE>text</span>/<span class=SpellE>javascript</span>&quot;</span>&gt;</pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span>document<span
+style='color:#66CC66'>)</span>.<span class=GramE><span style='color:#006600'>ready</span><span
+style='color:#66CC66'>(</span></span><b><span style='color:#003366'>function</span></b><span
+style='color:#66CC66'>(){</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><i><span
+style='color:#009900'>// --- </span></i></span><span class=SpellE><i><span
+style='color:#009900'>Автозаполнение</span></i></span><i><span lang=EN-US
+style='color:#009900;mso-ansi-language:EN-US'>2 ---</span></i><span lang=EN-US
+style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#example2&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=SpellE><span class=GramE><span
+style='color:#006600'>autocomplete</span></span></span><span class=GramE><span
+style='color:#66CC66'>(</span></span><span style='color:#3366CC'>&quot;<span
+class=SpellE>autocomplete.php</span>&quot;</span>, <span style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>delay:</span><span style='color:#CC0000'>10</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>minChars:</span><span style='color:#CC0000'>2</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>matchSubset:</span><span style='color:#CC0000'>1</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE><span class=GramE>autoFill:</span><b><span style='color:#003366'>true</span></b></span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>matchContains:</span><span style='color:#CC0000'>1</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>cacheLength:</span><span style='color:#CC0000'>10</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE><span class=GramE>selectFirst:</span><b><span style='color:#003366'>true</span></b></span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE><span class=GramE>formatItem:</span>liFormat</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span style='mso-spacerun:yes'>  </span><span
+class=GramE>maxItemsToShow:</span><span style='color:#CC0000'>10</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE><span class=GramE>onItemSelect:</span>selectItem</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+style='color:#66CC66'>})</span>; <o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><i><span
+style='color:#009900'>// --- </span></i></span><span class=SpellE><i><span
+style='color:#009900'>Автозаполнение</span></i></span><i><span lang=EN-US
+style='color:#009900;mso-ansi-language:EN-US'>2 ---</span></i><span lang=EN-US
+style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span lang=EN-US
+style='color:#66CC66;mso-ansi-language:EN-US'>})</span><span lang=EN-US
+style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/script&gt;<o:p></o:p></span></pre>
+
+<p>В этих примерах, помимо данных (в первом случае) и URL обработчика (во
+втором случае) мы передаем некоторые опции. Список опций приведен ниже:</p>
+
+<p><span class=SpellE><strong>autoFill</strong></span> - когда Вы начинаете
+вводить текст, в поле ввода будет подставлено (и выделено) первое подходящее
+значение из списка. Если Вы продолжаете вводить текст, в поле ввода и далее
+будет подставляться подходящее значение, но уже с учетом введенного Вами
+текста. (По умолчанию: <span class=SpellE>false</span>).</p>
+
+<p><span class=SpellE><strong>inputClass</strong></span> - этот класс будет
+добавлен к элементу ввода. (По умолчанию: &quot;<span class=SpellE>ac_input</span>&quot;).</p>
+
+<p><span class=SpellE><strong>resultsClass</strong></span> - класс для UL,
+который будет содержать элементы результата (элементы LI). (По умолчанию:
+&quot;<span class=SpellE>ac_results</span>&quot;).</p>
+
+<p><span class=SpellE><strong>loadingClass</strong></span> - класс для элемента
+ввода, в то время, когда происходит обработка данных на сервере. (По умолчанию:
+&quot;<span class=SpellE>ac_loading</span>&quot;).</p>
+
+<p><span class=SpellE><strong>lineSeparator</strong></span> - символ, который
+разделяет строки в данных, возвращаемых сервером. (По умолчанию: &quot;\<span
+class=SpellE>n</span>&quot;).</p>
+
+<p><span class=SpellE><strong>cellSeparator</strong></span> - символ, который
+разделяет &quot;ячейки&quot; в строках данных, возвращаемых сервером. (По
+умолчанию: &quot;|&quot;).</p>
+
+<p><span class=SpellE><strong>minChars</strong></span> - минимальное число
+символов, которое пользователь должен напечатать перед тем, как будет <span
+class=SpellE>активизирван</span> запрос. (По умолчанию: 1).</p>
+
+<p><span class=SpellE><strong>delay</strong></span> - задержка в миллисекундах.
+Если в течение этого времени пользователь не нажимал клавиши, активизируется
+запрос. Если используется локальный запрос (к данным, находящимся
+непосредственно в файле), задержку можно сильно уменьшить. <span class=GramE>Например</span>
+до 40ms. (По умолчанию: 400).</p>
+
+<p><span class=SpellE><strong>cacheLength</strong></span> - число ответов от
+сервера, сохраняемых в <span class=SpellE>кэше</span>. Если установлено в 1 -
+кэширование данных отключено. Никогда не устанавливайте меньше единицы. (По
+умолчанию: 1).</p>
+
+<p><span class=SpellE><strong>matchSubset</strong></span> - использовать ли кэш
+для уточнения запросов. Использование этой опции может сильно снизить нагрузку
+на сервер и увеличить производительность. Не забудьте при этом <span
+class=GramE>еще</span> и установить для <span class=SpellE><strong>cacheLength</strong></span>
+значение побольше. <span class=GramE>Например</span> 10. (По умолчанию: 1).</p>
+
+<p><span class=SpellE><strong>matchCase</strong></span> - использовать ли
+сравнение чувствительное к регистру символов (только если Вы используете
+кэширование). (По умолчанию: 0).</p>
+
+<p><span class=SpellE><strong>maxItemsToShow</strong></span> - ограничивает
+число результатов, которые будут показаны в выпадающем списке. Если набор
+данных содержит сотни элементов, может быть <span class=GramE>неудобно</span>
+показывать весь список пользователю. Рекомендованное значение 10. (По
+умолчанию: -1).</p>
+
+<p><span class=SpellE><strong>extraParams</strong></span> - дополнительные
+параметры, которые могут быть переданы на сервер. Если Вы напишете {page:4}, то
+строка запроса к обработчику на сервере будет сформирована следующим образом:
+my_handler.php?q=foo&amp;page=4 (По умолчанию: {}).</p>
+
+<p><span class=SpellE><strong>width</strong></span> - устанавливает ширину
+выпадающего списка. По умолчанию ширина выпадающего списка определена шириной
+элемента ввода. Однако, если ширина элемента ввода небольшая, а строки
+выпадающего списка содержат большое количество символов - эта опция вполне
+может пригодиться. (По умолчанию: 0).</p>
+
+<p><span class=SpellE><strong>selectFirst</strong></span> - если установить в <span
+class=SpellE><strong>true</strong></span>, то по нажатию клавиши <span
+class=SpellE>Tab</span> или <span class=SpellE>Enter</span> будет выбрано то
+значение, которое в данный момент установлено в элементе ввода. Если же имеется
+выбранный вручную (&quot;подсвеченный&quot;) результат из выпадающего списка,
+то будет выбран именно он. (По умолчанию: <span class=SpellE>false</span>).</p>
+
+<p><span class=SpellE><strong>selectOnly</strong></span> - если установить в <span
+class=SpellE><strong>true</strong></span> и в выпадающем списке только одно
+значение, оно будет выбрано по нажатию клавиши <span class=SpellE>Tab</span>
+или <span class=SpellE>Enter</span>, даже если этот пункт не был выбран
+пользователем с помощью клавиатуры или указателя мыши. Заметьте, что эта опция
+отменяет действие опции <span class=SpellE><strong>selectFirst</strong></span>.
+(По умолчанию: <span class=SpellE>false</span>).</p>
+
+<p><span class=SpellE><strong>formatItem</strong></span> - <span class=SpellE>JavaScript</span>
+функция, которая поможет обеспечить дополнительную разметку элементов
+выпадающего списка. Функция будет вызываться для каждого элемента<strong> LI</strong>.
+Возвращаемые от сервера данные могут быть отображены в элементах <strong>LI</strong>
+выпадающего списка (см. второй пример). Принимает три параметра: строка
+результата, позиция строки в списке результатов, общее число элементов в списке
+результатов. (По умолчанию: <span class=SpellE>none</span>).</p>
+
+<p><span class=SpellE><strong>onItemSelect</strong></span> - <span
+class=SpellE>JavaScript</span> функция, которая будет вызвана, когда элемент
+списка выбран. Принимает единственный параметр - выбранный элемент <strong>LI</strong>.
+Выбранный элемент будет иметь дополнительный атрибут &quot;<span class=SpellE>extra</span>&quot;,
+значением которого будет являться массив всех ячеек строки, которая была
+получена в качестве ответа от сервера. (По умолчанию: <span class=SpellE>none</span>).</p>
+
+<p>Последние две опции весьма важны, если Вы хотите сделать действительно
+удобный и полезный элемент интерфейса, поэтому приведу примеры.</p>
+
+<pre><span class=GramE><b><span lang=EN-US style='color:#003366;mso-ansi-language:
+EN-US'>function</span></b></span><span lang=EN-US style='mso-ansi-language:
+EN-US'> <span class=SpellE>liFormat</span> <span style='color:#66CC66'>(</span>row, <span
+class=SpellE>i</span>, num<span style='color:#66CC66'>)</span> <span
+style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'> <span style='mso-spacerun:yes'> </span><span
+class=SpellE><b><span style='color:#003366'>var</span></b></span> result = <span
+class=GramE>row<span style='color:#66CC66'>[</span></span><span
+style='color:#CC0000'>0</span><span style='color:#66CC66'>]</span> + <span
+style='color:#3366CC'>&quot;&lt;<span class=SpellE>em</span> class=&quot;</span><span
+class=SpellE>qnt</span><span style='color:#3366CC'>&quot;&gt;&quot;</span> +<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>row<span style='color:#66CC66'>[</span></span><span
+style='color:#CC0000'>1</span><span style='color:#66CC66'>]</span> + <span
+style='color:#3366CC'>&quot; </span></span><span class=SpellE><span
+style='color:#3366CC'>тыс</span></span><span lang=EN-US style='color:#3366CC;
+mso-ansi-language:EN-US'>.</span><span style='color:#3366CC'>чел</span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>.&lt;/<span
+class=SpellE>em</span>&gt;&quot;</span><span lang=EN-US style='mso-ansi-language:
+EN-US'>;<o:p></o:p></span></pre><pre><span lang=EN-US style='mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span><span class=GramE><b><span
+style='color:#000066'>return</span></b></span> result;<o:p></o:p></span></pre><pre><span
+style='color:#66CC66'>}</span></pre>
+
+<p>В опции <span class=SpellE><strong>formatItem</strong></span> мы определили
+имя вызываемой функции - <span class=SpellE><strong>liFormat</strong></span>, а
+сама функция просто формирует строку, которая будет вставлена в соответствующий
+элемент <strong>LI</strong>. Строка содержит название поселка и элемент <span
+class=SpellE><strong>em</strong></span>, в который выводится количество
+проживающих там, в тысячах человек. Элемент <span class=SpellE><strong>em</strong></span>
+имеет класс <span class=SpellE><strong>qnt</strong></span>, с помощью которого,
+используя <strong>CSS</strong>, мы сдвигаем этот элемент вправо, немного
+уменьшаем размер шрифта и делаем сам шрифт зеленого цвета.</p>
+
+<p>Следующий пример для опции <span class=SpellE><strong>onItemSelect</strong></span>:</p>
+
+<pre><span class=GramE><b><span lang=EN-US style='color:#003366;mso-ansi-language:
+EN-US'>function</span></b></span><span lang=EN-US style='mso-ansi-language:
+EN-US'> <span class=SpellE>selectItem</span><span style='color:#66CC66'>(</span><span
+class=SpellE>li</span><span style='color:#66CC66'>)</span> <span
+style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE><b><span style='color:#000066'>if</span></b><span style='color:
+#66CC66'>(</span></span> <span class=SpellE>li</span> == <b><span
+style='color:#003366'>null</span></b> <span style='color:#66CC66'>)</span> <span
+class=SpellE><b><span style='color:#003366'>var</span></b></span> <span
+class=SpellE>sValue</span> = <span style='color:#3366CC'>&quot;</span></span><span
+style='color:#3366CC'>Ничего</span><span style='color:#3366CC;mso-ansi-language:
+EN-US'> </span><span style='color:#3366CC'>не</span><span style='color:#3366CC;
+mso-ansi-language:EN-US'> </span><span style='color:#3366CC'>выбрано</span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>!&quot;</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE><b><span style='color:#000066'>if</span></b><span style='color:
+#66CC66'>(</span></span> !!<span class=SpellE><span class=GramE>li.<span
+style='color:#006600'>extra</span></span></span><span class=GramE> <span
+style='color:#66CC66'>)</span></span> <span class=SpellE><b><span
+style='color:#003366'>var</span></b></span> <span class=SpellE>sValue</span> = <span
+class=SpellE>li.<span style='color:#006600'>extra</span></span><span
+style='color:#66CC66'>[</span><span style='color:#CC0000'>2</span><span
+style='color:#66CC66'>]</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE><b><span style='color:#000066'>else</span></b></span> <span
+class=SpellE><b><span style='color:#003366'>var</span></b></span> <span
+class=SpellE>sValue</span> = <span class=SpellE>li.<span style='color:#006600'>selectValue</span></span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span></span><span
+class=SpellE><span style='color:#000066'>alert</span></span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;Выбрана запись с ID: &quot;</span> + <span
+class=SpellE>sValue</span><span style='color:#66CC66'>)</span>;</pre><pre><span
+style='color:#66CC66'>}</span></pre>
+
+<p>Здесь видно как можно работать со значениями атрибута <strong>&quot;<span
+class=SpellE>extra</span>&quot;</strong> выбранного элемента <strong>LI</strong>.
+В примере мы выводим в <span class=SpellE><strong>alert</strong></span>
+значение идентификатора для записи из нашей тестовой базы.</p>
+
+<p>Нам осталось только разобрать те действия, которые будут выполняться на стороне
+сервера. Как <span class=GramE>Вы</span> наверное помните, мы выбрали для этого
+<strong>PHP</strong>. Вспомним также, что на сервер передается <strong>GET-запрос</strong>
+с параметром <span class=SpellE><strong>q</strong></span>, содержащим уже
+введенные пользователем символы. Сам код Вы сможете посмотреть, скачав файл
+примера.</p>
+
+<p>Весь код мы будем выполнять только в случае существования <span
+class=SpellE><strong>XMLHttpRequest</strong></span>, только если передан
+GET-запрос с параметром <span class=SpellE><strong>q</strong></span>. Для
+примера используется текстовый файл, в котором содержится база данных. Вот
+фрагмент этого файла:</p>
+
+<p>1:Пашковский<span class=GramE>:К</span>раснодарский край:43,0<br>
+2:Горячеводский<span class=GramE>:С</span>тавропольский край:34,4<br>
+3:Калинино<span class=GramE>:К</span>раснодарский край:34,1<br>
+4:Приволжский<span class=GramE>:С</span>аратовская область:32,0<br>
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .<br>
+272:Прохоровка<span class=GramE>:Б</span>елгородская область:10,0</p>
+
+<p>Мы читаем этот файл в массив, а затем в цикле перебираем все строки, в свою <span
+class=GramE>очередь</span> разбивая каждую из них в массив, к элементу под
+номером один (название поселка) которого обращаемся для поиска соответствия с
+переданным GET-запросом. Если соответствие будет <span class=GramE>найдена</span>
+выводим информацию, правда в несколько ином порядке, чем она хранилась в файле.</p>
+
+<p>Такой подход <span class=GramE>выбран</span> во-первых, потому что это
+пример, который должен быть очень просто воспроизведен на любом другом сайте, и
+во-вторых, чтобы при очень небольшом объеме данных дать почувствовать тот
+момент, когда запрос выполняется.</p>
+
+<p>Для работы со строками используются <span class=SpellE>мультибайтовые</span>
+строковые функции.</p>
+
+<h1 align=center style='text-align:center'><span class=SpellE><span
+style='font-size:12.0pt'>tablesorter</span></span><span style='font-size:12.0pt'>
+- сортировка таблиц.<o:p></o:p></span></h1>
+
+<p>В раздел <strong>HEAD</strong> понадобится подключить всего два файла:
+библиотеку <span class=SpellE>jQuery</span> - <strong>jquery-1.2.1.js</strong>
+и файл <span class=SpellE><strong>ui.tablesorter.js</strong></span></p>
+
+<p><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;script type=&quot;text/<span
+class=SpellE>javascript</span>&quot; <span class=SpellE>src</span>=&quot;js/jquery-1.2.1.js&quot;&gt;&lt;/script&gt;<br>
+&lt;script type=&quot;text/<span class=SpellE>javascript</span>&quot; <span
+class=SpellE>src</span>=&quot;<span class=SpellE>js/ui.tablesorter.js</span>&quot;&gt;&lt;/script&gt;<o:p></o:p></span></p>
+
+<p>Код, который будет вызывать UI <span class=SpellE>Tablesorter</span>:</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;script type=<span
+style='color:#3366CC'>&quot;text/<span class=SpellE>javascript</span>&quot;</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span>document<span
+style='color:#66CC66'>)</span>.<span class=GramE><span style='color:#006600'>ready</span><span
+style='color:#66CC66'>(</span></span><b><span style='color:#003366'>function</span></b><span
+style='color:#66CC66'>(){</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><i><span
+style='color:#009900'>// ---- <span class=SpellE>tablesorter</span> -----</span></i><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$<span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#example&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=SpellE><span class=GramE><span
+style='color:#006600'>tablesorter</span></span></span><span class=GramE><span
+style='color:#66CC66'>({</span></span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-tab-count:1'>        </span><span
+class=GramE>widgets</span>: <span style='color:#66CC66'>[</span><span
+style='color:#3366CC'>&quot;zebra&quot;</span><span style='color:#66CC66'>]</span>,<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-tab-count:1'>        </span><span
+class=SpellE><span class=GramE>sortList</span></span>:<span style='color:#66CC66'>[[</span><span
+style='color:#CC0000'>1</span>,<span style='color:#CC0000'>0</span><span
+style='color:#66CC66'>]]</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+style='color:#66CC66'>})</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><i><span
+style='color:#009900'>// ---- <span class=SpellE>tablesorter</span> -----</span></i><o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>})</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;/script&gt;<o:p></o:p></span></pre>
+
+<p>Таблица<span style='mso-ansi-language:EN-US'> </span>с<span
+style='mso-ansi-language:EN-US'> </span>идентификатором<span style='mso-ansi-language:
+EN-US'> <strong><span lang=EN-US>#example</span></strong><span lang=EN-US> </span></span>будет<span
+style='mso-ansi-language:EN-US'> </span>сортируемой<span lang=EN-US
+style='mso-ansi-language:EN-US'>. </span>Большинство опций сортировки задано по
+умолчанию в самом файле <span class=SpellE><strong>ui.tablesorter.js</strong></span>,
+но мы легко можем их переопределить.<br>
+<span class=SpellE><strong>widgets</strong></span><strong>: [&quot;<span
+class=SpellE>zebra</span>&quot;]</strong> - используем &quot;фирменный&quot; <span
+class=SpellE>виджет</span>, чтобы чередовать цвет строк в таблице.<br>
+<span class=SpellE><strong>sortList</strong></span><strong>:[[1,0]]</strong> -
+задаем сортировку по умолчанию (при загрузке). В этом примере - сортировка
+второго столбца по возрастанию (первая цифра - порядковый номер столбца, вторая
+порядок сортировки, где 0 - по возрастанию, 1 - по убыванию). Здесь можно
+задавать сортировку и по нескольким столбцам сразу. Например: <span
+class=SpellE><strong>sortList</strong></span><strong>:[[1,0], [0,1]]</strong> -
+сначала второй столбец сортируется по возрастанию, а затем первый - по
+убыванию...</p>
+
+<p>Еще пару полезных опций.<br>
+<span class=SpellE><strong>sortMultisortKey</strong></span> - по умолчанию
+задано значение <span class=SpellE><strong>shiftKey</strong></span>, т.е.
+щелкая мышью по заголовку столбца при нажатой клавише <span class=SpellE>Shift</span>
+можно выполнять сортировку по нескольким столбцам. Естественно клавишу можно
+переопределить. <span class=GramE>Например</span> так: <span class=SpellE><strong>sortMultiSortKey</strong></span><strong>:
+&quot;<span class=SpellE>ctrlKey</span>&quot;</strong>. Теперь можно работать
+через клавишу <span class=SpellE><strong>Ctrl</strong></span>.<br>
+<span class=SpellE><strong>headers</strong></span> - с помощью этой опции можно
+запретить сортировку по отдельным столбцам. Например: <span class=SpellE><strong>headers</strong></span><strong>:
+<span class=GramE>{ </span>4: { <span class=SpellE>sorter</span>: <span
+class=SpellE>false</span>} }</strong> запретит сортировку пятого столбца.</p>
+
+<h1 align=center style='text-align:center'><span class=SpellE><span
+style='font-size:12.0pt'>jQuery</span></span><span style='font-size:12.0pt'> и <span
+class=SpellE>Ajax</span>: запросы<o:p></o:p></span></h1>
+
+<p>Разработчики библиотеки <span class=SpellE>jQuery</span> дали возможность
+использовать прелести <span class=SpellE>ajax</span> запросов без глубокого
+понимания процессов, которые происходят во время этого</p>
+
+<p><span class=SpellE><strong>load</strong></span><span class=GramE><strong>( </strong></span><span
+class=SpellE><strong>url</strong></span><strong>, [<span class=SpellE>data</span>],
+[<span class=SpellE>callback</span>] )</strong> - загружает HTML из файла и
+вставляет его в <span class=SpellE>объекную</span> модель документа (DOM). По
+умолчанию (без [<span class=SpellE>data</span>]) выполняется как GET-запрос,
+однако, если будут переданы данные, выполнится как POST-запрос. Начиная с
+версии <span class=SpellE>jQuery</span> 1.2 в <span class=SpellE>url</span>
+можно определить селектор <span class=SpellE>jQuery</span>, <span class=GramE>например</span>
+так:</p>
+
+<p><span lang=EN-US style='mso-ansi-language:EN-US'>$(&quot;#example&quot;).<span
+class=GramE>load(</span>&quot;/ <span class=SpellE>li.cat</span>-item&quot;);<o:p></o:p></span></p>
+
+<p>При выполнении этого запроса, были выбраны все элементы <span class=SpellE>li</span>
+с классом <span class=SpellE>cat-item</span> в запрашиваемом <span
+class=SpellE>url</span> и загружены в элемент #<span class=SpellE>example</span>,
+т.е. мы загрузили меню &quot;Рубрики&quot; этого сайта.<br>
+Здесь <span class=SpellE><strong>url</strong></span> - загружаемый <span
+class=SpellE>url</span>, <span class=SpellE><strong>data</strong></span>
+(опционально) - пары ключ/значение, которые могут быть переданы серверу, <span
+class=SpellE><strong>callback</strong></span> (опционально) - функция, которая
+может быть вызвана при окончании запроса (не требует обязательного успешного
+выполнения).<br>
+Еще пара примеров:</p>
+
+<p>$(&quot;#<span class=SpellE>feeds</span>&quot;).<span class=SpellE>load</span>(&quot;feeds.html&quot;);</p>
+
+<p>Загружает файл feeds.html в элемент с идентификатором <span class=SpellE>feeds</span>.</p>
+
+<p>$(&quot;#<span class=SpellE>feeds</span>&quot;).<span class=SpellE>load</span>(&quot;<span
+class=SpellE>feeds.php</span>&quot;, {<span class=SpellE>limit</span>: 25}, <span
+class=SpellE>function</span>(){<br>
+<span class=SpellE>alert</span>(&quot;<span class=GramE>Последние</span> 25
+записей загружены&quot;);<br>
+});</p>
+
+<p>То же самое, но дополнительно передается пара ключ/значение <span
+class=SpellE>limit</span>: 25 и задается функция, которая вызывается по
+окончании запроса.</p>
+
+<p><span class=SpellE><strong>jQuery.get</strong></span><span class=GramE><strong>(
+</strong></span><span class=SpellE><strong>url</strong></span><strong>, [<span
+class=SpellE>data</span>], [<span class=SpellE>callback</span>] )</strong> -
+загружает страницу, используя GET-запрос. Это самый простой способ передачи
+GET-запроса серверу. Он допускает возможность использования одной функции,
+которая может быть вызвана при окончании запроса. Но в отличие от <span
+class=SpellE><strong>load</strong></span>, функция будет вызвана лишь при
+успешном выполнении запроса. Если необходимо определить функцию при ошибке
+запроса, лучше обратиться к $.<span class=SpellE>ajax</span>.</p>
+
+<p>Несколько примеров:</p>
+
+<p>$.<span class=SpellE>get</span>(&quot;<span class=SpellE>test.php</span>&quot;);</p>
+
+<p>Запрашивает <span class=SpellE>test.php</span> <span class=SpellE>page</span>,
+но игнорирует возвращаемый результат.</p>
+
+<p><span lang=EN-US style='mso-ansi-language:EN-US'>$.<span class=GramE>get(</span>&quot;<span
+class=SpellE>test.php</span>&quot;, { name: &quot;<span class=SpellE>Vasya</span>&quot;,
+age: &quot;27&quot; } );<o:p></o:p></span></p>
+
+<p>Запрашивает <span class=SpellE>test.php</span> и передает дополнительные
+параметры, но также игнорирует возвращаемый результат.</p>
+
+<p><span lang=EN-US style='mso-ansi-language:EN-US'>$.<span class=GramE>get(</span>&quot;<span
+class=SpellE>test.php</span>&quot;, function(data){<br>
+alert(&quot;</span>Данные<span style='mso-ansi-language:EN-US'> </span>загружены<span
+lang=EN-US style='mso-ansi-language:EN-US'>: &quot; + data);<br>
+});<o:p></o:p></span></p>
+
+<p>Передает результат запроса (без передачи параметров) к файлу <span
+class=SpellE>test.php</span> в <span class=SpellE>alert</span> (это может быть
+HTML или XML, зависит от того, что возвращает <span class=SpellE>test.php</span>).</p>
+
+<p><span lang=EN-US style='mso-ansi-language:EN-US'>$.<span class=GramE>get(</span>&quot;<span
+class=SpellE>test.php</span>&quot;, { name: &quot;<span class=SpellE>Vasya</span>&quot;,
+age: &quot;27&quot; }, function(data){<br>
+alert(&quot;</span>Данные<span style='mso-ansi-language:EN-US'> </span>загружены<span
+lang=EN-US style='mso-ansi-language:EN-US'>: &quot; + data);<br>
+});<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Ну и полный набор:
+GET-запрос к файлу <span class=SpellE>test.php</span> с передачей каких-то
+параметров и возвращаемый результат передается в <span class=SpellE>alert</span>.<o:p></o:p></span></p>
+
+<p><span class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>jQuery.post</span></strong></span><span
+class=GramE><strong><span style='font-size:10.0pt;font-family:Arial'>( </span></strong></span><span
+class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>url</span></strong></span><strong><span
+style='font-size:10.0pt;font-family:Arial'>, [<span class=SpellE>data</span>],
+[<span class=SpellE>callback</span>], [<span class=SpellE>type</span>] )</span></strong><span
+style='font-size:10.0pt;font-family:Arial'> - загружает страницу, используя
+POST-запрос. Все почти точно так же, как и в предыдущем случае, поэтому даже
+примеров приводить не буду. Обращу Ваше внимание разве что на еще один
+опциональный параметр - <strong><span style='font-family:Arial'>[<span
+class=SpellE>type</span>]</span></strong>. В нем можно определить тип
+передаваемых данных - JSON, XML и т.п.<o:p></o:p></span></p>
+
+<p><span class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>jQuery.getJSON</span></strong></span><span
+class=GramE><strong><span style='font-size:10.0pt;font-family:Arial'>( </span></strong></span><span
+class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>url</span></strong></span><strong><span
+style='font-size:10.0pt;font-family:Arial'>, [<span class=SpellE>data</span>],
+[<span class=SpellE>callback</span>] )</span></strong><span style='font-size:
+10.0pt;font-family:Arial'> - загружает данные в формате JSON используя
+GET-запрос. <span class=GramE>Начиная с версии <span class=SpellE>jQuery</span>
+1.2 Вы можете</span> загружать данные в формате JSON, расположенные на другом
+домене. Пример загрузки фотографий с тэгом <span class=SpellE>cat</span> с <a
+href="http://api.flickr.com/services/feeds/photos_public.gne?tags=cat&amp;tagmode=any&amp;format=json"><span
+class=SpellE>Flickr</span></a> <a
+href="http://bob.pythonmac.org/archives/2005/12/05/remote-json-jsonp/">JSONP</a>
+API.<br style='mso-special-character:line-break'>
+<![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
+<![endif]><o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Вы можете скачать <a
+href="http://www.linkexchanger.su/example_jquery_ajax/getjson.zip">исходный код</a>
+примера, и при наличии библиотеки <span class=SpellE>jQuery</span>
+воспроизвести это пример <span class=GramE>на</span> своем сайте.<o:p></o:p></span></p>
+
+<p><span class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>jQuery.getScript</span></strong></span><span
+class=GramE><strong><span style='font-size:10.0pt;font-family:Arial'>( </span></strong></span><span
+class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>url</span></strong></span><strong><span
+style='font-size:10.0pt;font-family:Arial'>, [<span class=SpellE>callback</span>]
+)</span></strong><span style='font-size:10.0pt;font-family:Arial'> - загружает
+и выполняет <span class=SpellE>JavaScript</span> файлы, используя GET запрос. <span
+class=GramE>Начиная с версии <span class=SpellE>jQuery</span> 1.2 Вы можете</span>
+загружать и выполнять <span class=SpellE>JavaScript</span> файлы с любого
+домена.<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:Arial'>Мы загрузили и можем
+выполнить файл <span class=SpellE><strong><span style='font-family:Arial'>jquery.color.js</span></strong></span>
+- официальный <span class=SpellE>jQuery</span> <span class=SpellE>Color</span> <span
+class=SpellE>Animation</span> <span class=SpellE>плагин</span>.<o:p></o:p></span></p>
+
+<p><span class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>jQuery.ajax</span></strong></span><span
+class=GramE><strong><span style='font-size:10.0pt;font-family:Arial'>( </span></strong></span><span
+class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>options</span></strong></span><strong><span
+style='font-size:10.0pt;font-family:Arial'> )</span></strong><span
+style='font-size:10.0pt;font-family:Arial'> - загружает страницу используя HTTP
+запрос. <strong><span style='font-family:Arial'>$.<span class=SpellE>ajax</span>()</span></strong>
+принимает один аргумент - объект, состоящий из пар ключ/значение, которые
+использует, чтобы инициализировать и обработать ajax-запрос. Ниже приведен
+список возможных значений.<o:p></o:p></span></p>
+
+<p><span class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>sync</span></strong></span><span
+style='font-size:10.0pt;font-family:Arial'> - по умолчанию все запросы
+выполняются в асинхронном режиме (значение <span class=SpellE><strong><span
+style='font-family:Arial'>true</span></strong></span>). Если необходимо
+выполнить синхронный запрос, следует установить значение <span class=SpellE><strong><span
+style='font-family:Arial'>false</span></strong></span> для этой опции. Помните,
+что синхронный запрос может временно заблокировать браузер, запретив любые
+действия во время выполнения запроса.<o:p></o:p></span></p>
+
+<p><span class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>beforeSend</span></strong></span><span
+style='font-size:10.0pt;font-family:Arial'> - может содержать функцию, которая
+должна быть вызвана до передачи запроса. <span class=SpellE>beforeSend</span> -
+это <span class=SpellE>Ajax</span> <span class=SpellE>Event</span> (события
+рассмотрены в другой статье).<o:p></o:p></span></p>
+
+<p><span class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>cache</span></strong></span><span
+style='font-size:10.0pt;font-family:Arial'> - опция добавлена в <span
+class=SpellE>jQuery</span> 1.2. По умолчанию - <span class=SpellE><strong><span
+style='font-family:Arial'>true</span></strong></span>. Если установить в <span
+class=SpellE><strong><span style='font-family:Arial'>false</span></strong></span>,
+запрашиваемая страница не будет кэшироваться браузером.<o:p></o:p></span></p>
+
+<p><span class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>complete</span></strong></span><span
+style='font-size:10.0pt;font-family:Arial'> - определяет функцию, которая будет
+вызвана по окончанию запроса (успешного и ошибочного выполнения). Принимает два
+аргумента: объект <span class=SpellE>XMLHttpRequest</span> и строку,
+описывающую &quot;успешность&quot; запроса. <span class=SpellE><strong><span
+style='font-family:Arial'>complete</span></strong></span> - это <span
+class=SpellE>Ajax</span> <span class=SpellE>Event</span> (события рассмотрены в
+другой статье).<o:p></o:p></span></p>
+
+<p><span class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>contentType</span></strong></span><span
+style='font-size:10.0pt;font-family:Arial'> - при передаче данных серверу
+сообщает <span class=SpellE>content-type</span>. По умолчанию - <span
+class=SpellE>application</span>/<span class=SpellE>x-www-form-urlencoded</span>.<o:p></o:p></span></p>
+
+<p><span class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>data</span></strong></span><span
+style='font-size:10.0pt;font-family:Arial'> - данные, передаваемые на сервер.
+Могут быть объектом или строкой. Конвертируются в строку запроса, если уже не
+представляют собой строку. Добавляются в URL GET-запроса. Если используется
+объект, он должен представлять собой пары ключ/значение. Если значения
+представлены в виде массива, <span class=SpellE>jQuery</span> <span
+class=SpellE>сериализует</span> значения с некоторым ключом. Например: {<span
+class=SpellE>foo</span>:[&quot;bar1&quot;, &quot;bar2&quot;]} будет
+представлено как &quot;&amp;foo=bar1&amp;foo=bar2&quot;.<o:p></o:p></span></p>
+
+<p><span class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>dataType</span></strong></span><span
+style='font-size:10.0pt;font-family:Arial'> - строка, описывает тип данных,
+которые ожидаются в качестве ответа сервера. Если не <span class=GramE>определена</span>,
+то <span class=SpellE>jQuery</span> сам попытается определить тип, основываясь
+на MIME-типе ответа сервера. <span class=GramE>Доступные типы:<br>
+- <span class=SpellE><strong><span style='font-family:Arial'>xml</span></strong></span>:
+вернет XML документ, который может быть обработан через <span class=SpellE>jQuery</span>.<br>
+- <span class=SpellE><strong><span style='font-family:Arial'>html</span></strong></span>:
+вернет HTML как <span class=SpellE>plain</span> <span class=SpellE>text</span>.<br>
+- <span class=SpellE><strong><span style='font-family:Arial'>script</span></strong></span>:
+расценивает ответ как <span class=SpellE>JavaScript</span> и возвращает его как
+<span class=SpellE>plain</span> <span class=SpellE>text</span>.<br>
+- <span class=SpellE><strong><span style='font-family:Arial'>json</span></strong></span>:
+расценивает ответ как данные в формате JSON и возвращает <span class=SpellE>JavaScript</span>
+объект.<br>
+- <span class=SpellE><strong><span style='font-family:Arial'>jsonp</span></strong></span>:
+загружает данные в формате JSON используя <a
+href="http://bob.pythonmac.org/archives/2005/12/05/remote-json-jsonp/">JSONP</a>.
+Необходимо дополнительно добавить &quot;?<span class=SpellE>callback=</span>?&quot;
+в конец строки запроса в URL, чтобы</span> определить вызов. (Добавлено в <span
+class=SpellE>jQuery</span> 1.2).<br>
+- <span class=SpellE><strong><span style='font-family:Arial'>text</span></strong></span>:
+строка <span class=SpellE>plain</span> <span class=SpellE>text</span>.<o:p></o:p></span></p>
+
+<p><span class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>error</span></strong></span><span
+style='font-size:10.0pt;font-family:Arial'> - определяет функцию, которая будет
+вызвана в случае неуспешного выполнения запроса.<o:p></o:p></span></p>
+
+<p><span class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>global</span></strong></span><span
+style='font-size:10.0pt;font-family:Arial'> - <span class=SpellE><strong><span
+style='font-family:Arial'>true</span></strong></span> или <span class=SpellE><strong><span
+style='font-family:Arial'>false</span></strong></span>. Вызывать или нет
+глобальные обработчики событий <span class=SpellE>Ajax</span> для этого
+запроса. Может быть <span class=GramE>использована</span> для контроля
+различных <span class=SpellE>Ajax</span> событий. По умолчанию - <span
+class=SpellE><strong><span style='font-family:Arial'>true</span></strong></span>.<o:p></o:p></span></p>
+
+<p><span class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>ifModified</span></strong></span><span
+style='font-size:10.0pt;font-family:Arial'> - запрос будет успешным только в
+случае, если данные ответа изменились со времени последнего запроса. По
+умолчанию - <span class=SpellE><strong><span style='font-family:Arial'>false</span></strong></span>.<o:p></o:p></span></p>
+
+<p><span class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>processData</span></strong></span><span
+style='font-size:10.0pt;font-family:Arial'> - по умолчанию <span class=SpellE><strong><span
+style='font-family:Arial'>true</span></strong></span>. В опции <span
+class=SpellE><strong><span style='font-family:Arial'>data</span></strong></span>
+данные представлены в виде объекта, который преобразуется в строку запроса,
+подходящую для <span class=SpellE>content-type</span> по умолчанию - &quot;<span
+class=SpellE>application</span>/<span class=SpellE>x-www-form-urlencoded</span>&quot;.
+Если необходимо иное, установите опцию <span class=SpellE><strong><span
+style='font-family:Arial'>processData</span></strong></span> в <span
+class=SpellE><strong><span style='font-family:Arial'>false</span></strong></span>.<o:p></o:p></span></p>
+
+<p><span class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>success</span></strong></span><span
+style='font-size:10.0pt;font-family:Arial'> - указывается функция, которая
+будет вызвана в случае успешного завершения запроса. Функция принимает два
+аргумента: данные, возвращенные с сервера и отформатированные с учетом
+параметра <span class=SpellE><strong><span style='font-family:Arial'>dataType</span></strong></span>
+и строка, описывающая статус ответа.<o:p></o:p></span></p>
+
+<p><span class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>timeout</span></strong></span><span
+style='font-size:10.0pt;font-family:Arial'> - устанавливает локальный тайм-аут
+для запроса в миллисекундах. Отменяет глобальный тайм-аут для этого запроса,
+если тот определен через <strong><span style='font-family:Arial'>$.<span
+class=SpellE>ajaxSetup</span></span></strong>.<o:p></o:p></span></p>
+
+<p><span class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>type</span></strong></span><span
+style='font-size:10.0pt;font-family:Arial'> - тип запроса, POST или GET. По
+умолчанию <span class=GramE>установлен</span> GET. Типы запроса PUT или DELETE
+тоже могут быть использованы, но они поддерживаются не всеми браузерами.<o:p></o:p></span></p>
+
+<p><span class=SpellE><strong><span style='font-size:10.0pt;font-family:Arial'>url</span></strong></span><span
+style='font-size:10.0pt;font-family:Arial'> - просто <span class=SpellE>url</span>
+запроса.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

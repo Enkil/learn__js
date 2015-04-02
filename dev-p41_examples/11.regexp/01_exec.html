@@ -1,0 +1,39 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Заголовок</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script>
+	document.write(/2/.exec("xcfg22.11") + '<br/>');
+	document.write(/[a-z]/.exec("xcfg22.11") + '<br/>');
+	document.write(/[0-9]/.exec("xcfg22.11") + '<br/>');
+	document.write(/[A-Z]/.exec("xcfg22.11") + '<br/>'); // чувствительны к регистру
+	document.write(/[а-я]/.exec("xcfg22.11ккк") + '<br/>');
+	document.write(/[0-9а-я]/.exec("xcfg22.11ккк") + '<br/>');
+	document.write(/[0-9][а-я]/.exec("xcfg22.11ккк") + '<br/>');
+	document.write(/[0-9]{10}/.exec("4442223363") + '<br/>'); // указать сколько искать (ищем любые цифры: но их должно быть 10
+	document.write(/[0-9]{5}/.exec("4442223363") + '<br/>');
+	document.write(/^[0-9]{5}/.exec("text 4442223363") + '<br/>'); // null
+	document.write(/^[0-9]{5}/.exec("4442223363") + '<br/>'); // 44422
+	document.write(/^[0-9]{5}$/.exec("12345") + '<br/>'); // 44422
+	document.write(/^[0-9a-z]{5}$/.exec("12d3b") + '<br/>'); // 12d3b
+	document.write(/^[0-9-a-z+]{5}$/.exec("+2-3b") + '<br/>'); // +2-3b
+	document.write(/^[0-9-a-z+.]{5}$/.exec("+2.3b") + '<br/>'); // +2.3b
+	document.write(/^[0-9.]{5}$/.exec("44b44") + '<br/>'); // null
+	document.write(/^[0-9]{2}.$/.exec("22.") + '<br/>'); // 22.
+	document.write(/[0-9]{2}./.exec("44r4") + '<br/>'); // 44r (. спецсимвол - все знаки кроме новой строки)
+	document.write(/[0-9]{2}\./.exec("44.4") + '<br/>'); // 44. (экранировали точку и ищем соотв уже именно ее)
+	document.write(/[0-9]\.[0-9]{2}/.exec("44.40") + '<br/>'); // 4.40 
+	document.write(/[0-9]+\.[0-9]{2}/.exec("et43453454.40") + '<br/>'); // 43453454.40
+	document.write(/[0-9]{2}/.exec("et43453454.40") + '<br/>'); // 43
+	document.write(/[0-9]{2}/.exec("3456345") + '<br/>'); // 43
+	document.write(/\d{2}\s\d{2}/.exec("33 99") + '<br/>'); // 33 99
+	document.write(/\w{2}\s\d{2}/.exec("цц 99") + '<br/>'); // null
+	document.write(/\w{2}\s\d{2}/.exec("fg 99") + '<br/>'); // fg 99
+	</script>
+</head>
+<body>  
+</body>
+</html>
+

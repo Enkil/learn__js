@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>setTimeout</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript">
+var c=0;
+var t;
+var timer_is_on=0;
+function timedCount(){
+document.getElementById('txt').value=c;
+c=c+1;
+t=setTimeout("timedCount()",1000);
+}
+function doTimer(){
+if (!timer_is_on)
+  {
+  timer_is_on=1;
+  timedCount();
+  }
+}
+function stopCount(){
+clearTimeout(t);
+timer_is_on=0;
+}
+</script>
+</head>
+<body>
+<form>
+<input type="button" value="Start count!" onClick="doTimer()">
+<input type="text" id="txt">
+<input type="button" value="Stop count!" onClick="stopCount()">
+</form></body></html>
+
+

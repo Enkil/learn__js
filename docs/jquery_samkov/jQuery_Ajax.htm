@@ -1,0 +1,754 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:st1="urn:schemas-microsoft-com:office:smarttags"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="jQuery_Ajax.files/filelist.xml">
+<title>jQuery и Ajax: запросы</title>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="place"/>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="City"/>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>elena</o:Author>
+  <o:LastAuthor>elena</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>200</o:TotalTime>
+  <o:Created>2008-10-12T17:14:00Z</o:Created>
+  <o:LastSaved>2008-10-12T17:14:00Z</o:LastSaved>
+  <o:Pages>7</o:Pages>
+  <o:Words>1787</o:Words>
+  <o:Characters>10192</o:Characters>
+  <o:Company>home</o:Company>
+  <o:Lines>84</o:Lines>
+  <o:Paragraphs>23</o:Paragraphs>
+  <o:CharactersWithSpaces>11956</o:CharactersWithSpaces>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:PunctuationKerning/>
+  <w:DrawingGridHorizontalSpacing>2,85 пт</w:DrawingGridHorizontalSpacing>
+  <w:DrawingGridVerticalSpacing>1,95 пт</w:DrawingGridVerticalSpacing>
+  <w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]--><!--[if !mso]><object
+ classid="clsid:38481807-CA0E-42D2-BF39-B33AF135CC4D" id=ieooui></object>
+<style>
+st1\:*{behavior:url(#ieooui) }
+</style>
+<![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:24.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+pre
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:612.0pt 792.0pt;
+	margin:2.0cm 42.5pt 42.55pt 42.55pt;
+	mso-header-margin:36.0pt;
+	mso-footer-margin:36.0pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Обычная таблица";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]-->
+</head>
+
+<body lang=RU link=blue vlink=purple style='tab-interval:35.4pt'>
+
+<div class=Section1>
+
+<h1>jQuery и Ajax: запросы</h1>
+
+<p><strong>load( url, [data], [callback] )</strong> - загружает HTML из файла и
+вставляет его в объекную модель документа (DOM). По умолчанию (без [data])
+выполняется как GET-запрос, однако, если будут переданы данные, выполнится как
+POST-запрос. <span lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p>Здесь <strong>url</strong> - загружаемый url, <strong>data</strong>
+(опционально) - пары ключ/значение, которые могут быть переданы серверу, <strong>callback</strong>
+(опционально) - функция, которая может быть вызвана при окончании запроса (не
+требует обязательного успешного выполнения).</p>
+
+<p>$(&quot;#feeds&quot;).load(&quot;feeds.html&quot;);</p>
+
+<p>Загружает файл feeds.html в элемент с идентификатором feeds.</p>
+
+<p>$(&quot;#feeds&quot;).load(&quot;feeds.php&quot;, {limit: 25}, function(){<br>
+alert(&quot;Последние 25 записей загружены&quot;);<br>
+});</p>
+
+<p>То же самое, но дополнительно передается пара ключ/значение limit: 25 и
+задается функция, которая вызывается по окончании запроса.</p>
+
+<p><strong>jQuery.get( url, [data], [callback] )</strong> - загружает страницу,
+используя GET-запрос. Это самый простой способ передачи GET-запроса серверу. Он
+допускает возможность использования одной функции, которая может быть вызвана
+при окончании запроса. Но в отличие от <strong>load</strong>, функция будет
+вызвана лишь при успешном выполнении запроса. Если необходимо определить
+функцию при ошибке запроса, лучше обратиться к $.ajax.</p>
+
+<p>Несколько примеров:</p>
+
+<p>$.get(&quot;test.php&quot;);</p>
+
+<p>Запрашивает test.php page, но игнорирует возвращаемый результат.</p>
+
+<p><span lang=EN-US style='mso-ansi-language:EN-US'>$.get(&quot;test.php&quot;,
+{ name: &quot;Vasya&quot;, age: &quot;27&quot; } );<o:p></o:p></span></p>
+
+<p>Запрашивает test.php и передает дополнительные параметры, но также
+игнорирует возвращаемый результат.</p>
+
+<p><span lang=EN-US style='mso-ansi-language:EN-US'>$.get(&quot;test.php&quot;,
+function(data){<br>
+alert(&quot;</span>Данные<span style='mso-ansi-language:EN-US'> </span>загружены<span
+lang=EN-US style='mso-ansi-language:EN-US'>: &quot; + data);<br>
+});<o:p></o:p></span></p>
+
+<p>Передает результат запроса (без передачи параметров) к файлу test.php в
+alert (это может быть HTML или XML, зависит от того, что возвращает test.php).</p>
+
+<p><span lang=EN-US style='mso-ansi-language:EN-US'>$.get(&quot;test.php&quot;,
+{ name: &quot;Vasya&quot;, age: &quot;27&quot; }, function(data){<br>
+alert(&quot;</span>Данные<span style='mso-ansi-language:EN-US'> </span>загружены<span
+lang=EN-US style='mso-ansi-language:EN-US'>: &quot; + data);<br>
+});<o:p></o:p></span></p>
+
+<p>Ну и полный набор: GET-запрос к файлу test.php с передачей каких-то
+параметров и возвращаемый результат передается в alert.</p>
+
+<p class=MsoNormal><strong>jQuery.post( url, [data], [callback], [type] )</strong>
+- загружает страницу, используя POST-запрос. Один опциональный параметр - <strong>[type]</strong>.
+В нем можно определить тип передаваемых данных - JSON, XML и т.п.</p>
+
+<p class=MsoNormal><strong>jQuery.getJSON( url, [data], [callback] )</strong> -
+загружает данные в формате JSON используя GET-запрос. Начиная с версии jQuery
+1.2 Вы можете загружать данные в формате JSON, расположенные на другом домене.</p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;!DOCTYPE
+html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;html
+xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang=&quot;ru&quot;
+xml:lang=&quot;ru&quot;&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;title&gt;jQuery
+</span>и<span lang=EN-US style='mso-ansi-language:EN-US'> <st1:place w:st="on"><st1:City
+ w:st="on">Ajax</st1:City></st1:place>&lt;/title&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;meta
+http-equiv=&quot;Content-Type&quot; content=&quot;text/html;
+charset=utf-8&quot; /&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;script
+type=&quot;text/javascript&quot;
+src=&quot;js/jquery-1.2.5.js&quot;&gt;&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;style
+type=&quot;text/css&quot;&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>* {<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>margin:0;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>padding:0;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>html, body
+{<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>background-color:#E2F2E2;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>font-family: &quot;Trebuchet MS&quot;,
+Tahoma, Verdana, Arial, Helvetica, sans-serif;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>font-size: 8pt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>#example {<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>margin-left:10px;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;div
+id=&quot;example&quot;&gt;&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;script
+type=&quot;text/javascript&quot;&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>$(document).ready(function(){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>// ------- </span>Пример<span lang=EN-US
+style='mso-ansi-language:EN-US'> jQuery.getJSON -------<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>$.getJSON(&quot;http://api.flickr.com/services/feeds/photos_public.gne?tags=cat&amp;tagmode=any&amp;format=json&amp;jsoncallback=?&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>function(data){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>$.each(data.items, function(i,item){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>     
+</span>$(&quot;&lt;img/&gt;&quot;).attr(&quot;src&quot;, item.media.m).appendTo(&quot;#example&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>      </span>if ( i == 2 ) return false;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>// ------- </span>Пример<span lang=EN-US
+style='mso-ansi-language:EN-US'> jQuery.getJSON -------<o:p></o:p></span></p>
+
+<p class=MsoNormal>});</p>
+
+<p class=MsoNormal>&lt;/script&gt;</p>
+
+<p class=MsoNormal>&lt;/body&gt;</p>
+
+<p class=MsoNormal>&lt;/html&gt;</p>
+
+<p><strong>jQuery.ajax( options )</strong> - загружает страницу используя HTTP
+запрос. <strong>$.ajax()</strong> принимает один аргумент - объект, состоящий из
+пар ключ/значение, которые использует, чтобы инициализировать и обработать
+ajax-запрос. Ниже приведен список возможных значений.</p>
+
+<p><strong>async</strong> - по умолчанию все запросы выполняются в асинхронном
+режиме (значение <strong>true</strong>). Если необходимо выполнить синхронный
+запрос, следует установить значение <strong>false</strong> для этой опции.
+Помните, что синхронный запрос может временно заблокировать браузер, запретив
+любые действия во время выполнения запроса.</p>
+
+<p><strong>beforeSend</strong> - может содержать функцию, которая должна быть
+вызвана до передачи запроса. beforeSend - это Ajax Event (события рассмотрены в
+другой статье).</p>
+
+<p><strong>cache</strong> - опция добавлена в jQuery 1.2. По умолчанию - <strong>true</strong>.
+Если установить в <strong>false</strong>, запрашиваемая страница не будет
+кэшироваться браузером.</p>
+
+<p><strong>complete</strong> - определяет функцию, которая будет вызвана по
+окончанию запроса (успешного и ошибочного выполнения). Принимает два аргумента:
+объект XMLHttpRequest и строку, описывающую &quot;успешность&quot; запроса. <strong>complete</strong>
+- это Ajax Event (события рассмотрены в другой статье).</p>
+
+<p><strong>contentType</strong> - при передаче данных серверу сообщает
+content-type. По умолчанию - application/x-www-form-urlencoded.</p>
+
+<p><strong>data</strong> - данные, передаваемые на сервер. Могут быть объектом
+или строкой. Конвертируются в строку запроса, если уже не представляют собой
+строку. Добавляются в URL GET-запроса. Если используется объект, он должен
+представлять собой пары ключ/значение. Если значения представлены в виде
+массива, jQuery сериализует значения с некоторым ключом. Например:
+{foo:[&quot;bar1&quot;, &quot;bar2&quot;]} будет представлено как &quot;&amp;foo=bar1&amp;foo=bar2&quot;.</p>
+
+<p><strong>dataType</strong> - строка, описывает тип данных, которые ожидаются
+в качестве ответа сервера. Если не определена, то jQuery сам попытается
+определить тип, основываясь на MIME-типе ответа сервера. Доступные типы:<br>
+- <strong>xml</strong>: вернет XML документ, который может быть обработан через
+jQuery.<br>
+- <strong>html</strong>: вернет HTML как plain text.<br>
+- <strong>script</strong>: расценивает ответ как JavaScript и возвращает его
+как plain text.<br>
+- <strong>json</strong>: расценивает ответ как данные в формате JSON и
+возвращает JavaScript объект.<br>
+- <strong>jsonp</strong>: загружает данные в формате JSON используя <a
+href="http://bob.pythonmac.org/archives/2005/12/05/remote-json-jsonp/">JSONP</a>.
+Необходимо дополнительно добавить &quot;?callback=?&quot; в конец строки
+запроса в URL, чтобы определить вызов. (Добавлено в jQuery 1.2).<br>
+- <strong>text</strong>: строка plain text.</p>
+
+<p><strong>error</strong> - определяет функцию, которая будет вызвана в случае
+неуспешного выполнения запроса.</p>
+
+<p><strong>global</strong> - <strong>true</strong> или <strong>false</strong>.
+Вызывать или нет глобальные обработчики событий Ajax для этого запроса. Может
+быть использована для контроля различных Ajax событий. По умолчанию - <strong>true</strong>.</p>
+
+<p><strong>ifModified</strong> - запрос будет успешным только в случае, если
+данные ответа изменились со времени последнего запроса. По умолчанию - <strong>false</strong>.</p>
+
+<p><strong>processData</strong> - по умолчанию <strong>true</strong>. В опции <strong>data</strong>
+данные представлены в виде объекта, который преобразуется в строку запроса,
+подходящую для content-type по умолчанию -
+&quot;application/x-www-form-urlencoded&quot;. Если необходимо иное, установите
+опцию <strong>processData</strong> в <strong>false</strong>.</p>
+
+<p><strong>success</strong> - указывается функция, которая будет вызвана в
+случае успешного завершения запроса. Функция принимает два аргумента: данные,
+возвращенные с сервера и отформатированные с учетом параметра <strong>dataType</strong>
+и строка, описывающая статус ответа.</p>
+
+<p><strong>timeout</strong> - устанавливает локальный тайм-аут для запроса в
+миллисекундах. Отменяет глобальный тайм-аут для этого запроса, если тот
+определен через <strong>$.ajaxSetup</strong>.</p>
+
+<p><strong>type</strong> - тип запроса, POST или GET. По умолчанию установлен
+GET. Типы запроса PUT или DELETE тоже могут быть использованы, но они
+поддерживаются не всеми браузерами.</p>
+
+<p><strong>url</strong> - просто url запроса.</p>
+
+<h1>jQuery и Ajax: события</h1>
+
+<p><strong>ajaxComplete( callback )</strong> - прикрепляет функцию, которая
+выполняется всякий раз, когда выполнен ajax-запрос. Функция принимает в
+качестве аргументов объект XMLHttpRequest и установки, используемые в этом
+запросе.<br>
+<strong>Пример:</strong> показываем сообщение, когда AJAX запрос выполнен.</p>
+
+<pre>$<span style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#msg&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>ajaxComplete</span><span
+style='color:#66CC66'>(</span><b><span style='color:#003366'>function</span></b><span
+style='color:#66CC66'>(</span>request, settings<span style='color:#66CC66'>){</span></pre><pre><span style='mso-spacerun:yes'>   </span><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><b><span
+style='color:#000066'>this</span></b><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>append</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;&lt;span&gt;Request Complete.&lt;/span&gt;&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span
+style='color:#66CC66'>})</span>;</pre>
+
+<p><strong>ajaxError( callback )</strong> - прикрепляет функцию, которая
+выполняется всякий раз, когда ajax-запрос неудачен. Функция принимает в
+качестве аргументов объект XMLHttpRequest и установки, используемые в этом
+запросе. Третий параметр передается, если при обработке запроса произошла
+ошибка и эта ошибка определена.<br>
+<strong>Пример:</strong> показываем сообщение, когда AJAX запрос неудачен.</p>
+
+<pre>$<span style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#msg&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>ajaxError</span><span
+style='color:#66CC66'>(</span><b><span style='color:#003366'>function</span></b><span
+style='color:#66CC66'>(</span>event, request, settings<span style='color:#66CC66'>){</span></pre><pre><span style='mso-spacerun:yes'>   </span><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><b><span
+style='color:#000066'>this</span></b><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>append</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;&lt;span&gt;Error requesting page &quot;</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>   </span></span>+ settings.<span
+style='color:#006600'>url</span></pre><pre><span style='mso-spacerun:yes'>   </span>+ <span
+style='color:#3366CC'>&quot;&lt;/span&gt;&quot;</span><span style='color:#66CC66'>)</span>;</pre><pre><span
+style='color:#66CC66'>})</span>;</pre>
+
+<p><strong>ajaxSend( callback )</strong> - прикрепляет функцию, которая
+выполняется всякий раз, когда ajax-запрос отправлен. Функция принимает в
+качестве аргументов объект XMLHttpRequest и установки, используемые в этом
+запросе.<br>
+<strong>Пример:</strong> показываем сообщение, когда AJAX запрос отправлен.</p>
+
+<pre>$<span style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#msg&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>ajaxSend</span><span
+style='color:#66CC66'>(</span><b><span style='color:#003366'>function</span></b><span
+style='color:#66CC66'>(</span>evt, request, settings<span style='color:#66CC66'>){</span></pre><pre><span style='mso-spacerun:yes'>   </span><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><b><span
+style='color:#000066'>this</span></b><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>append</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;&lt;span&gt;Starting request at &quot;</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>   </span></span>+ settings.<span
+style='color:#006600'>url</span></pre><pre><span style='mso-spacerun:yes'>   </span>+ <span
+style='color:#3366CC'>&quot;&lt;/span&gt;&quot;</span><span style='color:#66CC66'>)</span>;</pre><pre><span
+style='color:#66CC66'>})</span>;</pre>
+
+<p><strong>ajaxStart( callback )</strong> - прикрепляет функцию, которая
+выполняется всякий раз, когда ajax-запрос начат (и нет выполняющихся запросов).<br>
+<strong>Пример:</strong> показываем сообщение о загрузке.</p>
+
+<pre>$<span style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#loading&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>ajaxStart</span><span
+style='color:#66CC66'>(</span><b><span style='color:#003366'>function</span></b><span
+style='color:#66CC66'>(){</span></pre><pre><span style='mso-spacerun:yes'>   </span>$<span
+style='color:#66CC66'>(</span><b><span style='color:#000066'>this</span></b><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>show</span><span
+style='color:#66CC66'>()</span>;</pre><pre><span style='color:#66CC66'>})</span>;</pre>
+
+<p><strong>ajaxStop( callback )</strong> - прикрепляет функцию, которая
+выполняется всякий раз, когда ajax-запрос закончен.<br>
+<strong>Пример:</strong> скрываем сообщение о загрузке после того, как все AJAx
+запросы окончены.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;#loading&quot;</span><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>ajaxStop</span><span style='color:#66CC66'>(</span><b><span
+style='color:#003366'>function</span></b><span style='color:#66CC66'>(){</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>   </span>$<span
+style='color:#66CC66'>(</span><b><span style='color:#000066'>this</span></b><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>hide</span><span
+style='color:#66CC66'>()</span>;<o:p></o:p></span></pre><pre><span
+style='color:#66CC66'>})</span>;</pre>
+
+<p><strong>ajaxSuccess( callback )</strong> - прикрепляет функцию, которая
+выполняется всякий раз, когда ajax-запрос выполнен успешно. Функция принимает в
+качестве аргументов объект XMLHttpRequest и установки, используемые в этом
+запросе.<br>
+<strong>Пример:</strong> показываем сообщени, когда AJAX-запрос выполнен
+успешно.</p>
+
+<pre>$<span style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;#msg&quot;</span><span
+style='color:#66CC66'>)</span>.<span style='color:#006600'>ajaxSuccess</span><span
+style='color:#66CC66'>(</span><b><span style='color:#003366'>function</span></b><span
+style='color:#66CC66'>(</span>evt, request, settings<span style='color:#66CC66'>){</span></pre><pre><span style='mso-spacerun:yes'>   </span><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><b><span
+style='color:#000066'>this</span></b><span style='color:#66CC66'>)</span>.<span
+style='color:#006600'>append</span><span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;&lt;span&gt;Successful Request!&lt;/span&gt;&quot;</span><span
+style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span
+style='color:#66CC66'>})</span>;</pre>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;!DOCTYPE
+html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;html
+xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang=&quot;ru&quot;
+xml:lang=&quot;ru&quot;&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;title&gt;jQuery
+</span>и<span lang=EN-US style='mso-ansi-language:EN-US'> Ajax: </span>события<span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;/title&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;meta
+http-equiv=&quot;Content-Type&quot; content=&quot;text/html;
+charset=utf-8&quot; /&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;script
+type=&quot;text/javascript&quot;
+src=&quot;js/jquery-1.2.1.js&quot;&gt;&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;style
+type=&quot;text/css&quot;&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>* {<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>margin:0;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>padding:0;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>html, body
+{<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>background-color:#E2F2E2;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>font-family: &quot;Trebuchet MS&quot;,
+Tahoma, Verdana, Arial, Helvetica, sans-serif;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>font-size: 8pt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>#example {<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>margin-left:40px;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>ul li {<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>display:inline;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>#loading {<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span></span>display:none;</p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>padding-left:10px;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>#message {<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>display:none;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>padding-left:10px;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/style&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;div
+id=&quot;example&quot;&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;ul&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;li&gt;&lt;a id=&quot;a1&quot;
+href=&quot;#&quot;&gt;</span>Выполнить<span lang=EN-US style='mso-ansi-language:
+EN-US'> Ajax-</span>запрос<span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/a&gt;&lt;span
+id=&quot;loading&quot;&gt;</span>Выполняется<span lang=EN-US style='mso-ansi-language:
+EN-US'> Ajax-</span>запрос<span lang=EN-US style='mso-ansi-language:EN-US'>...&lt;/span&gt;&lt;/li&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>&lt;li&gt;&lt;span
+id=&quot;message&quot;&gt;Ajax-</span>запрос<span style='mso-ansi-language:
+EN-US'> </span>выполнен<span lang=EN-US style='mso-ansi-language:EN-US'>.&lt;/span&gt;&lt;/li&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>&lt;/ul&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/div&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;script
+type=&quot;text/javascript&quot;&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>$(document).ready(function(){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>// --------------<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$(&quot;#a1&quot;).click(<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>function () {<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>      </span>$.ajax({<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>        </span>type: &quot;POST&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>        </span>data: &quot;n=3&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>        </span>url: &quot;events.php&quot;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>      </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>// --------------<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$(&quot;#loading&quot;).ajaxStart(function(){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>   </span>$(this).show();<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>   </span>$(&quot;#message&quot;).hide();<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$(&quot;#loading&quot;).ajaxStop(function(){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>   </span>$(this).hide();<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$(&quot;#message&quot;).ajaxComplete(function(){<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>   </span>$(this).show();<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'> </span>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>});<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/script&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/body&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/html&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p>По клику на элементе а с идентификатором <strong>а1</strong> будет выполнен <strong>ajax-запрос</strong>
+к файлу <strong>events.php</strong> (его код чуть позже). Тип запроса мы
+определим как <strong>POST</strong> и в качестве данных передадим некий
+параметр <strong>n=3</strong>.<br>
+Затем займемся &quot;развешиванием&quot; событий на HTML-элементы. По событию <strong>ajaxStart</strong>
+будет показан элемент с идентификатором <strong>#loading</strong>, изначально
+скрытый с помощью CSS. Элемент <strong>#message</strong> по этому же событию
+будет скрыт (он скрыт и изначально, но мы делаем это для того, чтобы скрыть
+его, если раньше выполнялись запросы и этот элемент был показан). Далее, по
+событию <strong>ajaxStop</strong> надо будет скрыть элемент <strong>#loading</strong>,
+а по событию <strong>ajaxComplete</strong> показать элемент <strong>#message</strong>.</p>
+
+<p>А теперь приведу код <strong>обработчика ajax-запроса</strong> - файл <strong>events.php</strong></p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>&amp;lt; ?php<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#B1B100;mso-ansi-language:EN-US'>if</span><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>(</span><span
+lang=EN-US style='color:blue;mso-ansi-language:EN-US'>$_SERVER</span><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>[</span><span
+lang=EN-US style='color:red;mso-ansi-language:EN-US'>'HTTP_X_REQUESTED_WITH'</span><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>]</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>==<span style='color:red'>'XMLHttpRequest'</span><span
+style='color:#66CC66'>)</span> <span style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+style='color:#B1B100'>if</span> <span style='color:#66CC66'>(</span><span
+style='color:blue'>$_POST</span><span style='color:#66CC66'>)</span> <span
+style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+style='mso-tab-count:1'>      </span><span style='color:#B1B100'>for</span><span
+style='color:#66CC66'>(</span><span style='color:blue'>$i</span>=<span
+style='color:#CC66CC'>0</span>;<span style='color:blue'>$i</span>&lt;count <span
+style='color:#66CC66'>(</span><span style='color:blue'>$_post</span><span
+style='color:#66CC66'>[</span><span style='color:red'>'n'</span><span
+style='color:#66CC66'>])</span>;<span style='color:blue'>$i</span>++<span
+style='color:#66CC66'>)</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span></span><span
+style='color:#66CC66'>}</span> <span style='color:#B1B100'>else</span> <span
+style='color:#66CC66'>{</span></pre><pre><span style='mso-spacerun:yes'>  </span><span
+style='mso-tab-count:1'>      </span><a href="http://www.php.net/echo"><span
+style='color:#000066'>echo</span></a> <span style='color:red'>&quot;Не передан параметр!&quot;</span>;</pre><pre><span style='mso-spacerun:yes'>  </span><span
+style='color:#66CC66'>}</span></pre><pre><span style='color:#66CC66'>}</span></pre><pre>?&amp;gt;&lt;/count&gt;</pre>
+
+<p>Для начала мы проверяем существование объекта <strong>XMLHttpRequest</strong>
+и выполняем код только в том случае, если он существует. Сам по себе этот код
+только прогоняет цикл из 3 итераций, каждый раз &quot;засыпая&quot; на секунду
+(эта задержка сделана для того, чтобы сам процесс запроса можно было
+&quot;почувствовать&quot;).</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</body>
+
+</html>

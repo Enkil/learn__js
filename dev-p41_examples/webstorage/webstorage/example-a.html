@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<script src="js/jquery-1.5.2.min.js" type="text/javascript"></script>
+<style type="text/css">
+div { float:left; }
+button { width:200px; }
+#result {
+	width:410px; height:200px;
+	overflow:auto;
+	border:1px solid #369;
+	padding:0 5px;
+}
+p {
+	font-size:12px; color:#666;
+	margin:0; border-bottom:1px dotted #ccc;
+}
+p.ok { color:#390; }
+p.er { color:#c00; }
+</style>
+<script type="text/javascript">
+$(function(){
+	
+	var result = $('#result').empty();
+	
+	// хранилище сеанса
+	if(window.sessionStorage)
+	{
+		result.prepend('<p class="ok">Браузер поддерживает хранилище сеанса.</p>');
+		window.sessionStorage.setItem('mySessionKey', 'Какие-то данные в хранилище сеанса.');
+		window.sessionStorage.mySessionKey2 = 'Какие-то другие данные в хранилище сеанса.';
+	} else {
+		result.prepend('<p class="er">Браузер не поддерживает хранилище сеанса.</p>');
+		$('#sessionGet, #sessionDelete').attr('disabled','disabled');
+	}
+	// получить данные
+	$('#sessionGet').bind('click',function(){
+		var k1 = window.sessionStorage.getItem('mySessionKey');
+		result.prepend('<p>' + k1 + '</p>');
+	});
+	// удалить данные
+	$('#sessionDelete').bind('click',function(){
+		window.sessionStorage.removeItem('mySessionKey');
+	});
+
+	// локальное хранилище
+	if(window.localStorage)
+	{
+		result.prepend('<p class="ok">Браузер поддерживает локальное хранилище.</p>');
+		var localData = {
+			'name': 'Василий Иванович',
+			'age': 47,
+			'phones': ['(495) 222-33-44', '(903) 987-55-66'],
+			'profession': { 'one':'токарь', 'two':'слесарь', 'three':'сантехник' }
+		}
+		var data = JSON.stringify(localData);
+		window.localStorage.setItem('myLocalData', data);
+		
+	} else {
+		result.prepend('<p class="er">Браузер не поддерживает локальное хранилище.</p>');
+		$('#localGet, #localDelete').attr('disabled','disabled');
+	}
+	// получить данные
+	$('#localGet').bind('click',function(){
+		var local = $.parseJSON(window.localStorage.getItem('myLocalData'));
+		if(local !== null) {
+			result.prepend('<p>' + local.name + ', ' + local.age + ' лет.<br />Телефон(ы): ' + local.phones[0] + ', ' + local.phones[1] + '<br />Профессия: ' + local.profession.one + ', ' + local.profession.two + ', ' + local.profession.three + '</p>');
+		} else {
+			result.prepend('<p>null</p>');
+		}
+	});
+	// удалить данные
+	$('#localDelete').bind('click',function(){
+		window.localStorage.removeItem('myLocalData');
+	});
+
+});
+</script>
+</head>
+<body>
+<h1>Файл example-a.html</h1>
+<ul>
+	<li>example-a</li>
+	<li><a href="example-b.html">example-b</a></li>
+	<li><a href="example-c.html">example-c</a></li>
+	<li><a href="example-d.html">example-d</a></li>
+</ul>
+<div id="result"></div>
+<div id="buttons">
+	<button id="localGet">Получить из localStorage</button><br />
+	<button id="sessionGet">Получить из sessionStorage</button><br /><br />
+	<button id="localDelete">Удалить из localStorage</button><br />
+	<button id="sessionDelete">Удалить из sessionStorage</button><br /><br />
+</div>
+</body>
+</html>

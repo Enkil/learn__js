@@ -1,0 +1,1195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: JavaScript - Примитивные встроенные объекты</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/js07.htm" title="Использование объектов">
+<link rel="Next" href="http://wdh.suncloud.ru/js09.htm" title="Строки: встроенный объект String">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/load.js"></script>
+<script type="text/javascript" src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/link.js"></script><link rel="stylesheet" type="text/css" href="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js07.htm"><img name="imglefta" src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/nnleft.gif" alt="" title="Использование объектов" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/js09.htm"><img name="imgrighta" src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/nnright.gif" alt="" title="Строки: встроенный объект String" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=8080" target="_blank"><img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref38">Глава 3.8. Примитивные встроенные объекты</a></h2>
+
+      <p>JavaScript содержит <a href="#ref381">глобальный объект</a>, который является средой его исполняющей
+        системы, а также следующие <em>встроенные объекты</em>:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Объект</th>
+            <th>Описание</th>
+            <th>Объект</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><a href="http://wdh.suncloud.ru/js10.htm#ref310"><strong>Array</strong></a></td>
+            <td>Массивы</td>
+            <td><a href="http://wdh.suncloud.ru/js12.htm#ref3122"><strong>Math</strong></a></td>
+            <td>Математические функции и константы</td>
+          </tr>
+          <tr>
+            <td><a href="#ref384"><strong>Boolean</strong></a></td>
+            <td>Логические объекты</td>
+            <td><a href="#ref385"><strong>Number</strong></a></td>
+            <td>Числовые объекты</td>
+          </tr>
+          <tr>
+            <td><a href="http://wdh.suncloud.ru/js11.htm#ref311"><strong>Date</strong></a></td>
+            <td>Дата и время</td>
+            <td><a href="#ref382"><strong>Object</strong></a></td>
+            <td>Прототип остальных объектов</td>
+          </tr>
+          <tr>
+            <td><a href="http://wdh.suncloud.ru/js12.htm#ref3121"><strong>Error</strong></a></td>
+            <td>Исключения</td>
+            <td><a href="http://wdh.suncloud.ru/js12.htm#ref3123"><strong>RegExp</strong></a></td>
+            <td>Регулярные выражения</td>
+          </tr>
+          <tr>
+            <td><a href="#ref383"><strong>Function</strong></a></td>
+            <td>Функции</td>
+            <td><a href="http://wdh.suncloud.ru/js09.htm#ref39"><strong>String</strong></a></td>
+            <td>Строковые объекты</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p class="vindent">В этой главе приведены описания <a href="#ref381">глобального объекта</a>
+        и примитивных встроенных объектов <a href="#ref382"><strong>Object</strong></a>, <a href="#ref383"><strong>Function</strong></a>,
+        <a href="#ref384"><strong>Boolean</strong></a> и <a href="#ref385"><strong>Number</strong></a>.
+        Описания остальных встроенных объектов расположены в следующих главах.</p>
+
+      <h3><a name="ref381">3.8.1. Глобальный объект</a></h3>
+
+      <p><em>Глобальный объект</em> (<strong>Global</strong>) создается исполняющей системой JavaScript
+        перед началом исполнения сценария. Это единственный объект, который не имеет имени, и потому
+        доступ к его свойствам и методам осуществляется без имени объекта. По этой причине их иногда
+        называют свойствами и методами верхнего уровня.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства глобального объекта</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><a href="#pinfinity"><tt>Infinity</tt></a></td>
+            <td>Специальное значение "бесконечность".</td>
+          </tr>
+          <tr>
+            <td><a href="#pnan"><tt>NaN</tt></a></td>
+            <td>Специальное значение "не число".</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pundefined">undefined</a></tt></td>
+            <td>Неопределенное значение.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы глобального объекта</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><a href="#mboolean"><tt>Boolean</tt></a></td>
+            <td>Преобразует объект в логическое значение.</td>
+          </tr>
+          <tr>
+            <td><a href="#mdecodeuri"><tt>decodeURI</tt></a></td>
+            <td>Декодирует URI.</td>
+          </tr>
+          <tr>
+            <td><a href="#mdecodeuricomponent"><tt>decodeURIComponent</tt></a></td>
+            <td>Декодирует компонент URI.</td>
+          </tr>
+          <tr>
+            <td><a href="#mencodeuri"><tt>encodeURI</tt></a></td>
+            <td>Кодирует URI.</td>
+          </tr>
+          <tr>
+            <td><a href="#mencodeuricomponent"><tt>encodeURIComponent</tt></a></td>
+            <td>Кодирует компонент URI.</td>
+          </tr>
+          <tr>
+            <td><a href="#mescape"><tt>escape</tt></a></td>
+            <td>Преобразует строку в шестнадцатеричную кодировку Unicode.</td>
+          </tr>
+          <tr>
+            <td><a href="#meval"><tt>eval</tt></a></td>
+            <td>Исполняет строку кода JavaScript.</td>
+          </tr>
+          <tr>
+            <td><a href="#misfinite"><tt>isFinite</tt></a></td>
+            <td>Возвращает <strong>true</strong>, если аргумент является конечным числом.</td>
+          </tr>
+          <tr>
+            <td><a href="#misnan"><tt>isNaN</tt></a></td>
+            <td>Возвращает <strong>true</strong>, если аргумент равен <strong>NaN</strong>.</td>
+          </tr>
+          <tr>
+            <td><a href="#mnumber"><tt>Number</tt></a></td>
+            <td>Преобразует объект в число.</td>
+          </tr>
+          <tr>
+            <td><a href="#mobject"><tt>Object</tt></a></td>
+            <td>Преобразует значение в объект.</td>
+          </tr>
+          <tr>
+            <td><a href="#mparsefloat"><tt>parseFloat</tt></a></td>
+            <td>Преобразует строку в плавающее число.</td>
+          </tr>
+          <tr>
+            <td><a href="#mparseint"><tt>parseInt</tt></a></td>
+            <td>Преобразует строку в целое число.</td>
+          </tr>
+          <tr>
+            <td><a href="#mstring"><tt>String</tt></a></td>
+            <td>Преобразует объект в строку.</td>
+          </tr>
+          <tr>
+            <td><a href="#munescape"><tt>unescape</tt></a></td>
+            <td>Преобразует шестнадцатеричную кодировку Unicode в строку.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hinfinity">Свойство Infinity</a></h4>
+
+<pre class="syntax"><strong><a name="pinfinity">Синтаксис</a></strong>: Infinity
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a> }</pre>
+
+      <p>Начальным значением свойства <strong>Infinity</strong> является значение <a href="#ppositive-infinity"><tt>Number.POSITIVE_INFINITY</tt></a>.
+        Это значение обозначает положительную бесконечность и больше любого числа, включая его само.
+        В частности, результат умножения любого числа на <strong>Infinity</strong> равен <strong>Infinity</strong>,
+        а результат деления любого числа на <strong>Infinity</strong> равен 0. Равенство результата
+        арифметической операции этому значению указывает на переполнение.</p>
+
+      <h4><a name="hnan">Свойство NaN</a></h4>
+
+<pre class="syntax"><strong><a name="pnan">Синтаксис</a></strong>: NaN
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a> }</pre>
+
+      <p>Начальным значением свойства <strong>NaN</strong> является значение <a href="#pnumber-nan"><tt>Number.NaN</tt></a>
+        (Not a Number, "не число"). Это значение не совпадает ни с одним числом, включая себя,
+        поэтому мы не можем проверить правильность числа, сравнивая его с <strong>NaN</strong>. Вместо
+        этого нужно использовать методы <a href="#misfinite"><strong>isFinite</strong></a> и <a href="#misnan"><strong>isNaN</strong></a>.</p>
+
+      <p>Некоторые методы JavaScript возвращают <strong>NaN</strong>, если их аргумент не является числом.
+        Рекомендуется использовать это свойство в своих функциях точно так же.</p>
+
+      <h4><a name="hunderfined">Свойство undefined</a></h4>
+
+<pre class="syntax"><strong><a name="pundefined">Синтаксис</a></strong>: undefined
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a> }</pre>
+
+      <p>Начальным значением свойства <strong>undefined</strong> является значение <tt>undefined</tt>
+        (неопределенное значение). Оно означает, что переменной не было присвоено никакого значения.</p>
+
+      <h4><a name="hboolean">Метод Boolean</a></h4>
+
+<pre class="syntax"><strong><a name="mboolean">Синтаксис</a></strong>: Boolean(<em>объект</em>)
+<strong>Аргументы</strong>: <em>объект</em>&nbsp;— любое выражение
+<strong>Результат</strong>: логическое значение</pre>
+
+      <p>Метод <strong>Boolean</strong> преобразует аргумент в логическое значение по правилам, приведенным
+        в <a href="http://wdh.suncloud.ru/js03.htm#ref3321">п. 3.3.2.1</a>.</p>
+
+      <h4><a name="hdecodeuri">Метод decodeURI</a></h4>
+
+<pre class="syntax"><strong><a name="mdecodeuri">Синтаксис</a></strong>: decodeURI(<em>строка</em>)
+<strong>Аргументы</strong>: <em>строка</em>&nbsp;— строковое выражение, содержащее кодированный URI
+<strong>Результат</strong>: новый строковый объект</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/ie.gif" alt="Internet Explorer"> Поддерживается с версии 5.5.
+           <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/nn.gif" alt="Netscape Navigator"> Не поддерживается.</pre>
+
+      <p>Метод <strong>decodeURI</strong> выполняет <a href="http://wdh.suncloud.ru/uri.htm#encoding">стандартную декодировку
+        URI</a>, закодированного методом <a href="#mencodeuri"><strong>encodeURI</strong></a>.</p>
+
+      <h4><a name="hdecodeuricomponent">Метод decodeURIComponent</a></h4>
+
+<pre class="syntax"><strong><a name="mdecodeuricomponent">Синтаксис</a></strong>: decodeURIComponent(<em>строка</em>)
+<strong>Аргументы</strong>: <em>строка</em>&nbsp;— строковое выражение, содержащее кодированный компонент URI
+<strong>Результат</strong>: новый строковый объект</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/ie.gif" alt="Internet Explorer"> Поддерживается с версии 5.5.
+           <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/nn.gif" alt="Netscape Navigator"> Не поддерживается.</pre>
+
+      <p>Метод <strong>decodeURIComponent</strong> выполняет <a href="http://wdh.suncloud.ru/uri.htm#encoding">стандартную
+        декодировку</a> отдельного компонента URI, закодированного методом <a href="#mencodeuricomponent"><strong>encodeURIComponent</strong></a>.</p>
+
+      <h4><a name="hencodeuri">Метод encodeURI</a></h4>
+
+<pre class="syntax"><strong><a name="mencodeuri">Синтаксис</a></strong>: encodeURI(<em>строка</em>)
+<strong>Аргументы</strong>: <em>строка</em>&nbsp;— строковое выражение, содержащее URI
+<strong>Результат</strong>: новый строковый объект</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/ie.gif" alt="Internet Explorer"> Поддерживается с версии 5.5.
+           <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/nn.gif" alt="Netscape Navigator"> Не поддерживается.</pre>
+
+      <p>Метод <strong>encodeURI</strong> выполняет <a href="http://wdh.suncloud.ru/uri.htm#encoding">стандартную кодировку
+        URI</a>. При этом он не кодирует символы ":", "/", ";" и "?",
+        считая их стандартными разделителями URI. Для кодировки этих символов следует пользоваться методом
+        <a href="#mencodeuricomponent"><strong>encodeURIComponent</strong></a>.</p>
+
+      <p>Например, оператор <code>document.write(encodeURI("http://www.test.com?val=привет"))</code>
+        выведет на экран обозревателя строку <samp>http://www.test.com?val=%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82</samp>.</p>
+
+      <p>Обратная декодировка URI производится методом <a href="#mdecodeURI"><strong>decodeURI</strong></a>.</p>
+
+      <h4><a name="hencodeuricomponent">Метод encodeURIComponent</a></h4>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/ie.gif" alt="Internet Explorer"> Поддерживается с версии 5.5.
+           <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/nn.gif" alt="Netscape Navigator"> Не поддерживается.</pre>
+<pre class="syntax"><strong><a name="mencodeuricomponent">Синтаксис</a></strong>: encodeURIComponent(<em>строка</em>)
+<strong>Аргументы</strong>: <em>строка</em>&nbsp;— строковое выражение, содержащее компонент URI
+<strong>Результат</strong>: новый строковый объект</pre>
+
+      <p>Метод <strong>encodeURIComponent</strong> выполняет <a href="http://wdh.suncloud.ru/uri.htm#encoding">стандартную
+        кодировку</a> отдельного компонента URI. При этом кодируются все символы, не принадлежащие к
+        базовой латинице.</p>
+
+      <p>Этим методом не следует пользоваться для кодировки полного URI. Например, оператор <code>document.write(encodeURIComponent("http://www.test.com?val=привет"))</code>
+        выведет на экран обозревателя строку<br>
+        <samp>http%3A%2F%2Fwww.test.com%3Fval%3D%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82</samp>.</p>
+
+      <p>Обратная декодировка компонента URI производится методом <a href="#mdecodeURIcomponent"><strong>decodeURIComponent</strong></a>.</p>
+
+      <h4><a name="hescape">Метод escape</a></h4>
+
+<pre class="syntax"><strong><a name="mescape">Синтаксис</a></strong>: escape(<em>строка</em>)
+<strong>Аргументы</strong>: <em>строка</em>&nbsp;— любое строковое выражение
+<strong>Результат</strong>: новый строковый объект</pre>
+
+      <p>Метод <strong>escape</strong> преобразует входную строку в шестнадцатеричную кодировку Unicode.
+        При этом все символы, не являющиеся символами базовой латиницы, заменяются на их шестнадцатеричные
+        escape-коды <tt><strong>%</strong>xx</tt>. Если код символа больше 255, то он заменяется на
+        <tt><strong>%u</strong>xxxx</tt>. Например, оператор <code>document.write(escape("Строка."))</code>
+        выведет на экран обозревателя строку <samp>%u0421%u0442%u0440%u043E%u043A%u0430.</samp></p>
+
+      <p class="note"><strong>Примечания</strong>.</p>
+
+      <ol class="note">
+        <li class="note">Эта функция не должна использоваться для стандартной кодировки строк, содержащих
+          <a href="http://wdh.suncloud.ru/uri.htm">URI</a>. Вместо нее следует использовать методы <a href="#mencodeuri"><strong>encodeURI</strong></a>
+          и <a href="#mencodeuricomponent"><strong>encodeURIComponent</strong></a>.</li>
+        <li class="note">Обратное преобразование строки производится методом <a href="#munescape"><strong>unescape</strong></a>.</li>
+      </ol>
+
+      <h4><a name="heval">Метод eval</a></h4>
+
+<pre class="syntax"><strong><a name="meval">Синтаксис</a></strong>: eval(<em>строка</em>)
+<strong>Аргументы</strong>: <em>строка</em>&nbsp;— строковое выражение, содержащее программный код
+<strong>Результат</strong>: см. описание</pre>
+
+      <p>Метод <strong>eval</strong> рассматривает входную строку как программный код JavaScirpt и исполняет
+        его. Он позволяет динамически формировать операторы и выражения JavaScript для последующего
+        выполнения.</p>
+
+      <p>Если аргументом метода <strong>eval</strong> является выражение, то он возвращает значение
+        этого выражения, например:</p>
+
+      <div class="code">
+<pre class="code">var x = 10, y = 20;
+var z = eval("x + y + 1"); // z равно 31</pre>
+      </div>
+
+      <p>Если аргументом метода <strong>eval</strong> являются операторы, то он выполняет эти операторы
+        и возвращает значение <strong>undefined</strong>, например:</p>
+
+      <div class="code">
+<pre class="code">var z = eval("var myDate = new Date();"); // создается новая переменная myDate</pre>
+      </div>
+
+      <p>Метод <strong>eval</strong> исполняется в том же <a href="http://wdh.suncloud.ru/js02.htm#ref3252">контексте</a> (глобальном
+        или локальном), в котором он вызван; этим же контекстом определяется область действия создаваемых
+        их переменных. Операция <a href="http://wdh.suncloud.ru/js04.htm#ref3477"><tt>this</tt></a> также возвращает указатель
+        на тот объект, который был текущим в момент вызова данного метода.</p>
+
+      <h4><a name="hisfinite">Метод isFinite</a></h4>
+
+<pre class="syntax"><strong><a name="misfinite">Синтаксис</a></strong>: isFinite(<em>число</em>)
+<strong>Аргументы</strong>: <em>число</em>&nbsp;— любое числовое выражение
+<strong>Результат</strong>: логическое значение</pre>
+
+      <p>Метод <strong>isFinite</strong> возвращает <strong>true</strong>, если значением его аргумента
+        является число, отличное от <a href="#pnan"><strong>NaN</strong></a>, положительной бесконечности
+        и отрицательной бесконечности. В противном случае он возвращает <strong>false</strong>.</p>
+
+      <h4><a name="hisnan">Метод isNaN</a></h4>
+
+<pre class="syntax"><strong><a name="misnan">Синтаксис</a></strong>: isNaN(<em>выражение</em>)
+<strong>Аргументы</strong>: <em>выражение</em>&nbsp;— любое выражение
+<strong>Результат</strong>: логическое значение</pre>
+
+      <p>Метод <strong>isNaN</strong> возвращает <strong>true</strong>, если значением его аргумента
+        является <a href="#pnan"><strong>NaN</strong></a>. В противном случае он возвращает <strong>false</strong>.</p>
+
+      <p>Альтернативным способом проверки значения переменной на равенство <strong>NaN</strong> является
+        сравнение ее с самой собой, поскольку <strong>NaN</strong>&nbsp;— это единственное значение,
+        которое не равно самому себе.</p>
+
+      <h4><a name="hnumber">Метод Number</a></h4>
+
+<pre class="syntax"><strong><a name="mnumber">Синтаксис</a></strong>: Number(<em>объект</em>)
+<strong>Аргументы</strong>: <em>объект</em>&nbsp;— любое выражение
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>Number</strong> преобразует аргумент в числовое значение по правилам, приведенным
+        в <a href="http://wdh.suncloud.ru/js03.htm#ref3322">п. 3.3.2.2</a>.</p>
+
+      <h4><a name="hobject">Метод Object</a></h4>
+
+<pre class="syntax"><strong><a name="mobject">Синтаксис</a></strong>: Object(<em>значение</em>)
+<strong>Аргументы</strong>: <em>значение</em>&nbsp;— любое выражение
+<strong>Результат</strong>: объектное значение</pre>
+
+      <p>Метод <strong>Object</strong> преобразует аргумент в объектное значение по правилам, приведенным
+        в <a href="http://wdh.suncloud.ru/js03.htm#ref3324">п. 3.3.2.4</a>.</p>
+
+      <h4><a name="hparsefloat">Метод parseFloat</a></h4>
+
+<pre class="syntax"><strong><a name="mparsefloat">Синтаксис</a></strong>: parseFloat(<em>строка</em>)
+<strong>Аргументы</strong>: <em>строка</em>&nbsp;— любое строковое выражение
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>parseFloat</strong> преобразует входную строку в плавающее число. Если аргумент
+        не может быть преобразован в плавающее число, то возвращается значение <a href="#pnan"><strong>NaN</strong></a>.
+        Примеры:</p>
+
+      <div class="code">
+<pre class="code">parseFloat("314e-2")	// возвращает 3.14
+parseFloat("3.14abc")	// возвращает 3.14
+parseFloat("abc")	// возвращает NaN</pre>
+      </div>
+
+      <h4><a name="hparseint">Метод parseInt</a></h4>
+
+<pre class="syntax"><strong><a name="mparseint">Синтаксис</a></strong>: parseInt(<em>строка</em> [,<em>основание</em>]?)
+<strong>Аргументы</strong>: <em>строка</em>&nbsp;— любое строковое выражение
+           <em>основание</em> - любое числовое выражение
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>parseInt</strong> преобразует входную строку в целое число. Необязательный аргумент&nbsp;
+        <em>основание</em> задает основание системы счисления и должен иметь значение, больше или равное
+        2.</p>
+
+      <p>Если <em>основание</em> задано, то <strong>parseInt</strong> преобразует входную строку в число
+        с данным основанием. При этом в системах счисления с основанием, большим 10, цифры, большие
+        девяти, задаются латинскими буквами (A = 10, B = 11, …, Z = 35). Формат чисел для оснований,
+        больших 36, не определен.</p>
+
+      <p>Если <em>основание</em> не задано, то <strong>parseInt</strong> преобразует входную строку в число
+        по следующим правилам:</p>
+
+      <ul>
+        <li>если <em>строка</em> начинается с <tt>0x</tt>, то число считается шестнадцатеричным;</li>
+        <li>если <em>строка</em> начинается с <tt>0</tt>, то число считается восьмеричным;</li>
+        <li>в остальных случаях число считается десятичным.</li>
+      </ul>
+
+      <p>Если аргумент не может быть преобразован в целое число, то возвращается значение <a href="#pnan"><strong>NaN</strong></a>.
+        Примеры:</p>
+
+      <div class="code">
+<pre class="code">parseInt("0xF");	// возвращает 15
+parseInt("017");	// возвращает 15
+parseInt("08");		// возвращает 0
+parseInt("15.99", 10);	// возвращает 15
+parseInt("FXX", 16);	// возвращает 15
+parseInt("1111", 2);	// возвращает 15
+parseInt("15*3");	// возвращает 15
+parseInt("Hello", 8);	// возвращает NaN</pre>
+      </div>
+
+      <h4><a name="hstring">Метод String</a></h4>
+
+<pre class="syntax"><strong><a name="mstring">Синтаксис</a></strong>: String(<em>объект</em>)
+<strong>Аргументы</strong>: <em>объект</em>&nbsp;— любое выражение
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>String</strong> преобразует аргумент в строковое значение по правилам, приведенным
+        в <a href="http://wdh.suncloud.ru/js03.htm#ref3323">п. 3.3.2.3</a>. Если аргументом является объект, то этот метод
+        возвращает то же значение, что и метод <a href="#mtostring"><strong>toString</strong></a> данного
+        объекта.</p>
+
+      <h4><a name="hunescape">Метод unescape</a></h4>
+
+<pre class="syntax"><strong><a name="munescape">Синтаксис</a></strong>: unescape(<em>строка</em>)
+<strong>Аргументы</strong>: <em>строка</em>&nbsp;— любое строковое выражение
+<strong>Результат</strong>: новый строковый объект</pre>
+
+      <p>Метод <strong>unescape</strong> преобразует строку в шестнадцатеричной кодировке Unicode в
+        текстовую. Формат исходной строки описан в методе <a href="#mescape"><strong>escape</strong></a>.
+        Эта функция используется, в частности, для стандартной декодировки строк, содержащих <a href="http://wdh.suncloud.ru/uri.htm">URI</a>.
+        Например, оператор <code>document.write(unescape("%u0421%u0442%u0440%u043E%u043A%u0430."))</code>
+        выведет на экран обозревателя текст <samp>Строка.</samp></p>
+
+      <h3><a name="ref382">3.8.2. Объекты общего вида: объект Object</a></h3>
+
+      <p>Объект <strong>Object</strong>&nbsp;— это примитивный объектный тип, производными которого
+        являются все остальные объекты языка JavaScript. Он имеет две формы конструктора:</p>
+
+<pre class="syntax">new Object()
+new Object(<em>значение</em>)</pre>
+
+      <p>Здесь <em>значение</em>&nbsp;— любое выражение, задающее примитивное значение объекта.
+        Если оно не указано, то создается пустой объект. Для создания пустого объекта можно также использовать
+        <em>инициализатор объекта</em>:</p>
+
+<pre class="syntax">{}</pre>
+
+      <p>Примеры:</p>
+
+      <div class="code">
+<pre class="code">var a = new Object();		// пустой объект
+var b = {};			// то же самое
+var c = new Object(true);	// примитивное значение объекта true</pre>
+      </div>
+
+      <p>Объект <strong>Object</strong> содержится во всех объектах JavaScript, поэтому все его методы
+        и свойства им доступны. Методы данного объекта могут быть переопределены в пользовательских
+        объектах.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства объекта Object</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+            <th>Член прототипа</th>
+          </tr>
+          <tr>
+            <td><a href="#pconstructor"><tt>constructor</tt></a></td>
+            <td>Конструктор, который создал объект.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#pprototype"><tt>prototype</tt></a></td>
+            <td>Ссылка на прототип класса объектов.</td>
+            <td align="center">Да</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы объекта Object</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+            <th>Член прототипа</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#mhasownproperty">hasOwnProperty</a></tt></td>
+            <td>Проверяет наличие заданного свойства.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#misprototypeof"><tt>isPrototypeOf</tt></a></td>
+            <td>Проверяет, является ли объект прототипом данного объекта.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mpropertyisenumerable">propertyIsEnumerable</a></tt></td>
+            <td>Проверяет наличие заданного итерируемого свойства.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mtolocalestring"><tt>toLocaleString</tt></a></td>
+            <td>Преобразует объект в строку с учетом формата операционной системы.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mtostring"><tt>toString</tt></a></td>
+            <td>Преобразует объект в строку.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mvalueof"><tt>valueOf</tt></a></td>
+            <td>Возвращает примитивное значение объекта.</td>
+            <td align="center">Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hconstructor">Свойство constructor</a></h4>
+
+<pre class="syntax"><strong><a name="pconstructor">Синтаксис</a></strong>: <em>объект</em>.constructor
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>constructor</strong> является функция, которая была конструктором
+        данного <em>объекта</em>. Подчеркнем, что это не текстовая строка, содержащая имя функции, а
+        именно функция (точнее, ссылка на нее). Примеры:</p>
+
+      <div class="code">
+<pre class="code">function Tobacco(name) {
+   this.name=name
+}
+
+theTobacco = new Tobacco("Camel")
+if (theTobacco.constructor == Tobacco) ( ... }
+document.write("theTobacco.constructor: " + theTobacco.constructor)</pre>
+      </div>
+
+      <p>Последний оператор примера выведет на экран обозревателя текст:</p>
+
+      <p><samp>theTobacco.constructor: function Tobacco(name) { this.name=name }</samp></p>
+
+      <h4><a name="hprototype">Свойство prototype</a></h4>
+
+<pre class="syntax"><strong><a name="pprototype">Синтаксис</a></strong>: <em>объект</em>.prototype
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>prototype</strong> является ссылка на прототип данного <em>объекта</em>.
+        Прототип используется для динамического добавления или удаления свойств и методов класса объектов.
+        Подробности и примеры см. в <a href="http://wdh.suncloud.ru/js07.htm#ref3715">п. 3.7.1.5</a>.</p>
+
+      <p>Прототипы встроенных объектов имеют атрибут <a href="http://wdh.suncloud.ru/js07.htm#prop-attr"><tt>ReadOnly</tt></a>.
+        В данном случае это означает, что изменять его набор свойств можно, но заменить прототип встроенного
+        объекта нельзя. С другой стороны, прототипы пользовательских объектов допускают присваивание;
+        тем самым мы задаем, какой объект является прототипом данного.</p>
+
+      <h4><a name="hhasownproperty">Метод hasOwnProperty</a></h4>
+
+<pre class="syntax"><strong><a name="mhasownproperty">Синтаксис</a></strong>: <em>объект</em>.hasOwnProperty(<em>имя</em>)
+<strong>Аргумент</strong>:  <em>имя</em>&nbsp;— любое строковое выражение
+<strong>Результат</strong>: логическое значение</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/ie.gif" alt="Internet Explorer"> Поддерживается с версии 5.5.
+           <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/nn.gif" alt="Netscape Navigator"> Не поддерживается.</pre>
+
+      <p>Метод <strong>hasOwnProperty</strong> возвращает <strong>true</strong>, если <em>объект</em>
+        имеет свойство с данным <em>именем</em>, и <strong>false</strong> в противном случае. Этот метод
+        не проверяет наличие свойства по цепочке прототипов; указанным свойством должен обладать именно
+        сам <em>объект</em>. Пример:</p>
+
+      <div class="code">
+<pre class="code">var a = new Array();
+var b1 = a.hasOwnProperty("join");		 // false
+var b2 = Array.prototype.hasOwnProperty("join"); // true</pre>
+      </div>
+
+      <h4><a name="hisprototypeof">Метод isPrototypeOf</a></h4>
+
+<pre class="syntax"><strong><a name="misprototypeof">Синтаксис</a></strong>: <em>объект</em>.isPrototypeOf(<em>имя</em>)
+<strong>Аргумент</strong>:  <em>имя</em>&nbsp;— любое объектное выражение
+<strong>Результат</strong>: логическое значение</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/ie.gif" alt="Internet Explorer"> Поддерживается с версии 5.5.
+           <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/nn.gif" alt="Netscape Navigator"> Не поддерживается.</pre>
+
+      <p>Метод <strong>isPrototypeOf</strong> возвращает <strong>true</strong>, если <em>имя </em>является
+        объектом и <em>объект</em> содержится в цепочке его прототипов, и <strong>false</strong> в противном
+        случае. Пример:</p>
+
+      <div class="code">
+<pre class="code">var a = new Array();
+var b = Array.prototype.isPrototypeOf(a); // true</pre>
+      </div>
+
+      <h4><a name="hpropertyisenumerable">Метод propertyIsEnumerable</a></h4>
+
+<pre class="syntax"><strong><a name="mpropertyisenumerable">Синтаксис</a></strong>: <em>объект</em>.propertyIsEnumerable(<em>имя</em>)
+<strong>Аргумент</strong>:  <em>имя</em>&nbsp;— любое строковое выражение
+<strong>Результат</strong>: логическое значение</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/ie.gif" alt="Internet Explorer"> Поддерживается с версии 5.5.
+           <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/nn.gif" alt="Netscape Navigator"> Не поддерживается.</pre>
+
+      <p>Метод <strong>propertyIsEnumerable</strong> возвращает <strong>true</strong>, если <em>объект</em>
+        имеет свойство с данным <em>именем</em> и это свойство не имеет атрибута <a href="http://wdh.suncloud.ru/js07.htm#prop-attr"><tt>DontEnum</tt></a>,
+        и <strong>false</strong> в противном случае. Этот метод не проверяет наличие свойства по цепочке
+        прототипов; указанным свойством должен обладать именно сам <em>объект</em>. </p>
+
+      <h4><a name="htolocalestring">Метод toLocaleString</a></h4>
+
+<pre class="syntax"><strong><a name="mtolocalestring">Синтаксис</a></strong>: <em>объект</em>.toLocaleString()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>toLocaleString</strong> преобразует <em>объект</em> в строковое значение, учитывая
+        формат операционной системы. Результат зависит от объекта. По умолчанию возвращает строку <tt>"[object
+        <em>имя_объекта</em>]"</tt>, где <em>имя_объекта</em>&nbsp;— это имя данного класса
+        объектов, т.&nbsp;е. совпадает с методом <a href="#mtostring"><strong>toString</strong></a>.</p>
+
+      <h4><a name="htostring">Метод toString</a></h4>
+
+<pre class="syntax"><strong><a name="mtostring">Синтаксис</a></strong>: <em>объект</em>.toString()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>toString</strong> преобразует <em>объект</em> в строковое значение. Результат
+        зависит от объекта. По умолчанию возвращает строку <tt>"[object <em>имя_объекта</em>]"</tt>,
+        где <em>имя_объекта</em>&nbsp;— это имя данного класса объектов.</p>
+
+      <p>Этот метод автоматически вызывается исполняющей системой JavaScript всякий раз, когда требуется
+        неявное преобразование объекта в строку.</p>
+
+      <h4><a name="hvalueof">Метод valueOf</a></h4>
+
+<pre class="syntax"><strong><a name="mvalueof">Синтаксис</a></strong>: <em>объект</em>.valueOf()
+<strong>Результат</strong>: зависит от объекта</pre>
+
+      <p>Метод <strong>valueOf</strong> возвращает примитивное значение <em>объекта</em>. Результат
+        зависит от объекта. По умолчанию возвращает строку <tt>"[object <em>имя_объекта</em>]"</tt>,
+        где <em>имя_объекта</em>&nbsp;— это имя данного класса объектов.</p>
+
+      <p>Обычно этот метод вызывается исполняющей системой JavaScript неявно при выполнении автоматического
+        преобразования типов.</p>
+
+      <h3><a name="ref383">3.8.3. Функции: объект Function</a></h3>
+
+      <p>Объект <strong>Function</strong>&nbsp;— это прототип функциональных объектов. Он может
+        быть создан двумя способами:</p>
+
+<pre class="syntax">function <em>имя</em>(<em>аргументы</em>?) {
+  <em>операторы</em>
+}
+
+var <em>имя</em> = new Function ([<em>аргументы</em>,]? <em>операторы</em>)</pre>
+
+      <p>Здесь <em>имя</em>&nbsp;— имя функции, <em>аргументы</em>&nbsp;— необязательный список
+        формальных аргументов функции через запятую, <em>операторы</em>&nbsp;— операторы, образующие
+        тело функции.</p>
+
+      <p>Первый вариант&nbsp;— это <a href="http://wdh.suncloud.ru/js06.htm#ref3681">декларация функции</a>, описанная
+        ранее. Сама по себе декларация функции не создает функционального объекта; его создание происходит
+        в момент вызова этой функции. Второй вариант&nbsp;— это вызов конструктора объекта <strong>Function</strong>,
+        при котором функциональный объект создается явно. В этом случае и <em>аргументы</em>, и <em>операторы</em>
+        должны быть текстовыми строками.</p>
+
+      <p>Например, для создания функции, возвращающей сумму двух аргументов, можно использовать следующие
+        два варианта:</p>
+
+      <div class="code">
+<pre class="code">function sum(a, b) {
+  return a + b;
+}
+
+var sum = new Function("a", "b", "return a + b");</pre>
+      </div>
+
+      <p>В обоих случаях вызов функции <tt>sum</tt> осуществляется оператором типа <code>sum(3, 5)</code>.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства объекта Function</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+            <th>Член прототипа</th>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/js06.htm#ref3685">arguments</a></tt></td>
+            <td>Локальный объект, описывающий вызов функции.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfunction-caller">caller</a></tt></td>
+            <td>Имя функции, вызвавшей данную функцию.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#pconstructor"><tt>constructor</tt></a></td>
+            <td>Конструктор, который создал объект.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pfunction-length">length</a></tt></td>
+            <td>Количество формальных аргументов функции.</td>
+            <td align="center">Нет</td>
+          </tr>
+          <tr>
+            <td><a href="#pprototype"><tt>prototype</tt></a></td>
+            <td>Ссылка на прототип класса объектов.</td>
+            <td align="center">Нет</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы объекта Function</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+            <th>Член прототипа</th>
+          </tr>
+          <tr>
+            <td><a href="#mfunction-apply"><tt>apply</tt></a></td>
+            <td>Применяет метод одного объекта к другому.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mfunction-call"><tt>call</tt></a></td>
+            <td>Вызывает метод одного объекта из другого.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mfunction-tostring"><tt>toString</tt></a></td>
+            <td>Преобразует функцию в строку.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mvalueof"><tt>valueOf</tt></a></td>
+            <td>Возвращает примитивное значение объекта.</td>
+            <td align="center">Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hcaller">Свойство caller</a></h4>
+
+<pre class="syntax"><strong><a name="pfunction-caller">Синтаксис</a></strong>: <em>функция</em>.caller
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>caller</strong> является ссылка на функцию, вызвавшую данную <em>функцию</em>.
+        Если данная функция была вызвана с верхнего уровня сценария, то его значение <strong>null</strong>.
+        Если это свойство используется в контексте, предполагающем его преобразование в строку, то результатом
+        будет <em>функция</em>.<strong>caller</strong>.<a href="#mfunction-tostring"><strong>toString()</strong></a>,
+        т.&nbsp;е. текст декларации вызвавшей функции. Пример: следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">function sum(a, b) {
+  document.write(sum.caller);	// автоматическое преобразование в строку
+  return a + b;
+}
+
+function test() {
+  return sum(1, 2);
+}
+
+test();</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя строку <samp>function test() { return sum(1,
+        2); }</samp>.</p>
+
+      <h4><a name="hlength">Свойство length</a></h4>
+
+<pre class="syntax"><strong><a name="pfunction-length">Синтаксис</a></strong>: <em>функция</em>.length
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>length</strong> является количество формальных аргументов функции,
+        т.&nbsp;е. количество аргументов, указанных в ее декларации. Количество фактических аргументов
+        определяется в момент вызова функции и содержится в свойстве <em>функция</em>.<a href="http://wdh.suncloud.ru/js06.htm#ref3685"><strong>arguments</strong>.<strong>length</strong></a>.
+        Пример: следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">function sum(a, b) {
+  document.write(sum.length);
+  return a + b;
+}
+
+var x = sum(1, 2);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя число <samp>2</samp>.</p>
+
+      <h4><a name="happly">Метод apply</a></h4>
+
+<pre class="syntax"><strong><a name="mfunction-apply">Синтаксис</a></strong>: <em>функция</em>.apply(<em>объект</em>[,<em>массив</em>]?)
+<strong>Аргументы</strong>: <em>объект</em>&nbsp;— любое объектное выражение
+           <em>массив</em>&nbsp;— массив аргументов функции
+<strong>Результат</strong>: определяется функцией</pre>
+
+      <p>Метод <strong>apply</strong> применяет метод одного объекта в контексте другого объекта. Точнее
+        говоря, он вызывает <em>функцию</em>, задавая в качестве <a href="http://wdh.suncloud.ru/js04.htm#ref3477"><tt>this</tt></a>
+        указатель на <em>объект</em>, а в качестве фактических аргументов&nbsp;— элементы <em>массива</em>.
+        Если <em>объект</em> равен <strong>null</strong> или <strong>undefined</strong>, то значением
+        <a href="http://wdh.suncloud.ru/js04.htm#ref3477"><tt>this</tt></a> является <a href="#ref381">глобальный объект</a>.
+        Если <em>массив</em> не указан, равен <strong>null</strong> или <strong>undefined</strong>,
+        то <em>функция</em> вызывается без аргументов.</p>
+
+      <p>Этот метод удобен для создания цепочек конструкторов. Допустим, что мы написали конструктор
+        объекта <tt>goods</tt> (товар) с двумя свойствами <tt>name</tt> (название) и <tt>price</tt>
+        (цена). Теперь мы хотим написать конструктор объекта <tt>sales</tt> (продажи), который содержит
+        объект <tt>goods</tt> и дополнительное свойство <tt>volume</tt> (объем продаж). С помощью метода
+        <strong>apply</strong> это делается так:</p>
+
+      <div class="code">
+<pre class="code">function goods(name, price) {
+  this.name = name;
+  this.price = price;
+}
+
+function sales(name, price, volume) {
+  this.volume = volume;
+  goods.apply(this, arguments);
+}
+
+var meal = new sales("мука", 30, 700)
+document.write("Выручка: ", meal.name, " - ",  meal.price * meal.volume, " руб.");</pre>
+      </div>
+
+      <p>Этот сценарий выведет на экран обозревателя строку <samp>Выручка: мука - 21000 руб</samp>.</p>
+
+      <p>Ср. описание метода <a href="#mfunction-call"><strong>call</strong></a>.</p>
+
+      <h4><a name="hcall">Метод call</a></h4>
+
+<pre class="syntax"><strong><a name="mfunction-call">Синтаксис</a></strong>: <em>функция</em>.call(<em>объект</em>[,<em>аргументы</em>]?)
+<strong>Аргументы</strong>: <em>объект</em>&nbsp;— любое объектное выражение
+           <em>аргументы</em>&nbsp;— список аргументов функции через запятую
+<strong>Результат</strong>: определяется функцией</pre>
+
+      <p>Метод <strong>call</strong> вызывает метод одного объекта в контексте другого объекта. Точнее
+        говоря, он вызывает <em>функцию</em>, задавая в качестве <a href="http://wdh.suncloud.ru/js04.htm#ref3477"><tt>this</tt></a>
+        указатель на <em>объект</em>, а в качестве фактических аргументов&nbsp;— <em>аргументы</em>.
+        Если <em>объект</em> равен <strong>null</strong> или <strong>undefined</strong>, то значением
+        <a href="http://wdh.suncloud.ru/js04.htm#ref3477"><tt>this</tt></a> является <a href="#ref381">глобальный объект</a>.
+        Если <em>аргументы</em> не указаны, то <em>функция</em> вызывается без аргументов.</p>
+
+      <p>Этот метод удобен для создания цепочек конструкторов. Перепишем предыдущий пример с использованием
+        метода <strong>call</strong>:</p>
+
+      <div class="code">
+<pre class="code">function goods(name, price) {
+  this.name = name;
+  this.price = price;
+}
+
+function sales(name, price, volume) {
+  this.volume = volume;
+  goods.call(this, name, price);
+}
+
+var meal = new sales("мука", 30, 700)
+document.write("Выручка: ", meal.name, " - ",  meal.price * meal.volume, " руб.");</pre>
+      </div>
+
+      <p>Ср. описание метода <a href="#mfunction-apply"><strong>apply</strong></a>.</p>
+
+      <h4><a name="hfunction-tostring">Метод toString</a></h4>
+
+<pre class="syntax"><strong><a name="mfunction-tostring">Синтаксис</a></strong>: <em>функция</em>.toString()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>toString</strong> преобразует <em>функцию</em> в строковое значение. Результатом
+        является строка, содержащая текст декларации вызвавшей функции. Пример: следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">function sum(a, b) {
+  document.write(sum.toString());
+  return a + b;
+}
+
+var x = sum(1, 2);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя строку <samp>function sum(a, b) { document.write(sum.toString());
+        return a + b; }</samp>.</p>
+
+      <h3><a name="ref384">3.8.4. Логические объекты: объект Boolean</a></h3>
+
+      <p>Объект <strong>Boolean</strong>&nbsp;— это объектная реализация примитивного булевского
+        значения. Его конструктор имеет вид:</p>
+
+<pre class="syntax">new Boolean(<em>значение</em>?)</pre>
+
+      <p>Здесь <em>значение</em>&nbsp;— любое логическое выражение, задающее примитивное значение
+        объекта. Если оно не указано, то примитивное значение объекта равно <strong>false</strong>.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства объекта Boolean</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+            <th>Член прототипа</th>
+          </tr>
+          <tr>
+            <td><a href="#pconstructor"><tt>constructor</tt></a></td>
+            <td>Конструктор, который создал объект.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#pprototype"><tt>prototype</tt></a></td>
+            <td>Ссылка на прототип класса объектов.</td>
+            <td align="center">Нет</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы объекта Boolean</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+            <th>Член прототипа</th>
+          </tr>
+          <tr>
+            <td><a href="#mboolean-tostring"><tt>toString</tt></a></td>
+            <td>Преобразует объект в строку.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mboolean-valueof"><tt>valueOf</tt></a></td>
+            <td>Возвращает примитивное значение объекта.</td>
+            <td align="center">Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="hboolean-tostring">Метод toString</a></h4>
+
+<pre class="syntax"><strong><a name="mboolean-tostring">Синтаксис</a></strong>: <em>объект</em>.toString()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>toString</strong> преобразует логический <em>объект</em> в строковое значение.
+        Если примитивное значение объекта равно <strong>true</strong>, то он возвращает строку <tt>"true"</tt>,
+        в противном случае&nbsp;— строку <tt>"false".</tt></p>
+
+      <h4><a name="hboolean-valueof">Метод valueOf</a></h4>
+
+<pre class="syntax"><strong><a name="mboolean-valueof">Синтаксис</a></strong>: <em>объект</em>.valueOf()
+<strong>Результат</strong>: логическое значение</pre>
+
+      <p>Метод <strong>valueOf</strong> возвращает примитивное значение логического <em>объекта</em>.</p>
+
+      <h3><a name="ref385">3.8.5. Числовые объекты: объект Number</a></h3>
+
+      <p>Объект <strong>Number</strong>&nbsp;— это объектная реализация примитивного числового&nbsp;
+        значения. Его конструктор имеет вид:</p>
+
+<pre class="syntax">new Number(<em>значение</em>?)</pre>
+
+      <p>Здесь <em>значение</em>&nbsp;— любое числовое выражение, задающее примитивное значение
+        объекта. Если оно не задано, то примитивное значение объекта равно +0.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства объекта Number</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+            <th>Член прототипа</th>
+          </tr>
+          <tr>
+            <td><a href="#pconstructor"><tt>constructor</tt></a></td>
+            <td>Конструктор, который создал объект.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#pmax-value"><tt>MAX_VALUE</tt></a></td>
+            <td>Наибольшее положительное значение числового типа.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#pmin-value"><tt>MIN_VALUE</tt></a></td>
+            <td>Наименьшее положительное значение числового типа.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#pnumber-nan"><tt>NaN</tt></a></td>
+            <td>Специальное значение "не число".</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#pnegative-infinity"><tt>NEGATIVE_INFINITY</tt></a></td>
+            <td>Специальное значение "отрицательная бесконечность".</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#ppositive-infinity"><tt>POSITIVE_INFINITY</tt></a></td>
+            <td>Специальное значение "положительная бесконечность".</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#pprototype"><tt>prototype</tt></a></td>
+            <td>Ссылка на прототип класса объектов.</td>
+            <td align="center">Нет</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы объекта Number</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+            <th>Член прототипа</th>
+          </tr>
+          <tr>
+            <td><a href="#mtoexponential"><tt>toExponential</tt></a></td>
+            <td>Преобразует примитивное значение объекта в строку, содержащую число в экспоненциальной
+              форме.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mtofixed"><tt>toFixed</tt></a></td>
+            <td>Преобразует примитивное значение объекта в строку, содержащую число с фиксированной
+              запятой.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mnumber-tolocalestring"><tt>toLocaleString</tt></a></td>
+            <td>Преобразует примитивное значение объекта в строку в формате операционной системы.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mtoprecision"><tt>toPrecision</tt></a></td>
+            <td>Преобразует примитивное значение объекта в строку, содержащую число с заданным количеством
+              значимых цифр.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mnumber-tostring"><tt>toString</tt></a></td>
+            <td>Преобразует примитивное значение объекта в строку.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mnumber-valueof"><tt>valueOf</tt></a></td>
+            <td>Возвращает примитивное значение объекта.</td>
+            <td align="center">Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hmax-value">Свойство MAX_VALUE</a></h4>
+
+<pre class="syntax"><strong><a name="pmax-value">Синтаксис</a></strong>: Number.MAX_VALUE
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>MAX_VALUE</strong> является наибольшее положительное значение числового
+        типа, которое приблизительно равно 1.7976931348623157E+308. Числа, большие этого значения, трактуются
+        как <a href="#pinfinity"><strong>Infinity</strong></a>.</p>
+
+      <p>Это статическое свойство объекта <strong>Number</strong>, поэтому для доступа к нему не нужно
+        специально создавать числовой объект.</p>
+
+      <h4><a name="hmin-value">Свойство MIN_VALUE</a></h4>
+
+<pre class="syntax"><strong><a name="pmin-value">Синтаксис</a></strong>: Number.MIN_VALUE
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>MIN_VALUE</strong> является наибольшее положительное значение числового
+        типа, которое приблизительно равно 5E-324. Числа, меньшие этого значения, преобразуются в 0.</p>
+
+      <p>Это статическое свойство объекта <strong>Number</strong>, поэтому для доступа к нему не нужно
+        специально создавать числовой объект.</p>
+
+      <h4><a name="hnumber-nan">Свойство NaN</a></h4>
+
+<pre class="syntax"><strong><a name="pnumber-nan">Синтаксис</a></strong>: Number.NaN
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>NaN</strong> является значение <tt>NaN</tt> (Not a Number, "не
+        число"). Это значение не совпадает ни с одним числом, включая себя, поэтому мы не можем
+        проверить правильность числа, сравнивая его с <strong>NaN</strong>. Вместо этого нужно использовать
+        методы <a href="#misfinite"><strong>isFinite</strong></a> и <a href="#misnan"><strong>isNaN</strong></a>.</p>
+
+      <p>Это статическое свойство объекта <strong>Number</strong>, поэтому для доступа к нему не нужно
+        специально создавать числовой объект.</p>
+
+      <h4><a name="hnegative-inifinity">Свойство NEGATIVE_INFINITY</a></h4>
+
+<pre class="syntax"><strong><a name="pnegative-infinity">Синтаксис</a></strong>: Number.NEGATIVE_INFINITY
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>NEGATIVE_INFINITY</strong> является число, меньшее чем -<a href="#pmin-value">Number.MIN_VALUE</a>.
+        Это значение обозначает отрицательную бесконечность и меньше любого числа, включая его само.
+        В частности, результат умножения любого числа на <strong>NEGATIVE_INFINITY</strong> равен <strong>NEGATIVE_INFINITY</strong>,
+        а результат деления любого числа на <strong>NEGATIVE_INFINITY</strong> равен 0.</p>
+
+      <p>Это статическое свойство объекта <strong>Number</strong>, поэтому для доступа к нему не нужно
+        специально создавать числовой объект.</p>
+
+      <h4><a name="hpositive-infinity">Свойство POSITIVE_INFINITY</a></h4>
+
+<pre class="syntax"><strong><a name="ppositive-infinity">Синтаксис</a></strong>: Number.POSITIVE_INFINITY
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">ReadOnly</a> }</pre>
+
+      <p>Значением свойства <strong>POSITIVE_INFINITY</strong> является число, большее чем <a href="#pmax-value">Number.MAX_VALUE</a>.
+        Это значение обозначает положительную бесконечность и больше любого числа, включая его само.
+        В частности, результат умножения любого числа на <strong>POSITIVE_INFINITY</strong> равен <strong>POSITIVE_INFINITY</strong>,
+        а результат деления любого числа на <strong>POSITIVE_INFINITY</strong> равен 0.</p>
+
+      <p>Это статическое свойство объекта <strong>Number</strong>, поэтому для доступа к нему не нужно
+        специально создавать числовой объект.</p>
+
+      <h4><a name="htoexponential">Метод toExponential</a></h4>
+
+<pre class="syntax"><strong><a name="mtoexponential">Синтаксис</a></strong>: <em>объект</em>.toExponential(<em>число</em>)
+<strong>Аргументы</strong>: <em>число</em>&nbsp;— числовое выражение от 0 до 20 включительно
+<strong>Результат</strong>: строковое значение</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/ie.gif" alt="Internet Explorer"> Поддерживается с версии 5.5.
+           <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/nn.gif" alt="Netscape Navigator"> Не поддерживается.</pre>
+
+      <p>Метод <strong>toExponential</strong> возвращает строку, содержащую экспоненциальную форму значения
+        <em>объекта</em>. Эта строка содержит одну цифру перед десятичной запятой и заданное <em>число</em>
+        цифр после запятой. Если аргумент <em>число</em> не определен, то число цифр определяется по
+        правилам, приведенным в <a href="http://wdh.suncloud.ru/js03.htm#ref3323">п. 3.3.2.3</a>.</p>
+
+      <p>Например, оператор <code>document.write(Math.PI.toExponential(4))</code> выведет на экран обозревателя
+        текст <samp>3.1416e+0.</samp></p>
+
+      <h4><a name="htofixed">Метод toFixed</a></h4>
+
+<pre class="syntax"><strong><a name="mtofixed">Синтаксис</a></strong>: <em>объект</em>.toFixed(<em>число</em>)
+<strong>Аргументы</strong>: <em>число</em>&nbsp;— числовое выражение от 0 до 20 включительно
+<strong>Результат</strong>: строковое значение</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/ie.gif" alt="Internet Explorer"> Поддерживается с версии 5.5.
+           <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/nn.gif" alt="Netscape Navigator"> Не поддерживается.</pre>
+
+      <p>Метод <strong>toFixed</strong> возвращает строку, содержащую значение <em>объекта</em> в форме
+        с фиксированной запятой. Эта строка содержит заданное <em>число</em> цифр после запятой. Если
+        аргумент <em>число</em> не определен, то он принимается равным нулю.</p>
+
+      <p>Например, оператор <code>document.write(Math.PI.toFixed(4))</code> выведет на экран обозревателя
+        текст <samp>3.1416.</samp></p>
+
+      <h4><a name="hnumber-tolocalestring">Метод toLocaleString</a></h4>
+
+<pre class="syntax"><strong><a name="mnumber-tolocalestring">Синтаксис</a></strong>: <em>объект</em>.toLocaleString()
+<strong>Результат</strong>: строковое значение</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/ie.gif" alt="Internet Explorer"> Поддерживается с версии 3.0.
+           <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/nn.gif" alt="Netscape Navigator"> Не поддерживается.</pre>
+
+      <p>Метод <strong>toLocaleString</strong> преобразует числовой <em>объект</em> в строковое значение
+        по правилам, приведенным в <a href="http://wdh.suncloud.ru/js03.htm#ref3323">п. 3.3.2.3</a>. При этом учитывается формат
+        операционной системы, т.&nbsp;е. символ десятичной запятой и разделитель между тысячами.</p>
+
+      <h4><a name="htoprecision">Метод toPrecision</a></h4>
+
+<pre class="syntax"><strong><a name="mtoprecision">Синтаксис</a></strong>: <em>объект</em>.toPrecision(<em>число</em>)
+<strong>Аргументы</strong>: <em>число</em>&nbsp;— числовое выражение от 1 до 21 включительно
+<strong>Результат</strong>: строковое значение</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/ie.gif" alt="Internet Explorer"> Поддерживается с версии 5.5.
+           <img src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/nn.gif" alt="Netscape Navigator"> Не поддерживается.</pre>
+
+      <p>Метод <strong>toPrecision</strong> возвращает строку, содержащую значение <em>объекта</em>
+        с заданной точностью. Точнее говоря, эта строка содержит:</p>
+
+      <ul>
+        <li>либо число в экспоненциальной форме с одной цифрой перед десятичной запятой и <em>число</em>
+          - 1 цифр после запятой;</li>
+        <li>либо число с фиксированной запятой, состоящее из <em>число</em> значащих цифр.</li>
+      </ul>
+
+      <p>Если аргумент <em>число</em> не определен, то возвращается результат метода <a href="#mnumber-tostring"><strong>toString</strong></a>.</p>
+
+      <p>Например, оператор <code>document.write(Math.PI.toPrecision(4))</code> выведет на экран обозревателя
+        текст <samp>3.142.</samp></p>
+
+      <h4><a name="hnumber-tostring">Метод toString</a></h4>
+
+<pre class="syntax"><strong><a name="mnumber-tostring">Синтаксис</a></strong>: <em>объект</em>.toString(<em>основание</em>?)
+<strong>Аргументы</strong>: <em>основание</em>&nbsp;— любое числовое выражение
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>toString</strong> преобразует числовой <em>объект</em> в строковое значение по
+        правилам, приведенным в <a href="http://wdh.suncloud.ru/js03.htm#ref3323">п. 3.3.2.3</a>.</p>
+
+      <p>Необязательный аргумент <em>основание</em> задает основание системы счисления и должен иметь
+        значение, больше или равное 2. Если он не задан, то считается равным 10. Метод <strong>toString</strong>
+        преобразует число в строку в данной системе счисления. При этом в системах счисления с основанием,
+        большим 10, цифры, большие девяти, задаются латинскими буквами (A = 10, B = 11, …, Z =
+        35). Формат чисел для оснований, больших 36, не определен.</p>
+
+      <h4><a name="hnumber-valueof">Метод valueOf</a></h4>
+
+<pre class="syntax"><strong><a name="mnumber-valueof">Синтаксис</a></strong>: <em>объект</em>.valueOf()
+<strong>Результат</strong>: числовое значение</pre>
+
+      <p>Метод <strong>valueOf</strong> возвращает примитивное значение числового <em>объекта</em>.</p>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js07.htm"><img name="imgleftb" src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/nnleft.gif" alt="" title="Использование объектов" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/js09.htm"><img name="imgrightb" src="3.8.%20%CF%F0%E8%EC%E8%F2%E8%E2%ED%FB%E5%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E5%20%EE%E1%FA%E5%EA%F2%FB_files/nnright.gif" alt="" title="Строки: встроенный объект String" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

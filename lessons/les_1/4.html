@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Simple JS calculator</title>
+	<script>
+		
+		var num1,
+			num2,
+			operator,
+			answer;
+		
+		num1 = prompt("Enter thirst number");
+		operator = prompt("Enter math operator");
+		num2 = prompt("Enter second number");
+		answer = eval(Number(num1) + operator + Number(num2));
+		alert(num1 + " " + operator + " " + num2 + " " + "=" + " " + answer );
+		
+		
+		var width,
+			height,
+			square;
+			
+		width = prompt("Enter rectangle width");
+		height = prompt("Enter rectangle height");
+		square = eval(Number(width) + "*" + Number(height));
+		answer = alert("Rectangle square is" + " " + square);
+		
+	</script>
+</head>
+
+
+<body>
+</body>
+
+
+</html>

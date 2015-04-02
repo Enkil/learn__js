@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Анимация</title>
+<style>
+#ani1{background-color: red;top:100px; position:absolute;left:10px;}
+</style>
+<script language="Javascript">
+<!--
+function moveTxt() {
+elem = document.getElementById("ani1");
+if (parseInt(elem.style.left) <200) {
+elem.style.left = parseInt(elem.style.left) + 2 + "px";
+setTimeout("moveTxt()", 50);
+}
+}
+-->
+</script>
+</head>
+<body onclick="moveTxt()">
+<hr />
+<div id="ani1" style="position: absolute; left: 10px; top: 10px;">Текст</div>
+</body>
+</html>

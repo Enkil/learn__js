@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Меню с эффектом подсвечивания </title>
+	<style>
+	.first{ background:#ff3300;
+			visibility:visible;
+	}
+	a {text-decoration:none;
+	color:navy}
+	</style>
+	<script language="JavaScript">	
+	window.onload = function(){
+		var cells = document.getElementsByClassName('first');
+       // можно пробежаться по всем элементам в цикле
+       for( var i=0; i<cells.length; ++i ) {
+            var obj = cells[i];
+            obj.onmouseover = function(){
+					this.style.fontWeight='bold';
+					this.style.color='black';
+			}
+			obj.onmouseout = function(){
+				this.style.fontWeight='normal';
+				this.style.color='navy';
+			} 
+       }
+
+		var elem = document.getElementById("link");
+		elem.onmouseover = function(){
+			elem.style.fontWeight='bold';
+			elem.style.color='red';
+		}
+		elem.onmouseout = function(){
+			elem.style.fontWeight='normal';
+			elem.style.color='navy';
+		}
+	}
+	</script>
+</head>
+<body>
+<table border="0" width="100">
+<tr> <td class="first"> назад </td> </tr>
+<tr><td class="first"> вперед </td> </tr>
+<tr><td class="first"> обновить </td> </tr>
+<tr><td class="first"> печать </td></tr>
+<tr><td class="first"> переход </td></tr>
+</table>
+<a href="jerus.jpg" id="link"> Этот текст меняет цвет и толщину букв при onMouseOver </a>
+</body>
+</html>

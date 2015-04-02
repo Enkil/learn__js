@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<SCRIPT LANGUAGE="JavaScript">
+function Toggle(node)
+{
+	// Показываем ветку, если она не видна
+	if (node.nextSibling.style.display == 'none')
+	{
+		// Меняем рисунок (если рисунок имеется)
+		if (node.childNodes.length > 0)
+		{
+			if (node.childNodes.item(0).tagName == "IMG")
+			{
+				node.childNodes.item(0).src = "minus.gif";
+			}
+		}
+
+		node.nextSibling.style.display = '';
+	}
+	// Прячем ветку, если она видна 
+	else
+	{
+		// Меняем рисунок (если рисунок имеется)
+		if (node.childNodes.length > 0)
+		{
+			if (node.childNodes.item(0).tagName == "IMG")
+			{
+				node.childNodes.item(0).src = "plus.gif";
+			}
+		}
+
+		node.nextSibling.style.display = 'none';
+	}
+
+}
+</SCRIPT>
+</HEAD>
+<BODY>
+
+<H1>DHTML Дерево</H1>
+<BR /><BR />
+<HR />
+
+<TABLE BORDER=0>
+
+   <TR><TD>
+      <TABLE BORDER=0><TR><TD><IMG SRC="leaf.gif"> Анализ<DIV>
+      </DIV></TD></TR></TABLE>
+   </TR></TD>
+
+   <TR><TD>
+      <TABLE BORDER=0><TR><TD><A onClick="Toggle(this)"><IMG SRC="minus.gif"> Применение</A><DIV>
+
+         <TABLE BORDER=0><TR><TD WIDTH=10></TD><TD><IMG SRC="leaf.gif"> PHP<DIV>
+         </DIV></TD></TR></TABLE>
+
+         <TABLE BORDER=0><TR><TD WIDTH=10></TD><TD><A onClick="Toggle(this)"><IMG SRC="minus.gif"> Visual C++</A><DIV>
+
+            <TABLE BORDER=0><TR><TD WIDTH=10></TD><TD><IMG SRC="leaf.gif"> Проблемы утечки памяти<DIV>
+            </DIV></TD></TR></TABLE>
+
+            <TABLE BORDER=0><TR><TD WIDTH=10></TD><TD><IMG SRC="leaf.gif"> Проблемы баз данных<DIV>
+            </DIV></TD></TR></TABLE>
+
+         </DIV></TD></TR></TABLE>
+
+      </DIV></TD></TR></TABLE>
+   </TR></TD>
+
+   <TR><TD>
+      <TABLE BORDER=0><TR><TD><IMG SRC="leaf.gif"> Design<DIV></DIV>
+      </TD></TR></TABLE>
+  </TR></TD>
+
+</TABLE>
+
+<BR><BR>
+<HR>
+</BODY>
+</HTML>

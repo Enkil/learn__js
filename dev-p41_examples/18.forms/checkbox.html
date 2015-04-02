@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Форма input</title>
+	<script>
+	window.onload = function(){
+		document.getElementById("OK").onclick = function(){
+			var num=0;
+			if(document.getElementById("lan1").checked){num++;};
+			if(document.getElementById("lan2").checked){num++;};
+			if(document.getElementById("lan3").checked){num++;};
+			if(document.getElementById("lan4").checked){num++;};
+			alert(num);
+			return false;
+		}
+		}
+	</script>
+</head>
+
+<body>
+<form id="ff" method="get" action="/cgi-bin/registar.cgi">
+На каких языках читаете:
+<input type="checkbox" name="lan1"  id="lan1" value="russian" checked>русский
+<input type="checkbox" name="lan2" id="lan2" value="english">английйский
+<input type="checkbox" name="lan3" id="lan3" value="french">французский
+<input type="checkbox" name="lan4" id="lan4"  value="german">немецкий
+<input type="button" value="OK" id="OK"  >
+
+</form>
+</body>
+</html>

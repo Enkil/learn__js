@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="js/jquery-2.0.0.min.js"></script>
+
+  <script>
+  $(document).ready(function(){
+
+    $("p").bind("click", function(e){
+      var str = "( " + e.pageX + ", " + e.pageY + " )";
+      $("span").text("Кликнуто! " + str);
+    });
+    $("p").bind("dblclick", function(){
+      $("span").text("Двойной клик сделан на " + this.tagName);
+    });
+    $("p").bind("mouseenter mouseleave", function(e){
+        $(this).toggleClass("over");
+    });
+
+  });
+  </script>
+  <style>
+  p.yel { background:yellow; font-weight:bold; cursor:pointer;
+      padding:5px; }
+  
+  p.over { background: #ccc; }
+  
+  span { color:red; }
+  </style>
+</head>
+<body>
+  <p class="yel">Сделайте здесь клик или двойной клик.</p>
+
+  <span></span>
+</body>
+</html>

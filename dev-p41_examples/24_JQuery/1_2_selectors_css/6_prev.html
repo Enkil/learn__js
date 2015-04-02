@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script src="js/jquery-2.0.0.min.js"></script>
+
+  <script>
+  $(document).ready(function(){
+    $("label + input").css("color", "blue").val("Labeled!")
+  });
+  </script>
+
+</head>
+<body>
+  <form>
+    <label>Name:</label>
+
+    <input name="name" />
+    <fieldset>
+      <label>Newsletter:</label>
+      <input name="newsletter" />
+    </fieldset>
+  </form>
+  <input name="none" />
+</body>
+</html>

@@ -1,0 +1,8 @@
+input.focus{
+background-color: #eeeeee;
+border: 1px dotted maroon;
+color:maroon
+}
+input.normal{
+background-color: #ffffff;
+}

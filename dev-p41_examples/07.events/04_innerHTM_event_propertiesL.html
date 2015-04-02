@@ -1,0 +1,19 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript">
+window.onload = function(){
+document.getElementById("myHeader").onclick = 
+function(event){
+document.getElementById("myspan").innerHTML = 
+event.target.innerHTML + " "  + event.clientX; 
+};
+}
+</script>
+</head>
+<body>
+<div id="myHeader">Заголовок</div>
+<span id="myspan"> нужный элемент </span>
+
+</body>
+</html>

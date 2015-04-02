@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>validate() plugin</title>
+<link rel="stylesheet" type="text/css" media="screen" href="css/screen.css" />
+<style type="text/css">
+.warning { color: red; }
+</style>
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/jquery.form.js" type="text/javascript"></script>
+<script src="js/jquery.validate.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	jQuery(function() {
+		
+		jQuery("#form").validate();
+		
+	});
+</script>
+</head>
+<body>
+<div id="main">
+<form method="post" class="cmxform" id="form" action="form.php">
+<fieldset>
+<legend>Форма регистрации (пароль - "password")</legend>
+<p>
+<label for="user">Логин</label>
+<input id="user" name="user" title="укажите свое имя (не менее 3 символов)" class="required" minlength="3" />
+</p>
+<p>
+<label for="pass">пароль</label>
+<input type="password" name="password" id="password" title="укажите пароль" class="required" minlength="5" />
+</p>
+<p>
+<input class="submit" type="submit" value="Зарегистрироваться"/>
+</p>
+</fieldset>
+</form>
+<div id="result">Зарегистрируйтесь. пожалуйста!</div>
+</div>
+</body>
+</html>

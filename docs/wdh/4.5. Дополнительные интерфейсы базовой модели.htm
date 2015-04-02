@@ -1,0 +1,426 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: DHTML - Дополнительные интерфейсы базовой модели</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/dhtml04.htm" title="Элементы и атрибуты">
+<link rel="Next" href="http://wdh.suncloud.ru/dhtml06.htm" title="Объектная модель HTML-документа">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/load.js"></script>
+<script type="text/javascript" src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/link.js"></script><link rel="stylesheet" type="text/css" href="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml04.htm"><img name="imglefta" src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/nnleft.gif" alt="" title="Элементы и атрибуты" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml06.htm"><img name="imgrighta" src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/nnright.gif" alt="" title="Объектная модель HTML-документа" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=8053" target="_blank"><img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref45">Глава 4.5. Дополнительные интерфейсы базовой модели</a></h2>
+
+      <p>В этой главе мы рассматриваем дополнительные интерфейсы базовой модели DOM. Эти интерфейсы
+        предназначены для XML-документов, поэтому читатели, которых интересует только работа с HTML-документами,
+        могут эту главу безболезненно пропустить. Ее содержимое нам понадобится, когда мы дойдем до
+        описания XML DOM.</p>
+
+      <h3><a name="ref451">4.5.1. Секция CDATA: интерфейс CDATASection</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту (XMLDOMCDATASection).
+           <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>CDATASection</tt> реализует <a href="http://wdh.suncloud.ru/xml01.htm#ref8136">секции CDATA</a> XML-документов.
+        Он наследует все свойства и методы интерфейса <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref444">Text</a></tt> и содержит текст секции CDATA, т.&nbsp;е.
+        все, что находится между ограничителями <tt>&lt;![CDATA[</tt> и <tt>]]&gt;</tt>. Собственных
+        свойств и методов у него нет. Основным отличием узлов данного типа от узлов типа <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref444">Text</a></tt> является
+        то, что при нормализации узлов методом <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#mnormalize">Node.normalize</a></tt> соседние секции CDATA не сливаются
+        в одну секцию.</p>
+
+      <h3><a name="ref452">4.5.2. Тип документа: интерфейс DocumentType</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/ie.gif" alt="Internet Explorer"> Соответствует DOM 1 (XMLDOMDocumentType).
+           <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/gecko.gif" alt="Gecko"> Соответствует DOM 2.</pre>
+
+      <p>Каждый объект типа <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#ref426">Document</a></tt> имеет атрибут <tt>doctype</tt>, значением которого является
+        либо <strong>null</strong>, либо объект <tt>DocumentType</tt>. Интерфейс <tt>DocumentType</tt>
+        обеспечивает доступ ко всем <a href="http://wdh.suncloud.ru/xml01.htm#ref814">разделам</a> и <a href="http://wdh.suncloud.ru/xml02.htm#ref824">нотациям</a>,
+        определенным для данного документа. DOM 2 не допускает редактирования узлов этого типа; они
+        предназначены только для чтения. Интерфейс <tt>DocumentType</tt> наследует методы и свойства
+        интерфейса <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a></tt> и имеет дополнительно следующие свойства.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса DocumentType</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pentities">entities</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Список деклараций разделов.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pinternalsubset">internalSubset</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Внутреннее подмножество DTD.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pdoctype-name">name</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Имя DTD.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pnotations">notations</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Список деклараций нотаций.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pdoctype-publicid">publicId</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Публичный идентификатор DTD.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pdoctype-systemid">systemId</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Системный идентификатор DTD.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hentities">Свойство entities</a></h4>
+
+<pre class="syntax"><strong><a name="pentities">Синтаксис</a></strong>:  <em>объект</em>.entities
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>entities</strong> возвращает объект типа <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref433">NamedNodeMap</a></tt>, содержащий
+        список всех <a href="http://wdh.suncloud.ru/xml01.htm#ref814">деклараций разделов</a> в документе, как <a href="http://wdh.suncloud.ru/xml01.htm#ref8142">внутренних</a>,
+        так и <a href="http://wdh.suncloud.ru/xml01.htm#ref8143">внешних</a>. <a href="http://wdh.suncloud.ru/xml02.htm#ref826">Параметрические разделы</a>
+        в список не включаются. Каждому разделу соответствует объект типа <tt><a href="#ref454">Entity</a></tt>. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.doctype.entities.length);</pre>
+      </div>
+
+      <h4><a name="hinternalsubset">Свойство internalSubset</a></h4>
+
+<pre class="syntax"><strong><a name="pinternalsubset">Синтаксис</a></strong>:  <em>объект</em>.internalSubset
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>internalSubset</strong> возвращает текст <a href="http://wdh.suncloud.ru/xml01.htm#dtd-subsets">внутреннего
+        подмножества DTD</a> в виде строки. Фактически возвращаемое значение определяется конкретной
+        реализацией XML-процессора. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.doctype.internalSubset);</pre>
+      </div>
+
+      <h4><a name="hdoctype-name">Свойство name</a></h4>
+
+<pre class="syntax"><strong><a name="pdoctype-name">Синтаксис</a></strong>:  <em>объект</em>.name
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>name</strong> возвращает строку, содержащую имя DTD, т.&nbsp;е. имя, непосредственно
+        следующее за ключевым словом <tt>!DOCTYPE</tt>. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.doctype.name);</pre>
+      </div>
+
+      <h4><a name="hnotations">Свойство notations</a></h4>
+
+<pre class="syntax"><strong><a name="pnotations">Синтаксис</a></strong>:  <em>объект</em>.notations
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/ie.gif" alt="Internet Explorer"> Только для XML-документов.
+           <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>notations</strong> возвращает объект типа <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref433">NamedNodeMap</a></tt>, содержащий
+        список всех <a href="http://wdh.suncloud.ru/xml02.htm#ref824">деклараций нотаций</a> в документе. Каждой нотации соответствует
+        объект типа <tt><a href="#ref453">Notation</a></tt>. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.doctype.notations.length);</pre>
+      </div>
+
+      <h4><a name="hdoctype-publicid">Свойство publicId</a></h4>
+
+<pre class="syntax"><strong><a name="pdoctype-publicid">Синтаксис</a></strong>:  <em>объект</em>.publicId
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>publicId</strong> возвращает строку, содержащую <a href="http://wdh.suncloud.ru/xml01.htm#ref8143">публичный
+        идентификатор</a> <a href="http://wdh.suncloud.ru/xml01.htm#dtd-subsets">внешнего подмножества DTD</a>. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.doctype.publicId);</pre>
+      </div>
+
+      <h4><a name="hdoctype-systemid">Свойство systemId</a></h4>
+
+<pre class="syntax"><strong><a name="pdoctype-systemid">Синтаксис</a></strong>:  <em>объект</em>.systemId
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>systemId</strong> возвращает строку, содержащую <a href="http://wdh.suncloud.ru/xml01.htm#ref8143">системный
+        идентификатор</a> <a href="http://wdh.suncloud.ru/xml01.htm#dtd-subsets">внешнего подмножества DTD</a>. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.doctype.systemId);</pre>
+      </div>
+
+      <h3><a name="ref453">4.5.3. Нотация: интерфейс Notation</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту (XMLDOMNotation).
+           <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>Notation</tt> соответствует <a href="http://wdh.suncloud.ru/xml02.htm#ref824">декларации нотации</a>
+        в DTD XML-документа. DOM 2 не допускает редактирования узлов этого типа; они предназначены только
+        для чтения. Интерфейс <tt>Notation</tt> наследует методы и свойства интерфейса <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a></tt>
+        и имеет дополнительно следующие свойства (имя нотации хранится в свойстве <tt>nodeName</tt>).</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса Notation</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pnotation-publicid">publicId</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Публичный идентификатор нотации.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pnotation-systemid">systemId</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Системный идентификатор нотации.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hnotation-publicid">Свойство publicId</a></h4>
+
+<pre class="syntax"><strong><a name="pnotation-publicid">Синтаксис</a></strong>:  <em>объект</em>.publicId
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>publicId</strong> возвращает строку, содержащую <a href="http://wdh.suncloud.ru/xml01.htm#ref8143">публичный
+        идентификатор</a> <a href="http://wdh.suncloud.ru/xml02.htm#ref824">нотации</a>, или <strong>null</strong>, если его
+        нет. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.doctype.notations[0].publicId);</pre>
+      </div>
+
+      <h4><a name="hnotation-systemid">Свойство systemId</a></h4>
+
+<pre class="syntax"><strong><a name="pnotation-systemid">Синтаксис</a></strong>:  <em>объект</em>.systemId
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>systemId</strong> возвращает строку, содержащую <a href="http://wdh.suncloud.ru/xml01.htm#ref8143">системный
+        идентификатор</a> <a href="http://wdh.suncloud.ru/xml02.htm#ref824">нотации</a>, или <strong>null</strong>, если его
+        нет. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.doctype.notations[0].systemId);</pre>
+      </div>
+
+      <h3><a name="ref454">4.5.4. Раздел: интерфейс Entity</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту (XMLDOMEntity).
+           <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>Entity</tt> соответствует <a href="http://wdh.suncloud.ru/xml01.htm#ref8141">разделу</a> XML-документа.
+        DOM 2 не допускает редактирования узлов этого типа; они предназначены только для чтения. Интерфейс
+        <tt>Entity</tt> наследует методы и свойства интерфейса <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a></tt> и имеет дополнительно следующие
+        свойства (имя раздела хранится в свойстве <tt>nodeName</tt>).</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса Entity</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pnotationname">notationName</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Имя нотации.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pentity-publicid">publicId</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Публичный идентификатор раздела.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pentity-systemid">systemId</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Системный идентификатор раздела.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hnotationname">Свойство notationName</a></h4>
+
+<pre class="syntax"><strong><a name="pnotationname">Синтаксис</a></strong>:  <em>объект</em>.notationName
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>notationName</strong> возвращает строку, содержащую <a href="http://wdh.suncloud.ru/xml01.htm#ref8143">нотацию
+        раздела</a> для неанализируемых разделов или <strong>null</strong>, если раздел анализируемый.
+        Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.doctype.entities[0].notationName);</pre>
+      </div>
+
+      <h4><a name="hentity-publicid">Свойство publicId</a></h4>
+
+<pre class="syntax"><strong><a name="pentity-publicid">Синтаксис</a></strong>:  <em>объект</em>.publicId
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>publicId</strong> возвращает строку, содержащую <a href="http://wdh.suncloud.ru/xml01.htm#ref8143">публичный
+        идентификатор</a> <a href="http://wdh.suncloud.ru/xml01.htm#ref8143">раздела</a>, или <strong>null</strong>, если его
+        нет. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.doctype.entities[0].publicId);</pre>
+      </div>
+
+      <h4><a name="hentity-systemid">Свойство systemId</a></h4>
+
+<pre class="syntax"><strong><a name="pentity-systemid">Синтаксис</a></strong>:  <em>объект</em>.systemId
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>systemId</strong> возвращает строку, содержащую <a href="http://wdh.suncloud.ru/xml01.htm#ref8143">системный
+        идентификатор</a> <a href="http://wdh.suncloud.ru/xml01.htm#ref8143">раздела</a>, или <strong>null</strong>, если его
+        нет. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.doctype.entities[0].systemId);</pre>
+      </div>
+
+      <h3><a name="ref455">4.5.5. Ссылка на раздел: интерфейс EntityReference</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту (XMLDOMEntityReference).
+           <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>EntityReference</tt> реализует <a href="http://wdh.suncloud.ru/xml01.htm#ref8142">ссылки на разделы</a>
+        в XML-документах. Он наследует все свойства и методы интерфейса <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a></tt>; собственных свойств
+        и методов у него нет. Отметим, что специальные символы XML- и HTML-документов, которые являются
+        частным случаем ссылок, всегда заменяются в процессе синтаксического анализа документа на соответствующие
+        символы Unicode. Что касается остальных ссылок разделов, то момент их замены на соответствующие
+        текстовые строки зависит от конкретного XML-процессора.</p>
+
+      <h3><a name="ref456">4.5.6. Директива: интерфейс ProcessingInstruction</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту (XMLDOMProcessingInstruction).
+           <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>ProcessingInstruction</tt> соответствует <a href="http://wdh.suncloud.ru/xml01.htm#ref8132">директивам</a>
+        в XML-документах. Он наследует все свойства и методы интерфейса <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a></tt>. Кроме того, он
+        имеет следующие свойства.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса ProcessingInstruction</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pdata">data</a></tt></td>
+            <td>Да</td>
+            <td>DOM 1</td>
+            <td>Текст директивы.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#psheet">sheet</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Указатель на таблицу стилей.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ptarget">target</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Имя директивы.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hdata">Свойство data</a></h4>
+
+<pre class="syntax"><strong><a name="pdata">Синтаксис</a></strong>:  <em>объект</em>.data
+<strong>Изменяемое</strong>: да
+<strong>Исключения</strong>: NO_MODIFICATION_ALLOWED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>data</strong> возвращает или задает строку, содержащую текст директивы, т.&nbsp;е.
+        все, что содержится в ней от первого пробела до ограничителя ?&gt;. Например, для директивы <tt>&lt;?xml
+        version="1.0"?&gt;</tt> это свойство вернет строку 'version="1.0"'. Значение этого свойства
+        совпадает со значением свойства <tt>nodeValue</tt>.</p>
+
+      <h4><a name="hsheet">Свойство sheet</a></h4>
+
+<pre class="syntax"><strong><a name="psheet">Синтаксис</a></strong>:  <em>объект</em>.sheet
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>sheet</strong> возвращает указатель на объект <tt><a href="http://wdh.suncloud.ru/dhtml09.htm#ref493">StyleSheet</a></tt>,
+        соответствующий внешней таблице стилей, если это директива <tt><a href="http://wdh.suncloud.ru/dhtml09.htm#exml-stylesheet">xml-stylesheet</a></tt>
+        и если данная реализация DOM поддерживает таблицы стилей.</p>
+
+      <h4><a name="htarget">Свойство target</a></h4>
+
+<pre class="syntax"><strong><a name="ptarget">Синтаксис</a></strong>:  <em>объект</em>.target
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>target</strong> возвращает строку, содержащую имя директивы, т.&nbsp;е. все,
+        что содержится в ней до первого пробела. Например, для директивы <tt>&lt;?xml version="1.0"?&gt;</tt>
+        это свойство вернет строку 'xml'.</p>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml04.htm"><img name="imgleftb" src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/nnleft.gif" alt="" title="Элементы и атрибуты" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml06.htm"><img name="imgrightb" src="4.5.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E8%ED%F2%E5%F0%F4%E5%E9%F1%FB%20%E1%E0%E7%EE%E2%EE%E9%20%EC%EE%E4%E5%EB%E8_files/nnright.gif" alt="" title="Объектная модель HTML-документа" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

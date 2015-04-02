@@ -1,0 +1,27 @@
+<HTML>
+<HEAD><TITLE>использование case-switch</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+</HEAD>
+<BODY>
+<H1>Пример использования ответа пользователя</H1>
+<P>Укажите сайт, на который следует перейти.</P>
+
+<script>
+where = prompt("Куда сегодня пойдем?", "rambler, yahoo, google");
+switch (where) {
+case "rambler" :
+        window.location="http://www.rambler.ru";
+        break;
+case "yahoo" :
+        window.location="http://www.yahoo.com";
+        break;
+case "google" :
+        window.location="http://www.google.com";
+        break;
+default :
+        window.location="http://www.rbc.ru";
+}
+</script>
+</BODY>
+</HTML>

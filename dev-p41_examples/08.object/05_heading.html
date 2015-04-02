@@ -1,0 +1,16 @@
+<HTML>
+<HEAD><TITLE>Test of heading methode</TITLE>
+</HEAD>
+<BODY>
+<SCRIPT LANGUAGE="JavaScript">
+function addhead (level) {
+   html = "H" + level;
+   start = "<" + html + ">";
+   stop = "</" + html + ">";
+   return start + this + stop;
+}
+String.prototype.heading = addhead;
+document.write("This is a test".heading(1));
+</SCRIPT>
+</BODY>
+</HTML>

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title>Изменение цвета с использованием стилей </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+#head1 {color:#ff0000};
+</style>
+<script language="Javascript">
+<!--
+	window.onload = function(){
+		var elem = document.getElementById("head1");
+		elem.onmouseover = function(){
+			elem.style.color="blue";
+		}
+		elem.onmouseout = function(){
+			elem.style.color="green";
+		}
+	}
+-->
+</script>
+</head>
+<body >
+<h1 id="head1">Заголовок h1</h1>
+Просто текст
+</body>
+</html>

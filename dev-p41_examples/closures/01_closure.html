@@ -1,0 +1,23 @@
+﻿<html>
+<head>
+<title>closure</title>
+<script>
+function createCounter() {
+   var numberOfCalls = 0;
+   return function() {
+      alert(++numberOfCalls);
+   }
+}
+var fn = createCounter();
+fn(); 
+fn(); 
+fn(); 
+
+
+</script>
+</head>
+<body>
+
+
+</body>
+</html>

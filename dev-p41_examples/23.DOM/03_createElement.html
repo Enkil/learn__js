@@ -1,0 +1,21 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+<script type="text/javascript">
+function modify() {
+	var newElem = document.createElement("P")
+	newElem.id = "newP"
+	var newText = document.createTextNode("Это второй параграф.")
+	newElem.appendChild(newText)
+	document.body.appendChild(newElem)
+	document.getElementById("emphasis1").childNodes[0].nodeValue = "первый "
+}
+</script>
+</head>
+<body>
+<button onclick="modify()">Измени/Добавь текст</button>
+<p id="paragraph1">Это <em id="emphasis1"> единственный  </em>параграф на странице.</p> 
+</body>
+</html>

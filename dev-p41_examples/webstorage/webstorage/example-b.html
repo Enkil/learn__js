@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<script src="js/jquery-1.5.2.min.js" type="text/javascript"></script>
+<style type="text/css">
+div { margin:5px 0; }
+input { width:20px; }
+button { width:200px; }
+#getKey { width:180px; }
+</style>
+<script type="text/javascript">
+$(function(){
+
+	// локальное хранилище
+	if(window.localStorage)
+	{
+		alert('Браузер поддерживает локальное хранилище.');
+		window.localStorage.setItem('myLocalData1', 'Значение 1');
+		window.localStorage.setItem('myLocalData2', 'Значение 2');
+		window.localStorage.setItem('myLocalData3', 'Значение 3');
+		window.localStorage.setItem('myLocalData4', 'Значение 4');
+		window.localStorage.setItem('myLocalData5', 'Значение 5');		
+	} else {
+		alert('Браузер не поддерживает локальное хранилище.');
+		$('#localGet, #localDelete').attr('disabled','disabled');
+	}
+	// получить количество
+	$('#lengthGet').bind('click',function(){
+		alert(window.localStorage.length);
+	});
+	// удалить данные
+	$('#localDelete').bind('click',function(){
+		window.localStorage.clear();
+	});
+	// получить ключ по его индексу
+	$('#getKey').bind('click',function(){
+		var index = $(':text').val();
+		alert(window.localStorage.key(index));
+	});
+
+});
+</script>
+</head>
+<body>
+<h1>Файл example-b.html</h1>
+<ul>
+	<li><a href="example-a.html">example-a</a></li>
+	<li>example-b</li>
+	<li><a href="example-c.html">example-c</a></li>
+	<li><a href="example-d.html">example-d</a></li>
+</ul>
+<div><input type="text" value="2"><button id="getKey">Ключ по его индексу</button></div>
+<div id="buttons">
+	<button id="lengthGet">Получить количество</button><br />
+	<button id="localDelete">Очистить localStorage</button><br />
+</div>
+</body>
+</html>

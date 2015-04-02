@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>setDate</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+<script type="text/javascript">
+var myDate = new Date();
+var dayOfMonth = myDate.getDate();
+
+// Reset myDate to one day earlier.
+myDate.setDate(dayOfMonth - 1);
+alert(myDate.getDate());
+myDate.setFullYear (myDate.getFullYear() - 1);
+document.write(myDate.getFullYear() + ", " + 
+myDate.getDate());
+</script>
+ </head>
+<body>
+<div id="txt"></div>
+</body>
+</html>

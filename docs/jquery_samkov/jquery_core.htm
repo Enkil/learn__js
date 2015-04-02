@@ -1,0 +1,819 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="jquery_core.files/filelist.xml">
+<title>Core - ядро jQuery</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>elena</o:Author>
+  <o:LastAuthor>elena</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>40</o:TotalTime>
+  <o:Created>2008-10-12T17:14:00Z</o:Created>
+  <o:LastSaved>2008-10-12T17:14:00Z</o:LastSaved>
+  <o:Pages>9</o:Pages>
+  <o:Words>2116</o:Words>
+  <o:Characters>12064</o:Characters>
+  <o:Company>home</o:Company>
+  <o:Lines>100</o:Lines>
+  <o:Paragraphs>28</o:Paragraphs>
+  <o:CharactersWithSpaces>14152</o:CharactersWithSpaces>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:PunctuationKerning/>
+  <w:DrawingGridHorizontalSpacing>2,85 пт</w:DrawingGridHorizontalSpacing>
+  <w:DrawingGridVerticalSpacing>1,95 пт</w:DrawingGridVerticalSpacing>
+  <w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:24.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h2
+	{mso-style-next:Обычный;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-weight:bold;
+	font-style:italic;}
+h3
+	{mso-style-next:Обычный;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:13.0pt;
+	font-family:Arial;
+	font-weight:bold;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+pre
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+span.doctype
+	{mso-style-name:doctype;}
+span.start-tag
+	{mso-style-name:start-tag;}
+span.attribute-name
+	{mso-style-name:attribute-name;}
+span.attribute-value
+	{mso-style-name:attribute-value;}
+span.end-tag
+	{mso-style-name:end-tag;}
+@page Section1
+	{size:612.0pt 792.0pt;
+	margin:2.0cm 42.5pt 42.55pt 42.55pt;
+	mso-header-margin:36.0pt;
+	mso-footer-margin:36.0pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Обычная таблица";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]-->
+</head>
+
+<body lang=RU style='tab-interval:35.4pt'>
+
+<div class=Section1>
+
+<h1><span lang=EN-US style='mso-ansi-language:EN-US'>Core - </span>ядро<span
+lang=EN-US style='mso-ansi-language:EN-US'> jQuery<o:p></o:p></span></h1>
+
+<h2><span lang=EN-US style='color:#CC6600;mso-ansi-language:EN-US'>jQuery - </span><span
+style='color:#CC6600'>функции</span><span lang=EN-US style='color:#CC6600;
+mso-ansi-language:EN-US'><o:p></o:p></span></h2>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>jQuery(expression,
+[context])<o:p></o:p></span></h3>
+
+<p>возвращает: jQuery<br>
+Функция принимает строку, содержащую CSS селектор, который используется, чтобы
+создать набор элементов. Функциональность ядра jQuery сосредотачивается вокруг
+этой функции. Аргумент expression - строка с &quot;поисковым&quot; выражением.
+Опциональный аргумент [context] - элемент DOM, Document или объект jQuery.</p>
+
+<p>Ищем все элементы p, которые являются дочерними по отношению к элементу div.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$(&quot;div &gt; p&quot;).css(&quot;border&quot;, &quot;1px solid #ccc&quot;);<o:p></o:p></span></pre>
+
+<p>В этом выражении использован CSS-синтаксис. Здесь мы устанавливаем серую
+рамку шириной 1px. Но подробнее об этом мы будем говорить позже.</p>
+
+<p>Ищем все элементы input типа radio внутри первой формы в документе.</p>
+
+<pre>$(&quot;input:radio&quot;, document.forms[0]);</pre>
+
+<p>Ищем все элементы div внутри документа XML, который вернулся в качестве
+ответа от сервера на AJAX-запрос.</p>
+
+<pre>$(&quot;div&quot;, xml.responseXML);</pre>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<h3>jQuery(html)</h3>
+
+<p>возвращает: jQuery<br>
+На лету создает DOM элементы из данных, предоставленных в виде строки или
+необработанного HTML. Аргумент html - строка HTML-кода, который должен быть
+создан &quot;на лету&quot;. Можно использовать простой HTML-код, написанный
+вручную, или созданный с помощью шаблонных движков или плагинов, или
+загруженный через AJAX. Существуют ограничения при создании элементов input (см.
+пример). Когда используется строка, которая может содержать слэши (например
+путь к файлу картинки), необходимо экранировать их. Когда создается одиночный
+элемент необходимо использовать закрывающий тэг в XHTML-формате. Например чтобы
+создать элемент span сделайте $(&quot;&lt;span/&gt;&quot;) или
+$(&quot;&lt;span&gt;&lt;/span&gt;&quot;).</p>
+
+<p>Динамически создаем элемент div (вместе с его внутренним содержимым), и
+добавляем его в элемент body.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$(&quot;&lt;div&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/div&gt;&quot;).appendTo(&quot;body&quot;)<o:p></o:p></span></pre>
+
+<p>Не создавайте элементы &lt;input&gt; без атрибута type.</p>
+
+<pre>// не работает в IE:</pre><pre>$(&quot;&lt;input/&gt;&quot;).attr(&quot;type&quot;, &quot;checkbox&quot;);</pre><pre>// работает в IE:</pre><pre>$(&quot;&lt;input type=&quot;checkbox&quot;/&gt;&quot;);</pre>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<h3>jQuery(elements)</h3>
+
+<p>возвращает: jQuery<br>
+&quot;Обертывает&quot; функциональность jQuery вокруг одного или многих
+элементов DOM. Аргумент elements - элемент или массив элементов DOM, которые
+будут представлены как объект jQuery. Эта функция может также принимать XML
+документы и объекты window как валидные аргументы, даже если они не
+представляют собой элементы DOM.</p>
+
+<p>Устанавливаем значение black свойству background для элемента body. Если
+по-русски - делаем страницу черного цвета.</p>
+
+<pre>$(document.body).css( &quot;background&quot;, &quot;black&quot; );</pre>
+
+<p>Скрываем все элементы внутри формы.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$(myForm.elements).hide()<o:p></o:p></span></pre>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>jQuery(callback)<o:p></o:p></span></h3>
+
+<p>возвращает: jQuery<br>
+Короткая запись $(document).ready(). Аргумент callback - функции, которые будут
+выполнены, когда будет готова объектная модель документа (DOM). Вы можете иметь
+столько $(document).ready событий на странице, сколько Вам необходимо.</p>
+
+<p>Выполняет функцию когда DOM готова к использованию.</p>
+
+<pre>$(function(){</pre><pre>// документ готов</pre><pre>alert(&quot;Документ готов!&quot;);</pre><pre>});</pre>
+
+<h2><span style='color:#CC6600'>Доступ к объекту jQuery<o:p></o:p></span></h2>
+
+<h3>each(callback)</h3>
+
+<p>возвращает: jQuery<br>
+Выполняет функцию в пределах контекста каждого элемента определенного в наборе.</p>
+
+<p>Клик мышкой в любом месте элемента body* приведет к тому, что будут отобраны
+все принадлежащие ему элементы div. Затем для каждого из них css свойство color
+будет установлено в значение blue. Если же свойство color очередного элемента
+уже имеет значение blue, оно будет сброшено (будет установлен изначально
+красный цвет шрифта).</p>
+
+<pre><span class=doctype><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; <o:p></o:p></span></span></pre><pre><span
+class=doctype><span lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>                    </span>&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>html</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>head</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>meta</span><span class=attribute-name> http-equiv</span>=<span
+class=attribute-value>&quot;Content-Type&quot; </span><span
+class=attribute-name>content</span>=<span class=attribute-value>&quot;text/html; charset=utf-8&quot;</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>script</span><span class=attribute-name> src</span>=<span
+class=attribute-value>&quot;js/jquery-1.2.3.js&quot;</span>&gt;&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(document.body).click(function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).each(function (i) {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>if (this.style.color != &quot;blue&quot;) {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>          </span>this.style.color = &quot;blue&quot;;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>} else {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>          </span>this.style.color = &quot;&quot;;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>}<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>div { color:red; text-align:center; cursor:pointer; font-weight:bolder; width:300px; border:1px solid #ccc; margin:4px; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>head</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>body</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>div</span>&gt;div #1 Click here&lt;/<span class=end-tag>div</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>div</span>&gt;div #2 to iterate through&lt;/<span
+class=end-tag>div</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>div</span>&gt;div #3 these divs.&lt;/<span class=end-tag>div</span>&gt;<o:p></o:p></span></pre><pre>&lt;/<span
+class=end-tag>body</span>&gt;</pre><pre>&lt;/<span class=end-tag>html</span>&gt;</pre>
+
+<h3>size()</h3>
+
+<p>возвращает: Number<br>
+Количество элементов в объекте jQuery.</p>
+
+<p>Подсчитываем количество элементов div в объекте jQuery. Каждым кликом
+добавляем еще один элемент div. Size() делает практически тоже самое, что и
+length, только немного медленнее.</p>
+
+<pre><span class=doctype><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; <o:p></o:p></span></span></pre><pre><span
+class=doctype><span lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>                    </span>&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>html</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>head</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>meta</span><span class=attribute-name> http-equiv</span>=<span
+class=attribute-value>&quot;Content-Type&quot; </span><span
+class=attribute-name>content</span>=<span class=attribute-value>&quot;text/html; charset=utf-8&quot;</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>script</span><span class=attribute-name> src</span>=<span
+class=attribute-value>&quot;js/jquery-1.2.3.js&quot;</span>&gt;&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>&lt;<span
+class=start-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(document.body).click(function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(document.body).append($(&quot;&lt;div&gt;&quot;));<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>var n = $(&quot;div&quot;).size();<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;span&quot;).text(&quot;</span>Объект<span
+lang=EN-US style='mso-ansi-language:EN-US'> jQuery </span>содержит<span
+lang=EN-US style='mso-ansi-language:EN-US'> &quot; + n + &quot; </span>элементов<span
+lang=EN-US style='mso-ansi-language:EN-US'> div.&quot; +<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>                     </span>&quot; </span>Кликни<span
+lang=EN-US style='mso-ansi-language:EN-US'>, </span>чтобы<span
+style='mso-ansi-language:EN-US'> </span>добавить<span style='mso-ansi-language:
+EN-US'> </span>еще<span lang=EN-US style='mso-ansi-language:EN-US'>.&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>}).click(); // trigger the click to start<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>body { cursor:pointer; font-size:8pt; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>div { width:50px; height:30px; margin:5px; float:left;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>background:blue; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>span { color:red; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>head</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>body</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>span</span>&gt;&lt;/<span class=end-tag>span</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span></span>&lt;<span
+class=start-tag>div</span>&gt;&lt;/<span class=end-tag>div</span>&gt;</pre><pre>&lt;/<span
+class=end-tag>body</span>&gt;</pre><pre>&lt;/<span class=end-tag>html</span>&gt;</pre>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<h3>eq(position)</h3>
+
+<p>возвращает: jQuery<br>
+Сокращает набор элементов до единственного элемента. Нумерация элементов в наборе
+начинается с 0. Если еще понятнее - позволяет обратиться к единственному
+элементу из набора, используя его индекс.<br>
+Выбираем все элементы p, обращаемся ко второму элементу в наборе, для которого
+устанавливаем красный цвет шрифта.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>$(&quot;p&quot;).eq(1).css(&quot;color&quot;, &quot;red&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+class=doctype><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; <o:p></o:p></span></span></pre><pre><span
+class=doctype><span lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>                    </span>&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>html</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>head</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>meta</span><span class=attribute-name> http-equiv</span>=<span
+class=attribute-value>&quot;Content-Type&quot; </span><span
+class=attribute-name>content</span>=<span class=attribute-value>&quot;text/html; charset=utf-8&quot;</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>script</span><span class=attribute-name> src</span>=<span
+class=attribute-value>&quot;js/jquery-1.2.3.js&quot;</span>&gt;&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;p&quot;).eq(1).css(&quot;color&quot;, &quot;red&quot;)<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>body { font-size:10pt; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>p { margin:0; padding:5px; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>style</span>&gt;<o:p></o:p></span></pre><pre>&lt;/<span
+class=end-tag>head</span>&gt;</pre><pre>&lt;<span class=start-tag>body</span>&gt;</pre><pre><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>p</span>&gt;Это первый параграф на странице.&lt;/<span
+class=end-tag>p</span>&gt;</pre><pre><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>p</span>&gt;Это второй параграф на странице.&lt;/<span
+class=end-tag>p</span>&gt;</pre><pre><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>p</span>&gt;Это третий параграф на странице.&lt;/<span
+class=end-tag>p</span>&gt;</pre><pre>&lt;/<span class=end-tag>body</span>&gt;</pre><pre>&lt;/<span
+class=end-tag>html</span>&gt;</pre>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<h3>get()</h3>
+
+<p>возвращает: Array<br>
+Обеспечивает доступ ко всем выбранным элементам DOM. Служит обратно совместимым
+способом, позволяя обратиться ко всем элементам набора, если Вы работаете
+непосредственно с элементами DOM, не используя встроенные функции jQuery.</p>
+
+<p>Выбираем все элементы div в документе и возвращаем набор элементов DOM как
+массив, затем используем встроенный метод, чтобы этот массив перевернуть.</p>
+
+<pre><span class=doctype><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; <o:p></o:p></span></span></pre><pre><span
+class=doctype><span lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>                    </span>&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>html</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>head</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>meta</span><span class=attribute-name> http-equiv</span>=<span
+class=attribute-value>&quot;Content-Type&quot; </span><span
+class=attribute-name>content</span>=<span class=attribute-value>&quot;text/html; charset=utf-8&quot;</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>script</span><span class=attribute-name> src</span>=<span
+class=attribute-value>&quot;js/jquery-1.2.3.js&quot;</span>&gt;&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>function disp(divs) {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>var a = [];<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>for (var i = 0; i &lt; divs.length; i++) {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>a.push(divs[i].innerHTML);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>}<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;span&quot;).text(a.join(&quot; &quot;));<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>}<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>disp( $(&quot;div&quot;).get().reverse() );<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>span { color:red; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>head</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>body</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span></span>Перевернутый<span
+lang=EN-US style='mso-ansi-language:EN-US'> - &lt;<span class=start-tag>span</span>&gt;&lt;/<span
+class=end-tag>span</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span></span>&lt;<span
+class=start-tag>div</span>&gt;Первый div&lt;/<span class=end-tag>div</span>&gt;</pre><pre><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>div</span>&gt;Второй div&lt;/<span class=end-tag>div</span>&gt;</pre><pre><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>div</span>&gt;Третий div&lt;/<span class=end-tag>div</span>&gt;</pre><pre>&lt;/<span
+class=end-tag>body</span>&gt;</pre><pre>&lt;/<span class=end-tag>html</span>&gt;</pre>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<h3>get(index)</h3>
+
+<p>возвращает: Element<br>
+Обеспечивает доступ к единственному элементу из набора элементов DOM по его
+индексу. Это позволит извлечь актуальный элемент DOM и работать с ним
+непосредственно, не используя функциональность jQuery. Эта функция, вызванная
+как $(this).get(0) является эквивалентом использования квадратных скобок в
+нотации объектов jQuery, например $(this)[0].</p>
+
+<p>Отдает имя тэга на котором был совершен клик.</p>
+
+<pre><span class=doctype><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; <o:p></o:p></span></span></pre><pre><span
+class=doctype><span lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>                    </span>&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>html</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>head</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>meta</span><span class=attribute-name> http-equiv</span>=<span
+class=attribute-value>&quot;Content-Type&quot; </span><span
+class=attribute-name>content</span>=<span class=attribute-value>&quot;text/html; charset=utf-8&quot;</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>script</span><span class=attribute-name> src</span>=<span
+class=attribute-value>&quot;js/jquery-1.2.3.js&quot;</span>&gt;&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;*&quot;, document.body).click(function (e) {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>e.stopPropagation();<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>var domEl = $(this).get(0);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;span:first&quot;).text(&quot;</span>Кликнули<span
+style='mso-ansi-language:EN-US'> </span>на<span lang=EN-US style='mso-ansi-language:
+EN-US'> - &quot; + domEl.tagName);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>span { color:red; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>div { background:yellow; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>head</span>&gt;<o:p></o:p></span></pre><pre>&lt;<span
+class=start-tag>body</span>&gt;</pre><pre><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>span</span>&gt;Кликай по элементам&lt;/<span class=end-tag>span</span>&gt;</pre><pre><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>p</span>&gt;В этом параграфе содержится &lt;<span
+class=start-tag>span</span>&gt;важная&lt;/<span class=end-tag>span</span>&gt; секция&lt;/<span
+class=end-tag>p</span>&gt;</pre><pre><span style='mso-spacerun:yes'>  </span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>div</span>&gt;&lt;<span
+class=start-tag>input</span><span class=attribute-name> type</span>=<span
+class=attribute-value>&quot;text&quot; </span><span class=attribute-name>/</span>&gt;&lt;/<span
+class=end-tag>div</span>&gt;<o:p></o:p></span></pre><pre>&lt;/<span
+class=end-tag>body</span>&gt;</pre><pre>&lt;/<span class=end-tag>html</span>&gt;</pre>
+
+<h3>index(subject)</h3>
+
+<p>возвращает: Number<br>
+Ищет элемент в наборе элементов объекта и возвращает его индекс, если найден.
+Возвращает -1, если не найдено. Отсчет ведется от 0.</p>
+
+<p>По клику возвращает индекс выбранного элемента div.</p>
+
+<pre><span class=doctype><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; <o:p></o:p></span></span></pre><pre><span
+class=doctype><span lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>                    </span>&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>html</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>head</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>meta</span><span class=attribute-name> http-equiv</span>=<span
+class=attribute-value>&quot;Content-Type&quot; </span><span
+class=attribute-name>content</span>=<span class=attribute-value>&quot;text/html; charset=utf-8&quot;</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>script</span><span class=attribute-name> src</span>=<span
+class=attribute-value>&quot;js/jquery-1.2.3.js&quot;</span>&gt;&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;div&quot;).click(function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>// this is the dom element clicked<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>var index = $(&quot;div&quot;).index(this);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;span&quot;).text(&quot;</span>Это<span
+lang=EN-US style='mso-ansi-language:EN-US'> div<span style='mso-spacerun:yes'>  </span></span>с<span
+style='mso-ansi-language:EN-US'> </span>индексом<span lang=EN-US
+style='mso-ansi-language:EN-US'> #&quot; + index);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>div { background:yellow; margin:5px; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>span { color:red; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>head</span>&gt;<o:p></o:p></span></pre><pre>&lt;<span
+class=start-tag>body</span>&gt;</pre><pre><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>span</span>&gt;Кликни на элементе div!&lt;/<span class=end-tag>span</span>&gt;</pre><pre><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>div</span>&gt;Первый div&lt;/<span class=end-tag>div</span>&gt;</pre><pre><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>div</span>&gt;Второй div&lt;/<span class=end-tag>div</span>&gt;</pre><pre><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>div</span>&gt;Третий div&lt;/<span class=end-tag>div</span>&gt;</pre><pre>&lt;/<span
+class=end-tag>body</span>&gt;</pre><pre>&lt;/<span class=end-tag>html</span>&gt;</pre>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<h2><span style='color:#CC6600'>Манипуляции с данными<o:p></o:p></span></h2>
+
+<h3>data(name)</h3>
+
+<p>возвращает: Any<br>
+Эта функция используется, чтобы получить данные &quot;хранящиеся&quot; в
+элементе под соответствующим именем. <span lang=EN-US style='mso-ansi-language:
+EN-US'><o:p></o:p></span></p>
+
+<p>При щелчке мышью на одном из четырех элементов button получим индекс этого
+элемента и проанализируем его в swith.<br>
+<strong>case:0</strong> - в переменную value получим данные, названные как
+&quot;blah&quot; и принадлежащие элементу div.<br>
+<strong>case:1</strong> - запомним в элементе div данные с именем
+&quot;blah&quot; и значением &quot;hello&quot;. Заметьте, это строка. В
+переменную value запишем значение &quot;Stored!&quot;.<br>
+<strong>case:2</strong> - запомним в элементе div данные с именем
+&quot;blah&quot; и значением 86. Это уже число. В переменную value также
+запишем значение &quot;Stored!&quot;.<br>
+<strong>case:3</strong> - удалим из элемента div данные с именем
+&quot;blah&quot;. В переменную value запишем значение &quot;Removed!&quot;.<span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<pre><span class=doctype><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; <o:p></o:p></span></span></pre><pre><span
+class=doctype><span lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>                    </span></span>&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>html</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>head</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>meta</span><span class=attribute-name> http-equiv</span>=<span
+class=attribute-value>&quot;Content-Type&quot; </span><span
+class=attribute-name>content</span>=<span class=attribute-value>&quot;text/html; charset=utf-8&quot;</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>script</span><span class=attribute-name> src</span>=<span
+class=attribute-value>&quot;js/jquery-1.2.3.js&quot;</span>&gt;&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;button&quot;).click(function(e) {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>var value;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>switch ($(&quot;button&quot;).index(this)) {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>case 0 :<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>          </span>value = $(&quot;div&quot;).data(&quot;blah&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>          </span>break;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>case 1 :<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>          </span>$(&quot;div&quot;).data(&quot;blah&quot;, &quot;hello&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>          </span>value = &quot;Stored!&quot;;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>          </span>break;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>case 2 :<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>          </span>$(&quot;div&quot;).data(&quot;blah&quot;, 86);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>          </span>value = &quot;Stored!&quot;;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>          </span>break;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>case 3 :<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>          </span>$(&quot;div&quot;).removeData(&quot;blah&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>          </span>value = &quot;Removed!&quot;;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>          </span>break;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>}<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;span&quot;).text(&quot;&quot; + value);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>div { margin:5px; background:yellow; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>button { margin:5px; font-size:14px; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>p { margin:5px; color:blue; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>span { color:red; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>head</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>body</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>div</span>&gt;A div&lt;/<span class=end-tag>div</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>button</span>&gt;Get &quot;blah&quot; from the div&lt;/<span
+class=end-tag>button</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>button</span>&gt;Set &quot;blah&quot; to &quot;hello&quot;&lt;/<span
+class=end-tag>button</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>button</span>&gt;Set &quot;blah&quot; to 86&lt;/<span
+class=end-tag>button</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>button</span>&gt;Remove &quot;blah&quot; from the div&lt;/<span
+class=end-tag>button</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>p</span>&gt;The &quot;blah&quot; value of this div is &lt;<span
+class=start-tag>span</span>&gt;?&lt;/<span class=end-tag>span</span>&gt;&lt;/<span
+class=end-tag>p</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>body</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>html</span>&gt;<o:p></o:p></span></pre>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>data(name, value)<o:p></o:p></span></h3>
+
+<p>возвращает: Any<br>
+&quot;Сохраняет&quot; данные в элементе под определенным именем и также
+возвращает значение. Функция очень полезна для &quot;прикрепления&quot; данных
+к элементу. К тому же значения могут иметь любой формат!</p>
+
+<p>Сохраняет, а затем получает значения из элемента div.</p>
+
+<pre><span class=doctype><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; <o:p></o:p></span></span></pre><pre><span
+class=doctype><span lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>                    </span>&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>html</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>head</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>meta</span><span class=attribute-name> http-equiv</span>=<span
+class=attribute-value>&quot;Content-Type&quot; </span><span
+class=attribute-name>content</span>=<span class=attribute-value>&quot;text/html; charset=utf-8&quot;</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>script</span><span class=attribute-name> src</span>=<span
+class=attribute-value>&quot;js/jquery-1.2.3.js&quot;</span>&gt;&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).ready(function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;div&quot;).data(&quot;test&quot;, { first: 16, last: &quot;pizza!&quot; });<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;span:first&quot;).text($(&quot;div&quot;).data(&quot;test&quot;).first);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;span:last&quot;).text($(&quot;div&quot;).data(&quot;test&quot;).last);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>div { color:blue; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>span { color:red; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>head</span>&gt;<o:p></o:p></span></pre><pre>&lt;<span
+class=start-tag>body</span>&gt;</pre><pre><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>div</span>&gt;</pre><pre><span style='mso-spacerun:yes'>    </span>Были сохранены значения</pre><pre><span style='mso-spacerun:yes'>    </span>&lt;<span
+class=start-tag>span</span>&gt;&lt;/<span class=end-tag>span</span>&gt;</pre><pre><span style='mso-spacerun:yes'>    </span>и<span
+lang=EN-US style='mso-ansi-language:EN-US'> <o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>&lt;<span
+class=start-tag>span</span>&gt;&lt;/<span class=end-tag>span</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>div</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>body</span>&gt;<o:p></o:p></span></pre><pre>&lt;/<span
+class=end-tag>html</span>&gt;</pre>
+
+<h3>removeData(name)</h3>
+
+<p>возвращает: jQuery<br>
+Удаляет данные с соответствующим именем из элемента. Эта функция дополняет
+$(...).data(name, value). </p>
+
+<h2><span style='color:#CC6600'>jQuery - дополнения<o:p></o:p></span></h2>
+
+<h3>jQuery.fn.extend(object)</h3>
+
+<p>возвращает: jQuery<br>
+Расширяет возможности jQuery, предоставляя новые методы (обычно используется
+при создании плагинов к jQuery). Может использоваться для добавления функций в
+добавленные методы. Принимает объект, который должен быть объединен с объектом
+jQuery.<br>
+Добавляем два метода плагина.</p>
+
+<pre>jQuery.<span style='color:#006600'>fn</span>.<span style='color:#006600'>extend</span><span
+style='color:#66CC66'>({</span></pre><pre><span style='mso-spacerun:yes'>  </span>check: <b><span
+style='color:#003366'>function</span></b><span style='color:#66CC66'>()</span> <span
+style='color:#66CC66'>{</span></pre><pre><span style='mso-spacerun:yes'>    </span><b><span
+style='color:#000066'>return</span></b> <b><span style='color:#000066'>this</span></b>.<span
+style='color:#006600'>each</span><span style='color:#66CC66'>(</span><b><span
+style='color:#003366'>function</span></b><span style='color:#66CC66'>()</span> <span
+style='color:#66CC66'>{</span></pre><pre><span style='mso-spacerun:yes'>      </span><b><span
+lang=EN-US style='color:#000066;mso-ansi-language:EN-US'>this</span></b><span
+lang=EN-US style='mso-ansi-language:EN-US'>.<span style='color:#006600'>checked</span> = <b><span
+style='color:#003366'>true</span></b>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+style='color:#66CC66'>})</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+style='color:#66CC66'>}</span>,<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>uncheck: <b><span
+style='color:#003366'>function</span></b><span style='color:#66CC66'>()</span> <span
+style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><b><span
+style='color:#000066'>return</span></b> <b><span style='color:#000066'>this</span></b>.<span
+style='color:#006600'>each</span><span style='color:#66CC66'>(</span><b><span
+style='color:#003366'>function</span></b><span style='color:#66CC66'>()</span> <span
+style='color:#66CC66'>{</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span><b><span
+style='color:#000066'>this</span></b>.<span style='color:#006600'>checked</span> = <b><span
+style='color:#003366'>false</span></b>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+style='color:#66CC66'>})</span>;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+style='color:#66CC66'>}</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='color:#66CC66;mso-ansi-language:EN-US'>})</span><span lang=EN-US
+style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>jQuery.extend(object)<o:p></o:p></span></h3>
+
+<p>Расширяет<span style='mso-ansi-language:EN-US'> </span>возможности<span
+lang=EN-US style='mso-ansi-language:EN-US'> jQuery. </span>Может
+использоваться, чтобы добавить функции в пространство имен jQuery. Принимает
+объект, который должен быть объединен с объектом jQuery.<br>
+Добавляем две функции в пространство имен jQuery.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>jQuery.extend({<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>min: function(a, b) { return a &lt; b ? a : b; },<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>max: function(a, b) { return a &gt; b ? a : b; }<o:p></o:p></span></pre><pre>});</pre>
+
+<h2><span style='color:#CC6600'>Функциональная совместимость<o:p></o:p></span></h2>
+
+<h3>jQuery.noConflict()</h3>
+
+<p>возвращает: jQuery<br>
+Выполните эту функцию, чтобы передать контроль над переменной $ любой другой
+библиотеке, которая используется ранее. Это гарантирует, что jQuery не будет
+конфликтовать с $ другой используемой библиотеки. Используя эту функцию Вы
+сможете осуществить доступ к jQuery только через переменную 'jQuery'. Например,
+где Вы использовали $(&quot;div p&quot;), теперь должны использовать
+jQuery(&quot;div p&quot;).</p>
+
+<h3>jQuery.noConflict(extreme)</h3>
+
+<p>возвращает: jQuery<br>
+Это сверхэкстримальная версия простого метода noConflict возвращает контроль
+над переменными $ и jQuery их владельцу. <strong><span style='color:red'>Использовать
+с осторожностью!</span></strong> Аргумент необходимо установить в true, чтобы
+осуществить возврат к jQuery и переменным.</p>
+
+</div>
+
+</body>
+
+</html>

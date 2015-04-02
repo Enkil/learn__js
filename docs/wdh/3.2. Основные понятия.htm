@@ -1,0 +1,415 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: JavaScript - Основные понятия</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/js01.htm" title="Введение в JavaScript">
+<link rel="Next" href="http://wdh.suncloud.ru/js03.htm" title="Типы данных">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="3.2.%20%CE%F1%ED%EE%E2%ED%FB%E5%20%EF%EE%ED%FF%F2%E8%FF_files/load.js"></script>
+<script type="text/javascript" src="3.2.%20%CE%F1%ED%EE%E2%ED%FB%E5%20%EF%EE%ED%FF%F2%E8%FF_files/link.js"></script><link rel="stylesheet" type="text/css" href="3.2.%20%CE%F1%ED%EE%E2%ED%FB%E5%20%EF%EE%ED%FF%F2%E8%FF_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js01.htm"><img name="imglefta" src="3.2.%20%CE%F1%ED%EE%E2%ED%FB%E5%20%EF%EE%ED%FF%F2%E8%FF_files/nnleft.gif" alt="" title="Введение в JavaScript" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="3.2.%20%CE%F1%ED%EE%E2%ED%FB%E5%20%EF%EE%ED%FF%F2%E8%FF_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/js03.htm"><img name="imgrighta" src="3.2.%20%CE%F1%ED%EE%E2%ED%FB%E5%20%EF%EE%ED%FF%F2%E8%FF_files/nnright.gif" alt="" title="Типы данных" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=172" target="_blank"><img src="3.2.%20%CE%F1%ED%EE%E2%ED%FB%E5%20%EF%EE%ED%FF%F2%E8%FF_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref32">Глава 3.2. Основные понятия</a></h2>
+
+      <h3><a name="ref321">3.2.1. Структура программ на языке JavaScript</a></h3>
+
+      <p>Как и во многих других языках программирования, программа (сценарий) на языке JavaScript&nbsp;—
+        это текст, состоящий из <em>операторов</em>, <em>блоков</em>, т.&nbsp;е. взаимосвязанных наборов
+        операторов, и <em>комментариев</em>. Операторы могут содержать <em>переменные</em>, <em>константы</em>
+        и <em>выражения</em>. Следующий пример начинается с определения функции, которое состоит из
+        блока, содержащего два оператора. За определением следуют два оператора, не образующих блока.</p>
+
+      <div class="code">
+<pre class="code">function convert(inches) {
+  cm = inches * 2.54;	// Эти два оператора заключены в блок.
+  meters = inches / 39.37;
+}
+convert(inches);	// Эти два оператора не образуют блока.
+km = meters / 1000;</pre>
+      </div>
+
+      <p>Как мы видим из этого примера, каждый оператор JavaScript начинается с новой строки (что не
+        обязательно, но рекомендуется) и заканчивается точкой с запятой (что также не обязательно, если
+        оператор является последним в строке). <em>Блок</em>&nbsp;— это набор операторов, заключенный
+        в фигурные скобки <tt>{}</tt>.</p>
+
+      <p><a name="empty-stat">Строка сценария, содержащая только точку с запятой, считается <em>пустым
+        оператором</em>, т.&nbsp;е. оператором, не выполняющим никакого действия.</a> Тем не менее,
+        в некоторых случаях использование пустого оператора удобно, например:</p>
+
+      <div class="code">
+<pre class="code">while (i--)	// Цикл состоит в уменьшении i до нуля,
+  ;		// поэтому его телом является пустой оператор.</pre>
+      </div>
+
+      <p>Для удобства чтения программы и форматирования ее текста могут использоваться <a name="space-char"><em>символы
+        пробела</em></a>. Эти символы игнорируются всюду, кроме строковых констант и регулярных выражений,
+        в которых они являются значимыми. Символами пробела в JavaScript считаются следующие символы
+        Unicode:</p>
+
+      <ul>
+        <li>пробел (\u0020);</li>
+        <li>табуляция (\u0009);</li>
+        <li>вертикальная табуляция (\u000B);</li>
+        <li>перевод формата (\u000C);</li>
+        <li>неразрывный пробел (\u00A0).</li>
+      </ul>
+
+      <p><a name="line-break"><em>Символы разрыва строки</em></a> также используются для форматирования
+        текста, но они могут иметь значение и с точки зрения синтаксиса программы. Формальные правила
+        использования разрывов строк в JavaScript довольно сложны, но на практике достаточно помнить
+        только то, что обычно рекомендуется начинать новый оператор с новой строки. Символами разрыва
+        строки в JavaScript считаются следующие символы Unicode:</p>
+
+      <ul>
+        <li>перевод строки (\u000A);</li>
+        <li>возврат каретки (\u000D);</li>
+        <li>разделитель строк (\u2028);</li>
+        <li>разделитель абзацов (\u2029).</li>
+      </ul>
+
+      <h3><a name="ref322">3.2.2. Комментарии</a></h3>
+
+      <p>Комментарии в JavaScript могут быть однострочными и многострочными. Однострочные комментарии
+        начинаются с символов <tt>//</tt> и продолжаются до конца текущей строки, как показано в приведенном
+        выше примере. Многострочные комментарии заключаются в маркеры <tt>/*</tt> и <tt>*/</tt>, например:</p>
+
+      <div class="code">
+<pre class="code">/* Это пример комментария,
+   содержащего несколько строк. */</pre>
+      </div>
+
+      <p>Многострочные комментарии не могут быть вложены друг в друга. Текст комментария полностью игнорируется
+        при выполнении программы.</p>
+
+      <h3><a name="ref323">3.2.3. Зарезервированные слова</a></h3>
+
+      <p>Следующие имена являются ключевыми словами языка JavaScript и не могут употребляться в качестве
+        идентификаторов:</p>
+
+      <div class="indent">
+        <table border="0" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <td><strong>break</strong></td>
+            <td><strong>delete</strong></td>
+            <td><strong>function</strong></td>
+            <td><strong>return</strong></td>
+            <td><strong>typeof</strong></td>
+          </tr>
+          <tr>
+            <td><strong>case</strong></td>
+            <td><strong>do</strong></td>
+            <td><strong>if</strong></td>
+            <td><strong>switch</strong></td>
+            <td><strong>var</strong></td>
+          </tr>
+          <tr>
+            <td><strong>catch</strong></td>
+            <td><strong>else</strong></td>
+            <td><strong>in</strong></td>
+            <td><strong>this</strong></td>
+            <td><strong>void</strong></td>
+          </tr>
+          <tr>
+            <td><strong>continue</strong></td>
+            <td><strong>finally</strong></td>
+            <td><strong>instanceof</strong></td>
+            <td><strong>throw</strong></td>
+            <td><strong>while</strong></td>
+          </tr>
+          <tr>
+            <td><strong>default</strong></td>
+            <td><strong>for</strong></td>
+            <td><strong>new</strong></td>
+            <td><strong>try</strong></td>
+            <td><strong>with</strong></td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Следующие имена являются ключевыми словами в предлагаемых расширениях языка JavaScript и также
+        не должны употребляться в качестве идентификаторов в целях совместимости с будущими версиями
+        языка:</p>
+
+      <div class="indent">
+        <table border="0" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <td><strong>absract</strong></td>
+            <td><strong>double</strong></td>
+            <td><strong>implements</strong></td>
+            <td><strong>private</strong></td>
+            <td><strong>throws</strong></td>
+          </tr>
+          <tr>
+            <td><strong>boolean</strong></td>
+            <td><strong>enum</strong></td>
+            <td><strong>import</strong></td>
+            <td><strong>protected</strong></td>
+            <td><strong>transient</strong></td>
+          </tr>
+          <tr>
+            <td><strong>byte</strong></td>
+            <td><strong>export</strong></td>
+            <td><strong>int</strong></td>
+            <td><strong>public</strong></td>
+            <td><strong>volatile</strong></td>
+          </tr>
+          <tr>
+            <td><strong>char</strong></td>
+            <td><strong>extends</strong></td>
+            <td><strong>interface</strong></td>
+            <td><strong>short</strong></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><strong>class</strong></td>
+            <td><strong>final</strong></td>
+            <td><strong>long</strong></td>
+            <td><strong>static</strong></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><strong>const</strong></td>
+            <td><strong>float</strong></td>
+            <td><strong>native</strong></td>
+            <td><strong>super</strong></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><strong>debugger</strong></td>
+            <td><strong>goto</strong></td>
+            <td><strong>package</strong></td>
+            <td><strong>synchronized</strong></td>
+            <td></td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h3><a name="ref324">3.2.4. Идентификаторы</a></h3>
+
+      <p><a name="id"><em>Идентификаторы</em></a> используются в JavaScript в качестве имен переменных.
+        Они могут начинаться с латинской буквы, символа "$" (знак доллара) или символа "_"
+        (подчеркивание) и должны состоять из латинских букв, цифр и символов "$" и "_".
+        Знак доллара рекомендуется использовать только в идентификаторах программ, которые автоматически
+        генерируются другими программами. Идентификаторы не могут совпадать с зарезервированными словами.
+        Два идентификатора считаются равными, если они текстуально совпадают; это означает, что JavaScript
+        проводит различие между строчными и прописными буквами. Примеры синтаксически правильных идентификаторов:</p>
+
+      <div class="indent">
+        <table border="0" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <td><dfn>MyIdentfier</dfn></td>
+            <td><dfn>another_identifier</dfn></td>
+            <td><dfn>$id</dfn></td>
+            <td><dfn>_function123</dfn></td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h3><a name="ref325">3.2.5. Переменные</a></h3>
+
+      <h4><a name="ref3251">3.2.5.1. Декларация переменных</a></h4>
+
+      <p><a name="var"><em>Переменные</em></a> используются в качестве символических имен, принимающих
+        различные значения. Имена переменных задаются <a href="#id">идентификаторами</a>. Переменная
+        создается в момент ее декларации. JavaScript позволяет декларировать переменную двумя способами:</p>
+
+      <ul>
+        <li>С помощью ключевого слова <strong>var</strong>, например, <code>var x;</code> или <code>var
+          x = 21;</code>.</li>
+        <li>Просто присваиванием переменной значения, например <code>x = 21;</code>.</li>
+      </ul>
+
+      <p>Если декларация переменной не содержит присваивания ей значения, то ее значением считается
+        <strong>undefined</strong>. Мы можем проверять, определено ли значение переменной, и предпринимать
+        соответствующие действия. Пример:</p>
+
+      <div class="code">
+<pre class="code">var text;
+if (text == undefined)
+  document.write("Текст не задан");
+else
+  document.write("Текст:" + text);</pre>
+      </div>
+
+      <p>В этом примере значение переменной <dfn>text</dfn> не определено, поэтому будет выполнен первый
+        оператор <dfn>document.write</dfn>.</p>
+
+      <p>В самом общем виде декларация переменных имеет вид:</p>
+
+<pre class="syntax"><strong>var</strong> идентификатор[=инициализатор]?[,идентификатор[=инициализатор]?]?</pre>
+
+      <p>Здесь <em>инициализатор</em>&nbsp;— это любое выражение, значение которого присваивается
+        переменной при ее создании. Пример:</p>
+
+      <div class="code">
+<pre class="code">var a = 0, b, c = "текст", x, y = false;</pre>
+      </div>
+
+      <h4><a name="ref3252">3.2.5.2. Область действия переменных</a></h4>
+
+      <p>Область действия переменной определяется положением ее декларации в тексте программы. Существуют
+        три типа исполняемого кода JavaScript, называемых <em>контекстом исполнения</em>:</p>
+
+      <ul>
+        <li><em>Глобальный контекст</em>, т.&nbsp;е. исходный текст сценариев, не включая тела функций.</li>
+        <li><em>Локальный контекст</em>, т.&nbsp;е. исходный текст сценариев, являющийся телом функции,
+          а также аргумент конструктора встроенного объекта <strong><a href="http://wdh.suncloud.ru/js08.htm#ref383">Function</a></strong>.
+          Точнее говоря, если последним параметром конструктора <strong><a href="http://wdh.suncloud.ru/js08.htm#ref383">Function</a></strong>
+          является строка текста, то она интерпретируется как тело функции.</li>
+        <li><em>Eval-контекст</em>, т.&nbsp;е. аргумент метода <a href="http://wdh.suncloud.ru/js08.htm#meval"><strong>eval</strong></a>.
+          Если параметром метода <a href="http://wdh.suncloud.ru/js08.htm#meval"><strong>eval</strong></a> является строка
+          текста, то она интерпретируется как программа на языке JavaScript, имеющая тот же контекст,
+          в котором был вызван этот метод.</li>
+      </ul>
+
+      <p>Иными словами, любая переменная, декларированная вне тела всех функций, является <em>глобальной</em>
+        и доступна всюду в тексте данной программы. Переменная, декларированная в теле функции, является
+        <em>локальной</em> и доступна только внутри тела этой функции. Об особенностях eval-контекста
+        см. описание метода <a href="http://wdh.suncloud.ru/js08.htm#meval"><strong>eval</strong></a>.</p>
+
+      <p>Для декларации глобальных переменных ключевое слово <strong>var</strong> не обязательно. Однако,
+        оно обязательно при декларации локальных переменных.</p>
+
+      <h3><a name="ref326">3.2.6. Константы</a></h3>
+
+      <p><a name="const"><em>Константы</em></a> используются для задания постоянных значений. В JavaScript
+        имеется несколько типов констант, соответствующих его встроенным типам, а именно:</p>
+
+      <ul>
+        <li>нулевая константа <strong>null</strong> типа <strong>Null</strong>;</li>
+        <li>логические константы <strong>true</strong> (истина) и <strong>false</strong> (ложь) типа
+          <strong>Boolean</strong>;</li>
+        <li>строковые константы типа <strong>String</strong>, например, "Привет всем!";</li>
+        <li>числовые константы типа <strong>Number</strong>, например, 21 или 3.1415926.</li>
+      </ul>
+
+      <p>Особую группу констант составляют <em>регулярные выражения</em>, которые описаны в <a href="http://wdh.suncloud.ru/js05.htm#ref35">гл. 3.5</a>.</p>
+
+      <h4><a name="ref3261">3.2.6.1. Строковые константы</a></h4>
+
+      <p><em>Строковая константа</em>&nbsp;— это нуль или более символов Unicode, заключенных в
+        одинарные или двойные кавычки. Обычно строковые константы заключают в двойные кавычки, а одинарные
+        кавычки используются только для тех строк, которые сами содержат двойную кавычку. Примеры:</p>
+
+      <div class="code">
+<pre class="code">"Это строковая константа."
+'"Эй, вы, там наверху!", - пела Алла Пугачева.'</pre>
+      </div>
+
+      <p>Строка, не содержащая символов ('' или ""), называется пустой строкой. Символы Unicode,
+        входящие в состав строки, могут задаваться своим числовым кодом с помощью <em>escape-последовательностей</em>
+        вида <strong>\uXXXX</strong>, где XXXX&nbsp;— шестнадцатеричный код символа Unicode. Символы
+        с кодами, меньше 256, могут задаваться escape-последовательностями вида <strong>\xXX</strong>,
+        где XX&nbsp;— шестнадцатеричный код символа Unicode. Кроме того, несколько символов могут
+        обозначаться специальными escape-последовательностями:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="7" cellspacing="0">
+          <tbody><tr>
+            <td><strong>\0</strong></td>
+            <td>\u0000</td>
+            <td>нуль (NUL)</td>
+          </tr>
+          <tr>
+            <td><strong>\b</strong></td>
+            <td>\u0008</td>
+            <td>забой (BS)</td>
+          </tr>
+          <tr>
+            <td><strong>\t</strong></td>
+            <td>\u0009</td>
+            <td>табуляция (HT)</td>
+          </tr>
+          <tr>
+            <td><strong>\n</strong></td>
+            <td>\u000A</td>
+            <td>перевод строки (LF)</td>
+          </tr>
+          <tr>
+            <td><strong>\v</strong></td>
+            <td>\u000B</td>
+            <td>вертикальная табуляция (VT)</td>
+          </tr>
+          <tr>
+            <td><strong>\f</strong></td>
+            <td>\u000C</td>
+            <td>перевод формата (FF)</td>
+          </tr>
+          <tr>
+            <td><strong>\r</strong></td>
+            <td>\u000D</td>
+            <td>возврат каретки (CR)</td>
+          </tr>
+          <tr>
+            <td><strong>\"</strong></td>
+            <td>\u0022</td>
+            <td>двойная кавычка (")</td>
+          </tr>
+          <tr>
+            <td><strong>\'</strong></td>
+            <td>\u0027</td>
+            <td>одинарная кавычка (')</td>
+          </tr>
+          <tr>
+            <td><strong>\\</strong></td>
+            <td>\u005C</td>
+            <td>обратная косая черта (\)</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Пример строковых констант, содержащих специальные символы:</p>
+
+      <div class="code">
+<pre class="code">"Графический образ хранится в файле C:\\webstuff\\mypage\\gifs\\garden.gif."
+"Эта строка заканчивается разрывом строки.\r\n"</pre>
+      </div>
+
+      <p class="note"><strong>Примечание</strong>. Internet Explorer распознает символ "\v" только в регулярных выражениях.</p>
+
+      <h4><a name="ref3262">3.2.6.2. Числовые константы</a></h4>
+
+      <p><em>Числовые константы</em> могут быть как целыми, так и плавающими. JavaScript не проводит
+        между ними различия и, в действительности, хранит все числа как плавающие. Целые числа могут
+        быть положительными, отрицательными и нулем. По системе счисления они могут быть десятичными,
+        восьмеричными и шестнадцатеричными:</p>
+
+      <ul>
+        <li>Десятичные числа&nbsp;— это просто набор десятичных цифр, например: 1234, -256.</li>
+        <li>Восьмеричные числа начинаются с <strong>0</strong> и состоят из цифр 0&nbsp;— 7, например:
+          01234, -067.</li>
+        <li>Шестнадцатеричные числа начинаются с <strong>0x</strong> или <strong>0X</strong> и состоят
+          из цифр 0&nbsp;— 9 и букв A&nbsp;— F в любом регистре, например: 0xA000, 0Xa000,
+          -0x1234.</li>
+      </ul>
+
+      <p>Плавающие числа отличаются наличием или десятичной точки, или буквы <strong>e</strong> в любом
+        регистре, задающей степень десяти в научной нотации, или того и другого. Примеры плавающих чисел:</p>
+
+      <div class="indent">
+        <table border="0" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <td>0.0001, .0001, 1e-4, 1.0E-4</td>
+            <td>// Четыре плавающих числа, равных друг другу</td>
+          </tr>
+          <tr>
+            <td>-1.23e2</td>
+            <td>// Плавающее число, равное -123</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js01.htm"><img name="imgleftb" src="3.2.%20%CE%F1%ED%EE%E2%ED%FB%E5%20%EF%EE%ED%FF%F2%E8%FF_files/nnleft.gif" alt="" title="Введение в JavaScript" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="3.2.%20%CE%F1%ED%EE%E2%ED%FB%E5%20%EF%EE%ED%FF%F2%E8%FF_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/js03.htm"><img name="imgrightb" src="3.2.%20%CE%F1%ED%EE%E2%ED%FB%E5%20%EF%EE%ED%FF%F2%E8%FF_files/nnright.gif" alt="" title="Типы данных" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

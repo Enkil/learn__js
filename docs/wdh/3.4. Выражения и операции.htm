@@ -1,0 +1,636 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: JavaScript - Выражения и операции</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/js03.htm" title="Типы данных">
+<link rel="Next" href="http://wdh.suncloud.ru/js05.htm" title="Регулярные выражения">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="3.4.%20%C2%FB%F0%E0%E6%E5%ED%E8%FF%20%E8%20%EE%EF%E5%F0%E0%F6%E8%E8_files/load.js"></script>
+<script type="text/javascript" src="3.4.%20%C2%FB%F0%E0%E6%E5%ED%E8%FF%20%E8%20%EE%EF%E5%F0%E0%F6%E8%E8_files/link.js"></script><link rel="stylesheet" type="text/css" href="3.4.%20%C2%FB%F0%E0%E6%E5%ED%E8%FF%20%E8%20%EE%EF%E5%F0%E0%F6%E8%E8_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js03.htm"><img name="imglefta" src="3.4.%20%C2%FB%F0%E0%E6%E5%ED%E8%FF%20%E8%20%EE%EF%E5%F0%E0%F6%E8%E8_files/nnleft.gif" alt="" title="Типы данных" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="3.4.%20%C2%FB%F0%E0%E6%E5%ED%E8%FF%20%E8%20%EE%EF%E5%F0%E0%F6%E8%E8_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/js05.htm"><img name="imgrighta" src="3.4.%20%C2%FB%F0%E0%E6%E5%ED%E8%FF%20%E8%20%EE%EF%E5%F0%E0%F6%E8%E8_files/nnright.gif" alt="" title="Регулярные выражения" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=2857" target="_blank"><img src="3.4.%20%C2%FB%F0%E0%E6%E5%ED%E8%FF%20%E8%20%EE%EF%E5%F0%E0%F6%E8%E8_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref34">Глава 3.4. Выражения и операции</a></h2>
+
+      <p><a name="expr"><em>Выражения</em></a> в JavaScript, как и в других языках программирования,
+        представляют собой комбинации <a href="http://wdh.suncloud.ru/js02.htm#var">переменных</a>, <a href="http://wdh.suncloud.ru/js02.htm#const">констант</a>
+        и операций, дающие осмысленный результат. Этот результат может быть числом, текстовой строкой,
+        логическим значением или объектом. Соответственно все выражения JavaScript подразделяются на
+        <em>арифметические</em>, <em>строковые</em>, <em>логические</em> и <em>объектные</em>.</p>
+
+      <p>Существует два типа выражений: те, которые присваивают значение некоторой переменной (например,
+        <code>x = 2 + 3</code>), и те, которые просто имеют некое значение (например, <code>2 + 3</code>).
+        Первый тип выражений называется <em>операциями присваивания</em>.</p>
+
+      <p>Все операции в JavaScript подразделяются на следующие:</p>
+
+      <ul>
+        <li><a href="#ref341">операции сравнения</a>;</li>
+        <li><a href="#ref342">арифметические операции</a>;</li>
+        <li><a href="#ref343">битовые операции</a>;</li>
+        <li><a href="#ref344">логические операции</a>;</li>
+        <li><a href="#ref345">строковые операции</a>;</li>
+        <li><a href="#ref346">операции присваивания</a>;</li>
+        <li><a href="#ref347">прочие операции</a>.</li>
+      </ul>
+
+      <h3><a name="ref341">3.4.1. Операции сравнения</a></h3>
+
+      <p><em>Операции сравнения</em> сравнивают два операнда и возвращают логическое значение, означающее
+        результат этого сравнения. Строки сравниваются в <a href="http://wdh.suncloud.ru/glossary.htm#lex">лексикографическом порядке</a> в кодировке
+        Unicode. Если типы операндов различны, то делается попытка <a href="http://wdh.suncloud.ru/js03.htm#ref332">преобразовать их к одному типу</a>.
+        При этом:</p>
+
+      <ul>
+        <li>Операции "больше", "меньше", "не больше" и "не меньше"
+          сначала пытаются преобразовать операнды в числа, а, если это невозможно, то в строки, а затем
+          производят их сравнение.</li>
+        <li>Операции "равно" и "не равно" пытаются преобразовать операнды в строки,
+          затем в числа и в логические значения, а затем производят их сравнение.</li>
+        <li>Операции "тождественно" и "не тождественно" не преобразовывают типы
+          данных: два операнда считаются тождественно равными, если они имеют одинаковые типы и одинаковые
+          значения.</li>
+      </ul>
+
+      <table border="1" cellpadding="5" cellspacing="0" width="100%">
+        <caption><a name="table31">Таблица 3.1. Операции сравнения</a></caption>
+        <tbody><tr>
+          <th>Операция</th>
+          <th>Название</th>
+          <th>Описание</th>
+        </tr>
+        <tr>
+          <td align="center"><tt>a &lt; b</tt></td>
+          <td>Меньше</td>
+          <td>Возвращает <strong>true</strong>, если левый операнд меньше, чем правый операнд.</td>
+        </tr>
+        <tr>
+          <td align="center"><tt>a &gt; b</tt></td>
+          <td>Больше</td>
+          <td>Возвращает <strong>true</strong>, если левый операнд больше, чем правый операнд.</td>
+        </tr>
+        <tr>
+          <td align="center"><tt>a &lt;= b</tt></td>
+          <td>Не больше</td>
+          <td>Возвращает <strong>true</strong>, если левый операнд меньше или равен правому операнду.</td>
+        </tr>
+        <tr>
+          <td align="center"><tt>a =&gt; b</tt></td>
+          <td>Не меньше</td>
+          <td>Возвращает <strong>true</strong>, если левый операнд больше или равен правому операнду.</td>
+        </tr>
+        <tr>
+          <td align="center"><tt>a == b</tt></td>
+          <td>Равно</td>
+          <td>Возвращает <strong>true</strong>, если левый операнд равен правому операнду.</td>
+        </tr>
+        <tr>
+          <td align="center"><tt>a != b</tt></td>
+          <td>Не равно</td>
+          <td>Возвращает <strong>true</strong>, если левый операнд не равен правому операнду.</td>
+        </tr>
+        <tr>
+          <td align="center"><tt>a === b</tt></td>
+          <td>Тождественно</td>
+          <td>Возвращает <strong>true</strong>, если левый операнд тождественно равен правому операнду.</td>
+        </tr>
+        <tr>
+          <td align="center"><tt>a !== b</tt></td>
+          <td>Не тождественно</td>
+          <td>Возвращает <strong>true</strong>, если левый операнд тождественно не равен правому операнду.</td>
+        </tr>
+      </tbody></table>
+
+      <p>Примеры:</p>
+
+      <div class="code">
+<pre class="code">var x = "3";
+a = x == 3;	// a равно true
+b = x === 3;	// b равно false (разные типы)</pre>
+      </div>
+
+      <h3><a name="ref342">3.4.2. Арифметические операции</a></h3>
+
+      <p><em>Арифметические операции</em> применяются к числовым операндам и возвращают числовое значение,
+        означающее результат операции. Если типы операндов различны, то делается попытка <a href="http://wdh.suncloud.ru/js03.htm#ref332">преобразовать их к числовому типу</a>. При этом:</p>
+
+      <ul>
+        <li>Операция "сложение" выполняется только тогда, когда оба операнда являются числами
+          или логическими значениями. Если хотя бы один операнд является строкой, то производится <a href="#ref345">конкатенация строк</a>.</li>
+        <li>Остальные операции преобразуют операнды в числа, а затем выполняют операцию.</li>
+        <li>Операции "инкремент" и "декремент" применяются только к переменным.</li>
+      </ul>
+
+      <table border="1" cellpadding="5" cellspacing="0" width="100%">
+        <caption><a name="table32">Таблица 3.2. Арифметические операции</a></caption>
+        <tbody><tr>
+          <th>Операция</th>
+          <th>Название</th>
+          <th>Описание</th>
+        </tr>
+        <tr>
+          <td align="center"><tt>a + b</tt></td>
+          <td>Сложение</td>
+          <td>Возвращает сумму двух операндов.</td>
+        </tr>
+        <tr>
+          <td align="center"><tt>a - b</tt></td>
+          <td>Вычитание</td>
+          <td>Возвращает разность от вычитания правого операнда из левого.</td>
+        </tr>
+        <tr>
+          <td align="center"><tt>a * b</tt></td>
+          <td>Умножение</td>
+          <td>Возвращает произведение двух операндов.</td>
+        </tr>
+        <tr>
+          <td align="center"><tt>a / b</tt></td>
+          <td>Деление</td>
+          <td>Возвращает частное от деления левого операнда на правый.</td>
+        </tr>
+        <tr>
+          <td align="center"><tt>a % b</tt></td>
+          <td>Остаток по модулю</td>
+          <td>Возвращает целый остаток от деления левого операнда на правый. Плавающие числа перед операцией
+            округляются до целых.</td>
+        </tr>
+        <tr>
+          <td align="center"><tt>++</tt></td>
+          <td>Инкремент</td>
+          <td>Унарная операция. Увеличивает значение переменной на 1. Если используется как префикс
+            (<tt>++a</tt>), возвращает значение операнда после увеличения его на 1. Если используется
+            как постфикс (<tt>a++</tt>), возвращает значение операнда перед увеличением его на 1. </td>
+        </tr>
+        <tr>
+          <td align="center"><tt>--</tt></td>
+          <td>Декремент</td>
+          <td>Унарная операция. Уменьшает значение переменной на 1. Если используется как префикс (<tt>--a</tt>),
+            возвращает значение операнда после уменьшения его на 1. Если используется как постфикс (<tt>a--</tt>),
+            возвращает значение операнда перед уменьшением его на 1. </td>
+        </tr>
+        <tr>
+          <td align="center"><tt>-a</tt></td>
+          <td>Смена знака</td>
+          <td>Унарная операция. Возвращает арифметическое отрицание операнда.</td>
+        </tr>
+      </tbody></table>
+
+      <p>Примеры:</p>
+
+      <div class="code">
+<pre class="code">var i, j, k;
+i = 19 % 6.8;	// i равно 5
+k = 2;
+j = k++;	// j равно 2, k равно 3
+j = ++k;	// j и k равны 4</pre>
+      </div>
+
+      <h3><a name="ref343">3.4.3. Битовые операции</a></h3>
+
+      <p><em>Битовые операции</em> применяются к числовым операндам, представленным как двоичные числа
+        (т.&nbsp;е. как цепочки из 32 битов), и возвращают числовое значение, означающее результат операции.
+        Перед выполнением операции операнды преобразуются в целые числа, а результат операции преобразуется
+        в <a href="http://wdh.suncloud.ru/js03.htm#ref3315"><strong>Number</strong></a>.</p>
+
+      <p><img src="3.4.%20%C2%FB%F0%E0%E6%E5%ED%E8%FF%20%E8%20%EE%EF%E5%F0%E0%F6%E8%E8_files/plus.gif" alt="WDH+"> О проблемах, связанных с этими преобразованиями см.
+        <a target="_blank" href="http://go.suncloud.ru/to.asp?workshop/extreme/lastbit/lastbit.htm">WDH+: Последний бит</a>.</p>
+
+      <table border="1" cellpadding="5" cellspacing="0" width="100%">
+        <caption><a name="table33">Таблица 3.3. Битовые операции</a></caption>
+        <tbody><tr>
+          <th>Операция</th>
+          <th>Название</th>
+          <th>Описание</th>
+        </tr>
+        <tr>
+          <td align="center"><tt>a &amp; b</tt></td>
+          <td>Побитовое AND</td>
+          <td>Возвращает в каждой битовой позиции 1, если соответствующие позиции обоих операндов равны
+            1.</td>
+        </tr>
+        <tr>
+          <td align="center"><tt>a | b</tt></td>
+          <td>Побитовое OR</td>
+          <td>Возвращает в каждой битовой позиции 1, если соответствующая позиция хотя бы одного операнда
+            равна 1.</td>
+        </tr>
+        <tr>
+          <td align="center"><tt>a ^ b</tt></td>
+          <td>Побитовое XOR</td>
+          <td>Возвращает в каждой битовой позиции 1, если соответствующая позиция ровно одного операнда
+            равна 1.</td>
+        </tr>
+        <tr>
+          <td align="center"><tt>~a</tt></td>
+          <td>Побитовое NOT</td>
+          <td>Унарная операция. Инвертирует каждую битовую позицию операнда.</td>
+        </tr>
+        <tr>
+          <td align="center"><tt>a &lt;&lt; b</tt></td>
+          <td>Сдвиг влево</td>
+          <td>Сдвигает двоичное представление левого операнда влево на количество бит, заданное вторым
+            операндом. Освобождающиеся справа биты заполняются нулями.</td>
+        </tr>
+        <tr>
+          <td align="center"><tt>a &gt;&gt; b</tt></td>
+          <td>Арифметический сдвиг вправо</td>
+          <td>Сдвигает двоичное представление левого операнда вправо на количество бит, заданное вторым
+            операндом. Освобождающиеся слева биты заполняются старшим (знаковым) битом.</td>
+        </tr>
+        <tr>
+          <td align="center"><tt>a &gt;&gt;&gt; b</tt></td>
+          <td>Логический сдвиг вправо</td>
+          <td>Сдвигает двоичное представление левого операнда вправо на количество бит, заданное вторым
+            операндом. Освобождающиеся слева биты заполняются нулями.</td>
+        </tr>
+      </tbody></table>
+
+      <p>Примеры:</p>
+
+      <div class="code">
+<pre class="code">var i, j, k;
+i = 15; j = 9;
+k = i &amp; j;	// k равно 9 (1111 &amp; 1001 = 1001)
+k = i | j;	// k равно 15 (1111 | 1001 = 1111)
+k = i ^ j;	// k равно 6 (1111 ^ 1001 = 0110)
+i = -14;	// двоичное значение 11111111 11111111 11111111 11110010
+j = i &gt;&gt; 2;	// j равно -4 (11111111 11111111 11111111 11111100)
+k = i &gt;&gt;&gt; 2;	// k равно 1073741820 (00111111 11111111 11111111 11111100)</pre>
+      </div>
+
+      <h3><a name="ref344">3.4.4. Логические операции</a></h3>
+
+      <p><em>Логические операции</em> применяются к логическим операндам и возвращают логическое значение,
+        означающее результат операции. Если типы операндов различны, то делается попытка <a href="http://wdh.suncloud.ru/js03.htm#ref332">преобразовать их к логическому типу</a>.</p>
+
+      <table border="1" cellpadding="5" cellspacing="0" width="100%">
+        <caption><a name="table34">Таблица 3.4. Логические операции</a></caption>
+        <tbody><tr>
+          <th>Операция</th>
+          <th>Название</th>
+          <th>Описание</th>
+        </tr>
+        <tr>
+          <td align="center"><tt>a &amp;&amp; b</tt></td>
+          <td>Логическое AND</td>
+          <td>Возвращает <strong>true</strong>, если оба операнда истинны. Если первый операнд ложен,
+            то возвращает <strong>false</strong>, не вычисляя значение второго операнда.</td>
+        </tr>
+        <tr>
+          <td align="center"><tt>a || b</tt></td>
+          <td>Логическое OR</td>
+          <td>Возвращает <strong>true</strong>, если хотя бы один операнд истинен. Если первый операнд
+            истинен, то возвращает <strong>true</strong>, не вычисляя значение второго операнда.</td>
+        </tr>
+        <tr>
+          <td align="center"><tt>!a</tt></td>
+          <td>Логическое NOT</td>
+          <td>Унарная операция. Возвращает <strong>true</strong>, если операнд ложен.</td>
+        </tr>
+      </tbody></table>
+
+      <p>Примеры:</p>
+
+      <div class="code">
+<pre class="code">var i, j, k;
+i = 3; j = 5;
+k = (i &lt; 4) &amp;&amp; (j &gt; 4);	// k равно true
+k = (i &lt; 4) || (j &gt; 5);	// k равно true
+k = !k;			// k равно false</pre>
+      </div>
+
+      <h3><a name="ref345">3.4.5. Строковые операции</a></h3>
+
+      <p>На сегодняшний день JavaScript поддерживает единственную строковую операцию, а именно <em>конкатенацию
+        строк</em>, которая обозначается символом "+". Если хотя бы один операнд является
+        строкой, то результатом операции является слияние строк-операндов. Примеры:</p>
+
+      <div class="code">
+<pre class="code">k = "Моя " + "строка";		// k равно "Моя строка"
+text = "Результат: " + 123;	// text равно "Результат: 123"</pre>
+      </div>
+
+      <h3><a name="ref346">3.4.6. Операции присваивания</a></h3>
+
+      <p><em>Операции присваивания</em> присваивают левому операнду результат операции, который определяется
+        правым операндом и самой операцией. Базовая операция присваивания имеет вид <code>a = b</code>,
+        что означает: присвоить переменной <tt>a</tt> значение операнда <tt>b</tt>. Все остальные операции
+        присваивания являются сокращениями других операций, совмещенных с присваиванием, как показано
+        в следующей таблице.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0" width="60%">
+          <caption><a name="table35">Таблица 3.5. Операции присваивания</a></caption>
+          <tbody><tr>
+            <th>Операция</th>
+            <th>Значение</th>
+          </tr>
+          <tr>
+            <td align="center"><tt>a += b</tt></td>
+            <td align="center"><tt>a = a + b</tt></td>
+          </tr>
+          <tr>
+            <td align="center"><tt>a -= b</tt></td>
+            <td align="center"><tt>a = a - b</tt></td>
+          </tr>
+          <tr>
+            <td align="center"><tt>a *= b</tt></td>
+            <td align="center"><tt>a = a * b</tt></td>
+          </tr>
+          <tr>
+            <td align="center"><tt>a /= b</tt></td>
+            <td align="center"><tt>a = a / b</tt></td>
+          </tr>
+          <tr>
+            <td align="center"><tt>a %= b</tt></td>
+            <td align="center"><tt>a = a % b</tt></td>
+          </tr>
+          <tr>
+            <td align="center"><tt>a &lt;&lt;= b</tt></td>
+            <td align="center"><tt>a = a &lt;&lt; b</tt></td>
+          </tr>
+          <tr>
+            <td align="center"><tt>a &gt;&gt;= b</tt></td>
+            <td align="center"><tt>a = a &gt;&gt; b</tt></td>
+          </tr>
+          <tr>
+            <td align="center"><tt>a &gt;&gt;&gt;= b</tt></td>
+            <td align="center"><tt>a = a &gt;&gt;&gt; b</tt></td>
+          </tr>
+          <tr>
+            <td align="center"><tt>a &amp;= b</tt></td>
+            <td align="center"><tt>a = a &amp; b</tt></td>
+          </tr>
+          <tr>
+            <td align="center"><tt>a |= b</tt></td>
+            <td align="center"><tt>a = a | b</tt></td>
+          </tr>
+          <tr>
+            <td align="center"><tt>a ^= b</tt></td>
+            <td align="center"><tt>a = a ^ b</tt></td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Операция присваивания возвращает значение, которое равно значению, присвоенному левому операнду.
+        Пример:</p>
+
+      <div class="code">
+<pre class="code">i = j = k = 0;	// все переменные получают значение 0</pre>
+      </div>
+
+      <h3><a name="ref347">3.4.7. Прочие операции</a></h3>
+
+      <h4><a name="ref3471">3.4.7.1. Условная операция</a></h4>
+
+      <p><em>Условная операция</em>&nbsp;— это единственная тернарная операция в JavaScript. Она
+        имеет вид:</p>
+
+<pre class="syntax">test ? value1 : value2</pre>
+
+      <p class="noindent">где <tt>test</tt>&nbsp;— любое логическое выражение, а <tt>value1</tt>
+        и <tt>value2</tt>&nbsp;— любые выражения. Если <tt>test</tt> истинно, то операция возвращает
+        значение <tt>value1</tt>, в противном случае она возвращает значение <tt>value2</tt>. Пример:</p>
+
+      <div class="code">
+<pre class="code">var status = (age &gt;= 18) ? "взрослый" : "подросток";</pre>
+      </div>
+
+      <h4><a name="ref3472">3.4.7.2. Операция запятая</a></h4>
+
+      <p><em>Операция запятая</em> вызывает последовательное вычисление значений двух выражений и возвращает
+        второе из них. Она имеет вид:</p>
+
+<pre class="syntax">expr1,expr2</pre>
+
+      <p class="noindent">где <tt>expr1</tt> и <tt>expr2</tt>&nbsp;— любые выражения. Основное
+        применение эта операция находит в операторе цикла <strong>for</strong>, поскольку последний
+        допускает только одно выражение, которое исполняется в конце каждого цикла. Операция запятая
+        позволяет объединить два выражения в одно и, тем самым, обойти это ограничение. Пример:</p>
+
+      <div class="code">
+<pre class="code">for (i = 0; i &lt; 10; <strong>i++, j++</strong>) {
+  k = i + j;
+}</pre>
+      </div>
+
+      <h4><a name="ref3473">3.4.7.3. Операция delete</a></h4>
+
+      <p><em>Операция delete</em> удаляет свойство объекта или элемент массива. Она имеет вид:</p>
+
+<pre class="syntax">delete expr</pre>
+
+      <p class="noindent">где <tt>expr</tt>&nbsp;— любое выражение, значением которого является
+        свойство объекта или элемент массива. Если удаление прошло успешно, то операция возвращает значение
+        <strong>true</strong>; если нет (например, если свойство объекта не может быть удалено), то
+        она возвращает значение <strong>false</strong>.</p>
+
+      <p>Эта операция может также применяться для удаления неявно декларированных переменных (т.&nbsp;е.
+        тех, декларация которых не содержит ключевого слова <strong><a href="http://wdh.suncloud.ru/js02.htm#var">var</a></strong>).</p>
+
+      <p>При удалении элемента массива длина массива и нумерация его элементов не изменяются, но удаленный
+        элемент становится неопределенным.</p>
+
+      <p>Примеры:</p>
+
+      <div class="code">
+<pre class="code">mynumber = new Number();	// создает новый объект
+mynumber.high = 100;		// создает новое свойство объекта
+delete mynumber.high;		// удаляет свойство объекта
+delete mynumber;		// удаляет объект
+langs = new Array("HTML", "CSS", "JavaScript", "Java");
+delete langs[2];		// удаляет элемент массива</pre>
+      </div>
+
+      <h4><a name="ref3474">3.4.7.4. Операция in</a></h4>
+
+      <p><em>Операция in</em> возвращает <strong>true</strong>, если левый операнд является свойством
+        правого операнда. Она имеет вид:</p>
+
+<pre class="syntax">property in object</pre>
+
+      <p class="noindent">где <tt>property</tt>&nbsp;— строковое выражение, значением которого
+        является имя свойства, или числовое выражение, задающее номер элемента массива, а <tt>object</tt>&nbsp;—
+        любое объектное выражение. Примеры:</p>
+
+      <div class="code">
+<pre class="code">mynumber = new Number();	// новый объект
+mynumber.high = 100;		// новое свойство объекта
+"high" in mynumber		// возвращает true
+langs = new Array("HTML", "CSS", "JavaScript", "Java");
+0 in langs			// возвращает true
+4 in langs			// возвращает false</pre>
+      </div>
+
+      <h4><a name="ref3475">3.4.7.5. Операция instanceof</a></h4>
+
+      <p><em>Операция instanceof</em> возвращает <strong>true</strong>, если данный объект относится
+        к данному классу объектов. Она имеет вид:</p>
+
+<pre class="syntax">object instanceof type</pre>
+
+      <p class="noindent">где <tt>object</tt>&nbsp;— любое объектное выражение, а <tt>type</tt>&nbsp;—
+        имя класса объектов. Примеры:</p>
+
+      <div class="code">
+<pre class="code">myDay = new Date(1958,5,21);	// новый объект
+myDay instanceof Date		// возвращает true</pre>
+      </div>
+
+      <h4><a name="ref3476">3.4.7.6. Операция new</a></h4>
+
+      <p><em>Операция new</em> создает новый объект путем вызова конструктора объектов. Она имеет вид:</p>
+
+<pre class="syntax">new type(arguments)</pre>
+
+      <p class="noindent">где <tt>type</tt>&nbsp;— имя конструктора, а <tt>arguments</tt>&nbsp;—
+        список параметров, разделенных запятыми, используемых для инициализации объекта. Если список
+        параметров пуст, то круглые скобки можно опустить. Примеры:</p>
+
+      <div class="code">
+<pre class="code">myObject = new Object;
+myArray = new Array();
+myDate = new Date("May 21 1958");
+myDay = new Date(1958,5,21);</pre>
+      </div>
+
+      <p>Подробнее о создании новых объектов см. <a href="http://wdh.suncloud.ru/js07.htm#ref3713">п. 3.7.1.3</a>.</p>
+
+      <h4><a name="ref3477">3.4.7.7. Операция this</a></h4>
+
+      <p><em>Операция this</em> возвращает указатель на текущий объект. Она должна использоваться в
+        выражениях вида:</p>
+
+<pre class="syntax">this.property</pre>
+
+      <p class="noindent">где <tt>property</tt>&nbsp;— имя свойства объекта.</p>
+
+      <p>Эта операция широко применяется в <a href="http://wdh.suncloud.ru/html01.htm#ref1147">обработчиках событий</a> HTML
+        для указания на объект, вызвавший данное событие. Например, следующий фрагмент HTML-документа
+        содержит поле ввода возраста и сценарий, проверяющий допустимость введенного значения.</p>
+
+      <div class="code">
+<pre class="code">&lt;SCRIPT type="text/javascript"&gt;
+function validate(obj, low, high) {
+  if ((obj.value &lt; low) || (obj.value &gt; high))
+    alert("Недопустимое значение!")
+}
+&lt;/SCRIPT&gt;
+&lt;INPUT type="text" name="age" size="3" onchange="validate(this, 18, 99)"&gt;</pre>
+      </div>
+
+      <p>Фактически, <tt>this</tt> указывает либо на <a href="http://wdh.suncloud.ru/js08.htm#ref381">глобальный объект</a>,
+        либо на тот объект, метод которого исполняется в данный момент. Об использовании этой операции
+        в конструкторах объектов см. <a href="http://wdh.suncloud.ru/js07.htm#ref3713">п. 3.7.1.3</a>.</p>
+
+      <h4><a name="ref3478">3.4.7.8. Операция typeof</a></h4>
+
+      <p><em>Операция typeof</em> возвращает строку, содержащую информацию о типе операнда. Она имеет
+        вид:</p>
+
+<pre class="syntax">typeof expr или typeof(expr)</pre>
+
+      <p class="noindent">где <tt>expr</tt>&nbsp;— любое выражение. Возвращаемое значение может
+        быть одной из шести строк: "number" (число), "string" (строка), "boolean"
+        (логическое значение), "object" (объект), "function" (функция) или "undefined"
+        (неопределенное значение). Примеры:</p>
+
+      <div class="code">
+<pre class="code">var size = 1;
+var shape = "круглый";
+var today = new Date();
+typeof(size);	// возвращает "number"
+typeof shape;	// возвращает "string"
+typeof today;	// возвращает "object"</pre>
+      </div>
+
+      <p class="note"><strong>Примечание</strong>. В Microsoft JScript операция <tt>typeof</tt> может
+        возвращать еще два значения: "date" (тип VT_DATE стандарта COM) и "unknown"
+        (COM-интерфейсы ActiveX).</p>
+
+      <h4><a name="ref3479">3.4.7.9. Операция void</a></h4>
+
+      <p><em>Операция void</em> вычисляет значение выражения и возвращает <strong>undefined</strong>.
+        Она имеет вид:</p>
+
+<pre class="syntax">void expr или void(expr)</pre>
+
+      <p class="noindent">где <tt>expr</tt>&nbsp;— любое выражение. Эта операция полезна в тех
+        случаях, когда мы хотим вычислить значение выражения, но не хотим, чтобы оно передавалось последующей
+        части сценария.</p>
+
+      <h3><a name="ref348">3.4.8. Порядок выполнения операций</a></h3>
+
+      <p>При вычислении выражений JavaScript учитывает <em>приоритет операций</em>:
+        операции, имеющие больший приоритет, выполняются первыми. Если операции имеют равный приоритет,
+        то они выполняются слева направо. Для изменения порядка выполнения операций следует пользоваться
+        круглыми скобками: выражение, заключенное в них, имеет наивысший приоритет. В следующей таблице
+        приведен список всех операций языка JavaScript в порядке убывания их приоритетов; операции,
+        расположенные в одной строке таблицы, имеют равный приоритет.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0" width="60%">
+          <caption><a name="table36">Таблица 3.6. Приоритеты операций</a></caption>
+          <tbody><tr>
+            <th>Операция</th>
+          </tr>
+          <tr>
+            <td><tt>. [] ()</tt></td>
+          </tr>
+          <tr>
+            <td><tt>++ -- - ~ ! delete new typeof void</tt></td>
+          </tr>
+          <tr>
+            <td><tt>* / %</tt></td>
+          </tr>
+          <tr>
+            <td><tt>+ -</tt></td>
+          </tr>
+          <tr>
+            <td><tt>&lt;&lt; &gt;&gt; &gt;&gt;&gt;</tt></td>
+          </tr>
+          <tr>
+            <td><tt>&lt; &lt;= &gt; &gt;= instanceof</tt></td>
+          </tr>
+          <tr>
+            <td><tt>== != === !==</tt></td>
+          </tr>
+          <tr>
+            <td><tt>&amp;</tt></td>
+          </tr>
+          <tr>
+            <td><tt>^</tt></td>
+          </tr>
+          <tr>
+            <td><tt>|</tt></td>
+          </tr>
+          <tr>
+            <td><tt>&amp;&amp;</tt></td>
+          </tr>
+          <tr>
+            <td><tt>||</tt></td>
+          </tr>
+          <tr>
+            <td><tt>?:</tt></td>
+          </tr>
+          <tr>
+            <td><tt>= += -= *= /= %= &lt;&lt;= &gt;&gt;= &gt;&gt;&gt;= &amp;= ^= |=</tt></td>
+          </tr>
+          <tr>
+            <td><tt>,</tt></td>
+          </tr>
+        </tbody></table>
+      </div>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js03.htm"><img name="imgleftb" src="3.4.%20%C2%FB%F0%E0%E6%E5%ED%E8%FF%20%E8%20%EE%EF%E5%F0%E0%F6%E8%E8_files/nnleft.gif" alt="" title="Типы данных" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="3.4.%20%C2%FB%F0%E0%E6%E5%ED%E8%FF%20%E8%20%EE%EF%E5%F0%E0%F6%E8%E8_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/js05.htm"><img name="imgrightb" src="3.4.%20%C2%FB%F0%E0%E6%E5%ED%E8%FF%20%E8%20%EE%EF%E5%F0%E0%F6%E8%E8_files/nnright.gif" alt="" title="Регулярные выражения" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

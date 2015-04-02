@@ -1,0 +1,33 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Прототипное наследование</title>
+<script>
+function Person( name ) {
+this.name = name;
+}
+
+Person.prototype.getName = function() {
+return this.name;
+};
+
+function User( name, password ) {
+this.name = name;
+this.password = password;
+};
+// Наследование 
+User.prototype = new Person();
+
+User.prototype.getPassword = function() {
+return this.password;
+};
+var somebody = new User("Анна", "хороший пароль");
+alert(somebody.getName() + ", " + somebody.getPassword());
+
+</script>
+</head>
+<body>
+<h1>OOP JavaScript</h1>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Страница 1</title>
+<script language="JavaScript">
+expireAt = new Date;
+expireAt.setMonth(expireAt.getMonth() + 3);
+username="";
+function makeCookie()
+{
+username=document.getElementById("user1").value;
+document.cookie = "name=" + username + ";expires=" + expireAt.toGMTString() ;
+}
+</script>
+</head>
+<body>
+<form>
+<p>Имя пользователя: <input type="text" id="user1"><br>
+<a href="rcookie.html" onClick="makeCookie()">Продолжить ...</a>
+</p>
+</form></body>
+</html>

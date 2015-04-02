@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>Форма</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript">
+  function check(browser)
+  {  document.getElementById("answer").value=browser;  }
+</script>
+</head>
+<body>
+
+<p>Ваш любимый браузер:</p>
+<form>
+<input type="radio" name="browser" onclick="check(this.value)" value="Internet Explorer">Internet Explorer<br />
+<input type="radio" name="browser" onclick="check(this.value)" value="Firefox">Firefox<br />
+<input type="radio" name="browser" onclick="check(this.value)" value="Netscape">Netscape<br />
+<input type="radio" name="browser" onclick="check(this.value)" value="Opera">Opera<br />
+<br />
+Ваш любимый браузер: <input type="text" id="answer" size="20">
+</form>
+</body>
+</html>
+
+

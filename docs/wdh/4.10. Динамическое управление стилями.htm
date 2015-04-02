@@ -1,0 +1,989 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: DHTML - Динамическое управление стилями</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/dhtml09.htm" title="Динамические таблицы стилей">
+<link rel="Next" href="http://wdh.suncloud.ru/dhtml11.htm" title="Обработка событий в DOM">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/load.js"></script>
+<script type="text/javascript" src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/link.js"></script><link rel="stylesheet" type="text/css" href="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml09.htm"><img name="imglefta" src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/nnleft.gif" alt="" title="Динамические таблицы стилей" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml11.htm"><img name="imgrighta" src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/nnright.gif" alt="" title="Обработка событий в DOM" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=7174" target="_blank"><img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref410">Глава 4.10. Динамическое управление стилями</a></h2>
+
+      <h3><a name="ref4101">4.10.1. Способы доступа к стилям</a></h3>
+      
+      <p>DOM 2 содержит специальный интерфейс <tt><a href="#ref4108">CSSStyleDeclaration</a></tt>, который предназначен для описания
+        блоков деклараций CSS. Этот интерфейс используется и для описания содержимого правил CSS, и для
+        описания стилей отдельных элементов дерева документа. Он имеет чрезмерно усложненную, на наш взгляд,
+        структуру и обеспечивает три разных способа доступа к отдельным свойствам CSS, а именно:</p>
+      <ol>
+        <li>чтение и запись свойств, при которых и название свойства, и его значение задаются текстовой строкой
+          согласно правилам CSS;</li>
+        <li>чтение и запись свойств, при которых название свойства, задается текстовой строкой согласно правилам CSS,
+          а значение является объектом специального типа <tt><a href="#ref4102">CSSValue</a></tt>;</li>
+        <li>чтение и запись свойств, при которых свойство задается соответствующим атрибутом объекта <tt><a href="#ref4108">CSSStyleDeclaration</a></tt>,
+          а его значение задается текстовой строкой согласно правилам CSS.</li>
+      </ol>
+
+      <p>Пусть, например, мы хотим сделать фон тела документа красным. Соответствующие операторы будут выглядеть так:</p>
+
+      <div class="code">
+<pre class="code">document.body.style.setProperty("background-color", "red", "");
+document.body.style.backgroundColor = "red";</pre>
+      </div>
+
+      <p>Первый оператор использует имя свойства CSS, а второй&nbsp;— соответствующее свойство объекта <tt>document.body.style</tt>.
+        Для чтения цвета фона возможны три варианта:</p>
+
+      <div class="code">
+<pre class="code">var clr1 = document.body.style.getPropertyValue("background-color");
+var clr2 = document.body.style.getPropertyCSSValue("background-color");
+var clr3 = document.body.style.backgroundColor;</pre>
+      </div>
+
+      <p>Здесь clr1 и clr3 получат тип <tt>String</tt>, а clr2&nbsp;— тип <tt>CSSValue</tt>.
+      DOM 2 объявил первые два способа обязательными, а третий (называемый интерфейсом <tt><a href="http://wdh.suncloud.ru/dhtml10.htm#ref4109">CSS2Properties</a></tt>)&nbsp;—
+факультативным. Однако, разработчики обозревателей расставили
+приоритеты иначе: и MSHTML, и Gecko поддерживают именно третий
+интерфейс. MSHTML этим ограничивается, а Gecko поддерживает свойства и
+методы <tt><a href="#ref4108">CSSStyleDeclaration</a></tt>, но пока не поддерживает
+      <tt><a href="#ref4102">CSSValue</a></tt>. Тем не менее мы приводим описание всех интерфейсов DOM, поскольку следующие версии обозревателей, скорее всего,
+      обеспечат их реализацию.</p>
+
+      <h3><a name="ref4102">4.10.2. Значение свойства CSS: интерфейс CSSValue</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Интерфейс <tt>CSSValue</tt> соответствует значению одного свойства CSS. Он имеет два свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса CSSValue</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcssvalue-csstext">cssText</a></tt></td>
+            <td>Да</td>
+            <td>DOM 2</td>
+            <td>Текст значения.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcssvaluetype">cssValueType</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Тип значения.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hcssvalue-csstext">Свойство cssText</a></h4>
+
+<pre class="syntax"><strong><a name="pcssvalue-csstext">Синтаксис</a></strong>:  <em>объект</em>.cssText
+<strong>Изменяемое</strong>: да
+<strong>Иcключения</strong>: SYNTAX_ERR, INVALID_MODIFICATION_ERR,
+            NO_MODIFICATION_ALLOWED_ERR (при записи)</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>cssText</strong> позволяет читать и задавать значение свойства в виде строки <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt>.
+
+      </p><h4><a name="hcssvaluetype">Свойство cssValueType</a></h4>
+
+<pre class="syntax"><strong><a name="pcssvaluetype">Синтаксис</a></strong>:  <em>объект</em>.cssValueType
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>cssValueType</strong> возвращает целое число, означающее тип данного значения в соответствии со следующей таблицей:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption><a name="table46">Таблица 4.6. Типы значений свойств CSS</a></caption>
+          <tbody><tr>
+            <th>Название</th>
+            <th>Значение</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt>CSS_INHERIT</tt></td>
+            <td>0</td>
+            <td>Наследуемое значение. cssText равно "inherit".</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_PRIMITIVE_VALUE</tt></td>
+            <td>1</td>
+            <td>Примитивное значение. См. интерфейс <tt><a href="#ref4103">CSSPrimitiveValue</a></tt>.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_VALUE_LIST</tt></td>
+            <td>2</td>
+            <td>Список значений. См. интерфейс <tt><a href="#ref4104">CSSValueList</a></tt>.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_CUSTOM</tt></td>
+            <td>3</td>
+            <td>Прочие значения.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h3><a name="ref4103">4.10.3. Примитивное значение свойства: интерфейс CSSPrimitiveValue</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Интерфейс <tt>CSSPrimitiveValue</tt> соответствует примитивному значению свойства CSS. Он является производным
+        от <tt><a href="#ref4102">CSSValue</a></tt> и имеет следующие дополнительные свойства и методы:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса CSSPrimitiveValue</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pprimitivetype">primitiveType</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Тип примитивного значения.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы интерфейса CSSPrimitiveValue</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetcountervalue">getCounterValue</a></tt></td>
+            <td>DOM 2</td>
+            <td>Возвращает значение счетчика.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetfloatvalue">getFloatValue</a></tt></td>
+            <td>DOM 2</td>
+            <td>Возвращает числовое значение.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetrectvalue">getRectValue</a></tt></td>
+            <td>DOM 2</td>
+            <td>Возвращает значение прямоугольника.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetrgbcolorvalue">getRGBColorValue</a></tt></td>
+            <td>DOM 2</td>
+            <td>Возвращает RGB-значение цвета.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetstringvalue">getStringValue</a></tt></td>
+            <td>DOM 2</td>
+            <td>Возвращает строковое значение.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#msetfloatvalue">setFloatValue</a></tt></td>
+            <td>DOM 2</td>
+            <td>Задает числовое значение.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#msetstringvalue">setStringValue</a></tt></td>
+            <td>DOM 2</td>
+            <td>Задает строковое значение.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hprimitivetype">Свойство primitiveType</a></h4>
+
+<pre class="syntax"><strong><a name="pprimitivetype">Синтаксис</a></strong>:  <em>объект</em>.primitiveType
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>primitiveType</strong> возвращает целое число, означающее тип данного примитивного значения в соответствии со следующей таблицей:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0" width="600">
+          <caption><a name="table47">Таблица 4.7. Типы примитивных значений свойств CSS</a></caption>
+          <tbody><tr>
+            <th>Название</th>
+            <th>Значение</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt>CSS_UNKNOWN</tt></td>
+            <td>0</td>
+            <td>Неопознанное значение.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_NUMBER</tt></td>
+            <td>1</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#number">Число</a>.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_PERCENTAGE</tt></td>
+            <td>2</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#percentage">Процентное значение.</a></td>
+          </tr>
+          <tr>
+            <td><tt>CSS_EMS</tt></td>
+            <td>3</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#length">Размер</a> в em.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_EXS</tt></td>
+            <td>4</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#length">Размер</a> в ex.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_PX</tt></td>
+            <td>5</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#length">Размер</a> в пикселях (px).</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_CM</tt></td>
+            <td>6</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#length">Размер</a> в см.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_MM</tt></td>
+            <td>7</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#length">Размер</a> в мм.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_IN</tt></td>
+            <td>8</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#length">Размер</a> в дюймах.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_PT</tt></td>
+            <td>9</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#length">Размер</a> в точках (pt).</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_PC</tt></td>
+            <td>10</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#length">Размер</a> в пиках (pc).</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_DEG</tt></td>
+            <td>11</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#angle">Угол</a> в градусах.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_RAD</tt></td>
+            <td>12</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#angle">Угол</a> в радианах.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_GRAD</tt></td>
+            <td>13</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#angle">Угол</a> в градах.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_MS</tt></td>
+            <td>14</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#time">Время</a> в мсек.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_S</tt></td>
+            <td>15</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#time">Время</a> в сек.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_HZ</tt></td>
+            <td>16</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#frequency">Частота</a> в Гц.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_KHZ</tt></td>
+            <td>17</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#frequency">Частота</a> в кГц.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_DIMENSION</tt></td>
+            <td>18</td>
+            <td>Число с неизвестной единицей измерения.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_STRING</tt></td>
+            <td>19</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#string">Строка</a>.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_URI</tt></td>
+            <td>20</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#uri">URI</a>.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_IDENT</tt></td>
+            <td>21</td>
+            <td>Идентификатор.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_ATTR</tt></td>
+            <td>22</td>
+            <td>Функция <a href="http://wdh.suncloud.ru/css11.htm#pcontent"><dfn>attr(x)</dfn></a>.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_COUNTER</tt></td>
+            <td>23</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#counter">Счетчик</a>.</td>
+          </tr>
+          <tr>
+            <td><tt>CSS_RECT</tt></td>
+            <td>24</td>
+            <td>Прямоугольник <a href="http://wdh.suncloud.ru/css06.htm#pclip"><dfn>rect(top, right, bottom, left)</dfn></a></td>
+          </tr>
+          <tr>
+            <td><tt>CSS_RGBCOLOR</tt></td>
+            <td>25</td>
+            <td><a href="http://wdh.suncloud.ru/css01.htm#color">Цвет</a>.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hgetcountervalue">Метод getCounterValue</a></h4>
+
+<pre class="syntax"><strong><a name="mgetcountervalue">Синтаксис</a></strong>:  <em>объект</em>.getCounterValue()
+<strong>Результат</strong>:  значение типа <tt><a href="#ref4107">Counter</a></tt>
+<strong>Иcключения</strong>: INVALID_ACCESS_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>getCounterValue</strong> возвращает объект <tt><a href="#ref4107">Counter</a></tt>, содержащий значение счетчика.
+        Если <tt><a href="#pprimitivetype">primitiveType</a></tt> отличен от <tt>CSS_COUNTER</tt>, то генерируется исключение.</p>
+
+      <h4><a name="hgetfloatvalue">Метод getFloatValue</a></h4>
+
+<pre class="syntax"><strong><a name="mgetfloatvalue">Синтаксис</a></strong>:  <em>объект</em>.getFloatValue(unitType)
+<strong>Аргументы</strong>:  unitType&nbsp;— числовое выражение
+<strong>Результат</strong>:  числовое значение
+<strong>Иcключения</strong>: INVALID_ACCESS_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>getFloatValue</strong> возвращает числовое значение объекта, приведенное к единице измерения <tt>unitType</tt>,
+        которая должна иметь одно из следующих значений: <tt>CSS_NUMBER</tt>, <tt>CSS_PERCENTAGE</tt>, <tt>CSS_EMS</tt>, <tt>CSS_EXS</tt>,
+        <tt>CSS_PX</tt>, <tt>CSS_CM</tt>, <tt>CSS_MM</tt>, <tt>CSS_IN</tt>, <tt>CSS_PT</tt>, <tt>CSS_PC</tt>, <tt>CSS_DEG</tt>, <tt>CSS_RAD</tt>,
+        <tt>CSS_GRAD</tt>, <tt>CSS_MS</tt>, <tt>CSS_S</tt>, <tt>CSS_HZ</tt>, <tt>CSS_KHZ</tt>, <tt>CSS_DIMENSION</tt>.
+Если значение не является числовым или не может быть преобразовано к
+заданной единице измерения, то генерируется исключение.</p>
+
+      <h4><a name="hgetrectvalue">Метод getRectValue</a></h4>
+
+<pre class="syntax"><strong><a name="mgetrectvalue">Синтаксис</a></strong>:  <em>объект</em>.getRectValue()
+<strong>Результат</strong>:  значение типа <tt><a href="#ref4106">Rect</a></tt>
+<strong>Иcключения</strong>: INVALID_ACCESS_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>getRectValue</strong> возвращает объект <tt><a href="#ref4106">Rect</a></tt>, содержащий значение прямоугольника.
+        Если <tt><a href="#pprimitivetype">primitiveType</a></tt> отличен от <tt>CSS_RECT</tt>, то генерируется исключение.</p>
+
+      <h4><a name="hgetrgbcolorvalue">Метод getRGBColorValue</a></h4>
+
+<pre class="syntax"><strong><a name="mgetrgbcolorvalue">Синтаксис</a></strong>:  <em>объект</em>.getRGBColorValue()
+<strong>Результат</strong>:  значение типа <tt><a href="#ref4105">RGBColor</a></tt>
+<strong>Иcключения</strong>: INVALID_ACCESS_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>getRGBColorValue</strong> возвращает объект <tt><a href="#ref4105">RGBColor</a></tt>, содержащий значение цвета.
+        Если <tt><a href="#pprimitivetype">primitiveType</a></tt> отличен от <tt>CSS_RGBCOLOR</tt>, то генерируется исключение.</p>
+
+      <h4><a name="hgetstringvalue">Метод getStringValue</a></h4>
+
+<pre class="syntax"><strong><a name="mgetstringvalue">Синтаксис</a></strong>:  <em>объект</em>.getStringValue()
+<strong>Результат</strong>:  значение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Иcключения</strong>: INVALID_ACCESS_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>getStringValue</strong> возвращает строковое значение объекта. <tt><a href="#pprimitivetype">primitiveType</a></tt>
+        должен указывать на строковый тип значения (т.&nbsp;е. иметь одно из следующих значений: <tt>CSS_STRING</tt>, <tt>CSS_URI</tt>,
+        <tt>CSS_IDENT</tt> или <tt>CSS_ATTR</tt>). В противном случае генерируется исключение.</p>
+
+      <h4><a name="hsetfloatvalue">Метод setFloatValue</a></h4>
+
+<pre class="syntax"><strong><a name="msetfloatvalue">Синтаксис</a></strong>:  <em>объект</em>.setFloatValue(unitType, value)
+<strong>Аргументы</strong>:  unitType, value&nbsp;— числовые выражения
+<strong>Иcключения</strong>: INVALID_ACCESS_ERR, NO_MODIFICATION_ALLOWED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>setFloatValue</strong> задает новое числовое значение <tt>value</tt> с единицей измерения <tt>unitType</tt>,
+        которая должна иметь одно из следующих значений: <tt>CSS_NUMBER</tt>, <tt>CSS_PERCENTAGE</tt>, <tt>CSS_EMS</tt>, <tt>CSS_EXS</tt>,
+        <tt>CSS_PX</tt>, <tt>CSS_CM</tt>, <tt>CSS_MM</tt>, <tt>CSS_IN</tt>, <tt>CSS_PT</tt>, <tt>CSS_PC</tt>, <tt>CSS_DEG</tt>, <tt>CSS_RAD</tt>,
+        <tt>CSS_GRAD</tt>, <tt>CSS_MS</tt>, <tt>CSS_S</tt>, <tt>CSS_HZ</tt>, <tt>CSS_KHZ</tt>, <tt>CSS_DIMENSION</tt>.
+        Если данное свойство не может принимать значений такого типа или с такой единицей измерения, то генерируется исключение.</p>
+
+      <h4><a name="hsetstringvalue">Метод setStringValue</a></h4>
+
+<pre class="syntax"><strong><a name="msetstringvalue">Синтаксис</a></strong>:  <em>объект</em>.setStringValue(stringType, value)
+<strong>Аргументы</strong>:  stringType&nbsp;— числовое выражение
+            value&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Иcключения</strong>: INVALID_ACCESS_ERR, NO_MODIFICATION_ALLOWED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>setStringValue</strong> задает новое строковое значение <tt>value</tt>. Аргумент <tt>stringType</tt>
+        должен иметь одно из следующих значений: <tt>CSS_STRING</tt>, <tt>CSS_URI</tt>, <tt>CSS_IDENT</tt> или <tt>CSS_ATTR</tt>. 
+        Если данное свойство не может принимать значений такого типа, то генерируется исключение.</p>
+
+      <h3><a name="ref4104">4.10.4. Списки свойств: интерфейс CSSValueList</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Интерфейс <tt>CSSValueList</tt> реализует упорядоченные списки свойств CSS.
+        Он имеет единственное свойство <tt><a href="#pcssvaluelist-length">length</a></tt>,
+        возвращающее количество свойств в списке, и единственный метод <tt><a href="#mcssvaluelist-item">item</a></tt>,
+        возвращающий элемент списка с заданным номером (элементы списка нумеруются, начиная с нуля).
+        Пустой список означает, что соответствующее свойство имеет значение <strong>none</strong>.</p>
+
+      <h4><a name="hcssvaluelist-length">Свойство length</a></h4>
+
+<pre class="syntax"><strong><a name="pcssvaluelist-length">Синтаксис</a></strong>:  <em>список</em>.length
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>length</strong> возвращает количество элементов в данном списке. Допустимые
+        индексы элементов списка лежат в диапазоне от 0 до <tt>length</tt>-1 включительно.</p>
+
+      <h4><a name="hcssvaluelist-item">Метод item</a></h4>
+
+<pre class="syntax"><strong><a name="mcssvaluelist-item">Синтаксис</a></strong>:  <em>список</em>.item(index)
+<strong>Аргументы</strong>:  index&nbsp;— числовое выражение
+<strong>Результат</strong>:  объект <a href="#ref4102">CSSValue</a> или null
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>item</strong> возвращает элемент списка свойств с заданным индексом в качестве
+        результата. Если индекс выходит за пределы диапазона элементов списка, то возвращается <strong>null</strong>.</p>
+
+      <h3><a name="ref4105">4.10.5. Цвет: интерфейс RGBColor</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Интерфейс <tt>RGBColor</tt> соответствует <a href="http://wdh.suncloud.ru/css01.htm#color">цветам CSS</a>.
+        Он имеет три свойства, возвращающих числовые значения RGB-составляющих данного цвета:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса RGBColor</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pblue">blue</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Синий цвет.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pgreen">green</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Зеленый цвет.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pred">red</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Красный цвет.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hblue">Свойство blue</a></h4>
+
+<pre class="syntax"><strong><a name="pblue">Синтаксис</a></strong>:  <em>объект</em>.blue
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>blue</strong> возвращает значение синего цвета типа <tt><a href="#ref4103">CSSPrimitiveValue</a></tt>
+        в диапазоне от 0 до 255 или от 0% до 100%.</p>
+
+      <h4><a name="hgreen">Свойство green</a></h4>
+
+<pre class="syntax"><strong><a name="pgreen">Синтаксис</a></strong>:  <em>объект</em>.green
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>green</strong> возвращает значение зеленого цвета типа <tt><a href="#ref4103">CSSPrimitiveValue</a></tt>
+        в диапазоне от 0 до 255 или от 0% до 100%.</p>
+
+      <h4><a name="hred">Свойство red</a></h4>
+
+<pre class="syntax"><strong><a name="pred">Синтаксис</a></strong>:  <em>объект</em>.red
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>red</strong> возвращает значение красного цвета типа <tt><a href="#ref4103">CSSPrimitiveValue</a></tt>
+        в диапазоне от 0 до 255 или от 0% до 100%.</p>
+
+      <h3><a name="ref4106">4.10.6. Прямоугольник: интерфейс Rect</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Интерфейс <tt>Rect</tt> соответствует <a href="http://wdh.suncloud.ru/css06.htm#pclip"> прямоугольникам CSS</a>.
+        Он имеет четыре свойства, возвращающих координаты данного прямоугольника:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса Rect</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pbottom">bottom</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Нижняя координата.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pleft">left</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Левая координата.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pright">right</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Правая координата.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ptop">top</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Верхняя координата.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hbottom">Свойство bottom</a></h4>
+
+<pre class="syntax"><strong><a name="pbottom">Синтаксис</a></strong>:  <em>объект</em>.bottom
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>bottom</strong> возвращает нижнюю координату прямоугольника типа <tt><a href="#ref4103">CSSPrimitiveValue</a></tt>.</p>
+
+      <h4><a name="hleft">Свойство left</a></h4>
+
+<pre class="syntax"><strong><a name="pleft">Синтаксис</a></strong>:  <em>объект</em>.left
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>left</strong> возвращает левую координату прямоугольника типа <tt><a href="#ref4103">CSSPrimitiveValue</a></tt>.</p>
+
+      <h4><a name="hright">Свойство right</a></h4>
+
+<pre class="syntax"><strong><a name="pright">Синтаксис</a></strong>:  <em>объект</em>.right
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>right</strong> возвращает правую координату прямоугольника типа <tt><a href="#ref4103">CSSPrimitiveValue</a></tt>.</p>
+
+      <h4><a name="htop">Свойство top</a></h4>
+
+<pre class="syntax"><strong><a name="ptop">Синтаксис</a></strong>:  <em>объект</em>.top
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>top</strong> возвращает верхнюю координату прямоугольника типа <tt><a href="#ref4103">CSSPrimitiveValue</a></tt>.</p>
+
+      <h3><a name="ref4107">4.10.7. Счетчик: интерфейс Counter</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Интерфейс <tt>Counter</tt> соответствует <a href="http://wdh.suncloud.ru/css01.htm#counter">счетчикам CSS</a>.
+        Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса Counter</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pidentifier">identifier</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Идентификатор счетчика.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pliststyle">listStyle</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Стиль счетчика.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pseparator">separator</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Разделитель счетчиков.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hidentifier">Свойство identifier</a></h4>
+
+<pre class="syntax"><strong><a name="pidentifier">Синтаксис</a></strong>:  <em>объект</em>.identifier
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>identifier</strong> возвращает идентификатор счетчика типа <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt>.</p>
+
+      <h4><a name="hliststyle">Свойство listStyle</a></h4>
+
+<pre class="syntax"><strong><a name="pliststyle">Синтаксис</a></strong>:  <em>объект</em>.listStyle
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>listStyle</strong> возвращает стиль счетчика типа <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt>.</p>
+
+      <h4><a name="hseparator">Свойство separator</a></h4>
+
+<pre class="syntax"><strong><a name="pseparator">Синтаксис</a></strong>:  <em>объект</em>.separator
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Свойство <strong>separator</strong> возвращает разделитель типа <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt>,
+        который используется между вложенными счетчиками.</p>
+
+      <h3><a name="ref4108">4.10.8. Декларация стиля CSS: интерфейс CSSStyleDeclaration</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Поддерживается частично.</pre>
+
+      <p>Интерфейс <tt>CSSStyleDeclaration</tt> предназначен для описания блоков деклараций CSS. Более подробно мы обсудили его в <a href="#ref4101">п. 4.10.1</a>.</p>
+        
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса CSSStyleDeclaration</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcssdecl-csstext">cssText</a></tt></td>
+            <td>Да</td>
+            <td>DOM 2</td>
+            <td>Текст декларации стиля.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcssdecl-length">length</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Количество явно заданных свойств.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcssdecl-parentrule">parentRule</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 2</td>
+            <td>Правило CSS, содержащее данную декларацию.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы интерфейса CSSStyleDeclaration</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetpropertycssvalue">getPropertyCSSValue</a></tt></td>
+            <td>DOM 2</td>
+            <td>Возвращает <tt><a href="#ref4102">CSSValue</a></tt>, содержащее значение свойства.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetpropertypriority">getPropertyPriority</a></tt></td>
+            <td>DOM 2</td>
+            <td>Возвращает приоритет свойства.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetpropertyvalue">getPropertyValue</a></tt></td>
+            <td>DOM 2</td>
+            <td>Возвращает строку, содержащую значение свойства.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mcssdecl-item">item</a></tt></td>
+            <td>DOM 2</td>
+            <td>Возвращает имя свойства с заданным номером.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mremoveproperty">removeProperty</a></tt></td>
+            <td>DOM 2</td>
+            <td>Удаляет свойство.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#msetproperty">setProperty</a></tt></td>
+            <td>DOM 2</td>
+            <td>Задает значение и приоритет свойства.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hcssdecl-csstext">Свойство cssText</a></h4>
+
+<pre class="syntax"><strong><a name="pcssdecl-csstext">Синтаксис</a></strong>:  <em>объект</em>.cssText
+<strong>Изменяемое</strong>: да
+<strong>Иcключения</strong>: SYNTAX_ERR, NO_MODIFICATION_ALLOWED_ERR (при записи)</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Всегда пустая строка.</pre>
+
+      <p>Свойство <strong>cssText</strong> соответствуют тексту декларации свойств в виде строки <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></tt>
+(без окружающих ее фигурных скобок). При задании этого свойства старые
+значения всех свойств CSS в декларации удаляются и заменяются на новые.
+Пример: сценарий</p>
+
+      <div class="code">
+<pre class="code">document.body.style.cssText = "font-size: 8px; font-family: Arial";
+alert(document.body.style.cssText);</pre>
+      </div>
+
+      <p class="noindent">выведет в Internet Explorer строку <samp>FONT-SIZE: 8px; FONT-FAMILY: Arial</samp>, а в Gecko&nbsp;— пустую строку.</p>
+
+      <h4><a name="hcssdecl-length">Свойство length</a></h4>
+
+<pre class="syntax"><strong><a name="pcssdecl-length">Синтаксис</a></strong>:  <em>объект</em>.length
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Поддерживается частично.</pre>
+
+      <p>Свойство <strong>length</strong> возвращает количество свойств, явно заданных в данном блоке деклараций. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].cssRules[0].style.length);</pre>
+      </div>
+
+      <h4><a name="hcssdecl-parentrule">Свойство parentRule</a></h4>
+
+<pre class="syntax"><strong><a name="pcssdecl-parentrule">Синтаксис</a></strong>:  <em>объект</em>.parentRule
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Если данная декларация содержится в таблице стилей, то свойство <strong>parentRule</strong> возвращает объект <tt><a href="http://wdh.suncloud.ru/dhtml09.htm#ref496">CSSRule</a></tt>,
+        содержащий ее. В противном случае возвращается <strong>null</strong>. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.styleSheets[0].cssRules[0].style.parentRule);</pre>
+      </div>
+
+      <h4><a name="hgetpropertycssvalue">Метод getPropertyCSSValue</a></h4>
+
+<pre class="syntax"><strong><a name="mgetpropertycssvalue">Синтаксис</a></strong>:  <em>объект</em>.getPropertyCSSValue(propertyName)
+<strong>Аргументы</strong>:  propertyName&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  значение типа <tt><a href="#ref4102">CSSValue</a></tt> или null</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Всегда возвращает null.</pre>
+
+      <p>Метод <strong>getPropertyCSSValue</strong> возвращает объект <tt><a href="#ref4102">CSSValue</a></tt>, содержащий значение
+        свойства <tt>propertyName</tt>. Если <tt>propertyName</tt> является сокращением, то возвращается <strong>null</strong>. Пример:</p>
+
+      <div class="code">
+<pre class="code">var rule = document.styleSheets[0].cssRules[0];
+alert(rule.style.getPropertyCSSValue("font-size").cssText);</pre>
+      </div>
+
+      <h4><a name="hgetpropertypriority">Метод getPropertyPriority</a></h4>
+
+<pre class="syntax"><strong><a name="mgetpropertypriority">Синтаксис</a></strong>:  <em>объект</em>.getPropertyPriority(propertyName)
+<strong>Аргументы</strong>:  propertyName&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  значение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>getPropertyPriority</strong> возвращает приоритет свойства <tt>propertyName</tt>.
+      Его результатом может быть либо пустая строка, либо строка "!important", соответствующая атрибуту CSS
+      <dfn><a href="http://wdh.suncloud.ru/css03.htm#ref2342">!important</a></dfn>. Пример:</p>
+
+      <div class="code">
+<pre class="code">var rule = document.styleSheets[0].cssRules[0];
+alert(rule.style.getPropertyPriority("font-size"));</pre>
+      </div>
+
+      <h4><a name="hgetpropertyvalue">Метод getPropertyValue</a></h4>
+
+<pre class="syntax"><strong><a name="mgetpropertyvalue">Синтаксис</a></strong>:  <em>объект</em>.getPropertyValue(propertyName)
+<strong>Аргументы</strong>:  propertyName&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  значение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>getPropertyValue</strong> возвращает строку, содержащую значение свойства <tt>propertyName</tt>. Пример:</p>
+
+      <div class="code">
+<pre class="code">var rule = document.styleSheets[0].cssRules[0];
+alert(rule.style.getPropertyValue("font-size"));</pre>
+      </div>
+
+      <h4><a name="hcssdecl-item">Метод item</a></h4>
+
+<pre class="syntax"><strong><a name="mcssdecl-item">Синтаксис</a></strong>:  <em>объект</em>.item(index)
+<strong>Аргументы</strong>:  index&nbsp;— числовое выражение
+<strong>Результат</strong>:  значение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a></pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>item</strong> возвращает строку, содержащую имя свойства с номером <tt>index</tt>. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.body.style.item(0));</pre>
+      </div>
+
+      <h4><a name="hremoveproperty">Метод removeProperty</a></h4>
+
+<pre class="syntax"><strong><a name="mremoveproperty">Синтаксис</a></strong>:  <em>объект</em>.removeProperty(propertyName)
+<strong>Аргументы</strong>:  propertyName&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  значение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Иcключения</strong>: NO_MODIFICATION_ALLOWED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>removeProperty</strong> удаляет свойство <tt>propertyName</tt> и возвращает его значение.
+        Если свойство с этим именем не было явно задано в декларации, то возвращается пустая строка. Пример:</p>
+
+      <div class="code">
+<pre class="code">var rule = document.styleSheets[0].cssRules[0];
+alert(rule.style.removeProperty("font-size"));</pre>
+      </div>
+
+      <h4><a name="hsetproperty">Метод setProperty</a></h4>
+
+<pre class="syntax"><strong><a name="msetproperty">Синтаксис</a></strong>:  <em>объект</em>.setProperty(propertyName, value, priority)
+<strong>Аргументы</strong>:  propertyName, value, priority&nbsp;— выражения типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  значение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Иcключения</strong>: SYNTAX_ERR, NO_MODIFICATION_ALLOWED_ERR</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>setProperty</strong> задает значение и приоритет свойства <tt>propertyName</tt>.
+        Значение свойства задается аргументом <tt>value</tt>, а приоритет&nbsp;— аргументом <tt>priority</tt>,
+        который может быть либо строкой "!important", либо пустой строкой. Примеры:</p>
+
+      <div class="code">
+<pre class="code">document.body.style.setProperty("color", "red", "!important");
+document.body.style.setProperty("background-color", "green", "");</pre>
+      </div>
+
+      <h3><a name="ref4109">4.10.9. Свойства CSS: интерфейс CSS2Properties</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>CSS2Properties</tt> является расширением интерфейса <tt><a href="#ref4108">CSSStyleDeclaration</a></tt>, необязательным для
+        реализации DOM. Тем не менее его поддерживают оба рассматриваемых нами обозревателя. Он обеспечивает чтение и запись
+        свойств CSS через дополнительные свойства объекта <tt><a href="#ref4108">CSSStyleDeclaration</a></tt>, имена которых соответствуют именам свойств
+        CSS с поправкой на синтаксис языков программирования. Примеры его использования приведены в <a href="#ref4101">п. 4.10.1</a>. Полный перечень
+        свойств этого интерфейса и описание их поддержки обозревателями вы найдете в <a href="http://wdh.suncloud.ru/suppdcss.htm">Приложении 16</a>.
+
+      </p><h3><a name="ref4110">4.10.10. Специфицированные и вычисленные значения свойств</a></h3>
+
+      <p>Вспомним, как спецификация CSS описывает <a href="http://wdh.suncloud.ru/css03.htm#ref231">порядок вычисления значений</a> свойств CSS для каждого элемента в дереве документа.
+        Сначала значение определяется  из спецификации (<em>специфицированное значение</em>), затем при необходимости преобразуется к абсолютному значению
+        (<em>вычисленное значение</em>), и, наконец, преобразуется с учетом ограничений контекста (<em>фактическое значение</em>).</p>
+
+      <p>DOM 2 предусматривает возможность доступа к специфицированным и вычисленным значениям свойств. Для чтения и изменения
+        специфицированных значений должен использоваться метод <tt>getOverrideStyle</tt> объекта <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#ref426">Document</a></tt>, а для чтения вычисленных
+        значений&nbsp;— метод <tt>getComputedStyle</tt> объекта <tt><a href="http://wdh.suncloud.ru/dhtml13.htm#ref4131">AbstractView</a></tt> (т.&nbsp;е. в современных реализациях объекта <tt>window</tt>).</p>
+
+      <h4><a name="hgetoverridestyle">Метод getOverrideStyle</a></h4>
+
+<pre class="syntax"><strong><a name="mgetoverridestyle">Синтаксис</a></strong>:  <em>документ</em>.getOverrideStyle(elt, pseudoElt)
+<strong>Аргументы</strong>:  elt&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a>
+            pseudoElt&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  значение типа <a href="#ref4108">CSSStyleDeclaration</a></pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Реализовано с ошибками.</pre>
+
+      <p>Метод <strong>getOverrideStyle</strong> возвращает объект <a href="#ref4108">CSSStyleDeclaration</a>, содержащий
+        специфицированные значения свойств стилей элемента <tt>elt</tt>. Аргумент <tt>pseudoElt</tt> должен быть именем
+        <a href="http://wdh.suncloud.ru/css02.htm#ref2210">псевдоэлемента CSS</a> или пустой строкой. Примеры:</p>
+
+      <div class="code">
+<pre class="code">var os = document.getOverrideStyle(document.body, "");
+os.setProperty("background-color", "green", "");</pre>
+      </div>
+
+      <h4><a name="hgetcomputedstyle">Метод getComputedStyle</a></h4>
+
+<pre class="syntax"><strong><a name="mgetcomputedstyle">Синтаксис</a></strong>:  <em>окно</em>.getComputedStyle(elt, pseudoElt)
+<strong>Аргументы</strong>:  elt&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a>
+            pseudoElt&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  значение типа <a href="#ref4108">CSSStyleDeclaration</a></pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/gecko.gif" alt="Gecko"> Реализовано с ошибками.</pre>
+
+      <p>Метод <strong>getComputedStyle</strong> возвращает объект <a href="#ref4108">CSSStyleDeclaration</a>, содержащий
+        вычисленные значения свойств стилей элемента <tt>elt</tt>. Этот объект доступен только для чтения. Аргумент <tt>pseudoElt</tt>
+        должен быть именем <a href="http://wdh.suncloud.ru/css02.htm#ref2210">псевдоэлемента CSS</a> или пустой строкой. Примеры:</p>
+
+      <div class="code">
+<pre class="code">var os = window.getComputedStyle(document.body, "");
+alert(os.getProperty("background-color"));</pre>
+      </div>
+
+      <p>В
+Internet Explorer доступ к специфицированным и вычисленным значениям
+свойств реализован иначе. Каждый HTML-элемент имеет помимо свойства <tt><a href="http://wdh.suncloud.ru/dhtml06.htm#pstyle">style</a></tt> еще два свойства: <tt>runtimeStyle</tt>, содержащий его специфицированные
+        свойства, и <tt>currentStyle</tt>, содержащий его вычисленные свойства. Оба эти свойства возвращают объект типа <a href="#ref4109">CSS2Properties</a>.
+        Примеры:</p>
+
+      <div class="code">
+<pre class="code">document.body.runtimeStyle.backgroundColor = "green";
+alert(document.body.currentStyle.backgroundColor);</pre>
+      </div>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml09.htm"><img name="imgleftb" src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/nnleft.gif" alt="" title="Динамические таблицы стилей" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml11.htm"><img name="imgrightb" src="4.10.%20%C4%E8%ED%E0%EC%E8%F7%E5%F1%EA%EE%E5%20%F3%EF%F0%E0%E2%EB%E5%ED%E8%E5%20%F1%F2%E8%EB%FF%EC%E8_files/nnright.gif" alt="" title="Обработка событий в DOM" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

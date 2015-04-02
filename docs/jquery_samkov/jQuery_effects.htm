@@ -1,0 +1,2390 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="jQuery_effects.files/filelist.xml">
+<title>Query API: Effects - эффекты</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>elena</o:Author>
+  <o:LastAuthor>elena</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>23</o:TotalTime>
+  <o:Created>2008-10-12T17:39:00Z</o:Created>
+  <o:LastSaved>2008-10-12T17:39:00Z</o:LastSaved>
+  <o:Pages>16</o:Pages>
+  <o:Words>3747</o:Words>
+  <o:Characters>21364</o:Characters>
+  <o:Company>home</o:Company>
+  <o:Lines>178</o:Lines>
+  <o:Paragraphs>50</o:Paragraphs>
+  <o:CharactersWithSpaces>25061</o:CharactersWithSpaces>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:PunctuationKerning/>
+  <w:DrawingGridHorizontalSpacing>2,85 пт</w:DrawingGridHorizontalSpacing>
+  <w:DrawingGridVerticalSpacing>1,95 пт</w:DrawingGridVerticalSpacing>
+  <w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:204;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536871559 0 0 0 415 0;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;
+	mso-font-charset:204;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:24.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h2
+	{mso-style-next:Обычный;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-weight:bold;
+	font-style:italic;}
+h3
+	{mso-style-next:Обычный;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:13.0pt;
+	font-family:Arial;
+	font-weight:bold;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+code
+	{font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+pre
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+span.start-tag
+	{mso-style-name:start-tag;}
+span.attribute-name
+	{mso-style-name:attribute-name;}
+span.attribute-value
+	{mso-style-name:attribute-value;}
+span.end-tag
+	{mso-style-name:end-tag;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:612.0pt 792.0pt;
+	margin:2.0cm 42.5pt 42.55pt 42.55pt;
+	mso-header-margin:36.0pt;
+	mso-footer-margin:36.0pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Обычная таблица";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]-->
+</head>
+
+<body lang=RU style='tab-interval:35.4pt'>
+
+<div class=Section1>
+
+<h1><span class=SpellE><span lang=EN-US style='mso-ansi-language:EN-US'>JQuery</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'> API: Effects - </span>эффекты<span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></h1>
+
+<h2><span lang=EN-US style='color:#CC6600;mso-ansi-language:EN-US'>Basics:<o:p></o:p></span></h2>
+
+<h3><span class=SpellE>show</span>()</h3>
+
+<p>возвращает: <span class=SpellE>jQuery</span><span class=GramE><br>
+О</span>тображает каждый из элементов набора, если они были скрыты через вызов <span
+class=SpellE>hide</span>() или через <span class=SpellE>display:none</span> в
+таблице стилей. Действует подобно <span class=SpellE>show</span>(<span
+class=SpellE>speed</span>,[<span class=SpellE>callback</span>]), только без
+анимационных эффектов. Если элемент не был скрыт, то ничего не происходит.</p>
+
+<p>Показываем все параграфы, которые были скрыты.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=GramE><span
+class=start-tag>head</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>meta</span></span><span class=attribute-name> http-equiv</span>=<span
+class=attribute-value>&quot;Content-Type&quot; </span><span
+class=attribute-name>content</span>=<span class=attribute-value>&quot;text/html; <span
+class=SpellE>charset</span>=utf-8&quot;</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>script</span></span><span
+class=attribute-name> <span class=SpellE>src</span></span>=<span
+class=attribute-value>&quot;js/jquery-1.2.3.js&quot;</span>&gt;&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>script</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).<span
+class=GramE>ready(</span>function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;p&quot;).<span
+class=GramE>show()</span><o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>head</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=GramE><span
+class=start-tag>body</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>p</span><span class=attribute-name> style</span>=<span
+class=attribute-value>&quot;<span class=SpellE>display<span class=GramE>:none</span></span>&quot;</span>&gt;Hello&lt;/<span
+class=end-tag>p</span>&gt;<o:p></o:p></span></pre><pre>&lt;/<span class=SpellE><span
+class=end-tag>body</span></span>&gt;</pre>
+
+<h3><span class=SpellE>show</span>(<span class=SpellE>speed</span>, [<span
+class=SpellE>callback</span>])</h3>
+
+<p>возвращает: <span class=SpellE>jQuery</span><span class=GramE><br>
+О</span>тображает все элементы набора с использованием анимационных эффектов.
+Опционально в аргументе <span class=SpellE>callback</span> может быть передана
+функция, которая будет вызвана по завершении анимации. Высота, ширина и
+прозрачность каждого элемента набора может быть изменена динамически, с
+определенной скоростью.</p>
+
+<p>Показываем все скрытые параграфы. Используем в качестве параметра ключевое
+слово <span class=SpellE>slow</span>. При этом анимация выполняется в течение
+600 миллисекунд.</p>
+
+<pre><span class=GramE>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;<span class=SpellE>button</span>&quot;</span><span
+style='color:#66CC66'>)</span>.<span class=SpellE><span style='color:#006600'>click</span></span><span
+style='color:#66CC66'>(</span><span class=SpellE><b><span style='color:#003366'>function</span></b></span> <span
+style='color:#66CC66'>()</span> <span style='color:#66CC66'>{</span></span></pre><pre><span style='mso-spacerun:yes'>  </span><span
+lang=EN-US style='mso-ansi-language:EN-US'>$<span style='color:#66CC66'>(</span><span
+style='color:#3366CC'>&quot;p&quot;</span><span style='color:#66CC66'>)</span>.<span
+class=GramE><span style='color:#006600'>show</span><span style='color:#66CC66'>(</span></span><span
+style='color:#3366CC'>&quot;slow&quot;</span><span style='color:#66CC66'>)</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>})</span><span
+lang=EN-US style='mso-ansi-language:EN-US'>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=GramE><span
+class=start-tag>head</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>meta</span></span><span class=attribute-name> http-equiv</span>=<span
+class=attribute-value>&quot;Content-Type&quot; </span><span
+class=attribute-name>content</span>=<span class=attribute-value>&quot;text/html; <span
+class=SpellE>charset</span>=utf-8&quot;</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>script</span></span><span
+class=attribute-name> <span class=SpellE>src</span></span>=<span
+class=attribute-value>&quot;js/jquery-1.2.3.js&quot;</span>&gt;&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>script</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).<span
+class=GramE>ready(</span>function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;button&quot;).<span
+class=GramE>click(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;p&quot;).<span
+class=GramE>show(</span>&quot;slow&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>style</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>p</span> { <span class=SpellE>background:yellow</span>; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>head</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=GramE><span
+class=start-tag>body</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>button</span>&gt;</span></span>Показать<span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>button</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>p</span><span class=attribute-name> style</span>=<span
+class=attribute-value>&quot;display: none&quot;</span>&gt;Hello&lt;/<span
+class=end-tag>p</span>&gt;<o:p></o:p></span></pre><pre>&lt;/<span class=SpellE><span
+class=end-tag>body</span></span>&gt;</pre>
+
+<p>Показываем все скрытые элементы <span class=SpellE>div</span> по порядку,
+используя ключевое слово <span class=SpellE>fast</span>. Каждая анимация
+занимает 200 миллисекунд и по завершении <span class=GramE>очередной</span>
+стартует следующая.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=GramE><span
+class=start-tag>head</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>meta</span></span><span class=attribute-name> http-equiv</span>=<span
+class=attribute-value>&quot;Content-Type&quot; </span><span
+class=attribute-name>content</span>=<span class=attribute-value>&quot;text/html; <span
+class=SpellE>charset</span>=utf-8&quot;</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>script</span></span><span
+class=attribute-name> <span class=SpellE>src</span></span>=<span
+class=attribute-value>&quot;js/jquery-1.2.3.js&quot;</span>&gt;&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>script</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).<span
+class=GramE>ready(</span>function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;#<span
+class=SpellE>showr</span>&quot;).<span class=GramE>click(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;<span
+class=SpellE>div<span class=GramE>:eq</span></span>(0)&quot;).show(&quot;fast&quot;, function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>// use <span
+class=SpellE>callee</span> so don't have to name the function<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span><span style='mso-spacerun:yes'>  </span>$(this).<span
+class=GramE>next(</span>).show(&quot;fast&quot;, <span class=SpellE>arguments.callee</span>); <o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;#<span
+class=SpellE>hidr</span>&quot;).<span class=GramE>click(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>hide(</span>2000);<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>style</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>div</span> { background:#def3ca; margin:3px; width:80px; <o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=SpellE><span class=GramE>display:</span>none</span>; <span class=SpellE>float:left</span>; text-<span
+class=SpellE>align:center</span>; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>head</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=GramE><span
+class=start-tag>body</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>button</span><span class=attribute-name> id</span>=<span
+class=attribute-value>&quot;<span class=SpellE>showr</span>&quot;</span>&gt;Show&lt;/<span
+class=end-tag>button</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>button</span><span class=attribute-name> id</span>=<span
+class=attribute-value>&quot;<span class=SpellE>hidr</span>&quot;</span>&gt;Hide&lt;/<span
+class=end-tag>button</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>div</span>&gt;</span>Hello,&lt;/<span
+class=end-tag>div</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>div</span>&gt;</span>how&lt;/<span
+class=end-tag>div</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>div</span>&gt;</span>are&lt;/<span
+class=end-tag>div</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>div</span>&gt;</span>you?&lt;/<span
+class=end-tag>div</span>&gt;<o:p></o:p></span></pre><pre>&lt;/<span
+class=SpellE><span class=end-tag>body</span></span>&gt;</pre>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>Аргумент <span class=SpellE><strong><span
+style='font-family:Verdana'>speed</span></strong></span> - строка или число.
+Если передается строка, она может принимать предопределенные значения - &quot;<span
+class=SpellE>slow</span>&quot;, &quot;<span class=SpellE>normal</span>&quot;
+или &quot;<span class=SpellE>fast</span>&quot;. Число - длительность эффекта в
+миллисекундах, например 1000.<br>
+Аргумент <span class=SpellE><strong><span style='font-family:Verdana'>callback</span></strong></span>
+- функция, вызываемая по завершении эффекта. Выполняется один раз для каждого
+элемента набора.<o:p></o:p></span></p>
+
+<h3 style='mso-line-height-alt:12.75pt;background:white'><span class=SpellE><span
+style='color:#35383D'>hide</span></span><span style='color:#35383D'>()<o:p></o:p></span></h3>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>возвращает: <span class=SpellE>jQuery</span><span
+class=GramE><br>
+С</span>крывает каждый из элементов набора, если они отображались. Действует
+подобно <span class=SpellE>hide</span>(<span class=SpellE>speed</span>, [<span
+class=SpellE>callback</span>]), но без анимационных эффектов. Если элемент был
+скрыт - ничего не происходит.<br>
+В примере один параграф скрыт изначально, второй - скрывается кликом по ссылке.<o:p></o:p></span></p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=GramE>script</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).<span
+class=GramE>ready(</span>function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;p&quot;).<span
+class=GramE>hide(</span>);<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;a&quot;).<span
+class=GramE>click(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(this).<span
+class=GramE>hide(</span>);<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span><span
+class=GramE>return</span> false;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=GramE>body</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span></span>&lt;<span
+class=SpellE>p</span>&gt;Привет!&lt;/<span class=SpellE>p</span>&gt;</pre><pre><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=SpellE>a</span> <span class=SpellE>href=</span>&quot;#&quot;&gt;Кликнуть <span
+class=GramE>здесь</span> чтобы скрыть ссылку&lt;/<span class=SpellE>a</span>&gt;</pre><pre><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=SpellE>p</span><span class=GramE>&gt;З</span>десь еще один параграф&lt;/<span
+class=SpellE>p</span>&gt;</pre><pre>&lt;/<span class=SpellE>body</span>&gt;<span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></pre>
+
+<h3 style='mso-line-height-alt:12.75pt;background:white'><span class=SpellE><span
+style='color:#35383D'>hide</span></span><span style='color:#35383D'>(<span
+class=SpellE>speed</span>, [<span class=SpellE>callback</span>])<o:p></o:p></span></h3>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>возвращает: <span class=SpellE>jQuery</span><span
+class=GramE><br>
+С</span>крывает все элементы набора с использованием анимационных эффектов.
+Опционально в аргументе <span class=SpellE>callback</span> может быть передана
+функция, которая будет вызвана по завершении анимации. Высота, ширина и
+прозрачность каждого элемента набора может быть изменена динамически, с
+определенной скоростью.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>Скрываем все видимые параграфы. Используем в качестве
+параметра ключевое слово <span class=SpellE>slow</span>. При этом анимация
+выполняется в течение 600 миллисекунд.<o:p></o:p></span></p>
+
+<pre style='line-height:12.75pt'><span class=GramE><span style='color:#35383D'>$</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;<span
+class=SpellE>button</span>&quot;</span><span style='color:#66CC66'>)</span><span
+style='color:#35383D'>.</span><span class=SpellE><span style='color:#006600'>click</span></span><span
+style='color:#66CC66'>(</span><span class=SpellE><b><span style='color:#003366'>function</span></b></span><span
+style='color:#35383D'> </span><span style='color:#66CC66'>()</span><span
+style='color:#35383D'> </span><span style='color:#66CC66'>{</span></span><span
+style='color:#35383D'><o:p></o:p></span></pre><pre style='line-height:12.75pt'><span
+style='color:#35383D'><span style='mso-spacerun:yes'>  </span>$</span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;<span
+class=SpellE>p</span>&quot;</span><span style='color:#66CC66'>)</span><span
+style='color:#35383D'>.</span><span class=SpellE><span style='color:#006600'>hide</span></span><span
+style='color:#66CC66'>(</span><span style='color:#3366CC'>&quot;<span
+class=SpellE>slow</span>&quot;</span><span style='color:#66CC66'>)</span><span
+style='color:#35383D'>;<o:p></o:p></span></pre><pre style='line-height:12.75pt'><span
+style='color:#66CC66'>})</span><span style='color:#35383D'>;<o:p></o:p></span></pre>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>Кликом по кнопке <span class=SpellE>Hide</span>,
+скрываем все элементы <span class=SpellE>span</span> по порядку, используя
+ключевое слово <span class=SpellE>fast</span>. Каждая анимация занимает 200
+миллисекунд и по завершении <span class=GramE>очередной</span> стартует следующая.<o:p></o:p></span></p>
+
+<div style='mso-element:para-border-div;border:solid #CCCCCC 1.0pt;mso-border-alt:
+solid #CCCCCC .75pt;padding:2.0pt 6.0pt 2.0pt 6.0pt;background:#E9F8FF'>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'>$</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;
+mso-ansi-language:EN-US'>(</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#3366CC;mso-ansi-language:EN-US'>&quot;#<span
+class=SpellE>hidr</span>&quot;</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>)</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'>.</span><span class=GramE><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#006600;mso-ansi-language:
+EN-US'>click</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#66CC66;mso-ansi-language:EN-US'>(</span></span><b><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#003366;mso-ansi-language:
+EN-US'>function</span></b><span lang=EN-US style='font-size:10.0pt;font-family:
+"Courier New";color:#35383D;mso-ansi-language:EN-US'> </span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>()</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#35383D;mso-ansi-language:EN-US'> </span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>{</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#35383D;mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$</span><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>(</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#3366CC;
+mso-ansi-language:EN-US'>&quot;<span class=SpellE>span<span class=GramE>:last</span></span>-child&quot;</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;
+mso-ansi-language:EN-US'>)</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'>.</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#006600;
+mso-ansi-language:EN-US'>hide</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>(</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#3366CC;
+mso-ansi-language:EN-US'>&quot;fast&quot;</span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:
+EN-US'>, </span><b><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#003366;mso-ansi-language:EN-US'>function</span></b><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:
+EN-US'> </span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#66CC66;mso-ansi-language:EN-US'>()</span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:
+EN-US'> </span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#66CC66;mso-ansi-language:EN-US'>{</span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:
+EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span></span><i><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#009900;mso-ansi-language:
+EN-US'>// use <span class=SpellE>callee</span> so don't have to name the
+function</span></i><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#35383D;mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>$</span><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>(</span><b><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#000066;
+mso-ansi-language:EN-US'>this</span></b><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>)</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'>.</span><span class=SpellE><span class=GramE><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#006600;
+mso-ansi-language:EN-US'>prev</span></span></span><span class=GramE><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;
+mso-ansi-language:EN-US'>(</span></span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>)</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'>.</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#006600;mso-ansi-language:EN-US'>hide</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;
+mso-ansi-language:EN-US'>(</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#3366CC;mso-ansi-language:EN-US'>&quot;fast&quot;</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'>, <span class=SpellE>arguments.<span style='color:
+#006600'>callee</span></span></span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>)</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span></span><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>})</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>})</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'>$</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;
+mso-ansi-language:EN-US'>(</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#3366CC;mso-ansi-language:EN-US'>&quot;#<span
+class=SpellE>showr</span>&quot;</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>)</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'>.</span><span class=GramE><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#006600;mso-ansi-language:
+EN-US'>click</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#66CC66;mso-ansi-language:EN-US'>(</span></span><b><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#003366;mso-ansi-language:
+EN-US'>function</span></b><span lang=EN-US style='font-size:10.0pt;font-family:
+"Courier New";color:#35383D;mso-ansi-language:EN-US'> </span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>()</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#35383D;mso-ansi-language:EN-US'> </span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>{</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#35383D;mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$</span><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>(</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#3366CC;
+mso-ansi-language:EN-US'>&quot;span&quot;</span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>)</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#35383D;mso-ansi-language:EN-US'>.</span><span class=GramE><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#006600;
+mso-ansi-language:EN-US'>show</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>(</span></span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#CC0000;
+mso-ansi-language:EN-US'>2000</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>)</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66'>})</span><span style='font-size:10.0pt;
+font-family:"Courier New";color:#35383D'>;<o:p></o:p></span></p>
+
+</div>
+
+<pre>Скрываем элементы <span class=SpellE>div</span> по клику на них в течение 2 секунд и когда элемент уже скрыт, удаляем его. Попробуйте очень быстро покликать по <span
+class=SpellE>div'ам</span>.<br>
+Аргумент <span class=SpellE><strong><span style='font-size:9.0pt;font-family:
+Verdana;mso-bidi-font-family:"Courier New";color:#35383D'>speed</span></strong></span> - строка или число. Если передается строка, она может принимать предопределенные значения - &quot;<span
+class=SpellE>slow</span>&quot;, &quot;<span class=SpellE>normal</span>&quot; или &quot;<span
+class=SpellE>fast</span>&quot;. Число - длительность эффекта в миллисекундах, например 1000.<br>
+Аргумент <span class=SpellE><strong><span style='font-size:9.0pt;font-family:
+Verdana;mso-bidi-font-family:"Courier New";color:#35383D'>callback</span></strong></span> - функция, вызываемая по завершении эффекта. Выполняется один раз для каждого элемента набора.</pre><pre>&lt;<span
+lang=EN-US style='mso-ansi-language:EN-US'>script</span>&gt;</pre><pre><span style='mso-spacerun:yes'>  </span><span
+class=GramE>$(<span lang=EN-US style='mso-ansi-language:EN-US'>document</span>).<span
+lang=EN-US style='mso-ansi-language:EN-US'>ready</span>(<span lang=EN-US
+style='mso-ansi-language:EN-US'>function</span>(){</span></pre><pre><span style='mso-spacerun:yes'>    </span></pre><pre><span style='mso-spacerun:yes'>    </span><span
+class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>for</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'> (<span class=SpellE>var</span> <span
+class=SpellE>i</span> = 0; <span class=SpellE>i</span> &lt; 5; <span
+class=SpellE>i</span>++) {<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;&lt;div&gt;&quot;).<span
+class=SpellE><span class=GramE>appendTo</span></span><span class=GramE>(</span><span
+class=SpellE>document.body</span>);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>}<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;div&quot;).<span
+class=GramE>click(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(this).<span
+class=GramE>hide(</span>2000, function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>$(this).<span
+class=GramE>remove(</span>);<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>div</span> { background:#ece0fb; width:30px; <o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=GramE>height:</span>40px; margin:2px; <span class=SpellE>float:left</span>; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/style&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=GramE>body</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE>div</span>&gt;&lt;/div&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;/body&gt;<o:p></o:p></span></pre>
+
+<h3 style='mso-line-height-alt:12.75pt;background:white'><span class=SpellE><span
+style='color:#35383D'>toggle</span></span><span style='color:#35383D'>()<o:p></o:p></span></h3>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>возвращает: <span class=SpellE>jQuery</span><span
+class=GramE><br>
+П</span>ереключает отображение каждого из элементов набора. Если они были
+скрыты - отображает их и наоборот.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>Переключаем параграфы с помощью кнопки.<o:p></o:p></span></p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=GramE>script</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).<span
+class=GramE>ready(</span>function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;button&quot;).<span
+class=GramE>click(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;p&quot;).<span
+class=GramE>toggle(</span>);<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=GramE>body</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span></span>&lt;<span
+class=SpellE>button</span><span class=GramE>&gt;П</span>ереключать...&lt;/<span
+class=SpellE>button</span>&gt;</pre><pre><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=SpellE>p</span>&gt;Привет-привет...&lt;/<span class=SpellE>p</span>&gt;</pre><pre><span style='mso-spacerun:yes'>  </span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;p style=&quot;display: none&quot;&gt;</span>Пока<span
+lang=EN-US style='mso-ansi-language:EN-US'>-</span>пока<span lang=EN-US
+style='mso-ansi-language:EN-US'>...&lt;/p&gt;<o:p></o:p></span></pre><pre>&lt;/<span
+class=SpellE>body</span>&gt;<span lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></pre>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+mso-line-height-alt:12.75pt;mso-outline-level:3;background:white'><span
+class=SpellE><span style='font-size:18.0pt;font-family:"Trebuchet MS";
+color:#CC6600'>Sliding</span></span><span style='font-size:18.0pt;font-family:
+"Trebuchet MS";color:#CC6600'>:<o:p></o:p></span></p>
+
+<h3 style='mso-line-height-alt:12.75pt;background:white'><span class=SpellE><span
+style='color:#35383D'>slideDown</span></span><span style='color:#35383D'>(<span
+class=SpellE>speed</span>, [<span class=SpellE>callback</span>])</span><span
+style='font-size:13.5pt;font-family:"Trebuchet MS";color:#35383D'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>возвращает: <span class=SpellE>jQuery</span><span
+class=GramE><br>
+О</span>ткрывает все элементы набора, используя изменение высоты элементов.
+Опционально в аргументе <span class=SpellE>callback</span> может быть передана
+функция, которая будет вызвана по завершении анимации.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>Открываем все элементы <span class=SpellE>input</span>,
+используя эффект &quot;скольжения вниз&quot;. Время анимации 1000 мс. Как
+только анимация выполнена - вызывается функция, которая изменяет некоторые
+css-свойства элементов <span class=SpellE>input</span>. А в особенности
+среднего элемента, которому передается фокус.<o:p></o:p></span></p>
+
+<pre><span lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>&lt;<span
+class=GramE>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).<span
+class=GramE>ready(</span>function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;div&quot;).<span
+class=GramE>click(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(this).<span
+class=SpellE><span class=GramE>css</span></span><span class=GramE>(</span>{ <span
+class=SpellE>borderStyle:&quot;inset</span>&quot;, <span class=SpellE>cursor:&quot;wait</span>&quot; });<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;input&quot;).<span
+class=SpellE><span class=GramE>slideDown</span></span><span class=GramE>(</span>1000,function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>$(this).<span
+class=SpellE><span class=GramE>css</span></span><span class=GramE>(</span>&quot;border&quot;, &quot;2px red inset&quot;)<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>               </span>.<span
+class=GramE>filter(</span>&quot;.middle&quot;)<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>                 </span>.<span
+class=SpellE><span class=GramE>css</span></span><span class=GramE>(</span>&quot;background&quot;, &quot;yellow&quot;)<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>                 </span>.<span
+class=GramE>focus(</span>);<o:p></o:p></span></pre><pre><span lang=EN-US
+style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>$(&quot;div&quot;).<span
+class=SpellE><span class=GramE>css</span></span><span class=GramE>(</span>&quot;visibility&quot;, &quot;hidden&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>div</span> { <span class=SpellE>background:#cfd</span>; margin:1x; width:60px; <o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=GramE>text-</span><span class=SpellE>align:center</span>; <span
+class=SpellE>float:left</span>; <span class=SpellE>cursor:pointer</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=GramE>border:</span>1px outset black; font-<span class=SpellE>weight:bolder</span>; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>input</span> { <span class=SpellE>display:none</span>; width:100px; <span
+class=SpellE>float:left</span>; <o:p></o:p></span></pre><pre><span lang=EN-US
+style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>          </span><span
+class=GramE>margin:</span>1px; }<o:p></o:p></span></pre><pre><span lang=EN-US
+style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/style&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>&lt;<span class=GramE>body</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE>div&gt;</span></span><span style='color:#35383D'>Нажать</span><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>!&lt;/div&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;input type=&quot;text&quot; /&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;input type=&quot;text&quot; class=&quot;middle&quot; /&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span></span><span
+style='color:#35383D'>&lt;<span class=SpellE>input</span> <span class=SpellE>type=</span>&quot;<span
+class=SpellE>text</span>&quot; /&gt;<o:p></o:p></span></pre><pre><span
+style='color:#35383D'>&lt;/<span class=SpellE>body</span>&gt;<o:p></o:p></span></pre>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>Открываем, &quot;скользя вниз&quot;, все элементы <span
+class=SpellE>div</span>. Для задания времени используем ключевое слово &quot;<span
+class=SpellE>slow</span>&quot;, т.е. открываем медленно.<o:p></o:p></span></p>
+
+<div style='mso-element:para-border-div;border:solid #CCCCCC 1.0pt;mso-border-alt:
+solid #CCCCCC .75pt;padding:2.0pt 6.0pt 2.0pt 6.0pt;background:#E9F8FF'>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'>$</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;
+mso-ansi-language:EN-US'>(</span><span class=SpellE><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:
+EN-US'>document.</span><span lang=EN-US style='font-size:10.0pt;font-family:
+"Courier New";color:#006600;mso-ansi-language:EN-US'>body</span></span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;
+mso-ansi-language:EN-US'>)</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'>.</span><span
+class=GramE><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#006600;mso-ansi-language:EN-US'>click</span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>(</span></span><b><span lang=EN-US style='font-size:10.0pt;font-family:
+"Courier New";color:#003366;mso-ansi-language:EN-US'>function</span></b><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'> </span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>()</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'> </span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>{</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span></span><span class=GramE><b><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#000066;mso-ansi-language:
+EN-US'>if</span></b></span><span lang=EN-US style='font-size:10.0pt;font-family:
+"Courier New";color:#35383D;mso-ansi-language:EN-US'> </span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>(</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#35383D;mso-ansi-language:EN-US'>$</span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>(</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#3366CC;mso-ansi-language:EN-US'>&quot;<span class=SpellE>div:first</span>&quot;</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;
+mso-ansi-language:EN-US'>)</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'>.</span><b><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#000066;
+mso-ansi-language:EN-US'>is</span></b><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>(</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#3366CC;
+mso-ansi-language:EN-US'>&quot;:hidden&quot;</span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>))</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#35383D;mso-ansi-language:EN-US'> </span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>{</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#35383D;mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>$</span><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>(</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#3366CC;
+mso-ansi-language:EN-US'>&quot;div&quot;</span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>)</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#35383D;mso-ansi-language:EN-US'>.</span><span class=SpellE><span
+class=GramE><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#006600;mso-ansi-language:EN-US'>slideDown</span></span></span><span
+class=GramE><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#66CC66;mso-ansi-language:EN-US'>(</span></span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#3366CC;mso-ansi-language:
+EN-US'>&quot;slow&quot;</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>)</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span></span><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>}</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'> </span><b><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#000066;mso-ansi-language:EN-US'>else</span></b><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'> </span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>{</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>$</span><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>(</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#3366CC;
+mso-ansi-language:EN-US'>&quot;div&quot;</span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>)</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#35383D;mso-ansi-language:EN-US'>.</span><span class=GramE><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#006600;
+mso-ansi-language:EN-US'>hide</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>(</span></span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;
+mso-ansi-language:EN-US'>)</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span></span><span style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66'>}</span><span style='font-size:10.0pt;
+font-family:"Courier New";color:#35383D'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66'>})</span><span style='font-size:10.0pt;
+font-family:"Courier New";color:#35383D'>;<o:p></o:p></span></p>
+
+</div>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>Скрываем, &quot;скользя вверх&quot;, все элементы <span
+class=SpellE>div</span>. Время не задаем. По умолчанию эффект будет выполнен
+примерно за 400 мс.<o:p></o:p></span></p>
+
+<div style='mso-element:para-border-div;border:solid #CCCCCC 1.0pt;mso-border-alt:
+solid #CCCCCC .75pt;padding:2.0pt 6.0pt 2.0pt 6.0pt;background:#E9F8FF'>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'>$</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;
+mso-ansi-language:EN-US'>(</span><span class=SpellE><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:
+EN-US'>document.</span><span lang=EN-US style='font-size:10.0pt;font-family:
+"Courier New";color:#006600;mso-ansi-language:EN-US'>body</span></span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;
+mso-ansi-language:EN-US'>)</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'>.</span><span
+class=GramE><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#006600;mso-ansi-language:EN-US'>click</span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>(</span></span><b><span lang=EN-US style='font-size:10.0pt;font-family:
+"Courier New";color:#003366;mso-ansi-language:EN-US'>function</span></b><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'> </span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>()</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'> </span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>{</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span></span><span class=GramE><b><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#000066;mso-ansi-language:
+EN-US'>if</span></b></span><span lang=EN-US style='font-size:10.0pt;font-family:
+"Courier New";color:#35383D;mso-ansi-language:EN-US'> </span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>(</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#35383D;mso-ansi-language:EN-US'>$</span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>(</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#3366CC;mso-ansi-language:EN-US'>&quot;<span class=SpellE>div:first</span>&quot;</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;
+mso-ansi-language:EN-US'>)</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'>.</span><b><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#000066;
+mso-ansi-language:EN-US'>is</span></b><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>(</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#3366CC;
+mso-ansi-language:EN-US'>&quot;:hidden&quot;</span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>))</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#35383D;mso-ansi-language:EN-US'> </span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>{</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#35383D;mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>$</span><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>(</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#3366CC;
+mso-ansi-language:EN-US'>&quot;div&quot;</span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>)</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#35383D;mso-ansi-language:EN-US'>.</span><span class=GramE><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#006600;
+mso-ansi-language:EN-US'>show</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>(</span></span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#3366CC;
+mso-ansi-language:EN-US'>&quot;slow&quot;</span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>)</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#35383D;mso-ansi-language:EN-US'>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span></span><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>}</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'> </span><b><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#000066;mso-ansi-language:EN-US'>else</span></b><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'> </span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>{</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span>$</span><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>(</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#3366CC;
+mso-ansi-language:EN-US'>&quot;div&quot;</span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>)</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#35383D;mso-ansi-language:EN-US'>.</span><span class=SpellE><span
+class=GramE><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#006600;mso-ansi-language:EN-US'>slideUp</span></span></span><span
+class=GramE><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#66CC66;mso-ansi-language:EN-US'>(</span></span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>)</span><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#35383D;mso-ansi-language:EN-US'>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span></span><span style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66'>}</span><span style='font-size:10.0pt;
+font-family:"Courier New";color:#35383D'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66'>})</span><span style='font-size:10.0pt;
+font-family:"Courier New";color:#35383D'>;<o:p></o:p></span></p>
+
+</div>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span class=SpellE><strong><span
+style='font-size:9.0pt;font-family:Verdana;color:#35383D'>slideUp</span></strong></span><span
+style='font-size:9.0pt;font-family:Verdana;color:#35383D'> принимает те же
+аргументы, что и <span class=SpellE><strong><span style='font-family:Verdana'>show</span></strong></span>
+или <span class=SpellE><strong><span style='font-family:Verdana'>hide</span></strong></span>.<o:p></o:p></span></p>
+
+<h3 style='mso-line-height-alt:12.75pt;background:white'><span class=SpellE><span
+style='color:#35383D'>slideToggle</span></span><span style='color:#35383D'>(<span
+class=SpellE>speed</span>, [<span class=SpellE>callback</span>])</span><span
+style='font-size:13.5pt;font-family:"Trebuchet MS";color:#35383D'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>возвращает: <span class=SpellE>jQuery</span><span
+class=GramE><br>
+П</span>ереключает видимость всех элементов набора, используя изменение высоты
+элементов. Опционально в аргументе <span class=SpellE>callback</span> может
+быть передана функция, которая будет вызвана по завершении анимации.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>Скрываем и отображаем все параграфы.<o:p></o:p></span></p>
+
+<pre style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;
+mso-ansi-language:EN-US'>$</span><span lang=EN-US style='color:#66CC66;
+mso-ansi-language:EN-US'>(</span><span lang=EN-US style='color:#3366CC;
+mso-ansi-language:EN-US'>&quot;button&quot;</span><span lang=EN-US
+style='color:#66CC66;mso-ansi-language:EN-US'>)</span><span lang=EN-US
+style='color:#35383D;mso-ansi-language:EN-US'>.</span><span class=GramE><span
+lang=EN-US style='color:#006600;mso-ansi-language:EN-US'>click</span><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>(</span></span><b><span
+lang=EN-US style='color:#003366;mso-ansi-language:EN-US'>function</span></b><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'> </span><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>()</span><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'> </span><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>{</span><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>$</span><span lang=EN-US
+style='color:#66CC66;mso-ansi-language:EN-US'>(</span><span lang=EN-US
+style='color:#3366CC;mso-ansi-language:EN-US'>&quot;p&quot;</span><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>)</span><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>.</span><span
+class=SpellE><span class=GramE><span lang=EN-US style='color:#006600;
+mso-ansi-language:EN-US'>slideToggle</span></span></span><span class=GramE><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>(</span></span><span
+lang=EN-US style='color:#3366CC;mso-ansi-language:EN-US'>&quot;slow&quot;</span><span
+lang=EN-US style='color:#66CC66;mso-ansi-language:EN-US'>)</span><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span style='color:#66CC66'>})</span><span
+style='color:#35383D'>;<o:p></o:p></span></pre>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>Анимируем элементы <span class=SpellE>div</span>,
+находящиеся между разделителями.<o:p></o:p></span></p>
+
+<div style='mso-element:para-border-div;border:solid #CCCCCC 1.0pt;mso-border-alt:
+solid #CCCCCC .75pt;padding:2.0pt 6.0pt 2.0pt 6.0pt;background:#E9F8FF'>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'>$</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;
+mso-ansi-language:EN-US'>(</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#3366CC;mso-ansi-language:EN-US'>&quot;button&quot;</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;
+mso-ansi-language:EN-US'>)</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'>.</span><span
+class=GramE><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#006600;mso-ansi-language:EN-US'>click</span><span lang=EN-US
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:
+EN-US'>(</span></span><b><span lang=EN-US style='font-size:10.0pt;font-family:
+"Courier New";color:#003366;mso-ansi-language:EN-US'>function</span></b><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'> </span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>()</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'> </span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>{</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>  </span>$</span><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>(</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#3366CC;
+mso-ansi-language:EN-US'>&quot;<span class=SpellE>div<span class=GramE>:not</span></span>(.still)&quot;</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;
+mso-ansi-language:EN-US'>)</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'>.</span><span
+class=SpellE><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#006600;mso-ansi-language:EN-US'>slideToggle</span></span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;
+mso-ansi-language:EN-US'>(</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#3366CC;mso-ansi-language:EN-US'>&quot;slow&quot;</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'>, </span><b><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#003366;mso-ansi-language:EN-US'>function</span></b><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'> </span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>()</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'> </span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>{</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span></span><span class=SpellE><span
+class=GramE><b><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:#003366;mso-ansi-language:EN-US'>var</span></b></span></span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'> n = <span class=SpellE>parseInt</span></span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;
+mso-ansi-language:EN-US'>(</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'>$</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;
+mso-ansi-language:EN-US'>(</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#3366CC;mso-ansi-language:EN-US'>&quot;span&quot;</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;
+mso-ansi-language:EN-US'>)</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'>.</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#006600;
+mso-ansi-language:EN-US'>text</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66;mso-ansi-language:EN-US'>()</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#35383D;
+mso-ansi-language:EN-US'>, </span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#CC0000;mso-ansi-language:EN-US'>10</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:#66CC66;
+mso-ansi-language:EN-US'>)</span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D;mso-ansi-language:EN-US'><span
+style='mso-spacerun:yes'>    </span></span><span style='font-size:10.0pt;
+font-family:"Courier New";color:#35383D'>$</span><span style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66'>(</span><span style='font-size:10.0pt;
+font-family:"Courier New";color:#3366CC'>&quot;<span class=SpellE>span</span>&quot;</span><span
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66'>)</span><span
+style='font-size:10.0pt;font-family:"Courier New";color:#35383D'>.</span><span
+class=SpellE><span style='font-size:10.0pt;font-family:"Courier New";
+color:#006600'>text</span></span><span style='font-size:10.0pt;font-family:
+"Courier New";color:#66CC66'>(</span><span class=SpellE><span style='font-size:
+10.0pt;font-family:"Courier New";color:#35383D'>n</span></span><span
+style='font-size:10.0pt;font-family:"Courier New";color:#35383D'> + </span><span
+style='font-size:10.0pt;font-family:"Courier New";color:#CC0000'>1</span><span
+style='font-size:10.0pt;font-family:"Courier New";color:#66CC66'>)</span><span
+style='font-size:10.0pt;font-family:"Courier New";color:#35383D'>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:#35383D'><span style='mso-spacerun:yes'> 
+</span></span><span style='font-size:10.0pt;font-family:"Courier New";
+color:#66CC66'>})</span><span style='font-size:10.0pt;font-family:"Courier New";
+color:#35383D'>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:12.75pt;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:#E9F8FF;border:none;mso-border-alt:solid #CCCCCC .75pt;padding:0cm;
+mso-padding-alt:2.0pt 6.0pt 2.0pt 6.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:#66CC66'>})</span><span style='font-size:10.0pt;
+font-family:"Courier New";color:#35383D'>;<o:p></o:p></span></p>
+
+</div>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span class=SpellE><strong><span
+style='font-size:9.0pt;font-family:Verdana;color:#35383D'>slideToggle</span></strong></span><span
+style='font-size:9.0pt;font-family:Verdana;color:#35383D'> принимает те же
+аргументы, что и <span class=SpellE><strong><span style='font-family:Verdana'>show</span></strong></span>
+или <span class=SpellE><strong><span style='font-family:Verdana'>hide</span></strong></span>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+mso-line-height-alt:12.75pt;mso-outline-level:3;background:white'><span
+class=SpellE><span style='font-size:18.0pt;font-family:"Trebuchet MS";
+color:#CC6600'>Fading</span></span><span style='font-size:18.0pt;font-family:
+"Trebuchet MS";color:#CC6600'>:<o:p></o:p></span></p>
+
+<h3 style='mso-line-height-alt:12.75pt;background:white'><span class=SpellE><span
+style='color:#35383D'>fadeIn</span></span><span style='color:#35383D'>(<span
+class=SpellE>speed</span>, [<span class=SpellE>callback</span>])</span><span
+style='font-size:13.5pt;font-family:"Trebuchet MS";color:#35383D'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>возвращает: <span class=SpellE>jQuery</span><span
+class=GramE><br>
+Д</span>елает видимыми все элементы набора, используя изменение прозрачности
+элементов. Опционально в аргументе <span class=SpellE>callback</span> может
+быть передана функция, которая будет вызвана по завершении анимации. Только
+прозрачность элемента может быть использована для этого эффекта, поэтому
+&quot;проявляемый&quot; элемент уже должен иметь какие-либо размеры, т.е. его
+высота и ширина должны быть определены.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>&quot;Проявляем&quot; скрытые элементы <span
+class=SpellE>div</span> один за другим, каждый раз анимационный эффект занимает
+время примерно в 600 мс.<o:p></o:p></span></p>
+
+<pre><span lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>&lt;<span
+class=GramE>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).<span
+class=GramE>ready(</span>function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(<span
+class=SpellE>document.body</span>).<span class=GramE>click(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;<span
+class=SpellE>div<span class=GramE>:hidden:first</span></span>&quot;).<span
+class=SpellE>fadeIn</span>(&quot;slow&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>span</span> { <span class=SpellE>color:red</span>; <span
+class=SpellE>cursor:pointer</span>; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>div</span> { margin:3px; width:80px; <span class=SpellE>display:none</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=GramE>height:</span>80px; <span class=SpellE>float:left</span>; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=SpellE><span class=GramE>div#</span>one</span> { background:#f00; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=SpellE><span class=GramE>div#</span>two</span> { background:#0f0; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=SpellE><span class=GramE>div#</span>three</span> { background:#00f; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/style&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>&lt;<span class=GramE>body</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE>span&gt;</span></span><span style='color:#35383D'>Кликать</span><span
+style='color:#35383D;mso-ansi-language:EN-US'> </span><span style='color:#35383D'>тут</span><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>...&lt;/span&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;div id=&quot;one&quot;&gt;&lt;/div&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;div id=&quot;two&quot;&gt;&lt;/div&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span></span><span
+style='color:#35383D'>&lt;<span class=SpellE>div</span> <span class=SpellE>id=</span>&quot;<span
+class=SpellE>three</span>&quot;&gt;&lt;/<span class=SpellE>div</span>&gt;<o:p></o:p></span></pre><pre><span
+style='color:#35383D'>&lt;/<span class=SpellE>body</span>&gt;</span><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><o:p></o:p></span></pre>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>&quot;Проявляем&quot; красный блок поверх текста. По
+завершении этой анимации запускается следующий эффект, который
+&quot;проявляет&quot; тэг <span class=SpellE>span</span>.<o:p></o:p></span></p>
+
+<pre><span lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>&lt;<span
+class=GramE>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).<span
+class=GramE>ready(</span>function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;a&quot;).<span
+class=GramE>click(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=SpellE><span class=GramE>fadeIn</span></span><span class=GramE>(</span>3000, function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>$(&quot;span&quot;).<span
+class=SpellE><span class=GramE>fadeIn</span></span><span class=GramE>(</span>100);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span><span
+class=GramE>return</span> false;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>}); <o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>p</span> { <span class=SpellE>position:relative</span>; width:400px; height:90px; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>div</span> { <span class=SpellE>position:absolute</span>; width:400px; height:65px; <o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=GramE>font-size:</span>36px; text-<span class=SpellE>align:center</span>; <o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=SpellE><span class=GramE>color:</span>yellow</span>; <span class=SpellE>background:red</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=GramE>padding-top:</span>25px; <o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=GramE>top:</span>0; left:0; <span class=SpellE>display:none</span>; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>span</span> { <span class=SpellE>display:none</span>; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/style&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>&lt;<span class=GramE>body</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;p&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>Let it be known that the party of the first part<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>and</span> the party of the second part are henceforth<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>and</span> hereto directed to assess the allegations<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>for</span> factual correctness... (&lt;a <span class=SpellE>href</span>=&quot;#&quot;&gt;click<span
+class=GramE>!&lt;</span>/a&gt;)<o:p></o:p></span></pre><pre><span lang=EN-US
+style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>&lt;<span
+class=GramE>div</span>&gt;&lt;span&gt;CENSORED!&lt;/span&gt;&lt;/div&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span></span><span
+style='color:#35383D'>&lt;/<span class=SpellE>p</span>&gt;<o:p></o:p></span></pre><pre><span
+style='color:#35383D'>&lt;/<span class=SpellE>body</span>&gt;</span><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><o:p></o:p></span></pre>
+
+<h3 style='mso-line-height-alt:12.75pt;background:white'><span class=SpellE><span
+style='color:#35383D'>fadeOut</span></span><span style='color:#35383D'>(<span
+class=SpellE>speed</span>, [<span class=SpellE>callback</span>])<o:p></o:p></span></h3>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>возвращает: <span class=SpellE>jQuery</span><span
+class=GramE><br>
+Д</span>елает невидимыми все элементы набора, используя изменение прозрачности
+элементов (эффект &quot;затухания&quot;). Опционально в аргументе <span
+class=SpellE>callback</span> может быть передана функция, которая будет вызвана
+по завершении анимации. Только прозрачность элемента может быть использована
+для этого эффекта, поэтому скрываемый элемент должен иметь какие-либо размеры,
+т.е. его высота и ширина должны быть определены.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>Скрываем все параграфы, используя эффект
+&quot;затухания&quot;. Продолжительность эффекта примерно 600 мс.<o:p></o:p></span></p>
+
+<pre><span style='color:#35383D'>&lt;</span><span lang=EN-US style='color:#35383D;
+mso-ansi-language:EN-US'>script</span><span style='color:#35383D'>&gt;<o:p></o:p></span></pre><pre><span
+style='color:#35383D'><span style='mso-spacerun:yes'>  </span></span><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>$(document).<span
+class=GramE>ready(</span>function(){ <o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;p&quot;).<span
+class=GramE>click(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;p&quot;).<span
+class=SpellE><span class=GramE>fadeOut</span></span><span class=GramE>(</span>&quot;slow&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE>style</span>&gt;<span style='mso-spacerun:yes'>  </span>p { font-size:120%; <span
+class=SpellE>cursor:pointer</span>; }<span style='mso-spacerun:yes'>  </span>&lt;/style&gt;<o:p></o:p></span></pre><pre><span
+style='color:#35383D'>&lt;/</span><span lang=EN-US style='color:#35383D;
+mso-ansi-language:EN-US'>head</span><span style='color:#35383D'>&gt;<o:p></o:p></span></pre><pre><span
+style='color:#35383D'>&lt;</span><span lang=EN-US style='color:#35383D;
+mso-ansi-language:EN-US'>body</span><span style='color:#35383D'>&gt;<o:p></o:p></span></pre><pre><span
+style='color:#35383D'><span style='mso-spacerun:yes'>  </span>&lt;</span><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>p</span><span
+class=GramE><span style='color:#35383D'>&gt;<span style='mso-spacerun:yes'>  </span>Е</span></span><span
+style='color:#35383D'>сли Вы кликните на этом параграфе, Вы увидите, как он будет скрыт с использованием эффекта &quot;затухания&quot;.<span style='mso-spacerun:yes'>  </span></span><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>&lt;/p&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>&lt;/body&gt;<o:p></o:p></span></pre>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>Проведите мышью над текстом. Кликните там, где при
+наведении курсора появится <span class=GramE>желтый</span> <span class=SpellE>бэкграунд</span>.
+Это один из нескольких элементов <span class=SpellE>span</span>. По клику на
+нем он будет скрыт с использованием эффекта &quot;затухания&quot;.<o:p></o:p></span></p>
+
+<pre><span lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>&lt;<span
+class=GramE>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).<span
+class=GramE>ready(</span>function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;span&quot;).<span
+class=GramE>click(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(this).<span
+class=SpellE><span class=GramE>fadeOut</span></span><span class=GramE>(</span>1000, function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>$(&quot;div&quot;).<span
+class=GramE>text(</span>&quot;'&quot; + $(this).text() + &quot;' has faded!&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>$(this).<span
+class=GramE>remove(</span>);<o:p></o:p></span></pre><pre><span lang=EN-US
+style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;span&quot;).<span
+class=GramE>hover(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(this).<span
+class=SpellE><span class=GramE>addClass</span></span><span class=GramE>(</span>&quot;<span
+class=SpellE>hilite</span>&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>}, function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(this).<span
+class=SpellE><span class=GramE>removeClass</span></span><span class=GramE>(</span>&quot;<span
+class=SpellE>hilite</span>&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>span</span> { <span class=SpellE>cursor:pointer</span>; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=SpellE>span.hilite</span> <span class=GramE>{ <span class=SpellE>background:yellow</span></span>; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>div</span> { <span class=SpellE>display:inline</span>; <span
+class=SpellE>color:red</span>; }<o:p></o:p></span></pre><pre><span lang=EN-US
+style='color:#35383D;mso-ansi-language:EN-US'> <span style='mso-spacerun:yes'> </span>&lt;/style&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>&lt;/head&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>&lt;<span class=GramE>body</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;h3&gt;Find the modifiers - &lt;div&gt;&lt;/div&gt;&lt;/h3&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;p&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>If you &lt;span&gt;really&lt;/span&gt; want to go outside<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>&lt;<span
+class=GramE>span&gt;</span>in the cold&lt;/span&gt; then make sure to wear<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>your</span> &lt;span&gt;warm&lt;/span&gt; jacket given to you by<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>your</span> &lt;span&gt;favorite&lt;/span&gt; teacher.<o:p></o:p></span></pre><pre><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span></span><span
+style='color:#35383D'>&lt;/<span class=SpellE>p</span>&gt;<o:p></o:p></span></pre><pre><span
+style='color:#35383D'>&lt;/<span class=SpellE>body</span>&gt;</span><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><o:p></o:p></span></pre>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span class=SpellE><strong><span
+style='font-size:9.0pt;font-family:Verdana;color:#35383D'>fadeOut</span></strong></span><span
+style='font-size:9.0pt;font-family:Verdana;color:#35383D'> принимает те же
+аргументы, что и <span class=SpellE><strong><span style='font-family:Verdana'>show</span></strong></span>
+или<strong><span style='font-family:Verdana'> <span class=SpellE>hide</span></span></strong>.<o:p></o:p></span></p>
+
+<h3 style='mso-line-height-alt:12.75pt;background:white'><span class=SpellE><span
+style='color:#35383D'>fadeTo</span></span><span style='color:#35383D'>(<span
+class=SpellE>speed</span>, <span class=SpellE>opacity</span>, [<span
+class=SpellE>callback</span>])</span><span style='font-size:13.5pt;font-family:
+"Trebuchet MS";color:#35383D'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>возвращает: <span class=SpellE>jQuery</span><span
+class=GramE><br>
+Д</span>елает невидимыми все элементы набора, используя изменение прозрачности
+элементов (эффект &quot;затухания&quot;) до величины, указанной во втором
+аргументе. Опционально в аргументе <span class=SpellE>callback</span> может
+быть передана функция, которая будет вызвана по завершении анимации. Только
+прозрачность элемента может быть использована для этого эффекта, поэтому
+скрываемый элемент должен иметь какие-либо размеры, т.е. его высота и ширина
+должны быть определены.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>Кликом на первом параграфе изменяем его прозрачность до
+0.33. Эффект длится примерно 600 мс. Второй параграф не меняет прозрачность.<o:p></o:p></span></p>
+
+<pre style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;
+mso-ansi-language:EN-US'>&lt;<span class=GramE>script</span>&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>$(document).<span class=GramE>ready(</span>function(){<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;<span class=SpellE>p<span
+class=GramE>:first</span></span>&quot;).click(function () {<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>      </span>$(this).<span class=SpellE><span
+class=GramE>fadeTo</span></span><span class=GramE>(</span>&quot;slow&quot;, 0.33);<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><o:p>&nbsp;</o:p></span></pre><pre style='line-height:12.75pt'><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span><o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'>&lt;/head&gt;<o:p></o:p></span></pre><pre style='line-height:12.75pt'><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>&lt;<span class=GramE>body</span>&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;p&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span>Click this paragraph to see it fade.<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/p&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;p&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span>Compare to this one that won't fade.<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/p&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'>&lt;/body&gt;<o:p></o:p></span></pre>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>Меняем прозрачность элементов <span class=SpellE>div</span>
+случайным образом. Длительность эффекта примерно 200 мс.<o:p></o:p></span></p>
+
+<pre style='line-height:12.75pt'><span style='color:#35383D'>&lt;</span><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>script</span><span
+style='color:#35383D'>&gt;<o:p></o:p></span></pre><pre style='line-height:12.75pt'><span
+style='color:#35383D'><span style='mso-spacerun:yes'>  </span></span><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>$(document).<span
+class=GramE>ready(</span>function(){<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;div&quot;).<span
+class=GramE>click(</span>function () {<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>      </span>$(this).<span class=SpellE><span
+class=GramE>fadeTo</span></span><span class=GramE>(</span>&quot;fast&quot;, <span
+class=SpellE>Math.random</span>());<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><o:p>&nbsp;</o:p></span></pre><pre style='line-height:12.75pt'><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span class=GramE>style</span>&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span><span class=GramE>p</span> { width:80px; margin:0; padding:5px; }<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span><span class=GramE>div</span> { width:40px; height:40px; <span
+class=SpellE>position:absolute</span>; }<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span><span class=SpellE><span
+class=GramE>div#</span>one</span> { top:0; left:0; background:#f00; }<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span><span class=SpellE><span
+class=GramE>div#</span>two</span> { top:20px; left:20px; background:#0f0; }<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span><span class=SpellE><span
+class=GramE>div#</span>three</span> { top:40px; left:40px; background:#00f; }<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/style&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'>&lt;/head&gt;<o:p></o:p></span></pre><pre style='line-height:12.75pt'><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>&lt;<span class=GramE>body</span>&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;p&gt;<span class=GramE>And</span> this is the library that John built...&lt;/p&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;div id=&quot;one&quot;&gt;&lt;/div&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;div id=&quot;two&quot;&gt;&lt;/div&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;div id=&quot;three&quot;&gt;&lt;/div&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'>&lt;/body&gt;<o:p></o:p></span></pre>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span class=SpellE><strong><span
+style='font-size:9.0pt;font-family:Verdana;color:#35383D'>fadeTo</span></strong></span><span
+style='font-size:9.0pt;font-family:Verdana;color:#35383D'> принимает те же
+аргументы, что и <span class=SpellE><strong><span style='font-family:Verdana'>show</span></strong></span>
+или <span class=SpellE><strong><span style='font-family:Verdana'>hide</span></strong></span>.
+<span class=GramE>И</span> кроме того второй аргумент <span class=SpellE><strong><span
+style='font-family:Verdana'>opacity</span></strong></span> - число от 0 до 1,
+характеризующий &quot;целевую&quot; прозрачность элемента.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+mso-line-height-alt:12.75pt;mso-outline-level:3;background:white'><span
+lang=EN-US style='font-size:18.0pt;font-family:"Trebuchet MS";color:#CC6600;
+mso-ansi-language:EN-US'>Custom:<o:p></o:p></span></p>
+
+<h3 style='mso-line-height-alt:12.75pt;background:white'><span class=GramE><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>animate(</span></span><span
+class=SpellE><span lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>params</span></span><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>, [duration],
+[easing], [callback])</span><span lang=EN-US style='font-size:13.5pt;
+font-family:"Trebuchet MS";color:#35383D;mso-ansi-language:EN-US'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>возвращает: <span class=SpellE>jQuery</span><span
+class=GramE><br>
+Э</span>то функция для построения своей, пользовательской анимации. У этой
+функции один обязательный аргумент, представляющий собой <span class=GramE>объект</span>
+состоящий из пар ключ/значение. В качестве ключа выступает CSS-свойство,
+которое должно быть анимировано (например: &quot;<span class=SpellE>height</span>&quot;,
+&quot;<span class=SpellE>top</span>&quot;, <span class=SpellE>or</span> &quot;<span
+class=SpellE>opacity</span>&quot;).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:3.75pt;margin-right:0cm;margin-bottom:
+3.75pt;margin-left:0cm;line-height:11.25pt;background:#E9F8FF'><span
+style='font-size:8.5pt;font-family:Verdana;color:#336699'>Обратите внимание,
+что свойства должны быть определены с использованием <span class=SpellE>camel</span>
+<span class=SpellE>case</span> (т.е. например <span class=SpellE>marginLeft</span>
+вместо <span class=SpellE>margin-left</span>).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>В качестве значения выступает &quot;целевое&quot;
+значение соответствующего CSS-свойства. Например, если в качестве значения
+выступает какая-либо цифра, то <span class=SpellE>соответвующее</span> свойство
+будет трансформировано из своего текущего состояния, в новое состояние.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:3.75pt;margin-right:0cm;margin-bottom:
+3.75pt;margin-left:0cm;line-height:11.25pt;background:#E9F8FF'><span
+style='font-size:8.5pt;font-family:Verdana;color:#336699'>Обратите внимание,
+что поддерживаются только свойства, имеющие в качестве значения какие-либо
+числа (или &quot;<span class=SpellE>hide</span>&quot;, &quot;<span
+class=SpellE>show</span>&quot;, &quot;<span class=SpellE>toggle</span>&quot;). <span
+class=GramE>Например</span> <span class=SpellE>backgroundColor</span> не
+поддерживается.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span class=GramE><span style='font-size:
+9.0pt;font-family:Verdana;color:#35383D'>Начиная с версии <span class=SpellE>jQuery</span>
+1.2 можно определять значения свойств, используя &quot;<span class=SpellE>em</span>&quot;
+или %. Также начиная с версии <span class=SpellE>jQuery</span> 1.2 можно
+использовать &quot;относительную&quot; анимацию, т.е. определять значения
+соответствующего свойства относительно его текущей позиции (используя
+&quot;+=&quot; или &quot;-=&quot;) чтобы передвигать элемент в положительную
+или отрицательную стороны.</span></span><span style='font-size:9.0pt;
+font-family:Verdana;color:#35383D'><br>
+Кликните по кнопке, чтобы запустить анимацию для элемента <span class=SpellE>div</span>.<o:p></o:p></span></p>
+
+<pre style='line-height:12.75pt'><span style='color:#35383D'>&lt;</span><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>script</span><span
+style='color:#35383D'>&gt;<o:p></o:p></span></pre><pre style='line-height:12.75pt'><span
+style='color:#35383D'><span style='mso-spacerun:yes'>  </span></span><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>$(document).<span
+class=GramE>ready(</span>function(){<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span>// <span class=GramE>Using</span> multiple unit types within one animation.<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;#go&quot;).<span
+class=GramE>click(</span>function(){<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;#block&quot;).<span
+class=GramE>animate({</span> <o:p></o:p></span></pre><pre style='line-height:
+12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=GramE>width</span>: &quot;70%&quot;,<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span><span class=GramE>opacity</span>: 0.4,<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span><span class=SpellE><span
+class=GramE>marginLeft</span></span>: &quot;0.6in&quot;,<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span><span class=SpellE><span
+class=GramE>fontSize</span></span>: &quot;3em&quot;, <o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span><span class=SpellE><span
+class=GramE>borderWidth</span></span>: &quot;10px&quot;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>      </span>}, <span class=GramE>1500 )</span>;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><o:p>&nbsp;</o:p></span></pre><pre style='line-height:12.75pt'><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span class=GramE>style</span>&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span><span class=GramE>div</span> { <o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span><span class=GramE>background-<span
+class=SpellE>color</span></span><span class=SpellE>:#bca</span>; <o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span><span class=GramE>width:</span>100px; <o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span><span class=GramE>border:</span>1px solid green;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>}<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/style&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'>&lt;/head&gt;<o:p></o:p></span></pre><pre style='line-height:12.75pt'><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>&lt;<span class=GramE>body</span>&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;button id=&quot;go&quot;&gt;» <span
+class=SpellE>Погнали</span>...&lt;/button&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span></span><span style='color:#35383D'>&lt;</span><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>div</span><span
+lang=EN-US style='color:#35383D'> </span><span lang=EN-US style='color:#35383D;
+mso-ansi-language:EN-US'>id</span><span style='color:#35383D'>=&quot;</span><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>block</span><span
+style='color:#35383D'>&quot;&gt;<span class=GramE>Привет</span> однако!&lt;/</span><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>div</span><span
+style='color:#35383D'>&gt;<o:p></o:p></span></pre><pre style='line-height:12.75pt'><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>&lt;/body&gt;<o:p></o:p></span></pre>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>Пример &quot;относительной&quot; анимации. <span
+class=SpellE>Покликайте</span> несколько раз по кнопкам вправо/влево...<o:p></o:p></span></p>
+
+<pre style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;
+mso-ansi-language:EN-US'>&lt;<span class=GramE>script</span>&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>$(document).<span class=GramE>ready(</span>function(){<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;#right&quot;).<span
+class=GramE>click(</span>function(){<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;.block&quot;).<span
+class=GramE>animate(</span>{&quot;left&quot;: &quot;+=50px&quot;}, &quot;slow&quot;);<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><o:p>&nbsp;</o:p></span></pre><pre style='line-height:12.75pt'><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;#left&quot;).<span
+class=GramE>click(</span>function(){<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;.block&quot;).<span
+class=GramE>animate(</span>{&quot;left&quot;: &quot;-=50px&quot;}, &quot;slow&quot;);<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><o:p>&nbsp;</o:p></span></pre><pre style='line-height:12.75pt'><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span class=GramE>style</span>&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span><span class=GramE>div</span> { <o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span><span class=SpellE><span
+class=GramE>position:</span>absolute</span>; background-<span class=SpellE>color:#abc</span>; left:50px; width:90px;<span style='mso-spacerun:yes'>  </span>height:90px;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span><span class=GramE>margin:</span>5px; <o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>}<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/style&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'>&lt;/head&gt;<o:p></o:p></span></pre><pre style='line-height:12.75pt'><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>&lt;<span class=GramE>body</span>&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;button id=&quot;left&quot;&gt;«&lt;/button&gt; &lt;button id=&quot;right&quot;&gt;»&lt;/button&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'>&lt;div class=&quot;block&quot;&gt;&lt;/div&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'>&lt;/body&gt;<o:p></o:p></span></pre>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>Аргументы, принимаемые этой функцией:<br>
+<span class=SpellE><strong><span style='font-family:Verdana'>params</span></strong></span>
+- набор атрибутов стилей, которые Вы хотите анимировать.<br>
+<span class=SpellE><strong><span style='font-family:Verdana'>duration</span></strong></span><strong><span
+style='font-family:Verdana'> (<span class=SpellE>Optional</span>)</span></strong>
+- строка, представляющая собой ключевое слово (&quot;<span class=SpellE>slow</span>&quot;,
+&quot;<span class=SpellE>normal</span>&quot;, или &quot;<span class=SpellE>fast</span>&quot;)
+или число, <span class=SpellE>указываюее</span> длительность эффекта в
+миллисекундах.<br>
+<span class=SpellE><strong><span style='font-family:Verdana'>easing</span></strong></span><strong><span
+style='font-family:Verdana'> (<span class=SpellE>Optional</span>)</span></strong>
+- строка, представляющая собой имя эффекта <span class=SpellE>плагина</span> <span
+class=SpellE>easing</span>. Имеет два встроенных значения &quot;<span
+class=SpellE>linear</span>&quot; и &quot;<span class=SpellE>swing</span>&quot;.
+Используется только с <span class=SpellE>плагином</span>.<br>
+<span class=SpellE><strong><span style='font-family:Verdana'>callback</span></strong></span><strong><span
+style='font-family:Verdana'> (<span class=SpellE>Optional</span>)</span></strong>
+- функция, которая может быть вызвана по завершении анимации каждого элемента
+набора.<o:p></o:p></span></p>
+
+<h3 style='mso-line-height-alt:12.75pt;background:white'><span class=SpellE><span
+style='color:#35383D'>animate</span></span><span style='color:#35383D'>(<span
+class=SpellE>params</span>, <span class=SpellE>options</span>)</span><span
+style='font-size:13.5pt;font-family:"Trebuchet MS";color:#35383D'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>возвращает: <span class=SpellE>jQuery</span><span
+class=GramE><br>
+Э</span>то функция для построения своей, пользовательской анимации. Аргумент <span
+class=SpellE><strong><span style='font-family:Verdana'>params</span></strong></span>
+представляет собой объект, состоящий из пар ключ/значение. В качестве ключа
+выступает CSS-свойство, которое должно быть анимировано (например: &quot;<span
+class=SpellE>height</span>&quot;, &quot;<span class=SpellE>top</span>&quot;,
+или &quot;<span class=SpellE>opacity</span>&quot;).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:3.75pt;margin-right:0cm;margin-bottom:
+3.75pt;margin-left:0cm;line-height:11.25pt;background:#E9F8FF'><span
+style='font-size:8.5pt;font-family:Verdana;color:#336699'>Обратите внимание,
+что свойства должны быть определены с использованием <span class=SpellE>camel</span>
+<span class=SpellE>case</span> (т.е. например <span class=SpellE>marginLeft</span>
+вместо <span class=SpellE>margin-left</span>).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><span style='font-size:9.0pt;font-family:
+Verdana;color:#35383D'>В качестве значения выступает &quot;целевое&quot;
+значение соответствующего CSS-свойства. Например, если в качестве значения
+выступает какая-либо цифра, то <span class=SpellE>соответвующее</span> свойство
+будет трансформировано из своего текущего состояния, в новое состояние. Или же
+если значение представлено в виде строки (&quot;<span class=SpellE>hide</span>&quot;,
+&quot;<span class=SpellE>show</span>&quot;, или &quot;<span class=SpellE>toggle</span>&quot;),
+анимация для этого свойства будет создана со значениями по умолчанию.<br>
+Отдельно стоит поговорить об аргументе <span class=SpellE><strong><span
+style='font-family:Verdana'>options</span></strong></span>. В нем также может
+быть передана длительность соответствующего эффекта анимации (как с
+использованием числовых значений в миллисекундах, так и с помощью <span
+class=SpellE>клюючевых</span> слов). Также может быть использовано имя эффекта
+при использовании <span class=SpellE>плагина</span> <span class=SpellE>easing</span>.
+С помощью опции <span class=SpellE><strong><span style='font-family:Verdana'>complete</span></strong></span>
+может быть вызвана функция, которая будет выполнена по завершении анимации для
+каждого элемента набора.<br>
+Обязательно надо упомянуть о <span class=SpellE><strong><span style='font-family:
+Verdana'>queue</span></strong></span> (добавлено в <span class=SpellE>jQuery</span>
+1.2). Он принимает значения <span class=SpellE>true</span> (по умолчанию) или <span
+class=SpellE>false</span>. Если установить <span class=SpellE>queue:false</span>,
+это даст возможность выполнить анимационный эффект вне очереди, параллельно со
+следующим эффектом (если такой есть конечно).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+line-height:12.75pt;background:white'><em><b><span style='font-size:9.0pt;
+font-family:Verdana;color:#35383D'>Посмотрите следующий пример - будет намного
+понятнее.</span></b></em><span style='font-size:9.0pt;font-family:Verdana;
+color:#35383D'><br>
+Первая кнопка как раз демонстрирует пример такой параллельной анимации. Некий
+элемент с идентификатором #block1 должен изменить свою ширину до 90% <span
+class=GramE>от</span> возможной, шрифт должен быть установлен в размер 24px и
+правая рамка должна стать шириной 15px. Обратите внимание, что изменение ширины
+происходит одновременно с другими двумя эффектами, которые уже следуют друг за
+другом в порядке очереди.<br>
+Вторая кнопка запускает почти такую же анимацию, вот только все эффекты следуют
+друг за другом строго по очереди.<o:p></o:p></span></p>
+
+<pre style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;
+mso-ansi-language:EN-US'>&lt;<span class=GramE>script</span>&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>$(document).<span class=GramE>ready(</span>function(){<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;#go1&quot;).<span
+class=GramE>click(</span>function(){<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;#block1&quot;).<span
+class=GramE>animate(</span> { width:&quot;90%&quot; }, { <span class=SpellE>queue:false</span>, duration:3000 } )<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>         </span>.<span class=GramE>animate(</span> { fontSize:&quot;24px&quot; }, 1500 )<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>         </span>.<span class=GramE>animate(</span> { borderRightWidth:&quot;15px&quot; }, 1500);<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><o:p>&nbsp;</o:p></span></pre><pre style='line-height:12.75pt'><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;#go2&quot;).<span
+class=GramE>click(</span>function(){<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;#block2&quot;).<span
+class=GramE>animate(</span> { width:&quot;90%&quot;}, 1000 )<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>         </span>.<span class=GramE>animate(</span> { fontSize:&quot;24px&quot; } , 1000 )<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>         </span>.<span class=GramE>animate(</span> { borderLeftWidth:&quot;15px&quot; }, 1000);<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><o:p>&nbsp;</o:p></span></pre><pre style='line-height:12.75pt'><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;#go3&quot;).<span
+class=GramE>click(</span>function(){<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;#go1&quot;).<span
+class=GramE>add(</span>&quot;#go2&quot;).click();<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><o:p>&nbsp;</o:p></span></pre><pre style='line-height:12.75pt'><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;#go4&quot;).<span
+class=GramE>click(</span>function(){<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=SpellE><span class=GramE>css</span></span><span class=GramE>(</span>{width:&quot;&quot;, <span
+class=SpellE>fontSize</span>:&quot;&quot;, <span class=SpellE>borderWidth</span>:&quot;&quot;});<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><o:p>&nbsp;</o:p></span></pre><pre style='line-height:12.75pt'><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/script&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span class=GramE>style&gt;</span>div { <o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span><span class=GramE>background-<span
+class=SpellE>color</span></span><span class=SpellE>:#bca</span>; <o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span><span class=GramE>width:</span>200px;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span><span class=GramE>height:</span>1.1em;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span><span class=GramE>text-</span><span
+class=SpellE>align:center</span>;<o:p></o:p></span></pre><pre style='line-height:
+12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>border:</span>2px solid green;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span><span class=GramE>margin:</span>3px;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span><span class=GramE>font-size:</span>14px;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>}<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span><span class=GramE>button</span> {<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>    </span><span class=GramE>font-size:</span>14px;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>}<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/style&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'>&lt;/head&gt;<o:p></o:p></span></pre><pre style='line-height:12.75pt'><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'>&lt;<span class=GramE>body</span>&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;button id=&quot;go1&quot;&gt;» </span><span
+style='color:#35383D'>Блок</span><span lang=EN-US style='color:#35383D;
+mso-ansi-language:EN-US'> 1&lt;/button&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;button id=&quot;go2&quot;&gt;» </span><span
+style='color:#35383D'>Блок</span><span lang=EN-US style='color:#35383D;
+mso-ansi-language:EN-US'> 2&lt;/button&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;button id=&quot;go3&quot;&gt;» </span><span
+style='color:#35383D'>Оба</span><span style='color:#35383D;mso-ansi-language:
+EN-US'> </span><span style='color:#35383D'>блока</span><span lang=EN-US
+style='color:#35383D;mso-ansi-language:EN-US'>&lt;/button&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;button id=&quot;go4&quot;&gt;» </span><span
+style='color:#35383D'>Сброс</span><span lang=EN-US style='color:#35383D;
+mso-ansi-language:EN-US'>&lt;/button&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;div id=&quot;block1&quot;&gt;</span><span
+style='color:#35383D'>Я</span><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'> - </span><span style='color:#35383D'>блок</span><span lang=EN-US
+style='color:#35383D;mso-ansi-language:EN-US'> 1&lt;/div&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>  </span>&lt;div id=&quot;block2&quot;&gt;</span><span
+style='color:#35383D'>Я</span><span lang=EN-US style='color:#35383D;mso-ansi-language:
+EN-US'> - </span><span style='color:#35383D'>блок</span><span lang=EN-US
+style='color:#35383D;mso-ansi-language:EN-US'> 2&lt;/div&gt;<o:p></o:p></span></pre><pre
+style='line-height:12.75pt'><span style='color:#35383D'>&lt;/<span
+class=SpellE>body</span>&gt;</span><span lang=EN-US style='color:#35383D;
+mso-ansi-language:EN-US'><o:p></o:p></span></pre><pre style='line-height:12.75pt'><span
+lang=EN-US style='color:#35383D;mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre>
+
+<h3><span class=SpellE>stop</span>()</h3>
+
+<p>возвращает: <span class=SpellE>jQuery</span><span class=GramE><br>
+О</span>станавливает все выполняющиеся анимационные эффекты для всех элементов
+набора.</p>
+
+<p>Кликните по кнопке <span class=SpellE>Go</span>, чтобы запустить анимацию.
+Затем по кнопке <span class=SpellE>Stop</span>, чтобы ее остановить. Ну а клик
+по кнопке <span class=SpellE>Back</span> запустит другой анимационный эффект -
+блок будет двигаться в обратную сторону. Заметьте, что отсчет будет <span
+class=SpellE>вестить</span> от той <span class=GramE>позиции</span> в которой
+блок был остановлен.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=GramE><span
+class=start-tag>script</span></span><span class=attribute-name> <span
+class=SpellE>src</span></span>=<span class=attribute-value>&quot;js/jquery-1.2.3.js&quot;</span>&gt;&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>script</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).<span
+class=GramE>ready(</span>function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>// Start animation<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;#go&quot;).<span
+class=GramE>click(</span>function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;.block&quot;).<span
+class=GramE>animate(</span>{left: '+=100px'}, 2000);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>// Stop animation when button is clicked<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;#stop&quot;).<span
+class=GramE>click(</span>function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;.block&quot;).<span
+class=GramE>stop(</span>);<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>// Start animation in the opposite direction<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;#back&quot;).<span
+class=GramE>click(</span>function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;.block&quot;).<span
+class=GramE>animate(</span>{left: '-=100px'}, 2000);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>style</span>&gt;</span>div { <o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>position</span>: absolute; <o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>background-color</span>: #<span class=SpellE>abc</span>;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>left</span>: 0px;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>top:</span>30px;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>width</span>: 60px; <o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>height</span>: 60px;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>margin</span>: 5px; <o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>}<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>head</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=GramE><span
+class=start-tag>body</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>button</span><span class=attribute-name> id</span>=<span
+class=attribute-value>&quot;go&quot;</span>&gt;Go&lt;/<span class=end-tag>button</span>&gt; <o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>button</span><span class=attribute-name> id</span>=<span
+class=attribute-value>&quot;stop&quot;</span>&gt;STOP<span class=GramE>!&lt;</span>/<span
+class=end-tag>button</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>button</span><span class=attribute-name> id</span>=<span
+class=attribute-value>&quot;back&quot;</span>&gt;Back&lt;/<span class=end-tag>button</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>div</span><span class=attribute-name> class</span>=<span
+class=attribute-value>&quot;block&quot;</span>&gt;&lt;/<span class=end-tag>div</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>body</span>&gt;<o:p></o:p></span></pre>
+
+<h3><span class=SpellE>queue</span>()</h3>
+
+<p>возвращает: <span class=SpellE>Array</span><span class=GramE><br>
+В</span>озвращает ссылку на очередь элемента (массив функций).</p>
+
+<p>Разберите этот пример. По клику на кнопке мы получаем длину очереди в
+текущий момент.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=GramE><span
+class=start-tag>script</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).<span
+class=GramE>ready(</span>function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;#show&quot;).<span
+class=GramE>click(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span><span
+class=SpellE><span class=GramE>var</span></span> n = $(&quot;div&quot;).queue(&quot;<span
+class=SpellE>fx</span>&quot;);<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;span&quot;).<span
+class=GramE>text(</span>&quot;</span>Длина<span style='mso-ansi-language:EN-US'> </span>очереди<span
+lang=EN-US style='mso-ansi-language:EN-US'>: &quot; + <span class=SpellE>n.length</span>);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>function</span> <span class=SpellE>runIt</span>() {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>show(</span>&quot;slow&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>animate(</span>{left:'+=200'},2000);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>   </span><span style='mso-spacerun:yes'>   </span>$(&quot;div&quot;).<span
+class=SpellE><span class=GramE>slideToggle</span></span><span class=GramE>(</span>1000);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=SpellE><span class=GramE>slideToggle</span></span><span class=GramE>(</span>&quot;fast&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>animate(</span>{left:'-=200'},1500);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>hide(</span>&quot;slow&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>show(</span>1200);<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=SpellE><span class=GramE>slideUp</span></span><span class=GramE>(</span>&quot;normal&quot;, <span
+class=SpellE>runIt</span>);<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>}<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE><span class=GramE>runIt</span></span><span class=GramE>(</span>);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>style</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>div</span> { margin:3px; width:40px; height:40px;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=SpellE><span class=GramE>position:</span>absolute</span>; left:0px; top:30px; <o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=SpellE><span class=GramE>background:</span>green</span>; <span
+class=SpellE>display:none</span>; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=SpellE>div.newcolor</span> <span class=GramE>{ <span class=SpellE>background:blue</span></span>; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>span</span> { <span class=SpellE>color:red</span>; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>head</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=GramE><span
+class=start-tag>body</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>button</span><span class=attribute-name> id</span>=<span
+class=attribute-value>&quot;show&quot;</span>&gt;</span>Показать<span
+style='mso-ansi-language:EN-US'> </span>длину<span style='mso-ansi-language:
+EN-US'> </span>очереди<span lang=EN-US style='mso-ansi-language:EN-US'>&lt;/<span
+class=end-tag>button</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>span</span></span>&gt;&lt;/<span
+class=end-tag>span</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>div</span></span>&gt;&lt;/<span
+class=end-tag>div</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>body</span>&gt;<o:p></o:p></span></pre>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>queue(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>callback)<o:p></o:p></span></h3>
+
+<p>возвращает: <span class=SpellE>jQuery</span><span class=GramE><br>
+Д</span>обавляет новую функцию, которая <span class=SpellE>долна</span> быть
+выполнена, в конец очереди для всех элементов набора.</p>
+
+<p>В примере: очередь пользовательских функций.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=GramE><span
+class=start-tag>script</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).<span
+class=GramE>ready(</span>function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(<span
+class=SpellE>document.body</span>).<span class=GramE>click(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>show(</span>&quot;slow&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>animate(</span>{left:'+=200'},2000);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>queue(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>$(this).<span
+class=SpellE><span class=GramE>addClass</span></span><span class=GramE>(</span>&quot;<span
+class=SpellE>newcolor</span>&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>$(this).<span
+class=SpellE><span class=GramE>dequeue</span></span><span class=GramE>(</span>);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>animate(</span>{left:'-=200'},500);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>queue(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>$(this).<span
+class=SpellE><span class=GramE>removeClass</span></span><span class=GramE>(</span>&quot;<span
+class=SpellE>newcolor</span>&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>$(this).<span
+class=SpellE><span class=GramE>dequeue</span></span><span class=GramE>(</span>);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=SpellE><span class=GramE>slideUp</span></span><span class=GramE>(</span>);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>style</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>div</span> { margin:3px; width:40px; height:40px;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=SpellE><span class=GramE>position:</span>absolute</span>; left:0px; top:30px; <o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=SpellE><span class=GramE>background:</span>green</span>; <span
+class=SpellE>display:none</span>; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=SpellE>div.newcolor</span> <span class=GramE>{ <span class=SpellE>background:blue</span></span>; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>head</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=GramE><span
+class=start-tag>body</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>Click here...<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>div</span></span>&gt;&lt;/<span
+class=end-tag>div</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>body</span>&gt;<o:p></o:p></span></pre>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>queue(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>queue)<o:p></o:p></span></h3>
+
+<p>возвращает: <span class=SpellE>jQuery</span><span class=GramE><br>
+З</span>аменяет очередь для всех элементов набора новой очередью (массив
+функций).</p>
+
+<p>В примере, по клику на кнопке <span class=SpellE>Stop</span>,
+устанавливается массив очереди, чтобы удалить текущую очередь. По клику на
+кнопке <span class=SpellE>Start</span> очередь запускается вновь.</p>
+
+<pre>&lt;<span class=SpellE><span class=start-tag>script</span></span>&gt;</pre><pre><span style='mso-spacerun:yes'>  </span><span
+class=GramE>$(<span class=SpellE>document</span>).<span class=SpellE>ready</span>(<span
+class=SpellE>function</span>(){</span></pre><pre><span style='mso-spacerun:yes'>    </span></pre><pre><span style='mso-spacerun:yes'>    </span><span
+lang=EN-US style='mso-ansi-language:EN-US'>$(&quot;#start&quot;).<span
+class=GramE>click(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>show(</span>&quot;slow&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>animate(</span>{left:'+=200'},5000);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>queue(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>$(this).<span
+class=SpellE><span class=GramE>addClass</span></span><span class=GramE>(</span>&quot;<span
+class=SpellE>newcolor</span>&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>$(this).<span
+class=SpellE><span class=GramE>dequeue</span></span><span class=GramE>(</span>);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>animate(</span>{left:'-=200'},1500);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>queue(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>$(this).<span
+class=SpellE><span class=GramE>removeClass</span></span><span class=GramE>(</span>&quot;<span
+class=SpellE>newcolor</span>&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>$(this).<span
+class=SpellE><span class=GramE>dequeue</span></span><span class=GramE>(</span>);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=SpellE><span class=GramE>slideUp</span></span><span class=GramE>(</span>);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;#stop&quot;).<span
+class=GramE>click(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>queue(</span>&quot;<span class=SpellE>fx</span>&quot;, []);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>stop(</span>);<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>style</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>div</span> { margin:3px; width:40px; height:40px;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=SpellE><span class=GramE>position:</span>absolute</span>; left:0px; top:30px; <o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=SpellE><span class=GramE>background:</span>green</span>; <span
+class=SpellE>display:none</span>; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=SpellE>div.newcolor</span> <span class=GramE>{ <span class=SpellE>background:blue</span></span>; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>head</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=GramE><span
+class=start-tag>body</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>button</span><span class=attribute-name> id</span>=<span
+class=attribute-value>&quot;start&quot;</span>&gt;Start&lt;/<span
+class=end-tag>button</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>button</span><span class=attribute-name> id</span>=<span
+class=attribute-value>&quot;stop&quot;</span>&gt;Stop&lt;/<span class=end-tag>button</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span></span>&lt;<span
+class=SpellE><span class=start-tag>div</span></span>&gt;&lt;/<span
+class=SpellE><span class=end-tag>div</span></span>&gt;</pre><pre>&lt;/<span
+class=SpellE><span class=end-tag>body</span></span>&gt;</pre>
+
+<h3><span class=SpellE>dequeue</span>()</h3>
+
+<p>возвращает: <span class=SpellE>jQuery</span><span class=GramE><br>
+У</span>даляет поставленную в конец очереди функцию, разрешая очереди
+продолжаться.</p>
+
+<p>В примере <span class=SpellE>dequeue</span> используется, чтобы разрешить
+очереди продолжиться после использования <span class=SpellE>queue</span>(<span
+class=SpellE>callback</span>). Попробуйте убрать в примере строчку $(<span
+class=SpellE>this</span>).<span class=SpellE>dequeue</span>(); и Вы обнаружите,
+что анимация остановится после срабатывания <span class=SpellE>toggleClass</span>.</p>
+
+<pre><span lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=GramE><span
+class=start-tag>script</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>$(document).<span
+class=GramE>ready(</span>function(){<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span><o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>$(&quot;button&quot;).<span
+class=GramE>click(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>animate(</span>{left:'+=200px'}, 2000);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>animate(</span>{top:'0px'}, 600);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>queue(</span>function () {<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>$(this).<span
+class=GramE>toggleClass(</span>&quot;red&quot;);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span>$(this).<span
+class=GramE>dequeue(</span>);<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>      </span>$(&quot;div&quot;).<span
+class=GramE>animate(</span>{left:'10px', top:'30px'}, 700);<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>    </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>});<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>script</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=GramE><span class=start-tag>style</span></span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span><span
+class=GramE>div</span> { margin:3px; width:50px; position:absolute;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=GramE>height:</span>50px; left:10px; top:30px; <o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>        </span><span
+class=GramE>background-color:</span>yellow; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>div.red <span
+class=GramE>{ background</span>-color:red; }<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;/<span
+class=end-tag>style</span>&gt;<o:p></o:p></span></pre><pre><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;/<span class=end-tag>head</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;<span class=start-tag>body</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span>&lt;<span
+class=start-tag>button</span>&gt;Start&lt;/<span class=end-tag>button</span>&gt;<o:p></o:p></span></pre><pre><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>  </span></span>&lt;<span
+class=SpellE><span class=start-tag>div</span></span>&gt;&lt;/<span
+class=SpellE><span class=end-tag>div</span></span>&gt;</pre><pre>&lt;/<span
+class=SpellE><span class=end-tag>body</span></span>&gt;</pre><pre
+style='line-height:12.75pt'><span style='color:#35383D'><o:p>&nbsp;</o:p></span></pre></div>
+
+</body>
+
+</html>

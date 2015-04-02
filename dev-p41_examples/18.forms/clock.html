@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Часы - 24</title>
+	<script language="JavaScript">
+	<!--
+	function gettime(){
+		var date= new Date();
+		var hr = date.getHours();
+		var m = date.getMinutes();
+		var s = date.getSeconds();
+		if (m < 10 )
+		{
+			m = "0" + m;
+		}
+		if ( s< 10)
+		{
+			s="0" + s;
+		}
+		document.getElementById("clock").value = hr + ":" + m + ":" + s;
+		setTimeout ("gettime()", 100)
+		}
+	window.onload = function(){
+		gettime();
+	}
+	-->
+	</script>
+</head>
+<body>
+<form id="clockform">
+<input type="text" id="clock">
+</form>
+</body>
+</html>

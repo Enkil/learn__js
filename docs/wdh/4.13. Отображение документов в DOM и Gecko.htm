@@ -1,0 +1,2146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: DHTML - Отображение документов в DOM и Gecko</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/dhtml12.htm" title="Обработка событий в Internet Explorer">
+<link rel="Next" href="http://wdh.suncloud.ru/dhtml14.htm" title="Отображение документов в Internet Explorer">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="4.13.%20%CE%F2%EE%E1%F0%E0%E6%E5%ED%E8%E5%20%E4%EE%EA%F3%EC%E5%ED%F2%EE%E2%20%E2%20DOM%20%E8%20Gecko_files/load.js"></script>
+<script type="text/javascript" src="4.13.%20%CE%F2%EE%E1%F0%E0%E6%E5%ED%E8%E5%20%E4%EE%EA%F3%EC%E5%ED%F2%EE%E2%20%E2%20DOM%20%E8%20Gecko_files/link.js"></script><link rel="stylesheet" type="text/css" href="4.13.%20%CE%F2%EE%E1%F0%E0%E6%E5%ED%E8%E5%20%E4%EE%EA%F3%EC%E5%ED%F2%EE%E2%20%E2%20DOM%20%E8%20Gecko_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml12.htm"><img name="imglefta" src="4.13.%20%CE%F2%EE%E1%F0%E0%E6%E5%ED%E8%E5%20%E4%EE%EA%F3%EC%E5%ED%F2%EE%E2%20%E2%20DOM%20%E8%20Gecko_files/nnleft.gif" alt="" title="Обработка событий в Internet Explorer" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="4.13.%20%CE%F2%EE%E1%F0%E0%E6%E5%ED%E8%E5%20%E4%EE%EA%F3%EC%E5%ED%F2%EE%E2%20%E2%20DOM%20%E8%20Gecko_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml14.htm"><img name="imgrighta" src="4.13.%20%CE%F2%EE%E1%F0%E0%E6%E5%ED%E8%E5%20%E4%EE%EA%F3%EC%E5%ED%F2%EE%E2%20%E2%20DOM%20%E8%20Gecko_files/nnright.gif" alt="" title="Отображение документов в Internet Explorer" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=5964" target="_blank"><img src="4.13.%20%CE%F2%EE%E1%F0%E0%E6%E5%ED%E8%E5%20%E4%EE%EA%F3%EC%E5%ED%F2%EE%E2%20%E2%20DOM%20%E8%20Gecko_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <p><em>Документ в процессе разработки!</em></p>
+
+      <h2><a name="ref413">Глава 4.13. Отображение документов в DOM и Gecko</a></h2>
+
+      <h3><a name="ref4131">4.13.1. Отображение документов в DOM и обозревателях</a></h3>
+      
+      <p>DOM 2 не содержит детальной спецификации интерфейсов, связанных с отображением документов,
+        такие спецификации появятся в DOM 3. Он определяет интерфейс <tt>AbstractView</tt>,
+        предназначенный для установления связи между документом и его отображением, но не описывает его свойств и поведения.</p>
+
+      <p>Интерфейс <tt>AbstractView</tt> является базовым для всех отображений документа (окон, фреймов 
+        и т.&nbsp;п.). Он имеет единственное свойство <tt>document</tt>, возвращающее указатель на объект 
+        <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#ref426">Document</a></tt>, соответствующий отображаемому документу. Интерфейс 
+        <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#ref426">Document</a></tt>, в свою очередь, может иметь свойство <tt>defaultView</tt> 
+        типа <tt>AbstractView</tt>, указывающее на окно отображения документа.</p>
+
+      <p>Для практической реализации обозревателей такой спецификации явно недостаточно, поэтому разработчики пока пользуются
+        собственными (нестандартными) спецификациями интерфейса для окон обозревателя. Соответствующий объект
+        традиционно называется <tt>window</tt>.</p>
+
+      <p>Объект <tt>window</tt> соответствует <em>окну обозревателя</em>. Он позволяет нам получить
+        доступ к документу, загруженному в данное окно, к событиям, которые происходят в окне, и к различным
+        свойствам обозревателя. Этот объект является глобальным объектом клиентской среды JavaScript,
+        поэтому для доступа к его свойствам и методам префикс <tt>window.</tt> не нужен. Однако, для
+        читаемости кода он может использоваться; помните, что он всегда указывает на текущее окно.</p>
+
+      <p>Обычно, объект <tt>window</tt> создается самим обозревателем при открытии HTML-документа.
+        Если документ не содержит фреймов, то ему соответствует единственный объект <tt>window</tt>.
+        Если же документ содержит фреймы, то создается один объект <tt>window</tt> для главного
+        документа и по одному объекту <tt>window</tt> для каждого из фреймов, которые являются
+        детьми главного окна. При закрытии главного окна его дети закрываются автоматически.</p>
+
+      <p>К сожалению, объект <tt>window</tt> реализован в Internet Explorer и Gecko по-разному. По этой причине
+        мы решили дать для них отдельные описания. Окна Gecko описаны в этой главе, а окна Internet Explorer
+        в следующей.</p>
+
+      <h3><a name="ref4132">4.13.2. Окна Gecko: объект window</a></h3>
+      
+      <p>Объект <tt>window</tt> в Gecko представляет собой сочетание классического окна Netscape 4.x
+        с некоторыми возможностями окон Internet Explorer. Приведенное здесь описание основано на
+        <a target="_blank" href="http://www.mozilla.org/docs/dom/domref/dom_window_ref.html">Gecko DOM window Reference</a>
+        <img src="4.13.%20%CE%F2%EE%E1%F0%E0%E6%E5%ED%E8%E5%20%E4%EE%EA%F3%EC%E5%ED%F2%EE%E2%20%E2%20DOM%20%E8%20Gecko_files/extref.gif" alt="Внешняя ссылка">. Полная спецификация интерфейсов Gecko еще далека от
+        завершения, поэтому некоторые свойства помечены ниже как недокументированные.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства объекта window</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcontent">_content</a></tt></td>
+            <td>Нет</td>
+            <td>Возвращает указатель на содержание окна.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pappcore">appCore</a></tt></td>
+            <td>Да</td>
+            <td>Недокументированное свойство.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pclosed">closed</a></tt></td>
+            <td>Нет</td>
+            <td>Проверяет, закрыто ли заданное окно.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcomponents">Components</a></tt></td>
+            <td>Нет</td>
+            <td>Коллекция компонентов, установленных в обозревателе.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcontrollers">controllers</a></tt></td>
+            <td>Нет</td>
+            <td>Коллекция объектов типа <tt>XUL Controllers</tt>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcrypto">crypto</a></tt></td>
+            <td>Нет</td>
+            <td>Объект, обеспечивающий доступ к методам шифрования.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pdefaultstatus">defaultStatus</a></tt></td>
+            <td>Да</td>
+            <td>Сообщение по умолчанию в строке состояния обозревателя.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pdirectories">directories</a></tt></td>
+            <td>Нет</td>
+            <td>Объект <tt>barProp</tt>, соответствующий панели каталогов обозревателя.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pdocument">document</a></tt></td>
+            <td>Нет</td>
+            <td>Объект <tt>document</tt>, указывающий на HTML-документ, открытый в заданном окне.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pframes">frames</a></tt></td>
+            <td>Нет</td>
+            <td>Коллекция всех объектов <tt>window</tt>, определенных документом в данном окне.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#phistory">history</a></tt></td>
+            <td>Нет</td>
+            <td>Объект <tt>history</tt>, обеспечивающий доступ к истории просмотра узлов.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pinnerheight">innerHeight</a></tt></td>
+            <td>Да</td>
+            <td>Размер клиентской области окна по вертикали.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pinnerwidth">innerWidth</a></tt></td>
+            <td>Да</td>
+            <td>Размер клиентской области окна по горизонтали.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pwindow-length">length</a></tt></td>
+            <td>Нет</td>
+            <td>Количество фреймов в данном окне.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#plocation">location</a></tt></td>
+            <td>Да</td>
+            <td>Объект <tt>location</tt>, содержащий URI документа в данном окне.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#plocationbar">locationbar</a></tt></td>
+            <td>Нет</td>
+            <td>Объект <tt>barProp</tt>, соответствующий адресной строке обозревателя.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pmenubar">menubar</a></tt></td>
+            <td>Нет</td>
+            <td>Объект <tt>barProp</tt>, соответствующий меню обозревателя.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pwindow-name">name</a></tt></td>
+            <td>Нет</td>
+            <td>Имя фрейма или окна.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pnavigator">navigator</a></tt></td>
+            <td>Нет</td>
+            <td>Объект <tt>navigator</tt>, содержащий информацию обо обозревателе.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#popener">opener</a></tt></td>
+            <td>Да</td>
+            <td>Ссылка на окно, создавшее данное окно.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pouterheight">outerHeight</a></tt></td>
+            <td>Да</td>
+            <td>Полный размер окна по вертикали.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pouterwidth">outerWidth</a></tt></td>
+            <td>Да</td>
+            <td>Полный размер окна по горизонтали.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ppagexoffset">pageXOffset</a></tt></td>
+            <td>Да</td>
+            <td>Текущая позиция страницы по горизонтали относительно верхнего левого угла окна.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ppageyoffset">pageYOffset</a></tt></td>
+            <td>Да</td>
+            <td>Текущая позиция страницы по вертикали относительно верхнего левого угла окна.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pparent">parent</a></tt></td>
+            <td>Нет</td>
+            <td>Доступ к отцу данного окна.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ppersonalbar">personalbar</a></tt></td>
+            <td>Нет</td>
+            <td>Объект <tt>barProp</tt>, соответствующий строке ссылок обозревателя.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ppkcs11">pkcs11</a></tt></td>
+            <td>Нет</td>
+            <td>Ссылка на объект <tt>pkcs11</tt>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pprompter">prompter</a></tt></td>
+            <td>Да</td>
+            <td>Ссылка на окно, созданное методом <tt>prompt</tt>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pscreen">screen</a></tt></td>
+            <td>Нет</td>
+            <td>Объект <tt>screen</tt>, содержащий сведения о клиентской области отображения.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pscreenx">screenX</a></tt></td>
+            <td>Да</td>
+            <td>Расстояние от левой границы экрана до левой границы окна обозревателя.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pscreeny">screenY</a></tt></td>
+            <td>Да</td>
+            <td>Расстояние от верхней границы экрана до верхней границы окна обозревателя.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pscrollbars">scrollbars</a></tt></td>
+            <td>Нет</td>
+            <td>Объект <tt>barProp</tt>, соответствующий полосам прокрутки окна обозревателя.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pscrollx">scrollX</a></tt></td>
+            <td>Нет</td>
+            <td>Прокрутка документа по горизонтали.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pscrolly">scrollY</a></tt></td>
+            <td>Нет</td>
+            <td>Прокрутка документа по вертикали.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pself">self</a></tt></td>
+            <td>Да</td>
+            <td>Ссылка на текущее окно.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#psidebar">sidebar</a></tt></td>
+            <td>Нет</td>
+            <td>Ссылка на боковую панель обозревателя.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pstatus">status</a></tt></td>
+            <td>Да</td>
+            <td>Текст сообщения в строке состояния обозревателя.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pstatusbar">statusbar</a></tt></td>
+            <td>Да</td>
+            <td>Объект <tt>barProp</tt>, соответствующий строке состояния обозревателя.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ptitle">title</a></tt></td>
+            <td>Да</td>
+            <td>Заголовок окна.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ptoolbar">toolbar</a></tt></td>
+            <td>Да</td>
+            <td>Объект <tt>barProp</tt>, соответствующий панели кнопок обозревателя.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ptop">top</a></tt></td>
+            <td>Нет</td>
+            <td>Возвращает ссылку на первое окно в иерархии объектов <tt>window</tt>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pwindow">window</a></tt></td>
+            <td>Нет</td>
+            <td>Ссылка на текущее окно.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы объекта window</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#malert">alert</a></tt></td>
+            <td>Создает диалоговое окно сообщения.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mback">back</a></tt></td>
+            <td>Осуществляет возврат на один шаг по истории просмотра узлов для всех фреймов верхнего окна.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mblur">blur</a></tt></td>
+            <td>Заставляет объект потерять фокус и генерирует событие <tt>onblur</tt>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mcaptureevents">captureEvents</a></tt></td>
+            <td>Включает перехват всех событий заданного типа.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mclearinterval">clearInterval</a></tt></td>
+            <td>Сбрасывает интервал, заданный методом <tt>setInterval</tt>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mcleartimeout">clearTimeout</a></tt></td>
+            <td>Сбрасывает таймаут, заданный методом <tt>setTimeout</tt>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mclose">close</a></tt></td>
+            <td>Закрывает текущее окно обозревателя.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mconfirm">confirm</a></tt></td>
+            <td>Создает диалоговое окно подтверждения.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mdisableexternalcapture">disableExternalCapture</a></tt></td>
+            <td>Запрещает окну с фреймами перехватывать события на страницах, загруженных с других серверов.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mdump">dump</a></tt></td>
+            <td>Выводит заданный текст в консоль JavaScript.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#menableexternalcapture">enableExternalCapture</a></tt></td>
+            <td>Разрешает окну с фреймами перехватывать события на страницах, загруженных с других серверов.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mescape">escape</a></tt></td>
+            <td>Преобразует строку в шестнадцатеричную кодировку.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mfocus">focus</a></tt></td>
+            <td>Заставляет объект получить фокус и генерирует событие <tt>onfocus</tt>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mforward">forward</a></tt></td>
+            <td>Осуществляет переход на один шаг вперед по истории просмотра узлов для всех фреймов верхнего окна.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetattention">GetAttention</a></tt></td>
+            <td>Вызывает мигание иконки обозревателя.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetselection">getSelection</a></tt></td>
+            <td>Возвращает выбранный фрагмент экрана.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mhome">home</a></tt></td>
+            <td>Загружает домашнюю страницу пользователя.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mmoveby">moveBy</a></tt></td>
+            <td>Сдвигает окно на заданную величину.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mmoveto">moveTo</a></tt></td>
+            <td>Сдвигает окно в заданную позицию.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mopen">open</a></tt></td>
+            <td>Создает новое окно.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mprint">print</a></tt></td>
+            <td>Печатает документ, открытый в заданном окне.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mprompt">prompt</a></tt></td>
+            <td>Создает диалоговое окно для ввода пользователем строки.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mreleaseevents">releaseEvents</a></tt></td>
+            <td>Отключает перехват событий заданного типа.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mresizeby">resizeBy</a></tt></td>
+            <td>Изменяет размеры окна на заданную величину.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mresizeto">resizeTo</a></tt></td>
+            <td>Задает новые размеры окна.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mrouteevent">routeEvent</a></tt></td>
+            <td>Пропускает перехваченное событие вниз по иерархии объектов.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mscroll">scroll</a></tt></td>
+            <td>Прокручивает окно до заданной позиции.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mscrollby">scrollBy</a></tt></td>
+            <td>Прокручивает окно на заданную величину.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mscrollbylines">scrollByLines</a></tt></td>
+            <td>Прокручивает окно на заданное число строк.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mscrollbypages">scrollByPages</a></tt></td>
+            <td>Прокручивает окно на заданное число страниц.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mscrollto">scrollTo</a></tt></td>
+            <td>Прокручивает окно до заданной позиции.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#msetcursor">setCursor</a></tt></td>
+            <td>Изменяет форму курсора.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#msetinterval">setInterval</a></tt></td>
+            <td>Задает периодическое вычисление выражения всякий раз, когда истечет данный интервал.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#msettimeout">setTimeout</a></tt></td>
+            <td>Задает вычисление выражения, когда истечет данный таймаут.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#msizetocontent">sizeToContent</a></tt></td>
+            <td>Изменяет размер окна соответственно его содержимому.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mstop">stop</a></tt></td>
+            <td>Останавливает загрузку в окно.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#munescape">unescape</a></tt></td>
+            <td>Преобразует шестнадцатеричную кодировку в строку.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mupdatecommands">updateCommands</a></tt></td>
+            <td>Недокументировано.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">События объекта window</caption>
+          <tbody><tr>
+            <th>Событие</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#eabort">onabort</a></tt></td>
+            <td>Генерируется при прерывании загрузки страницы.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#eblur">onblur</a></tt></td>
+            <td>Генерируется, когда окно теряет фокус.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#echange">onchange</a></tt></td>
+            <td>Генерируется при изменении значения элемента формы в окне.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#eclick">onclick</a></tt></td>
+            <td>Генерируется при щелчке кнопкой мыши.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#eclose">onclose</a></tt></td>
+            <td>Генерируется при закрытии окна.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#edragdrop">ondragdrop</a></tt></td>
+            <td>Генерируется при перетаскивании внешнего объекта в окно.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#eerror">onerror</a></tt></td>
+            <td>Генерируется при возникновении ошибки в процессе загрузки документа.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#efocus">onfocus</a></tt></td>
+            <td>Генерируется, когда окно получает фокус.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#ekeydown">onkeydown</a></tt></td>
+            <td>Генерируется при нажатии клавиши.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#ekeypress">onkeypress</a></tt></td>
+            <td>Генерируется при удержании нажатой клавиши.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#ekeyup">onkeyup</a></tt></td>
+            <td>Генерируется при отпускании клавиши.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#eload">onload</a></tt></td>
+            <td>Генерируется сразу после загрузки документа.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#emousedown">onmousedown</a></tt></td>
+            <td>Генерируется при нажатии кнопки мыши.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#emousemove">onmousemove</a></tt></td>
+            <td>Генерируется при движении курсора мыши по элементу в окне.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#emouseout">onmouseout</a></tt></td>
+            <td>Генерируется при покидании курсором мыши элемента в окне.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#emouseover">onmouseover</a></tt></td>
+            <td>Генерируется при попадании курсора мыши на элемент в окне.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#emouseup">onmouseup</a></tt></td>
+            <td>Генерируется при отпускании кнопки мыши.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#epaint">onpaint</a></tt></td>
+            <td>Генерируется при отображении содержимого окна.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#ereset">onreset</a></tt></td>
+            <td>Генерируется при инициализации формы в окне.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#eresize">onresize</a></tt></td>
+            <td>Генерируется перед изменением размеров окна.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#escroll">onscroll</a></tt></td>
+            <td>Генерируется при прокрутке содержимого окна.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#eselect">onselect</a></tt></td>
+            <td>Генерируется, когда пользователь выделяет текст в текстовом поле.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#esubmit">onsubmit</a></tt></td>
+            <td>Генерируется при пересылке формы в окне.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="http://wdh.suncloud.ru/dhtml11.htm#eunload">onunload</a></tt></td>
+            <td>Генерируется перед завершением выгрузки документа.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hcontent">Свойство _content</a></h4>
+
+<pre class="syntax"><strong><a name="pcontent">Синтаксис</a></strong>:  <em>window</em>._content
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Значением свойства <tt>_content</tt> является указатель на фрейм или иной объект в окне, помеченный атрибутом
+        <tt>type="content-primary"</tt>. Если такого элемента нет, то возращается указатель на само окно <em><tt>window</tt></em>.
+        Пример: следующий фрагмент HTML-документа выведет на экран текст <samp>blur.htm</samp>:</p>
+
+      <div class="code">
+<pre class="code">&lt;BODY onload="alert(window._content.location.href)"&gt;
+&lt;IFRAME type="content-primary" src="blur.htm"&gt;&lt;/IFRAME&gt;
+. . .</pre>
+      </div>
+
+      <h4><a name="happcore">Свойство appCore</a></h4>
+
+<pre class="syntax"><strong><a name="pappcore">Синтаксис</a></strong>:  <em>window</em>.appCore
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Недокументированное свойство, возвращает объект с интерфейсом nsIBrowserInstance.
+         О "прикладном ядре" см. <a href="http://www.mozilla.org/xpfe/appCore/appcores.html">Application Services/Application Core</a>
+         <img src="4.13.%20%CE%F2%EE%E1%F0%E0%E6%E5%ED%E8%E5%20%E4%EE%EA%F3%EC%E5%ED%F2%EE%E2%20%E2%20DOM%20%E8%20Gecko_files/extref.gif" alt="Внешняя ссылка">.</p>
+
+      <h4><a name="hclosed">Свойство closed</a></h4>
+
+<pre class="syntax"><strong><a name="pclosed">Синтаксис</a></strong>:  <em>window</em>.closed
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Значением свойства <tt>closed</tt> является <strong>true</strong>, если окно <em><tt>window</tt></em>
+        закрыто, и <strong>false</strong>, если нет. Пример:</p>
+
+      <div class="code">
+<pre class="code">if (!parent.closed)
+  parent.close();</pre>
+      </div>
+
+      <h4><a name="hcomponents">Свойство Components</a></h4>
+
+<pre class="syntax"><strong><a name="pcomponents">Синтаксис</a></strong>:  <em>window</em>.Components
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Значением свойства <tt>Components</tt> является коллекция всех компонентов, установленных в
+        обозревателе. Пока недокументировано.</p>
+
+      <h4><a name="hcontrollers">Свойство controllers</a></h4>
+
+<pre class="syntax"><strong><a name="pcontrollers">Синтаксис</a></strong>:  <em>window</em>.controllers
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Значением свойства <tt>controllers</tt> является коллекция объектов типа <tt>XUL Controllers</tt>.
+        Пока недокументировано.</p>
+
+      <h4><a name="hcrypto">Свойство crypto</a></h4>
+
+<pre class="syntax"><strong><a name="pcrypto">Синтаксис</a></strong>:  <em>window</em>.crypto
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Значением этого свойства является указатель на объект <tt>crypto</tt>, обеспечивающий
+        шифрование данных. Пока недокументировано.</p>
+
+      <h4><a name="hdefaultstatus">Свойство defaultStatus</a></h4>
+
+<pre class="syntax"><strong><a name="pdefaultstatus">Синтаксис</a></strong>:  <em>window</em>.defaultStatus
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <tt>defaultStatus</tt> возвращает или устанавливает текст сообщения, выводимый по
+        умолчанию в строке состояния, которая расположена в нижней части окна обозревателя. Не следует
+        путать его со свойством <tt><a href="#pstatus">status</a></tt>, которое содержит текст, выводимый
+        в строке состояния при возникновении определенных событий. Пример:</p>
+
+      <div class="code">
+<pre class="code">var d = new Date();
+defaultStatus = "Сегодня: " + d.toLocaleDateString();</pre>
+      </div>
+
+      <h4><a name="hdirectories">Свойство directories</a></h4>
+
+<pre class="syntax"><strong><a name="pdirectories">Синтаксис</a></strong>:  <em>window</em>.directories
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Значением этого свойства является указатель на объект <tt>barProp</tt>, соответствующий панели каталогов
+        обозревателя. Этот объект имеет единственное свойство <tt>visible</tt>, доступное для
+        чтения и записи и указывающее на состояние панели (<strong>true</strong>, если панель видна, и <strong>false</strong>, если
+        она скрыта). Для изменения этого свойства необходима привилегия UniversalBrowserWrite. Пример:</p>
+
+      <div class="code">
+<pre class="code">netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserWrite");
+window.directories.visible = true;</pre>
+      </div>
+
+      <h4><a name="hdocument">Свойство document</a></h4>
+
+<pre class="syntax"><strong><a name="pdocument">Синтаксис</a></strong>:  <em>window</em>.document
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Свойство <tt>document</tt> возвращает указатель на <a href="http://wdh.suncloud.ru/dhtml06.htm#ref463">HTML-документ</a>, открытый в данном окне. Пример:
+        <code>alert(window.document.title)</code>.</p>
+
+      <h4><a name="hframes">Свойство frames</a></h4>
+
+<pre class="syntax"><strong><a name="pframes">Синтаксис</a></strong>:  <em>window</em>.frames
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Свойство <tt>frames</tt> возвращает коллекцию всех объектов <tt>window</tt>, определенных документом, ассоциированным с данным окном. Иными словами:</p>
+      <ul>
+        <li>Если тело документа заключено в элемент <strong>BODY</strong>, то коллекция содержит по одному окну для каждого элемента <strong><a href="http://wdh.suncloud.ru/html07.htm#eiframe">IFRAME</a></strong> в документе.</li>
+        <li>Если тело документа заключено в элемент <strong>FRAMESET</strong>, то коллекция содержит по одному окну для каждого элемента <strong><a href="http://wdh.suncloud.ru/html07.htm#eframe">FRAME</a></strong> в документе.</li>
+      </ul>
+      <p>Порядок окон в коллекции определяется порядком элементов <strong>FRAME</strong>/<strong>IFRAME</strong> в тексте документа. Пример:</p>
+
+      <div class="code">
+<pre class="code">var frm = window.parent.frames;
+for (var i = 0; i &lt; frm.length; i++) 
+    alert(frm[i].name);</pre>
+      </div>
+
+      <h4><a name="hhistory">Свойство history</a></h4>
+
+<pre class="syntax"><strong><a name="phistory">Синтаксис</a></strong>:  <em>window</em>.history
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Значением свойства <tt>history</tt> является объект, содержащий информацию об узлах, посещенных
+        пользователем  в данном окне (история просмотра).</p>
+
+      <p>Этот объект имеет четыре свойства, доступных только для чтения:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt>current</tt></td>
+            <td>URI текущего документа. Требует привилегии UniversalBrowserRead.</td>
+          </tr>
+          <tr>
+            <td><tt>length</tt></td>
+            <td>Количество объектов в коллекции</td>
+          </tr>
+          <tr>
+            <td><tt>next</tt></td>
+            <td>URI следующего документа в истории. Требует привилегии UniversalBrowserRead.</td>
+          </tr>
+          <tr>
+            <td><tt>previous</tt></td>
+            <td>URI предыдущего документа в истории. Требует привилегии UniversalBrowserRead.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p class="noindent">и следующие методы:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt>back(<em>число</em>?)</tt></td>
+            <td>Эквивалентен нажатию кнопки обозревателя Back заданное <em>число</em> раз. Если <em>число</em>
+              опущено, то загружается предыдущий узел, т. е. <code>back()</code> эквивалентно <code>go(-1)</code>.
+              Попытка выхода за пределы истории игнорируется, и пользователь остается на текущей странице.</td>
+          </tr>
+          <tr>
+            <td><nobr><tt>forward(<em>число</em>?)</tt></nobr></td>
+            <td>Эквивалентен нажатию кнопки обозревателя Forward заданное <em>число</em> раз. Если <em>число</em>
+              опущено, то загружается следующий узел, т. е. <code>forward()</code> эквивалентно <code>go(1)</code>.
+              Попытка выхода за пределы истории игнорируется, и пользователь остается на текущей странице.</td>
+          </tr>
+          <tr>
+            <td><tt>go(<em>позиция</em>)</tt></td>
+            <td>Загружает узел, заданный аргументом <em>позиция</em>. Если <em>позиция</em>&nbsp;— это число,
+              то она задает положение узла в истории относительно текущей страницы. Если <em>позиция</em>&nbsp;—
+              это строка, то она должна задавать полный или частичный URI уэла, содержащегося в истории.
+              Если заданный узел не найден или сделана попытка выхода за пределы истории, то пользователь
+              остается на текущей странице.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Пример чтения URI предыдущего документа в истории просмотра:</p>
+
+      <div class="code">
+<pre class="code">netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
+alert(window.history.previous);</pre>
+      </div>
+
+      <h4><a name="hinnerheight">Свойство innerHeight</a></h4>
+
+<pre class="syntax"><strong><a name="pinnerheight">Синтаксис</a></strong>:  <em>window</em>.innerHeight
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Значением свойства <tt>innerHeight</tt> является высота клиентской области окна обозревателя.
+        Пример: <code>window.innerHeight = 400</code>. Ср. со свойством <tt><a href="#pouterheight">outerHeight</a></tt>.</p>
+
+      <h4><a name="hinnerwidth">Свойство innerWidth</a></h4>
+
+<pre class="syntax"><strong><a name="pinnerwidth">Синтаксис</a></strong>:  <em>window</em>.innerWidth
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Значением свойства <tt>innerWidth</tt> является ширина клиентской области окна обозревателя.
+        Пример: <code>window.innerWidth = 700</code>. Ср. со свойством <tt><a href="#pouterwidth">outerWidth</a></tt>.</p>
+
+      <h4><a name="hwindow-length">Свойство length</a></h4>
+
+<pre class="syntax"><strong><a name="pwindow-length">Синтаксис</a></strong>:  <em>window</em>.length
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Это свойство возвращает количество фреймов в данном окне, т.&nbsp;е. количество содержащихся
+        в нем элементов <strong><a href="http://wdh.suncloud.ru/html07.htm#eframe">FRAME</a></strong> и <strong><a href="http://wdh.suncloud.ru/html07.htm#eiframe">IFRAME</a></strong>.</p>
+
+      <h4><a name="hlocation">Свойство location</a></h4>
+
+<pre class="syntax"><strong><a name="plocation">Синтаксис</a></strong>:  <em>window</em>.location
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Это свойство возвращает указатель на объект <tt>location</tt>, содержащий информацию об URI
+        документа, открытого в данном окне. Напомним, что в общем виде URI имеет вид:</p>
+
+<pre><var>протокол</var>://<var>хост</var>:<var>порт</var>/<var>путь</var>#<var>закладка</var>?<var>запрос</var></pre>
+
+      <p>Объект <tt>location</tt> содержит названные фрагменты URI как свойства, доступные для чтения и записи:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt>hash</tt></td>
+            <td>Закладка, т.&nbsp;е. часть URI, следующая за символом "#" (включая его).</td>
+          </tr>
+          <tr>
+            <td><tt>host</tt></td>
+            <td>Если <tt>port</tt> не равно <strong>null</strong>, то эта строка имеет вид <tt>hostname:port</tt>, в противном случае совпадает с <tt>hostname</tt>.</td>
+          </tr>
+          <tr>
+            <td><tt>hostname</tt></td>
+            <td>Имя хоста и домена или IP-адрес.</td>
+          </tr>
+          <tr>
+            <td><tt>href</tt></td>
+            <td>Полный URI документа.</td>
+          </tr>
+          <tr>
+            <td><tt>pathname</tt></td>
+            <td>Имя файла или пути.</td>
+          </tr>
+          <tr>
+            <td><tt>port</tt></td>
+            <td>Номер порта, указанный в URI документа.</td>
+          </tr>
+          <tr>
+            <td><tt>protocol</tt></td>
+            <td>Протокол, указанный в URI документа.</td>
+          </tr>
+          <tr>
+            <td><tt>search</tt></td>
+            <td>Запрос, т.&nbsp;е. часть URI, следующая за символом "?" (включая его).</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Кроме того, данный объект имеет два метода:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><nobr><tt>reload(<em>flag</em>?)</tt></nobr></td>
+            <td>Перезагружает текущий документ. Аргумент указывает способ перезагрузки: <strong>true</strong>&nbsp;—
+              перезагрузка с сервера, <strong>false</strong>&nbsp;— перезагрузка из кэш-памяти. Если аргумент опущен,
+              то он принимается равным <strong>false</strong>.</td>
+          </tr>
+          <tr>
+            <td><nobr><tt>replace(<em>URI</em>)</tt></nobr></td>
+            <td>Заменяет текущий документ на документ с заданным URI. При этом текущий документ удаляется из истории просмотра.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Мы можем обращаться к объекту <tt>location</tt> и как к строке, например <code>window.location = "http://mywww.com/newpage.htm"</code>
+        приведет к загрузке документа с заданным URI.  Такое обращение эквивалентно чтению или записи свойства <tt>location.href</tt>.</p>
+
+      <h4><a name="hlocationbar">Свойство locationbar</a></h4>
+
+<pre class="syntax"><strong><a name="plocationbar">Синтаксис</a></strong>:  <em>window</em>.locationbar
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Значением этого свойства является указатель на объект <tt>barProp</tt>, соответствующий адресной строке
+        обозревателя. Этот объект имеет единственное свойство <tt>visible</tt>, доступное для
+        чтения и записи и указывающее на состояние панели (<strong>true</strong>, если адресная строка видна, и <strong>false</strong>, если
+        она скрыта). Для изменения этого свойства необходима привилегия UniversalBrowserWrite. Пример:</p>
+
+      <div class="code">
+<pre class="code">netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserWrite");
+window.locationbar.visible = true;</pre>
+      </div>
+
+      <h4><a name="hmenubar">Свойство menubar</a></h4>
+
+<pre class="syntax"><strong><a name="pmenubar">Синтаксис</a></strong>:  <em>window</em>.menubar
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Значением этого свойства является указатель на объект <tt>barProp</tt>, соответствующий меню
+        обозревателя. Этот объект имеет единственное свойство <tt>visible</tt>, доступное для
+        чтения и записи и указывающее на состояние панели (<strong>true</strong>, если меню видно, и <strong>false</strong>, если
+        оно скрыто). Для изменения этого свойства необходима привилегия UniversalBrowserWrite. Пример:</p>
+
+      <div class="code">
+<pre class="code">netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserWrite");
+window.menubar.visible = true;</pre>
+      </div>
+
+      <h4><a name="hwindow-name">Свойство name</a></h4>
+
+<pre class="syntax"><strong><a name="pwindow-name">Синтаксис</a></strong>:  <em>window</em>.name
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Это свойство позволяет считывать и устанавливать имя окна или фрейма. Его значение задается
+        в формате <a href="http://wdh.suncloud.ru/html01.htm#frametarget">имени фрейма HTML</a>. Во избежание двусмысленности
+        это свойство всегда следует использовать с префиксом <tt>window</tt>. Примеры:</p>
+
+      <div class="code">
+<pre class="code">window.name = "Window1";		// задание имени окна
+parent.frames[0].name = "LetfFrame";	// задание имени фрейма
+window.open("file.htm", "_blank");	// открытие документа в новом окне</pre>
+      </div>
+
+      <h4><a name="hnavigator">Свойство navigator</a></h4>
+
+<pre class="syntax"><strong><a name="pnavigator">Синтаксис</a></strong>:  <em>window</em>.navigator
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Значением свойства <tt>navigator</tt> является объект, содержащий информацию об обозревателе.
+        Он имеет следующие свойства, доступные только для чтения:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt>appCodeName</tt></td>
+            <td>Кодовое имя обозревателя. Всегда равно "Mozilla".</td>
+          </tr>
+          <tr>
+            <td><tt>appName</tt></td>
+            <td>Название обозревателя. Всегда равно "Netscape".</td>
+          </tr>
+          <tr>
+            <td><tt>appVersion</tt></td>
+            <td>Версия обозревателя и имя платформы, например,<br>
+              "5.0 (Windows; en-US)".</td>
+          </tr>
+          <tr>
+            <td><tt>language</tt></td>
+            <td>Язык пользовательского интерфейса обозревателя (см. <a href="http://wdh.suncloud.ru/langs.htm#table81a">Таблицу
+              П8.1</a>).</td>
+          </tr>
+          <tr>
+            <td><tt>cookieEnabled</tt></td>
+            <td><strong>true</strong>, если куки на стороне клиента разрешены, и <strong>false</strong>,
+              если запрещены.</td>
+          </tr>
+          <tr>
+            <td><tt>mimeTypes</tt></td>
+            <td>Возвращает коллекцию объектов типа <tt>MimeType</tt>, соответствующих <a href="http://wdh.suncloud.ru/mime.htm">типам MIME</a>,
+              поддерживаемых обозревателем. Каждый такой объект имеет следующие свойства:
+            <table border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>description</td>
+                <td>Описание типа, например "Acrobat (*.pdf)".</td>
+              </tr>
+              <tr>
+                <td>enabledPlugin&nbsp;&nbsp;&nbsp;</td>
+                <td>Указатель на соответствующий объект <tt><a href="#plugin">Plugin</a></tt>.</td>
+              </tr>
+              <tr>
+                <td>suffixes</td>
+                <td>Расширения имен файлов этого типа, например "pdf".</td>
+              </tr>
+              <tr>
+                <td>type</td>
+                <td>Тип MIME, например "application/pdf".</td>
+              </tr>
+            </tbody></table>
+            </td>
+          </tr>
+          <tr>
+            <td><tt>oscpu</tt></td>
+            <td>Операционная система клиента:
+              <table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0">
+                <tbody><tr>
+                  <td>"HP-UX"</td>
+                  <td>HP Unix</td></tr>
+              <tr>
+                  <td>"MacPPC"	&nbsp;</td>
+                  <td>Macintosh/PowerPC</td>
+                </tr>
+              <tr>
+                  <td>"Mac68k"</td>
+                  <td>Macintosh/68000</td>
+                </tr>
+              <tr>
+                  <td>"SunOS"</td>
+                  <td>Solaris</td>
+                </tr>
+              <tr>
+                  <td>"Win95"</td>
+                  <td>Windows 95</td>
+                </tr>
+              <tr>
+                  <td>"Win98"</td>
+                  <td>Windows 98</td>
+                </tr>
+              <tr>
+                  <td>"WinNT"</td>
+                  <td>Windows NT/2000</td>
+                </tr>
+            </tbody></table>
+            </td>
+          </tr>
+          <tr>
+            <td><tt>platform</tt></td>
+            <td>Платформа клиента:
+              <table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0">
+                <tbody><tr>
+                  <td>"HP-UX"</td>
+                  <td>HP Unix</td></tr>
+              <tr>
+                  <td>"MacPPC"	&nbsp;</td>
+                  <td>Macintosh/PowerPC</td>
+                </tr>
+              <tr>
+                  <td>"Mac68k"</td>
+                  <td>Macintosh/68000</td>
+                </tr>
+              <tr>
+                  <td>"SunOS"</td>
+                  <td>Solaris</td>
+                </tr>
+              <tr>
+                  <td>"Win16"</td>
+                  <td>16-разрядная Windows</td>
+                </tr>
+              <tr>
+                  <td>"Win32"</td>
+                  <td>32-разрядная Windows</td>
+                </tr>
+            </tbody></table></td>
+          </tr>
+          <tr>
+            <td><tt>plugins</tt></td>
+            <td><a name="plugin">Коллекция всех объектов <tt>Plugin</tt>, установленных в обозревателе.</a>
+              Объект <tt>Plugin</tt>
+описывает подключаемый модуль, который отображает файлы определенных
+типов. Он является массивом, содержащим по одному элементу для каждого
+поддерживаемого им типа. Он имеет следующие свойства: <table border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>description&nbsp;&nbsp;&nbsp;</td>
+                <td>Описание модуля, например "Netscape Navigator Plug-in for Acrobat.".</td>
+              </tr>
+              <tr>
+                <td>filename</td>
+                <td>Полный путь доступа к файлу модуля на диске.</td>
+              </tr>
+              <tr>
+                <td>length</td>
+                <td>Количество поддерживаемых типов MIME.</td>
+              </tr>
+              <tr>
+                <td>name</td>
+                <td>Название модуля, например "Adobe Acrobat".</td>
+              </tr>
+            </tbody></table>
+            <p>Кроме того, данная коллекция имеет метод <tt>refresh(<em>flag</em>)</tt>, который обновляет массив
+              установленных подгружаемых модулей. Если <tt><em>flag</em></tt> равно <strong>true</strong>, то все
+              открытые документы будут перезагружены с учетом вновь установленных модулей.</p>
+            </td>
+          </tr>
+          <tr>
+            <td><tt>product</tt></td>
+            <td>Название продукта. Всегда равно "Gecko".</td>
+          </tr>
+          <tr>
+            <td><tt>productSub</tt></td>
+            <td>Номер сборки продукта, например "20001222".</td>
+          </tr>
+          <tr>
+            <td><tt>securityPolicy</tt></td>
+            <td>Политика безопасности, недокументировано.</td>
+          </tr>
+          <tr>
+            <td><tt>userAgent</tt></td>
+            <td>Информация об обозревателе в формате поля <tt>User-Agent</tt> заголовка запроса HTTP
+              (см. <a href="http://wdh.suncloud.ru/http.htm#table52a">Таблицу П5.2</a>), например,<br>
+              "Mozilla/5.0 (Windows; U; Win98; en-US; rv:0.9.2) Gecko/20010725 Netscape6/6.1".</td>
+          </tr>
+          <tr>
+            <td><tt>vendor</tt></td>
+            <td>Название поставщика, например "Netscape6".</td>
+          </tr>
+          <tr>
+            <td><tt>vendorSub</tt></td>
+            <td>Номер версии поставщика, например "6.1".</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Кроме того, данный объект имеет следующие методы:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt>javaEnabled()</tt></td>
+            <td>Возвращает <strong>true</strong>, если Java-аплеты в обозревателе разрешены, и <strong>false</strong>
+              в противном случае.</td>
+          </tr>
+          <tr>
+            <td><tt>preference(<em>name</em>, <em>value</em>?)</tt></td>
+            <td>Если аргумент <em><tt>value</tt></em> не задан, возвращает текущую настройку обозревателя с именем <tt><em>name</em></tt>
+              (для этого требуется привилегия UniversalPreferencesRead). Если аргумент <em><tt>value</tt></em> задан, то настройка с именем
+              <tt><em>name</em></tt> получает значение <em><tt>value</tt></em>
+и это значение возвращается в качестве результата (для этого требуется
+привилегия UniversalPreferencesWrite). Имена некоторых настроек (полный
+перечень в сценариях подкаталога DEFAULTS\PREF каталога, в котором
+установлены Netscape 6 или Mozilla): <table border="0" cellpadding="0" cellspacing="0">
+                <tbody><tr>
+                  <td><tt>"autoupdate.enabled"</tt></td>
+                  <td><strong>true</strong> = разрешить SmartUpdate, <strong>false</strong> = запретить</td>
+                </tr>
+                <tr>
+                  <td><tt>"browser.enable_style_sheets"</tt></td>
+                  <td><strong>true</strong> = разрешить таблицы стилей, <strong>false</strong> = запретить</td>
+                </tr>
+                <tr>
+                  <td><tt>"general.always_load_images"</tt></td>
+                  <td><strong>true</strong> = автоматически загружать графические образы, <strong>false</strong> = нет</td>
+                </tr>
+                <tr>
+                  <td><tt>"javascript.enabled"</tt></td>
+                  <td><strong>true</strong> = разрешить JavaScript, <strong>false</strong> = запретить</td>
+                </tr>
+                <tr>
+                  <td><tt>"network.cookie.cookieBehavior"</tt></td>
+                  <td>0 = разрешить все куки, 1 = разрешить только куки, посылаемые на тот же сервер, 2 = запретить куки</td>
+                </tr>
+                <tr>
+                  <td><tt>"network.cookie.warnAboutCookies"&nbsp;&nbsp;&nbsp;</tt></td>
+                  <td><strong>true</strong> = предупреждать об обрашении к куки, <strong>false</strong> = нет</td>
+                </tr>
+                <tr>
+                  <td><tt>"security.enable_java"</tt></td>
+                  <td><strong>true</strong> = разрешить Java-аплеты, <strong>false</strong> = запретить</td>
+                </tr>
+            </tbody></table></td>
+          </tr>
+          <tr>
+            <td><nobr><tt>taintEnabled()</tt></nobr></td>
+            <td>Возвращает <strong>true</strong>, если в обозревателе разрешена защита данных (data tainting),
+              и <strong>false</strong> в противном случае.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="hopener">Свойство opener</a></h4>
+
+<pre class="syntax"><strong><a name="popener">Синтаксис</a></strong>:  <em>window</em>.opener
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Это свойство возвращает ссылку на объект <tt>window</tt>, создавший данное окно; если окно было открыто обозревателем,
+        а не методом <tt><a href="#mopen">open</a></tt>, то его значение <strong>null</strong>. Мы можем присвоить этому свойству ссылку на любое окно.</p>
+
+      <h4><a name="houterheight">Свойство outerHeight</a></h4>
+
+<pre class="syntax"><strong><a name="pouterheight">Синтаксис</a></strong>:  <em>window</em>.outerHeight
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Значением свойства <tt>outerHeight</tt> является высота окна обозревателя.
+        Пример: <code>window.outerHeight = window.screen.availHeight</code>. Ср. со свойством <tt><a href="#pinnerheight">innerHeight</a></tt>.</p>
+
+      <h4><a name="houterwidth">Свойство outerWidth</a></h4>
+
+<pre class="syntax"><strong><a name="pouterwidth">Синтаксис</a></strong>:  <em>window</em>.outerWidth
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Значением свойства <tt>outerWidth</tt> является ширина окна обозревателя.
+        Пример: <code>window.outerWidth = window.screen.availWidth</code>. Ср. со свойством <tt><a href="#pinnerwidth">innerWidth</a></tt>.</p>
+
+      <h4><a name="hpagexoffset">Свойство pageXOffset</a></h4>
+
+<pre class="syntax"><strong><a name="ppagexoffset">Синтаксис</a></strong>:  <em>window</em>.pageXOffset
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Значением свойства <tt>pageXOffset</tt> является положение страницы по горизонтали в пикселях относительно верхнего левого угла
+        клиентской области окна. Это свойство позволяет узнать текущее положение страницы, прокручиваемой горизонтально, перед
+        вызовом метода <tt><a href="#mscrollto">scrollTo</a></tt> или <tt><a href="#mscrollby">scrollBy</a></tt>.</p>
+
+      <h4><a name="hpageyoffset">Свойство pageYOffset</a></h4>
+
+<pre class="syntax"><strong><a name="ppageyoffset">Синтаксис</a></strong>:  <em>window</em>.pageYOffset
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Значением свойства <tt>pageYOffset</tt> является положение страницы по вертикали в пикселях относительно верхнего левого угла
+        клиентской области окна. Это свойство позволяет узнать текущее положение страницы, прокручиваемой вертикально, перед
+        вызовом метода <tt><a href="#mscrollto">scrollTo</a></tt> или <tt><a href="#mscrollby">scrollBy</a></tt>.</p>
+
+      <h4><a name="hparent">Свойство parent</a></h4>
+
+<pre class="syntax"><strong><a name="pparent">Синтаксис</a></strong>:  <em>window</em>.parent
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Это свойство возвращает ссылку на объект <tt>window</tt>, соответствующий отцу данного окна.
+        Иными словами, для окна, созданного элементом <a href="http://wdh.suncloud.ru/html07.htm#eframe"><strong>FRAME</strong></a>,
+        оно возвращает ссылку на окно, содержащее соответствующий элемент <a href="http://wdh.suncloud.ru/html07.htm#eframeset"><strong>FRAMESET</strong></a>,
+        а для остальных окон ссылку на самого себя (ср. свойство <tt><a href="#ptop">top</a></tt>). Пример: <code>alert(parent.location)</code>.</p>
+
+      <h4><a name="hpersonalbar">Свойство personalbar</a></h4>
+
+<pre class="syntax"><strong><a name="ppersonalbar">Синтаксис</a></strong>:  <em>window</em>.personalbar
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Значением этого свойства является указатель на объект <tt>barProp</tt>, соответствующий панели личных ссылок
+        обозревателя. Этот объект имеет единственное свойство <tt>visible</tt>, доступное для
+        чтения и записи и указывающее на состояние панели (<strong>true</strong>, если она видна, и <strong>false</strong>, если
+        она скрыта). Для изменения этого свойства необходима привилегия UniversalBrowserWrite. Пример:</p>
+
+      <div class="code">
+<pre class="code">netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserWrite");
+window.personalbar.visible = true;</pre>
+      </div>
+
+      <h4><a name="hpkcs11">Свойство pkcs11</a></h4>
+
+<pre class="syntax"><strong><a name="ppkcs11">Синтаксис</a></strong>:  <em>window</em>.pkcs11
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Это свойство возвращает ссылку на объект <tt>pkcs11</tt>, который используется для установки драйверов и
+        других программ, использующих протокол PKCS (Public-Key Cryptography Standard) #11. Этот стандарт
+        разработан в RSA Laboratories для управления криптографическим шифрованием передаваемых данных. Подробнее см.
+        <a target="_blank" href="http://www.rsasecurity.com/rsalabs/pkcs/pkcs-11/index.html">Спецификацию PKCS #11</a>
+        <img src="4.13.%20%CE%F2%EE%E1%F0%E0%E6%E5%ED%E8%E5%20%E4%EE%EA%F3%EC%E5%ED%F2%EE%E2%20%E2%20DOM%20%E8%20Gecko_files/extref.gif" alt="Внешняя ссылка"> и файл nsIDOMPkcs11.idl в исходных текстах Mozilla.</p>
+
+      <h4><a name="hprompter">Свойство prompter</a></h4>
+
+<pre class="syntax"><strong><a name="pprompter">Синтаксис</a></strong>:  <em>window</em>.prompter
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Это свойство возвращает ссылку на объект <tt>window</tt>, созданный методом <tt><a href="#mprompt">prompt</a></tt> или
+        <strong>null</strong>, если такого окна нет.</p>
+
+      <h4><a name="hscreen">Свойство screen</a></h4>
+
+<pre class="syntax"><strong><a name="pscreen">Синтаксис</a></strong>:  <em>window</em>.screen
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Значением свойства <tt>screen</tt> является объект, содержащий информацию об экране клиента.
+        Он имеет следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt>availHeight</tt></td>
+            <td>Нет</td>
+            <td>Высота рабочей области экрана в пикселях (исключая высоту панели задач). Для экрана
+              600x800 обычно равна от 570 до 600.</td>
+          </tr>
+          <tr>
+            <td><tt>availLeft</tt></td>
+            <td>Нет</td>
+            <td>Первый доступный слева пиксель экрана (<tt>availLeft</tt> + <tt>availWidth</tt> = <tt>width</tt>).</td>
+          </tr>
+          <tr>
+            <td><tt>availTop</tt></td>
+            <td>Нет</td>
+            <td>Первый доступный сверху пиксель экрана (<tt>availTop</tt> + <tt>availHeight</tt> = <tt>height</tt>).</td>
+          </tr>
+          <tr>
+            <td><tt>availWidth</tt></td>
+            <td>Нет</td>
+            <td>Ширина рабочей области экрана в пикселях (исключая ширину панели задач). Для экрана
+              600x800 обычно равна от 730 до 800.</td>
+          </tr>
+          <tr>
+            <td><tt>colorDepth</tt></td>
+            <td>Нет</td>
+            <td>Если используется цветовая палитра, то это свойство возвращает ее глубину в битах на пиксель.
+              В противном случае совпадает с <tt>pixelDepth</tt>.</td>
+          </tr>
+          <tr>
+            <td><tt>height</tt></td>
+            <td>Нет</td>
+            <td>Высота экрана в пикселях. Например, для экрана 600x800 равна 600.</td>
+          </tr>
+          <tr>
+            <td><tt>left</tt></td>
+            <td>Да</td>
+            <td>Расстояние в пикселях от левого края клиентской области окна обозревателя до левого края экрана.</td>
+          </tr>
+          <tr>
+            <td><tt>pixelDepth</tt></td>
+            <td>Нет</td>
+            <td>Число битов на пиксель при отображении цветов. Типичные значения: 8 (256 цветов), 16
+              (High Color), 24 (True Color).</td>
+          </tr>
+          <tr>
+            <td><tt>top</tt></td>
+            <td>Да</td>
+            <td>Расстояние в пикселях от верхнего края клиентской области окна обозревателя до верхнего края экрана.</td>
+          </tr>
+          <tr>
+            <td><tt>width</tt></td>
+            <td>Нет</td>
+            <td>Ширина экрана в пикселях. Например, для экрана 600x800 равна 800.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Следующий пример</p>
+
+      <div class="code">
+<pre class="code">alert("Экран: "+screen.width+" x "+screen.height+" x "+screen.colorDepth +" бита");</pre>
+      </div>
+
+      <p class="noindent">выведет окно сообщения с текстом вида <samp>Экран: 800 x 600 x 24 бита</samp>.</p>
+
+      <h4><a name="hscreenx">Свойство screenX</a></h4>
+
+<pre class="syntax"><strong><a name="pscreenx">Синтаксис</a></strong>:  <em>window</em>.screenX
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Значением свойства <tt>screenX</tt> является расстояние в пикселях от левой границы экрана до левой границы окна обозревателя.
+        Для изменения этого свойства необходима привилегия UniversalBrowserWrite. Пример:</p>
+
+      <div class="code">
+<pre class="code">netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserWrite");
+window.screenX = 20;</pre>
+      </div>
+
+      <h4><a name="hscreeny">Свойство screenY</a></h4>
+
+<pre class="syntax"><strong><a name="pscreeny">Синтаксис</a></strong>:  <em>window</em>.screenY
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Значением свойства <tt>screenY</tt> является расстояние в пикселях от верхней границы экрана до верхней границы окна обозревателя.
+        Для изменения этого свойства необходима привилегия UniversalBrowserWrite. Пример:</p>
+
+      <div class="code">
+<pre class="code">netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserWrite");
+window.screenY = 10;</pre>
+      </div>
+
+      <h4><a name="hscrollbars">Свойство scrollbars</a></h4>
+
+<pre class="syntax"><strong><a name="pscrollbars">Синтаксис</a></strong>:  <em>window</em>.scrollbars
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Значением этого свойства является указатель на объект <tt>barProp</tt>, соответствующий полосам прокрутки
+        обозревателя. Этот объект имеет единственное свойство <tt>visible</tt>, доступное для
+        чтения и записи и указывающее на состояние панели (<strong>true</strong>, если полосы прокрутки видны, и <strong>false</strong>, если
+        они скрыты). Для изменения этого свойства необходима привилегия UniversalBrowserWrite. Пример:</p>
+
+      <div class="code">
+<pre class="code">netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserWrite");
+window.scrollbars.visible = true;</pre>
+      </div>
+
+      <h4><a name="hscrollx">Свойство scrollX</a></h4>
+
+<pre class="syntax"><strong><a name="pscrollx">Синтаксис</a></strong>:  <em>window</em>.scrollX
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Значением свойства <tt>scrollX</tt> является количество пикселей, на которое документ прокручен по горизонтали.
+        Следующий пример прокручивает документ к его началу, если он был прокручен по горизонтали:</p>
+
+      <div class="code">
+<pre class="code">if (window.scrollX) scroll(0, 0);</pre>
+      </div>
+
+      <h4><a name="hscrolly">Свойство scrollY</a></h4>
+
+<pre class="syntax"><strong><a name="pscrolly">Синтаксис</a></strong>:  <em>window</em>.scrollY
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Значением свойства <tt>scrollY</tt> является количество пикселей, на которое документ прокручен по вертикали.
+        Следующий пример прокручивает документ к его началу, если он был прокручен по вертикали:</p>
+
+      <div class="code">
+<pre class="code">if (window.scrollY) scroll(0, 0);</pre>
+      </div>
+
+      <h4><a name="hself">Свойство self</a></h4>
+
+<pre class="syntax"><strong><a name="pself">Синтаксис</a></strong>:  <em>window</em>.self
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Это свойство возвращает ссылку на текущий объект <tt>window</tt>, т.&nbsp;е. на самого себя.</p>
+
+      <h4><a name="hsidebar">Свойство sidebar</a></h4>
+
+<pre class="syntax"><strong><a name="psidebar">Синтаксис</a></strong>:  <em>window</em>.sidebar
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Значением этого
+свойства является указатель на недокументированный объект с интерфейсом
+nsISidebar, соответствующий боковой панели обозревателя (его описание в
+Gecko DOM window Reference не соответствует действительности). Мы
+обнаружили, что этот объект лишен свойств, но имеет четыре метода:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt>addPanel(<em>panel</em>)</tt></td>
+            <td>Недокументировано.</td>
+          </tr>
+          <tr>
+            <td><tt>addSearchEngine(<em>engineURI</em>, <em>iconURI</em>, <em>engineName</em>, <em>categoryName</em>)</tt></td>
+            <td>Запрашивает подтверждение на доавление к боковой панели поисковой системы.
+            Аргументы: <tt><em>engineURI</em></tt>&nbsp;— URI поисковой системы, <tt><em>iconURI</em></tt>&nbsp;— URI ее иконки,
+            <tt><em>engineName</em></tt>&nbsp;— имя, которое будет присвоено поисковой системе,
+            <tt><em>categoryName</em></tt>&nbsp;— название категории поиска.
+            </td>
+          </tr>
+          <tr>
+            <td><nobr><tt>QueryInterface(<em>interfaceName</em>)</tt></nobr></td>
+            <td>Недокументировано.</td>
+          </tr>
+          <tr>
+            <td><tt>setWindow(<em>windowFrame</em>)</tt></td>
+            <td>Недокументировано.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>Этот
+объект еще находится в стадии разработки, поэтому подробно мы опишем
+его позже. Пример добавления поисковой системы к боковой панели:</p>
+
+      <div class="code">
+<pre class="code">window.sidebar.addSearchEngine("http://www.mozilla.org/projects/search/mozilla.src",
+  "http://www.mozilla.org/projects/search/mozilla.gif", "mozilla.org", "Web");</pre>
+      </div>
+
+      <h4><a name="hstatus">Свойство status</a></h4>
+
+<pre class="syntax"><strong><a name="pstatus">Синтаксис</a></strong>:  <em>window</em>.status
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Свойство <tt>status</tt> возвращает или устанавливает текст сообщения, выводимый в строке состояния,
+        которая расположена в нижней части окна обозревателя. Не следует путать его со свойством <tt><a href="#pdefaultstatus">defaultStatus</a></tt>,
+        которое содержит текст, выводимый в строке состояния по умолчанию. Пример:</p>
+
+      <div class="code">
+<pre class="code">&lt;BODY onload="window.status='Страница загружена!'"&gt;</pre>
+      </div>
+
+      <h4><a name="hstatusbar">Свойство statusbar</a></h4>
+
+<pre class="syntax"><strong><a name="pstatusbar">Синтаксис</a></strong>:  <em>window</em>.statusbar
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Значением этого свойства является указатель на объект <tt>barProp</tt>, соответствующий строке состояния
+        обозревателя. Этот объект имеет единственное свойство <tt>visible</tt>, доступное для
+        чтения и записи и указывающее на состояние панели (<strong>true</strong>, если строка состояния видна, и <strong>false</strong>, если
+        она скрыта). Для изменения этого свойства необходима привилегия UniversalBrowserWrite. Пример:</p>
+
+      <div class="code">
+<pre class="code">netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserWrite");
+window.statusbar.visible = true;</pre>
+      </div>
+
+      <h4><a name="htitle">Свойство title</a></h4>
+
+<pre class="syntax"><strong><a name="ptitle">Синтаксис</a></strong>:  <em>window</em>.title
+<strong>Изменяемое</strong>: да</pre>
+
+      <p>Это свойство возвращает или задает заголовок окна. Если заголовок окна не был ранее задан,
+        то оно возвращает <strong>undef</strong>. Текст заголовка хранится в данном свойстве, но нигде
+        не отображается. Пример:</p>
+
+      <div class="code">
+<pre class="code">window.title = "Мое окно";
+alert(window.title);</pre>
+      </div>
+
+      <h4><a name="htoolbar">Свойство toolbar</a></h4>
+
+<pre class="syntax"><strong><a name="ptoolbar">Синтаксис</a></strong>:  <em>window</em>.toolbar
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Значением этого свойства является указатель на объект <tt>barProp</tt>, соответствующий панели кнопок
+        обозревателя. Этот объект имеет единственное свойство <tt>visible</tt>, доступное для
+        чтения и записи и указывающее на состояние панели (<strong>true</strong>, если она видна, и <strong>false</strong>, если
+        она скрыта). Для изменения этого свойства необходима привилегия UniversalBrowserWrite. Пример:</p>
+
+      <div class="code">
+<pre class="code">netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserWrite");
+window.toolbar.visible = true;</pre>
+      </div>
+
+        <h4><a name="htop">Свойство top</a></h4>
+
+<pre class="syntax"><strong><a name="ptop">Синтаксис</a></strong>:  <em>window</em>.top
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Это свойство возвращает ссылку на первое окно в иерархии объектов <tt>window</tt>, т.&nbsp;е. на
+        объект, у которого свойство <tt><a href="#pparent">parent</a></tt> равно самому объекту.</p>
+
+      <h4><a name="hwindow">Свойство window</a></h4>
+
+<pre class="syntax"><strong><a name="pwindow">Синтаксис</a></strong>:  <em>window</em>.window
+<strong>Изменяемое</strong>: нет</pre>
+
+      <p>Это свойство возвращает ссылку на текущий объект <tt>window</tt>, т.&nbsp;е. на самого себя
+        (синоним свойства <tt><a href="#pself">self</a></tt>).</p>
+
+      <h4><a name="halert">Метод alert</a></h4>
+
+<pre class="syntax"><strong><a name="malert">Синтаксис</a></strong>: <em>window</em>.alert(<em>текст</em>?)
+<strong>Аргументы</strong>: <em>текст</em>&nbsp;— строковое значение</pre>
+
+      <p>Метод <tt>alert</tt> создает диалоговое окно сообщения и, если <em>текст</em> задан, выводит его в это
+        окно. Например, оператор <code>alert("Здравствуйте!")</code> выведет на экран следующее окно:</p>
+
+      <img class="sample" src="4.13.%20%CE%F2%EE%E1%F0%E0%E6%E5%ED%E8%E5%20%E4%EE%EA%F3%EC%E5%ED%F2%EE%E2%20%E2%20DOM%20%E8%20Gecko_files/alertg.gif" alt="Пример отображения окна сообщения">
+
+      <h4><a name="hback">Метод back</a></h4>
+
+<pre class="syntax"><strong><a name="mback">Синтаксис</a></strong>: <em>window</em>.back()</pre>
+
+      <p>Метод <tt>back</tt> эквивалентен нажатию кнопки обозревателя Back (Назад). Он возвращает нас на один шаг в
+        истории просмотра <em>самого верхнего окна</em> в иерархии окон, в отличие от метода <tt><a href="#phistory">history.back()</a></tt>, который
+        делает шаг назад в истории просмотра <em>текущего окна или фрейма</em>.</p>
+
+      <h4><a name="hblur">Метод blur</a></h4>
+
+<pre class="syntax"><strong><a name="mblur">Синтаксис</a></strong>: <em>window</em>.blur()</pre>
+
+      <p>Метод <tt>blur</tt> заставляет окно потерять фокус и генерирует событие <tt>onblur</tt>. Это программный
+        эквивалент удалению пользователем фокуса с текущего окна.</p>
+
+      <h4><a name="hcaptureevents">Метод captureEvents</a></h4>
+
+<pre class="syntax"><strong><a name="mcaptureevents">Синтаксис</a></strong>: <em>window</em>.captureEvents(Event.<em>тип</em>)
+<strong>Аргументы</strong>: <em>тип</em>&nbsp;— тип события</pre>
+
+      <p>Метод <tt>captureEvents</tt> включает перехват заданным окном всех событий заданного типа. Тип события задается одним из
+      следующих ключевых слов, набранных в любом регистре:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <td><tt>abort</tt></td>
+            <td><tt>error</tt></td>
+            <td><tt>mousedown</tt></td>
+            <td><tt>reset</tt></td>
+          </tr>
+          <tr>
+            <td><tt>blur</tt></td>
+            <td><tt>focus</tt></td>
+            <td><tt>mousemove</tt></td>
+            <td><tt>resize</tt></td>
+          </tr>
+          <tr>
+            <td><tt>change</tt></td>
+            <td><tt>keydown</tt></td>
+            <td><tt>mouseout</tt></td>
+            <td><tt>select</tt></td>
+          </tr>
+          <tr>
+            <td><tt>click</tt></td>
+            <td><tt>keypress</tt></td>
+            <td><tt>mouseover</tt></td>
+            <td><tt>submit</tt></td>
+          </tr>
+          <tr>
+            <td><tt>dblclick</tt></td>
+            <td><tt>keyup</tt></td>
+            <td><tt>mouseup</tt></td>
+            <td><tt>unload</tt></td>
+          </tr>
+          <tr>
+            <td><tt>dragdrop</tt></td>
+            <td><tt>load</tt></td>
+            <td><tt>move</tt></td>
+            <td>&nbsp;</td>
+          </tr>
+        </tbody></table>
+      </div>
+      <p>События обычно проходят через обработчики событий окна и документа прежде, чем попасть к
+        обработчику объекта, сгенерировавшему это событие. Данный метод перехватывает все события
+        указанного типа и не пропускает их к следующим объектам в иерархии. Для того, чтобы восстановить
+        обычный <a href="http://wdh.suncloud.ru/dhtml11.htm#ref41111">порядок распространения событий</a>, необходимо вызывать метод
+        <tt><a href="#mreleaseevents">releaseEvents</a></tt>. Пример перехвата всех щелчков мышью в окне:</p>
+
+      <div class="code">
+<pre class="code">&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;SCRIPT&gt;
+function reg() {
+  window.captureEvents(Event.CLICK);
+  window.onclick = new Function("alert('hit')");
+}
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY onload="reg()"&gt;
+&lt;BUTTON&gt;Test&lt;/BUTTON&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;</pre>
+      </div>
+
+      <p>Мы можем задать в вызове этого метода сразу несколько типов событий, разделяя их символом "|", например:</p>
+
+      <div class="code">
+<pre class="code">window.captureEvents(Event.KEYPRESS | Event.KEYDOWN | Event.KEYUP);</pre>
+      </div>
+
+      <h4><a name="hclearinterval">Метод clearInterval</a></h4>
+
+<pre class="syntax"><strong><a name="mclearinterval">Синтаксис</a></strong>: <em>window</em>.clearInterval(<em>таймер</em>)
+<strong>Аргументы</strong>: <em>таймер</em>&nbsp;— целое значение</pre>
+
+      <p>Этот метод останавливает таймер, созданный методом  <tt><a href="#msetinterval">setInterval</a></tt>.
+        См. подробности и пример в описании этого метода.</p><p>
+
+      </p><h4><a name="hcleartimeout">Метод clearTimeout</a></h4>
+
+<pre class="syntax"><strong><a name="mcleartimeout">Синтаксис</a></strong>: <em>window</em>.clearTimeout(<em>таймер</em>)
+<strong>Аргументы</strong>: <em>таймер</em>&nbsp;— целое значение</pre>
+
+      <p>Этот метод останавливает таймер, созданный методом  <tt><a href="#msettimeout">setTimeout</a></tt>.
+        См. подробности и пример в описании этого метода.</p><p>
+
+      </p><h4><a name="hclose">Метод close</a></h4>
+
+<pre class="syntax"><strong><a name="mclose">Синтаксис</a></strong>: <em>window</em>.close()</pre>
+
+      <p>Метод <tt>close</tt>
+закрывает заданное окно обозревателя. Если окно было создано
+программно, то оно просто закрывается. Если же окно было создано
+обозревателем, то перед его закрытием выводится диалоговое окно,
+запрашивающее подтверждение действия. Если, однако, в истории просмотра
+окна только один документ (текущий), то окно закрывается без запроса
+подтверждения. Такое решение было принято для поддержки временных окон,
+которые открывают другие окна, а затем закрываются. Для того, чтобы
+закрывать любое окно без подтверждения, необходима привилегия
+UniversalBrowserWrite. Пример:</p>
+
+      <div class="code">
+<pre class="code">netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserWrite");
+self.close();</pre>
+      </div>
+
+      <p>В обработчиках событий нужно полностью указывать вызов <tt>window.close</tt>, иначе будет вызван неявно
+        подразумеваемый метод <tt>document.close</tt>.</p>
+
+      <h4><a name="hconfirm">Метод confirm</a></h4>
+
+<pre class="syntax"><strong><a name="mconfirm">Синтаксис</a></strong>: <em>window</em>.confirm(<em>текст</em>?)
+<strong>Аргументы</strong>: <em>текст</em>&nbsp;— строковое значение
+<strong>Результат</strong>: логическое значение</pre>
+
+      <p>Метод <tt>confirm</tt> создает диалоговое окно подтверждения и, если <em>текст</em> задан, выводит его в это
+        окно. Он возвращает <strong>true</strong>, если пользователь нажал кнопку OK, и <strong>false</strong>, если
+        пользователь нажал кнопку Cancel. Например, оператор <code>confirm("Отформатировать системный диск?")</code>
+        выведет на экран следующее окно:</p>
+
+      <img class="sample" src="4.13.%20%CE%F2%EE%E1%F0%E0%E6%E5%ED%E8%E5%20%E4%EE%EA%F3%EC%E5%ED%F2%EE%E2%20%E2%20DOM%20%E8%20Gecko_files/confirmg.gif" alt="Пример отображения окна подтверждения">
+
+      <h4><a name="hdisableexternalcapture">Метод disableExternalCapture</a></h4>
+
+<pre class="syntax"><strong><a name="mdisableexternalcapture">Синтаксис</a></strong>: <em>window</em>.disableExternalCapture()</pre>
+
+      <p>Этот метод запрещает перехват внешних событий, разрешенных методом <tt><a href="#menableexternalcapture">enableExternalCapture</a></tt>.
+        См. подробности в описании этого метода.</p><p>
+
+      </p><h4><a name="hdump">Метод dump</a></h4>
+
+<pre class="syntax"><strong><a name="mdump">Синтаксис</a></strong>: <em>window</em>.dump(<em>текст</em>)
+<strong>Аргументы</strong>: <em>текст</em>&nbsp;— строковое значение</pre>
+
+      <p>Утверждается, что этот метод выводит заданный <em>текст</em> в консоль JavaScript обозревателя и предназначен для вывода
+        отладочных сообщений. Мне этого добиться не удалось: метод выполнялся без ошибки, но в консоль не выводил ничего.</p><p>
+
+      </p><h4><a name="henableexternalcapture">Метод enableExternalCapture</a></h4>
+
+<pre class="syntax"><strong><a name="menableexternalcapture">Синтаксис</a></strong>: <em>window</em>.enableExternalCapture()</pre>
+
+      <p>Этот метод используется в окнах, содержащих фреймы, для того, чтобы разрешить данному окну перехват событий,
+        сгенерированных фреймами, в которые загружены документы с других серверов. Для перехвата
+        внешних событий какого-либо типа вам нужно получить привилегию UniversalBrowserWrite, вызвать этот метод, а затем
+        вызвать метод <tt><a href="#mcaptureevents">captureEvents</a></tt>, задав ему тип перехватываемых событий. Пример:</p><p>
+
+      </p><div class="code">
+<pre class="code">netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserWrite");
+enableExternalCapture();
+captureEvents(Event.CLICK);</pre>
+      </div>
+
+      <h4><a name="hescape">Метод escape</a></h4>
+
+<pre class="syntax"><strong><a name="mescape">Синтаксис</a></strong>: <em>window</em>.escape(<em>строка</em>)
+<strong>Аргументы</strong>: <em>строка</em>&nbsp;— любое строковое выражение
+<strong>Результат</strong>: новый строковый объект</pre>
+
+      <p>Метод <strong>escape</strong> преобразует входную строку в шестнадцатеричную кодировку.
+        При этом все символы, не являющиеся символами базовой латиницы, заменяются на их шестнадцатеричные
+        escape-коды <tt><strong>%</strong>xx</tt> в текущей кодировке операционной системы. Например, оператор <code>document.write(escape("Строка"))</code>
+        выведет в русской версии Windows на экран обозревателя строку <samp>%D1%F2%F0%EE%EA%E0</samp>.
+        Обратное преобразование строки производится методом <a href="#munescape"><tt>unescape</tt></a>.</p>
+
+      <p>Обратите внимание, что этот метод перекрывает метод <tt><a href="http://wdh.suncloud.ru/js08.htm#mescape">escape</a></tt> глобального объекта JavaScript, который кодирует
+        символы шестнадцатеричными кодами Unicode.</p>
+
+      <h4><a name="hfocus">Метод focus</a></h4>
+
+<pre class="syntax"><strong><a name="mfocus">Синтаксис</a></strong>: <em>window</em>.focus()</pre>
+
+      <p>Метод <tt>focus</tt> заставляет окно получить фокус и генерирует событие <tt>onfocus</tt>.
+        Учтите, что окно не может получить фокус, пока документ не будет полностью в него загружен.</p>
+
+      <h4><a name="hforward">Метод forward</a></h4>
+
+<pre class="syntax"><strong><a name="mforward">Синтаксис</a></strong>: <em>window</em>.forward()</pre>
+
+      <p>Метод <tt>forward</tt> эквивалентен нажатию кнопки обозревателя Forward (Вперед). Он переводит нас на один шаг вперед в
+        истории просмотра <em>самого верхнего окна</em> в иерархии окон, в отличие от метода <tt><a href="#phistory">history.forward()</a></tt>, который
+        делает шаг вперед в истории просмотра <em>текущего окна или фрейма</em>.</p>
+
+      <h4><a name="hgetattention">Метод GetAttention</a></h4>
+
+<pre class="syntax"><strong><a name="mgetattention">Синтаксис</a></strong>: <em>window</em>.GetAttention()</pre>
+
+      <p>Метод <tt>GetAttention</tt> вызвает мигание иконки обозревателя до тех пор, пока он не будет активизирован.
+      В Windows и Linux мигает иконка в панели задач, в MacOS&nbsp;— в правом верхнем углу системной панели. Пример:</p>
+
+      <div class="code">
+<pre class="code">setTimeout("window.GetAttention()", 3000);</pre>
+      </div>
+
+      <h4><a name="hgetselection">Метод getSelection</a></h4>
+
+<pre class="syntax"><strong><a name="mgetselection">Синтаксис</a></strong>:  <em>window</em>.getSelection()</pre>
+
+      <p>Этот
+метод возвращает указатель на недокументированный объект с интерфейсом
+nsISelection, соответствующий выделенному пользователем фрагменту
+документа. Если выбранный фрагмент является текстом, то возвращаемый
+объект автоматически преобразуется в строку. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(window.getSelection());</pre>
+      </div>
+
+      <h4><a name="hhome">Метод home</a></h4>
+
+<pre class="syntax"><strong><a name="mhome">Синтаксис</a></strong>: <em>window</em>.home()</pre>
+
+      <p>Метод <tt>home</tt> загружает в окно домашнюю страницу пользователя, указанную в настройках обозревателя. Его вызов
+        эквивалентен нажатию кнопки обозревателя Home (Домой).</p>
+
+      <h4><a name="hmoveby">Метод moveBy</a></h4>
+
+<pre class="syntax"><strong><a name="mmoveby">Синтаксис</a></strong>: <em>window</em>.moveBy(<em>x</em>, <em>y</em>)
+<strong>Аргументы</strong>: <em>x</em>, <em>y</em>&nbsp;— целые значения</pre>
+
+      <p>Этот метод перемещает окно на <em>x</em> пикселей по горизонтали и <em>y</em> пикселей по вертикали.
+        Пример: <code>moveBy(10, -5)</code>.</p>
+
+        <h4><a name="hmoveto">Метод moveTo</a></h4>
+
+<pre class="syntax"><strong><a name="mmoveto">Синтаксис</a></strong>: <em>window</em>.moveTo(<em>x</em>, <em>y</em>)
+<strong>Аргументы</strong>: <em>x</em>, <em>y</em>&nbsp;— целые значения</pre>
+
+      <p>Этот метод перемещает окно в положение, при котором его верхний левый угол отстоит от левого
+        верхнего угла экрана на <em>x</em> пикселей по горизонтали и <em>y</em> пикселей по вертикали.
+        Следующий пример задает размеры окна и центрирует его на экране:</p>
+
+      <div class="code">
+<pre class="code">var w = 200, h = 200;
+resizeTo(w, h);
+moveTo((screen.width-w)/2, (screen.height-h)/2);</pre>
+      </div>
+
+      <h4><a name="hopen">Метод open</a></h4>
+
+<pre class="syntax"><strong><a name="mopen">Синтаксис</a></strong>: <em>window</em>.open(<em>uri</em>, <em>имя</em> [, <em>свойства</em>?])
+<strong>Аргументы</strong>: <em>uri</em>, <em>имя</em>, <em>свойства</em>&nbsp;— строковые значения
+<strong>Результат</strong>: объект <tt>window</tt></pre>
+
+      <p>Метод <tt>open</tt> создает новое окно обозревателя и возвращает ссылку на него. Аргумент <em>uri</em> задает URI открываемого документа,
+        аргумент <em>имя</em>&nbsp;— имя фрейма для нового окна, которое может использоваться в атрибуте <strong>target</strong> элементов <strong><a href="http://wdh.suncloud.ru/html06.htm#ea">A</a></strong>
+        и <strong><a href="http://wdh.suncloud.ru/html08.htm#eform">FORM</a></strong>. Необязательный аргумент <em>свойства</em> представляет собой список свойств нового окна,
+        разделенных запятыми. В нем мы можем задать следующие свойства:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt>copyhistory</tt></td>
+            <td>Копировать историю просмотра текущего окна.</td>
+          </tr>
+          <tr>
+            <td><tt>dependent</tt></td>
+            <td>Создать окно, зависимое от родительского окна. Зависимые окна закрываются при закрытии
+              родительского окна и не показываются в панели задач Windows.</td>
+          </tr>
+          <tr>
+            <td><tt>directories</tt></td>
+            <td>Показывать панель каталогов обозревателя.</td>
+          </tr>
+          <tr>
+            <td><tt>height</tt></td>
+            <td>Высота окна в пикселях.</td>
+          </tr>
+          <tr>
+            <td><tt>location</tt></td>
+            <td>Показывать адресную строку обозревателя.</td>
+          </tr>
+          <tr>
+            <td><tt>menubar</tt></td>
+            <td>Показывать меню обозревателя.</td>
+          </tr>
+          <tr>
+            <td><tt>resizable</tt></td>
+            <td>Пользователь может изменять размеры окна.</td>
+          </tr>
+          <tr>
+            <td><tt>screenX</tt></td>
+            <td>Расстояние в пикселях от левого края экрана по горизонтали.</td>
+          </tr>
+          <tr>
+            <td><tt>screenY</tt></td>
+            <td>Расстояние в пикселях от верхнего края экрана по вертикали.</td>
+          </tr>
+          <tr>
+            <td><tt>scrollbars</tt></td>
+            <td>Показывать полосы прокрутки окна.</td>
+          </tr>
+          <tr>
+            <td><tt>status</tt></td>
+            <td>Показывать строку состояния обозревателя.</td>
+          </tr>
+          <tr>
+            <td><tt>toolbar</tt></td>
+            <td>Показывать панель кнопок обозревателя.</td>
+          </tr>
+          <tr>
+            <td><tt>width</tt></td>
+            <td>Ширина окна в пикселях.</td>
+          </tr>
+        </tbody></table>
+      </div>
+      <p>Свойствам <tt>width</tt>, <tt>height</tt>, <tt>screenX</tt> и <tt>screenY</tt> должны быть присвоены числовые значения. Остальные свойства являются логическими; им
+      можно присваивать значения <tt>yes</tt> или <tt>no</tt> (или, что то же самое, 1 или 0). Включение в список только имени свойства
+      равносильно присвоению ему значения <tt>yes</tt>. Пример:</p>
+
+      <div class="code">
+<pre class="code">var newWin = window.open("test.htm", "win2", "toolbar,status=no,width=200,height=200");</pre>
+      </div>
+
+      <h4><a name="hprint">Метод print</a></h4>
+
+<pre class="syntax"><strong><a name="mprint">Синтаксис</a></strong>: <em>window</em>.print()</pre>
+
+      <p>Метод <tt>print</tt> выводит содержимое данного окна или фрейма на печать.</p>
+
+      <h4><a name="hprompt">Метод prompt</a></h4>
+
+<pre class="syntax"><strong><a name="mprompt">Синтаксис</a></strong>: <em>window</em>.prompt([<em>текст</em>?], [<em>значение</em>?])
+<strong>Аргументы</strong>: <em>текст</em>, <em>значение</em>&nbsp;— строковые значения
+<strong>Результат</strong>: строковое или целое значение</pre>
+
+      <p>Метод <tt>prompt</tt> создает диалоговое окно, состоящее из строки сообщения и поля ввода.
+        Если <em>текст</em> задан, он выводится в качестве сообщения. <em>Значение</em> задает начальное
+        значение поля ввода;если оно опущено, то равно <strong>undefined</strong>, и поле ввода пусто.
+        Например, оператор <code>prompt("Введите ваше имя", "")</code> выведет на экран следующее
+        окно:</p>
+
+      <img class="sample" src="4.13.%20%CE%F2%EE%E1%F0%E0%E6%E5%ED%E8%E5%20%E4%EE%EA%F3%EC%E5%ED%F2%EE%E2%20%E2%20DOM%20%E8%20Gecko_files/promptg.gif" alt="Пример отображения окна ввода">
+
+      <p>Если пользователь нажмет кнопку Cancel, то этот метод вернет значение <strong>null</strong>; если будет нажата кнопка OK, то метод
+        вернет строковое или целое значение, введенное пользователем в поле ввода.</p>
+
+      <h4><a name="hreleaseevents">Метод releaseEvents</a></h4>
+
+<pre class="syntax"><strong><a name="mreleaseevents">Синтаксис</a></strong>: <em>window</em>.releaseEvents(Event.<em>тип</em>)
+<strong>Аргументы</strong>: <em>тип</em>&nbsp;— тип события</pre>
+
+      <p>Метод <tt>releaseEvents</tt> отменяет перехват событий заданного типа, включенный методом <tt><a href="#mcaptureevents">captureEvents</a></tt>.
+        См. подробности в описании этого метода. Пример:</p>
+
+      <div class="code">
+<pre class="code">window.releaseEvents(Event.KEYPRESS | Event.KEYDOWN | Event.KEYUP);</pre>
+      </div>
+
+      <h4><a name="hresizeby">Метод resizeBy</a></h4>
+
+<pre class="syntax"><strong><a name="mresizeby">Синтаксис</a></strong>: <em>window</em>.resizeBy(<em>x</em>, <em>y</em>)
+<strong>Аргументы</strong>: <em>x</em>, <em>y</em>&nbsp;— целые значения</pre>
+
+      <p>Этот метод изменяет размеры окна на <em>x</em> пикселей по горизонтали и <em>y</em> пикселей по вертикали.
+        Пример: <code>resizeBy(10, -5)</code>.</p>
+
+        <h4><a name="hresizeto">Метод resizeTo</a></h4>
+
+<pre class="syntax"><strong><a name="mresizeto">Синтаксис</a></strong>: <em>window</em>.resizeTo(<em>x</em>, <em>y</em>)
+<strong>Аргументы</strong>: <em>x</em>, <em>y</em>&nbsp;— целые значения</pre>
+
+      <p>Этот метод задает новые размеры окна, равными  <em>x</em> пикселей по горизонтали и <em>y</em> пикселей по вертикали.
+        Пример см. в описании метода <tt><a href="#mmoveto">moveTo</a></tt>.</p>
+
+      <h4><a name="hrouteevent">Метод routeEvent</a></h4>
+
+<pre class="syntax"><strong><a name="mrouteevent">Синтаксис</a></strong>: <em>window</em>.routeEvent(<em>evt</em>)
+<strong>Аргументы</strong>: <em>evt</em>&nbsp;— объект типа <tt><a href="http://wdh.suncloud.ru/dhtml11.htm#ref4115">Event</a></tt>
+<strong>Результат</strong>: логическое значение</pre>
+
+      <p>Этот метод пропускает перехваченное событие <em>evt</em> вниз по иерархии объектов. При этом событие передается следующему
+        в иерархии за <tt>window</tt> объекту, у которого включен перехват данного типа событий. Подробно о механизме перехвата событий см.
+        <a href="http://wdh.suncloud.ru/dhtml11.htm#ref41112">п. 4.11.1.2</a>.</p>
+
+        <h4><a name="hscroll">Метод scroll</a></h4>
+
+<pre class="syntax"><strong><a name="mscroll">Синтаксис</a></strong>: <em>window</em>.scroll(<em>x</em>, <em>y</em>)
+<strong>Аргументы</strong>: <em>x</em>, <em>y</em>&nbsp;— целые значения</pre>
+
+      <p>Это устаревший синоним метода <tt><a href="#mscrollto">scrollTo</a></tt>.</p>
+
+      <h4><a name="hscrollby">Метод scrollBy</a></h4>
+
+<pre class="syntax"><strong><a name="mscrollby">Синтаксис</a></strong>: <em>window</em>.scrollBy(<em>x</em>, <em>y</em>)
+<strong>Аргументы</strong>: <em>x</em>, <em>y</em>&nbsp;— целые значения</pre>
+
+      <p>Этот метод прокручивает документ в окне на <em>x</em> пикселей по горизонтали и <em>y</em> пикселей по вертикали относительно
+        текущей позиции документа в окне. Прокрутка производится только в том случае, когда новая позиция в окне не видна.
+        Пример: <code>scrollBy(10, -5)</code>.</p>
+
+      <h4><a name="hscrollbylines">Метод scrollByLines</a></h4>
+
+<pre class="syntax"><strong><a name="mscrollbylines">Синтаксис</a></strong>: <em>window</em>.scrollByLines(<em>n</em>)
+<strong>Аргументы</strong>: <em>n</em>&nbsp;— целое значение</pre>
+
+      <p>Этот метод прокручивает документ в окне на <em>n</em> строк относительно текущей позиции
+        документа в окне. Прокрутка производится только в том случае, когда новая позиция в окне не видна.
+        Пример: <code>scrollByLines(10)</code>.</p>
+
+      <h4><a name="hscrollbypages">Метод scrollByPages</a></h4>
+
+<pre class="syntax"><strong><a name="mscrollbypages">Синтаксис</a></strong>: <em>window</em>.scrollByPages(<em>n</em>)
+<strong>Аргументы</strong>: <em>n</em>&nbsp;— целое значение</pre>
+
+      <p>Этот метод прокручивает документ в окне на <em>n</em> страниц относительно текущей позиции
+        документа в окне. Прокрутка производится только в том случае, когда новая позиция в окне не видна.
+        Пример: <code>scrollByPages(-1)</code>.</p>
+
+        <h4><a name="hscrollto">Метод scrollTo</a></h4>
+
+<pre class="syntax"><strong><a name="mscrollto">Синтаксис</a></strong>: <em>window</em>.scrollTo(<em>x</em>, <em>y</em>)
+<strong>Аргументы</strong>: <em>x</em>, <em>y</em>&nbsp;— целые значения</pre>
+
+      <p>Этот метод прокручивает документ в окне так, чтобы верхний левый угол окна отстоял от начала документа
+        на <em>x</em> пикселей по горизонтали и <em>y</em> пикселей по вертикали. Прокрутка производится только
+        в том случае, когда новая позиция в окне не видна. Пример: <code>scrollTo(0, 20)</code>.</p>
+
+      <h4><a name="hsetcursor">Метод setCursor</a></h4>
+
+<pre class="syntax"><strong><a name="msetcursor">Синтаксис</a></strong>: <em>window</em>.setCursor(<em>форма</em>)
+<strong>Аргументы</strong>: <em>форма</em>&nbsp;— строковое значение</pre>
+
+      <p>Этот метод изменяет форму экранного курсора. Аргумент <em>форма</em> может принимать следующие значения:</p><p>
+
+      <table border="1" cellpadding="5" cellspacing="0" width="100%">
+        <tbody><tr>
+          <td><tt>"auto"</tt></td>
+          <td>Форма курсора определяется обозревателем в зависимости от содержимого элемента.</td>
+        </tr>
+        <tr>
+          <td><tt>"crosshair"</tt></td>
+          <td>Перекрестье.</td>
+        </tr>
+        <tr>
+          <td><tt>"default"</tt></td>
+          <td>Курсор операционной системы по умолчанию. В Windows это стрелка.</td>
+        </tr>
+        <tr>
+          <td><tt>"help"</tt></td>
+          <td>Вопросительный знак, указывающий, что для данного элемента можно получить справку.</td>
+        </tr>
+        <tr>
+          <td><tt>"move"</tt></td>
+          <td>Скрещенные стрелки, указывающие на то, что что-то должно переместиться.</td>
+        </tr>
+        <tr>
+          <td><tt>"pointer"</tt></td>
+          <td>Кисть руки, указывающая на гиперссылку.</td>
+        </tr>
+        <tr>
+          <td><tt>"*-resize"</tt></td>
+          <td>Стрелка, указывающая на сдвигаемую границу; * задает направление сдвига (<tt>n</tt>&nbsp;=
+            север, <tt>s</tt>&nbsp;= юг, <tt>w</tt>&nbsp;= запад, <tt>e</tt>&nbsp;= восток,
+            <tt>nw</tt>&nbsp;=северо-запад и т.&nbsp;п.).</td>
+        </tr>
+        <tr>
+          <td><tt>"text"</tt></td>
+          <td>Указатель на редактируемый текст в форме буквы I.</td>
+        </tr>
+        <tr>
+          <td><tt>"wait"</tt></td>
+          <td>Песочные часы, указывающие на то, что программа занята, и пользователь должен подождать.</td>
+        </tr>
+      </tbody></table>
+      </p><p>Пример: <code>setCursor("nw-resize")</code>.</p>
+
+      <h4><a name="hsetinterval">Метод setInterval</a></h4>
+
+<pre class="syntax"><strong><a name="msetinterval">Синтаксис</a></strong>: <em>window</em>.setInterval(<em>выражение</em>, <em>интервал</em>)
+           <em>window</em>.setInterval(<em>функция</em>, <em>интервал</em>, <em>арг1</em>?, …, <em>аргN</em>?)
+<strong>Аргументы</strong>: <em>выражение</em>&nbsp;— строковое значение
+           <em>функция</em>&nbsp;— имя функции
+           <em>арг1</em>, …, <em>аргN</em>&nbsp;— значения аргументов функции
+           <em>интервал</em>&nbsp;— числовое значение
+<strong>Результат</strong>: целое значение</pre>
+
+      <p>Этот метод запускает выполнение определенного действия каждый раз, когда истечет <em>интервал</em>,
+заданный в миллисекундах. Действие задается либо строкой, содержащей
+выражение JavaScript, либо именем функции с необязательным набором
+аргументов. Метод возвращает целое значение (идентификатор таймера),
+которое может быть передано методу <tt><a href="#mclearinterval">clearInterval</a></tt>
+для остановки данного таймера, т.&nbsp;е. прекращения периодического
+выполнения данного действия. Заданное действие будет выполняться до
+вызова <tt><a href="#mclearinterval">clearInterval</a></tt> или до закрытия данного окна.</p><p>
+
+      </p><p>Следующий пример использует метод <tt>setInterval</tt> для вывода текущего времени в строке состояния обозревателя каждую секунду:</p>
+
+      <div class="code">
+<pre class="code">&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;SCRIPT&gt;
+var timerID = null;
+
+function stopclock() {
+  if (timerID)
+    clearInterval(timerID);
+  timerID = null;
+}
+function startclock() {
+  stopclock();
+  timerID = setInterval(showtime, 1000); // или setInterval("showtime()", 1000)
+}
+function showtime() {
+  window.status = (new Date()).toLocaleTimeString();
+}
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY onload="startclock()"&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;</pre>
+      </div>
+
+      <h4><a name="hsettimeout">Метод setTimeout</a></h4>
+
+<pre class="syntax"><strong><a name="msettimeout">Синтаксис</a></strong>: <em>window</em>.setTimeout(<em>выражение</em>, <em>интервал</em>)
+           <em>window</em>.setTimeout(<em>функция</em>, <em>интервал</em>, <em>арг1</em>?, …, <em>аргN</em>?)
+<strong>Аргументы</strong>: <em>выражение</em>&nbsp;— строковое значение
+           <em>функция</em>&nbsp;— имя функции
+           <em>арг1</em>, …, <em>аргN</em>&nbsp;— значения аргументов функции
+           <em>интервал</em>&nbsp;— числовое значение
+<strong>Результат</strong>: целое значение</pre>
+
+      <p>Этот метод вызывает разовое выполнение определенного действия, когда истечет <em>интервал</em>,
+заданный в миллисекундах. Действие задается либо строкой, содержащей
+выражение JavaScript, либо именем функции с необязательным набором
+аргументов. Метод возвращает целое значение (идентификатор таймера),
+которое может быть передано методу <tt><a href="#mcleartimeout">clearTimeout</a></tt>
+для остановки данного таймера, т.&nbsp;е. для отмены выполнения
+заданного действия. Действие будет выполнено по истечении заданного
+интервала времени, если до этого не будет вызван метод <tt><a href="#mcleartimeout">clearTimeout</a></tt> или закрыто данное окно.</p><p>
+
+      </p><p>Следующий пример использует метод <tt>setTimeout</tt> для вывода текущего времени в строке состояния обозревателя каждую секунду:</p>
+
+      <div class="code">
+<pre class="code">&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;SCRIPT&gt;
+var timerID = null;
+
+function stopclock() {
+  if (timerID)
+    clearInterval(timerID);
+  timerID = null;
+}
+function startclock() {
+  stopclock();
+  showtime();
+}
+function showtime() {
+  window.status = (new Date()).toLocaleTimeString();
+  timerID = setTimeout(showtime, 1000); // или setTimeout("showtime()", 1000)
+}
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY onload="startclock()"&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;</pre>
+      </div>
+
+      <h4><a name="hsizetocontent">Метод sizeToContent</a></h4>
+
+<pre class="syntax"><strong><a name="msizetocontent">Синтаксис</a></strong>: <em>window</em>.sizeToContent()</pre>
+
+      <p>Метод <strong>sizeToContent</strong> изменяет размеры окна, так чтобы они соответствовали его содержимому.</p>
+
+      <h4><a name="hstop">Метод stop</a></h4>
+
+<pre class="syntax"><strong><a name="mstop">Синтаксис</a></strong>: <em>window</em>.stop()</pre>
+
+      <p>Метод <strong>stop</strong> прекращает загрузку текущего документа. Его вызов равносилен нажатию кнопки
+      Stop (Остановить) на панели обозревателя.</p>
+
+      <h4><a name="hunescape">Метод unescape</a></h4>
+
+<pre class="syntax"><strong><a name="munescape">Синтаксис</a></strong>: <em>window</em>.unescape(<em>строка</em>)
+<strong>Аргументы</strong>: <em>строка</em>&nbsp;— любое строковое выражение
+<strong>Результат</strong>: новый строковый объект</pre>
+
+      <p>Метод <strong>unescape</strong> преобразует строку из шестнадцатеричной кодировки
+        текстовую. Формат исходной строки описан в методе <a href="#mescape"><tt>escape</tt></a>.
+        Например, в русской версии Windows оператор <code>document.write(unescape("%D1%F2%F0%EE%EA%E0"))</code>
+        выведет на экран обозревателя текст <samp>Строка</samp>.</p>
+
+      <p>Обратите внимание, что этот метод перекрывает метод <tt><a href="http://wdh.suncloud.ru/js08.htm#munescape">unescape</a></tt> глобального объекта JavaScript, который декодирует
+        шестнадцатеричные коды Unicode.</p>
+
+      <h4><a name="hupdatecommands">Метод updateCommands</a></h4>
+
+<pre class="syntax"><strong><a name="mupdatecommands">Синтаксис</a></strong>: <em>window</em>.updateCommands()</pre>
+
+      <p>Этот метод пока не документирован.</p>
+      
+      <h4><a name="hevents">Нестандартные события окна</a></h4>
+
+      <dl>
+        <dt><strong><a name="eclose">close</a></strong></dt>
+        <dd>Это событие генерируется перед закрытием окна.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>false</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="edragdrop">dragdrop</a></strong></dt>
+        <dd>Это событие генерируется, когда пользователь перетаскивает в окно обозревателя внешний объект, например, файл.
+          <ul>
+            <li><tt>bubbles</tt>: <strong>true</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>true</strong>;</li>
+            <li>контекст: <tt>data</tt> (массив строк, содержащих URI перетащенных в окно объектов).</li>
+          </ul>
+        </dd>
+        <dt><strong><a name="epaint">paint</a></strong></dt>
+        <dd>Это событие генерируется при каждой перерисовке окна (первый раз после <strong>onload</strong>,
+          а затем всякий раз, когда требуется перерисовка окна).
+          <ul>
+            <li><tt>bubbles</tt>: <strong>false</strong>;</li>
+            <li><tt>cancelable</tt>: <strong>false</strong>;</li>
+            <li>контекст: нет.</li>
+          </ul>
+        </dd>
+      </dl>
+    </td>
+  </tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml12.htm"><img name="imgleftb" src="4.13.%20%CE%F2%EE%E1%F0%E0%E6%E5%ED%E8%E5%20%E4%EE%EA%F3%EC%E5%ED%F2%EE%E2%20%E2%20DOM%20%E8%20Gecko_files/nnleft.gif" alt="" title="Обработка событий в Internet Explorer" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="4.13.%20%CE%F2%EE%E1%F0%E0%E6%E5%ED%E8%E5%20%E4%EE%EA%F3%EC%E5%ED%F2%EE%E2%20%E2%20DOM%20%E8%20Gecko_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml14.htm"><img name="imgrightb" src="4.13.%20%CE%F2%EE%E1%F0%E0%E6%E5%ED%E8%E5%20%E4%EE%EA%F3%EC%E5%ED%F2%EE%E2%20%E2%20DOM%20%E8%20Gecko_files/nnright.gif" alt="" title="Отображение документов в Internet Explorer" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

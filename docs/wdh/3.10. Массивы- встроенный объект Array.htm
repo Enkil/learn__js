@@ -1,0 +1,458 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: JavaScript - Массивы: встроенный объект Array</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/js09.htm" title="Строки: встроенный объект String">
+<link rel="Next" href="http://wdh.suncloud.ru/js11.htm" title="Дата и время: встроенный объект Date">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="3.10.%20%CC%E0%F1%F1%E8%E2%FB-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20Array_files/load.js"></script>
+<script type="text/javascript" src="3.10.%20%CC%E0%F1%F1%E8%E2%FB-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20Array_files/link.js"></script><link rel="stylesheet" type="text/css" href="3.10.%20%CC%E0%F1%F1%E8%E2%FB-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20Array_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js09.htm"><img name="imglefta" src="3.10.%20%CC%E0%F1%F1%E8%E2%FB-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20Array_files/nnleft.gif" alt="" title="Строки: встроенный объект String" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="3.10.%20%CC%E0%F1%F1%E8%E2%FB-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20Array_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/js11.htm"><img name="imgrighta" src="3.10.%20%CC%E0%F1%F1%E8%E2%FB-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20Array_files/nnright.gif" alt="" title="Дата и время: встроенный объект Date" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=4263" target="_blank"><img src="3.10.%20%CC%E0%F1%F1%E8%E2%FB-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20Array_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref310">Глава 3.10. Массивы: встроенный объект Array</a></h2>
+
+      <p>Объект <strong>Array</strong> используется для создания <em>массивов</em>, т.&nbsp;е. упорядоченных
+        наборов элементов любого типа. Доступ к элементу массива производится по его номеру в массиве,
+        называемому <em>индексом элемента</em>; обозначается <tt>i</tt>-й элемент массива <tt>a</tt>
+        как <tt>a[i]</tt>. Элементы массива нумеруются с нуля, т.&nbsp;е. массив <tt>a</tt>, состоящий
+        из <tt>N</tt> элементов, содержит элементы <tt>a[0]</tt>, <tt>a[1]</tt>, …, <tt>a[N-1]</tt>.</p>
+
+      <p>Для создания массивов используются следующие <em>конструкторы массивов</em>:</p>
+
+<pre class="syntax">new Array()
+new Array(<em>размер</em>)
+new Array(<em>элемент0</em>, <em>элемент1</em>, …, <em>элементN</em>)</pre>
+
+      <p>Здесь <em>размер</em>&nbsp;— любое числовое выражение, задающее количество элементов в
+        массиве; <em>элемент0</em>, <em>элемент1</em>, …, <em>элементN</em>&nbsp;— любые выражения.</p>
+
+      <p>Первый конструктор создает пустой массив, второй&nbsp;— массив из <em>размер</em> элементов,
+        третий создает массив из <em>N+1</em> элементов и присваивает им соответствующие значения. Если
+        <em>размер</em> не является числом без знака, то создается массив с единственным элементом,
+        имеющим это значение.</p>
+
+      <p>Кроме того, массив может быть создан с помощью <em>инициализатора массива</em>:</p>
+
+<pre class="syntax">[<em>элемент0</em>, <em>элемент1</em>, …, <em>элементN</em>]</pre>
+
+      <p>Примеры:</p>
+
+      <div class="code">
+<pre class="code">var a = new Array(5);		// массив из 5 элементов
+var b = new Array("строка");	// массив из 1 элемента "строка"
+var c = new Array(1, 2, 3);	// массив из 3 элементов: 1, 2 и 3
+var d = ["1", "2", "3"];	// то же самое</pre>
+      </div>
+
+      <p>Мы можем неявно увеличить размер массива, присвоив значение элементу с несуществующим индексом,
+        например:</p>
+
+      <div class="code">
+<pre class="code">var colors = new Array();		// пустой массив
+colors[99] = "пурпурный";		// размер массива стал равен 100</pre>
+      </div>
+
+      <p>Функции сопоставления строки с регулярным выражением (<tt><a href="http://wdh.suncloud.ru/js12.htm#mexec">RegExp.exec</a><regexp.htm></regexp.htm></tt>,
+        <tt><a href="http://wdh.suncloud.ru/js09.htm#mmatch">String.match</a></tt> и <tt><a href="http://wdh.suncloud.ru/js09.htm#mreplace">String.replace</a></tt>)
+        в качестве результата возвращают массив. Такие массивы, помимо стандартных свойств, обладают
+        дополнительными свойствами <strong>index</strong> и <strong>input</strong> (см. описание метода
+        <tt><a href="http://wdh.suncloud.ru/js12.htm#mexec">RegExp.exec</a><regexp.htm></regexp.htm></tt>).</p>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="3.10.%20%CC%E0%F1%F1%E8%E2%FB-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20Array_files/ie.gif" alt="Internet Explorer"> Методы pop, push, shift, unshift поддерживаются с версии 5.5.
+           <img src="3.10.%20%CC%E0%F1%F1%E8%E2%FB-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20Array_files/nn.gif" alt="Netscape Navigator"> Соответствует стандарту (4.0+).</pre>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства объекта Array</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+            <th>Член прототипа</th>
+          </tr>
+          <tr>
+            <td><a href="http://wdh.suncloud.ru/js08.htm#pconstructor"><tt>constructor</tt></a></td>
+            <td>Конструктор, который создал объект.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#parray-length"><tt>length</tt></a></td>
+            <td>Количество элементов в массиве.</td>
+            <td align="center">Нет</td>
+          </tr>
+          <tr>
+            <td><a href="http://wdh.suncloud.ru/js08.htm#pprototype"><tt>prototype</tt></a></td>
+            <td>Ссылка на прототип класса объектов.</td>
+            <td align="center">Нет</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы объекта Array</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+            <th>Член прототипа</th>
+          </tr>
+          <tr>
+            <td><a href="#marray-concat"><tt>concat</tt></a></td>
+            <td>Объединяет два массива в один новый и возвращает его.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mjoin"><tt>join</tt></a></td>
+            <td>Объединяет все элементы массива в текстовую строку.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mpop"><tt>pop</tt></a></td>
+            <td>Удаляет последний элемент массива.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mpush"><tt>push</tt></a></td>
+            <td>Добавляет элементы в конец массива.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mreverse"><tt>reverse</tt></a></td>
+            <td>Изменяет порядок элементов массива на противоположный.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#mshift"><tt>shift</tt></a></td>
+            <td>Удаляет первый элемент массива и возвращает его.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#marray-slice"><tt>slice</tt></a></td>
+            <td>Извлекает часть массива и возвращает новый массив.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#msort"><tt>sort</tt></a></td>
+            <td>Сортирует элементы массива.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#msplice">splice</a></tt></td>
+            <td>Заменяет часть массива.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#marray-tolocalestring"><tt>toLocaleString</tt></a></td>
+            <td>Преобразует массив в строку с учетом формата операционной системы.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#marray-tostring"><tt>toString</tt></a></td>
+            <td>Преобразует массив в строку.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#munshift"><tt>unshift</tt></a></td>
+            <td>Добавляет элементы в начало массива.</td>
+            <td align="center">Да</td>
+          </tr>
+          <tr>
+            <td><a href="#marray-valueof"><tt>valueOf</tt></a></td>
+            <td>Возвращает примитивное значение массива.</td>
+            <td align="center">Да</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="harray-length">Свойство length</a></h4>
+
+<pre class="syntax"><strong><a name="parray-length">Синтаксис</a></strong>: <em>массив</em>.length
+<strong>Атрибуты</strong>:  { <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontEnum</a>, <a href="http://wdh.suncloud.ru/js07.htm#prop-attr">DontDelete</a> }</pre>
+
+      <p>Значением свойства <strong>length</strong> является размер <em>массива</em>, т.&nbsp;е. количество
+        элементов в нем, например:</p>
+
+      <div class="code">
+<pre class="code">var x = new Array();
+x[0] = "Строка";
+x[5] = "Еще строка";
+var l = x.length;	// l равно 6</pre>
+      </div>
+
+      <p>Мы можем явно задать новый размер массива, изменяя значение свойства <strong>length</strong>.
+        Если при этом новый размер массива меньше текущего, то лишние элементы массива будут удалены.
+        Если же новый размер массива больше текущего, то к массиву будут добавлены новые элементы со
+        значением <strong>undefined</strong>.</p>
+
+      <h4><a name="hconcat">Метод concat</a></h4>
+
+<pre class="syntax"><strong><a name="marray-concat">Синтаксис</a></strong>: <em>массив</em>.concat(<em>массив1</em>)
+<strong>Аргументы</strong>: <em>массив1</em>&nbsp;— выражение, возвращающее массив
+<strong>Результат</strong>: новый массив</pre>
+
+      <p>Метод <strong>concat</strong> объединяет <em>массив</em> и <em>массив1</em> в новый массив
+        и возвращает его. При этом все элементы массива <em>массив1</em> добавляются в конец <em>массива</em>.
+        Например, сценарий</p>
+
+      <div class="code">
+<pre class="code">var x = new Array(1, 2, 3);
+var y = new Array(4, 5, 6);
+document.write(x.concat(y));</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя строку <samp>1,2,3,4,5,6</samp>.</p>
+
+      <p><img src="3.10.%20%CC%E0%F1%F1%E8%E2%FB-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20Array_files/plus.gif" alt="WDH+"> См. также
+        <a target="_blank" href="http://go.suncloud.ru/to.asp?workshop/extreme/concat/concat.htm">WDH+: Метод concat работает правильно</a>.</p>
+
+      <h4><a name="hjoin">Метод join</a></h4>
+
+<pre class="syntax"><strong><a name="mjoin">Синтаксис</a></strong>: <em>массив</em>.join(<em>разделитель</em>)
+<strong>Аргументы</strong>: <em>разделитель</em>&nbsp;— любое строковое выражение
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>join</strong> преобразует <em>массив</em> в строковое значение. Для этого все
+        элементы массива преобразуются в строки, и эти строки объединяются в одну строку. Разделителем
+        между ними в .результирующей строке является строка разделитель; если она опущена, то разделителем
+        служит пустая строка. Например, сценарий</p>
+
+      <div class="code">
+<pre class="code">var x = new Array(1, 2, 3);
+document.write(x.join("-"));</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя строку <samp>1-2-3</samp>.</p>
+
+      <h4><a name="hpop">Метод pop</a></h4>
+
+<pre class="syntax"><strong><a name="mpop">Синтаксис</a></strong>: <em>массив</em>.pop()
+<strong>Результат</strong>: значение последнего элемента массива</pre>
+
+      <p>Метод <strong>pop</strong> удаляет последний элемент <em>массива</em> и возвращает его в качестве
+        результата. Размер массива при этом уменьшается на 1. Например, сценарий</p>
+
+      <div class="code">
+<pre class="code">var x = ["a", "b", "c", "d"]
+x.pop();
+document.write(x);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя строку <samp>a,b,c</samp>.</p>
+
+      <p>Методы <a href="#mpush"><strong>push</strong></a> и <strong>pop</strong> позволяют реализовать
+        программный стек на базе объектов <strong>Array</strong>.</p>
+
+      <h4><a name="hpush">Метод push</a></h4>
+
+<pre class="syntax"><strong><a name="mpush">Синтаксис</a></strong>: <em>массив</em>.push(<em>элемент1</em>, …, <em>элементN</em>)
+<strong>Аргументы</strong>: <em>элемент1</em>, …, <em>элементN</em>&nbsp;— любые выражения
+<strong>Результат</strong>: новая длина массива</pre>
+
+      <p>Метод <strong>push</strong> добавляет значения аргументов в конец <em>массива</em> и возвращает
+        в качестве результата новый размер массива, который при этом увеличивается на N. Например, сценарий</p>
+
+      <div class="code">
+<pre class="code">var x = ["a", "b", "c", "d"]
+document.write(x.push("e");</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя число <samp>5</samp>.</p>
+
+      <p>Методы <strong>push</strong> и <a href="#mpop"><strong>pop</strong></a> позволяют реализовать
+        программный стек на базе объектов <strong>Array</strong>.</p>
+
+      <h4><a name="hreverse">Метод reverse</a></h4>
+
+<pre class="syntax"><strong><a name="mreverse">Синтаксис</a></strong>: <em>массив</em>.reverse()
+<strong>Результат</strong>: <em>массив</em></pre>
+
+      <p>Метод <strong>reverse</strong> изменяет порядок элементов в <em>массиве</em> на противоположный.
+        При этом новый объект <strong>Array</strong> не создается, перестановка элементов производится
+        в исходном массиве. Если не все элементы массива были определены, то им присваивается значение
+        <strong>undefined</strong>. Например, сценарий</p>
+
+      <div class="code">
+<pre class="code">var x = new Array();
+x[0] = 0; x[2] = 2; x[4] = 4;
+document.write(x.reverse());</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя строку <samp>4,,2,,0</samp>.</p>
+
+      <h4><a name="hshift">Метод shift</a></h4>
+
+<pre class="syntax"><strong><a name="mshift">Синтаксис</a></strong>: <em>массив</em>.shift()
+<strong>Результат</strong>: значение первого элемента массива</pre>
+
+      <p>Метод <strong>shift</strong> удаляет первый элемент <em>массива</em> и возвращает его в качестве
+        результата. Размер массива при этом уменьшается на 1. Например, сценарий</p>
+
+      <div class="code">
+<pre class="code">var x = ["a", "b", "c", "d"]
+x.shift();
+document.write(x);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя строку <samp>b,c,d</samp>.</p>
+
+      <p>Методы <strong>shift</strong> и <a href="#munshift"><strong>unshift</strong></a> позволяют
+        реализовать программную очередь на базе объектов <strong>Array</strong>.</p>
+
+      <h4><a name="hslice">Метод slice</a></h4>
+
+<pre class="syntax"><strong><a name="marray-slice">Синтаксис</a></strong>: <em>массив</em>.slice(<em>начало</em> [,<em>конец</em>]?)
+<strong>Аргументы</strong>: <em>начало</em> и <em>конец</em>&nbsp;— любые числовые выражения
+<strong>Результат</strong>: новый массив</pre>
+
+      <p>Метод <strong>slice</strong> возвращает новый массив, содержащий указанную часть исходного
+        <em>массива</em>. Аргумент <em>начало</em> задает индекс первого элемента копируемой части,
+        необязательный аргумент <em>конец</em>&nbsp;— индекс ее последнего элемента. При этом:</p>
+
+      <ul>
+        <li>Если значение <em>конец</em> неотрицательно, то копируются элементы <em>массив</em>[<em>начало</em>],
+          <em>массив</em>[<em>начало</em>+1],&nbsp;…, <em>массив</em>[<em>конец</em>-1].</li>
+        <li>Если значение <em>конец</em> отрицательно, то копируются элементы <em>массив</em>[<em>начало</em>],
+          <em>массив</em>[<em>начало</em>+1], …, <em>массив</em>[<em>массив</em>.<tt>length</tt><em>-конец</em>-1],
+          т.&nbsp;е. <em>конец</em> означает смещение от конца массива.</li>
+        <li>Если аргумент <em>конец</em> отсутствует, то копируются элементы <em>массив</em>[<em>начало</em>],
+          <em>массив</em>[<em>начало</em>+1], …, <em>массив</em>[<em>массив</em>.<tt>length</tt>-1],
+          т.&nbsp;е. копируются все элементы до конца массива.</li>
+      </ul>
+
+      <p>Например, сценарий</p>
+
+      <div class="code">
+<pre class="code">var x = new Array(10);
+for (i = 0; i &lt; 10; i++)
+  x[i] = i;
+document.write(x.slice(5,-1));</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя строку <samp>5,6,7,8</samp>.</p>
+
+      <h4><a name="hsort">Метод sort</a></h4>
+
+<pre class="syntax"><strong><a name="msort">Синтаксис</a></strong>: <em>массив</em>.sort(<em>функция</em>?)
+<strong>Аргументы</strong>: <em>функция</em>&nbsp;— функция сортировки, описанная ниже
+<strong>Результат</strong>: <em>массив</em></pre>
+
+      <p>Метод <strong>sort</strong> сортирует элементы <em>массива</em>. При этом новый объект <strong>Array</strong>
+        не создается, перестановка элементов производится в исходном массиве. Способ сортировки задается
+        необязательным аргументом <em>функция</em>; если аргумента нет, то производится сортировка в
+        <a href="http://wdh.suncloud.ru/glossary.htm#lex">лексикографическом порядке</a> по возрастанию значений элементов, которые
+        предварительно преобразуются в строки.</p>
+
+      <p><em>Функция</em> должна иметь вид:</p>
+
+<pre class="syntax">function compare(a, b) {
+  if (a меньше b по критерию сортировки)
+    return -1;
+  if (a больше b по критерию сортировки)
+    return 1;
+  return 0;	// a равно b
+}</pre>
+
+      <p>Приведем пример сортировки массива в лексикографическом порядке по убыванию значений элементов.
+        Следующий сценарий</p>
+
+      <div class="code">
+<pre class="code">function cmp(a, b) {
+  if (String(a) &gt; String(b))
+    return -1;
+  if (String(a) &lt; String(b))
+    return 1;
+  return 0;
+}
+
+var flowers = ["астра", "роза", "пион", "ромашка"];
+document.write(flowers.sort(cmp));</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя строку <samp>ромашка,роза,пион,астра</samp>.</p>
+
+      <h4><a name="hsplice">Метод splice</a></h4>
+
+<pre class="syntax"><strong><a name="msplice">Синтаксис</a></strong>: <em>массив</em>.splice(<em>начало</em>, <em>счетчик</em> [,<em>элементы</em>]?)
+<strong>Аргументы</strong>: <em>начало</em> и <em>счетчик</em>&nbsp;— любые числовые выражения
+           <em>элементы</em>&nbsp;— список любых выражений через запятую
+<strong>Результат</strong>: новый массив</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="3.10.%20%CC%E0%F1%F1%E8%E2%FB-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20Array_files/ie.gif" alt="Internet Explorer"> Поддерживается с версии 5.5.
+           <img src="3.10.%20%CC%E0%F1%F1%E8%E2%FB-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20Array_files/nn.gif" alt="Netscape Navigator"> Не поддерживается.</pre>
+
+      <p>Метод <strong>splice</strong> удаляет часть массива и возвращает ее в качестве результата.
+        Если заданы <em>элементы</em>, то они вставляются вместо удаленной части массива. Аргумент <em>начало</em>
+        задает индекс первого элемента удаляемой части, аргумент <em>счетчик</em>&nbsp;— количество
+        удаляемых элементов. Например, сценарий</p>
+
+      <div class="code">
+<pre class="code">var x = new Array(10);
+for (i = 0; i &lt; 10; i++)
+  x[i] = i;
+x.splice(5, 3, -5, -6, -7);
+document.write(x);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя строку <samp>0,1,2,3,4,-5,-6,-7,8,9</samp>.</p>
+
+      <h4><a name="htolocalestring">Метод toLocaleString</a></h4>
+
+<pre class="syntax"><strong><a name="marray-tolocalestring">Синтаксис</a></strong>: <em>массив</em>.toLocaleString()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>toLocaleString</strong> преобразует <em>массив</em> в строковое значение, учитывая
+        формат операционной системы. Результат зависит от объекта. Обычно он дает тот же результат,
+        что и метод <a href="#marray-tostring"><strong>toString</strong></a>.</p>
+
+      <h4><a name="tostring">Метод toString</a></h4>
+
+<pre class="syntax"><strong><a name="marray-tostring">Синтаксис</a></strong>: <em>массив</em>.toString()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>toString</strong> преобразует <em>массив</em> в строковое значение. Для этого
+        все элементы массива преобразуются в строки, и эти строки объединяются в одну строку через запятую.
+        Например, сценарий</p>
+
+      <div class="code">
+<pre class="code">var x = new Array(1, 2, 3);
+document.write(x.toString());</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя строку <samp>1,2,3</samp>.</p>
+
+      <h4><a name="hunshift">Метод unshift</a></h4>
+
+<pre class="syntax"><strong><a name="munshift">Синтаксис</a></strong>: <em>массив</em>.unshift(<em>элемент1</em>, …, <em>элементN</em>)
+<strong>Аргументы</strong>: <em>элемент1</em>, …, <em>элементN</em>&nbsp;— любые выражения
+<strong>Результат</strong>: новая длина массива</pre>
+
+      <p>Метод <strong>unshift</strong> добавляет значения аргументов в начало <em>массива</em> и возвращает
+        в качестве результата новый размер массива, который при этом увеличивается на N. Например, сценарий</p>
+
+      <div class="code">
+<pre class="code">var x = ["a", "b", "c", "d"]
+document.write(x.unshift("e"));</pre>
+      </div>
+
+      <p class="noindent">выведет на экран обозревателя число <samp>5</samp>.</p>
+
+      <p>Методы <a href="#mshift"><strong>shift</strong></a> и <strong>unshift</strong> позволяют реализовать
+        программную очередь на базе объектов <strong>Array</strong>.</p>
+
+      <h4><a name="hvalueof">Метод valueOf</a></h4>
+
+<pre class="syntax"><strong><a name="marray-valueof">Синтаксис</a></strong>: <em>массив</em>.valueOf()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Метод <strong>valueOf</strong> возвращает примитивное значение <em>массива</em>. Для этого
+        все элементы массива преобразуются в строки, и эти строки объединяются в одну строку через запятую.
+        Иными словами, этот метод возвращает тот же результат, что и метод <a href="#marray-tostring"><strong>toString</strong></a>.</p>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js09.htm"><img name="imgleftb" src="3.10.%20%CC%E0%F1%F1%E8%E2%FB-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20Array_files/nnleft.gif" alt="" title="Строки: встроенный объект String" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="3.10.%20%CC%E0%F1%F1%E8%E2%FB-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20Array_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/js11.htm"><img name="imgrightb" src="3.10.%20%CC%E0%F1%F1%E8%E2%FB-%20%E2%F1%F2%F0%EE%E5%ED%ED%FB%E9%20%EE%E1%FA%E5%EA%F2%20Array_files/nnright.gif" alt="" title="Дата и время: встроенный объект Date" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

@@ -1,0 +1,518 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: JavaScript - Дополнительные возможности JScript</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/js12.htm" title="Встроенные объекты Error, Math и RegExp">
+<link rel="Next" href="http://wdh.suncloud.ru/js14.htm" title="Исполняющая система JScript">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="3.13.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E2%EE%E7%EC%EE%E6%ED%EE%F1%F2%E8%20JScript_files/load.js"></script>
+<script type="text/javascript" src="3.13.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E2%EE%E7%EC%EE%E6%ED%EE%F1%F2%E8%20JScript_files/link.js"></script><link rel="stylesheet" type="text/css" href="3.13.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E2%EE%E7%EC%EE%E6%ED%EE%F1%F2%E8%20JScript_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js12.htm"><img name="imglefta" src="3.13.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E2%EE%E7%EC%EE%E6%ED%EE%F1%F2%E8%20JScript_files/nnleft.gif" alt="" title="Встроенные объекты Error, Math и RegExp" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="3.13.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E2%EE%E7%EC%EE%E6%ED%EE%F1%F2%E8%20JScript_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/js14.htm"><img name="imgrighta" src="3.13.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E2%EE%E7%EC%EE%E6%ED%EE%F1%F2%E8%20JScript_files/nnright.gif" alt="" title="Исполняющая система JScript" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=9681" target="_blank"><img src="3.13.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E2%EE%E7%EC%EE%E6%ED%EE%F1%F2%E8%20JScript_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref313">Глава 3.13. Дополнительные возможности JScript</a></h2>
+
+      <p>В этой главе приведены описания нестандартных возможностей языка Microsoft JScript, реализованных
+        в обозревателе Internet Explorer, а именно:</p>
+
+      <ul>
+        <li>объекта <a href="#ref31312"><strong>ActiveXObject</strong></a> и функции <a href="#ref31313"><strong>GetObject</strong></a>;</li>
+        <li>объекта <strong><a href="#ref3132">Enumerator</a></strong>;</li>
+        <li><a href="#ref3133">функций, возвращающих информацию о исполняющей системе</a>;</li>
+        <li><a href="#ref3134">директив условной компиляции</a>.</li>
+      </ul>
+
+      <p>Мы не приводим описания объекта <strong>VBArray</strong>, используемого для доступа к массивам
+        Visual Basic, т.&nbsp;к. наш справочник не содержит раздела, посвященного языку VBScript.</p>
+
+      <h3><a name="ref3131">3.13.1. Управляющие элементы ActiveX</a></h3>
+
+      <h4><a name="ref31311">3.13.1.1. Общее описание</a></h4>
+
+      <p>Основные дополнения к языку JavaScript, сделанные корпорацией Microsoft, связаны с использованием
+        <em>управляющих элементов ActiveX</em>. Эти элементы представляют собой динамические библиотеки,
+        созданные в соответствии со стандартом COM. COM (Component Object Model)&nbsp;— это стандарт
+        создания программных компонентов, рассмотрение которого выходит за рамки нашего справочника. Для
+        наших целей вполне достаточно воспринимать элементы ActiveX как черный ящик, выполняющий определенные
+        действия по запросу вызвавшей его программы.</p>
+
+      <p>Появление элементов ActiveX было порождено стремлением Microsoft создать технологию, которая
+        могла бы успешно конкурировать с подключаемыми модулями обозревателей Netscape. Следует признать,
+        что задача была решена исключительно удачно, т.&nbsp;к. в результате появился стандарт разработки
+        платформо-зависимых программных компонентов, реализующих платформо-независимые протоколы и архитектуры.</p>
+
+      <p>Все элементы ActiveX при установке в системе Windows регистрируются в ее регистре. При этом
+        в качестве уникального ключа используется GUID данного элемента, т.&nbsp;е. его уникальный 64-разрядный
+        шестнадцатеричный номер. Для доступа к элементу ActiveX по его GUID в HTML-документе используется
+        элемент <a href="http://wdh.suncloud.ru/html06.htm#eobject"><strong>OBJECT</strong></a>, например:</p>
+
+      <div class="code">
+<pre class="code">&lt;OBJECT style="left: 0px; top: 0px"
+  classid="clsid:8E27C92B-1264-101C-8A2F-040224009C02"&gt;
+    &lt;PARAM NAME="_Version" VALUE="524288"&gt;
+    &lt;PARAM NAME="_ExtentX" VALUE="7620"&gt;
+    &lt;PARAM NAME="_ExtentY" VALUE="5080"&gt;
+    &lt;PARAM NAME="_StockProps" VALUE="1"&gt;
+    &lt;PARAM NAME="BackColor" VALUE="-2147483633"&gt;
+    &lt;PARAM NAME="Year" VALUE="2000"&gt;
+    &lt;PARAM NAME="Month" VALUE="10"&gt;
+    &lt;PARAM NAME="Day" VALUE="22"&gt;
+    &lt;PARAM NAME="DayLength" VALUE="1"&gt;
+    &lt;PARAM NAME="MonthLength" VALUE="2"&gt;
+    &lt;PARAM NAME="DayFontColor" VALUE="0"&gt;
+    &lt;PARAM NAME="FirstDay" VALUE="2"&gt;
+    &lt;PARAM NAME="GridCellEffect" VALUE="1"&gt;
+    &lt;PARAM NAME="GridFontColor" VALUE="10485760"&gt;
+    &lt;PARAM NAME="GridLinesColor" VALUE="-2147483632"&gt;
+    &lt;PARAM NAME="ShowDateSelectors" VALUE="-1"&gt;
+    &lt;PARAM NAME="ShowDays" VALUE="-1"&gt;
+    &lt;PARAM NAME="ShowHorizontalGrid" VALUE="-1"&gt;
+    &lt;PARAM NAME="ShowTitle" VALUE="-1"&gt;
+    &lt;PARAM NAME="ShowVerticalGrid" VALUE="-1"&gt;
+    &lt;PARAM NAME="TitleFontColor" VALUE="10485760"&gt;
+    &lt;PARAM NAME="ValueIsNull" VALUE="0"&gt;
+&lt;/OBJECT&gt;</pre>
+      </div>
+
+      <p>Этот фрагмент HTML-документа содержит управляющий элемент ActiveX "Календарь" и будет
+        отображаться обозревателем примерно так:</p>
+
+      <img src="3.13.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E2%EE%E7%EC%EE%E6%ED%EE%F1%F2%E8%20JScript_files/calendar.jpg" class="sample" alt="Отображение элемента Календарь">
+
+      <p>Исполняющая система JScript дает нам более гибкие возможности запуска элементов ActiveX, которые
+        описаны ниже.</p>
+
+      <h4><a name="ref31312">3.13.1.2. Объект ActiveXObject</a></h4>
+
+      <p>Объект <strong>ActiveXObject</strong> используется для запуска объектов ActiveX. Он создается
+        конструктором</p>
+
+      <p><tt>new ActiveXObject("<em>сервер</em>.<em>класс</em>" [,"<em>адрес</em>"?])</tt></p>
+
+      <p>Здесь <em>сервер</em>&nbsp;— имя COM-сервера, <em>класс</em>&nbsp;— имя класса создаваемого
+        объекта, <em>адрес</em>&nbsp;— необязательное имя сетевого сервера, на котором должен быть
+        создан заданный объект (может быть доменным именем или IP-адресом). Создание объекта на удаленном
+        сервере действующими версиями JScirpt пока не поддерживается, т.&nbsp;е. аргумент <em>адрес</em>
+        при вызове данного конструктора игнорируется.</p>
+
+      <p>После создания объекта ActiveX (т.&nbsp;е. после запуска соответствующей программы) мы можем
+        обращаться к его методам и свойствам, используя стандартный синтаксис языка JavaScript. Встроенных
+        свойств и методов этот объект не имеет.</p>
+
+      <p>Пример: если на компьютере-клиенте установлен Microsoft Word 7.0, то следующий сценарий его
+        запустит, откроет документ Mydoc.doc, сохранит этот документ в текстовом формате и завершит
+        работу MS Word.</p>
+
+      <div class="code">
+<pre class="code">var word = new ActiveXObject("Word.Application"); // запускает MS Word
+word.Documents.Open("Mydoc.doc");		  // открывает документ
+word.ActiveDocument.SaveAs("Mydoc.txt", 4);	  // 4 = текстовый формат DOS
+word.Quit();					  // завершает работу MS Word</pre>
+      </div>
+
+      <p class="note"><strong>Примечания</strong>.
+
+      </p><ol class="note">
+        <li class="note">Следует помнить, что после запуска объекта ActiveX он остается активным до
+          закрытия окна обозревателя, из которого он был вызван. JScript не содержит стандартного средства
+          для завершения работы этого объекта. Если мы хотим, чтобы объект прекратил работу ранее завершения
+          работы нашего сценария, то должны вызвать соответствующий метод данного объекта (в приведенном
+          примере это метод Quit).</li>
+        <li class="note">Любопытно, что операция <a href="http://wdh.suncloud.ru/js04.htm#ref3478"><strong>typeof</strong></a>
+          возвращает для свойств и методов объектов ActiveX нестандартное значение "unknown"
+          (видимо из-за того, что все объекты ActiveX являются наследниками COM-интерфейса IUnknown).</li>
+      </ol>
+
+      <p><img src="3.13.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E2%EE%E7%EC%EE%E6%ED%EE%F1%F2%E8%20JScript_files/plus.gif" alt="WDH+"> Примеры использования элементов ActiveX см. в
+        <a target="_blank" href="http://go.suncloud.ru/to.asp?workshop/samples/treeview/treeview.htm">WDH+: TreeView на Веб-странице</a>.</p>
+
+      <h4><a name="ref31313">3.13.1.3. Функция GetObject</a></h4>
+
+      <p>Функция <strong>GetObject</strong> возвращает ссылку на COM-объект, содержащийся в заданном
+        файле. Она имеет вид</p>
+
+      <p><tt>GetObject(["<em>имя_файла</em>"][,"<em>сервер.класс</em>"?])</tt></p>
+
+      <p>Здесь <em>имя_файла</em>&nbsp;— спецификация файла<em>, сервер</em>&nbsp;— имя COM-сервера,
+        <em>класс</em>&nbsp;— имя класса объектов. Если <em>имя_файла</em> опущено, то задание
+        второго аргумента обязательно, в противном случае оно может быть опущено.</p>
+
+      <p>При вызове этой функции запускается приложение, ассоциированное с заданной спецификацией файла
+        (перечень таких ассоциаций хранится в системном регистре Windows). Если <em>имя_файла</em>&nbsp;—
+        это пустая строка "", то создается новый экземпляр объекта заданного типа. Если <em>имя_файла</em>
+        опущено, то возвращается ссылка на объект данного типа, который активен в данный момент. Если
+        такого объекта нет, то генерируется ошибка.</p>
+
+      <p>Некоторые приложения позволяют нам активировать часть файла. Для этого следует добавить восклицательный
+        знак (!) к имени файла и после него задать строку, указывающую на ту часть файла, которую мы
+        хотим активировать. О том, как задавать эту строку, см. документацию к программе, с помощью
+        которой создан данный файл.</p>
+
+      <p>Так, например, программа автоматизации проектирования может хранить в файле чертежей несколько
+        слоев. Для активации второго слоя в файле чертежа с именем MyCad.cad мы можем использовать строку</p>
+
+      <div class="code">
+<pre class="code">var layerObj = GetObject("MyCad.cad!Layer2");</pre>
+      </div>
+
+      <p>Если мы не укажем класс объекта, то приложение, активирующее данный файл, определяется из системного
+        регистра. Однако, некоторые файлы могут поддерживать несколько типов объектов. В этом случае
+        следует явно указывать второй аргумент данной функции, например:</p>
+
+      <div class="code">
+<pre class="code">var myObj = GetObject("SAMPLE.DRW", "FIGMENT.DRAWING");</pre>
+      </div>
+
+      <p>В этом примере FIGMENT&nbsp;— имя программы, а DRAWING&nbsp;— один из классов объектов,
+        которые она поддерживает.</p>
+
+      <p>После активации объекта мы можем обращаться к его методам и свойствам, используя стандартный
+        синтаксис языка JavaScript. Встроенных свойств и методов этот объект не имеет.</p>
+
+      <p>Функцией <strong>GetObject</strong> следует пользоваться в тех случаях, когда приложение, создающее
+        экземпляры объектов данного класса, уже активно или когда мы хотим не только запустить приложение,
+        но и загрузить в него файл, содержащий нужный нам объект. В остальных случаях используйте объект
+        <strong>ActiveXObject</strong>.</p>
+
+      <p>Если объект зарегистрирован как существующий в единственном экземпляре (например Word.Basic
+        в Microsoft Word 7.0), то <strong>GetObject</strong> всегда возвращает ссылку на этот единственный
+        экземпляр объекта, будучи вызвана с пустой строкой в качестве имени файла, и генерирует ошибку,
+        если <em>имя_файла</em> опущено.</p>
+
+      <p class="note"><strong>Примечание</strong>. Приведенное описание функции <strong>GetObject</strong>
+        и примеры ее использования позаимствованы из документации Microsoft. Дело в том, что автор не
+        смог найти ни одного разумного применения этой функции в клиентской среде. Более того, по сообщению
+        разработчиков, в обозревателях Interent Explorer ее применение запрещено "в целях безопасности"
+        (см. <a href="http://support.microsoft.com/support/kb/articles/Q239/4/70.asp" target="_blank">Q239470</a>
+        <img src="3.13.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E2%EE%E7%EC%EE%E6%ED%EE%F1%F2%E8%20JScript_files/extref.gif" alt="Внешняя ссылка">).</p>
+
+      <h3><a name="ref3132">3.13.2. Коллекции: объект Enumerator</a></h3>
+
+      <p>Объект <strong>Enumerator</strong> используется для просмотра элементов коллекций. <em>Коллекции</em>&nbsp;—
+        это списки объектов, реализованные в исполняющей системе JScript, но непосредственно не доступные
+        пользователю. В частности, мы не можем добраться до их элементов ни с помощью индексов, ни с
+        помощью оператора <a href="http://wdh.suncloud.ru/js06.htm#ref365"><strong>for…in</strong></a>. Вместо этого мы
+        должны создать для коллекции объект <strong>Enumerator</strong>, а затем последовательно перемещать
+        его указатель от текущего элемента коллекции к следующему. Объект создается конструктором</p>
+
+      <p><tt>new Enumerator(<em>коллекция</em>)</tt></p>
+
+      <p class="noindent"> где <em>коллекция</em>&nbsp;— любой объект, являющийся коллекцией. При
+        создании объекта его указатель устанавливается на первый элемент коллекции.</p>
+
+      <p>Следующий сценарий позаимствован из документации к JScript и демонстрирует использование данного
+        объекта:</p>
+
+      <div class="code">
+<pre class="code">function showDrives()
+{
+  var fso = new ActiveXObject("Scripting.FileSystemObject");
+  var e = new Enumerator(fso.Drives);
+  var s = "";
+  var name;
+  for (e.moveFirst(); !e.atEnd(); e.moveNext()) {	// просмотр всех дисков компьютера
+    var x = e.item();
+    if (x.DriveType == 3)	// сетевой диск?
+      name = x.ShareName;
+    else if (x.IsReady)
+      name = x.VolumeName;
+    else
+      name = "[Диск не готов]";
+    s +=  x.DriveLetter + ": " + name + "&lt;br&gt;";
+  }
+  return(s);
+}
+
+document.write(showDrives());</pre>
+      </div>
+
+      <p>Объект <strong>Enumerator</strong> не имеет свойств; его методы описаны ниже.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы объекта Enumerator</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><a href="#menum-atend">atEnd</a></td>
+            <td>Проверяет, достигнут ли конец коллекции.</td>
+          </tr>
+          <tr>
+            <td><a href="#menum-item">item</a></td>
+            <td>Возвращает текущий элемент коллекции.</td>
+          </tr>
+          <tr>
+            <td><a href="#menum-movefirst">moveFirst</a></td>
+            <td>Делает текущим первый элемент коллекции.</td>
+          </tr>
+          <tr>
+            <td><a href="#menum-movenext">moveNext</a></td>
+            <td>Делает текущим следующий элемент коллекции.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="hatend">Метод atEnd</a></h4>
+
+<pre class="syntax"><strong><a name="menum-atend">Синтаксис</a></strong>: <em>объект</em>.atEnd()
+<strong>Результат</strong>: логическое значение</pre>
+
+      <p>Метод <strong>atEnd</strong> возвращает <strong>true</strong>, если текущий элемент коллекции
+        является последним в ней, и <strong>false</strong> в противном случае. См. приведенный выше
+        пример.</p>
+
+      <h4><a name="hitem">Метод item</a></h4>
+
+<pre class="syntax"><strong><a name="menum-item">Синтаксис</a></strong>: <em>объект</em>.item()
+<strong>Результат</strong>: объект</pre>
+
+      <p>Метод <strong>item</strong> возвращает текущий элемент коллекции. Если коллекция пуста или
+        текущий элемент не определен, то возвращается значение <strong>undefined</strong>. См. приведенный
+        выше пример.</p>
+
+      <h4><a name="hmovefirst">Метод moveFirst</a></h4>
+
+<pre class="syntax"><strong><a name="menum-movefirst">Синтаксис</a></strong>: <em>объект</em>.moveFirst()</pre>
+
+      <p>Метод <strong>moveFirst</strong> перемещает указатель на первый элемент коллекции. См. приведенный
+        выше пример.</p>
+
+      <h4><a name="hmovenext">Метод moveNext</a></h4>
+
+<pre class="syntax"><strong><a name="menum-movenext">Синтаксис</a></strong>: <em>объект</em>.moveNext()</pre>
+
+      <p>Метод <strong>moveNext</strong> перемещает указатель на следующий элемент коллекции. См. приведенный
+        выше пример.</p>
+
+      <h3><a name="ref3133">3.13.3. Информация о исполняющей системе</a></h3>
+
+      <p>Описанные ниже функции возвращают различную информацию о исполняющей системе сценариев. Их
+        применение можно проиллюстрировать следующим примером:</p>
+
+      <div class="code">
+<pre class="code">function GetScriptEngineInfo() {
+  var s = "";
+  s += ScriptEngine() + " ";
+  s += ScriptEngineMajorVersion() + ".";
+  s += ScriptEngineMinorVersion() + ".";
+  s += ScriptEngineBuildVersion();
+  return s;
+}
+
+document.write(GetScriptEngineInfo());</pre>
+      </div>
+
+      <p>В результате выполнения этого сценария на экран обозревателя будет выведен примерно такой текст:
+        <samp>JScript 5.5.5207</samp>.</p>
+
+      <h4><a name="ref31331">3.13.3.1. Функция ScriptEngine</a></h4>
+
+<pre class="syntax"><strong><a name="scriptengine">Синтаксис</a></strong>: ScriptEngine()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Функция <strong>ScriptEngine</strong> возвращает одну из следующих строк, указывающую на текущий
+        сценарный язык:</p>
+
+      <table border="1" cellpadding="5" cellspacing="0">
+        <tbody><tr>
+          <td>"JScript"</td>
+          <td>Microsoft JScript</td>
+        </tr>
+        <tr>
+          <td>"VBA"</td>
+          <td>Microsoft Visual Basic for Applications</td>
+        </tr>
+        <tr>
+          <td>"VBScript"</td>
+          <td>Microsoft Visual Basic Scripting Edition</td>
+        </tr>
+      </tbody></table>
+
+      <h4><a name="ref31332">3.13.3.2. Функция ScriptEngineBuildVersion</a></h4>
+
+<pre class="syntax"><strong><a name="scriptenginebuildversion">Синтаксис</a></strong>: ScriptEngineBuildVersion()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Функция <strong>ScriptEngineBuildVersion</strong> возвращает строку, содержащую номер сборки
+        (build version) исполняющей системы сценариев.</p>
+
+      <h4><a name="ref31333">3.13.3.3. Функция ScriptEngineMajorVersion</a></h4>
+
+<pre class="syntax"><strong><a name="scriptenginemajorversion">Синтаксис</a></strong>: ScriptEngineMajorVersion()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Функция <strong>ScriptEngineMajorVersion</strong> возвращает строку, содержащую номер версии
+        исполняющей системы сценариев.</p>
+
+      <h4><a name="ref31334">3.13.3.4. Функция ScriptEngineMinorVersion</a></h4>
+
+<pre class="syntax"><strong><a name="scriptengineminorversion">Синтаксис</a></strong>: ScriptEngineMinorVersion()
+<strong>Результат</strong>: строковое значение</pre>
+
+      <p>Функция <strong>ScriptEngineMinorVersion</strong> возвращает строку, содержащую номер подверсии
+        исполняющей системы сценариев.</p>
+
+      <h3><a name="ref3134">3.13.4. Условная компиляция</a></h3>
+
+      <h4><a name="ref31341">3.13.4.1. Понятие условной компиляции</a></h4>
+
+      <p>Начиная с Internet Explorer 4.0, язык JScript поддерживает условную компиляцию сценариев. Она
+        была введена в JScript для того, чтобы одновременно обеспечить и использование новых возможностей
+        языка, и совместимость со старыми версиями обозревателей. Типичными примерами использования
+        условной компиляции являются добавление в сценарий отладочного кода и трассировка исполнения
+        сценария.</p>
+
+      <p>Условная компиляция включается директивой <strong>@cc_on</strong> или директивами <strong>@if</strong>
+        или <strong>@set</strong>.</p>
+
+      <p>Директивы условной компиляции всегда следует помещать внутрь комментариев с тем, чтобы обозреватели,
+        которые не поддерживают условную компиляцию (например, Netscape Navigator), их игнорировали.
+        Приведем пример:</p>
+
+      <div class="code">
+<pre class="code">/*@cc_on @*/
+/*@if (@_jscript_version &gt;= 4)
+   alert("JScript версии 4 или выше");
+   @else @*/
+   alert("Ваш JScript устарел.");
+/*@end @*/</pre>
+      </div>
+
+      <p>В этом примере использованы комментарии специального вида, которые используются только после
+        директивы <strong>@cc_on</strong>. Обозреватели, которые не поддерживают условную компиляцию,
+        увидят здесь только строку <code>alert("Ваш JScript устарел.")</code> и исполнят ее.</p>
+
+      <h4><a name="ref31342">3.13.4.2. Переменные условной компиляции</a></h4>
+
+      <p>В директивах условной компиляции могут использоваться предопределенные переменные, перечисленные
+        в приведенной ниже таблице. Если значение переменной отлично от <strong>true</strong>, то она
+        не определена и ведет себя как <strong>NaN</strong>.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Переменные условной компиляции</caption>
+          <tbody><tr>
+            <th>Переменная</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td>@_win32</td>
+            <td><strong>true</strong> при выполнении в системе Win32.</td>
+          </tr>
+          <tr>
+            <td>@_win16</td>
+            <td><strong>true</strong> при выполнении в системе Win16.</td>
+          </tr>
+          <tr>
+            <td>@_mac</td>
+            <td><strong>true</strong> при выполнении в системе Apple Macintosh.</td>
+          </tr>
+          <tr>
+            <td>@_alpha</td>
+            <td><strong>true</strong> при выполнении на процессоре DEC Alpha.</td>
+          </tr>
+          <tr>
+            <td>@_x86</td>
+            <td><strong>true</strong> при выполнении на процессоре Intel.</td>
+          </tr>
+          <tr>
+            <td>@_mc680x0</td>
+            <td><strong>true</strong> при выполнении на процессоре Motorola 680x0.</td>
+          </tr>
+          <tr>
+            <td>@_PowerPC</td>
+            <td><strong>true</strong> при выполнении на процессоре Motorola PowerPC.</td>
+          </tr>
+          <tr>
+            <td>@_jscript</td>
+            <td>Всегда <strong>true</strong>.</td>
+          </tr>
+          <tr>
+            <td>@_jscript_build</td>
+            <td>Номер сборки JScript.</td>
+          </tr>
+          <tr>
+            <td>@_jscript_version</td>
+            <td>Номер версии JScript в формате <em>m</em>.<em>n</em>.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4><a name="ref31343">3.13.4.3. Директива @cc_on</a></h4>
+
+<pre class="syntax"><strong><a name="cc_on">Синтаксис</a></strong>: @cc_on</pre>
+
+      <p>Директива <strong>@cc_on</strong> включает условную компиляцию. Пример ее использования приведен
+        выше.</p>
+
+      <p>Альтернативный способом включения условной компиляции является использование директив <strong>@if</strong>
+        или <strong>@set</strong>, не заключенных в комментарий.</p>
+
+      <h4><a name="ref31344">3.13.4.4. Директива @if</a></h4>
+
+<pre class="syntax"><strong><a name="if">Синтаксис</a></strong>:
+@if (<em>условие1</em>)
+  <em>текст1</em>
+@elif (<em>условие2</em>)
+  <em>текст2</em>
+@else
+  <em>текст3</em>
+@end
+<strong>Аргументы</strong>: <em>условие1</em>, <em>условие2</em>&nbsp;— логические выражения
+           <em>текст1</em>, <em>текст2</em>, <em>текст3</em>&nbsp;— любой текст JScript</pre>
+
+      <p>Директива <strong>@if</strong> выполняет заданный фрагмент кода в зависимости от значения выражения.
+        Если <em>условие1</em> истинно, то выполняется <em>текст1</em>. Если <em>условие1</em> ложно,
+        присутствует необязательная директива <strong>@elif</strong> и <em>условие2</em> истинно, то
+        выполняется <em>текст2</em>. В противном случае, если присутствует необязательная директива
+        <strong>@else</strong>, то выполняется <em>текст3</em>; если ее нет, то управление передается
+        следующему оператору. Данная директива может содержать несколько ветвей <strong>@elif</strong>,
+        но все они должны предшествовать ветви <strong>@else</strong>. Пример ее использования:</p>
+
+      <div class="code">
+<pre class="code">@if (@_win32)
+  alert("Работаем в Windows NT/95/98")
+@else
+  alert("Неизвестная операционная система!");</pre>
+      </div>
+
+      <h4><a name="ref31345">3.13.4.5. Директива @set</a></h4>
+
+<pre class="syntax"><strong><a name="set">Синтаксис</a></strong>: @set @<em>перем</em> = <em>значение</em><strong>
+Аргументы</strong>: <em>перем</em>&nbsp;— переменная условной компиляции
+           <em>значение</em>&nbsp;— числовое или логическое выражение</pre>
+
+      <p>Директива <strong>@set</strong> создает переменные условной компиляции. Имена таких переменных
+        имеют синтаксис переменных JavaScript, но должны начинаться с символа "<tt>@</tt>".
+        Значение, которое присваивается переменной, может быть любым выражением JavaScript (возможно
+        с использованием ранее определенных переменных условной компиляции), которое возвращает числовое
+        или логическое значение. Примеры:</p>
+
+      <div class="code">
+<pre class="code">@set @var1 = 1
+@set @var2 = (@var1 + 1) * 10;
+@set @var3 = @_jscript_version</pre>
+      </div>
+
+      <p>Если переменная используется до ее определения, то она имеет значение <strong>NaN</strong>.
+        Поскольку это единственное значение. которое не равно самому себе, то проверку определенности
+        значения переменной следует делать так:</p>
+
+      <div class="code">
+<pre class="code">@if (@myVar != @myVar) …</pre>
+      </div>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/js12.htm"><img name="imgleftb" src="3.13.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E2%EE%E7%EC%EE%E6%ED%EE%F1%F2%E8%20JScript_files/nnleft.gif" alt="" title="Встроенные объекты Error, Math и RegExp" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="3.13.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E2%EE%E7%EC%EE%E6%ED%EE%F1%F2%E8%20JScript_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/js14.htm"><img name="imgrightb" src="3.13.%20%C4%EE%EF%EE%EB%ED%E8%F2%E5%EB%FC%ED%FB%E5%20%E2%EE%E7%EC%EE%E6%ED%EE%F1%F2%E8%20JScript_files/nnright.gif" alt="" title="Исполняющая система JScript" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>

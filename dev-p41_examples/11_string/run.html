@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script>
+var msg = "Это пример прокручивающегося сообщения. ";
+var counter=0;
+function ScrollMsg()
+{
+if (counter <44)
+{
+document.getElementById("new").innerHTML = msg;
+msg = msg.substring(1, msg.length) + msg.substring(0, 1);
+setTimeout("ScrollMsg()",150);
+counter+=1
+}
+else
+{ document.getElementById("new").innerHTML = "";}
+}
+</script>
+</head>
+<body onLoad="ScrollMsg()">
+<div id="new"></div>
+</body>
+
+</html>

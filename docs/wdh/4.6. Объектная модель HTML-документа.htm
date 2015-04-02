@@ -1,0 +1,782 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="Author" content="Юрий Лукач">
+<meta name="Description" content="Справочник Веб-разработчика: современные технологии WWW">
+<meta name="Keywords" content="WWW, Веб, разработка, программирование, HTML, DHTML, CSS, Java, JavaScript, CGI, PERL, ASP, XML, XSL, VML, VRML"><title>WDH: DHTML - Объектная модель HTML-документа</title>
+
+<link rel="Prev" href="http://wdh.suncloud.ru/dhtml05.htm" title="Дополнительные интерфейсы базовой модели">
+<link rel="Next" href="http://wdh.suncloud.ru/dhtml07.htm" title="Элементы HTML">
+<link rel="Copyright" href="http://wdh.suncloud.ru/cpyright.htm" title="Сведения об авторских правах">
+<link rev="Made" href="mailto:yury@suncloud.ru" title="Обратная связь">
+<script type="text/javascript" src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/load.js"></script>
+<script type="text/javascript" src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/link.js"></script><link rel="stylesheet" type="text/css" href="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nn5.css"></head><body onload="initDoc(); addBanner(true)">
+<table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr><td><div id="divHeader"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Ю. Лукач «Справочник Веб-разработчика»</p><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml05.htm"><img name="imglefta" src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nnleft.gif" alt="" title="Дополнительные интерфейсы базовой модели" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgupa" src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nnup.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml07.htm"><img name="imgrighta" src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nnright.gif" alt="" title="Элементы HTML" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"></div></td></tr>
+  <tr><td id="tdBanner" style="text-align: center;"><script type="text/javascript">addBanner(false);</script><div class="banner"><a href="http://ad.tbn.ru/bb.cgi?cmd=go&amp;pubid=160692&amp;pg=2&amp;vbn=188&amp;num=1&amp;w=468&amp;h=60&amp;nocache=191" target="_blank"><img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/bb.gif" alt="TBN.ru - СЕТЬ, ЖИВУЩАЯ ПО ПРАВИЛАМ" border="0" height="60" width="468"></a></div></td></tr>
+  <tr><td>
+
+      <h2><a name="ref46">Глава 4.6. Объектная модель HTML-документа</a></h2>
+
+      <p>После рассмотрения базовых интерфейсов мы переходим к описанию объектной модели HTML-документов
+        в соответствии с DOM 2 HTML. Эта модель основана на следующих интерфейсах:</p>
+
+      <ul>
+        <li>интерфейс <tt><a href="#ref463">HTMLDocument</a></tt>, соответствующий HTML-документу и производный от интерфейса <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#ref426">Document</a></tt>;</li>
+        <li>интерфейс <tt><a href="#ref464">HTMLElement</a></tt>, соответствующий абстрактному HTML-элементу и производный от интерфейса <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt>;</li>
+        <li>интерфейсы, соответствующие конкретным элементам языка HTML и производные от интерфейса <tt><a href="#ref464">HTMLElement</a></tt>;</li>
+        <li>вспомогательные интерфейсы <tt><a href="#ref461">HTMLDOMImplementation</a></tt> и <tt><a href="#ref462">HTMLCollection</a></tt>.</li>
+      </ul>
+
+      <p>Описанные в этой главе интерфейсы не являются обязательными для реализации DOM. Если реализация их поддерживает,
+        то рекомендуется, чтобы ее метод <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#mhasfeature">DOMImplementation.hasFeature</a></tt> возвращал true при соответствующем запросе.</p>
+        
+      <h3><a name="ref461">4.6.1. Реализация DOM HTML: интерфейс HTMLDOMImplementation</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Интерфейс <tt>HTMLDOMImplementation</tt> является производным от интерфейса <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#ref424">DOMImplementation</a></tt>. Он наследует
+        все его свойства и методы, и имеет единственный дополнительный метод <tt><a href="#mcreatehtmldocument">createHTMLDocument</a></tt>,
+        позволяющий нам создавать объекты типа <tt><a href="#ref463">HTMLDocument</a></tt>.</p>
+
+      <h4><a name="hcreatehtmldocument">Метод createHTMLDocument</a></h4>
+
+<pre class="syntax"><strong><a name="mcreatehtmldocument">Синтаксис</a></strong>:  <em>объект</em>.createHTMLDocument(title)
+<strong>Аргументы</strong>:  title&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  новый объект <a href="#ref463">HTMLDocument</a>
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Не поддерживается.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Не поддерживается.</pre>
+
+      <p>Метод <strong>createHTMLDocument</strong> создает новый объект <tt><a href="#ref463">HTMLDocument</a></tt> и возвращает указатель
+        на него. Дерево нового документа состоит из четырех элементов: <strong><a href="http://wdh.suncloud.ru/html02.htm#ehtml">HTML</a></strong>,
+        <strong><a href="http://wdh.suncloud.ru/html02.htm#ehead">HEAD</a></strong>, <strong><a href="http://wdh.suncloud.ru/html02.htm#etitle">TITLE</a></strong> и
+        <strong><a href="http://wdh.suncloud.ru/html02.htm#ebody">BODY</a></strong>. Аргумент <tt>title</tt> содержит титул документа, который становится
+        содержимым элемента <strong><a href="http://wdh.suncloud.ru/html02.htm#etitle">TITLE</a></strong> как его сыновний узел типа <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref444">Text</a></tt>.</p>
+
+      <h3><a name="ref462">4.6.2. Коллекции: интерфейс HTMLCollection</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>HTMLCollection</tt> обобщает интерфейс <tt><a href="http://wdh.suncloud.ru/dhtml03.htm#ref432">NodeList</a></tt>
+таким образом, что доступ к элементам списка узлов становится возможен
+как по их номеру в списке, так и по их имени. Под именем элемента здесь
+понимается значение его атрибута <strong><a href="http://wdh.suncloud.ru/html01.htm#aid">id</a></strong> или <strong>name</strong>. Коллекции являются <em>живыми</em>, т.&nbsp;е.
+        любое изменение документа влечет автоматическое изменение всех связанных с ним коллекций.</p>
+
+      <p>Этот интерфейс имеет единственное свойство <tt><a href="#pcollection-length">length</a></tt>,
+        возвращающее количество узлов в списке, и два метода: <tt><a href="#mcollection-item">item</a></tt>,
+        возвращающий элемент списка с заданным номером (элементы списка узлов нумеруются, начиная с
+        нуля) и <tt><a href="#mnameditem">namedItem</a></tt>, возвращающий элемент списка с заданным именем.</p>
+
+      <h4><a name="hcollection-length">Свойство length</a></h4>
+
+<pre class="syntax"><strong><a name="pcollection-length">Синтаксис</a></strong>:  <em>коллекция</em>.length
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Cоответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>length</strong> возвращает количество элементов в коллекции. Допустимые
+        индексы элементов списка лежат в диапазоне от 0 до <tt>length</tt>-1 включительно. Следующий
+        пример выводит на экран количество элементов в дереве документа:</p>
+
+      <div class="code">
+<pre class="code">alert(document.getElementsByTagName("*").length); // в Gecko (стандарт)
+alert(document.all.length);                       // в Internet Explorer</pre>
+      </div>
+
+      <h4><a name="hcollection-item">Метод item</a></h4>
+
+      <pre class="syntax"><strong><a name="mcollection-item">Синтаксис</a></strong>:  <em>коллекция</em>.item(index)
+<strong>Аргументы</strong>:  index&nbsp;— числовое выражение
+<strong>Результат</strong>:  узел <a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a> или null
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>item</strong> возвращает элемент коллекции с заданным индексом в качестве
+        результата. Если индекс выходит за пределы диапазона элементов списка, то возвращается <strong>null</strong>.
+        Элементы коллекции нумеруются в обратном порядке прохождения дерева, т.&nbsp;е. от листьев к корню. Пример: оператор</p>
+
+      <div class="code">
+<pre class="code">alert(document.childNodes.item(0).nodeName);</pre>
+      </div>
+
+      <p class="noindent">выведет на экран текст <samp>HTML</samp>.</p>
+
+      <p>JavaScript позволяет нам записать обращение к элементу коллекции более компактно. Предыдущий оператор
+        может выглядеть так:</p>
+
+      <div class="code">
+<pre class="code">alert(document.childNodes[0].nodeName);</pre>
+      </div>
+
+      <p>Internet Explorer поддерживает еще одну форму обращения к элементу списка, а именно:</p>
+
+      <div class="code">
+<pre class="code">alert(document.childNodes(0).nodeName);</pre>
+      </div>
+
+      <p>Однако, эта форма является нестандартной, и ей лучше не пользоваться.</p>
+
+      <h4><a name="hnameditem">Метод namedItem</a></h4>
+
+      <pre class="syntax"><strong><a name="mnameditem">Синтаксис</a></strong>:  <em>коллекция</em>.namedItem(name)
+<strong>Аргументы</strong>:  name&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  узел <a href="http://wdh.suncloud.ru/dhtml03.htm#ref431">Node</a> или null
+<strong>Исключения</strong>: нет</pre>
+      <pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Реализован нестандартно.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>namedItem</strong> возвращает элемент коллекции с заданным именем в качестве
+        результата. Сначала ищется элемент, у которого атрибут <strong><a href="http://wdh.suncloud.ru/html01.htm#aid">id</a></strong> равен <tt>name</tt>;
+        в случае неудачи ищется элемент, у которого атрибут <strong>name</strong> равен <tt>name</tt>. Если и такой элемент не найден,
+        то возвращается <strong>null</strong>. Пример:</p>
+
+      <div class="code">
+<pre class="code">&lt;IMG name="img1" src="file1.gif"&gt;
+...
+&lt;SCRIPT&gt;
+alert(document.images.namedItem("img1").src);
+&lt;/SCRIPT&gt;</pre>
+      </div>
+
+      <p>Оператор <tt>alert</tt> выведет в Gecko на экран спецификацию файла file1.gif. Internet Explorer
+        не поддерживает стандартный синтаксис этого метода, поэтому для него данный оператор должен выглядеть так:</p>
+
+      <div class="code">
+<pre class="code">alert(document.images["img1"].src);</pre>
+      </div>
+
+      <p>Приведенная
+форма приемлема и для Gecko. Internet Explorer поддерживает еще одну
+форму обращения к именованному элементу списка, а именно:</p>
+
+      <div class="code">
+<pre class="code">alert(document.images("img1").src);</pre>
+      </div>
+
+      <p>Однако, эта форма является нестандартной, и ей лучше не пользоваться.</p>
+
+      <h3><a name="ref463">4.6.3. HTML-документ: интерфейс HTMLDocument</a></h3>
+
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Интерфейс <tt>HTMLDocument</tt> является корнем в иерархии HTML-элементов. Он наследует все
+        свойства и методы интерфейса <tt><a href="http://wdh.suncloud.ru/dhtml02.htm#ref426">Document</a></tt> и, кроме того, содержит несколько дополнительных свойств и
+        методов, призванных облегчить написание сценариев для управления динамическими страницами.</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса HTMLDocument</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#panchors">anchors</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Коллекция закладок, определенных в документе.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#papplets">applets</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Коллекция аплетов, определенных в документе.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pbody">body</a></tt></td>
+            <td>Да</td>
+            <td>DOM 1</td>
+            <td>Указатель на тело документа.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pcookie">cookie</a></tt></td>
+            <td>Да</td>
+            <td>DOM 1</td>
+            <td>Куки, ассоциированные с документом.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pdomain">domain</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Доменное имя сервера.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pforms">forms</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Коллекция форм, определенных в документе.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pimages">images</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Коллекция графических образов, определенных в документе.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#plinks">links</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Коллекция гиперссылок, определенных в документе.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#preferrer">referrer</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>URI документа, ссылающегося на данный.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ptitle">title</a></tt></td>
+            <td>Да</td>
+            <td>DOM 1</td>
+            <td>Титул документа.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#purl">URL</a></tt></td>
+            <td>Нет</td>
+            <td>DOM 1</td>
+            <td>Полный URI документа.</td>
+          </tr>
+        </tbody></table>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Методы интерфейса HTMLDocument</caption>
+          <tbody><tr>
+            <th>Метод</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#mclose">close</a></tt></td>
+            <td>DOM 1</td>
+            <td>Завершает редактирование документа.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mgetelementsbyname">getElementsByName</a></tt></td>
+            <td>DOM 1</td>
+            <td>Возвращает коллекцию элементов, имеющих заданное имя.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mopen">open</a></tt></td>
+            <td>DOM 1</td>
+            <td>Открывает документ для редактирования.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mwrite">write</a></tt></td>
+            <td>DOM 1</td>
+            <td>Записывает в документ заданную строку.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#mwriteln">writeln</a></tt></td>
+            <td>DOM 1</td>
+            <td>Записывает в документ заданную строку и символ перевода строки.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hanchors">Свойство anchors</a></h4>
+
+<pre class="syntax"><strong><a name="panchors">Синтаксис</a></strong>:  <em>документ</em>.anchors
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Нестандартная.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>anchors</strong> возвращает коллекцию всех закладок, определенных в документе.
+        Под закладкой здесь понимается элемент <strong><a href="http://wdh.suncloud.ru/html06.htm#ea">A</a></strong>, имеющий атрибут <strong>name</strong>.
+        Согласно стандарту, закладки, определенные атрибутом <strong><a href="http://wdh.suncloud.ru/html01.htm#aid">id</a></strong>, а не <strong>name</strong>,
+        не должны включаться в эту коллекцию, однако Internet Explorer их включает. Пример:</p>
+
+      <div class="code">
+<pre class="code">&lt;A name="a1"&gt;&lt;/A&gt;
+&lt;A id="a2"&gt;&lt;/A&gt;
+&lt;SCRIPT&gt;
+alert(document.anchors.length);
+&lt;/SCRIPT&gt;</pre>
+      </div>
+
+      <p>Оператор <tt>alert</tt> выведет в Gecko число <samp>1</samp>, а в Internet Explorer число <samp>2</samp>.</p>
+
+      <h4><a name="happlets">Свойство applets</a></h4>
+
+<pre class="syntax"><strong><a name="papplets">Синтаксис</a></strong>:  <em>документ</em>.applets
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>applets</strong> возвращает коллекцию всех аплетов, определенных в документе.
+        Аплеты определяются либо элементом <strong><a href="http://wdh.suncloud.ru/html06.htm#eobject">OBJECT</a></strong>,
+        либо морально устаревшим элементом <strong><a href="http://wdh.suncloud.ru/deprecat.htm#eapplet">APPLET</a></strong>. Пример:</p>
+
+      <div class="code">
+<pre class="code">for (var i = 0; i &lt; document.applets.length; i++)
+  alert(document.applets[i].code);</pre>
+      </div>
+
+      <h4><a name="hbody">Свойство body</a></h4>
+
+<pre class="syntax"><strong><a name="pbody">Синтаксис</a></strong>:  <em>документ</em>.body
+<strong>Изменяемое</strong>: да (в Internet Explorer нет)</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>body</strong> задает или возвращает указатель на тело документа, т.&nbsp;е.
+        либо на элемент <strong><a href="http://wdh.suncloud.ru/html02.htm#ebody">BODY</a></strong>,
+        либо, во фреймовых документах, на элемент <strong><a href="http://wdh.suncloud.ru/html07.htm#eframeset">FRAMESET</a></strong>. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.body.tagName);</pre>
+      </div>
+
+      <h4><a name="hcookie">Свойство cookie</a></h4>
+
+<pre class="syntax"><strong><a name="pcookie">Синтаксис</a></strong>:  <em>документ</em>.cookie
+<strong>Изменяемое</strong>: да</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>cookie</strong> задает или возвращает строку, содержащую куки данного документа. <em>Куки</em>&nbsp;—
+это небольшой текстовый файл, который сохраняется обозревателем на
+компьютере-клиенте и содержит определенную информацию о данном
+Веб-документе. Содержимое куки передается в виде набора пар <dfn>имя=значение</dfn>, разделенных точкой с запятой.
+        Число таких пар не должно превышать 20. Следующие имена в куки имеют специальное значение:</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <tbody><tr>
+            <td><tt>expires=<em>дата</em></tt></td>
+            <td>Задает дату и время удаления куки. Если этот параметр не задан, то куки существует
+              до закрытия окна обозревателя (т.&nbsp;н. сеансовый куки). <em>Дата</em> должна иметь
+              тот же формат, что и результат метода <tt><a href="http://wdh.suncloud.ru/js11.htm#mtoutcstring">Date.toUTCString</a></tt>.</td>
+          </tr>
+          <tr>
+            <td><tt>domain=<em>имя_домена</em></tt></td>
+            <td>Задает имя домена. Это позволяет нескольким серверам, входящим в один домен, совместно
+              пользоваться информацией из куки.</td>
+          </tr>
+          <tr>
+            <td><tt>path=<em>путь</em></tt></td>
+            <td>Задает путь на сервере. Это позволяет всем страницам данного домена, хранящимся в данном каталоге и его подкаталогах,
+              совместно пользоваться информацией из куки.</td>
+          </tr>
+          <tr>
+            <td><tt>secure</tt></td>
+            <td>Этот параметр означает, что информация из куки должна быть доступна только в безопасном контексте.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <p>При чтении этого свойства всегда возвращается строка, содержащая все куки данного документа.
+        При этом следует учитывать, что Gecko добавляет после точки с запятой пробел, а Internet Explorer нет.
+        Поэтому обрабатывать куки следует так, как показано в следующем примере, который возвращает дату и время удаления куки
+        (или <strong>null</strong> для сенсового куки):</p>
+
+      <div class="code">
+<pre class="code">function trimLeft(s) {
+  while(s[0] == " ")
+    s = s.substr(1);
+  return s;
+}
+function getCookie(sName) {
+  var aCookie = document.cookie.split(";");
+  for (var i = 0; i &lt; aCookie.length; i++) {
+    var aCrumb = trimLeft(aCookie[i]).split("=");
+    if (sName == aCrumb[0]) 
+      return unescape(aCrumb[1]);
+  }
+  return null;
+}
+alert(getCookie("expires"));</pre>
+      </div>
+
+      <h4><a name="hdomain">Свойство domain</a></h4>
+
+<pre class="syntax"><strong><a name="pdomain">Синтаксис</a></strong>:  <em>документ</em>.domain
+<strong>Изменяемое</strong>: нет (в Internet Explorer да)</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>domain</strong> возвращает строку, содержащую доменное имя сервера, с которого загружена данная страница, или <strong>null</strong>, если
+        сервер не может быть идентифицирован. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.domain);</pre>
+      </div>
+
+      <p class="note"><strong>Примечание</strong>.
+В Internet Explorer значение этого свойства можно изменять, присвоив
+ему суффикс доменного имени сервера. Дело в том, что доступ из одного
+фрейма MSIE к объектной модели другого допускается только в тех
+случаях, когда эти фреймы загружены из одного доменного имени. Пусть,
+например, один фрейм был загружен с сервера lib.suncloud.ru, а
+второй&nbsp;— с сервера home.suncloud.ru. Эти два фрейма не смогут
+общаться друг с другом; для разрешения доступа таких фреймов друг к
+другу мы должны присвоить их <tt>document.domain</tt> строку "suncoud.ru".</p>
+
+      <h4><a name="hforms">Свойство forms</a></h4>
+
+<pre class="syntax"><strong><a name="pforms">Синтаксис</a></strong>:  <em>документ</em>.forms
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>forms</strong> возвращает коллекцию всех форм, определенных в документе, т.&nbsp;е.
+        всех элементов <strong><a href="http://wdh.suncloud.ru/html08.htm#eform">FORM</a></strong>. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.forms.length);</pre>
+      </div>
+
+      <h4><a name="himages">Свойство images</a></h4>
+
+<pre class="syntax"><strong><a name="pimages">Синтаксис</a></strong>:  <em>документ</em>.images
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>images</strong> возвращает коллекцию всех графических образов, определенных в документе, т.&nbsp;е.
+        всех элементов <strong><a href="http://wdh.suncloud.ru/html06.htm#eimg">IMG</a></strong>. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.images.length);</pre>
+      </div>
+
+      <h4><a name="hlinks">Свойство links</a></h4>
+
+<pre class="syntax"><strong><a name="plinks">Синтаксис</a></strong>:  <em>документ</em>.links
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>links</strong> возвращает коллекцию всех гиперссылок, определенных в документе.
+        Гиперссылки определяются либо элементом <strong><a href="http://wdh.suncloud.ru/html06.htm#ea">A</a></strong>, имеющим атрибут <strong>href</strong>,
+        либо элементом <strong><a href="http://wdh.suncloud.ru/html06.htm#earea">AREA</a></strong>, имеющим атрибут <strong>href</strong>. Пример:</p>
+
+      <div class="code">
+<pre class="code">for (var i = 0; i &lt; document.links.length; i++)
+  alert(document.links[i].href);</pre>
+      </div>
+
+      <h4><a name="hreferrer">Свойство referrer</a></h4>
+
+<pre class="syntax"><strong><a name="preferrer">Синтаксис</a></strong>:  <em>документ</em>.referrer
+<strong>Изменяемое</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>referrer</strong> возвращает строку, содержащую имя документа, из которого по гиперссылке
+        был загружен данный документ. Если такого документа нет (например, когда имя документа было введено в поле адреса
+        обозревателя), то возвращается пустая строка. Пример:</p>
+
+      <div class="code">
+<pre class="code">alert(document.referrer);</pre>
+      </div>
+
+      <h4><a name="htitle">Свойство title</a></h4>
+
+<pre class="syntax"><strong><a name="ptitle">Синтаксис</a></strong>:  <em>документ</em>.title
+<strong>Изменяемое</strong>: да</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>title</strong> возвращает или задает строку, содержащую титул данного документа, т.&nbsp;е. содержимое
+        его элемента <strong><a href="http://wdh.suncloud.ru/html02.htm#etitle">TITLE</a></strong>. Пример:</p>
+
+      <div class="code">
+<pre class="code">if (document.title == "")
+  document.title = "Без заголовка";</pre>
+      </div>
+
+      <h4><a name="hurl">Свойство URL</a></h4>
+
+<pre class="syntax"><strong><a name="purl">Синтаксис</a></strong>:  <em>документ</em>.URL
+<strong>Изменяемое</strong>: нет (в обозревателях да)</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>URL</strong> возвращает строку, содержащую полный URI данного документа.
+        Например, для страницы, которую вы сейчас читаете, оператор <code>alert(document.URL)</code> выведет на экран
+        строку <samp>http://wdh.suncloud.ru/dhtml06.htm</samp>.</p>
+
+      <p>Хотя
+стандарт считает это свойство неизменяемым, оба обозревателя позволяют
+задавать его значение. При этом Gecko просто игнорирует такой оператор
+присваивания, а Internet Explorer загружает в текущее окно документ с
+новым URL. Ср. описание объекта <tt>window.location</tt> в <a href="http://wdh.suncloud.ru/dhtml13.htm#plocation">Gecko</a> и <a href="http://wdh.suncloud.ru/dhtml14.htm#plocation">Internet Explorer</a>.</p>
+
+      <h4><a name="hclose">Метод close</a></h4>
+
+<pre class="syntax"><strong><a name="mclose">Синтаксис</a></strong>:  <em>документ</em>.close()
+<strong>Результат</strong>:  нет
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>close</strong> закрывает документ, открытый методом <tt><a href="#mopen">open</a></tt>, и вызывает отображение этого
+        документа. См. пример и комментарии в описании метода <tt><a href="#mopen">open</a></tt>.</p>
+
+      <h4><a name="hgetelementsbyname">Метод getElementsByName</a></h4>
+
+      <pre class="syntax"><strong><a name="mgetelementsbyname">Синтаксис</a></strong>:  <em>документ</em>.getElementsByName(elementName)
+<strong>Аргументы</strong>:  elementName&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  объект типа <a href="#ref462">HTMLCollection</a>
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>getElementsByName</strong> возвращает <a href="#ref462">коллекцию</a>, состоящую
+        из всех <a href="#ref464">элементов</a>, имеющих значение атрибута <strong>name</strong>, равное <tt>elementName</tt>.
+        Если таких элементов нет, то возвращается пустая коллекция. В результирующую коллекцию включаются
+        только те элементы, наличие у которых атрибута <tt>name</tt> допускается стандартом HTML. Пример:</p>
+
+      <div class="code">
+<pre class="code">var imgList = document.getElementsByName("MyImage");
+alert(imgList.length);</pre>
+      </div>
+
+      <h4><a name="hopen">Метод open</a></h4>
+
+<pre class="syntax"><strong><a name="mopen">Синтаксис</a></strong>:  <em>документ</em>.open()
+<strong>Результат</strong>:  нет
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Нестандартная.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>open</strong> открывает документ для редактирования методами <tt><a href="#mwrite">write</a></tt> и <tt><a href="#mwriteln">writeln</a></tt>.
+        Методы <tt>open</tt>, <tt><a href="#mwrite">write</a></tt>, <tt><a href="#mwriteln">writeln</a></tt> и <tt><a href="#mclose">close</a></tt> введены в DOM HTML для совместимости со
+        старыми версиями Netscape Navigator, который требовал специальных процедур открытия и закрытия слоя перед изменением
+        его содержания. Современные обозреватели в этом не нуждаются, и, по всей вероятности, из следующих версий DOM
+        перечисленные методы будут исключены.</p>
+
+      <p>Поэтому Gecko поддерживает методы <tt>open</tt> и <tt><a href="#mclose">close</a></tt>, но попросту их игнорирует.
+        Internet Explorer точно так же игнорирует метод <tt><a href="#mclose">close</a></tt>, а метод <tt>open</tt> имеет два варианта: без параметров
+        он игнорируется, а с параметрами он является синонимом метода <tt><a href="http://wdh.suncloud.ru/dhtml14.htm#mopen">window.open</a></tt>. Пример:</p>
+
+      <div class="code">
+<pre class="code">document.open();
+document.writeln("&lt;P&gt;Новый абзац 1.&lt;/P&gt;&lt;P&gt;Новый абзац 2.&lt;/P&gt;");
+document.close();</pre>
+      </div>
+
+      <h4><a name="hwrite">Метод write</a></h4>
+
+      <pre class="syntax"><strong><a name="mwrite">Синтаксис</a></strong>:  <em>документ</em>.write(text)
+<strong>Аргументы</strong>:  text&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  нет
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>write</strong> вставляет в текущую позицию документа HTML-текст, заданный аргументом <tt>text</tt>.
+        См. пример и комментарии в описании метода <tt><a href="#mopen">open</a></tt>.</p>
+
+      <h4><a name="hwriteln">Метод writeln</a></h4>
+
+      <pre class="syntax"><strong><a name="mwriteln">Синтаксис</a></strong>:  <em>документ</em>.writeln(text)
+<strong>Аргументы</strong>:  text&nbsp;— выражение типа <a href="http://wdh.suncloud.ru/dhtml02.htm#domstring">DOMString</a>
+<strong>Результат</strong>:  нет
+<strong>Исключения</strong>: нет</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Метод <strong>writeln</strong> вставляет в текущую позицию документа HTML-текст, заданный аргументом <tt>text</tt>.
+        К HTML-тексту добавляется символ перевода строки. См. пример и комментарии в описании метода <tt><a href="#mopen">open</a></tt>.</p>
+
+      <h3><a name="ref464">4.6.4. HTML-элемент: интерфейс HTMLElement</a></h3>
+
+      <p>Интерфейс <tt>HTMLElement</tt> соответствует HTML-элементу общего вида. Он наследует все
+        свойства и методы интерфейса <tt><a href="http://wdh.suncloud.ru/dhtml04.htm#ref442">Element</a></tt> и, кроме того, содержит несколько дополнительных свойств,
+        соответствующих <a href="http://wdh.suncloud.ru/html01.htm#ref114">общим атрибутам</a> элементов HTML. Атрибут <strong><a href="http://wdh.suncloud.ru/html01.htm#astyle">style</a></strong>
+        подробно будет описан в <a href="http://wdh.suncloud.ru/dhtml10.htm#ref4108">гл. 4.10</a>, посвященной DOM CSS. Обработчики событий описаны в <a href="http://wdh.suncloud.ru/dhtml11.htm">гл. 4.11</a>, посвященной DOM Events.</p>
+
+      <p>Элементы HTML, имеющие только общие атрибуты, реализуются данным интерфейсом. Сюда относятся следующие элементы:
+        <strong><a href="http://wdh.suncloud.ru/html03.htm#eabbr">ABBR</a></strong>, <strong><a href="http://wdh.suncloud.ru/html03.htm#eacronym">ACRONYM</a></strong>,
+        <strong><a href="http://wdh.suncloud.ru/html10.htm#eaddress">ADDRESS</a></strong>, <strong><a href="http://wdh.suncloud.ru/html03.htm#eb">B</a></strong>, <strong><a href="http://wdh.suncloud.ru/html10.htm#ebdo">BDO</a></strong>,
+        <strong><a href="http://wdh.suncloud.ru/html03.htm#ebig">BIG</a></strong>, <strong><a href="http://wdh.suncloud.ru/deprecat.htm#ecenter">CENTER</a></strong>, <strong><a href="http://wdh.suncloud.ru/html03.htm#ecite">CITE</a></strong>, <strong><a href="http://wdh.suncloud.ru/html03.htm#ecode">CODE</a></strong>, <strong><a href="http://wdh.suncloud.ru/html04.htm#edd">DD</a></strong>,
+        <strong><a href="http://wdh.suncloud.ru/html03.htm#edfn">DFN</a></strong>,  <strong><a href="http://wdh.suncloud.ru/html04.htm#edt">DT</a></strong>, <strong><a href="http://wdh.suncloud.ru/html03.htm#eem">EM</a></strong>,
+        <strong><a href="http://wdh.suncloud.ru/html02.htm#ehead">HEAD</a></strong>, <strong><a href="http://wdh.suncloud.ru/html03.htm#ei">I</a></strong>,
+        <strong><a href="http://wdh.suncloud.ru/html03.htm#ekbd">KBD</a></strong>, <strong><a href="http://wdh.suncloud.ru/html07.htm#enoframes">NOFRAMES</a></strong>,
+        <strong><a href="http://wdh.suncloud.ru/html09.htm#enoscript">NOSCRIPT</a></strong>, <strong><a href="http://wdh.suncloud.ru/deprecat.htm#es">S</a></strong>,
+        <strong><a href="http://wdh.suncloud.ru/html03.htm#esamp">SAMP</a></strong>, <strong><a href="http://wdh.suncloud.ru/html03.htm#esmall">SMALL</a></strong>, <strong><a href="http://wdh.suncloud.ru/html10.htm#espan">SPAN</a></strong>,
+        <strong><a href="http://wdh.suncloud.ru/deprecat.htm#es">STRIKE</a></strong>, <strong><a href="http://wdh.suncloud.ru/html03.htm#estrong">STRONG</a></strong>,
+        <strong><a href="http://wdh.suncloud.ru/html03.htm#esubsup">SUB</a></strong>, <strong><a href="http://wdh.suncloud.ru/html03.htm#esubsup">SUP</a></strong>,
+        <strong><a href="http://wdh.suncloud.ru/html03.htm#ett">TT</a></strong>, <strong><a href="http://wdh.suncloud.ru/deprecat.htm#eu">U</a></strong>, <strong><a href="http://wdh.suncloud.ru/html03.htm#evar">VAR</a></strong>.
+        Остальные HTML-элементы имеют собственные интерфейсы, которые являются наследниками интерфейса <tt>HTMLElement</tt>.</p>
+
+      <p>Особо следует остановиться на формате строк, содержащих значения атрибутов. Как мы уже знаем, <a href="http://wdh.suncloud.ru/dhtml04.htm#ptagname">названия тегов HTML</a>
+        всегда преобразуются в прописные буквы. Для атрибутов принято другое соглашение, а именно: атрибуты <a href="http://wdh.suncloud.ru/html01.htm#cdata">типа CDATA</a>
+хранятся так, как они заданы в документе, а атрибуты, принимающие
+значения из фиксированного списка, должны преобразовываться в строчные
+буквы, но первая их буква делается прописной. Например, значения
+свойства <tt><a href="#pdir">dir</a></tt>
+должны иметь значения "Ltr" и "Rtl". Gecko следует этому соглашению,
+тогда как Internet Explorer преобразует значения таких атрибутов в
+строчные буквы (в данном случае, "ltr" и "rtl" соответственно).</p>
+
+      <div class="indent">
+        <table border="1" cellpadding="5" cellspacing="0">
+          <caption style="text-align: left;">Свойства интерфейса HTMLElement</caption>
+          <tbody><tr>
+            <th>Свойство</th>
+            <th>Изменяемое</th>
+            <th>Модель</th>
+            <th>Описание</th>
+          </tr>
+          <tr>
+            <td><tt><a href="#pclassname">className</a></tt></td>
+            <td>Да</td>
+            <td>DOM 1</td>
+            <td>Атрибут <strong>class</strong>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pdir">dir</a></tt></td>
+            <td>Да</td>
+            <td>DOM 1</td>
+            <td>Атрибут <strong>dir</strong>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pid">id</a></tt></td>
+            <td>Да</td>
+            <td>DOM 1</td>
+            <td>Атрибут <strong>id</strong>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#plang">lang</a></tt></td>
+            <td>Да</td>
+            <td>DOM 1</td>
+            <td>Атрибут <strong>lang</strong>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#pstyle">style</a></tt></td>
+            <td>Да</td>
+            <td>DOM 2</td>
+            <td>Атрибут <strong>style</strong>.</td>
+          </tr>
+          <tr>
+            <td><tt><a href="#ptitle">title</a></tt></td>
+            <td>Да</td>
+            <td>DOM 1</td>
+            <td>Атрибут <strong>title</strong>.</td>
+          </tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="vindent"><a name="hclassname">Свойство className</a></h4>
+
+<pre class="syntax"><strong><a name="pclassname">Синтаксис</a></strong>:  <em>элемент</em>.className
+<strong>Изменяемое</strong>: да</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>className</strong> задает или возвращает значение атрибута <strong><a href="http://wdh.suncloud.ru/html01.htm#aclass">class</a></strong> данного элемента.
+        Пример: следующий сценарий выведет на экран строку <samp>note</samp>.</p>
+
+      <div class="code">
+<pre class="code">&lt;P id="p1" class="note"&gt;Текст примечания.&lt;/P&gt;
+&lt;SCRIPT&gt;
+var o = document.getElementById("p1");
+alert(o.className);
+&lt;/SCRIPT&gt;</pre>
+      </div>
+
+      <h4><a name="hdir">Свойство dir</a></h4>
+
+<pre class="syntax"><strong><a name="pdir">Синтаксис</a></strong>:  <em>элемент</em>.dir
+<strong>Изменяемое</strong>: да</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>dir</strong> задает или возвращает значение атрибута <strong><a href="http://wdh.suncloud.ru/html01.htm#adir">dir</a></strong> данного элемента.
+        Пример: следующий сценарий выведет в Gecko строку <samp>Ltr</samp>, а в MSIE&nbsp;— строку <samp>ltr</samp>.</p>
+
+      <div class="code">
+<pre class="code">&lt;P id="p1" dir="ltr"&gt;Текст примечания.&lt;/P&gt;
+&lt;SCRIPT&gt;
+var o = document.getElementById("p1");
+alert(o.dir);
+&lt;/SCRIPT&gt;</pre>
+      </div>
+
+      <h4><a name="hid">Свойство id</a></h4>
+
+<pre class="syntax"><strong><a name="pid">Синтаксис</a></strong>:  <em>элемент</em>.id
+<strong>Изменяемое</strong>: да</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>id</strong> задает или возвращает значение атрибута <strong><a href="http://wdh.suncloud.ru/html01.htm#aid">id</a></strong> данного элемента.
+        Пример: следующий сценарий выведет на экран строку <samp>p1</samp>.</p>
+
+      <div class="code">
+<pre class="code">&lt;P id="p1"&gt;Текст примечания.&lt;/P&gt;
+&lt;SCRIPT&gt;
+var o = document.getElementById("p1");
+alert(o.id);
+&lt;/SCRIPT&gt;</pre>
+      </div>
+
+      <h4><a name="hlang">Свойство lang</a></h4>
+
+<pre class="syntax"><strong><a name="plang">Синтаксис</a></strong>:  <em>элемент</em>.lang
+<strong>Изменяемое</strong>: да</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>lang</strong> задает или возвращает значение атрибута <strong><a href="http://wdh.suncloud.ru/html01.htm#alang">lang</a></strong> данного элемента.
+        Пример: следующий сценарий выведет на экран строку <samp>ru</samp>.</p>
+
+      <div class="code">
+<pre class="code">&lt;P id="p1" lang="ru"&gt;Текст примечания.&lt;/P&gt;
+&lt;SCRIPT&gt;
+var o = document.getElementById("p1");
+alert(o.lang);
+&lt;/SCRIPT&gt;</pre>
+      </div>
+
+      <h4><a name="hstyle">Свойство style</a></h4>
+
+<pre class="syntax"><strong><a name="pstyle">Синтаксис</a></strong>:  <em>элемент</em>.style
+<strong>Изменяемое</strong>: да</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Поддержано частично.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Поддержано частично.</pre>
+
+      <p>Свойство <strong>style</strong> обеспечивает доступ к интерфейсу <tt><a href="http://wdh.suncloud.ru/dhtml10.htm#ref4108">CSSStyleDeclaration</a></tt>,
+        соответствующему стилям CSS данного элемента. Пример: следующий сценарий выведет на экран строку <samp>8px</samp>.</p>
+
+      <div class="code">
+<pre class="code">&lt;P id="p1" style="font-size: 8px"&gt;Текст примечания.&lt;/P&gt;
+&lt;SCRIPT&gt;
+var o = document.getElementById("p1");
+alert(o.style.fontSize);
+&lt;/SCRIPT&gt;</pre>
+      </div>
+
+      <h4><a name="htitle">Свойство title</a></h4>
+
+<pre class="syntax"><strong><a name="ptitle">Синтаксис</a></strong>:  <em>элемент</em>.title
+<strong>Изменяемое</strong>: да</pre>
+<pre class="support"><strong>Поддержка</strong>: <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/ie.gif" alt="Internet Explorer"> Соответствует стандарту.
+           <img src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/gecko.gif" alt="Gecko"> Соответствует стандарту.</pre>
+
+      <p>Свойство <strong>title</strong> задает или возвращает значение атрибута <strong><a href="http://wdh.suncloud.ru/html01.htm#atitle">title</a></strong> данного элемента.
+        Пример: следующий сценарий выведет на экран строку <samp>Прим. 1</samp>.</p>
+
+      <div class="code">
+<pre class="code">&lt;P id="p1" title="Прим. 1"&gt;Текст примечания.&lt;/P&gt;
+&lt;SCRIPT&gt;
+var o = document.getElementById("p1");
+alert(o.title);
+&lt;/SCRIPT&gt;</pre>
+      </div>
+
+    </td></tr>
+  <tr><td><div id="divFooter"><hr size="2"><table style="margin: 0pt;" border="0" cellpadding="0" cellspacing="0" height="24" width="100%"><tbody><tr><td align="left" width="33%"><a href="http://wdh.suncloud.ru/dhtml05.htm"><img name="imgleftb" src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nnleft.gif" alt="" title="Дополнительные интерфейсы базовой модели" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="center" width="34%"><a href="http://wdh.suncloud.ru/contents.htm"><img name="imgdownb" src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nndown.gif" alt="" title="Содержание" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td><td align="right" width="33%"><a href="http://wdh.suncloud.ru/dhtml07.htm"><img name="imgrightb" src="4.6.%20%CE%E1%FA%E5%EA%F2%ED%E0%FF%20%EC%EE%E4%E5%EB%FC%20HTML-%E4%EE%EA%F3%EC%E5%ED%F2%E0_files/nnright.gif" alt="" title="Элементы HTML" onmouseover="showSelected(this)" onmouseout="showNormal(this)" border="0"></a></td></tr></tbody></table><hr size="2"><p style="margin: 0pt; text-indent: 0pt; text-align: center; font-family: arial,sans-serif; color: rgb(0, 0, 204);">Последнее изменение страницы: 13 мая 2002 г.</p></div></td></tr>
+</tbody></table>
+</body></html>
